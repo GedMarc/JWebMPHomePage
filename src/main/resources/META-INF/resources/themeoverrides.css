@@ -1,0 +1,51 @@
+.content-page {
+    margin-left: 0px;
+    overflow: inherit;
+}
+
+.content-page > .content {
+    padding: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.page-title-box {
+    margin: 0px;
+}
+
+.side-menu.left {
+    top: 0px;
+}
+
+body.fixed-left .side-menu.left {
+    position: inherit;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    bottom: 0px;
+}
+
+.container-fluid {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+[disabled], .disabled {
+    cursor: not-allowed;
+}
+
+.side-bar.right-bar {
+    right: 0px;
+    float: inherit;
+    height: 100%;
+    width: 100%;
+}
+
+.side-bar {
+    position: initial;
+    float: inherit;
+    width: inherit;
+    height: 100%;
+    width: 100%;
+}

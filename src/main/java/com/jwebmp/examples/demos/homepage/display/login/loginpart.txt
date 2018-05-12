@@ -1,0 +1,39 @@
+public LoginPart()
+{
+    super("Login", DisplayCodeParts.Login.getSourceCodeDetailsContainer(), null);
+    setShowHeader(true);
+    setShowCode(true);
+    Div openSourcePane = new Div();
+    setContent(openSourcePane);
+
+    Div contents = new Div();
+
+    BSRow loginFormRow = new BSRow<>();
+    BSForm<?> loginForm = new BSForm<>().setID("loginForm");
+    loginForm.asMe()
+             .setStyleInput(true);
+    loginForm.addClass(Col_12);
+    loginFormRow.add(loginForm);
+
+    loginForm.add(new AlertMessage(null));
+
+    BSFormInputGroup<?, InputEmailType<?>> loginInputGroup = buildLoginInput(loginForm);
+
+    BSFormInputGroup<?, InputPasswordType<?>> inputGroup = buildPasswordInput(loginForm);
+
+    BSButton submitButton = buildSubmitButton(loginForm);
+    submitButton.addEvent(new LoginEvent(submitButton));
+
+    contents.add(loginFormRow);
+
+    contents.add(buildButtonRow(loginForm, loginInputGroup, inputGroup));
+
+    BSRow checkRow = new BSRow();
+    MintonCheckBox checkBox;
+    checkRow.add(checkBox = (MintonCheckBox) new MintonCheckBox<>("Remember Me Forever", true, "checkbox-purple").addClass(Col_4));
+    checkBox.getCheckBox()
+            .bind("subscribe.rememberMe");
+    contents.add(checkRow);
+
+    openSourcePane.add(contents);
+}

@@ -1,0 +1,24 @@
+private DivSimple<?> buildSourceExampleDiv()
+{
+    DivSimple<?> sourceExampleDiv = new DivSimple();
+    DivSimple<?> portlet = buildPortlet("A Very Simple Reason Why", BSBackgroundOptions.Bg_Success, false, sourceExampleDiv);
+
+    BSNavTabs<?> sourceTabs = new BSNavTabs<>();
+    sourceTabs.addClass(BSNavsOptions.Tabs_Bordered);
+    DivSimple<?> javaExample = new DivSimple<>();
+    javaExample.add(new H4("You can now make web sites directly from Java using a completely optimized JDK 8 structure!"));
+    javaExample.add(new JQSourceCodePrettify<>()
+        .addStyle("background:black;")
+        .setSourceCodeLanguage(SourceCodeLanguages.Java)
+        .setText(FileTemplates.getFileTemplate(HomePage.class, "homepage_javaexample", "javaexample.txt", true)));
+    sourceTabs.addTab("Java", javaExample, true);
+
+    sourceTabs.addTab("Html", new Div(), false);
+    sourceTabs.addTab("Javascript", new Div(), false);
+    sourceTabs.addTab("CSS", new Div(), false);
+    sourceTabs.addTab("Tests", new Div(), false);
+    sourceTabs.addTab("<i>DB *</i><small>optional</small>", new Div(), false);
+
+    sourceExampleDiv.add(sourceTabs);
+    return portlet;
+}

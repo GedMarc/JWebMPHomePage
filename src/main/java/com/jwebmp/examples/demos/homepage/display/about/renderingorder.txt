@@ -1,0 +1,101 @@
+
+/**
+ * Returns this tag
+ * <br/>
+ *
+ * @return The tag this component will render
+ */
+String getTag();
+
+/**
+ * Whether or not this component should render a closing tag
+ * <br/>
+ *
+ * @return
+ */
+Boolean isClosingTag();
+
+/**
+ * If a new line for the closing tag is required.
+ * Also sets new line for raw text to false
+ *
+ * @return
+ */
+Boolean isNewLineForClosingTag();
+
+/**
+ * If a new line for the closing tag is required.
+ * Also sets new line for raw text to false
+ *
+ * @param newLineForClosingTag
+ */
+J setNewLineForClosingTag(boolean newLineForClosingTag);
+
+/**
+ * Sets if there must be a new line before the raw text starts
+ *
+ * @return
+ */
+Boolean isNewLineForRawText();
+
+/**
+ * Whether or not this component should render a closing tag
+ * <br/>
+ *
+ * @param noCloseTag
+ * 		Whether or not to render the closing tag
+ *
+ * @return This Class
+ */
+J setClosingTag(boolean noCloseTag);
+
+/**
+ * Sets the number of tab indents for this component
+ *
+ * @param currentTabIndents
+ *
+ * @return This Class
+ */
+J setCurrentTabIndents(int currentTabIndents);
+
+/**
+ * Sets if this component must place a new line before the raw text
+ *
+ * @param newLineForRawText
+ *
+ * @return This Class
+ */
+J setNewLineForRawText(boolean newLineForRawText);
+
+/**
+ * Overrides this tag name
+ * <br/>
+ *
+ * @param tag
+ * 		The tag to use instead of the default
+ *
+ * @return This Class
+ */
+J setTag(String tag);
+
+/**
+ * Returns the HTML for the given object
+ * <br/>
+ *
+ * @param outputHtml
+ * 		Dummy holder for specifying HTML output
+ * 		<br/>
+ *
+ * @return The class and the associated ID and children count
+ */
+String toString(boolean outputHtml);
+
+/**
+ * Returns this components HTML after configuration and pre-rendering
+ *
+ * @param tabCount
+ * 		The number of tabs to indent by
+ *
+ * @return
+ */
+String toString(Integer tabCount);

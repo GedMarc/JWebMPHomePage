@@ -1,0 +1,449 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.jwebmp</groupId>
+    <artifactId>jwebmphomepage</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.0_0</version>
+
+    <name>JWebSwing Home Page</name>
+
+    <url>http://maven.apache.org</url>
+
+    <repositories>
+        <repository>
+            <id>jwebmp-snapshot</id>
+            <name>JWebMPArtifactory-snapshots</name>
+            <url>https://jwebmp.com/artifactory/libs-snapshot</url>
+        </repository>
+
+        <repository>
+            <id>atlassian-public</id>
+            <url>https://m2proxy.atlassian.com/repository/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>daily</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>atlassian-public</id>
+            <url>https://m2proxy.atlassian.com/repository/public</url>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+            <snapshots>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.6.1</version>
+            <type>jar</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-core</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-font-awesome</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-glyphicons</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-metro-tiles</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-jquery-ui-themes</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-momentjs</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-angular-slim-scroll</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-pace-plugin</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-jquery-ui</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-jquery-ui-layout</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-soft-history-change</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-bootstrap4</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-d3-reigngold-tilford-tree</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-bootstrap-dialog4</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-plus-as-tab</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.18</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>entity-assist</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-data-tables</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-modernizr</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-text-input-effects</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-jqplot</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-bootstrap-quick-forms4</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-jstree</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.0.1</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.196</version>
+            <type>jar</type>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>6.2.1.jre8</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>javax.mail-api</artifactId>
+            <version>1.6.0</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.0</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-undertow</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-core</artifactId>
+            <version>1.4.21.Final</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-servlet</artifactId>
+            <version>1.4.21.Final</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-atmospherepush-undertow</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-google-source-code-prettify</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-websockets-jsr</artifactId>
+            <version>1.4.21.Final</version>
+            <type>jar</type>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>jwebswinghomepagedeploy</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.6.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <configuration>
+                            <tasks>
+                                <path id="build.classpath">
+                                    <fileset dir="${project.build.directory}">
+                                        <include name="libs/*.jar"/>
+                                    </fileset>
+                                </path>
+                                <pathconvert property="manifest.classpath" pathsep=" ">
+                                    <path refid="build.classpath"/>
+                                    <mapper>
+                                        <chainedmapper>
+                                            <flattenmapper/>
+                                            <globmapper from="*.jar" to="./libs/*.jar"/>
+                                        </chainedmapper>
+                                    </mapper>
+                                </pathconvert>
+                                <jar destfile="${project.build.directory}/${project.build.finalName}.jar">
+                                    <fileset dir="${project.build.directory}/classes"/>
+                                    <fileset dir="${project.build.directory}">
+                                        <include name="libs/**"/>
+                                    </fileset>
+
+                                    <manifest>
+                                        <attribute name="Main-Class"
+                                                   value="com.jwebmp.examples.demos.homepage.HomePageStartup"/>
+                                        <attribute name="Class-Path" value="${manifest.classpath}"/>
+                                    </manifest>
+                                </jar>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}/libs
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+        <resources>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <excludes>
+                    <exclude>**/*.gzip</exclude>
+                    <exclude>**/*.map</exclude>
+                    <exclude>**/*.md</exclude>
+                    <exclude>**/*.md</exclude>
+                    <exclude>**/package.json</exclude>
+                    <exclude>**/bower.json</exclude>
+                    <exclude>**/.bower.json</exclude>
+                    <exclude>**/.gitignore</exclude>
+                    <exclude>**/.jshint</exclude>
+                    <exclude>**/.jshint</exclude>
+                    <exclude>**/Gruntfile.js</exclude>
+                    <exclude>**/*.sh</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/*.gzip</exclude>
+                    <exclude>**/*.map</exclude>
+                    <exclude>**/*.md</exclude>
+                    <exclude>**/*.md</exclude>
+                    <exclude>**/package.json</exclude>
+                    <exclude>**/bower.json</exclude>
+                    <exclude>**/.bower.json</exclude>
+                    <exclude>**/.gitignore</exclude>
+                    <exclude>**/.jshint</exclude>
+                    <exclude>**/.jshint</exclude>
+                    <exclude>**/Gruntfile.js</exclude>
+                    <exclude>**/*.sh</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.js</include>
+                    <include>**/*.css</include>
+                    <include>**/*.min</include>
+                    <include>**/*.html</include>
+                    <include>**/*.txt</include>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>
