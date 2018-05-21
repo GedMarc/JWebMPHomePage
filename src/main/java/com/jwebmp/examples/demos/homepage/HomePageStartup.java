@@ -35,7 +35,7 @@ public class HomePageStartup
 		try
 		{
 			// This block configure the logger with handler and formatter
-			fh = new FileHandler("C:/temp/StartupLogFile.log");
+			fh = new FileHandler("/var/log.log");
 			Logger.getLogger("")
 			      .addHandler(fh);
 

@@ -10,4 +10,9 @@ public class RightBarTimeLine
 		addClass("timeline-2");
 	}
 
+	public RightBarTimeLine addItem(RightBarTimeLineItem item)
+	{
+		add(item);
+		return this;
+	}
 }

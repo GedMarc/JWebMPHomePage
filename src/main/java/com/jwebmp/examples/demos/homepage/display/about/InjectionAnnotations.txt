@@ -1,0 +1,7 @@
+AjaxCallIntercepter
+    extends SiteCallInterceptor
+DataCallIntercepter
+    extends SiteCallInterceptor
+SiteCallInterceptor
+    extends DefaultIntercepter
+DefaultIntercepter

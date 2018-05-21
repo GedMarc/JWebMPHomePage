@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.components;
 
-import com.armineasy.jwebswing.plugins.quickforms.BSQuickForm;
 import com.jwebmp.SessionHelper;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.html.DivSimple;
@@ -8,6 +7,7 @@ import com.jwebmp.base.html.H3;
 import com.jwebmp.base.html.Link;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
+import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
@@ -57,17 +57,25 @@ public class DemoScreen
 		row.add(leftSide);
 		row.add(rightSide);
 
+		DivSimple workspace = GuiceContext.getInstance(SessionProperties.class)
+		                                  .getWorkspace();
+		workspace.getChildren()
+		         .clear();
+
+		getDemoPage().add(workspace);
+
 		if (!features.isEmpty())
 		{
 			rightSide.add(new MintonPanel<>("Features", buildPrettyFromList(features)));
 		}
 		if (!events.isEmpty())
 		{
-			rightSide.add(new MintonPanel<>("Events", buildPrettyFromList(events)));
+			getDemoPage().add("<br/><br/>");
+			getDemoPage().add(new MintonPanel<>("Events", buildPrettyFromList(events)));
 		}
 		if (!classesOfInterest.isEmpty())
 		{
-			rightSide.add(new MintonPanel<>("Classes of Interest", buildPrettyFromList(classesOfInterest)));
+			getDemoPage().add(new MintonPanel<>("Classes of Interest", buildPrettyFromList(classesOfInterest)));
 		}
 		if (!quicknotes.isEmpty())
 		{
@@ -76,10 +84,9 @@ public class DemoScreen
 
 		if (optionsObject != null)
 		{
-			BSQuickForm quickForm = new BSQuickForm(optionsObject);
-			quickForm.setRenderDefaults(true);
-			rightSide.add(new MintonPanel<>("Options API", quickForm).setBgColor("bg-purple")
-			                                                         .setFgColor("text-white"));
+			OptionsBrowser optionsBrowser = new OptionsBrowser(optionsObject);
+			rightSide.add(new MintonPanel<>("Options API", optionsBrowser).setBgColor("bg-purple")
+			                                                              .setFgColor("text-white"));
 		}
 		else
 		{
@@ -88,10 +95,6 @@ public class DemoScreen
 
 		leftSide.add(new MintonPanel<>("Demo Panel", getDemoPage()));
 
-		DivSimple workspace = GuiceContext.getInstance(SessionProperties.class)
-		                                  .getWorkspace();
-		workspace.getChildren()
-		         .clear();
 
 		drawingPane.addStyle("min-height:400px;")
 		           .addClass(W_100)
@@ -102,8 +105,6 @@ public class DemoScreen
 
 		//		workspace.add(new BSRow<>().add(new PrettyPrimaryButton<>().setText("Add Work Item")));
 
-
-		getDemoPage().add(workspace);
 
 		drawingPane.add(newWorkDiv());
 
@@ -126,6 +127,15 @@ public class DemoScreen
 		return crumbs;
 	}
 
+	public DivSimple<?> getDemoPage()
+	{
+		if (demoPage == null)
+		{
+			demoPage = new DivSimple<>();
+		}
+		return demoPage;
+	}
+
 	private DivSimple buildPrettyFromList(List<ComponentHierarchyBase> list)
 	{
 		DivSimple d = new DivSimple();
@@ -144,23 +154,14 @@ public class DemoScreen
 		return d;
 	}
 
-	public DivSimple<?> getDemoPage()
+	public WorkDiv newWorkDiv()
 	{
-		if (demoPage == null)
-		{
-			demoPage = new DivSimple<>();
-		}
-		return demoPage;
+		return new WorkDiv();
 	}
 
 	public void setDemoPage(DivSimple<?> demoPage)
 	{
 		this.demoPage = demoPage;
-	}
-
-	public WorkDiv newWorkDiv()
-	{
-		return new WorkDiv();
 	}
 
 	public DivSimple<?> getDrawingPane()

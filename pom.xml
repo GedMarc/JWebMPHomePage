@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.jwebmp</groupId>
     <artifactId>jwebmphomepage</artifactId>
-    <packaging>war</packaging>
-    <version>0.0.0_0</version>
+    <packaging>jar</packaging>
+    <version>0.0.0_0-SNAPSHOT</version>
 
-    <name>JWebSwing Home Page</name>
+    <name>JWebMP Home Page</name>
 
     <url>http://maven.apache.org</url>
 
@@ -16,36 +16,7 @@
             <name>JWebMPArtifactory-snapshots</name>
             <url>https://jwebmp.com/artifactory/libs-snapshot</url>
         </repository>
-
-        <repository>
-            <id>atlassian-public</id>
-            <url>https://m2proxy.atlassian.com/repository/public</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>daily</updatePolicy>
-                <checksumPolicy>warn</checksumPolicy>
-            </snapshots>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-        </repository>
-
     </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>atlassian-public</id>
-            <url>https://m2proxy.atlassian.com/repository/public</url>
-            <releases>
-                <enabled>true</enabled>
-                <checksumPolicy>warn</checksumPolicy>
-            </releases>
-            <snapshots>
-                <checksumPolicy>warn</checksumPolicy>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -174,6 +145,7 @@
             <artifactId>lombok</artifactId>
             <version>1.16.18</version>
             <type>jar</type>
+            <scope>compile</scope>
         </dependency>
 
         <dependency>
@@ -326,56 +298,20 @@
                 </configuration>
             </plugin>
 
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
+                <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>libs/</classpathPrefix>
+                            <mainClass>
+                                com.jwebmp.examples.demos.homepage.HomePageStartup
+                            </mainClass>
+                        </manifest>
+                    </archive>
                 </configuration>
-            </plugin>
-
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.7</version>
-                <executions>
-                    <execution>
-                        <phase>prepare-package</phase>
-                        <configuration>
-                            <tasks>
-                                <path id="build.classpath">
-                                    <fileset dir="${project.build.directory}">
-                                        <include name="libs/*.jar"/>
-                                    </fileset>
-                                </path>
-                                <pathconvert property="manifest.classpath" pathsep=" ">
-                                    <path refid="build.classpath"/>
-                                    <mapper>
-                                        <chainedmapper>
-                                            <flattenmapper/>
-                                            <globmapper from="*.jar" to="./libs/*.jar"/>
-                                        </chainedmapper>
-                                    </mapper>
-                                </pathconvert>
-                                <jar destfile="${project.build.directory}/${project.build.finalName}.jar">
-                                    <fileset dir="${project.build.directory}/classes"/>
-                                    <fileset dir="${project.build.directory}">
-                                        <include name="libs/**"/>
-                                    </fileset>
-
-                                    <manifest>
-                                        <attribute name="Main-Class"
-                                                   value="com.jwebmp.examples.demos.homepage.HomePageStartup"/>
-                                        <attribute name="Class-Path" value="${manifest.classpath}"/>
-                                    </manifest>
-                                </jar>
-                            </tasks>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
             <plugin>
@@ -384,7 +320,7 @@
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
-                        <phase>package</phase>
+                        <phase>prepare-package</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
@@ -393,6 +329,26 @@
                                 ${project.build.directory}/libs
                             </outputDirectory>
                         </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>com.jolira</groupId>
+                <artifactId>onejar-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <configuration>
+                            <mainClass>com.jwebmp.examples.demos.homepage.HomePageStartup
+                            </mainClass>
+                            <attachToBuild>true</attachToBuild>
+                            <filename>
+                                ${project.build.finalName}-onejar.${project.packaging}
+                            </filename>
+                        </configuration>
+                        <goals>
+                            <goal>one-jar</goal>
+                        </goals>
                     </execution>
                 </executions>
             </plugin>

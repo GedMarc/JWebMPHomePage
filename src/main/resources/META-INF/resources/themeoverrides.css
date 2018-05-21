@@ -49,3 +49,11 @@ body.fixed-left .side-menu.left {
     height: 100%;
     width: 100%;
 }
+
+.timeline-2 .time-item:after {
+    left: 5px;
+}
+
+.right-bar {
+    background: inherit;
+}

@@ -1,0 +1,18 @@
+/*
+Configures The Scanner
+Used for Whitelisting aswell
+*/
+IGuiceConfigurator
+
+/*
+Enables a package
+for the scanner
+*/
+PackageContentsScanner
+
+/*
+Intercepts when the scanner
+finds a specific file during scan
+*/
+FileContentsScanner
+

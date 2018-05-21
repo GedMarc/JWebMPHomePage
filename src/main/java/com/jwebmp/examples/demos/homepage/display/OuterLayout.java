@@ -7,6 +7,8 @@ import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
 import com.jwebmp.plugins.jquerylayout.layout.JQLayout;
 import za.co.mmagon.guiceinjection.GuiceContext;
 
+import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.Bg_Dark;
+
 @Singleton
 public class OuterLayout
 		extends JQLayout
@@ -63,18 +65,13 @@ public class OuterLayout
 			getEast().getContentDiv()
 			         .add(new PlaceHolder<>("rightBar"));
 
-			/*getCenter().getContentDiv()
+			getEast().getContentDiv()
+			         .addClass(Bg_Dark);
+/*
+			getCenter().getContentDiv()
 			           .add(new HomePage());*/
 			getCenter().getContentDiv()
 			           .add(GuiceContext.getInstance(SourceCodeModal.class));
-
-			/*getNorth().getContentDiv()
-			          .add(GuiceContext.getInstance(TopBar.class));*/
-/*
-			getWest().getContentDiv()
-			         .add(new West());
-			getEast().getContentDiv()
-			         .add(new RightBar());*/
 		}
 	}
 

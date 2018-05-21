@@ -3,11 +3,12 @@ package com.jwebmp.examples.demos.homepage.enumerations;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqplot.JQPlotDemos;
+import com.jwebmp.examples.demos.homepage.display.demos.jqui.JQueryUIDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.jstree.JSTreeDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.fontawesome.FontAwesomeScreen;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordScreen;
 import com.jwebmp.examples.demos.homepage.display.glyphicons.GlyphiconsScreen;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
-import com.jwebmp.examples.demos.homepage.display.jqueryui.JQueryUIDemoScreen;
 
 public enum DisplayScreens
 {
@@ -22,6 +23,7 @@ public enum DisplayScreens
 	FontAwesome(FontAwesomeScreen.class, "FontAwesome"),
 	Glyphicons(GlyphiconsScreen.class, "Glyphicons"),
 
+	JSTree(JSTreeDemoScreen.class, "JSTree"),
 	JQPlot(JQPlotDemos.class, "JQPlot"),;
 
 	private Class<? extends DisplayScreen> screen;

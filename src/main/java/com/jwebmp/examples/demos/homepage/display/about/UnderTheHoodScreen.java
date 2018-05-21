@@ -1,8 +1,8 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
-import com.jwebmp.FileTemplates;
 import com.jwebmp.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
@@ -14,9 +14,9 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
-import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
-import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 
+import static com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts.ComponentUtilityMethods;
+import static com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts.InjectionControlMethods;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.Table_Hover;
 
 public class UnderTheHoodScreen
@@ -35,7 +35,9 @@ public class UnderTheHoodScreen
 
 		column1.add(new MintonPanel<>("Under the Hood", buildUnderTheHood(), "bg-primary"));
 
-		column1.add(buildComponentRender());
+		column1.add(new MintonPanel<>("Component Common Methods", buildComponentRender(), "bg-primary"));
+
+		column2.add(new MintonPanel<>("Injection Assists", buildSiteControl(), "bg-primary"));
 
 		row.add(column1);
 		row.add(column2);
@@ -147,16 +149,23 @@ public class UnderTheHoodScreen
 	private Div buildComponentRender()
 	{
 		DivSimple<?> div = new DivSimple<>();
+		div.addClass("row");
 
-		H3<?> header = new H3<>("Component Manipulation");
-		div.add(header);
+		SourceCodeContentPanel<?> sourcePanel = new SourceCodeContentPanel("System Control", ComponentUtilityMethods, null);
+		sourcePanel.setCodeButtonPanel(false);
 
-		JQSourceCodePrettify structure = new JQSourceCodePrettify();
-		structure.setSourceCodeLanguage(SourceCodeLanguages.Java);
-		structure.setShowLineNums(true);
-		structure.setText(FileTemplates.getFileTemplate(getClass(), "java rendering", "renderingorder.txt"));
+		div.add(sourcePanel);
+		return div;
+	}
 
-		div.add(structure);
+	private Div buildSiteControl()
+	{
+		DivSimple<?> div = new DivSimple<>();
+		div.addClass("row");
+
+		SourceCodeContentPanel<?> sourcePanel = new SourceCodeContentPanel("Dynamic Call Injections", InjectionControlMethods, null);
+		sourcePanel.setCodeButtonPanel(false);
+		div.add(sourcePanel);
 		return div;
 	}
 

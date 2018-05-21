@@ -27,6 +27,8 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 	private String welcomeText;
 	private JQLayout innerLayout;
 
+	private boolean renderBreadcrumb = true;
+
 	public DisplayScreen(String welcomeText)
 	{
 		this();
@@ -94,27 +96,30 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 	protected Div buildTitleRow()
 	{
 
+
 		Div responsive = new Div();
 		responsive.addClass(BSColumnOptions.Col_Sm_12);
+		if (renderBreadcrumb)
+		{
+			Div pageTitleBox = new Div();
+			pageTitleBox.addClass("page-title-box");
+			pageTitleBox.addStyle("padding-bottom:5px;");
+			responsive.add(pageTitleBox);
 
-		Div pageTitleBox = new Div();
-		pageTitleBox.addClass("page-title-box");
-		pageTitleBox.addStyle("padding-bottom:5px;");
-		responsive.add(pageTitleBox);
+			H4<?> title = new H4<>(welcomeText);
+			title.addClass("float-left");
+			pageTitleBox.add(title);
 
-		H4<?> title = new H4<>(welcomeText);
-		title.addClass("float-left");
-		pageTitleBox.add(title);
+			BSBreadCrumb crumbs = getTitleBreadcrumbs();
+			crumbs.addClass("float-right");
+			pageTitleBox.add(crumbs);
 
-		BSBreadCrumb crumbs = getTitleBreadcrumbs();
-		crumbs.addClass("float-right");
-		pageTitleBox.add(crumbs);
+			Div clearFix = new Div();
+			clearFix.addClass(BSClearfixOptions.Clearfix);
+			pageTitleBox.add(clearFix);
 
-		Div clearFix = new Div();
-		clearFix.addClass(BSClearfixOptions.Clearfix);
-		pageTitleBox.add(clearFix);
-
-		responsive.add(pageTitleBox);
+			responsive.add(pageTitleBox);
+		}
 		return responsive;
 	}
 
@@ -204,6 +209,7 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		return titleRow;
 	}
 
+
 	public String getWelcomeText()
 	{
 		return welcomeText;
@@ -222,5 +228,16 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 	public void setInnerLayout(JQLayout innerLayout)
 	{
 		this.innerLayout = innerLayout;
+	}
+
+	public boolean isRenderBreadcrumb()
+	{
+		return renderBreadcrumb;
+	}
+
+	public DisplayScreen<J> setRenderBreadcrumb(boolean renderBreadcrumb)
+	{
+		this.renderBreadcrumb = renderBreadcrumb;
+		return this;
 	}
 }

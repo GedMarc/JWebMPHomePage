@@ -78,6 +78,7 @@ public class West
 		buildUtilityPlugins();
 		buildIconSets();
 		buildBrowsers();
+		buildTablesTrees();
 		buildForms();
 		buildGraphing();
 		buildMapping();
@@ -181,10 +182,9 @@ public class West
 
 
 		uiKit.add(new ListItem<>().add(buildListItem("#t", DisplayScreens.JQueryUI).setText("JQuery UI")));
-		uiKit.add(new ListItem<>().add(buildListItem("#u").setText("Bootstrap <small>(3&4)</small>")));
-		uiKit.add(new ListItem<>().add(buildListItem("#uu1").setText("Bootswatch <small>(4)</small>")));
+		uiKit.add(new ListItem<>().add(buildListItem("#u").setText("Bootstrap")));
+		//uiKit.add(new ListItem<>().add(buildListItem("#uu1").setText("Bootswatch <small>(4)</small>")));
 		uiKit.add(new ListItem<>().add(buildListItem("#v").setText("JQX Widgets")));
-		uiKit.add(new ListItem<>().add(buildListItem("#z").setText("Data Tables")));
 
 		ListItem dropDown1;
 		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "UI Bundles", uiKit));
@@ -235,6 +235,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#c1", DisplayScreens.FontAwesome).setText("Font Awesome")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e4", DisplayScreens.Glyphicons).setText("Glyphicons")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e5").setText("Ion Icons")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e5").setText("Skycons")));
 
 		ListItem dropDown1;
 		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Icon Sets", uiKit));
@@ -254,58 +255,17 @@ public class West
 		return dropDown1;
 	}
 
-	private ListItem<?> buildForms()
+	private ListItem<?> buildTablesTrees()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#b9").setText("Angular Forms")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e6").setText("BS Forms <small>(3&4)</small>")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e7").setText("Quick Forms")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e8").setText("NG File Upload")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e9").setText("BlueImp File Upload")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f1").setText("Ion Slider")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f2").setText("Pretty Checkboxes")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f3").setText("Angular Progress Buttons")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f4").setText("Angular UI Select")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f5").setText("Bootstrap Switch")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f6").setText("Bootstrap Select")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f7").setText("Bootstrap Tags Input")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f8").setText("Bootstrap Date Time Picker")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f9").setText("Bootstrap Nya Select")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g1").setText("Smart Wizard")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g2").setText("Text Input Effects")));
-
-
-		uiKit.add(new ListItem<>().add(buildListItem("#g3").setText("Quick Forms")));
+		uiKit.add(new ListItem<>().add(buildListItem("#b5").setText("Data Tables")));
+		uiKit.add(new ListItem<>().add(buildListItem("#b6", DisplayScreens.JSTree).setText("JS Tree")));
+		uiKit.add(new ListItem<>().add(buildListItem("#b7").setText("X Editable")));
 
 		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Form Plugins", uiKit));
+		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Tables / Trees", uiKit));
 		return dropDown1;
 	}
-
-	private ListItem<?> buildGraphing()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#g4", DisplayScreens.JQPlot).setText("JQPlot")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g5").setText("D3 Graphing")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g6").setText("C3 Graphing")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g7").setText("NVD3 Graphing")));
-
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Graph Plugins", uiKit));
-		return dropDown1;
-	}
-
-	private ListItem<?> buildMapping()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#g8").setText("LeafletJS")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g9").setText("Google Maps")));
-
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Mapping Plugins", uiKit));
-		return dropDown1;
-	}
-
 
 	private Link<?> buildListItem(String uniqueHashBangId)
 	{
@@ -350,6 +310,57 @@ public class West
 		adapter.setID(screenReference.toString());
 		comp.addEvent(adapter);
 		return adapter;
+	}
+
+	private ListItem<?> buildForms()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#b9").setText("Angular Forms")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e6").setText("BS Forms <small>(3&4)</small>")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e7").setText("Quick Forms")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e8").setText("NG File Upload")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e9").setText("BlueImp File Upload")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f1").setText("Ion Slider")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f2").setText("Pretty Checkboxes")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f3").setText("Angular Progress Buttons")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f4").setText("Angular UI Select")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f5").setText("Bootstrap Switch")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f6").setText("Bootstrap Select")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f7").setText("Bootstrap Tags Input")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f8").setText("Bootstrap Date Time Picker")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f9").setText("Bootstrap Nya Select")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g1").setText("Smart Wizard")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g2").setText("Text Input Effects")));
+
+		uiKit.add(new ListItem<>().add(buildListItem("#g3").setText("Quick Forms")));
+
+		ListItem dropDown1;
+		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Form Plugins", uiKit));
+		return dropDown1;
+	}
+
+	private ListItem<?> buildGraphing()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#g4", DisplayScreens.JQPlot).setText("JQPlot")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g5").setText("D3 Graphing")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g6").setText("C3 Graphing")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g7").setText("NVD3 Graphing")));
+
+		ListItem dropDown1;
+		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Graph Plugins", uiKit));
+		return dropDown1;
+	}
+
+	private ListItem<?> buildMapping()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#g8").setText("LeafletJS")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g9").setText("Google Maps")));
+
+		ListItem dropDown1;
+		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Mapping Plugins", uiKit));
+		return dropDown1;
 	}
 
 

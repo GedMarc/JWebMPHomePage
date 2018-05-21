@@ -10,6 +10,7 @@ import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCheckBox;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
+import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ButtonRowPart;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ContactUsPart;
 import com.jwebmp.examples.demos.homepage.display.home.parts.MavenPomPart;
@@ -33,6 +34,7 @@ import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
+import com.jwebmp.plugins.jqueryui.draggable.options.JQUIDraggableOptions;
 import org.apache.commons.lang3.StringEscapeUtils;
 import za.co.mmagon.guiceinjection.GuiceContext;
 
@@ -44,7 +46,7 @@ public class HomePage
 {
 	public HomePage()
 	{
-		super(HTML_TAB + HTML_TAB + "Welcome to JWeb MicroProfile!" + HTML_TAB + "<small><i>This site is built with it, use the code icons for snippets</i></small>");
+		super(HTML_TAB + HTML_TAB + "Welcome to JWeb MicroProfile!" + HTML_TAB + "<small><i>Demo Site Under Construction - The components are finished tho</i></small>");
 		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
 	}
 
@@ -87,6 +89,7 @@ public class HomePage
 			}
 		});
 
+		container.add(new OptionsBrowser(new JQUIDraggableOptions<>()));
 
 		container.add(new ButtonRowPart<>());
 		//container.add(buildAdvertCard());
@@ -105,10 +108,18 @@ public class HomePage
 
 		showcaseDiv.add("Jump straight into the showcase to see what we're all about. <br/>" + "View code examples, find plugins, or join the community");
 
-		showcaseDiv.add(new PrettyPrimaryButton<>().setText("Hello World!"));
-		showcaseDiv.add(new PrettyPrimaryButton<>().setText("Take The Tour"));
-		showcaseDiv.add(new PrettyPrimaryButton<>().setText("Plugins"));
-		showcaseDiv.add(new PrettyPrimaryButton<>().setText("API"));
+		showcaseDiv.add(new PrettyPrimaryButton<>().asButton()
+		                                           .setText("Hello World!")
+		                                           .addAttribute("disabled", ""));
+		showcaseDiv.add(new PrettyPrimaryButton<>().asButton()
+		                                           .setText("Take The Tour")
+		                                           .addAttribute("disabled", ""));
+		showcaseDiv.add(new PrettyPrimaryButton<>().asButton()
+		                                           .setText("Plugins")
+		                                           .addAttribute("disabled", ""));
+		showcaseDiv.add(new PrettyPrimaryButton<>().asButton()
+		                                           .setText("API")
+		                                           .addAttribute("disabled", ""));
 
 		if (GuiceContext.getInstance(SessionProperties.class)
 		                .isLoggedIn())
@@ -171,35 +182,50 @@ public class HomePage
 	private Div buildContinuousIntegrationPane()
 	{
 		Div openSourcePane = new Div();
-		Div portlet = buildPortlet("Continuous Integration", BSBackgroundOptions.Bg_Success, false, openSourcePane);
+		Div portlet = buildPortlet("Continuous Integration", BSBackgroundOptions.Bg_Primary, false, openSourcePane);
 
 		openSourcePane.add("From Start to Finish this project is completely visible on every front.");
 		BSListGroup<?> listGroup = new BSListGroup();
 		listGroup.asMe()
-		         .addButtonItem(FontAwesome.icon(FontAwesomeIcons.github), "GitHub Repositories")
+		         .addLinkItem(FontAwesome.icon(FontAwesomeIcons.github)
+		                                 .toString(0) + "&nbsp;GitHub Repositories")
+		         .setUrl("https://github.com/GedMarc?tab=repositories")
+		         .addAttribute("target", "_blank")
 		         .addClass(BSColoursOptions.Text_White)
 		         .addClass(BSButtonOptions.Btn)
-		         .addClass(BSButtonOptions.Btn_Outline_Success);
+		         .addClass(BSButtonOptions.Btn_Outline_Primary);
 		listGroup.asMe()
-		         .addButtonItem(FontAwesome.icon(FontAwesomeIcons.train), "Jira Project Tracking")
+		         .addLinkItem(FontAwesome.icon(FontAwesomeIcons.train)
+		                                 .toString(0) + "&nbsp;Jira Project Tracking")
+		         .setUrl("https://jwebmp.com/jira/")
+		         .addAttribute("target", "_blank")
 		         .addClass(BSButtonOptions.Btn)
 		         .addClass(BSColoursOptions.Text_White)
-		         .addClass(BSButtonOptions.Btn_Outline_Success);
+		         .addClass(BSButtonOptions.Btn_Outline_Primary);
 		listGroup.asMe()
-		         .addButtonItem(FontAwesome.icon(FontAwesomeIcons.cog), "TeamCity CI and Builds")
+		         .addLinkItem(FontAwesome.icon(FontAwesomeIcons.cog)
+		                                 .toString(0) + "&nbsp;TeamCity CI and Builds")
+		         .setUrl("https://jwebmp.com/teamcity/")
+		         .addAttribute("target", "_blank")
 		         .addClass(BSButtonOptions.Btn)
 		         .addClass(BSColoursOptions.Text_White)
-		         .addClass(BSButtonOptions.Btn_Outline_Success);
+		         .addClass(BSButtonOptions.Btn_Outline_Primary);
 		listGroup.asMe()
-		         .addButtonItem(FontAwesome.icon(FontAwesomeIcons.check_square), "SonarQube Code Quality Gate")
+		         .addLinkItem(FontAwesome.icon(FontAwesomeIcons.check_square)
+		                                 .toString(0) + "&nbsp;SonarQube Code Quality Gate")
+		         .setUrl("https://jwebmp.com/sonar/")
+		         .addAttribute("target", "_blank")
 		         .addClass(BSButtonOptions.Btn)
 		         .addClass(BSColoursOptions.Text_White)
-		         .addClass(BSButtonOptions.Btn_Outline_Success);
+		         .addClass(BSButtonOptions.Btn_Outline_Primary);
 		listGroup.asMe()
-		         .addButtonItem(FontAwesome.icon(FontAwesomeIcons.magic), "Artifactory Maven Repository")
+		         .addLinkItem(FontAwesome.icon(FontAwesomeIcons.magic)
+		                                 .toString(0) + "&nbsp;Artifactory Maven Repository")
+		         .setUrl("https://jwebmp.com/artifactory/")
+		         .addAttribute("target", "_blank")
 		         .addClass(BSButtonOptions.Btn)
 		         .addClass(BSColoursOptions.Text_White)
-		         .addClass(BSButtonOptions.Btn_Outline_Success);
+		         .addClass(BSButtonOptions.Btn_Outline_Primary);
 
 		openSourcePane.add(listGroup);
 

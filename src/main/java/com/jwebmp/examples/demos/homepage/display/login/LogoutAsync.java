@@ -65,6 +65,7 @@ public class LogoutAsync
 
 		}
 		ua.setImageUrl("fa fa-sign-out");
+		ua.setReadMoreUrl("Not Applicable");
 		ua.persist();
 
 		Subscribers s = new Subscribers().builder()

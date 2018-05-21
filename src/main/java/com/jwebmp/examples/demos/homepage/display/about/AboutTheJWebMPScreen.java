@@ -48,13 +48,12 @@ public class AboutTheJWebMPScreen
 
 
 		column1.add(new MintonPanel<>("Thats Just Not Possible", buildThatsNotPossiblePanel(), "bg-primary"));
-
+		column1.add(new MintonPanel<>("Testable", buildTestPanel(), "bg-primary"));
+		column1.add(new MintonPanel<>("Injections", buildInjectionsPanel(), "bg-primary"));
 
 		column2.add(new MintonPanel<>("Compat", buildCompatibilityList(), "bg-primary").setShowHeader(false));
-		column2.add(new MintonPanel<>("Testable", buildTestPanel(), "bg-primary"));
-		column2.add(new MintonPanel<>("Amazing Push!", buildPushPanel(), "bg-primary"));
-		column2.add(new MintonPanel<>("Injections", buildInjectionsPanel(), "bg-primary"));
-
+		column2.add(new MintonPanel<>("Full Featured Push", buildPushPanel(), "bg-primary"));
+		
 		column1.add(new MintonPanel<>("Fully Customizable", buildCompletelyCustomizablePanel(), "bg-primary"));
 
 		row.add(column1);
@@ -88,6 +87,21 @@ public class AboutTheJWebMPScreen
 		div.add("The system constructs the HTML, CSS and JavaScripts dynamically (yes according to browser and even device) to ensure that only the correct scripts get delivered. With abstraction and injection points, you can easily manipulate any item to produce the output that you want.");
 		div.add("Being able to render the complete output of the HTML, JavaScript and CSS of any component at any level and stage grants you an unbelievable amount of many, many benefits. Let your imagination run wild with that concept for a bit. Exactly how much coverage in your tests can you get? Want to render a component in JWebMP and push it to JSF?");
 		div.add("Of course, you can still use File Templates (though this system isn't based on it at all) with variables and scoping to continue using HTML and Web Content files to render your information. ");
+		return div;
+	}
+
+	private Div buildTestPanel()
+	{
+		Div div = new DivSimple();
+		div.add("Test Anything, Integration and Unit Testing Out of the Box! You can view all the JUnit 5 test and Selenium Integration Cases currently built and their status using the GitHub, TeamCity and SonarQube links. These allow everyone the peace of mind, and stability that end-to-end testing systems provide.");
+		return div;
+	}
+
+	private Div buildInjectionsPanel()
+	{
+		Div div = new DivSimple();
+		div.add("The Most Powerful Injections System Yet!<br/><br/> Google's Guice Injection and the Guice Context Handler provide complete and dynamic JDK 8 and 9 Injection.<br/><br/> With Built-In Multi-ClassPath Injection Configuration, Custom Path Object Scanning, RegEx Servlet Bindings, Complete AOP, and an  entirely optional near-full range of EE Capabilities with MicroProfile, everything is at your fingertips.<br/><br/><strong>Best of All</strong>, Adheres to the applicable JSRs! ");
+		div.add("Completely Non-Invasive, Easily pull beans directly from Weld should you wish to do so (see the Injection Screen), With no interference on existing Servlets including JSP.");
 		return div;
 	}
 
@@ -154,25 +168,10 @@ public class AboutTheJWebMPScreen
 		return div;
 	}
 
-	private Div buildTestPanel()
-	{
-		Div div = new DivSimple();
-		div.add("Test Anything, Integration and Unit Testing Out of the Box! You can view all the JUnit 5 test and Selenium Integration Cases currently built and their status using the GitHub, TeamCity and SonarQube links. These allow everyone the peace of mind, and stability that end-to-end testing systems provide.");
-		return div;
-	}
-
 	private Div buildPushPanel()
 	{
 		Div div = new DivSimple();
 		div.add("With Atmosphere Push, Web Sockets are standard out the box, and absolutely everything available to every Ajax Call and Response is available in the exact same coding manner.<br/><br/> " + "Push Groups at a Global Injection Level allow you to push responses directly from your container layer, or asynchronously from ExecutionServices in your WAR, as we do on this site.<br/><br/> You can also enable Distributed Push Notifications utilizing HazelCast or a similar technology with ease.");
-		return div;
-	}
-
-	private Div buildInjectionsPanel()
-	{
-		Div div = new DivSimple();
-		div.add("The Most Powerful Injections System Yet!<br/><br/> Google's Guice Injection and the Guice Context Handler provide complete and dynamic JDK 8 and 9 Injection.<br/><br/> With Built-In Multi-ClassPath Injection Configuration, Custom Path Object Scanning, RegEx Servlet Bindings, Complete AOP, and an  entirely optional near-full range of EE Capabilities with MicroProfile, everything is at your fingertips.<br/><br/><strong>Best of All</strong>, Adheres to the applicable JSRs! ");
-		div.add("Completely Non-Invasive, Easily pull beans directly from Weld should you wish to do so (see the Injection Screen), With no interference on existing Servlets including JSP.");
 		return div;
 	}
 

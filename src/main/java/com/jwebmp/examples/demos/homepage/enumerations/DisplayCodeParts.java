@@ -2,6 +2,7 @@ package com.jwebmp.examples.demos.homepage.enumerations;
 
 import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
 import com.jwebmp.examples.demos.homepage.display.SourceCodeDetailsContainer;
+import com.jwebmp.examples.demos.homepage.display.about.UnderTheHoodScreen;
 import com.jwebmp.examples.demos.homepage.display.fontawesome.FontAwesomeScreen;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordEvent;
 import com.jwebmp.examples.demos.homepage.display.glyphicons.GlyphiconsScreen;
@@ -40,6 +41,16 @@ public enum DisplayCodeParts
 	ButtonRowChart2(new SourceCodeDetailsContainer<>().addCustomLocation("Subscribers", ButtonRowPart.class, "chart2.txt")),
 	ButtonRowChart3(new SourceCodeDetailsContainer<>().addCustomLocation("Available Components", ButtonRowPart.class, "chart3.txt")),
 	ButtonRowChart4(new SourceCodeDetailsContainer<>().addCustomLocation("Online Users", ButtonRowPart.class, "chart4.txt")),
+
+	ComponentUtilityMethods(new SourceCodeDetailsContainer<>().addCustomLocation("HTML Utilities", UnderTheHoodScreen.class, "ComponentHTML.txt")
+	                                                          .addCustomLocation("Attribute Handling", UnderTheHoodScreen.class, "ComponentAttribute.txt")
+	                                                          .addCustomLocation("Style Management", UnderTheHoodScreen.class, "ComponentStyle.txt")),
+
+
+	InjectionControlMethods(new SourceCodeDetailsContainer<>().addCustomLocation("Intercepting Calls", UnderTheHoodScreen.class, "InjectionAnnotations.txt")
+	                                                          .addCustomLocation("Services Available", UnderTheHoodScreen.class, "ServicesAvailable.txt")
+	                                                          .addCustomLocation("Request Scoped Classes", UnderTheHoodScreen.class, "RequestScopedClasses.txt")
+	                                                          .addCustomLocation("Page Rendering", UnderTheHoodScreen.class, "PageRendering.txt")),
 
 	GPLLicence,
 	ContinuousIntegration,;

@@ -12,6 +12,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.mail.util.ByteArrayDataSource;
 import javax.validation.constraints.NotNull;
+import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
 
@@ -54,7 +55,16 @@ public class MailService
 		if (properties == null)
 		{
 			properties = new Properties();
-			properties.setProperty("mail.smtp.host", "localhost");
+			try
+			{
+				properties.load(HomePageStartup.class.getResourceAsStream("mailserver.properties"));
+				user = properties.getProperty("mail.smtp.user");
+				credentials = properties.getProperty("password");
+			}
+			catch (IOException e)
+			{
+				properties.setProperty("mail.smtp.host", "localhost");
+			}
 			properties.put("mail.transport.protocol", "smtp");
 			properties.put("mail.smtp.port", "25");
 			properties.put("mail.smtp.auth", "true");
@@ -64,7 +74,7 @@ public class MailService
 		session.setDebug(true);
 		try
 		{
-			mailStore = session.getStore();
+			mailStore = session.getStore("smtp");
 		}
 		catch (NoSuchProviderException e)
 		{

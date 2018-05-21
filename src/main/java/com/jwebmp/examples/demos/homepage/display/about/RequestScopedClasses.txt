@@ -1,0 +1,10 @@
+/*
+* Request Scoped Classes
+*/
+public class AjaxCall
+public class AjaxResponse
+
+/**
+* Base Session Storage Properties
+*/
+public class SessionStorageProperties

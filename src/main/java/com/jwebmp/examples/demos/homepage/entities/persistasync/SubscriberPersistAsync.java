@@ -32,7 +32,7 @@ public class SubscriberPersistAsync
 		String emailTemplate = confirmEmailTemplate.toString()
 		                                           .replaceAll("%%LINKADDRESS%%", linkUrl);
 		GuiceContext.getInstance(MailService.class)
-		            .sendEmail("noreply@jwebmp.com", "Confirmation Email", emailTemplate, subscribers.getEmailAddress());
+		            .sendEmail("no-reply@jwebmp.com", "Confirmation Email", emailTemplate, subscribers.getEmailAddress());
 	}
 }
 

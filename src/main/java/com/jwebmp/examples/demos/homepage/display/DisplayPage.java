@@ -83,7 +83,7 @@ public class DisplayPage
 
 		getPageFields().setApplicationNameMeta("JWebMP Application Core");
 		getPageFields().setAuthor("Marc Magon");
-		getPageFields().setDescription("JWebSwing Home and Demo Application!");
+		getPageFields().setDescription("JWebMP Home and Demo Application!");
 		getPageFields().setFavIcon(
 				"https://scontent.fjnb6-1.fna.fbcdn.net/v/t1.0-9/30262102_618084625202203_3933231896061804544_n.png?_nc_cat=0&oh=6455cb346ca429e61fa4dc3b8b494bd0&oe=5B5838A9");
 		getPageFields().setKeywords("Rapid Application Development,jwebswing,jwebmp, java,jweb, web,development,framework,ui,rad,urad,bootstrap,jqueryui,jquery,bootstrapdialog");
@@ -184,7 +184,7 @@ public class DisplayPage
 			log.info("Created a new visitor [" + newVisitor + "]");
 			//New user Text
 			getInstance(AjaxResponse.class).addReaction(new AjaxResponseReaction("First Use",
-			                                                                     " We think this is the first time you've visited this site on this device and browser combination<br/><br/>" + "" + ".<br/></br>" + "You should only see this " + "message" + " once for each " + "browser.<br/> " + "This " + "allows " + "for " + "life-time " + "logins " + "on " + "any " + "" + "" + "application" + "<br/><br/>" + "This is made possible through Local Storage.",
+			                                                                     " We think this is the first time you've visited this site on this device and browser combination<br/><br/>" + "You should only see this " + "message" + " once for each " + "browser.<br/> " + "This " + "allows " + "for " + "life-time " + "logins " + "on " + "any " + "" + "" + "application.",
 			                                                                     ReactionType.DialogDisplay, AjaxResponseType.Primary));
 		}
 		catch (JsonProcessingException e)
@@ -222,7 +222,5 @@ public class DisplayPage
 			}
 		}
 	}
-
-
 }
 

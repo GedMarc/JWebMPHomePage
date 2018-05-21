@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display;
 
+import com.google.inject.Singleton;
 import com.jwebmp.Feature;
 import com.jwebmp.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
@@ -12,6 +13,7 @@ import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTypographyOptions;
 
+@Singleton
 public class ComingSoon
 		extends DisplayScreen
 {

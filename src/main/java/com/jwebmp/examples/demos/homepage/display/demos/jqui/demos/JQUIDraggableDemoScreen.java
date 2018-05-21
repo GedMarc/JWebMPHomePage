@@ -1,4 +1,4 @@
-package com.jwebmp.examples.demos.homepage.display.jqueryui.demos;
+package com.jwebmp.examples.demos.homepage.display.demos.jqui.demos;
 
 import com.jwebmp.base.html.Div;
 import com.jwebmp.base.html.H6;
