@@ -1,24 +1,20 @@
 package com.jwebmp.examples.demos.homepage.display.demos.jqplot;
 
-import com.jwebmp.base.html.DivSimple;
-import com.jwebmp.base.html.Link;
-import com.jwebmp.base.servlets.enumarations.Orientation;
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
-import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
-import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
-import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
-import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
-import com.jwebmp.plugins.bootstrap4.containers.BSRow;
-import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
-import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
-import com.jwebmp.plugins.jqplot.graphs.JQPlotBarGraph;
-import com.jwebmp.plugins.jqplot.graphs.display.JQPlotBar;
+import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.ComingSoon;
+import za.co.mmagon.guiceinjection.GuiceContext;
 
 public class JQPlotDemos
-		extends DisplayScreen<JQPlotDemos>
+		extends PluginDemoScreen
 {
 
+	public JQPlotDemos()
+	{
+		super("JQ Plot", "Web Frameworks", "jQuery UI");
+		//addFeatureTile("Bar", "Allow elements to be moved using the mouse", new JQUIDraggableDemoScreen());
+		addComponentTile("Bar Graphs", "Shows how to construct and build Bar Graphs.", GuiceContext.get(ComingSoon.class));
+	}
+/*
 	@Override
 	public BSContainer<?> getContentContainer()
 	{
@@ -127,6 +123,6 @@ public class JQPlotDemos
 		return graph;
 
 
-	}
+	}*/
 
 }

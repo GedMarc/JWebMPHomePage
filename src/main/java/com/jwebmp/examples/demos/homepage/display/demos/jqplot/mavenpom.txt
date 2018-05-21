@@ -1,0 +1,6 @@
+<dependency>
+    <groupId>com.jwebmp</groupId>
+    <artifactId>jwebmp-jqplot</artifactId>
+    <version>${jwebmp.version}</version>
+    <type>jar</type>
+</dependency>

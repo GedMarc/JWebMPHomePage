@@ -27,8 +27,7 @@ public class ComingSoon
 
 		DivSimple<?> wrapper = new DivSimple<>().addClass("home-wrapper");
 		wrapper.add(new H1<>("<span class=\"rotate\">JWebMP, MicroProfile, Modern, Simple, Domain Driven, Single-Page, Multi-Page</span>").addClass("home-text"));
-		wrapper.add(new Paragraph<>(
-				" I'm still working on this one, But it'll all be in by 1st August 2018 <br/>You can view the status of the builds in TeamCity for this component below."));
+		wrapper.add(new Paragraph<>("Still doing the demo screens for this one, Test Cases for the widgets are complete<br/>and you can view the status directly in SonarQube"));
 
 		wrapper.add(buildCountdown());
 
