@@ -2,6 +2,7 @@ package com.jwebmp.examples.demos.homepage.enumerations;
 
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.bootstrap.BootstrapDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqplot.JQPlotDemos;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.JQueryUIDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jstree.JSTreeDemoScreen;
@@ -19,6 +20,7 @@ public enum DisplayScreens
 	ComingSoon(com.jwebmp.examples.demos.homepage.display.ComingSoon.class, "ComingSoon"),
 
 	JQueryUI(JQueryUIDemoScreen.class, "JQueryUI"),
+	Bootstrap4(BootstrapDemoScreen.class, "Bootstrap4"),
 
 	FontAwesome(FontAwesomeScreen.class, "FontAwesome"),
 	Glyphicons(GlyphiconsScreen.class, "Glyphicons"),

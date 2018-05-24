@@ -10,7 +10,6 @@ import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCheckBox;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
-import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ButtonRowPart;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ContactUsPart;
 import com.jwebmp.examples.demos.homepage.display.home.parts.MavenPomPart;
@@ -34,7 +33,6 @@ import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
-import com.jwebmp.plugins.jqueryui.draggable.options.JQUIDraggableOptions;
 import org.apache.commons.lang3.StringEscapeUtils;
 import za.co.mmagon.guiceinjection.GuiceContext;
 
@@ -89,8 +87,6 @@ public class HomePage
 			}
 		});
 
-		container.add(new OptionsBrowser(new JQUIDraggableOptions<>()));
-
 		container.add(new ButtonRowPart<>());
 		//container.add(buildAdvertCard());
 
@@ -141,6 +137,7 @@ public class HomePage
 		}
 		leftColumn.add(buildContinuousIntegrationPane());
 
+
 		//----------------------------------------------------------------------------
 		// Right side
 		//----------------------------------------------------------------------------
@@ -157,13 +154,15 @@ public class HomePage
 		{
 			rightColumn.add(new LoginPart());
 			rightColumn.add(buildOpenSourceSponsors());
+			rightColumn.add(buildReasonsToRegisterDiv());
 			rightColumn.add(new MintonPanel("Maven", new MavenPomPart(), "bg-pink"));
 		}
 		else
 		{
 			rightColumn.add(new MintonPanel("Maven", new MavenPomPart(), "bg-pink"));
 		}
-		//rightColumn.add(buildReasonsToRegisterDiv());
+
+
 		return container;
 	}
 
@@ -262,7 +261,7 @@ public class HomePage
 		contents.add(buildCheckbox("Video Guides", true, "checkbox-primary"));
 		contents.add(buildCheckbox("Access to the Forums", true, "checkbox-primary"));
 		contents.add(buildCheckbox("Can Request For Plugins", true, "checkbox-success"));
-		contents.add(buildCheckbox("Completely Type Safe <i><small>*optional</small></i> operation", true, "checkbox-info"));
+		contents.add(buildCheckbox("No Spam/Newsletters", true, "checkbox-info"));
 		contents.add(buildCheckbox("First hand access to the developer", true, "checkbox-purple"));
 		openSourcePane.add(contents);
 

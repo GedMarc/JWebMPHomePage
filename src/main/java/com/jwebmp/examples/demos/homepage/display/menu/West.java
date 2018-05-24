@@ -3,13 +3,13 @@ package com.jwebmp.examples.demos.homepage.display.menu;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.html.*;
 import com.jwebmp.base.html.interfaces.GlobalChildren;
-import com.jwebmp.base.html.interfaces.children.ListChildren;
 import com.jwebmp.examples.demos.homepage.display.about.GoToAboutScreenEvent;
 import com.jwebmp.examples.demos.homepage.display.about.GoToUnderTheHoodEvent;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.generics.LeftOrRight;
 import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
+import com.jwebmp.plugins.bootstrap4.accordion.BSAccordion;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
 
 /**
@@ -24,7 +24,9 @@ public class West
 
 	private Div<GlobalChildren, ?, ?, ?, ?> sidebarInner;
 	private DivSimple<?> sidebarMenu;
-	private List<ListChildren, ?, ?, ?> globalList;
+	private List globalList;
+
+	private BSAccordion<?> accordion = new BSAccordion<>();
 
 	/*
 	 * Constructs a new West
@@ -33,16 +35,6 @@ public class West
 	{
 		setID("west");
 		addClass("left side-menu");
-		sidebarInner = new Div<>();
-		sidebarInner.addClass("sidebar-inner slimscrollleft");
-
-		sidebarMenu = new DivSimple<>();
-		sidebarMenu.setID("sidebar-menu");
-
-		globalList = new List<>();
-		globalList.add(new ListItem<>().addClass("menu-title")
-		                               .setText("Main"));
-
 		SlimScrollFeature scrollFeature = new SlimScrollFeature(this);
 		scrollFeature.getOptions()
 		             .setHeight("100%")
@@ -52,24 +44,21 @@ public class West
 		             .setColor(new ColourCSSImpl("#98a6ad"))
 		             .setWheelStep(5);
 
+		sidebarInner = new Div<>();
+		sidebarInner.addClass("sidebar-inner slimscrollleft");
+
+		sidebarMenu = new DivSimple<>();
+		sidebarMenu.setID("sidebar-menu");
+
+		globalList = new List<>();
+
 		ListItem homeItem;
 		globalList.add(homeItem = buildMenuItem("ti-home", "Home"));
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
 
-
-		globalList.add(new ListItem<>().addClass("menu-title")
-		                               .setText("The Core"));
-
-		buildAboutJWebMPDropDown();
-		buildGettingStarted();
-		buildTestingFramework();
-
-		globalList.add(new ListItem<>().addClass("menu-title")
-		                               .setText("Hit It Running"));
-
-		buildMyFirstSites();
-		buildUIKits();
-		buildInstantSites();
+		buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
+		buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
+		buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
 		globalList.add(new ListItem<>().addClass("menu-title")
 		                               .setText("Plugin Library"));
@@ -89,11 +78,24 @@ public class West
 
 
 		sidebarInner.add(sidebarMenu);
+
 		sidebarMenu.add(globalList);
 		sidebarMenu.add(new DivSimple<>().addClass("clearfix"));
 		sidebarInner.add(new DivSimple<>().addClass("clearfix"));
 
 		add(sidebarInner);
+	}
+
+
+	private void buildMenuSection(String title, boolean hideOnStart, ComponentHierarchyBase... content)
+	{
+		ListItem li = new ListItem<>().addClass("menu-title")
+		                              .setText(title);
+		globalList.add(li);
+		for (ComponentHierarchyBase componentHierarchyBase : content)
+		{
+			globalList.add(componentHierarchyBase);
+		}
 	}
 
 	private ListItem<?> buildMenuItem(String icon, String title)
@@ -130,8 +132,7 @@ public class West
 
 		uiKit.add(new ListItem<>().add(buildListItem("#a1").setText("CSS Integration")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "JWebMP", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "JWebMP", uiKit);
 		return dropDown1;
 	}
 
@@ -146,8 +147,7 @@ public class West
 
 		//uiKit.add(new ListItem<>().add(buildListItem("#m").setText("Unit Testing")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Environments", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Environments", uiKit);
 		return dropDown1;
 	}
 
@@ -159,8 +159,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#l").setText("Unit Testing")));
 		uiKit.add(new ListItem<>().add(buildListItem("#l").setText("Open Support")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Testing", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Testing", uiKit);
 		return dropDown1;
 	}
 
@@ -171,8 +170,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#o").setText("Layouts")));
 		uiKit.add(new ListItem<>().add(buildListItem("#p").setText("Basic Examples")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "My First Sites", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "My First Sites", uiKit);
 		return dropDown1;
 	}
 
@@ -182,12 +180,10 @@ public class West
 
 
 		uiKit.add(new ListItem<>().add(buildListItem("#t", DisplayScreens.JQueryUI).setText("JQuery UI")));
-		uiKit.add(new ListItem<>().add(buildListItem("#u").setText("Bootstrap")));
-		//uiKit.add(new ListItem<>().add(buildListItem("#uu1").setText("Bootswatch <small>(4)</small>")));
+		uiKit.add(new ListItem<>().add(buildListItem("#u", DisplayScreens.Bootstrap4).setText("Bootstrap")));
 		uiKit.add(new ListItem<>().add(buildListItem("#v").setText("JQX Widgets")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "UI Bundles", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "UI Bundles", uiKit);
 		return dropDown1;
 	}
 
@@ -198,8 +194,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#x").setText("Blur Admin <small>(BS3 core)</small>")));
 		uiKit.add(new ListItem<>().add(buildListItem("#y").setText("Minton <small>(BS4 core)</small>")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Instant Sites", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Instant Sites", uiKit);
 		return dropDown1;
 	}
 
@@ -211,8 +206,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#a4").setText("AJAX Implementation")));
 		uiKit.add(new ListItem<>().add(buildListItem("#a5").setText("Atmosphere Push Web Sockets")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Core Plugins", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Core Plugins", uiKit);
 		return dropDown1;
 	}
 
@@ -224,8 +218,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#c4").setText("Bootstrap Dialog <small>(3&4)</small>")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e2").setText("Easing Animations")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e3").setText("Toastr Notifications")));
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Utility Plugins", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Utility Plugins", uiKit);
 		return dropDown1;
 	}
 
@@ -237,8 +230,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#e5").setText("Ion Icons")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e5").setText("Skycons")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Icon Sets", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Icon Sets", uiKit);
 		return dropDown1;
 	}
 
@@ -250,8 +242,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#b7").setText("Modernizr")));
 		uiKit.add(new ListItem<>().add(buildListItem("#b8").setText("Pace Loader")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Browser Addons", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Browser Addons", uiKit);
 		return dropDown1;
 	}
 
@@ -262,8 +253,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#b6", DisplayScreens.JSTree).setText("JS Tree")));
 		uiKit.add(new ListItem<>().add(buildListItem("#b7").setText("X Editable")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Tables / Trees", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Tables / Trees", uiKit);
 		return dropDown1;
 	}
 
@@ -334,8 +324,7 @@ public class West
 
 		uiKit.add(new ListItem<>().add(buildListItem("#g3").setText("Quick Forms")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Form Plugins", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Form Plugins", uiKit);
 		return dropDown1;
 	}
 
@@ -347,8 +336,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#g6").setText("C3 Graphing")));
 		uiKit.add(new ListItem<>().add(buildListItem("#g7").setText("NVD3 Graphing")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Graph Plugins", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Graph Plugins", uiKit);
 		return dropDown1;
 	}
 
@@ -358,8 +346,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#g8").setText("LeafletJS")));
 		uiKit.add(new ListItem<>().add(buildListItem("#g9").setText("Google Maps")));
 
-		ListItem dropDown1;
-		globalList.add(dropDown1 = buildSubList("ti-paint-bucket", "Mapping Plugins", uiKit));
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Mapping Plugins", uiKit);
 		return dropDown1;
 	}
 

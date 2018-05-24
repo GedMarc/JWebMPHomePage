@@ -1,0 +1,6 @@
+<dependency>
+    <groupId>com.jwebmp</groupId>
+    <artifactId>jwebmp-angular-animate</artifactId>
+    <version>${jwebmp.version}</version>
+    <type>jar</type>
+</dependency>
