@@ -17,6 +17,7 @@ import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 
 import static com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts.ComponentUtilityMethods;
 import static com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts.InjectionControlMethods;
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.Col_12;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.Table_Hover;
 
 public class UnderTheHoodScreen
@@ -33,11 +34,13 @@ public class UnderTheHoodScreen
 		BSColumn column2 = new BSColumn(BSColumnOptions.Col_Md_4);
 
 
-		column1.add(new MintonPanel<>("Under the Hood", buildUnderTheHood(), "bg-primary"));
+		column1.add(new MintonPanel<>("Whats running this thing", buildUnderTheHood(), "bg-primary"));
+		column1.add(new MintonPanel<>("Whats running this thing", buildPowerfulMinimalist(), "bg-primary").setShowHeader(false));
 
 		column1.add(new MintonPanel<>("Component Common Methods", buildComponentRender(), "bg-primary"));
 
 		column2.add(new MintonPanel<>("Injection Assists", buildSiteControl(), "bg-primary"));
+		column2.add(new MintonPanel<>("Plugins?", buildPluginsPanel(), "bg-primary").setShowHeader(false));
 
 		row.add(column1);
 		row.add(column2);
@@ -146,6 +149,16 @@ public class UnderTheHoodScreen
 		return div;
 	}
 
+	private Div buildPowerfulMinimalist()
+	{
+		Div d = new Div();
+
+		d.add(new H3<>("Going Postal"));
+		d.add("Go straight into mobile and next generation web development utilizing Cordiva and PhoneGap. The Cordovify Plugin enables instant integration with Cordova allowing a complete suite of hybrid device functions for IOS, Android, Browser, Windows Mobile and Windows Universal applications");
+
+		return d;
+	}
+
 	private Div buildComponentRender()
 	{
 		DivSimple<?> div = new DivSimple<>();
@@ -163,9 +176,22 @@ public class UnderTheHoodScreen
 		DivSimple<?> div = new DivSimple<>();
 		div.addClass("row");
 
+		div.add(new H5<>("Change anything with interfaces").addClass(Col_12));
+		div.add(new H5<>("Service Locators are used to configure classpath scanning").addClass(Col_12));
+
 		SourceCodeContentPanel<?> sourcePanel = new SourceCodeContentPanel("Dynamic Call Injections", InjectionControlMethods, null);
 		sourcePanel.setCodeButtonPanel(false);
 		div.add(sourcePanel);
+
+		return div;
+	}
+
+	private Div buildPluginsPanel()
+	{
+		Div div = new DivSimple();
+		div.add(new H3<>("Modular Plugins"));
+		div.add("Plugins are designed in a modular fashion, and are built on an inclusive basis");
+		div.add("Including the Plugin JAR or depedency will add everything necessary to the build, and the Page objects for full reference. <br/>Selective Page References can be enabled.");
 		return div;
 	}
 

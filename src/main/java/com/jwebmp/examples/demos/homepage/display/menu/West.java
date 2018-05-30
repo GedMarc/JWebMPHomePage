@@ -60,21 +60,8 @@ public class West
 		buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 		buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
-		globalList.add(new ListItem<>().addClass("menu-title")
-		                               .setText("Plugin Library"));
-
-		buildCorePlugins();
-		buildUtilityPlugins();
-		buildIconSets();
-		buildBrowsers();
-		buildTablesTrees();
-		buildForms();
-		buildGraphing();
-		buildMapping();
-
-/*		globalList.add(buildSubList("ti-paint-bucket", "UI Kit", uiKit));
-		globalList.add(buildSubList("ti-paint-bucket", "UI Kit", uiKit));
-		globalList.add(buildSubList("ti-paint-bucket", "UI Kit", uiKit));*/
+		buildMenuSection("Plugin Library", true, homeItem, buildCorePlugins(), buildUtilityPlugins(), buildIconSets(), buildBrowsers(), buildTablesTrees(), buildForms(),
+		                 buildGraphing(), buildMapping());
 
 
 		sidebarInner.add(sidebarMenu);
@@ -121,17 +108,18 @@ public class West
 		List uiKit = new List<>();
 		uiKit.add(new ListItem<>().add(buildListItem("#a").setText("About JWebMP")
 		                                                  .addEvent(new GoToAboutScreenEvent())));
+
 		uiKit.add(new ListItem<>().add(buildListItem("#a").setText("Under The Hood")
 		                                                  .addEvent(new GoToUnderTheHoodEvent())));
-		uiKit.add(new ListItem<>().add(buildListItem("#asite").setText("About This Site")
-		                                                      .addEvent(new GoToAboutScreenEvent())));
-		uiKit.add(new ListItem<>().add(buildListItem("#b").setText("ReadMe F A Q")));
+
+		uiKit.add(new ListItem<>().add(buildListItem("#asite", DisplayScreens.AboutThisSIte).setText("About This Site")));
+	/*	uiKit.add(new ListItem<>().add(buildListItem("#b").setText("ReadMe F A Q")));
 		uiKit.add(new ListItem<>().add(buildListItem("#f").setText("Events & Event Stores")));
 		uiKit.add(new ListItem<>().add(buildListItem("#c").setText("Security")));
 		uiKit.add(new ListItem<>().add(buildListItem("#d").setText("Migrating Applications")));
 
 		uiKit.add(new ListItem<>().add(buildListItem("#a1").setText("CSS Integration")));
-
+*/
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "JWebMP", uiKit);
 		return dropDown1;
 	}
@@ -170,7 +158,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#o").setText("Layouts")));
 		uiKit.add(new ListItem<>().add(buildListItem("#p").setText("Basic Examples")));
 
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "My First Sites", uiKit);
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "First Examples", uiKit);
 		return dropDown1;
 	}
 

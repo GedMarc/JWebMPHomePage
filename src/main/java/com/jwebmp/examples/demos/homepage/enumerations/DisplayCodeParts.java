@@ -49,7 +49,7 @@ public enum DisplayCodeParts
 
 	InjectionControlMethods(new SourceCodeDetailsContainer<>().addCustomLocation("Intercepting Calls", UnderTheHoodScreen.class, "InjectionAnnotations.txt")
 	                                                          .addCustomLocation("Services Available", UnderTheHoodScreen.class, "ServicesAvailable.txt")
-	                                                          .addCustomLocation("Request Scoped Classes", UnderTheHoodScreen.class, "RequestScopedClasses.txt")
+	                                                          .addCustomLocation("Scoped Classes", UnderTheHoodScreen.class, "RequestScopedClasses.txt")
 	                                                          .addCustomLocation("Page Rendering", UnderTheHoodScreen.class, "PageRendering.txt")),
 
 	GPLLicence,

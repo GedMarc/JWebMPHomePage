@@ -10,7 +10,6 @@ import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.display.login.LogoutEvent;
 import com.jwebmp.examples.demos.homepage.display.privacy.GoToPrivacyScreenEvent;
 import com.jwebmp.examples.demos.homepage.display.termsandconditions.GoToTermsAndConditionsEvent;
-import com.jwebmp.examples.demos.homepage.entities.HomePageNotifications;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTypographyOptions;
@@ -41,7 +40,7 @@ public class TopBar
 			@Override
 			protected void assignFunctionsToComponent()
 			{
-				addQuery("$('#btn-fullscreen').on('click', function () {\n" + "            toggleFullScreen();\n" + "        });");
+				addQuery("$('#btn-fullscreen').on('click', function () {toggleFullScreen();});");
 			}
 
 		});
@@ -78,7 +77,7 @@ public class TopBar
 		List<ListChildren, ?, ?, ?> easyButtonList = new List<>(false);
 		easyButtonList.addClass("list-inline float-right mb-0");
 
-		easyButtonList.add(buildTopMenuItem(true, "btn-fullscreen", "mdi mdi-crop-free noti-icon", "45px"));
+		easyButtonList.add(buildTopMenuItem(true, "btn-fullscreen", "mdi mdi-crop-free noti-icon", "45px").addClass("strong"));
 
 		ListItem<?> rightSideOpener = buildTopMenuItem(false, "action_screen_opener", "mdi mdi-dots-horizontal noti-icon", "45px").addClass("right-bar-toggle");
 		easyButtonList.add(rightSideOpener);
@@ -86,47 +85,7 @@ public class TopBar
 		                                       .createToggleButton(rightSideOpener, JQLayoutArea.East));
 
 
-		Long highlightedNotificationCount = new HomePageNotifications().builder()
-		                                                               .getCount();
-
-
-		ListItem<?> notiDropDown = new ListItem<>().addClass("list-inline-item dropdown notification-list");
-		Link notDropDownLink = new Link<>("#").addClass("nav-link dropdown-toggle arrow-none waves-light waves-effect")
-		                                      .addAttribute(LinkAttributes.Data_Toggle, "dropdown")
-		                                      .addAttribute("role", "button")
-		                                      .addAttribute("aria-haspopup", "false")
-		                                      .addAttribute("aria-expanded", "false")
-		                                      .add(new Italic<>().addClass("mdi mdi-bell noti-icon"))
-		                                      .add(new Span(highlightedNotificationCount + "").addClass("badge badge-pink noti-icon-badge"));
-
-
-		DivSimple<?> notificationsDropDown = new DivSimple<>();
-		notificationsDropDown.addClass("dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg");
-
-
-		notificationsDropDown.add(new DivSimple<>().addClass("dropdown-item noti-title")
-		                                           .add(new H5<>().addClass("font-16")
-		                                                          .add(new Span<>().setText(highlightedNotificationCount + "")
-		                                                                           .addClass("badge badge-danger float-right"))
-		                                                          .setRenderTextBeforeChildren(false)
-		                                                          .setText("Notifications")));
-
-		java.util.List<HomePageNotifications> homePageNotificationsList = new HomePageNotifications().findAll();
-		homePageNotificationsList.forEach(a ->
-		                                  {
-			                                  notificationsDropDown.add(buildDropDownNotificationItem(a.getClazz(), a.getIcon(), a.getTitle(), a.getDate()));
-		                                  });
-
-
-		Link<?> allLink = new Link<>().addClass("dropdown-item notify-item notify-all")
-		                              .setText("View All");
-		notificationsDropDown.add(allLink);
-
-
-		notiDropDown.add(notDropDownLink);
-		notiDropDown.add(notificationsDropDown);
-		notiDropDown.addStyle("width", "45px");
-		easyButtonList.add(notiDropDown);
+		easyButtonList.add((ListChildren) buildTopMenuItem(false, "donateButton", "mdi mdi-currency-usd", "45px", "https://paypal.me/MarcMagon", "_blank"));
 		nav.add(easyButtonList);
 
 
@@ -159,6 +118,11 @@ public class TopBar
 
 	private ListItem<?> buildTopMenuItem(boolean hidePhone, String id, String icon, String width)
 	{
+		return (buildTopMenuItem(hidePhone, id, icon, width, null, null));
+	}
+
+	private ListItem<?> buildTopMenuItem(boolean hidePhone, String id, String icon, String width, String url, String target)
+	{
 		ListItem<?> item = new ListItem<>();
 		item.addClass("list-inline-item notification-list");
 		if (hidePhone)
@@ -166,7 +130,11 @@ public class TopBar
 			item.addClass("hide-phone");
 		}
 
-		Link<?> link = new Link<>("#");
+		Link<?> link = new Link<>(url == null ? "#" : url);
+		if (target != null)
+		{
+			link.addAttribute(LinkAttributes.Target, target);
+		}
 		link.addClass("nav-link waves-light waves-effect text-center");
 		link.setID(id);
 		if (icon != null)
@@ -178,31 +146,6 @@ public class TopBar
 		link.addStyle("width", width);
 		item.add(link);
 		return item;
-	}
-
-	private Link<?> buildDropDownNotificationItem(String backgroundClass, String icon, String title, Date when)
-	{
-		Link<?> link = new Link("#");
-		link.addClass("dropdown-item notify-item");
-
-		DivSimple<?> iconDiv = new DivSimple<>().addClass("notify-icon")
-		                                        .addClass(backgroundClass)
-		                                        .add(new Italic<>().addClass(icon));
-		link.add(iconDiv);
-
-		Paragraph details = new Paragraph<>().addClass("notify-details");
-		details.setText(title);
-		details.setRenderTextBeforeChildren(true);
-		if (when != null)
-		{
-			Moment<?> moment = new Moment<>(when);
-			moment.addClass(BSTypographyOptions.Text_Muted);
-			moment.setTag("small");
-			details.add(moment);
-		}
-		link.add(details);
-
-		return link;
 	}
 
 	private ListItem buildProfileDropDown()
@@ -257,6 +200,31 @@ public class TopBar
 		profileDropDown.add(profileDropDownContent);
 		profileDropDown.addStyle("width", "45px");
 		return profileDropDown;
+	}
+
+	private Link<?> buildDropDownNotificationItem(String backgroundClass, String icon, String title, Date when)
+	{
+		Link<?> link = new Link("#");
+		link.addClass("dropdown-item notify-item");
+
+		DivSimple<?> iconDiv = new DivSimple<>().addClass("notify-icon")
+		                                        .addClass(backgroundClass)
+		                                        .add(new Italic<>().addClass(icon));
+		link.add(iconDiv);
+
+		Paragraph details = new Paragraph<>().addClass("notify-details");
+		details.setText(title);
+		details.setRenderTextBeforeChildren(true);
+		if (when != null)
+		{
+			Moment<?> moment = new Moment<>(when);
+			moment.addClass(BSTypographyOptions.Text_Muted);
+			moment.setTag("small");
+			details.add(moment);
+		}
+		link.add(details);
+
+		return link;
 	}
 
 	private Link<?> buildDropDownNotificationItem(String backgroundClass, String icon, String title, String description, Date when)

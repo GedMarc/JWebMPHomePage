@@ -43,8 +43,12 @@ public class OuterLayout
 
 			getWest().getOptions()
 			         .setMinSize(240);
+			getWest().getOptions()
+			         .setMaxSize(240);
 			getNorth().getOptions()
 			          .setMinSize(68);
+			getNorth().getOptions()
+			          .setMaxSize(68);
 			getEast().getOptions()
 			         .setInitClosed(true);
 
@@ -53,8 +57,8 @@ public class OuterLayout
 			getOptions().getDefaults()
 			            .setTogglerClass("btn-custom btn-secondary");
 			getOptions().getDefaults()
-			            .setSpacingClosed(15)
-			            .setSpacingOpen(15);
+			            .setSpacingClosed(0)
+			            .setSpacingOpen(0);
 
 			getCenter().getContentDiv()
 			           .add(new PlaceHolder<>("content-updatable"));
