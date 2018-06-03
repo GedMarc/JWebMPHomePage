@@ -26,7 +26,7 @@ public class ReasonsWhyPart
 
 		sourceExampleDiv.add(buildCheckbox("Focused on Technology.<br/>Maintainability, and Scalability.", true, "checkbox-purple"));
 		sourceExampleDiv.add(buildCheckbox("Speed Up Deliveries and Development<br/>The Code Always Comes First", true, "checkbox-pink"));
-		sourceExampleDiv.add(buildCheckbox("Browser, Android, IOS, Windows Desktop and Universal Applications" + "<br/> <i>Cordova</i> Supported!", true, "checkbox-pink"));
+		sourceExampleDiv.add(buildCheckbox("Browser, Android, IOS, <br/>Windows Desktop and Universal Applications <br/> <i>Cordova</i> Supported!", true, "checkbox-pink"));
 
 		sourceExampleDiv.add(buildCheckbox("Testable. End To End. Out The Box.<br/> 100% UT and IT is stock standard", true, "checkbox-success"));
 		sourceExampleDiv.add(buildCheckbox("Unbelievably Fast.<br/>Type Safe, Domain Driven", true, "checkbox-info"));

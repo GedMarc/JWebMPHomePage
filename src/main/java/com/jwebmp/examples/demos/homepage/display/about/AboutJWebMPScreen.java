@@ -38,10 +38,10 @@ public class AboutJWebMPScreen
 			column1.add(new MintonPanel<>("What is JWebMP?", buildWhyPanel(), "bg-primary").setShowHeader(false));
 			column1.add(new MintonPanel<>("Testable First", buildTestPanel(), "bg-primary").setShowHeader(false));
 			column1.add(new MintonPanel<>("How it's done", buildHowItsDone(), "bg-primary").setShowHeader(false));
-			column1.add(new MintonPanel<>("Injection Control", buildInjectionsPanel(), "bg-primary"));
+			column1.add(new MintonPanel<>("Injection Control", buildInjectionsPanel(), "bg-primary").setShowHeader(false));
 
-			column2.add(new MintonPanel<>("Push Me Baby", buildPushPanel(), "bg-primary"));
-			column2.add(new MintonPanel<>("Fully Customizable", buildCompletelyCustomizablePanel(), "bg-primary"));
+			column2.add(new MintonPanel<>("Push Me Baby", buildPushPanel(), "bg-primary").setShowHeader(false));
+			column2.add(new MintonPanel<>("Fully Customizable", buildCompletelyCustomizablePanel(), "bg-primary").setShowHeader(false));
 		}
 		else
 		{
@@ -51,9 +51,9 @@ public class AboutJWebMPScreen
 			column1.add(new MintonPanel<>("Injection Control", buildInjectionsPanel(), "bg-primary"));
 
 			column2.add(new MintonPanel<>("Compat", buildCompatibilityList(), "bg-primary").setShowHeader(false));
-			column2.add(new MintonPanel<>("Push Me Baby", buildPushPanel(), "bg-primary"));
+			column2.add(new MintonPanel<>("Push Me Baby", buildPushPanel(), "bg-primary").setShowHeader(false));
 
-			column2.add(new MintonPanel<>("Fully Customizable", buildCompletelyCustomizablePanel(), "bg-primary"));
+			column2.add(new MintonPanel<>("Fully Customizable", buildCompletelyCustomizablePanel(), "bg-primary").setShowHeader(false));
 		}
 		row.add(column1);
 		row.add(column2);
