@@ -1,13 +1,24 @@
 package com.jwebmp.examples.demos.homepage.display.menu;
 
+import com.jwebmp.Page;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.AjaxCall;
 import com.jwebmp.base.ajax.AjaxResponse;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
+import com.jwebmp.plugins.jquerylayout.layout.enumerations.JQLayoutArea;
+import com.jwebmp.plugins.jquerylayout.layout.events.JQLayoutSlideCloseLayoutDivFeature;
+import lombok.extern.java.Log;
 import za.co.mmagon.guiceinjection.GuiceContext;
 import za.co.mmagon.plugins.softhistorychange.SoftHistoryChangeAdapter;
 
+import java.util.logging.Level;
+
+import static com.jwebmp.utilities.StaticStrings.CHAR_DOT;
+import static com.jwebmp.utilities.StaticStrings.CHAR_UNDERSCORE;
+
+@Log
 public class ChangeScreenEvent
 		extends SoftHistoryChangeAdapter
 {
@@ -34,6 +45,17 @@ public class ChangeScreenEvent
 		String screen = call.getEventId();
 		try
 		{
+			Page page = GuiceContext.getInstance(Page.class);
+			if (page.isMobileOrSmartTablet())
+			{
+				OuterLayout layout = GuiceContext.getInstance(OuterLayout.class);
+				JQLayoutSlideCloseLayoutDivFeature westClose = layout.createSlideCloseFeature(JQLayoutArea.West);
+				JQLayoutSlideCloseLayoutDivFeature eastClose = layout.createSlideCloseFeature(JQLayoutArea.East);
+				response.getFeatures()
+				        .add(westClose);
+				response.getFeatures()
+				        .add(eastClose);
+			}
 			DisplayScreens screens = DisplayScreens.valueOf(screen);
 			setQueryParameters("p=" + screens.name());
 			DisplayScreen<?> screenCreated = GuiceContext.getInstance(screens.getScreen());
@@ -42,7 +64,7 @@ public class ChangeScreenEvent
 		catch (IllegalArgumentException iae)
 		{
 			String id = getID();
-			id = id.replace('_', '.');
+			id = id.replace(CHAR_UNDERSCORE, CHAR_DOT);
 			try
 			{
 				Class clazz = Class.forName(id);
@@ -51,10 +73,11 @@ public class ChangeScreenEvent
 					DisplayScreen screenCreated = (DisplayScreen) GuiceContext.getInstance(clazz);
 					response.addComponent(screenCreated);
 				}
+				setQueryParameters("p=" + id);
 			}
 			catch (ClassNotFoundException e)
 			{
-
+				log.log(Level.SEVERE, "Unable to find class [" + e.getMessage() + "]", e);
 			}
 		}
 	}

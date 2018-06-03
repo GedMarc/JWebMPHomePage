@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage;
 
-import com.jwebmp.SessionHelper;
 import com.jwebmp.components.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBFilter;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemes;
@@ -28,7 +27,7 @@ public class HomePageStartup
 {
 	public static void main(String[] args) throws ServletException
 	{
-		SessionHelper.setCacheAddress(true);
+		//SessionHelper.setCacheAddress(true);
 
 		FileHandler fh;
 

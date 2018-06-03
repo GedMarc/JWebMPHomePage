@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.components;
 
+import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
 import com.jwebmp.generics.LeftOrRight;
 import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
@@ -11,9 +12,10 @@ import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSClearfixOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
-import com.jwebmp.plugins.jquerylayout.layout.JQLayout;
+import com.jwebmp.plugins.jquerylayout.layout.components.BorderLayout;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import za.co.mmagon.guiceinjection.GuiceContext;
 
 import javax.validation.constraints.NotNull;
 
@@ -25,7 +27,7 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 	private final Div content;
 	private final BSRow<?> titleRow;
 	private String welcomeText;
-	private JQLayout innerLayout;
+	private BorderLayout innerLayout;
 
 	private boolean renderBreadcrumb = true;
 
@@ -42,7 +44,8 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		content = new Div();
 		content.addClass("content");
 		content.setID("content-updatable-content");
-		innerLayout = new JQLayout(content);
+		innerLayout = new BorderLayout();
+		innerLayout.setFullScreen(true);
 		titleRow = new BSRow<>();
 		innerLayout.setID("innerLayoutContainer");
 
@@ -59,6 +62,7 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		if (!isConfigured())
 		{
 			add(content);
+			content.add(innerLayout);
 			Div d = getContentContainer();
 			if (d != null)
 			{
@@ -72,8 +76,9 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 				             .setAlwaysVisible(true)
 				             .setPosition(LeftOrRight.Right)
 				             .setSize(5)
-				             .setColor(new ColourCSSImpl("#98a6ad"))
-				             .setWheelStep(5);
+				             .setTouchScrollStep(50)
+				             //   .setWheelStep(5)
+				             .setColor(new ColourCSSImpl("#98a6ad"));
 
 				innerLayout.getCenter()
 				           .getContentDiv()
@@ -95,11 +100,11 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 
 	protected Div buildTitleRow()
 	{
-
-
 		Div responsive = new Div();
 		responsive.addClass(BSColumnOptions.Col_Sm_12);
-		if (renderBreadcrumb)
+		Page page = GuiceContext.getInstance(Page.class);
+
+		if (renderBreadcrumb && !page.isMobileOrSmartTablet())
 		{
 			Div pageTitleBox = new Div();
 			pageTitleBox.addClass("page-title-box");
@@ -220,12 +225,12 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		this.welcomeText = welcomeText;
 	}
 
-	public JQLayout getInnerLayout()
+	public BorderLayout getInnerLayout()
 	{
 		return innerLayout;
 	}
 
-	public void setInnerLayout(JQLayout innerLayout)
+	public void setInnerLayout(BorderLayout innerLayout)
 	{
 		this.innerLayout = innerLayout;
 	}

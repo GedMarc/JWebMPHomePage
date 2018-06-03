@@ -48,11 +48,33 @@ public class RightBar
 		DivSimple activityTab = buildActivityTab();
 		DivSimple<?> settingsTab = new DivSimple<>();
 
+		DivSimple<?> activityTabContents = new DivSimple<>();
+		DivSimple<?> settingsTabContents = new DivSimple<>();
+
+
+		activityTabContents.addFeature(new SlimScrollFeature(activityTabContents).setOptions(new SlimScrollOptions().setHeight("100%")
+		                                                                                                            .setAlwaysVisible(true)
+		                                                                                                            .setPosition(LeftOrRight.Right)
+		                                                                                                            .setSize(5)
+		                                                                                                            .setTouchScrollStep(50)
+		                                                                                                            .setColor(new ColourCSSImpl("#98a6ad"))));
+
+		settingsTabContents.addFeature(new SlimScrollFeature(settingsTabContents).setOptions(new SlimScrollOptions().setHeight("100%")
+		                                                                                                            .setAlwaysVisible(true)
+		                                                                                                            .setPosition(LeftOrRight.Right)
+		                                                                                                            .setSize(5)
+		                                                                                                            .setTouchScrollStep(50)
+		                                                                                                            .setColor(new ColourCSSImpl("#98a6ad"))));
+
 		BSTabContainer<?> activities = displayTabs.asMe()
 		                                          .addTab("Activity", activityTab, true);
+
+
 		BSTabContainer<?> settings = displayTabs.asMe()
 		                                        .addTab("Settings", settingsTab, false);
 
+		activityTab.add(activityTabContents);
+		settingsTab.add(settingsTabContents);
 
 	}
 
@@ -67,18 +89,11 @@ public class RightBar
 		simple.addClass(Bg_Dark);
 
 		timeLine.addAttribute("style", "overflow-y:auto;");
-		timeLine.addFeature(new SlimScrollFeature(this).setOptions(new SlimScrollOptions().setHeight("100%")
-		                                                                                  .setAlwaysVisible(true)
-		                                                                                  .setPosition(LeftOrRight.Right)
-		                                                                                  .setSize(5)
-		                                                                                  .setColor(new ColourCSSImpl("#98a6ad"))
-		                                                                                  .setWheelStep(5)));
-
 
 		List<RightBarActivity> activities = new RightBarActivity().builder()
 		                                                          .inActiveRange()
 		                                                          .orderBy(RightBarActivity_.date, DESC)
-		                                                          .setMaxResults(50)
+		                                                          .setMaxResults(15)
 		                                                          .getAll();
 
 		activities.forEach(a ->

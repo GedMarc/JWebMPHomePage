@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.menu;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.html.*;
 import com.jwebmp.base.html.interfaces.GlobalChildren;
+import com.jwebmp.base.html.interfaces.events.GlobalEvents;
 import com.jwebmp.examples.demos.homepage.display.about.GoToAboutScreenEvent;
 import com.jwebmp.examples.demos.homepage.display.about.GoToUnderTheHoodEvent;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
@@ -282,7 +283,7 @@ public class West
 		return link;
 	}
 
-	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase comp)
+	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
 	{
 		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
 		adapter.setID(screenReference.toString());

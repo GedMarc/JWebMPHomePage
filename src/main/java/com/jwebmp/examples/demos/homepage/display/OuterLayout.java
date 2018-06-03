@@ -1,17 +1,18 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.google.inject.Singleton;
+import com.jwebmp.Page;
 import com.jwebmp.PlaceHolder;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
-import com.jwebmp.plugins.jquerylayout.layout.JQLayout;
+import com.jwebmp.plugins.jquerylayout.layout.components.BorderLayout;
+import lombok.extern.java.Log;
 import za.co.mmagon.guiceinjection.GuiceContext;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.Bg_Dark;
 
-@Singleton
+@Log
 public class OuterLayout
-		extends JQLayout
+		extends BorderLayout<OuterLayout>
 {
 	/**
 	 * Constructs a new JWLayout Layout Handler with the given parameters
@@ -23,60 +24,59 @@ public class OuterLayout
 	public OuterLayout(ComponentHierarchyBase component)
 	{
 		this();
-		configureForComponent(component);
 	}
 
 	public OuterLayout()
 	{
 		super();
-	}
-
-	public void setup()
-	{
 		setID("wrapper");
-		if (!isConfigured())
-		{
-			getOptions().getNorth()
-			            .setResizable(false)
-			            .setTogglerLengthOpen(175)
-			            .setTogglerLengthClosed(175);
+		getOptions().getNorth()
+		            .setResizable(false)
+		            .setMinSize(68)
+		            .setMaxSize(68)
+		            .setTogglerLengthOpen(175)
+		            .setTogglerLengthClosed(175);
 
-			getWest().getOptions()
-			         .setMinSize(240);
-			getWest().getOptions()
-			         .setMaxSize(240);
-			getNorth().getOptions()
-			          .setMinSize(68);
-			getNorth().getOptions()
-			          .setMaxSize(68);
-			getEast().getOptions()
-			         .setInitClosed(true);
+		getWest().getOptions()
+		         .setMinSize(240)
+		         .setMaxSize(240);
 
-			getOptions().getDefaults()
-			            .setResizerClass("btn-custom btn-primary");
-			getOptions().getDefaults()
-			            .setTogglerClass("btn-custom btn-secondary");
-			getOptions().getDefaults()
-			            .setSpacingClosed(0)
-			            .setSpacingOpen(0);
+		getEast().getOptions()
+		         .setInitClosed(true);
+		getEast().addStyle("z-index:100 !important;");
 
-			getCenter().getContentDiv()
-			           .add(new PlaceHolder<>("content-updatable"));
-			getNorth().getContentDiv()
-			          .add(new PlaceHolder<>("topbar"));
-			getWest().getContentDiv()
-			         .add(new PlaceHolder<>("west"));
-			getEast().getContentDiv()
-			         .add(new PlaceHolder<>("rightBar"));
+		getOptions().getDefaults()
+		            .setResizerClass("btn-custom btn-primary")
+		            .setTogglerClass("btn-custom btn-secondary")
+		            .setResizable(false)
+		            .setSpacingClosed(0)
+		            .setSpacingOpen(0);
 
-			getEast().getContentDiv()
-			         .addClass(Bg_Dark);
-/*
-			getCenter().getContentDiv()
-			           .add(new HomePage());*/
-			getCenter().getContentDiv()
-			           .add(GuiceContext.getInstance(SourceCodeModal.class));
-		}
+		getCenter().getContentDiv()
+		           .add(new PlaceHolder<>("content-updatable"));
+		getNorth().getContentDiv()
+		          .add(new PlaceHolder<>("topbar"));
+		getWest().getContentDiv()
+		         .add(new PlaceHolder<>("west"));
+		getEast().getContentDiv()
+		         .add(new PlaceHolder<>("rightBar"));
+
+		getEast().getContentDiv()
+		         .addClass(Bg_Dark);
+
+		getCenter().getContentDiv()
+		           .add(GuiceContext.getInstance(SourceCodeModal.class));
 	}
 
+	@Override
+	public void init()
+	{
+		Page p = GuiceContext.getInstance(Page.class);
+		if (p.isMobileOrSmartTablet())
+		{
+			getWest().getOptions()
+			         .setInitClosed(true);
+		}
+		super.init();
+	}
 }

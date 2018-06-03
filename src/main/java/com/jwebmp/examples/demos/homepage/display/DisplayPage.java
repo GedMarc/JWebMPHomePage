@@ -1,7 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.google.inject.Singleton;
 import com.jwebmp.Page;
 import com.jwebmp.SessionHelper;
 import com.jwebmp.base.ajax.*;
@@ -18,8 +17,8 @@ import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
-import com.jwebmp.utilities.RegularExpressionsDTO;
 import com.jwebmp.utilities.StaticStrings;
+import com.jwebmp.utilities.regex.RegularExpressionsDTO;
 import za.co.mmagon.entityassist.enumerations.ActiveFlag;
 import za.co.mmagon.guiceinjection.GuiceContext;
 import za.co.mmagon.logger.LogFactory;
@@ -38,7 +37,6 @@ import static za.co.mmagon.guiceinjection.GuiceContext.getInstance;
  * @author Marc Magon
  * @since 30 Jul 2017
  */
-@Singleton
 public class DisplayPage
 		extends Page
 {
@@ -54,17 +52,11 @@ public class DisplayPage
 	{
 		getPageFields().setTitle("JWebMP Application");
 
-		getHead().add(new CSSLink("canonical", null, "https://www.jwebswing.com/"));
+		getHead().add(new CSSLink("canonical", null, "https://www.jwebmp.com/"));
 
-		getHead().add(new CSSLink<>(null, "icon",
-		                            "https://scontent.fjnb6-1.fna.fbcdn.net/v/t1.0-9/30262102_618084625202203_3933231896061804544_n.png?_nc_cat=0&oh=6455cb346ca429e61fa4dc3b8b494bd0&oe=5B5838A9").addAttribute(
-				"sizes", "192x192"));
-		getHead().add(new CSSLink<>(null, "apple-touch-icon-precomposed",
-		                            "https://scontent.fjnb6-1.fna.fbcdn.net/v/t1.0-9/30262102_618084625202203_3933231896061804544_n.png?_nc_cat=0&oh=6455cb346ca429e61fa4dc3b8b494bd0&oe=5B5838A9").addAttribute(
-				"sizes", "180x180"));
-		getHead().add(new CSSLink<>(null, "msapplication-TileImage",
-		                            "https://scontent.fjnb6-1.fna.fbcdn.net/v/t1.0-9/30262102_618084625202203_3933231896061804544_n.png?_nc_cat=0&oh=6455cb346ca429e61fa4dc3b8b494bd0&oe=5B5838A9").addAttribute(
-				"sizes", "270x270"));
+		getHead().add(new CSSLink<>(null, "icon", "logo.png").addAttribute("sizes", "192x192"));
+		getHead().add(new CSSLink<>(null, "apple-touch-icon-precomposed", "logo.png").addAttribute("sizes", "180x180"));
+		getHead().add(new CSSLink<>(null, "msapplication-TileImage", "logo.png").addAttribute("sizes", "270x270"));
 
 		Meta appleMeta = new Meta();
 		appleMeta.addAttribute("name", "apple-mobile-web-app-capable");
@@ -84,8 +76,7 @@ public class DisplayPage
 		getPageFields().setApplicationNameMeta("JWebMP Application Core");
 		getPageFields().setAuthor("Marc Magon");
 		getPageFields().setDescription("JWebMP Home and Demo Application!");
-		getPageFields().setFavIcon(
-				"https://scontent.fjnb6-1.fna.fbcdn.net/v/t1.0-9/30262102_618084625202203_3933231896061804544_n.png?_nc_cat=0&oh=6455cb346ca429e61fa4dc3b8b494bd0&oe=5B5838A9");
+		getPageFields().setFavIcon("logo.png");
 		getPageFields().setKeywords("Rapid Application Development,jwebswing,jwebmp, java,jweb, web,development,framework,ui,rad,urad,bootstrap,jqueryui,jquery,bootstrapdialog");
 
 		setBody(new DisplayBody());

@@ -2,6 +2,7 @@ package com.jwebmp.examples.demos.homepage.display;
 
 
 import com.jwebmp.Feature;
+import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
 import com.jwebmp.base.html.attributes.LinkAttributes;
 import com.jwebmp.base.html.inputs.InputTextType;
@@ -81,8 +82,18 @@ public class TopBar
 
 		ListItem<?> rightSideOpener = buildTopMenuItem(false, "action_screen_opener", "mdi mdi-dots-horizontal noti-icon", "45px").addClass("right-bar-toggle");
 		easyButtonList.add(rightSideOpener);
-		rightSideOpener.addFeature(GuiceContext.getInstance(OuterLayout.class)
-		                                       .createToggleButton(rightSideOpener, JQLayoutArea.East));
+
+		Page<?> page = GuiceContext.getInstance(Page.class);
+		if (page.isMobileOrSmartTablet())
+		{
+			rightSideOpener.addFeature(GuiceContext.getInstance(OuterLayout.class)
+			                                       .createAddSlideToggleButton(JQLayoutArea.East, rightSideOpener));
+		}
+		else
+		{
+			rightSideOpener.addFeature(GuiceContext.getInstance(OuterLayout.class)
+			                                       .createToggleButton(rightSideOpener, JQLayoutArea.East));
+		}
 
 
 		easyButtonList.add((ListChildren) buildTopMenuItem(false, "donateButton", "mdi mdi-currency-usd", "45px", "https://paypal.me/MarcMagon", "_blank"));
@@ -96,8 +107,17 @@ public class TopBar
 		ListItem leftMenuItem = new ListItem<>().addClass("float-left")
 		                                        .add(new Button<>().addClass("button-menu-mobile open-left waves-light waves-effect")
 		                                                           .add(new Italic<>().addClass("mdi mdi-menu")));
-		leftMenuItem.addFeature(GuiceContext.getInstance(OuterLayout.class)
-		                                    .createToggleButton(leftMenuItem, JQLayoutArea.West));
+
+		if (page.isMobileOrSmartTablet())
+		{
+			leftMenuItem.addFeature(GuiceContext.getInstance(OuterLayout.class)
+			                                    .createAddSlideToggleButton(JQLayoutArea.West, leftMenuItem));
+		}
+		else
+		{
+			leftMenuItem.addFeature(GuiceContext.getInstance(OuterLayout.class)
+			                                    .createToggleButton(leftMenuItem, JQLayoutArea.West));
+		}
 
 		searchList.add(leftMenuItem);
 

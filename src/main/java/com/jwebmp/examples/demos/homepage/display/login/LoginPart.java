@@ -1,8 +1,10 @@
 package com.jwebmp.examples.demos.homepage.display.login;
 
+import com.jwebmp.Page;
 import com.jwebmp.base.angular.AngularAttributes;
 import com.jwebmp.base.angular.forms.enumerations.InputErrorValidations;
 import com.jwebmp.base.html.Div;
+import com.jwebmp.base.html.attributes.InputPasswordTypeAttributes;
 import com.jwebmp.base.html.inputs.InputEmailType;
 import com.jwebmp.base.html.inputs.InputPasswordType;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
@@ -23,6 +25,9 @@ import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSSpacingOptions;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
+import za.co.mmagon.guiceinjection.GuiceContext;
+
+import static com.jwebmp.base.html.attributes.InputButtonTypeAttributes.AutoComplete;
 
 public class LoginPart
 		extends SourceCodeContentPanel
@@ -86,7 +91,7 @@ public class LoginPart
 		loginInputGroup.getInput()
 		               .setID("loginInputID")
 		               .setRequired()
-		               .addAttribute("autocomplete", "username")
+		               .addAttribute(AutoComplete, "username")
 		               .setPlaceholder("Email Address")
 		               .setPattern("regex.emailField");
 
@@ -102,7 +107,7 @@ public class LoginPart
 		inputGroup.getInput()
 		          .setMinimumLength(6)
 		          .setRequired()
-		          .addAttribute("autocomplete", "current-password")
+		          .addAttribute(InputPasswordTypeAttributes.AutoComplete, "current-password")
 		          .setPlaceholder("Password")
 		          .setPattern("regex.password");
 		inputGroup.addMessage(InputErrorValidations.pattern, "Password needs to be at least 6 characters long and have a number.");
@@ -124,12 +129,20 @@ public class LoginPart
 
 		BSRow row = new BSRow();
 		PrettyPrimaryButton<?> registerButton = new PrettyPrimaryButton<>().setText("Register")
-		                                                                   .addClass(BSColumnOptions.Col_3)
 		                                                                   .addClass(BSColoursOptions.Text_White)
 		                                                                   .asButton()
 		                                                                   .addAttribute(AngularAttributes.ngDisabled, "" + loginForm.getName() + "." + loginInputGroup.getInput()
 		                                                                                                                                                               .getName() + ".$invalid || " + loginForm.getName() + "." + inputGroup.getInput()
 		                                                                                                                                                                                                                                    .getName() + ".$invalid");
+		Page p = GuiceContext.get(Page.class);
+		if (p.isMobileOrSmartTablet())
+		{
+			registerButton.addClass(BSColumnOptions.Col_12);
+		}
+		else
+		{
+			registerButton.addClass(BSColumnOptions.Col_5);
+		}
 
 		BSModal<?> confirmModal = buildConfirmPasswordModal();
 		row.add(confirmModal);
@@ -139,7 +152,6 @@ public class LoginPart
 		row.add(registerButton);
 
 		PrettyPrimaryButton forgotPassButton = new PrettyPrimaryButton<>().setText("Forgot Password")
-		                                                                  .addClass(BSColumnOptions.Col_4)
 		                                                                  .addClass(BSColoursOptions.Text_White)
 		                                                                  .asButton()
 		                                                                  .addAttribute(AngularAttributes.ngDisabled, loginForm.getName() + "." + loginInputGroup.getInput()
@@ -147,6 +159,15 @@ public class LoginPart
 
 		forgotPassButton.addEvent(new ForgotPasswordEvent(forgotPassButton));
 		row.add(forgotPassButton);
+
+		if (p.isMobileOrSmartTablet())
+		{
+			forgotPassButton.addClass(BSColumnOptions.Col_12);
+		}
+		else
+		{
+			forgotPassButton.addClass(BSColumnOptions.Col_6);
+		}
 
 		/*PrettyPrimaryButton confirmEmail = new PrettyPrimaryButton<>().setText("Resend Confirmation")
 		                                                              .addClass(BSColumnOptions.Col_4)
@@ -178,7 +199,7 @@ public class LoginPart
 		BSFormInputGroup<?, InputPasswordType<?>> confirm = inputForm.addPasswordInput("subscribe.confirmPassword", null, false);
 		confirm.getInput()
 		       .setPattern("regex.password")
-		       .addAttribute("autocomplete", "new-password")
+		       .addAttribute(InputPasswordTypeAttributes.AutoComplete, "new-password")
 		       .setRequired();
 		confirm.getInput()
 		       .setMinimumLength(6);

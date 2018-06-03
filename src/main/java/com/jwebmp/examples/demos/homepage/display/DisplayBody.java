@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.google.inject.Singleton;
 import com.jwebmp.base.html.Body;
 import com.jwebmp.base.html.Div;
 import com.jwebmp.base.html.Script;
@@ -18,7 +17,6 @@ import za.co.mmagon.guiceinjection.GuiceContext;
  * @author Marc Magon
  * @since 30 Jul 2017
  */
-@Singleton
 public class DisplayBody
 		extends Body
 {
@@ -74,8 +72,7 @@ public class DisplayBody
 		addClass(BSColumnOptions.W_100);
 
 		outerLayout = GuiceContext.getInstance(OuterLayout.class);
-		outerLayout.configureForComponent(this);
-		outerLayout.setup();
+		add(outerLayout);
 
 		addJavaScriptReference(new JavascriptReference("e", 1.0, "js/modernizr.min.js").setPriority(RequirementsPriority.Top_Shelf));
 	}
