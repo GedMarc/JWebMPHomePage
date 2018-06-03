@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
+import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
@@ -13,6 +14,7 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
+import za.co.mmagon.guiceinjection.GuiceContext;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.Table_Hover;
 
@@ -29,74 +31,35 @@ public class AboutJWebMPScreen
 		BSColumn column1 = new BSColumn(BSColumnOptions.Col_Md_8);
 		BSColumn column2 = new BSColumn(BSColumnOptions.Col_Md_4);
 
-
-		column1.add(new MintonPanel<>("What is JWebMP?", buildWhyPanel(), "bg-primary"));
-/*
-
-		column1.add(new H1<>("<span class=\"rotate\">JWebMP, MicroProfile, Modern, Simple, Domain Driven, Single-Page, Elegant, Powerful</span>").addClass("home-text")
-		                                                                                                                                         .addStyle("text-align", "center"));
-		addFeature(new Feature("TextRotator")
+		Page page = GuiceContext.get(Page.class);
+		if (page.isMobileOrSmartTablet())
 		{
-			@Override
-			protected void assignFunctionsToComponent()
-			{
-				addQuery("$(\".home-text .rotate\").textrotator({animation: \"fade\",speed: 3000});");
-			}
-		});
-*/
+			column1.add(new MintonPanel<>("Compat", buildCompatibilityList(), "bg-primary").setShowHeader(false));
+			column1.add(new MintonPanel<>("What is JWebMP?", buildWhyPanel(), "bg-primary").setShowHeader(false));
+			column1.add(new MintonPanel<>("Testable First", buildTestPanel(), "bg-primary").setShowHeader(false));
+			column1.add(new MintonPanel<>("How it's done", buildHowItsDone(), "bg-primary").setShowHeader(false));
+			column1.add(new MintonPanel<>("Injection Control", buildInjectionsPanel(), "bg-primary"));
 
-		//	column2.add(new MintonPanel<>("Modular Plugins", buildPluginsPanel(), "bg-primary"));
+			column2.add(new MintonPanel<>("Push Me Baby", buildPushPanel(), "bg-primary"));
+			column2.add(new MintonPanel<>("Fully Customizable", buildCompletelyCustomizablePanel(), "bg-primary"));
+		}
+		else
+		{
+			column1.add(new MintonPanel<>("What is JWebMP?", buildWhyPanel(), "bg-primary").setShowHeader(false));
+			column1.add(new MintonPanel<>("How it's done", buildHowItsDone(), "bg-primary").setShowHeader(false));
+			column1.add(new MintonPanel<>("Testable First", buildTestPanel(), "bg-primary").setShowHeader(false));
+			column1.add(new MintonPanel<>("Injection Control", buildInjectionsPanel(), "bg-primary"));
 
+			column2.add(new MintonPanel<>("Compat", buildCompatibilityList(), "bg-primary").setShowHeader(false));
+			column2.add(new MintonPanel<>("Push Me Baby", buildPushPanel(), "bg-primary"));
 
-		column1.add(new MintonPanel<>("How it's done", buildHowItsDone(), "bg-primary").setShowHeader(false));
-		column1.add(new MintonPanel<>("Testable First", buildTestPanel(), "bg-primary").setShowHeader(false));
-		column1.add(new MintonPanel<>("Injection Control", buildInjectionsPanel(), "bg-primary"));
-
-		column2.add(new MintonPanel<>("Compat", buildCompatibilityList(), "bg-primary").setShowHeader(false));
-		column2.add(new MintonPanel<>("Push Me Baby", buildPushPanel(), "bg-primary"));
-
-		column2.add(new MintonPanel<>("Fully Customizable", buildCompletelyCustomizablePanel(), "bg-primary"));
-
+			column2.add(new MintonPanel<>("Fully Customizable", buildCompletelyCustomizablePanel(), "bg-primary"));
+		}
 		row.add(column1);
 		row.add(column2);
 
 		container.add(row);
 		return container;
-	}
-
-	private Div buildWhyPanel()
-	{
-		DivSimple<?> div = new DivSimple<>();
-		div.add("JWebMP is a Java Web and Mobile Hybrid Framework designed to be Modern, Efficient, Server-Side Driven, with absolute optimizations in both Delivery of Web Content, and Java Development of the System. It is designed purely in a Domain Driven Manner and allows you to finally build Request Driven, Tiny-Session enterprise application, whilte still  completely supporting MDE and BDE in every way.");
-
-		div.add("Everything is completely open source! This means that any item you find can be logged, traced, and implemented in the most convient way.");
-		return div;
-	}
-
-	private Div buildHowItsDone()
-	{
-		Div div = new DivSimple();
-		div.add(new H3<>("Template Free Development"));
-		div.add("The system constructs the HTML, CSS and JavaScripts dynamically (yes according to browser and even device) to ensure that only the correct scripts get delivered. With abstraction and injection points, you can easily manipulate any item to produce the output that you want.");
-		div.add("Being able to render the complete output of the HTML, JavaScript and CSS of any component at any level and stage grants you an unbelievable amount of many, many benefits. Let your imagination run wild with that concept for a bit. Exactly how much coverage in your tests can you get? Want to render a component in JWebMP and push it to JSF?");
-		div.add("Of course, you can still use File Templates (though this system isn't based on it at all) with variables and scoping to continue using HTML and Web Content files to render your information. ");
-		return div;
-	}
-
-	private Div buildTestPanel()
-	{
-		Div div = new DivSimple();
-		div.add(new H3("Get That Coverage"));
-		div.add("Test Anything, Integration and Unit Testing - Straight Out the Box!<br/> You can view all the JUnit 5 test and Selenium Integration Cases currently built and their status using the GitHub, TeamCity and SonarQube links. These allow everyone the peace of mind, and stability that end-to-end testing systems provide.<br/>");
-		return div;
-	}
-
-	private Div buildInjectionsPanel()
-	{
-		Div div = new DivSimple();
-		div.add("Google's Guice and the Guice Context Handler provide complete and dynamic JDK 8 and 9 Injection as well as Built-In Multi-ClassPath Injection Configuration, Custom Path Object Scanning from FastClasspathScanner, RegEx Servlet Bindings, Complete AOP, and an  entirely optional near-full range of EE Capabilities with MicroProfile, everything is at your fingertips.<br/><br/><strong>Best of All</strong>, Adheres to the applicable JSRs! ");
-		div.add("Completely Non-Invasive, Easily pull beans directly from Weld should you wish to do so (see the Injection Screen), With no interference on existing Servlets including JSP.");
-		return div;
 	}
 
 	private Div buildCompatibilityList()
@@ -159,6 +122,41 @@ public class AboutJWebMPScreen
 				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Initialized with GuiceContext.inject();</a>")));
 
 		div.add(compatibilityTable);
+		return div;
+	}
+
+	private Div buildWhyPanel()
+	{
+		DivSimple<?> div = new DivSimple<>();
+		div.add("JWebMP is a Java Web and Mobile Hybrid Framework designed to be Modern, Efficient, Server-Side Driven, with absolute optimizations in both Delivery of Web Content, and Java Development of the System. It is designed purely in a Domain Driven Manner and allows you to finally build Request Driven, Tiny-Session enterprise application, whilte still  completely supporting MDE and BDE in every way.");
+
+		div.add("Everything is completely open source! This means that any item you find can be logged, traced, and implemented in the most convient way.");
+		return div;
+	}
+
+	private Div buildTestPanel()
+	{
+		Div div = new DivSimple();
+		div.add(new H3("Get That Coverage"));
+		div.add("Test Anything, Integration and Unit Testing - Straight Out the Box!<br/> You can view all the JUnit 5 test and Selenium Integration Cases currently built and their status using the GitHub, TeamCity and SonarQube links. These allow everyone the peace of mind, and stability that end-to-end testing systems provide.<br/>");
+		return div;
+	}
+
+	private Div buildHowItsDone()
+	{
+		Div div = new DivSimple();
+		div.add(new H3<>("Template Free Development"));
+		div.add("The system constructs the HTML, CSS and JavaScripts dynamically (yes according to browser and even device) to ensure that only the correct scripts get delivered. With abstraction and injection points, you can easily manipulate any item to produce the output that you want.");
+		div.add("Being able to render the complete output of the HTML, JavaScript and CSS of any component at any level and stage grants you an unbelievable amount of many, many benefits. Let your imagination run wild with that concept for a bit. Exactly how much coverage in your tests can you get? Want to render a component in JWebMP and push it to JSF?");
+		div.add("Of course, you can still use File Templates (though this system isn't based on it at all) with variables and scoping to continue using HTML and Web Content files to render your information. ");
+		return div;
+	}
+
+	private Div buildInjectionsPanel()
+	{
+		Div div = new DivSimple();
+		div.add("Google's Guice and the Guice Context Handler provide complete and dynamic JDK 8 and 9 Injection as well as Built-In Multi-ClassPath Injection Configuration, Custom Path Object Scanning from FastClasspathScanner, RegEx Servlet Bindings, Complete AOP, and an  entirely optional near-full range of EE Capabilities with MicroProfile, everything is at your fingertips.<br/><br/><strong>Best of All</strong>, Adheres to the applicable JSRs! ");
+		div.add("Completely Non-Invasive, Easily pull beans directly from Weld should you wish to do so (see the Injection Screen), With no interference on existing Servlets including JSP.");
 		return div;
 	}
 

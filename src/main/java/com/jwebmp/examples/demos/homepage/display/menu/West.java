@@ -4,14 +4,14 @@ import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.html.*;
 import com.jwebmp.base.html.interfaces.GlobalChildren;
 import com.jwebmp.base.html.interfaces.events.GlobalEvents;
-import com.jwebmp.examples.demos.homepage.display.about.GoToAboutScreenEvent;
-import com.jwebmp.examples.demos.homepage.display.about.GoToUnderTheHoodEvent;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.generics.LeftOrRight;
 import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.accordion.BSAccordion;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
+
+import static com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens.*;
 
 /**
  * @author Marc Magon
@@ -107,13 +107,9 @@ public class West
 	private ListItem<?> buildAboutJWebMPDropDown()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a").setText("About JWebMP")
-		                                                  .addEvent(new GoToAboutScreenEvent())));
-
-		uiKit.add(new ListItem<>().add(buildListItem("#a").setText("Under The Hood")
-		                                                  .addEvent(new GoToUnderTheHoodEvent())));
-
-		uiKit.add(new ListItem<>().add(buildListItem("#asite", DisplayScreens.AboutThisSIte).setText("About This Site")));
+		uiKit.add(new ListItem<>().add(buildListItem("#a", AboutJWebMP).setText("About JWebMP")));
+		uiKit.add(new ListItem<>().add(buildListItem("#a", UnderTheHood).setText("Under The Hood")));
+		uiKit.add(new ListItem<>().add(buildListItem("#asite", AboutThisSIte).setText("About This Site")));
 	/*	uiKit.add(new ListItem<>().add(buildListItem("#b").setText("ReadMe F A Q")));
 		uiKit.add(new ListItem<>().add(buildListItem("#f").setText("Events & Event Stores")));
 		uiKit.add(new ListItem<>().add(buildListItem("#c").setText("Security")));

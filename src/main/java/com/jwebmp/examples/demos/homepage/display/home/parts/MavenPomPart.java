@@ -16,7 +16,7 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 {
 	public MavenPomPart()
 	{
-		add("<strong>0.46.0.1-SNAPSHOT is the latest build</strong>").addClass(BSColoursOptions.Text_White);
+		add("<strong>0.51.0.1-SNAPSHOT is the latest build</strong>").addClass(BSColoursOptions.Text_White);
 
 		JQSourceCodePrettify<?> prettifyPom = new JQSourceCodePrettify<>();
 		prettifyPom.setSourceCodeLanguage(SourceCodeLanguages.XML);

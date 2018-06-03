@@ -1,7 +1,9 @@
 package com.jwebmp.examples.demos.homepage.enumerations;
 
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.display.about.AboutJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutThisSiteScreen;
+import com.jwebmp.examples.demos.homepage.display.about.UnderTheHoodScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.bootstrap.BootstrapDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqplot.JQPlotDemos;
@@ -19,6 +21,9 @@ public enum DisplayScreens
 	ConfirmEmailAddress(ConfirmEmailAddressScreen.class, "ConfirmEmailAddress"),
 	ConfirmEmailAddressScreen(ConfirmEmailAddressScreen.class, "ConfirmEmailAddressScreen"),
 	ComingSoon(com.jwebmp.examples.demos.homepage.display.ComingSoon.class, "ComingSoon"),
+
+	AboutJWebMP(AboutJWebMPScreen.class, "AboutJWebMP"),
+	UnderTheHood(UnderTheHoodScreen.class, "UnderTheHood"),
 	AboutThisSIte(AboutThisSiteScreen.class, "AboutThisSite"),
 
 	JQueryUI(JQueryUIDemoScreen.class, "JQueryUI"),
