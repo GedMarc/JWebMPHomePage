@@ -1,15 +1,14 @@
 package com.jwebmp.examples.demos.homepage.display;
 
 import com.jwebmp.base.html.Body;
-import com.jwebmp.base.html.Div;
 import com.jwebmp.base.html.Script;
-import com.jwebmp.base.html.interfaces.GlobalChildren;
 import com.jwebmp.base.references.CSSReference;
 import com.jwebmp.base.references.JavascriptReference;
 import com.jwebmp.base.servlets.enumarations.RequirementsPriority;
 import com.jwebmp.components.pace.PaceLoaderPageConfigurator;
 import com.jwebmp.components.pace.PaceThemeColour;
 import com.jwebmp.components.pace.preloadedthemes.PaceTheme;
+import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import za.co.mmagon.guiceinjection.GuiceContext;
 
@@ -22,9 +21,6 @@ public class DisplayBody
 {
 
 	private static final long serialVersionUID = 1L;
-
-	private Div<GlobalChildren, ?, ?, ?, ?> wrapper;
-	private OuterLayout outerLayout;
 
 	/*
 	 * Constructs a new Display Body
@@ -71,8 +67,8 @@ public class DisplayBody
 		addClass(BSColumnOptions.H_100);
 		addClass(BSColumnOptions.W_100);
 
-		outerLayout = GuiceContext.getInstance(OuterLayout.class);
-		add(outerLayout);
+		add(GuiceContext.getInstance(OuterLayout.class));
+		add(GuiceContext.getInstance(SourceCodeModal.class));
 
 		addJavaScriptReference(new JavascriptReference("e", 1.0, "js/modernizr.min.js").setPriority(RequirementsPriority.Top_Shelf));
 	}

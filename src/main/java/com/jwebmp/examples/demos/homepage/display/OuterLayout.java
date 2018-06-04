@@ -3,7 +3,6 @@ package com.jwebmp.examples.demos.homepage.display;
 import com.jwebmp.Page;
 import com.jwebmp.PlaceHolder;
 import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
 import com.jwebmp.plugins.jquerylayout.layout.components.BorderLayout;
 import lombok.extern.java.Log;
 import za.co.mmagon.guiceinjection.GuiceContext;
@@ -63,9 +62,6 @@ public class OuterLayout
 
 		getEast().getContentDiv()
 		         .addClass(Bg_Dark);
-
-		getCenter().getContentDiv()
-		           .add(GuiceContext.getInstance(SourceCodeModal.class));
 	}
 
 	@Override

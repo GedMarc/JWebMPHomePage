@@ -58,8 +58,8 @@ public class West
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
 
 		buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
-		buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
-		buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
+		buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites(), buildUIKits());
+		//buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
 		buildMenuSection("Plugin Library", true, homeItem, buildCorePlugins(), buildUtilityPlugins(), buildIconSets(), buildBrowsers(), buildTablesTrees(), buildForms(),
 		                 buildGraphing(), buildMapping());
@@ -183,6 +183,53 @@ public class West
 		return dropDown1;
 	}
 
+	private Link<?> buildListItem(String uniqueHashBangId)
+	{
+		return buildListItem(uniqueHashBangId, DisplayScreens.ComingSoon);
+	}
+
+	private ListItem<?> buildSubList(String icon, String title, List menuItemList)
+	{
+		ListItem<?> item = new ListItem<>();
+		item.addClass("has_sub");
+		Link<?> dropdownLink = new Link<>("javascript:void(0);");
+		dropdownLink.addClass("waves-effect waves-primary");
+
+		Italic iconItalic = new Italic();
+		iconItalic.addClass(icon);
+		Span span = new Span(title);
+
+		dropdownLink.add(iconItalic);
+		dropdownLink.add(span);
+		dropdownLink.add(new Span<>().addClass("menu-arrow pull-right"));
+
+		item.add(dropdownLink);
+
+		menuItemList.addClass("list-unstyled");
+		item.add(menuItemList);
+
+		BSCollapse.link(dropdownLink, menuItemList, true);
+
+		menuItemList.addAttribute("data-parent", "#west");
+
+		return item;
+	}
+
+	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen)
+	{
+		Link link = new Link(uniqueHashBangId);
+		changeScreenAdapter(screen, link);
+		return link;
+	}
+
+	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
+	{
+		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
+		adapter.setID(screenReference.toString());
+		comp.addEvent(adapter);
+		return adapter;
+	}
+
 	private ListItem<?> buildCorePlugins()
 	{
 		List uiKit = new List<>();
@@ -240,51 +287,6 @@ public class West
 
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Tables / Trees", uiKit);
 		return dropDown1;
-	}
-
-	private Link<?> buildListItem(String uniqueHashBangId)
-	{
-		return buildListItem(uniqueHashBangId, DisplayScreens.ComingSoon);
-	}
-
-	private ListItem<?> buildSubList(String icon, String title, List menuItemList)
-	{
-		ListItem<?> item = new ListItem<>();
-		item.addClass("has_sub");
-		Link<?> dropdownLink = new Link<>("javascript:void(0);");
-		dropdownLink.addClass("waves-effect waves-primary");
-
-		Italic iconItalic = new Italic();
-		iconItalic.addClass(icon);
-		Span span = new Span(title);
-
-		dropdownLink.add(iconItalic);
-		dropdownLink.add(span);
-		dropdownLink.add(new Span<>().addClass("menu-arrow pull-right"));
-
-		item.add(dropdownLink);
-
-		menuItemList.addClass("list-unstyled");
-		item.add(menuItemList);
-
-		BSCollapse.link(dropdownLink, menuItemList, true);
-
-		return item;
-	}
-
-	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen)
-	{
-		Link link = new Link(uniqueHashBangId);
-		changeScreenAdapter(screen, link);
-		return link;
-	}
-
-	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
-	{
-		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
-		adapter.setID(screenReference.toString());
-		comp.addEvent(adapter);
-		return adapter;
 	}
 
 	private ListItem<?> buildForms()

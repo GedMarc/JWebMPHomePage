@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
-import com.jwebmp.Feature;
 import com.jwebmp.base.ajax.AjaxCall;
 import com.jwebmp.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
@@ -38,22 +37,12 @@ public class AboutThisSiteScreen
 		BSColumn column1 = new BSColumn(BSColumnOptions.Col_Md_6);
 		BSColumn column2 = new BSColumn(BSColumnOptions.Col_Md_6);
 
-		column1.add(new H1<>(HTML_TAB + "What You Looking At?"));
+		column1.add(new H1<>(HTML_TAB + "What You Looking At"));
 
-		column2.add(new H1<>("<span class=\"rotate\">Truely Write Once, Cross-Archive Injection, Built For Hybrid</span>").addClass("home-text")
-		                                                                                                                  .addStyle("text-align", "center"));
-		addFeature(new Feature("TextRotator")
-		{
-			@Override
-			protected void assignFunctionsToComponent()
-			{
-				addQuery("$(\".home-text .rotate\").textrotator({animation: \"fade\",speed: 2000});");
-			}
-		});
+		column2.add(new H1<>(HTML_TAB + "Do.. Whatever really"));
+		column2.add(new MintonPanel<>("Why are all the pages built differently?", buildWhatThisIsAllAbout(), "bg-primary").setShowHeader(false));
 
-		column1.add(new MintonPanel<>("Why are all the pages built differently?", buildWhatThisIsAllAbout(), "bg-primary").setShowHeader(false));
-
-		column2.add(new MintonPanel<>("Site Specs", buildSiteSpecs(), "bg-primary").setShowHeader(false));
+		column1.add(new MintonPanel<>("Site Specs", buildSiteSpecs(), "bg-primary").setShowHeader(false));
 
 		column2.add(new MintonPanel<>("Options Browser", buildOptionsBrowserAbout(), "bg-primary").setShowHeader(false));
 
@@ -68,15 +57,18 @@ public class AboutThisSiteScreen
 	{
 		DivSimple<?> div = new DivSimple<>();
 		div.add(new H3<>("Non-Restrictive Development"));
-		div.add("This site uses many different methods of doing the same thing across many different pages. When trying to solve a 7 layer burrito issue, I think a core part of that should not be restricting development to any particular pattern.");
-		div.add("The goal here isn't to tell you how to you should do anything, but to show and give examples of the capabilities of the framework and how <i>any</i> pattern of your choice may be used in your web and mobile development, whether you are templating and importing documents with specified variables (EL is way to slow) or going native Java only, you're free to develop to your own preference.");
-		div.add("All the source is ofcourse available on GitHub, with the developer a simple support ticket,issue log, or stack exchange query away - You never have to worry about getting stuck");
-		div.add("I chose a straight forward WAR structure in a Domain Driven Architecture Pattern, running on Undertow, and using Azure with Hibernate 5.2 for the persistence strategy. Bitronix BTM for JTA to ensure Test and Production are identical." + "<br/>The Query Builder/Entity Management API is another stand-alone project and is a powerful - if unknown - Criteria Builder Manager for DDD with all the bells and whistles.");
-		div.add("I could have gone the EE EJB JCache DAO Named Queries route as well, but doesn't that seem like a touch overkill for a site with no background running tasks or JMS requirements? :)");
 		div.add("Code icons <strong>" + FontAwesome.icon(FontAwesomeIcons.code, FontAwesomeProperties.$2x)
 		                                           .setTiny(true)
 		                                           .toString(
 				                                           true) + "</strong> display meaningful snippets of the widget that you are viewing to quickly grasp how to include it in your own sites.");
+
+		div.add("This site uses many different methods of doing the same thing across many different pages.I think a core part should not be restricting development to any particular pattern.");
+
+		div.add("I'm not going to tell you how to do anything, but I'll show and give hundreds of examples of the capabilities of the framework and how <i>any</i> pattern of your choice may be used in your web and mobile development, whether you are templating and importing htmls with specified variables (EL is way to slow) or going native Java only, you're free to develop to your own preference.");
+		//div.add("All the source is ofcourse available on GitHub, with the developer a simple support ticket,issue log, or stack exchange query away - You never have to worry about getting stuck");
+		//div.add("I chose a straight forward WAR structure in a Domain Driven Architecture Pattern, running on Undertow, and using Azure with Hibernate 5.2 for the persistence strategy. Bitronix BTM for JTA to ensure Test and Production are identical." + "<br/>The Query Builder/Entity Management API is another stand-alone project and is a powerful - if unknown - Criteria Builder Manager for DDD with all the bells and whistles.");
+		//div.add("I could have gone the EE EJB JCache DAO Named Queries route as well, but doesn't that seem like a touch overkill for a site with no background running tasks or JMS requirements? :)");
+
 		return div;
 	}
 

@@ -5,7 +5,7 @@ import com.jwebmp.examples.demos.homepage.display.about.AboutJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutThisSiteScreen;
 import com.jwebmp.examples.demos.homepage.display.about.UnderTheHoodScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.bootstrap.BootstrapDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version4.Bootstrap4DemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqplot.JQPlotDemos;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.JQueryUIDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jstree.JSTreeDemoScreen;
@@ -26,8 +26,9 @@ public enum DisplayScreens
 	UnderTheHood(UnderTheHoodScreen.class, "UnderTheHood"),
 	AboutThisSIte(AboutThisSiteScreen.class, "AboutThisSite"),
 
+
 	JQueryUI(JQueryUIDemoScreen.class, "JQueryUI"),
-	Bootstrap4(BootstrapDemoScreen.class, "Bootstrap4"),
+	Bootstrap4(Bootstrap4DemoScreen.class, "Bootstrap4"),
 
 	FontAwesome(FontAwesomeScreen.class, "FontAwesome"),
 	Glyphicons(GlyphiconsScreen.class, "Glyphicons"),
