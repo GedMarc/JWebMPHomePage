@@ -1,0 +1,6 @@
+<dependency>
+    <groupId>com.jwebmp</groupId>
+    <artifactId>jwebmp-d3-reigngold-tilford-tree</artifactId>
+    <version>${jwebmp.version}</version>
+    <type>jar</type>
+</dependency>

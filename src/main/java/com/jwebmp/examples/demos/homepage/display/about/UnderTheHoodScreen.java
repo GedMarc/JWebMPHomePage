@@ -70,13 +70,7 @@ public class UnderTheHoodScreen
 		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("fastclasspath.version"))
 		                                       .add(new TableCell<>("Scanner")));
-/*
-		table.add(new BSTableRow<>(BSTableOptions.Table_Hover).add(new TableCell<>("Google Guava"))
-		                                                      .add(new TableCell<>("24.1.1-jre"))
-		                                                      .add(new TableCell<>("<a href=\"https://github.com/google/guava\" target=\"_blank\">Link</a>"))
-		                                                      .add(new TableCell<>("guava.version"))
-		                                                      .add(new TableCell<>("Utility")));
-*/
+
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Google Guice"))
 		                                       .add(new TableCell<>("4.2.0"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/google/guice\" target=\"_blank\">Link</a>"))
@@ -88,18 +82,6 @@ public class UnderTheHoodScreen
 		                                       .add(new TableCell<>("<a href=\"https://github.com/GedMarc/GuiceInjection\" target=\"_blank\">Link</a>"))
 		                                       // .add(new TableCell<>("jwebmp.version"))
 		                                       .add(new TableCell<>("Domain Context")));
-/*
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Servlet 3"))
-		                                       .add(new TableCell<>("3.1.0"))
-		                                       .add(new TableCell<>("3.0 can be used"))
-		                                       .add(new TableCell<>("servlet.api.version"))
-		                                       .add(new TableCell<>("Web API")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JSR311"))
-		                                       .add(new TableCell<>("1.1.1"))
-		                                       .add(new TableCell<>("javax.ws.rs"))
-		                                       .add(new TableCell<>("jsr311.version"))
-		                                       .add(new TableCell<>("Rest API")));*/
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JacksonJSON"))
 		                                       .add(new TableCell<>("2.9.5"))
@@ -176,7 +158,7 @@ public class UnderTheHoodScreen
 		DivSimple<?> div = new DivSimple<>();
 		div.addClass("row");
 
-		div.add(new H5<>("Change anything with interfaces").addClass(Col_12));
+		div.add(new H3<>("Everything Modifyable").addClass(Col_12));
 		div.add(new H5<>("Service Locators are used to configure classpath scanning").addClass(Col_12));
 
 		SourceCodeContentPanel<?> sourcePanel = new SourceCodeContentPanel("Dynamic Call Injections", InjectionControlMethods, null);

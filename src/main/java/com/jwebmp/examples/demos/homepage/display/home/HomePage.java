@@ -44,7 +44,7 @@ public class HomePage
 {
 	public HomePage()
 	{
-		super(HTML_TAB + HTML_TAB + "Welcome to JWeb MicroProfile!" + HTML_TAB + "<small><i>Demo Site Under Construction - The components are finished tho</i></small>");
+		super(HTML_TAB + HTML_TAB + "Welcome to JWeb MicroProfile!" + HTML_TAB + "<small><i>Demo Site Under Construction<a href=\"https://github.com/GedMarc/JWebMPHomePage\" target=\"_blank\">View Site Source Code</i></small></a>");
 		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
 	}
 
