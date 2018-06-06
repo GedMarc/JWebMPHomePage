@@ -8,7 +8,7 @@ import com.jwebmp.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
-import za.co.mmagon.guiceinjection.GuiceContext;
+import com.jwebmp.guiceinjection.GuiceContext;
 
 public class SourceCodeModalDisplayEvent
 		extends ClickAdapter<SourceCodeModalDisplayEvent>

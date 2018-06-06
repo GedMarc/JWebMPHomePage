@@ -16,6 +16,7 @@ import com.jwebmp.examples.demos.homepage.display.home.parts.MavenPomPart;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ReasonsWhyPart;
 import com.jwebmp.examples.demos.homepage.display.login.LoginPart;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
@@ -34,10 +35,9 @@ import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigur
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import org.apache.commons.lang3.StringEscapeUtils;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.Bg_Secondary;
-import static com.jwebmp.utilities.StaticStrings.HTML_TAB;
+import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
+import static com.jwebmp.utilities.StaticStrings.*;
 
 public class HomePage
 		extends DisplayScreen

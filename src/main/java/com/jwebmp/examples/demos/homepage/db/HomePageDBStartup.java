@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.db;
 
 import com.google.inject.Inject;
 import com.google.inject.persist.PersistService;
-import za.co.mmagon.guiceinjection.db.DBStartupAsync;
+import com.jwebmp.guiceinjection.db.DBStartupAsync;
 
 import javax.sql.DataSource;
 

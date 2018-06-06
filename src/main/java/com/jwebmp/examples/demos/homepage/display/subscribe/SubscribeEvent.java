@@ -8,8 +8,8 @@ import com.jwebmp.base.ajax.*;
 import com.jwebmp.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
 import javax.mail.MessagingException;
 import javax.management.InstanceAlreadyExistsException;

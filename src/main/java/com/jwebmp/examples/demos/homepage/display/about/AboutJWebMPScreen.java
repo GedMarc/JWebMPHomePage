@@ -4,6 +4,7 @@ import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
@@ -14,9 +15,8 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.Table_Hover;
+import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
 public class AboutJWebMPScreen
 		extends DisplayScreen<AboutJWebMPScreen>

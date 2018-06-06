@@ -2,6 +2,8 @@ package com.jwebmp.examples.demos.homepage;
 
 import com.jwebmp.components.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBFilter;
+import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.logger.logging.LogSingleLineFormatter;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemes;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemesPageConfigurator;
 import io.undertow.Undertow;
@@ -11,8 +13,6 @@ import io.undertow.servlet.Servlets;
 import io.undertow.servlet.api.DeploymentInfo;
 import io.undertow.servlet.api.DeploymentManager;
 import io.undertow.servlet.api.FilterInfo;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import za.co.mmagon.logger.logging.LogSingleLineFormatter;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.ServletException;
@@ -21,7 +21,7 @@ import java.util.logging.FileHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static za.co.mmagon.logger.LogFactory.configureConsoleColourOutput;
+import static com.jwebmp.logger.LogFactory.*;
 
 public class HomePageStartup
 {

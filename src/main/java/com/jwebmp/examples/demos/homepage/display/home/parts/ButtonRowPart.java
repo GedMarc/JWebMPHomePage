@@ -10,12 +10,12 @@ import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.atmosphere.AtmosphereGlobalProperties;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
 public class ButtonRowPart<J extends ButtonRowPart<J>>
 		extends BSRow<J>

@@ -6,7 +6,7 @@ import com.jwebmp.SessionHelper;
 import com.jwebmp.examples.demos.homepage.MailService;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import za.co.mmagon.guiceinjection.GuiceContext;
+import com.jwebmp.guiceinjection.GuiceContext;
 
 public class SubscriberPersistAsync
 		implements Runnable

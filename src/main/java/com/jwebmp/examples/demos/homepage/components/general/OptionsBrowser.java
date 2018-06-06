@@ -1,11 +1,11 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.options.JSTreeNodeOptions;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.Field;
@@ -36,7 +36,7 @@ public class OptionsBrowser
 		rootItem.getOptions()
 		        .setDisabled(false)
 		        .setIcon("fa fa-toggle-down")
-		        .setOpened(true);
+		        .setOpened(false);
 
 		addRoot(rootItem);
 		buildPart(rootItem, optionsObject);

@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage;
 
-import za.co.mmagon.guiceinjection.GuiceConfig;
-import za.co.mmagon.guiceinjection.interfaces.IGuiceConfigurator;
+import com.jwebmp.guiceinjection.GuiceConfig;
+import com.jwebmp.guiceinjection.interfaces.IGuiceConfigurator;
 
 public class GuiceConfigurator
 		implements IGuiceConfigurator

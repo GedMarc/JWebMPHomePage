@@ -9,8 +9,8 @@ import com.jwebmp.components.pace.PaceLoaderPageConfigurator;
 import com.jwebmp.components.pace.PaceThemeColour;
 import com.jwebmp.components.pace.preloadedthemes.PaceTheme;
 import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
 /**
  * @author Marc Magon

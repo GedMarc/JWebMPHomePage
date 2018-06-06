@@ -9,7 +9,7 @@ import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.UserActivity;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
-import za.co.mmagon.guiceinjection.GuiceContext;
+import com.jwebmp.guiceinjection.GuiceContext;
 
 public class LoginAsync
 		implements Runnable

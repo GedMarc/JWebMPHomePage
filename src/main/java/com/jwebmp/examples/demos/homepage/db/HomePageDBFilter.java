@@ -5,7 +5,7 @@ import bitronix.tm.jndi.BitronixContext;
 import com.google.inject.Inject;
 import com.google.inject.persist.PersistService;
 import com.google.inject.persist.UnitOfWork;
-import za.co.mmagon.guiceinjection.GuiceContext;
+import com.jwebmp.guiceinjection.GuiceContext;
 
 import javax.naming.NamingException;
 import javax.servlet.*;

@@ -7,6 +7,7 @@ import com.jwebmp.base.ajax.*;
 import com.jwebmp.base.html.CSSLink;
 import com.jwebmp.base.html.Meta;
 import com.jwebmp.base.servlets.SessionStorageProperties;
+import com.jwebmp.entityassist.enumerations.ActiveFlag;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
@@ -16,12 +17,11 @@ import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
+import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
 import com.jwebmp.utilities.StaticStrings;
 import com.jwebmp.utilities.regex.RegularExpressionsDTO;
-import za.co.mmagon.entityassist.enumerations.ActiveFlag;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import za.co.mmagon.logger.LogFactory;
 
 import javax.persistence.NoResultException;
 import java.util.Map;
@@ -30,7 +30,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static za.co.mmagon.guiceinjection.GuiceContext.getInstance;
+import static com.jwebmp.guiceinjection.GuiceContext.*;
 
 
 /**

@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.demos.graphing.jqplot;
 
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.ComingSoon;
-import za.co.mmagon.guiceinjection.GuiceContext;
+import com.jwebmp.guiceinjection.GuiceContext;
 
 public class JQPlotDemos
 		extends PluginDemoScreen

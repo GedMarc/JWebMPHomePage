@@ -1,12 +1,10 @@
 package com.jwebmp.examples.demos.homepage.entities;
 
+import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.UserActivityBuilder;
 import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import za.co.mmagon.entityassist.CoreEntity;
-import com.jwebmp.examples.demos.homepage.entities.builders.UserActivityBuilder;
-import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

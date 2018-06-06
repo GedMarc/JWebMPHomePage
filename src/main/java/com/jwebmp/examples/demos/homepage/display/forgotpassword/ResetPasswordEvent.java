@@ -5,18 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.*;
-import com.jwebmp.examples.demos.homepage.display.home.HomePage;
-import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
-import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import com.jwebmp.examples.demos.homepage.entities.UserActivity;
-import com.jwebmp.examples.demos.homepage.entities.Visitors;
-import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
-import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
-import lombok.extern.java.Log;
-import za.co.mmagon.entityassist.enumerations.ActiveFlag;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.ajax.*;
+import com.jwebmp.entityassist.enumerations.ActiveFlag;
 import com.jwebmp.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.Passwords;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
@@ -28,8 +17,10 @@ import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.UserActivity;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
+import lombok.extern.java.Log;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -55,8 +46,8 @@ public class ResetPasswordEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		Subscribers newSubs = (Subscribers) call.getVariable("subscribe")
-		                                        .as(Subscribers.class);
+		Subscribers newSubs = call.getVariable("subscribe")
+		                          .as(Subscribers.class);
 
 		if (!(newSubs.getPassword() == null || newSubs.getPassword()
 		                                              .equals(newSubs.getConfirmPassword()) || newSubs.getPassword()

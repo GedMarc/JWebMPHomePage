@@ -7,12 +7,12 @@ import com.jwebmp.base.html.DivSimple;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.examples.demos.homepage.display.SourceCodeDetailsContainer;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
+import com.jwebmp.guiceinjection.Pair;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import org.apache.commons.lang3.StringEscapeUtils;
-import za.co.mmagon.guiceinjection.Pair;
 
 import javax.annotation.Nullable;
 import java.util.LinkedHashMap;

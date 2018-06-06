@@ -1,13 +1,14 @@
 package com.jwebmp.examples.demos.homepage.db;
 
+import com.jwebmp.guiceinjection.db.ConnectionBaseInfo;
+import com.jwebmp.guiceinjection.db.connectionbasebuilders.HibernateDefaultConnectionBaseBuilder;
 import com.oracle.jaxb21.Persistence;
-import za.co.mmagon.guiceinjection.db.ConnectionBaseInfo;
-import za.co.mmagon.guiceinjection.db.connectionbasebuilders.HibernateDefaultConnectionBaseBuilder;
 
 import java.lang.annotation.Annotation;
 import java.util.Properties;
 
-public class HomePageDBModule extends HibernateDefaultConnectionBaseBuilder
+public class HomePageDBModule
+		extends HibernateDefaultConnectionBaseBuilder
 {
 
 	@Override

@@ -11,9 +11,9 @@ import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.exceptions.MissingComponentException;
+import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import za.co.mmagon.logger.LogFactory;
 
 import java.util.Optional;
 import java.util.concurrent.Executors;

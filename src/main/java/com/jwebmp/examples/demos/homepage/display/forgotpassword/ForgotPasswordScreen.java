@@ -14,6 +14,7 @@ import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButton;
@@ -24,8 +25,7 @@ import com.jwebmp.plugins.bootstrap4.forms.BSForm;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
 import com.jwebmp.plugins.jquerylayout.layout.events.JQLayoutCloseLayoutDivFeature;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import za.co.mmagon.plugins.softhistorychange.SoftHistoryChangeFeature;
+import com.jwebmp.plugins.softhistorychange.SoftHistoryChangeFeature;
 
 import java.time.LocalDateTime;
 import java.util.Map;

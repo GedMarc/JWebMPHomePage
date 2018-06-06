@@ -1,16 +1,17 @@
 package com.jwebmp.examples.demos.homepage.entities.builders;
 
 import com.google.inject.Key;
-import za.co.mmagon.entityassist.querybuilder.QueryBuilderCore;
-import za.co.mmagon.guiceinjection.GuiceContext;
+import com.jwebmp.entityassist.querybuilder.QueryBuilderCore;
 import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.Visitors_;
+import com.jwebmp.guiceinjection.GuiceContext;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.Predicate;
 
-public class VisitorsBuilder extends QueryBuilderCore<VisitorsBuilder, Visitors, Long>
+public class VisitorsBuilder
+		extends QueryBuilderCore<VisitorsBuilder, Visitors, Long>
 {
 	public VisitorsBuilder findByGuid(String guid)
 	{

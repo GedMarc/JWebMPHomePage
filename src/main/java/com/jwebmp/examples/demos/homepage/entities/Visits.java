@@ -3,15 +3,12 @@ package com.jwebmp.examples.demos.homepage.entities;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jwebmp.Page;
-import com.jwebmp.examples.demos.homepage.entities.builders.VisitsBuilder;
-import com.jwebmp.examples.demos.homepage.entities.persistasync.VisitsPersistAsync;
-import lombok.Data;
 import com.jwebmp.SessionHelper;
-import za.co.mmagon.entityassist.CoreEntity;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import com.jwebmp.Page;
+import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitsBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.VisitsPersistAsync;
+import com.jwebmp.guiceinjection.GuiceContext;
+import lombok.Data;
 
 import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;

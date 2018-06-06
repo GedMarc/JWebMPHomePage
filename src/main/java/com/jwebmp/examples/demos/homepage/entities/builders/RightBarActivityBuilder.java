@@ -1,10 +1,10 @@
 package com.jwebmp.examples.demos.homepage.entities.builders;
 
 import com.google.inject.Key;
+import com.jwebmp.entityassist.querybuilder.QueryBuilderCore;
 import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.RightBarActivity;
-import za.co.mmagon.entityassist.querybuilder.QueryBuilderCore;
-import za.co.mmagon.guiceinjection.GuiceContext;
+import com.jwebmp.guiceinjection.GuiceContext;
 
 import javax.persistence.EntityManager;
 

@@ -1,8 +1,8 @@
 package com.jwebmp.examples.demos.homepage.display;
 
+import com.jwebmp.guiceinjection.OptionalPair;
+import com.jwebmp.guiceinjection.Pair;
 import lombok.Data;
-import za.co.mmagon.guiceinjection.OptionalPair;
-import za.co.mmagon.guiceinjection.Pair;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;

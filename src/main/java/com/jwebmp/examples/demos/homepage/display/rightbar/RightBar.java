@@ -14,9 +14,10 @@ import com.jwebmp.plugins.bootstrap4.options.BSColoursOptions;
 
 import java.util.List;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.Bg_Dark;
-import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.H_100;
-import static za.co.mmagon.entityassist.enumerations.OrderByType.DESC;
+import static com.jwebmp.entityassist.enumerations.OrderByType.*;
+import static com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 
 public class RightBar
 		extends DivSimple<RightBar>
@@ -33,7 +34,7 @@ public class RightBar
 		displayTabs.getNavs()
 		           .addClass(BSNavsOptions.Tabs_Bordered);
 		displayTabs.getNavs()
-		           .addClass(BSNavsOptions.Nav_Justified);
+		           .addClass(Nav_Justified);
 
 		add(displayTabs);
 		displayTabs.addClass(H_100);
@@ -43,39 +44,28 @@ public class RightBar
 		           .addClass(H_100);
 		displayTabs.getTabContents()
 		           .addClass(Bg_Dark);
+		displayTabs.addStyle("overflow:hidden");
 
 
 		DivSimple activityTab = buildActivityTab();
-		DivSimple<?> settingsTab = new DivSimple<>();
-
-		DivSimple<?> activityTabContents = new DivSimple<>();
-		DivSimple<?> settingsTabContents = new DivSimple<>();
-
-
-		activityTabContents.addFeature(new SlimScrollFeature(activityTabContents).setOptions(new SlimScrollOptions().setHeight("100%")
-		                                                                                                            .setAlwaysVisible(true)
-		                                                                                                            .setPosition(LeftOrRight.Right)
-		                                                                                                            .setSize(5)
-		                                                                                                            .setTouchScrollStep(50)
-		                                                                                                            .setColor(new ColourCSSImpl("#98a6ad"))));
-
-		settingsTabContents.addFeature(new SlimScrollFeature(settingsTabContents).setOptions(new SlimScrollOptions().setHeight("100%")
-		                                                                                                            .setAlwaysVisible(true)
-		                                                                                                            .setPosition(LeftOrRight.Right)
-		                                                                                                            .setSize(5)
-		                                                                                                            .setTouchScrollStep(50)
-		                                                                                                            .setColor(new ColourCSSImpl("#98a6ad"))));
+		DivSimple<?> settingsTab = new DivSimple<>().add("Settings Tab");
 
 		BSTabContainer<?> activities = displayTabs.asMe()
 		                                          .addTab("Activity", activityTab, true);
-
-
 		BSTabContainer<?> settings = displayTabs.asMe()
 		                                        .addTab("Settings", settingsTab, false);
 
-		activityTab.add(activityTabContents);
-		settingsTab.add(settingsTabContents);
-
+		displayTabs.getTabContents()
+		           .addClass(H_100)
+		           .addClass(W_100)
+		           .addStyle("overflow-y:auto")
+		           .setID("activityTabContents")
+		           .addFeature(new SlimScrollFeature(displayTabs.getTabContents()).setOptions(new SlimScrollOptions().setHeight("100%")
+		                                                                                                             .setAlwaysVisible(true)
+		                                                                                                             .setPosition(LeftOrRight.Right)
+		                                                                                                             .setSize(5)
+		                                                                                                             .setTouchScrollStep(50)
+		                                                                                                             .setColor(new ColourCSSImpl("#98a6ad"))));
 	}
 
 	private DivSimple<?> buildActivityTab()

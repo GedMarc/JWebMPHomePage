@@ -13,6 +13,7 @@ import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCheckBox;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordEvent;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButton;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonSizeOptions;
@@ -25,9 +26,8 @@ import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSSpacingOptions;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
-import static com.jwebmp.base.html.attributes.InputButtonTypeAttributes.AutoComplete;
+import static com.jwebmp.base.html.attributes.InputButtonTypeAttributes.*;
 
 public class LoginPart
 		extends SourceCodeContentPanel

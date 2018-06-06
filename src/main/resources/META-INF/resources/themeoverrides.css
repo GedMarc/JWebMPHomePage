@@ -57,3 +57,7 @@ body.fixed-left .side-menu.left {
 .right-bar {
     background: inherit;
 }
+
+.right-bar .tab-content {
+    padding: 0px;
+}

@@ -19,10 +19,9 @@ import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
 import com.jwebmp.plugins.fontawesome.FontAwesomeProperties;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.Col_12;
-import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.Col_Md_6;
-import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.Table_Hover;
-import static com.jwebmp.utilities.StaticStrings.HTML_TAB;
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
+import static com.jwebmp.utilities.StaticStrings.*;
 
 public class AboutThisSiteScreen
 		extends DisplayScreen<AboutThisSiteScreen>
@@ -44,7 +43,7 @@ public class AboutThisSiteScreen
 
 		column1.add(new MintonPanel<>("Site Specs", buildSiteSpecs(), "bg-primary").setShowHeader(false));
 
-		column2.add(new MintonPanel<>("Options Browser", buildOptionsBrowserAbout(), "bg-primary").setShowHeader(false));
+		column1.add(new MintonPanel<>("Options Browser", buildOptionsBrowserAbout(), "bg-primary").setShowHeader(false));
 
 		row.add(column1);
 		row.add(column2);

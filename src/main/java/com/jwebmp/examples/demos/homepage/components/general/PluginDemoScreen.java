@@ -4,6 +4,7 @@ import com.jwebmp.FileTemplates;
 import com.jwebmp.base.html.DivSimple;
 import com.jwebmp.base.html.Link;
 import com.jwebmp.base.html.Paragraph;
+import com.jwebmp.entityassist.enumerations.Operand;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.display.ComingSoon;
@@ -12,6 +13,7 @@ import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggable
 import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
@@ -30,12 +32,10 @@ import com.jwebmp.plugins.jquerylayout.layout.enumerations.JQLayoutArea;
 import com.jwebmp.plugins.jquerylayout.layout.events.JQLayoutSlideCloseLayoutDivFeature;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
-import za.co.mmagon.entityassist.enumerations.Operand;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
 import java.util.Optional;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.Col_12;
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 
 public class PluginDemoScreen
 		extends DisplayScreen

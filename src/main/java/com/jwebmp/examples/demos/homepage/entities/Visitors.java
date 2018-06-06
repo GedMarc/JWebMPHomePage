@@ -6,10 +6,10 @@
 package com.jwebmp.examples.demos.homepage.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitorsBuilder;
 import lombok.Data;
 import org.apache.commons.lang3.NotImplementedException;
-import za.co.mmagon.entityassist.CoreEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -125,12 +125,8 @@ public class Visitors
 
 	public boolean isGuest()
 	{
-		if (getSubscribersList() == null || getSubscribersList().isEmpty())
-		{
-			return true;
-		}
+		return getSubscribersList() == null || getSubscribersList().isEmpty();
 
-		return false;
 	}
 
 	@Override

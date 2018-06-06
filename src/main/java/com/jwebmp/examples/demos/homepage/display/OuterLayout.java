@@ -3,11 +3,11 @@ package com.jwebmp.examples.demos.homepage.display;
 import com.jwebmp.Page;
 import com.jwebmp.PlaceHolder;
 import com.jwebmp.base.ComponentHierarchyBase;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.jquerylayout.layout.components.BorderLayout;
 import lombok.extern.java.Log;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.Bg_Dark;
+import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 
 @Log
 public class OuterLayout
@@ -40,8 +40,6 @@ public class OuterLayout
 		         .setMinSize(240)
 		         .setMaxSize(240);
 
-		getEast().getOptions()
-		         .setInitClosed(true);
 		getEast().addStyle("z-index:100 !important;");
 
 		getOptions().getDefaults()
@@ -71,6 +69,8 @@ public class OuterLayout
 		if (p.isMobileOrSmartTablet())
 		{
 			getWest().getOptions()
+			         .setInitClosed(true);
+			getEast().getOptions()
 			         .setInitClosed(true);
 		}
 		super.init();

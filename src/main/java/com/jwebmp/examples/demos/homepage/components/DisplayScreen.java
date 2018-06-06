@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage.components;
 import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
 import com.jwebmp.generics.LeftOrRight;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
@@ -15,7 +16,6 @@ import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.jquerylayout.layout.components.BorderLayout;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
 import javax.validation.constraints.NotNull;
 

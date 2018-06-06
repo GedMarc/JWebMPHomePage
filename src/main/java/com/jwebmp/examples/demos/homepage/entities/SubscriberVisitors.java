@@ -6,10 +6,9 @@
 package com.jwebmp.examples.demos.homepage.entities;
 
 
+import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.SubscriberVisitorsBuilder;
 import lombok.Data;
-import za.co.mmagon.entityassist.CoreEntity;
-import com.jwebmp.examples.demos.homepage.entities.builders.SubscriberVisitorsBuilder;
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlRootElement;

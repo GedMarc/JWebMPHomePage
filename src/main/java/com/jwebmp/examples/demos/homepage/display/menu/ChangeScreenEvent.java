@@ -7,16 +7,15 @@ import com.jwebmp.base.ajax.AjaxResponse;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.jquerylayout.layout.enumerations.JQLayoutArea;
 import com.jwebmp.plugins.jquerylayout.layout.events.JQLayoutSlideCloseLayoutDivFeature;
+import com.jwebmp.plugins.softhistorychange.SoftHistoryChangeAdapter;
 import lombok.extern.java.Log;
-import za.co.mmagon.guiceinjection.GuiceContext;
-import za.co.mmagon.plugins.softhistorychange.SoftHistoryChangeAdapter;
 
 import java.util.logging.Level;
 
-import static com.jwebmp.utilities.StaticStrings.CHAR_DOT;
-import static com.jwebmp.utilities.StaticStrings.CHAR_UNDERSCORE;
+import static com.jwebmp.utilities.StaticStrings.*;
 
 @Log
 public class ChangeScreenEvent

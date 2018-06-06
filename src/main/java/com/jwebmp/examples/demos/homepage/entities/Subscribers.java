@@ -6,22 +6,21 @@
 package com.jwebmp.examples.demos.homepage.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jwebmp.entityassist.CoreEntity;
+import com.jwebmp.entityassist.converters.LocalDateTimestampAttributeConverter;
+import com.jwebmp.entityassist.enumerations.ActiveFlag;
+import com.jwebmp.entityassist.enumerations.Operand;
 import com.jwebmp.examples.demos.homepage.Passwords;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.entities.builders.SubscribersBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.SubscriberPersistAsync;
 import com.jwebmp.exceptions.MissingComponentException;
+import com.jwebmp.guiceinjection.GuiceContext;
 import lombok.Data;
-import za.co.mmagon.entityassist.CoreEntity;
-import za.co.mmagon.entityassist.converters.LocalDateTimestampAttributeConverter;
-import za.co.mmagon.entityassist.enumerations.ActiveFlag;
-import za.co.mmagon.entityassist.enumerations.Operand;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
 import javax.cache.annotation.CacheKey;
 import javax.cache.annotation.CacheRemove;
 import javax.cache.annotation.CacheResult;
-import javax.mail.MessagingException;
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InvalidAttributeValueException;
 import javax.persistence.*;
@@ -251,7 +250,7 @@ public class Subscribers
 	}
 
 	@CacheRemove()
-	public Optional<Subscribers> create(Visitors visitor) throws InstanceAlreadyExistsException, MessagingException, InvalidAttributeValueException
+	public Optional<Subscribers> create(Visitors visitor) throws InstanceAlreadyExistsException
 	{
 		if (findByEmail(getEmailAddress()).isPresent())
 		{
@@ -316,7 +315,7 @@ public class Subscribers
 	}
 
 	@CacheRemove()
-	public Optional<Subscribers> updateRequireConfirmation(Visitors visitor) throws InstanceAlreadyExistsException, MessagingException, InvalidAttributeValueException
+	public Optional<Subscribers> updateRequireConfirmation(Visitors visitor)
 	{
 		setAdministrator(false);
 		setVisitorID(visitor);

@@ -8,6 +8,7 @@ import com.jwebmp.base.html.Link;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
@@ -15,13 +16,12 @@ import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
-import za.co.mmagon.guiceinjection.GuiceContext;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
-import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.Row;
+import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 
 public class DemoScreen
 		extends DisplayScreen
