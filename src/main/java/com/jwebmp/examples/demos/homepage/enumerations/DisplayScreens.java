@@ -7,11 +7,11 @@ import com.jwebmp.examples.demos.homepage.display.about.UnderTheHoodScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version4.Bootstrap4DemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.graphing.jqplot.JQPlotDemos;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome.FontAwesomeScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.glyphicons.GlyphiconsScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.JQueryUIDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.trees.jstree.JSTreeDemoScreen;
-import com.jwebmp.examples.demos.homepage.display.fontawesome.FontAwesomeScreen;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordScreen;
-import com.jwebmp.examples.demos.homepage.display.glyphicons.GlyphiconsScreen;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 
 public enum DisplayScreens
