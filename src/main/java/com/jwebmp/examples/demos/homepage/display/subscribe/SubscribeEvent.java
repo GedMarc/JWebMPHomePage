@@ -11,7 +11,6 @@ import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 
-import javax.mail.MessagingException;
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InvalidAttributeValueException;
 import javax.persistence.NoResultException;
@@ -79,11 +78,6 @@ public class SubscribeEvent
 				response.addReaction(
 						new AjaxResponseReaction("Whoops", "You've already been registered. We've resent your confirmation email for security reasons.", ReactionType.DialogDisplay,
 						                         AjaxResponseType.Danger));
-			}
-			catch (MessagingException e)
-			{
-				response.addReaction(
-						new AjaxResponseReaction("Whoops", "Please make sure you've filled everything in correctly.", ReactionType.DialogDisplay, AjaxResponseType.Danger));
 			}
 			catch (InvalidAttributeValueException e)
 			{

@@ -22,7 +22,9 @@ import java.io.Serializable;
 @Table(name = "SubscriberVisitors")
 @XmlRootElement
 @Data
-public class SubscriberVisitors extends CoreEntity<SubscriberVisitors, SubscriberVisitorsBuilder, Long> implements Serializable
+public class SubscriberVisitors
+		extends CoreEntity<SubscriberVisitors, SubscriberVisitorsBuilder, Long>
+		implements Serializable
 {
 
 	private static final long serialVersionUID = 1L;
@@ -31,12 +33,16 @@ public class SubscriberVisitors extends CoreEntity<SubscriberVisitors, Subscribe
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long subscriberVisitorID;
 
-	@JoinColumn(name = "SubscriberID", referencedColumnName = "SubscriberID")
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinColumn(name = "SubscriberID",
+			referencedColumnName = "SubscriberID")
+	@ManyToOne(cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY)
 	private Subscribers subscriberID;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinColumn(name = "VisitorID", referencedColumnName = "VisitorID")
+	@ManyToOne(cascade = CascadeType.ALL,
+			fetch = FetchType.LAZY)
+	@JoinColumn(name = "VisitorID",
+			referencedColumnName = "VisitorID")
 	private Visitors visitorID;
 
 	/*
@@ -52,7 +58,9 @@ public class SubscriberVisitors extends CoreEntity<SubscriberVisitors, Subscribe
 		SubscriberVisitors sv = new SubscriberVisitors();
 		sv.setSubscriberID(subs);
 		sv.setVisitorID(visitor);
-		sv.builder().setRunDetached(true).persist(sv);
+		sv.builder()
+		  .setRunDetached(true)
+		  .persist(sv);
 	}
 
 	@Override

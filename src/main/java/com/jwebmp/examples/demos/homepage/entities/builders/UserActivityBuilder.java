@@ -8,7 +8,8 @@ import com.jwebmp.guiceinjection.GuiceContext;
 
 import javax.persistence.EntityManager;
 
-public class UserActivityBuilder extends QueryBuilderCore<UserActivityBuilder, UserActivity, Long>
+public class UserActivityBuilder
+		extends QueryBuilderCore<UserActivityBuilder, UserActivity, Long>
 {
 	@Override
 	public EntityManager getEntityManager()

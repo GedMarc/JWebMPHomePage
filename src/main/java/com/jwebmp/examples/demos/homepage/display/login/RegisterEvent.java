@@ -10,13 +10,12 @@ import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.plugins.bootstrap4.modal.BSModal;
 
-import javax.mail.MessagingException;
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InvalidAttributeValueException;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.jwebmp.utilities.StaticStrings.LOCAL_STORAGE_PARAMETER_KEY;
+import static com.jwebmp.utilities.StaticStrings.*;
 
 public class RegisterEvent
 		extends DefaultClick
@@ -86,11 +85,6 @@ public class RegisterEvent
 			{
 				response.addReaction(new AjaxResponseReaction("Whoops", "You've already been registered. You can use the Forgot Password option to reset your password.",
 				                                              ReactionType.DialogDisplay, AjaxResponseType.Danger));
-			}
-			catch (MessagingException e)
-			{
-				response.addReaction(
-						new AjaxResponseReaction("Whoops", "Please make sure you've filled everything in correctly.", ReactionType.DialogDisplay, AjaxResponseType.Danger));
 			}
 			catch (InvalidAttributeValueException e)
 			{

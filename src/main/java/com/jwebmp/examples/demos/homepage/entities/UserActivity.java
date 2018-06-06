@@ -17,7 +17,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class UserActivity extends CoreEntity<UserActivity, UserActivityBuilder, Long>
+public class UserActivity
+		extends CoreEntity<UserActivity, UserActivityBuilder, Long>
 {
 
 	private static final long serialVersionUID = 1L;
@@ -29,45 +30,60 @@ public class UserActivity extends CoreEntity<UserActivity, UserActivityBuilder, 
 
 	@Basic(optional = false)
 	@NotNull
-	@Size(min = 1, max = 100)
-	@Column(nullable = false, length = 100, name = "UserActivityGruop")
+	@Size(min = 1,
+			max = 100)
+	@Column(nullable = false,
+			length = 100,
+			name = "UserActivityGruop")
 	@Enumerated(value = EnumType.STRING)
 	private UserActivityGroup activityGroup;
 
 	@Basic(optional = false)
 	@NotNull
-	@Size(min = 1, max = 150)
-	@Column(nullable = false, length = 100, name = "Title")
+	@Size(min = 1,
+			max = 150)
+	@Column(nullable = false,
+			length = 100,
+			name = "Title")
 	private String title;
 
 	@Basic(optional = false)
 	@Null
-	@Size(min = 1, max = 255)
-	@Column(nullable = true, length = 255, name = "ImageURL")
+	@Size(min = 1,
+			max = 255)
+	@Column(nullable = true,
+			length = 255,
+			name = "ImageURL")
 	private String imageUrl;
 
 	@Basic(optional = false)
 	@Null
-	@Size(min = 1, max = 255)
-	@Column(nullable = true, length = 255, name = "ReadMoreURL")
+	@Size(min = 1,
+			max = 255)
+	@Column(nullable = true,
+			length = 255,
+			name = "ReadMoreURL")
 	private String readMoreUrl;
 
 	@Basic(optional = false)
 	@NotNull
 	@Size(min = 1)
-	@Column(nullable = false, name = "Activity")
+	@Column(nullable = false,
+			name = "Activity")
 	private String activity;
 
 	@Basic(optional = false)
 	@NotNull
 	@Size(min = 1)
-	@Column(nullable = false, name = "JSON")
+	@Column(nullable = false,
+			name = "JSON")
 	private String json;
 
 	@Basic(optional = false)
 	@NotNull
 	@Size(min = 1)
-	@Column(nullable = false, name = "ActivityDescription")
+	@Column(nullable = false,
+			name = "ActivityDescription")
 	private String description;
 
 
@@ -90,7 +106,8 @@ public class UserActivity extends CoreEntity<UserActivity, UserActivityBuilder, 
 
 	public UserActivity create()
 	{
-		builder().setRunDetached(true).persist(this);
+		builder().setRunDetached(true)
+		         .persist(this);
 		return this;
 	}
 }

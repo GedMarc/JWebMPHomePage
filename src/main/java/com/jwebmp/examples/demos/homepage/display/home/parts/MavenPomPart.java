@@ -40,6 +40,9 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 		add(new PrettyInverseButton<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-HelloWorld/archive/master.zip").setTargetFrameName("_blank")
 		                                                                                                                  .setText("Download Standalone HelloWorld"));
 
+		add(new PrettyInverseButton<>("https://github.com/GedMarc/JWebMPHomePage").setTargetFrameName("_blank")
+		                                                                          .setText("Download Site Source"));
+
 		add(new SmallText<>("<br/>&nbsp;*0.0.0_0 is the nightly build"));
 	}
 

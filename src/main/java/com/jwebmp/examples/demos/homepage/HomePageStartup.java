@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage;
 import com.jwebmp.components.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBFilter;
 import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.logger.logging.LogSingleLineFormatter;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemes;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemesPageConfigurator;
@@ -50,6 +51,8 @@ public class HomePageStartup
 		{
 			e.printStackTrace();
 		}
+
+		LogColourFormatter.setRenderBlack(false);
 
 		configureConsoleColourOutput(Level.FINE);
 

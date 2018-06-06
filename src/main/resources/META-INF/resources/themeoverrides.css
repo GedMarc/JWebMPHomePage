@@ -60,4 +60,5 @@ body.fixed-left .side-menu.left {
 
 .right-bar .tab-content {
     padding: 0px;
+    padding-left: 5px;
 }
