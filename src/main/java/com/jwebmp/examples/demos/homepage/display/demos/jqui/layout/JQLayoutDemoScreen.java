@@ -7,6 +7,6 @@ public class JQLayoutDemoScreen
 {
 	public JQLayoutDemoScreen()
 	{
-		super("JQ Layout", "JQuery UI", "JQLayout");
+		super("JQ Layout", "UI Frameworks, JQuery UI", "JQLayout");
 	}
 }

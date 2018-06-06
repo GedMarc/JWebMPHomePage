@@ -1,6 +1,7 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
 import com.jwebmp.FileTemplates;
+import com.jwebmp.base.html.Div;
 import com.jwebmp.base.html.DivSimple;
 import com.jwebmp.base.html.Link;
 import com.jwebmp.base.html.Paragraph;
@@ -33,6 +34,8 @@ import com.jwebmp.plugins.jquerylayout.layout.events.JQLayoutSlideCloseLayoutDiv
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
@@ -41,22 +44,17 @@ public class PluginDemoScreen
 		extends DisplayScreen
 {
 
+	private final List<Div<?, ?, ?, ?, ?>> additionals = new ArrayList<>();
 	BSColumn fullColumn = new BSColumn(Col_12, Col_12);
 	BSColumn rightColumn = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
-
 	BSColumn leftColumnTop = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
 	BSColumn rightColumnTop = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
-
 	String[] breadCrumbs;
-
 	DivSimple<?> mavenDisplayDiv;
 	DivSimple artiInfo;
-
 	String pluginName;
-
 	JQMetroTiles featureTiles = new JQMetroTiles();
 	JQMetroTiles componentTiles = new JQMetroTiles();
-
 	boolean tileAdded = false;
 
 	public PluginDemoScreen(String pluginName, String... breadCrumbs)
@@ -81,6 +79,11 @@ public class PluginDemoScreen
 		              .setInitDelay(0);
 		componentTiles.addStyle("width", "inherit");
 
+	}
+
+	public void addDiv(Div div)
+	{
+		additionals.add(div);
 	}
 
 	public void addComponentTile(String name, String description, DisplayScreen<?> demoDisplayScreen)
@@ -159,6 +162,13 @@ public class PluginDemoScreen
 		{
 			container.add(new ComingSoon().setRenderBreadcrumb(false));
 		}
+
+		BSRow<?> additionalRow = BSRow.newInstance();
+		for (Div<?, ?, ?, ?, ?> additional : additionals)
+		{
+			additionalRow.add(additional);
+		}
+		container.add(additionalRow);
 
 		return container;
 	}

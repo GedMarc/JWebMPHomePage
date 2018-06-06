@@ -3,8 +3,8 @@ package com.jwebmp.examples.demos.homepage.enumerations;
 import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
 import com.jwebmp.examples.demos.homepage.display.SourceCodeDetailsContainer;
 import com.jwebmp.examples.demos.homepage.display.about.UnderTheHoodScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome.FontAwesomeScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.icons.glyphicons.GlyphiconsScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome.FontAwesomeDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.glyphicons.GlyphiconsDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordEvent;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ButtonRowPart;
@@ -32,9 +32,9 @@ public enum DisplayCodeParts
 
 	ContactUs(new SourceCodeDetailsContainer<>().addCustomLocation("Contact Us", ContactUsPart.class, "contactus.txt")),
 
-	FontAwesome(new SourceCodeDetailsContainer<>().addCustomLocation("Display Code", FontAwesomeScreen.class, "fontawesomeexample.txt")),
+	FontAwesome(new SourceCodeDetailsContainer<>().addCustomLocation("Display Code", FontAwesomeDemoScreen.class, "fontawesomeexample.txt")),
 
-	Glyphicons(new SourceCodeDetailsContainer<>().addCustomLocation("Display Code", GlyphiconsScreen.class, "glyphicons.txt")),
+	Glyphicons(new SourceCodeDetailsContainer<>().addCustomLocation("Display Code", GlyphiconsDemoScreen.class, "glyphicons.txt")),
 
 
 	ButtonRowChart1(new SourceCodeDetailsContainer<>().addCustomLocation("Site Visits", ButtonRowPart.class, "chart1.txt")),
