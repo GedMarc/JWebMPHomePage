@@ -1,0 +1,6 @@
+<dependency>
+    <groupId>com.jwebmp</groupId>
+    <artifactId>jwebmp-quickforms</artifactId>
+    <version>${jwebmp.version}</version>
+    <type>jar</type>
+</dependency>

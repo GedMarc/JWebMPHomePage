@@ -7,6 +7,6 @@ public class Bootstrap3QuickFormsDemoScreen
 {
 	public Bootstrap3QuickFormsDemoScreen()
 	{
-		super("BS Nya Select", "Web Frameworks", "Bootstrap 3", "Nya", "Select");
+		super("BS QuickForms", "Web Frameworks", "Bootstrap 3", "Quick Forms");
 	}
 }

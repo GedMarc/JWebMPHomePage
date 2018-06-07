@@ -7,6 +7,6 @@ public class Bootstrap4QuickFormsDemoScreen
 {
 	public Bootstrap4QuickFormsDemoScreen()
 	{
-		super("BS Nya Select4", "Web Frameworks", "Bootstrap 4", "Nya", "Select");
+		super("BS QuickForms4", "Web Frameworks", "Bootstrap 4", "Quick Forms");
 	}
 }

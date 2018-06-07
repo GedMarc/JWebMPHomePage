@@ -7,6 +7,9 @@ import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
+import com.jwebmp.plugins.bootstrap4.carousel.BSCarousel;
+import com.jwebmp.plugins.bootstrap4.carousel.parts.BSCarouselCaption;
+import com.jwebmp.plugins.bootstrap4.carousel.parts.BSCarouselItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
@@ -48,7 +51,7 @@ public class AboutJWebMPScreen
 			column1.add(new MintonPanel<>("What is JWebMP?", buildWhyPanel(), "bg-primary").setShowHeader(false));
 			column1.add(new MintonPanel<>("How it's done", buildHowItsDone(), "bg-primary").setShowHeader(false));
 			column1.add(new MintonPanel<>("Testable First", buildTestPanel(), "bg-primary").setShowHeader(false));
-			column1.add(new MintonPanel<>("Injection Control", buildInjectionsPanel(), "bg-primary"));
+			column1.add(new MintonPanel<>("Injection Control", buildInjectionsPanel(), "bg-primary").setShowHeader(false));
 
 			column2.add(new MintonPanel<>("Compat", buildCompatibilityList(), "bg-primary").setShowHeader(false));
 			column2.add(new MintonPanel<>("Push Me Baby", buildPushPanel(), "bg-primary").setShowHeader(false));
@@ -128,9 +131,9 @@ public class AboutJWebMPScreen
 	private Div buildWhyPanel()
 	{
 		DivSimple<?> div = new DivSimple<>();
-		div.add("JWebMP is a Java Web and Mobile Hybrid Framework designed to be Modern, Efficient, Server-Side Driven, with absolute optimizations in both Delivery of Web Content, and Java Development of the System. It is designed purely in a Domain Driven Manner and allows you to finally build Request Driven, Tiny-Session enterprise application, whilte still  completely supporting MDE and BDE in every way.");
+		div.add("JWebMP is a Java Web and Mobile Hybrid Framework designed to be Modern, Efficient, Server-Side Driven, with absolute optimizations in both Delivery of Web Content, and Java Development of the System. It is designed purely in a Domain Driven Manner and allows you to finally build Request Driven, Tiny-Session enterprise application, while still  completely supporting MDE and BDE in every way.");
 
-		div.add("Everything is completely open source! This means that any item you find can be logged, traced, and implemented in the most convient way.");
+		div.add("Everything is completely open source! This means that any item you find can be logged, traced, and implemented in the most convenient way.");
 		return div;
 	}
 
@@ -186,6 +189,17 @@ public class AboutJWebMPScreen
 		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
 		                                             .setText("About JWebMP"));
 		return crumbs;
+	}
+
+	private Div buildHistoryShotsPanel()
+	{
+		BSCarousel<?> carousel = new BSCarousel<>();
+		carousel.setIndicators(true);
+		carousel.getSlides()
+		        .add(new BSCarouselItem<>().addCaption(new BSCarouselCaption("It all begins somewhere")));
+		Div div = new DivSimple();
+		div.add("With Atmosphere Push, Web Sockets are standard out the box, and absolutely everything available to every Ajax Call and Response is available in the exact same coding manner.<br/><br/> " + "Push Groups at a Global Injection Level allow you to push responses directly from your container layer, or asynchronously from ExecutionServices in your WAR, as we do on this site.<br/><br/> You can also enable Distributed Push Notifications utilizing HazelCast or a similar technology with ease.");
+		return div;
 	}
 
 	private Div buildBaseCapabilitiesPanel()

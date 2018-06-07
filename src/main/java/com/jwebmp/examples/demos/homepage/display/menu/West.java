@@ -58,11 +58,15 @@ public class West
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
 
 		buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
-		buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites(), buildUIKits());
+		buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites());
 		//buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
-		buildMenuSection("Plugin Library", true, homeItem, buildCorePlugins(), buildUtilityPlugins(), buildIconSets(), buildBrowsers(), buildTablesTrees(), buildForms(),
-		                 buildGraphing(), buildMapping());
+		buildMenuSection("Plugin Library", true, homeItem, buildCorePlugins(), buildAngularTools());
+
+		buildMenuSection("Bootstrap", true, buildBootstrap4(), buildBootstrap3());
+		buildMenuSection("JQuery UI", true, buildJQueryUI());
+		buildMenuSection("Components", true, buildDisplayComponents(), buildForms(), buildGraphing(), buildMapping(), buildTablesTrees());
+		buildMenuSection("Icon Sets", true, buildIconSets());
 
 
 		sidebarInner.add(sidebarMenu);
@@ -74,6 +78,99 @@ public class West
 		add(sidebarInner);
 	}
 
+	private ListItem<?> buildBootstrap4()
+	{
+		List uiKit = new List<>();
+
+		uiKit.add(new ListItem<>().add(buildListItem("#bs41", Bootstrap4).setText("Bootstrap 4")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs42", Bootstrap4DateTimePicker).setText("DateTime Picker")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs43", Bootstrap4Dialog).setText("Dialog")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs44", Bootstrap4NyaSelect).setText("Nya Select")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs45", Bootstrap4QuickForms).setText("Quick Forms")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs46", Bootstrap4Switch).setText("Switch")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs37", Bootstrap3TagsInput).setText("Tags Input")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs48", Bootstrap4Swatch).setText("BootSwatch Themes")));
+
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Bootstrap 4", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem<?> buildBootstrap3()
+	{
+		List uiKit = new List<>();
+
+		uiKit.add(new ListItem<>().add(buildListItem("#bs31", Bootstrap3).setText("Bootstrap 3")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs32", Bootstrap3DateTimePicker).setText("DateTime Picker")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs33", Bootstrap3Dialog).setText("Dialog")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs33", Bootstrap3Sb2AdminTheme).setText("Sb2 Admin")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs34", Bootstrap3NyaSelect).setText("Nya Select")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs35", Bootstrap3QuickForms).setText("Quick Forms")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs36", Bootstrap3Switch).setText("Switch")));
+		uiKit.add(new ListItem<>().add(buildListItem("#bs37", Bootstrap3TagsInput).setText("Tags Input")));
+
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Bootstrap 3", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem<?> buildDisplayComponents()
+	{
+		List uiKit = new List<>();
+
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa11", EasingEffects).setText("Easing Animations")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa12", FastClick).setText("Fast Click")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa13", FullCalendar).setText("Full Calendar")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa14", Globalize).setText("Globalize")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa15", MetroJS).setText("Metro Tiles")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa16", Modernizr).setText("Modernizr")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa17", Moment).setText("Moment Dates")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa18", Pace).setText("Pace Loader")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa21", PlusAsTab).setText("Plus as Tab")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa22", RadialSliderGem).setText("Radial Carousel")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa23", SoftHistoryChange).setText("History Controls")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa24", Toastr).setText("Toastr Notifications")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa25", VerticalTimelineGem).setText("Vertical Timeline Gem")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", WebLogAppender).setText("Web Logger")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", SourceCodePrettifier).setText("Source Prettify")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", DisplayDynamicSourceCodeViewer).setText("Dynamic Source Switcher")));
+
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Display Tools", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem<?> buildJQueryUI()
+	{
+		List uiKit = new List<>();
+
+		uiKit.add(new ListItem<>().add(buildListItem("#ui41", JQueryUI).setText("JQueryUI")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui42", JQueryUIDateTimePicker).setText("DateTime Picker")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui43", JQueryUILayout).setText("Border Layout")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui44", SpectrumColorPicker).setText("Spectrum Colour Picker")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui45", JQueryUIThemes).setText("ThemeRoller Themes")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui46", JQueryUIThemesNestable).setText("Nested Theme Roller")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui37", JQueryUIVerticalTimeline).setText("Vertical Timeline")));
+
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "JQuery UI", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem<?> buildAngularTools()
+	{
+		List uiKit = new List<>();
+
+		uiKit.add(new ListItem<>().add(buildListItem("#ui411", AngularAnimate).setText("Animate")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui421", AngularAnimatedChange).setText("Animated Change")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui431", AngularAutoExpand).setText("Auto Expand")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui441", AngularIonSlider).setText("Ion Slider")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui451", AngularNgSlimScroll).setText("NG Slim Scroll")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui461", AngularSanitize).setText("Santize")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularScrollPosition).setText("Scroll Position")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularTouch).setText("Touch")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularTrackWidth).setText("Track Width")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularZoomIn).setText("Zoom In")));
+
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Angular Tools", uiKit);
+		return dropDown1;
+	}
 
 	private void buildMenuSection(String title, boolean hideOnStart, ComponentHierarchyBase... content)
 	{
@@ -127,7 +224,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#i").setText("MicroProfile")));
 		uiKit.add(new ListItem<>().add(buildListItem("#h").setText("Enterprise Edition")));
 		uiKit.add(new ListItem<>().add(buildListItem("#j").setText("Embedding Containers")));
-		uiKit.add(new ListItem<>().add(buildListItem("#j").setText("Ouput Control")));
+		uiKit.add(new ListItem<>().add(buildListItem("#j").setText("Output Control")));
 		/**/
 
 		//uiKit.add(new ListItem<>().add(buildListItem("#m").setText("Unit Testing")));
@@ -172,15 +269,11 @@ public class West
 		return dropDown1;
 	}
 
-	private ListItem<?> buildInstantSites()
+	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen)
 	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#w").setText("SB2 Admin <small>(BS3 core)</small>")));
-		uiKit.add(new ListItem<>().add(buildListItem("#x").setText("Blur Admin <small>(BS3 core)</small>")));
-		uiKit.add(new ListItem<>().add(buildListItem("#y").setText("Minton <small>(BS4 core)</small>")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Instant Sites", uiKit);
-		return dropDown1;
+		Link link = new Link(uniqueHashBangId);
+		changeScreenAdapter(screen, link);
+		return link;
 	}
 
 	private Link<?> buildListItem(String uniqueHashBangId)
@@ -215,19 +308,23 @@ public class West
 		return item;
 	}
 
-	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen)
-	{
-		Link link = new Link(uniqueHashBangId);
-		changeScreenAdapter(screen, link);
-		return link;
-	}
-
 	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
 	{
 		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
 		adapter.setID(screenReference.toString());
 		comp.addEvent(adapter);
 		return adapter;
+	}
+
+	private ListItem<?> buildInstantSites()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#w").setText("SB2 Admin <small>(BS3 core)</small>")));
+		uiKit.add(new ListItem<>().add(buildListItem("#x").setText("Blur Admin <small>(BS3 core)</small>")));
+		uiKit.add(new ListItem<>().add(buildListItem("#y").setText("Minton <small>(BS4 core)</small>")));
+
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Instant Sites", uiKit);
+		return dropDown1;
 	}
 
 	private ListItem<?> buildCorePlugins()
@@ -293,23 +390,14 @@ public class West
 	{
 		List uiKit = new List<>();
 		uiKit.add(new ListItem<>().add(buildListItem("#b9").setText("Angular Forms")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e6").setText("BS Forms <small>(3&4)</small>")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e7").setText("Quick Forms")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e8").setText("NG File Upload")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e9").setText("BlueImp File Upload")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f1").setText("Ion Slider")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f2").setText("Pretty Checkboxes")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f3").setText("Angular Progress Buttons")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f4").setText("Angular UI Select")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f5").setText("Bootstrap Switch")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f6").setText("Bootstrap Select")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f7").setText("Bootstrap Tags Input")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f8").setText("Bootstrap Date Time Picker")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f9").setText("Bootstrap Nya Select")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g1").setText("Smart Wizard")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g2").setText("Text Input Effects")));
-
-		uiKit.add(new ListItem<>().add(buildListItem("#g3").setText("Quick Forms")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e9", AngularFileUpload).setText("BlueImp File Upload")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e8", AngularFileUpload).setText("NG File Upload")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f1", IonRangeSlider).setText("Ion Range Slider")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f2", PrettyCheckboxes).setText("Pretty Checkboxes")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f3", ProgressButtons).setText("Angular Progress Buttons")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g1", SmartWizard).setText("Smart Wizard")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g2", TextInputEffects).setText("Text Input Effects")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e7", QuickForms).setText("Quick Forms")));
 
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Form Plugins", uiKit);
 		return dropDown1;
@@ -318,20 +406,24 @@ public class West
 	private ListItem<?> buildGraphing()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#g4", DisplayScreens.JQPlot).setText("JQPlot")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g5").setText("D3 Graphing")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g6").setText("C3 Graphing")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g7").setText("NVD3 Graphing")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g5", D3).setText("D3 Graphing")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g6", C3).setText("C3 Graphing")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g7", NVD3).setText("NVD3 Graphing")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ga4", JQPlot).setText("JQPlot")));
+		uiKit.add(new ListItem<>().add(buildListItem("#gb4", EasyPieChart).setText("Easy Pie Chart")));
+		uiKit.add(new ListItem<>().add(buildListItem("#gc4", GradientsLinear).setText("Linear Gradients")));
+		uiKit.add(new ListItem<>().add(buildListItem("#gd4", ImageHeatMap).setText("Image Heat Map")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ge4", ImageHeatMap).setText("Particles Display")));
 
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Graph Plugins", uiKit);
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Graphing", uiKit);
 		return dropDown1;
 	}
 
 	private ListItem<?> buildMapping()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#g8").setText("LeafletJS")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g9").setText("Google Maps")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g8", LeafletJS).setText("LeafletJS")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g9", GoogleMaps).setText("Google Maps")));
 
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Mapping Plugins", uiKit);
 		return dropDown1;

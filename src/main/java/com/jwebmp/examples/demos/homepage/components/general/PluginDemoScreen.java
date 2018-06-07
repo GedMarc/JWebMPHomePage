@@ -158,7 +158,7 @@ public class PluginDemoScreen
 		container.add(topRow);
 		container.add(row);
 
-		if (!tileAdded)
+		if (!tileAdded && additionals.isEmpty())
 		{
 			container.add(new ComingSoon().setRenderBreadcrumb(false));
 		}
