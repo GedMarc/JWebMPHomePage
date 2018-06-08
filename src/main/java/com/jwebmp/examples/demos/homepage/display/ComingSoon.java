@@ -2,8 +2,10 @@ package com.jwebmp.examples.demos.homepage.display;
 
 import com.google.inject.Singleton;
 import com.jwebmp.Feature;
+import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
@@ -23,7 +25,12 @@ public class ComingSoon
 		BSContainer container = BSContainer.newInstance(BSContainerOptions.Container);
 		BSRow row = new BSRow();
 
-		BSColumn<?> column = (BSColumn<?>) new BSColumn<>(BSColumnOptions.Col_12).addClass(BSTypographyOptions.Text_Center);
+		BSColumn<?> column = new BSColumn<>(BSColumnOptions.Col_12);
+		Page page = GuiceContext.get(Page.class);
+		if (!page.isMobileOrSmartTablet())
+		{
+			column.addClass(BSTypographyOptions.Text_Center);
+		}
 
 		DivSimple<?> wrapper = new DivSimple<>().addClass("home-wrapper");
 		wrapper.add(new H1<>("<span class=\"rotate\">JWebMP, MicroProfile, Modern, Simple, Domain Driven, Single-Page, Multi-Page</span>").addClass("home-text"));

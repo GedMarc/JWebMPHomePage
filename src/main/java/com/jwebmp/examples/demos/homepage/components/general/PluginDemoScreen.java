@@ -34,6 +34,8 @@ import com.jwebmp.plugins.jquerylayout.layout.events.JQLayoutSlideCloseLayoutDiv
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import javax.cache.annotation.CacheKey;
+import javax.cache.annotation.CacheResult;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -45,17 +47,17 @@ public class PluginDemoScreen
 {
 
 	private final List<Div<?, ?, ?, ?, ?>> additionals = new ArrayList<>();
-	BSColumn fullColumn = new BSColumn(Col_12, Col_12);
-	BSColumn rightColumn = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
-	BSColumn leftColumnTop = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
-	BSColumn rightColumnTop = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
-	String[] breadCrumbs;
-	DivSimple<?> mavenDisplayDiv;
-	DivSimple artiInfo;
-	String pluginName;
-	JQMetroTiles featureTiles = new JQMetroTiles();
-	JQMetroTiles componentTiles = new JQMetroTiles();
 	boolean tileAdded = false;
+	private BSColumn fullColumn = new BSColumn(Col_12, Col_12);
+	private BSColumn rightColumn = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
+	private BSColumn leftColumnTop = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
+	private BSColumn rightColumnTop = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
+	private String[] breadCrumbs;
+	private DivSimple<?> mavenDisplayDiv;
+	private DivSimple artiInfo;
+	private String pluginName;
+	private JQMetroTiles featureTiles = new JQMetroTiles();
+	private JQMetroTiles componentTiles = new JQMetroTiles();
 
 	public PluginDemoScreen(String pluginName, String... breadCrumbs)
 	{
@@ -151,6 +153,7 @@ public class PluginDemoScreen
 		row.add(fullColumn);
 		row.add(rightColumn);
 
+
 		BSRow topRow = new BSRow();
 		topRow.add(leftColumnTop);
 		topRow.add(rightColumnTop);
@@ -168,7 +171,11 @@ public class PluginDemoScreen
 		{
 			additionalRow.add(additional);
 		}
-		container.add(additionalRow);
+		if (!additionalRow.getChildren()
+		                  .isEmpty())
+		{
+			container.add(additionalRow);
+		}
 
 		return container;
 	}
@@ -188,9 +195,7 @@ public class PluginDemoScreen
 	{
 		DivSimple<?> mavenDisplayDiv = new DivSimple<>();
 
-		Optional<Plugins> oPlugin = new Plugins().builder()
-		                                         .where(Plugins_.pluginName, Operand.Equals, pluginName)
-		                                         .get();
+		Optional<Plugins> oPlugin = getPlugin(pluginName);
 		if (oPlugin.isPresent())
 		{
 			Plugins plugin = oPlugin.get();
@@ -235,10 +240,16 @@ public class PluginDemoScreen
 
 	private SourceCodeContentPanel sourceCodeContentPanel()
 	{
+		if (featureTiles.getChildren()
+		                .isEmpty() || componentTiles.getChildren()
+		                                            .isEmpty())
+		{
+			return null;
+		}
 		DivSimple<?> homeScreen = new DivSimple<>();
-		SourceCodeContentPanel<?> sc = new SourceCodeContentPanel<>("JQuery UI Source Code Panel", homeScreen).setShowHeader(false)
-		                                                                                                      .setShowCode(false)
-		                                                                                                      .setShowRefresh(true);
+		SourceCodeContentPanel<?> sc = new SourceCodeContentPanel<>("Source Code Content Panel", homeScreen).setShowHeader(false)
+		                                                                                                    .setShowCode(false)
+		                                                                                                    .setShowRefresh(true);
 
 		sc.getContent()
 		  .add(featureTiles);
@@ -247,6 +258,15 @@ public class PluginDemoScreen
 		  .add(componentTiles);
 
 		return sc;
+	}
+
+	@CacheResult
+	public Optional<Plugins> getPlugin(@CacheKey String name)
+	{
+		Optional<Plugins> oPlugin = new Plugins().builder()
+		                                         .where(Plugins_.pluginName, Operand.Equals, pluginName)
+		                                         .get();
+		return oPlugin;
 	}
 
 	@Override

@@ -67,7 +67,7 @@ public class LoginPart
 		checkRow.add(checkBox = (MintonCheckBox) new MintonCheckBox<>("Remember Me Forever", true, "checkbox-purple").addClass(BSColumnOptions.Col_12));
 		checkBox.getCheckBox()
 		        .bind("subscribe.rememberMe");
-		contents.add(checkRow);
+		loginFormRow.add(checkRow);
 
 		openSourcePane.add(contents);
 	}
