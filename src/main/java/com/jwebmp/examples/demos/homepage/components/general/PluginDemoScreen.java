@@ -15,6 +15,7 @@ import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
@@ -58,6 +59,8 @@ public class PluginDemoScreen
 	private String pluginName;
 	private JQMetroTiles featureTiles = new JQMetroTiles();
 	private JQMetroTiles componentTiles = new JQMetroTiles();
+
+	private List<OptionsBrowser> optionBrowsers = new ArrayList<>();
 
 	public PluginDemoScreen(String pluginName, String... breadCrumbs)
 	{
@@ -148,6 +151,13 @@ public class PluginDemoScreen
 		artiInfo = buildArtifactInformation();
 		rightColumnTop.add(new MintonPanel("Artifact Information", "bg-purple", artiInfo).addClass("col-12"));
 
+
+		optionBrowsers.forEach(a ->
+		                       {
+			                       rightColumnTop.add(a);
+		                       });
+
+
 		fullColumn.add(sourceCodeContentPanel());
 
 		row.add(fullColumn);
@@ -195,11 +205,9 @@ public class PluginDemoScreen
 	{
 		DivSimple<?> mavenDisplayDiv = new DivSimple<>();
 
-		Optional<Plugins> oPlugin = getPlugin(pluginName);
-		if (oPlugin.isPresent())
+		Plugins plugin = getPlugin(pluginName);
+		if (plugin != null)
 		{
-			Plugins plugin = oPlugin.get();
-
 			BSRow versionRow = new BSRow();
 			versionRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("Source Widget Version"));
 			versionRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.getPluginSourceURL(), "_blank").setText(plugin.getPluginVersion())));
@@ -261,12 +269,12 @@ public class PluginDemoScreen
 	}
 
 	@CacheResult
-	public Optional<Plugins> getPlugin(@CacheKey String name)
+	public Plugins getPlugin(@CacheKey String name)
 	{
 		Optional<Plugins> oPlugin = new Plugins().builder()
 		                                         .where(Plugins_.pluginName, Operand.Equals, pluginName)
 		                                         .get();
-		return oPlugin;
+		return oPlugin.get();
 	}
 
 	@Override
@@ -288,5 +296,15 @@ public class PluginDemoScreen
 			                                             .setText(breadCrumb));
 		}
 		return crumbs;
+	}
+
+	public OptionsBrowser addOptionsBrowser(JavaScriptPart forObject)
+	{
+
+		OptionsBrowser ob;
+		optionBrowsers.add(ob = new OptionsBrowser(forObject));
+		return ob;
+
+
 	}
 }

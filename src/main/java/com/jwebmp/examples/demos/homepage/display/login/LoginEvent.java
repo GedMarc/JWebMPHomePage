@@ -40,6 +40,10 @@ public class LoginEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
+		if (call.getVariable("subscribe") == null)
+		{
+			throw new RuntimeException("Didn't enter anything ;) This what an error dialog looks like from the server...");
+		}
 		Subscribers newSubs = call.getVariable("subscribe")
 		                          .as(Subscribers.class);
 		boolean subs = false;
@@ -94,11 +98,11 @@ public class LoginEvent
 		}
 		catch (MissingComponentException e)
 		{
-			response.addComponent(new AlertMessage("Not quite right, try again...", BSAlertOptions.Alert_Warning));
+			response.addComponent(new AlertMessage("Not quite right, try again...", BSAlertOptions.Alert_Dark));
 		}
 		catch (Exception e)
 		{
-			response.addComponent(new AlertMessage("That's a little odd, looks like me this time. It's all been logged.", BSAlertOptions.Alert_Warning));
+			response.addComponent(new AlertMessage("That's a little odd, looks like me this time. It's all been logged.", BSAlertOptions.Alert_Dark));
 			log.log(Level.SEVERE, "Error", e);
 		}
 		//Clear the login fields

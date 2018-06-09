@@ -4,9 +4,8 @@ import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.html.*;
 import com.jwebmp.base.html.interfaces.GlobalChildren;
 import com.jwebmp.base.html.interfaces.events.GlobalEvents;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
-import com.jwebmp.generics.LeftOrRight;
-import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.accordion.BSAccordion;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
@@ -36,14 +35,7 @@ public class West
 	{
 		setID("west");
 		addClass("left side-menu");
-		SlimScrollFeature scrollFeature = new SlimScrollFeature(this);
-		scrollFeature.getOptions()
-		             .setHeight("100%")
-		             .setAlwaysVisible(true)
-		             .setPosition(LeftOrRight.Right)
-		             .setSize(5)
-		             .setColor(new ColourCSSImpl("#98a6ad"))
-		             .setWheelStep(5);
+		SlimScrollFeature scrollFeature = new DefaultSlimScroll(this);
 
 		sidebarInner = new Div<>();
 		sidebarInner.addClass("sidebar-inner slimscrollleft");
@@ -162,7 +154,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#ui431", AngularAutoExpand).setText("Auto Expand")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui441", AngularIonSlider).setText("Ion Slider")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui451", AngularNgSlimScroll).setText("NG Slim Scroll")));
-		uiKit.add(new ListItem<>().add(buildListItem("#ui461", AngularSanitize).setText("Santize")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui461", AngularSanitize).setText("Sanitize")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularScrollPosition).setText("Scroll Position")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularTouch).setText("Touch")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularTrackWidth).setText("Track Width")));

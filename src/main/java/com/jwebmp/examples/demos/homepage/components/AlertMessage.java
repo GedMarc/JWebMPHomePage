@@ -4,9 +4,6 @@ import com.jwebmp.plugins.bootstrap4.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
 import lombok.Data;
-import com.jwebmp.plugins.bootstrap4.alerts.BSAlert;
-import com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions;
-import com.jwebmp.plugins.fontawesome.FontAwesome;
 
 @Data
 public class AlertMessage
@@ -25,7 +22,8 @@ public class AlertMessage
 		setID("alert-display");
 		setText(text);
 		addClass("fade-in");
-		setSuccess(true);
+		setDark(true);
+		add(createDismissButton());
 
 		if (text == null)
 		{

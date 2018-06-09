@@ -6,10 +6,13 @@ import com.google.inject.name.Names;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.*;
 import com.jwebmp.events.click.ClickAdapter;
+import com.jwebmp.examples.demos.homepage.display.TopBar;
+import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
+import com.jwebmp.utilities.StaticStrings;
 
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InvalidAttributeValueException;
@@ -55,7 +58,7 @@ public class SubscribeEvent
 					return;
 				}
 
-				String guid = localStorage.get("jwamsmk");
+				String guid = localStorage.get(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY);
 
 				Optional<Visitors> returningVisitor = new Visitors().builder()
 				                                                    .findByGuid(guid)
@@ -67,7 +70,10 @@ public class SubscribeEvent
 
 				Subscribers s = newSubs.create(returningVisitor.get())
 				                       .get();
-				//		response.addComponent(new PleaseConfirmYourEmailAddressScreen(s));
+
+				response.addComponent(GuiceContext.get(TopBar.class));
+				response.addComponent(GuiceContext.get(West.class));
+
 			}
 			catch (NoResultException nre)
 			{

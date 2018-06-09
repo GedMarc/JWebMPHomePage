@@ -5,6 +5,7 @@ import com.jwebmp.FileTemplates;
 import com.jwebmp.base.html.*;
 import com.jwebmp.base.html.attributes.ImageAttributes;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
+import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
@@ -23,29 +24,44 @@ import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
-import com.jwebmp.plugins.bootstrap4.jumbotron.BSJumbotron;
 import com.jwebmp.plugins.bootstrap4.listgroup.BSListGroup;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions;
 import com.jwebmp.plugins.bootstrap4.options.*;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
+import com.jwebmp.plugins.fontawesome.FontAwesomeProperties;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 import static com.jwebmp.utilities.StaticStrings.*;
 
 public class HomePage
 		extends DisplayScreen
 {
+	BSRow displayRow = new BSRow();
+	BSColumn right = new BSColumn(BSColumnOptions.Col_Md_6, BSColumnOptions.Col_Sm_12);
+	BSColumn left = new BSColumn(BSColumnOptions.Col_Md_6, BSColumnOptions.Col_Sm_12);
+
 	public HomePage()
 	{
 		super(HTML_TAB + HTML_TAB + "Welcome to JWeb MicroProfile!" + HTML_TAB + "<small><i>Demo Site Under Construction<a href=\"https://github.com/GedMarc/JWebMPHomePage\" target=\"_blank\">View Site Source Code</i></small></a>");
 		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
+	}
+
+	private void orderForDesktop()
+	{
+
+	}
+
+	private void orderForMobile()
+	{
+
 	}
 
 	@Override
@@ -54,22 +70,6 @@ public class HomePage
 		BSContainer<?> container = new BSContainer<>();
 		container.setContainerType(BSContainerOptions.Container_Fluid);
 
-		BSJumbotron<?> jumbo = new BSJumbotron<>();
-		jumbo.asMe()
-		     .setFluid()
-		     .asMe()
-		     .addJumboText("JWebMP");
-		jumbo.asMe()
-		     .addLead("Truly Everything");
-		jumbo.asMe()
-		     .addLead("Ultra Rapid Development");
-		jumbo.asMe()
-		     .addLead("Beginner and Expert Alike");
-		jumbo.addClass(BSBorderOptions.Border_Primary);
-		jumbo.addClass(BSBackgroundOptions.Bg_Dark);
-		jumbo.addClass(BSColoursOptions.Text_White);
-
-		//	container.add(jumbo);
 		container.addFeature(new Feature("CirclifulCustom", container)
 		{
 			@Override
@@ -90,19 +90,17 @@ public class HomePage
 		container.add(new ButtonRowPart<>());
 		//container.add(buildAdvertCard());
 
-		BSRow displayRow = new BSRow();
-		BSColumn leftColumn = new BSColumn(BSColumnOptions.Col_Md_6, BSColumnOptions.Col_Sm_12);
-		BSColumn rightColumn = new BSColumn(BSColumnOptions.Col_Md_6, BSColumnOptions.Col_Sm_12);
 
-		displayRow.add(rightColumn);
-		displayRow.add(leftColumn);
+		displayRow.add(left);
+		displayRow.add(right);
 
 
 		Div showcaseDiv = new Div();
-		leftColumn.add(new SourceCodeContentPanel<>("View Our Showcase", DisplayCodeParts.ViewOurShowcase, showcaseDiv, "bg-success").setShowHeader(true)
-		                                                                                                                             .setShowCode(true));
-
+		showcaseDiv.add(new AlertMessage("Use <strong>Code Icons " + FontAwesome.icon(FontAwesomeIcons.code, FontAwesomeProperties.$2x)
+		                                                                        .setTiny(true)
+		                                                                        .toString(0) + "</strong> to view quick snippets", Alert_Dark).setID("useCodeIconsAM"));
 		showcaseDiv.add("Jump straight into the showcase to see what we're all about. <br/>" + "View code examples, find plugins, or join the community");
+
 
 		showcaseDiv.add(new PrettyPrimaryButton<>().asButton()
 		                                           .setText("Hello World!")
@@ -117,6 +115,13 @@ public class HomePage
 		                                           .setText("API")
 		                                           .addAttribute("disabled", ""));
 
+		if (!getPage().isMobileOrSmartTablet())
+		{
+			right.add(new MintonPanel("Maven", new MavenPomPart(), "bg-pink"));
+		}
+		right.add(new SourceCodeContentPanel<>("View Our Showcase", DisplayCodeParts.ViewOurShowcase, showcaseDiv, "bg-success").setShowHeader(true)
+		                                                                                                                        .setShowCode(true));
+
 		if (GuiceContext.getInstance(SessionProperties.class)
 		                .isLoggedIn())
 		{
@@ -127,41 +132,41 @@ public class HomePage
 		// Left Side
 		//==================================================================================
 
-		leftColumn.add(new SourceCodeContentPanel<>("Contact Us", DisplayCodeParts.ContactUs, new ContactUsPart(), "bg-purple").setShowHeader(true)
-		                                                                                                                       .setShowCode(true));
+		right.add(new SourceCodeContentPanel<>("Contact Us", DisplayCodeParts.ContactUs, new ContactUsPart(), "bg-purple").setShowHeader(true)
+		                                                                                                                  .setShowCode(true));
 
 		if (!GuiceContext.getInstance(SessionProperties.class)
 		                 .isLoggedIn())
 		{
-			leftColumn.add(new ReasonsWhyPart());
+			right.add(new ReasonsWhyPart());
 		}
-		leftColumn.add(buildContinuousIntegrationPane());
 
 
 		//----------------------------------------------------------------------------
 		// Right side
 		//----------------------------------------------------------------------------
 
-		leftColumn.addStyle("padding-left:0px;");
-		leftColumn.addStyle("padding-right:0px;");
-		rightColumn.addStyle("padding-left:0px;");
-		rightColumn.addStyle("padding-right:0px;");
+		right.addStyle("padding-left:0px;");
+		right.addStyle("padding-right:0px;");
+		left.addStyle("padding-left:0px;");
+		left.addStyle("padding-right:0px;");
 		container.add(displayRow);
 
 
 		if (!GuiceContext.getInstance(SessionProperties.class)
 		                 .isLoggedIn())
 		{
-			rightColumn.add(new LoginPart());
-			rightColumn.add(buildOpenSourceSponsors());
-			rightColumn.add(buildReasonsToRegisterDiv());
-			rightColumn.add(new MintonPanel("Maven", new MavenPomPart(), "bg-pink"));
+			left.add(new LoginPart());
+			left.add(buildOpenSourceSponsors());
+			left.add(buildReasonsToRegisterDiv());
+
 		}
 		else
 		{
-			rightColumn.add(new MintonPanel("Maven", new MavenPomPart(), "bg-pink"));
-		}
+			left.add(new MintonPanel("Maven", new MavenPomPart(), "bg-pink"));
 
+		}
+		left.add(buildContinuousIntegrationPane());
 
 		return container;
 	}
@@ -176,6 +181,40 @@ public class HomePage
 		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
 		                                             .setText("Home Page"));
 		return crumbs;
+	}
+
+	private Div buildOpenSourceSponsors()
+	{
+		DivSimple<?> contentDiv = new DivSimple<>();
+		MintonPanel<?> panel = new MintonPanel<>("GPL 3.0 Open Source Licenced", contentDiv, "bg-purple");
+
+		contentDiv.add("The components and products are supported and tested with assistance from these great companies");
+
+		contentDiv.add(new Link<>("http://www.browserstack.com", "_blank").add(new Image("images/BrowserStack.png"))
+		                                                                  .addClass(BSSpacingOptions.Margin_Right_4));
+		contentDiv.add(new Link<>("http://www.jetbrains.com", "_blank").add(new Image("images/jetbrains-variant-3.svg")));
+
+		contentDiv.add(new Link<>("https://www.atlassian.com", "_blank").add(new Image<>("images/Atlassian180x180.PNG").addAttribute(ImageAttributes.Height, "80px;"))
+		                                                                .addStyle("margin-left:15px;"));
+
+		return panel;
+	}
+
+	private Div buildReasonsToRegisterDiv()
+	{
+		Div openSourcePane = new Div();
+		Div portlet = buildPortlet("Reasons to Register", "bg-primary", false, openSourcePane);
+		Div contents = new Div();
+		contents.add(buildCheckbox("Absolutely Free. Everything. Free. Always.", true, "checkbox-default"));
+		contents.add(buildCheckbox("Built from a collaboration of many open source projects", true, "checkbox-inverse"));
+		contents.add(buildCheckbox("Video Guides", true, "checkbox-primary"));
+		contents.add(buildCheckbox("Access to the Forums", true, "checkbox-primary"));
+		contents.add(buildCheckbox("Can Request For Plugins", true, "checkbox-success"));
+		contents.add(buildCheckbox("No Spam/Newsletters", true, "checkbox-info"));
+		contents.add(buildCheckbox("First hand access to the developer", true, "checkbox-purple"));
+		openSourcePane.add(contents);
+
+		return portlet;
 	}
 
 	private Div buildContinuousIntegrationPane()
@@ -228,43 +267,9 @@ public class HomePage
 
 		openSourcePane.add(listGroup);
 
-		openSourcePane.add(
+		/*openSourcePane.add(
 				"<br/> This project is all about community input and continuous improvement. <br/>" + "<br/>There is a suggestions box once you've logged in, or you can simply make pull requests in GitHub.");
-
-		return portlet;
-	}
-
-	private Div buildOpenSourceSponsors()
-	{
-		DivSimple<?> contentDiv = new DivSimple<>();
-		MintonPanel<?> panel = new MintonPanel<>("GPL 3.0 Open Source Licenced", contentDiv, "bg-purple");
-
-		contentDiv.add("The components and products are supported and tested with assistance from these great companies");
-
-		contentDiv.add(new Link<>("http://www.browserstack.com", "_blank").add(new Image("images/BrowserStack.png"))
-		                                                                  .addClass(BSSpacingOptions.Margin_Right_4));
-		contentDiv.add(new Link<>("http://www.jetbrains.com", "_blank").add(new Image("images/jetbrains-variant-3.svg")));
-
-		contentDiv.add(new Link<>("https://www.atlassian.com", "_blank").add(new Image<>("images/Atlassian180x180.PNG").addAttribute(ImageAttributes.Height, "80px;"))
-		                                                                .addStyle("margin-left:15px;"));
-
-		return panel;
-	}
-
-	private Div buildReasonsToRegisterDiv()
-	{
-		Div openSourcePane = new Div();
-		Div portlet = buildPortlet("Reasons to Register", "bg-primary", false, openSourcePane);
-		Div contents = new Div();
-		contents.add(buildCheckbox("Absolutely Free. Everything. Free. Always.", true, "checkbox-default"));
-		contents.add(buildCheckbox("Built from a collaboration of many open source projects", true, "checkbox-inverse"));
-		contents.add(buildCheckbox("Video Guides", true, "checkbox-primary"));
-		contents.add(buildCheckbox("Access to the Forums", true, "checkbox-primary"));
-		contents.add(buildCheckbox("Can Request For Plugins", true, "checkbox-success"));
-		contents.add(buildCheckbox("No Spam/Newsletters", true, "checkbox-info"));
-		contents.add(buildCheckbox("First hand access to the developer", true, "checkbox-purple"));
-		openSourcePane.add(contents);
-
+*/
 		return portlet;
 	}
 

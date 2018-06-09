@@ -12,6 +12,7 @@ import com.jwebmp.examples.demos.homepage.display.demos.angular.autofocus.Angula
 import com.jwebmp.examples.demos.homepage.display.demos.angular.fileupload.AngularFileUploadDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.ionslider.AngularIonSliderDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.ngslimscroll.NgSlimScrollDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.angular.sanitize.AngularSanitizeDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.scrollposition.AngularScrollPositionDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.slimscroll.AngularSlimScrollDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.touch.AngularTouchDemoScreen;
@@ -103,7 +104,7 @@ public enum DisplayScreens
 	AngularAutoFocus(AngularAutoFocusDemoScreen.class, "AngularAutoExpand"),
 	AngularIonSlider(AngularIonSliderDemoScreen.class, "AngularIonSlider"),
 	AngularNgSlimScroll(NgSlimScrollDemoScreen.class, "AngularIonSlider"),
-	AngularSanitize(NgSlimScrollDemoScreen.class, "AngularSanitize"),
+	AngularSanitize(AngularSanitizeDemoScreen.class, "AngularSanitize"),
 	AngularScrollPosition(AngularScrollPositionDemoScreen.class, "AngularScrollPosition"),
 	AngularSlimScroll(AngularSlimScrollDemoScreen.class, "AngularSlimScroll"),
 	AngularTouch(AngularTouchDemoScreen.class, "AngularTouch"),
@@ -113,7 +114,6 @@ public enum DisplayScreens
 	AngularUIBootstrap(AngularUIBootstrapDemoScreen.class, "AngularUIBootstrap"),
 	AngularUISelect(AngularUISelectDemoScreen.class, "AngularUISelect"),
 	AngularUISortable(AngularUISortableDemoScreen.class, "AngularUISortable"),
-
 
 	Bootstrap3(Bootstrap3DemoScreen.class, "Bootstrap3"),
 	Bootstrap3DateTimePicker(Bootstrap3DateTimePickerDemoScreen.class, "Bootstrap3DateTimePicker"),

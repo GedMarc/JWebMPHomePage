@@ -2,9 +2,7 @@ package com.jwebmp.examples.demos.homepage.components;
 
 import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
-import com.jwebmp.generics.LeftOrRight;
 import com.jwebmp.guiceinjection.GuiceContext;
-import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
@@ -70,15 +68,7 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 				d.addClass(BSColumnOptions.H_100);
 				d.addStyle("margin-top", "15px;");
 
-				SlimScrollFeature scrollFeature = new SlimScrollFeature(d);
-				scrollFeature.getOptions()
-				             .setHeight("100%")
-				             .setAlwaysVisible(true)
-				             .setPosition(LeftOrRight.Right)
-				             .setSize(5)
-				             .setTouchScrollStep(50)
-				             //   .setWheelStep(5)
-				             .setColor(new ColourCSSImpl("#98a6ad"));
+				SlimScrollFeature scrollFeature = new DefaultSlimScroll(d);
 
 				innerLayout.getCenter()
 				           .getContentDiv()

@@ -50,6 +50,8 @@ public class DisplayPage
 	 */
 	public DisplayPage()
 	{
+		SessionHelper.setCacheAddress(true);
+
 		getPageFields().setTitle("JWebMP Application");
 
 		getHead().add(new CSSLink("canonical", null, "https://www.jwebmp.com/"));

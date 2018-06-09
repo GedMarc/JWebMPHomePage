@@ -1,12 +1,9 @@
 package com.jwebmp.examples.demos.homepage.display.rightbar;
 
 import com.jwebmp.base.html.DivSimple;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.entities.RightBarActivity;
 import com.jwebmp.examples.demos.homepage.entities.RightBarActivity_;
-import com.jwebmp.generics.LeftOrRight;
-import com.jwebmp.htmlbuilder.css.colours.ColourCSSImpl;
-import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
-import com.jwebmp.plugins.angularslimscroll.SlimScrollOptions;
 import com.jwebmp.plugins.bootstrap4.listgroup.tabs.BSTabContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions;
@@ -60,12 +57,7 @@ public class RightBar
 		           .addClass(W_100)
 		           .addStyle("overflow-y:auto")
 		           .setID("activityTabContents")
-		           .addFeature(new SlimScrollFeature(displayTabs.getTabContents()).setOptions(new SlimScrollOptions().setHeight("100%")
-		                                                                                                             .setAlwaysVisible(true)
-		                                                                                                             .setPosition(LeftOrRight.Right)
-		                                                                                                             .setSize(5)
-		                                                                                                             .setTouchScrollStep(50)
-		                                                                                                             .setColor(new ColourCSSImpl("#98a6ad"))));
+		           .addFeature(new DefaultSlimScroll(displayTabs.getTabContents()));
 	}
 
 	private DivSimple<?> buildActivityTab()

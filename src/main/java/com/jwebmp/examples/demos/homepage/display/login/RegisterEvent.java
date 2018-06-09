@@ -6,8 +6,11 @@ import com.google.inject.name.Named;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.*;
 import com.jwebmp.examples.demos.homepage.components.events.DefaultClick;
+import com.jwebmp.examples.demos.homepage.display.TopBar;
+import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
+import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.modal.BSModal;
 
 import javax.management.InstanceAlreadyExistsException;
@@ -69,6 +72,8 @@ public class RegisterEvent
 					response.addReaction(new AjaxResponseReaction("Please confirm your email address",
 					                                              "We've sent through a confirmation email, You'll have partial access until you verify. The link expires in 2 hours.",
 					                                              ReactionType.DialogDisplay, AjaxResponseType.Success));
+					response.addComponent(GuiceContext.get(TopBar.class));
+					response.addComponent(GuiceContext.get(West.class));
 				}
 				else
 				{

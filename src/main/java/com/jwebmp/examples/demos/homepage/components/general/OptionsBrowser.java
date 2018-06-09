@@ -98,7 +98,7 @@ public class OptionsBrowser
 			else if ("serialVersionUID".equalsIgnoreCase(field.getName()))
 			{
 				rootItem.addItem(field.getName() + " : <small><i>version</i></small>", new JSTreeNodeOptions<>().setIcon("fa fa-id-badge")
-				                                                                                                .setDisabled(false));
+				                                                                                                .setDisabled(true));
 			}
 			else
 			{

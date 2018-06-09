@@ -56,13 +56,7 @@ public class UserActivity
 			name = "ImageURL")
 	private String imageUrl;
 
-	@Basic(optional = false)
-	@Null
-	@Size(min = 1,
-			max = 255)
-	@Column(nullable = true,
-			length = 255,
-			name = "ReadMoreURL")
+	@Column(name = "ReadMoreURL")
 	private String readMoreUrl;
 
 	@Basic(optional = false)

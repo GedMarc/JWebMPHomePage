@@ -13,10 +13,10 @@ import static com.jwebmp.plugins.bootstrap4.options.BSAlignmentHorizontalOptions
 import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 import static com.jwebmp.plugins.fontawesome.FontAwesomeIcons.*;
 
-public class ContactUsPart<J extends ContactUsPart<J>>
+public class ShowcasePart<J extends ShowcasePart<J>>
 		extends DivSimple<J>
 {
-	public ContactUsPart()
+	public ShowcasePart()
 	{
 		addClass(Row);
 		addClass(Align_Center);

@@ -1,6 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.demos.display.metro;
 
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
+import com.jwebmp.plugins.jqmetro.metro.JQMetroOptions;
 
 public class MetroJSDemoScreen
 		extends PluginDemoScreen
@@ -8,5 +9,6 @@ public class MetroJSDemoScreen
 	public MetroJSDemoScreen()
 	{
 		super("JQ Metro", "Display", "Metro Tiles");
+		addOptionsBrowser(new JQMetroOptions());
 	}
 }

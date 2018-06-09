@@ -7,6 +7,6 @@ public class FastClickDemoScreen
 {
 	public FastClickDemoScreen()
 	{
-		super("FastClick", "Display", "Fast Click");
+		super("Fast Click", "Display", "Fast Click");
 	}
 }

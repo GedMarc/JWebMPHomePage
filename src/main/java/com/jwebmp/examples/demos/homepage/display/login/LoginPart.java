@@ -49,11 +49,20 @@ public class LoginPart
 		loginForm.addClass(BSColumnOptions.Col_12);
 		loginFormRow.add(loginForm);
 
-		loginForm.add(new AlertMessage(null));
+		loginForm.add(new AlertMessage("Login, Register or Retrieve your account below"));
 
 		BSFormInputGroup<?, InputEmailType<?>> loginInputGroup = buildLoginInput(loginForm);
 
 		BSFormInputGroup<?, InputPasswordType<?>> inputGroup = buildPasswordInput(loginForm);
+
+		BSRow checkRow = new BSRow();
+		MintonCheckBox checkBox;
+		checkRow.add(checkBox = (MintonCheckBox) new MintonCheckBox<>("Remember Me Forever", true, "checkbox-purple").addClass(BSColumnOptions.Col_12));
+		checkBox.getCheckBox()
+		        .bind("subscribe.rememberMe")
+		        .addStyle("margin-left", "5px;")
+		        .addStyle("margin-top", "15px;");
+		loginForm.add(checkRow);
 
 		BSButton submitButton = buildSubmitButton(loginForm);
 		submitButton.addEvent(new LoginEvent(submitButton));
@@ -62,12 +71,6 @@ public class LoginPart
 
 		contents.add(buildButtonRow(loginForm, loginInputGroup, inputGroup));
 
-		BSRow checkRow = new BSRow();
-		MintonCheckBox checkBox;
-		checkRow.add(checkBox = (MintonCheckBox) new MintonCheckBox<>("Remember Me Forever", true, "checkbox-purple").addClass(BSColumnOptions.Col_12));
-		checkBox.getCheckBox()
-		        .bind("subscribe.rememberMe");
-		loginFormRow.add(checkRow);
 
 		openSourcePane.add(contents);
 	}
@@ -145,6 +148,7 @@ public class LoginPart
 		}
 
 		BSModal<?> confirmModal = buildConfirmPasswordModal();
+		confirmModal.setBackdrop(false);
 		row.add(confirmModal);
 
 		confirmModal.addOpenButton(registerButton);
@@ -168,16 +172,6 @@ public class LoginPart
 		{
 			forgotPassButton.addClass(BSColumnOptions.Col_6);
 		}
-
-		/*PrettyPrimaryButton confirmEmail = new PrettyPrimaryButton<>().setText("Resend Confirmation")
-		                                                              .addClass(BSColumnOptions.Col_4)
-		                                                              .addClass(BSColoursOptions.Text_White)
-		                                                              .asButton()
-		                                                              .addAttribute(AngularAttributes.ngDisabled, "" + loginForm.getName() + "." + loginInputGroup.getInput()
-		                                                                                                                                                          .getName() + ".$invalid || " + loginForm.getName() + "." + inputGroup.getInput()
-		                                                                                                                                                                                                                               .getName() + ".$invalid");*/
-		//confirmEmail.addEvent(new Confirm(confirmEmail));
-		//row.add(confirmEmail);
 
 		return row;
 	}
