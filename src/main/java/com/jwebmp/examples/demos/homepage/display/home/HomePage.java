@@ -205,7 +205,7 @@ public class HomePage
 		Div openSourcePane = new Div();
 		Div portlet = buildPortlet("Reasons to Register", "bg-primary", false, openSourcePane);
 		Div contents = new Div();
-		contents.add(buildCheckbox("Absolutely Free. Everything. Free. Always.", true, "checkbox-default"));
+		contents.add(buildCheckbox("Absolutely Free. Everything. Free. Always.<br/><small>Please donate?</small>", true, "checkbox-default"));
 		contents.add(buildCheckbox("Built from a collaboration of many open source projects", true, "checkbox-inverse"));
 		contents.add(buildCheckbox("Video Guides", true, "checkbox-primary"));
 		contents.add(buildCheckbox("Access to the Forums", true, "checkbox-primary"));
