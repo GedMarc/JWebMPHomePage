@@ -240,11 +240,11 @@ public class West
 	private ListItem<?> buildMyFirstSites()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#n").setText("Hello World")));
-		uiKit.add(new ListItem<>().add(buildListItem("#o").setText("Layouts")));
+		uiKit.add(new ListItem<>().add(buildListItem("#n", HelloWorldScreen).setText("Hello World")));
+		uiKit.add(new ListItem<>().add(buildListItem("#o", JQueryUILayout).setText("Layouts")));
 		uiKit.add(new ListItem<>().add(buildListItem("#p").setText("Basic Examples")));
 
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "First Examples", uiKit);
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Getting Started", uiKit);
 		return dropDown1;
 	}
 

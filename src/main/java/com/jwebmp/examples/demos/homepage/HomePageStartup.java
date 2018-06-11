@@ -25,7 +25,7 @@ public class HomePageStartup
 {
 	public static void main(String[] args) throws ServletException
 	{
-		SessionHelper.setCacheAddress(true);
+		SessionHelper.setAddressToBeUsedWhenNull("https://jwebmp.com/");
 		LogColourFormatter.setRenderBlack(false);
 
 		configureConsoleColourOutput(Level.FINE);

@@ -1,0 +1,31 @@
+public HelloWorldPlain()
+	{
+		super("Hello World!");
+		Paragraph demoComponent = new Paragraph("Hello World");
+		add(demoComponent);
+		//Renders the javascript and css in the page instead of different servlets
+		getOptions().setDynamicRender(false);
+		//Adds a feature (Client Side JS) to the demo component
+		demoComponent.addFeature(new Feature("My Custom Feature", demoComponent)
+		{
+			@Override
+			protected void assignFunctionsToComponent()
+			{
+				addQuery("alert('Though they are usually added through named plugin features...');");
+			}
+		});
+
+		addQuery(new StringBuilder("alert('You can add them directly to the component.');" + getNewLine()));
+
+		//Add custom references (Sort Order and Prioritized)
+		addJavaScriptReference(JQueryReferencePool.JQueryV3.getJavaScriptReference());
+		addCssReference(new CSSReference("Custom CSS 1", 1.0, "css/custom.css"));
+
+		//These methods are on every object
+		add(new H3<>("This references the JS").addJavaScriptReference(new JavascriptReference("Custom JS", 1.0, "js/custom.js")));
+	}
+
+public static void main(String[] args)
+{
+    System.out.println(new HelloWorldPlain().toString(0));
+}

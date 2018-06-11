@@ -88,6 +88,7 @@ import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 public enum DisplayScreens
 {
 	HomePageScreen(HomePage.class, "home"),
+	HelloWorldScreen(com.jwebmp.examples.demos.homepage.display.helloworld.HelloWorldScreen.class, "HelloWorld"),
 	ForgotPassword(ForgotPasswordScreen.class, "ForgotPassword"),
 	ConfirmEmailAddress(ConfirmEmailAddressScreen.class, "ConfirmEmailAddress"),
 	ConfirmEmailAddressScreen(ConfirmEmailAddressScreen.class, "ConfirmEmailAddressScreen"),

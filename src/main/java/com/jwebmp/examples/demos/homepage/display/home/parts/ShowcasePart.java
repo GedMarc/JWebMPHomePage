@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
-import com.jwebmp.base.html.Bold;
 import com.jwebmp.base.html.DivSimple;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSAlignmentVerticalOptions;
@@ -27,8 +26,6 @@ public class ShowcasePart<J extends ShowcasePart<J>>
 		add(buildIcon(youtube_square, "https://www.youtube.com/channel/UCKmp3cltVruaBZtGU5VH_Lg"));
 		add(buildIcon(envelope_square, "mailto:support@jwebmp.com"));
 		//add(buildIcon(refresh, "https://jwebmp.com/teamcity/"));
-
-		add(new Bold<>("Each component has their own project, issue logs, and build as well."));
 	}
 
 	private FontAwesome buildIcon(FontAwesomeIcons icon, String link)
