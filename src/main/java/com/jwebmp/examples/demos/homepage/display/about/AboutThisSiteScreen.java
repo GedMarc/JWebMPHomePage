@@ -43,7 +43,7 @@ public class AboutThisSiteScreen
 
 		column1.add(new MintonPanel<>("Site Specs", buildSiteSpecs(), "bg-primary").setShowHeader(false));
 
-		column1.add(new MintonPanel<>("Options Browser", buildOptionsBrowserAbout(), "bg-primary").setShowHeader(false));
+		column2.add(new MintonPanel<>("Options Browser", buildOptionsBrowserAbout(), "bg-primary").setShowHeader(false));
 
 		row.add(column1);
 		row.add(column2);
@@ -63,7 +63,7 @@ public class AboutThisSiteScreen
 
 		div.add("This site uses many different methods of doing the same thing across many different pages.I think a core part should not be restricting development to any particular pattern.");
 
-		div.add("I'm not going to tell you how to do anything, but I'll show and give hundreds of examples of the capabilities of the framework and how <i>any</i> pattern of your choice may be used in your web and mobile development, whether you are templating and importing htmls with specified variables (EL is way to slow) or going native Java only, you're free to develop to your own preference.");
+		div.add("There are tons of examples of the capabilities of the framework and how <i>any</i> pattern of your choice may be used in your web and mobile development, whether you are templating and importing HTMLs with specified variables or going native Java only, you're free to develop to your own preference.");
 		//div.add("All the source is ofcourse available on GitHub, with the developer a simple support ticket,issue log, or stack exchange query away - You never have to worry about getting stuck");
 		//div.add("I chose a straight forward WAR structure in a Domain Driven Architecture Pattern, running on Undertow, and using Azure with Hibernate 5.2 for the persistence strategy. Bitronix BTM for JTA to ensure Test and Production are identical." + "<br/>The Query Builder/Entity Management API is another stand-alone project and is a powerful - if unknown - Criteria Builder Manager for DDD with all the bells and whistles.");
 		//div.add("I could have gone the EE EJB JCache DAO Named Queries route as well, but doesn't that seem like a touch overkill for a site with no background running tasks or JMS requirements? :)");
@@ -96,17 +96,21 @@ public class AboutThisSiteScreen
 		                                                    .add(new TableCell<>("Domain Query Handler"))
 		                                                    .add(new TableCell<>("Criteria API 1.7 with CRP Builder. Tightly Couples Builders Utilizing Types.")));
 
+		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Guiced Hazelcast"))
+		                                                    .add(new TableCell<>("JCache Provider"))
+		                                                    .add(new TableCell<>("Provides Hazelcast Caching with the JCache API and Guice Injection")));
+
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Undertow"))
 		                                                    .add(new TableCell<>("Embedded Container"))
 		                                                    .add(new TableCell<>("Web-Services, Rest and Http Container. Running behind an NGINX reverse proxy.")));
 
-		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JUnit 5.0.1"))
+		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JUnit 5.2.0"))
 		                                                    .add(new TableCell<>("Testing Framework"))
 		                                                    .add(new TableCell<>("Non-Restrictive, Can also use TestNG.")));
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Selenium 4.1.0"))
 		                                                    .add(new TableCell<>("Integration Testing"))
-		                                                    .add(new TableCell<>("You can use PhanthomJS, but as usual a GUI is required.")));
+		                                                    .add(new TableCell<>("You can use PhantomJS, but as usual a GUI is required.")));
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JWebMP Plugins"))
 		                                                    .add(new TableCell<>("All of them"))
@@ -123,18 +127,19 @@ public class AboutThisSiteScreen
 
 		d.add(new H3<>("The Object Browser").addClass(Col_12));
 
-		BSColumn<?> leftColumn = new BSColumn<>(Col_Md_6);
-		BSColumn<?> rightColumn = new BSColumn<>(Col_Md_6);
+		BSColumn<?> leftColumn = new BSColumn<>(Col_Md_12);
+		//BSColumn<?> rightColumn = new BSColumn<>(Col_Md_6);
 
 		OptionsBrowser op = new OptionsBrowser(new AjaxCall<>()).setID("opAboutTree");
 		leftColumn.add(op);
+		leftColumn.add("Double click, or select the expand icon for more details");
 
-		rightColumn.add("The options browser is a simple reflection of any object and can be found on all the demo pages");
-		rightColumn.add("These classes are referenced from the getOptions() method available and produce the entire API of the referenced web library");
-		rightColumn.add("<br/>The toString() for JavascriptPart returns a JSON representation of that object");
+		leftColumn.add("The options browser is a simple reflection of any object and can be found on all the demo pages");
+		leftColumn.add("These classes are referenced from the getOptions() method available and produce the entire API of the referenced web library");
+		leftColumn.add("The toString() for JavascriptPart returns a JSON representation of that object");
 
 		d.add(leftColumn);
-		d.add(rightColumn);
+		//d.add(rightColumn);
 
 		return d;
 	}

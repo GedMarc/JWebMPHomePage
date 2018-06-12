@@ -32,7 +32,8 @@ public class OptionsBrowser
 		                                                               .getSimpleName() + ":  <small><i>" + optionsObject.getClass()
 		                                                                                                                 .getPackage()
 		                                                                                                                 .getName()
-		                                                                                                                 .replace("com.jwebmp.plugins.", "") + "</i></small>");
+		                                                                                                                 .replace("com.jwebmp.plugins.", "")
+		                                                                                                                 .replace("com.jwebmp.", "") + "</i></small>");
 		rootItem.getOptions()
 		        .setDisabled(false)
 		        .setIcon("fa fa-toggle-down")

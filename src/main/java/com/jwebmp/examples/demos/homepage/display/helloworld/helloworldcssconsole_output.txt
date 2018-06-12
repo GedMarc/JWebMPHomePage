@@ -1,0 +1,4 @@
+#jwb3aecc{background-blendmode:darken;}
+#jwe27be1{color:#abcdef;}
+#jw696ff9{color:darkblue;font-style:italic;text-align:center;}
+#jwfca0d3{color:#fff00;}

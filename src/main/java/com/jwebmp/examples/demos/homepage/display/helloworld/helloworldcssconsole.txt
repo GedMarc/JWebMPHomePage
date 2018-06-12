@@ -1,0 +1,36 @@
+/**
+ * The CSS Engine is grouped according to the W3Schools Docs - https://www.w3schools.com/css/default.asp
+ */
+@FontsCSS(FontStyle = FontStyles.Italic)
+@TextCSS(Color$ = ColourNames.DarkBlue,
+        TextAlign = TextAlignments.Center)
+private Span<?, ?, ?> fieldExample;
+
+@BackgroundCSS(BackgroundImage = @ImageCSS("url/image.png"))
+private Span<?, ?, ?> separateDeclarationsFieldExample;
+
+@BorderCSS(BorderBottomStyle = BorderStyles.Dotted)
+private Span<?, ?, ?> hoverOverFieldExample;
+
+@DisplayCSS(Display = Displays.Flex)
+private Span<?, ?, ?> nullFieldIgnoredExampleNoIDAvailable;
+
+public HelloWorldCSS()
+{
+    super();
+    fieldExample = new Span<>();
+    separateDeclarationsFieldExample = new Span<>();
+    hoverOverFieldExample = new Span<>();
+
+    getBody().add("Something that is not an annotated span");
+
+    H3 inline = new H3("Inline?");
+    inline.getCss()
+          .getBackground()
+          .setBackgroundBlendMode(BackgroundBlendMode.Darken);
+    getBody().add(inline);
+
+    getBody().addAttribute("style", "color:inner");
+    getBody().addStyle("method2", "value2");
+    getBody().addStyle("method3:value3");
+}

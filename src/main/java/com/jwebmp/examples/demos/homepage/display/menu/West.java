@@ -49,8 +49,9 @@ public class West
 		globalList.add(homeItem = buildMenuItem("ti-home", "Home"));
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
 
-		buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
-		buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites());
+		//buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
+		buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown());
+		//buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites());
 		//buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
 		buildMenuSection("Plugin Library", true, homeItem, buildCorePlugins(), buildAngularTools());
@@ -199,6 +200,8 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#a", AboutJWebMP).setText("About JWebMP")));
 		uiKit.add(new ListItem<>().add(buildListItem("#a", UnderTheHood).setText("Under The Hood")));
 		uiKit.add(new ListItem<>().add(buildListItem("#asite", AboutThisSIte).setText("About This Site")));
+		uiKit.add(new ListItem<>().add(buildListItem("#n", HelloWorldScreen).setText("Hello World")));
+
 	/*	uiKit.add(new ListItem<>().add(buildListItem("#b").setText("ReadMe F A Q")));
 		uiKit.add(new ListItem<>().add(buildListItem("#f").setText("Events & Event Stores")));
 		uiKit.add(new ListItem<>().add(buildListItem("#c").setText("Security")));
@@ -223,49 +226,6 @@ public class West
 
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Environments", uiKit);
 		return dropDown1;
-	}
-
-	private ListItem<?> buildTestingFramework()
-	{
-		List uiKit = new List<>();
-
-		uiKit.add(new ListItem<>().add(buildListItem("#k").setText("Integration Testing")));
-		uiKit.add(new ListItem<>().add(buildListItem("#l").setText("Unit Testing")));
-		uiKit.add(new ListItem<>().add(buildListItem("#l").setText("Open Support")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Testing", uiKit);
-		return dropDown1;
-	}
-
-	private ListItem<?> buildMyFirstSites()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#n", HelloWorldScreen).setText("Hello World")));
-		uiKit.add(new ListItem<>().add(buildListItem("#o", JQueryUILayout).setText("Layouts")));
-		uiKit.add(new ListItem<>().add(buildListItem("#p").setText("Basic Examples")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Getting Started", uiKit);
-		return dropDown1;
-	}
-
-	private ListItem<?> buildUIKits()
-	{
-		List uiKit = new List<>();
-
-
-		uiKit.add(new ListItem<>().add(buildListItem("#t", DisplayScreens.JQueryUI).setText("JQuery UI")));
-		uiKit.add(new ListItem<>().add(buildListItem("#u", DisplayScreens.Bootstrap4).setText("Bootstrap")));
-		uiKit.add(new ListItem<>().add(buildListItem("#v").setText("JQX Widgets")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "UI Bundles", uiKit);
-		return dropDown1;
-	}
-
-	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen)
-	{
-		Link link = new Link(uniqueHashBangId);
-		changeScreenAdapter(screen, link);
-		return link;
 	}
 
 	private Link<?> buildListItem(String uniqueHashBangId)
@@ -300,12 +260,54 @@ public class West
 		return item;
 	}
 
+	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen)
+	{
+		Link link = new Link(uniqueHashBangId);
+		changeScreenAdapter(screen, link);
+		return link;
+	}
+
 	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
 	{
 		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
 		adapter.setID(screenReference.toString());
 		comp.addEvent(adapter);
 		return adapter;
+	}
+
+	private ListItem<?> buildTestingFramework()
+	{
+		List uiKit = new List<>();
+
+		uiKit.add(new ListItem<>().add(buildListItem("#k").setText("Integration Testing")));
+		uiKit.add(new ListItem<>().add(buildListItem("#l").setText("Unit Testing")));
+		uiKit.add(new ListItem<>().add(buildListItem("#l").setText("Open Support")));
+
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Testing", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem<?> buildMyFirstSites()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#o", JQueryUILayout).setText("Layouts")));
+		uiKit.add(new ListItem<>().add(buildListItem("#p").setText("Basic Examples")));
+
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Getting Started", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem<?> buildUIKits()
+	{
+		List uiKit = new List<>();
+
+
+		uiKit.add(new ListItem<>().add(buildListItem("#t", DisplayScreens.JQueryUI).setText("JQuery UI")));
+		uiKit.add(new ListItem<>().add(buildListItem("#u", DisplayScreens.Bootstrap4).setText("Bootstrap")));
+		uiKit.add(new ListItem<>().add(buildListItem("#v").setText("JQX Widgets")));
+
+		ListItem dropDown1 = buildSubList("ti-paint-bucket", "UI Bundles", uiKit);
+		return dropDown1;
 	}
 
 	private ListItem<?> buildInstantSites()

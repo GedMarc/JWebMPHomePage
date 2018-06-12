@@ -144,7 +144,27 @@ public class HelloWorldScreen
 		                                                 .addStyle("max-height:250px;"));
 
 
-		sourceTabs.addTab("CSS", new Div(), false);
+		Div cssTab;
+		sourceTabs.addTab("Styling", cssTab = buildTab("Basic Styling is incredibly simple, from Beginner to CSS Expert, all your needs should be catered for.", Java,
+		                                               FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssconsole.txt", "helloworldcssconsole.txt")), false);
+
+
+		cssTab.add("The CSS is produced through the methods and combined into the page")
+		      .add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                       .setSourceCodeLanguage(SourceCodeLanguages.HTML)
+		                                       .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssconsole_htmloutput.txt",
+		                                                                                                            "helloworldcssconsole_htmloutput.txt", false)
+		                                                                                           .toString()
+		                                                                                           .replace('\t', ' ')
+		                                                                                           .replace("    ", "  ")))
+		                                       .addStyle("overflow-y:auto")
+		                                       .addStyle("max-height:250px;"));
+		cssTab.add("Adding the Annotations to a Class generates the CSS as a CSS Class.");
+		cssTab.add(
+				"Extending a CSSComponent will allow you to create and group features functions events and queries to any grouped class selector that specifies the ID of the component.");
+
+
+		sourceTabs.addTab("CSS", cssTab, false);
 		sourceTabs.addTab("Tests", new Div(), false);
 		sourceTabs.addTab("Tests", new Div(), false);
 		sourceTabs.addTab("<i>DB *</i><small>optional</small>", new Div(), false);

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">#jwb3aecc{background-blendmode:darken;}#jwe27be1{color:#abcdef;}#jw696ff9{color:darkblue;font-style:italic;text-align:center;}#jwfca0d3{color:#fff00;}</style>
+	</head>
+
+	<body id="body" style="color:innermethod2:value2;method3:value3;">
+		<p id="jwc4723c">Something that is not an annotated span</p>
+		<H3 id="jwb3aecc">Inline?</H3>
+	</body>
+</html>
