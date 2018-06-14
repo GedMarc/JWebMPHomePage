@@ -81,6 +81,8 @@ public class HelloWorldScreen
 	{
 		Div d = new Div();
 
+		d.add(new Link<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-HelloWorld", "_blank").setText("All these demos can be download at the Github Repository")
+		                                                                                            .addClass(Col_12));
 
 		DivSimple<?> sourceExampleDiv = new DivSimple();
 		MintonPanel<?> portlet = new MintonPanel<>("Source Examples", Bg_Secondary.toString(), sourceExampleDiv);
@@ -109,39 +111,10 @@ public class HelloWorldScreen
 				                                                         .replace('\t', ' ')
 				                                                         .replace("    ", "  "))));
 
-		Div jsTab;
-		sourceTabs.addTab("JS Handling", jsTab = buildTab(
-				"At its very core, managing the dependencies is always quick and easy.<br/>By utilizing these basics, complex widgets and components can be put together.<br/> Theme Jars become simple to implement and web libraries can be adopted very quickly.",
-				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjavascriptconsole.txt", "helloworldjavascriptconsole.txt")), false);
-
-		jsTab.add("The structure is ordered and prioritized accordingly when built. Setting the Priority to Top_Shelf places references in the header. ")
-		     .add(new JQSourceCodePrettify<>().addStyle("background:black;")
-		                                      .setSourceCodeLanguage(HTML)
-		                                      .setText(StringEscapeUtils.escapeHtml4(
-				                                      FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjavascriptconsole_output.txtt",
-				                                                                    "helloworldjavascriptconsole_output.txt", false)
-				                                                   .toString()
-				                                                   .replace('\t', ' ')
-				                                                   .replace("    ", "  "))));
+		buildScriptsTab(sourceTabs);
 
 
-		Div jsonSerializeTab;
-		sourceTabs.addTab("JSON Serialization", jsonSerializeTab = buildTab(
-				"By default, all objects toString() serialize into JSON. This allows for persistable screen objects, and are great for persistent session implementations across clusters",
-				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjsonconsole.txt", "helloworldjsonconsole.txt")), false);
-
-
-		jsonSerializeTab.add("This produces a completely deserializable component object")
-		                .add(new JQSourceCodePrettify<>().addStyle("background:black;")
-		                                                 .setSourceCodeLanguage(SourceCodeLanguages.JS)
-		                                                 .setText(StringEscapeUtils.escapeHtml4(
-				                                                 FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjsonconsole_output.txt",
-				                                                                               "helloworldjsonconsole_output.txt", false)
-				                                                              .toString()
-				                                                              .replace('\t', ' ')
-				                                                              .replace("    ", "  ")))
-		                                                 .addStyle("overflow-y:auto")
-		                                                 .addStyle("max-height:250px;"));
+		buildJsonTab(sourceTabs);
 
 
 		Div cssTab;
@@ -163,11 +136,7 @@ public class HelloWorldScreen
 		cssTab.add(
 				"Extending a CSSComponent will allow you to create and group features functions events and queries to any grouped class selector that specifies the ID of the component.");
 
-
-		sourceTabs.addTab("CSS", cssTab, false);
-		sourceTabs.addTab("Tests", new Div(), false);
-		sourceTabs.addTab("Tests", new Div(), false);
-		sourceTabs.addTab("<i>DB *</i><small>optional</small>", new Div(), false);
+		buildClassTab(sourceTabs);
 
 		sourceExampleDiv.add(sourceTabs);
 
@@ -175,6 +144,44 @@ public class HelloWorldScreen
 		d.add(portlet);
 
 		return d;
+	}
+
+	private void buildScriptsTab(BSNavTabs sourceTabs)
+	{
+		Div jsTab;
+		sourceTabs.addTab("Scripts", jsTab = buildTab(
+				"At its very core, managing the dependencies is always quick and easy.<br/>By utilizing these basics, complex widgets and components can be put together.<br/> Theme Jars become simple to implement and web libraries can be adopted very quickly.",
+				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjavascriptconsole.txt", "helloworldjavascriptconsole.txt")), false);
+
+		jsTab.add("The structure is ordered and prioritized accordingly when built. Setting the Priority to Top_Shelf places references in the header. ")
+		     .add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                      .setSourceCodeLanguage(HTML)
+		                                      .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjavascriptconsole_output.txtt",
+		                                                                                                           "helloworldjavascriptconsole_output.txt", false)
+		                                                                                          .toString()
+		                                                                                          .replace('\t', ' ')
+		                                                                                          .replace("    ", "  "))));
+	}
+
+	private void buildJsonTab(BSNavTabs sourceTabs)
+	{
+		Div jsonSerializeTab;
+		sourceTabs.addTab("JSON", jsonSerializeTab = buildTab(
+				"By default, all objects toString() serialize into JSON. This allows for persistable screen objects, and are great for persistent session implementations across clusters",
+				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjsonconsole.txt", "helloworldjsonconsole.txt")), false);
+
+
+		jsonSerializeTab.add("This produces a completely deserializable component object")
+		                .add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                                 .setSourceCodeLanguage(SourceCodeLanguages.JS)
+		                                                 .setText(StringEscapeUtils.escapeHtml4(
+				                                                 FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjsonconsole_output.txt",
+				                                                                               "helloworldjsonconsole_output.txt", false)
+				                                                              .toString()
+				                                                              .replace('\t', ' ')
+				                                                              .replace("    ", "  ")))
+		                                                 .addStyle("overflow-y:auto")
+		                                                 .addStyle("max-height:250px;"));
 	}
 
 	private Div<GlobalChildren, ?, ?, ?, ?> buildTab(@Nullable String description, SourceCodeLanguages language, StringBuilder fileTemplate)
@@ -187,5 +194,25 @@ public class HelloWorldScreen
 		                                                                                               .replace('\t', ' ')
 		                                                                                               .replace("    ", "  "))));
 		return htmlExample;
+	}
+
+	private void buildClassTab(BSNavTabs sourceTabs)
+	{
+		Div cssTab;
+		sourceTabs.addTab("Classy", cssTab = buildTab(
+				"Class assignment allows you to group features, events, and other items together<br/>" + "Extending a CSSComponent will allow you to create and group features functions events and queries to any grouped class selector that specifies the ID of the component.",
+				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssconsole.txt", "helloworldcssconsole.txt")), false);
+
+
+		cssTab.add("Utilizing CSS Selectors you can also form groups.")
+		      .add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                       .setSourceCodeLanguage(SourceCodeLanguages.HTML)
+		                                       .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssconsole_htmloutput.txt",
+		                                                                                                            "helloworldcssconsole_htmloutput.txt", false)
+		                                                                                           .toString()
+		                                                                                           .replace('\t', ' ')
+		                                                                                           .replace("    ", "  ")))
+		                                       .addStyle("overflow-y:auto")
+		                                       .addStyle("max-height:250px;"));
 	}
 }

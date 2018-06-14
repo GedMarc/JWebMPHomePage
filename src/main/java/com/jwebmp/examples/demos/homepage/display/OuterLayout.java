@@ -5,6 +5,7 @@ import com.jwebmp.PlaceHolder;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.plugins.jquerylayout.layout.components.BorderLayout;
+import com.jwebmp.plugins.jquerylayout.layout.enumerations.LayoutResponsiveSize;
 import lombok.extern.java.Log;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
@@ -29,6 +30,7 @@ public class OuterLayout
 	{
 		super();
 		setID("wrapper");
+
 		getOptions().getNorth()
 		            .setResizable(false)
 		            .setMinSize(68)
@@ -72,6 +74,17 @@ public class OuterLayout
 			         .setInitClosed(true);
 			getEast().getOptions()
 			         .setInitClosed(true);
+		}
+		else
+		{
+			getEast().getOptions()
+			         .getResponsive()
+			         .setEnabled(true)
+			         .setWhen(LayoutResponsiveSize.Medium);
+			getWest().getOptions()
+			         .getResponsive()
+			         .setEnabled(true)
+			         .setWhen(LayoutResponsiveSize.Medium);
 		}
 		super.init();
 	}
