@@ -156,11 +156,12 @@ public class HelloWorldScreen
 		jsTab.add("The structure is ordered and prioritized accordingly when built. Setting the Priority to Top_Shelf places references in the header. ")
 		     .add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                      .setSourceCodeLanguage(HTML)
-		                                      .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjavascriptconsole_output.txtt",
-		                                                                                                           "helloworldjavascriptconsole_output.txt", false)
-		                                                                                          .toString()
-		                                                                                          .replace('\t', ' ')
-		                                                                                          .replace("    ", "  "))));
+		                                      .setText(StringEscapeUtils.escapeHtml4(
+				                                      FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjavascriptconsole_output.txtt",
+				                                                                    "helloworldjavascriptconsole_output.txt", false)
+				                                                   .toString()
+				                                                   .replace('\t', ' ')
+				                                                   .replace("    ", "  "))));
 	}
 
 	private void buildJsonTab(BSNavTabs sourceTabs)
@@ -201,14 +202,14 @@ public class HelloWorldScreen
 		Div cssTab;
 		sourceTabs.addTab("Classy", cssTab = buildTab(
 				"Class assignment allows you to group features, events, and other items together<br/>" + "Extending a CSSComponent will allow you to create and group features functions events and queries to any grouped class selector that specifies the ID of the component.",
-				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssconsole.txt", "helloworldcssconsole.txt")), false);
+				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssclassyconsole.txt", "helloworldcssclassyconsole.txt")), false);
 
 
-		cssTab.add("Utilizing CSS Selectors you can also form groups.")
+		cssTab.add("Utilizing CSS Selectors you can assign any feature, event, or action in groups.")
 		      .add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                       .setSourceCodeLanguage(SourceCodeLanguages.HTML)
-		                                       .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssconsole_htmloutput.txt",
-		                                                                                                            "helloworldcssconsole_htmloutput.txt", false)
+		                                       .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssclassyconsole_output.txt",
+		                                                                                                            "helloworldcssclassyconsole_output.txt", false)
 		                                                                                           .toString()
 		                                                                                           .replace('\t', ' ')
 		                                                                                           .replace("    ", "  ")))

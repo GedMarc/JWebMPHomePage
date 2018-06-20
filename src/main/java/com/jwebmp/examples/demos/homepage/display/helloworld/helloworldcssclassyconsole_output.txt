@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<body id="body">
+
+		<p id="jwd8e022">Hello World</p>
+		<script type="application/javascript">
+			$('.cssClassName').css('color','blue');
+        </script>
+	</body>
+</html>
+
+$('.cssClassName').css('color','blue');
+

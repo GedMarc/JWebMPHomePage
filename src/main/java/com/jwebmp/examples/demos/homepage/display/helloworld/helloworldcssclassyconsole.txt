@@ -1,0 +1,39 @@
+@PageConfiguration(url = "/jscssobj")
+public class HelloWorldCSSObject
+		extends Page
+{
+	public HelloWorldCSSObject()
+	{
+		super();
+		add(new HelloWorldCSSJSRender("cssClassName"));
+		add(new Paragraph("Hello World"));
+		getOptions().setDynamicRender(false);
+	}
+
+	public static void main(String[] args)
+	{
+		LogFactory.configureConsoleColourOutput(Level.FINE);
+		LogColourFormatter.setRenderBlack(false);
+		HelloWorldCSSObject page = new HelloWorldCSSObject();
+		System.out.println(page.toString(0));
+		System.out.println(page.renderJavascript());
+	}
+
+}
+
+public class HelloWorldCSSJSRender
+		extends CSSComponent
+{
+	public HelloWorldCSSJSRender(String className)
+	{
+		super(className);
+		addFeature(new Feature("CSSFeature")
+		{
+			@Override
+			protected void assignFunctionsToComponent()
+			{
+				addQuery(getComponent().getJQueryID() + "css('color','blue');");
+			}
+		});
+	}
+}

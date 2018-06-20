@@ -324,7 +324,7 @@ public class West
 	private ListItem<?> buildCorePlugins()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a2").setText("HTML Tag Collection")));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", HtmlTagsDemoScreen).setText("HTML Tag Collection")));
 		uiKit.add(new ListItem<>().add(buildListItem("#a3").setText("Angular Integration")));
 		uiKit.add(new ListItem<>().add(buildListItem("#a4").setText("AJAX Implementation")));
 		uiKit.add(new ListItem<>().add(buildListItem("#a5").setText("Atmosphere Push Web Sockets")));

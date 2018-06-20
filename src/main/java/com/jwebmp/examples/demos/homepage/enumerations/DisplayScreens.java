@@ -99,6 +99,8 @@ public enum DisplayScreens
 	UnderTheHood(UnderTheHoodScreen.class, "UnderTheHood"),
 	AboutThisSIte(AboutThisSiteScreen.class, "AboutThisSite"),
 
+	HtmlTagsDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.HtmlTagsDemoScreen.class, "HtmlTagsDemoScreen"),
+
 	AngularAnimate(AngularAnimateDemoScreen.class, "AngularAnimate"),
 	AngularAnimatedChange(AngularAnimateChangeDemoScreen.class, "AngularAnimatedChange"),
 	AngularAutoExpand(AngularAutoExpandDemoScreen.class, "AngularAutoExpand"),
