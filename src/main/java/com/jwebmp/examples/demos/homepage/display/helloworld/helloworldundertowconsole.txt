@@ -1,0 +1,34 @@
+public class HomePageStartup
+{
+public static void main(String[] args) throws ServletException
+{
+    //Address used for when not in a direct request scope. Great for asynchronous operations in clustered environmnets
+    SessionHelper.setAddressToBeUsedWhenNull("https://jwebmp.com/");
+    //Debug output to console - JDK Logging
+    configureConsoleColourOutput(Level.FINE);
+
+    //Standard Startup
+    DeploymentInfo servletBuilder = Servlets.deployment()
+                                            .setClassLoader(HomePageStartup.class.getClassLoader())
+                                            .setContextPath("/")
+                                            .setDeploymentName("jwebswinghomepage.war");
+    DeploymentManager manager = Servlets.defaultContainer()
+                                        .addDeployment(servletBuilder);
+
+    //Start JWebMP
+    GuiceContext.inject();
+    //Deploy
+    manager.deploy();
+
+    //GZip Responses
+    HttpHandler jwebSwingHandler = manager.start();
+    HttpHandler encodingHandler = new EncodingHandler.Builder().build(null)
+                                                               .wrap(jwebSwingHandler);
+    //Configure Server
+    Undertow server = Undertow.builder()
+                              .addHttpListener(6002, "0.0.0.0")
+                              .setHandler(encodingHandler)
+                              .build();
+    server.start();
+}
+}

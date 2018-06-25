@@ -69,7 +69,11 @@ public class HelloWorldScreen
 		BSNavTabs<?> tabs = new BSNavTabs<>();
 
 		tabs.asMe()
-		    .addTab("Console Output", buildConsoleScreen(), true);
+		    .addTab("Getting Started", buildConsoleScreen(), true);
+		tabs.asMe()
+		    .addTab("Undertow", buildUndertowScreen(), false);
+		tabs.asMe()
+		    .addTab("Payara Micro", buildPayaraMicroScreen(), false);
 
 		fullWidth.add(tabs);
 		row.add(fullWidth);
@@ -113,14 +117,11 @@ public class HelloWorldScreen
 
 		buildScriptsTab(sourceTabs);
 
-
 		buildJsonTab(sourceTabs);
-
 
 		Div cssTab;
 		sourceTabs.addTab("Styling", cssTab = buildTab("Basic Styling is incredibly simple, from Beginner to CSS Expert, all your needs should be catered for.", Java,
 		                                               FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssconsole.txt", "helloworldcssconsole.txt")), false);
-
 
 		cssTab.add("The CSS is produced through the methods and combined into the page")
 		      .add(new JQSourceCodePrettify<>().addStyle("background:black;")
@@ -137,6 +138,101 @@ public class HelloWorldScreen
 				"Extending a CSSComponent will allow you to create and group features functions events and queries to any grouped class selector that specifies the ID of the component.");
 
 		buildClassTab(sourceTabs);
+
+		sourceExampleDiv.add(sourceTabs);
+
+		portlet.setShowHeader(false);
+		d.add(portlet);
+
+		return d;
+	}
+
+	private Div<?, ?, ?, ?, ?> buildUndertowScreen()
+	{
+		Div d = new Div();
+		d.add(new Link<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-HelloWorld", "_blank").setText("All these demos can be download at the Github Repository")
+		                                                                                            .addClass(Col_12));
+
+		DivSimple<?> sourceExampleDiv = new DivSimple();
+		MintonPanel<?> portlet = new MintonPanel<>("Source Examples", Bg_Secondary.toString(), sourceExampleDiv);
+
+		BSNavTabs<?> sourceTabs = new BSNavTabs<>();
+		sourceTabs.addClass(BSNavsOptions.Tabs_Bordered);
+		DivSimple<?> javaExample = new DivSimple<>();
+		javaExample.add("Start building your standalone web application instantly by plugging directly into Undertow!");
+		javaExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                            .setSourceCodeLanguage(SourceCodeLanguages.XML)
+		                                            .setText(StringEscapeUtils.escapeHtml4(
+				                                            FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowpom.txt",
+				                                                                          "helloworldundertowpom.txt",
+				                                                                          false)
+				                                                         .toString()
+				                                                         .replace('\t', ' ')
+				                                                         .replace("    ", "  "))));
+		javaExample.add("A single line GuiceContext.inject() is all you need to configure");
+		javaExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                            .setSourceCodeLanguage(SourceCodeLanguages.Java)
+		                                            .setText(StringEscapeUtils.escapeHtml4(
+				                                            FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowconsole", "helloworldundertowconsole.txt",
+				                                                                          false)
+				                                                         .toString()
+				                                                         .replace('\t', ' ')
+				                                                         .replace("    ", "  "))));
+		sourceTabs.addTab("Java", javaExample, true);
+		DivSimple<?> underowPushExample = new DivSimple<>();
+		underowPushExample.add(new Link<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-AtmospherePushUndertow", "_blank").setText("View this demo here")
+		                      );
+		underowPushExample.add("Web Sockets can be enabled by simply placing a dependency in the classpath.");
+		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                                   .setSourceCodeLanguage(SourceCodeLanguages.XML)
+		                                                   .setText(StringEscapeUtils.escapeHtml4(
+				                                                   FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowwebsocketspomtxt.txt",
+				                                                                                 "helloworldundertowwebsocketspomtxt.txt",
+				                                                                                 true)
+				                                                                .toString()
+				                                                                .replace('\t', ' ')
+				                                                                .replace("    ", "  "))));
+		underowPushExample.add("Extend the AtmosphereAdapter class to manage the connections.<br/>" +
+		                       "Use BroadcastGroups to group push messages All connections exist in the AtmosphereGlobalProperties class");
+		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                                   .setSourceCodeLanguage(SourceCodeLanguages.Java)
+		                                                   .setText(StringEscapeUtils.escapeHtml4(
+				                                                   FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowwebsocketsconsole",
+				                                                                                 "helloworldundertowwebsocketsconsole.txt",
+				                                                                                 false)
+				                                                                .toString()
+				                                                                .replace('\t', ' ')
+				                                                                .replace("    ", "  "))));
+		sourceTabs.addTab("Web Sockets", underowPushExample, false);
+
+		sourceExampleDiv.add(sourceTabs);
+
+		portlet.setShowHeader(false);
+		d.add(portlet);
+
+		return d;
+	}
+
+	private Div<?, ?, ?, ?, ?> buildPayaraMicroScreen()
+	{
+		Div d = new Div();
+
+		DivSimple<?> sourceExampleDiv = new DivSimple();
+		MintonPanel<?> portlet = new MintonPanel<>("Source Examples", Bg_Secondary.toString(), sourceExampleDiv);
+
+		BSNavTabs<?> sourceTabs = new BSNavTabs<>();
+		sourceTabs.addClass(BSNavsOptions.Tabs_Bordered);
+		DivSimple<?> javaExample = new DivSimple<>();
+		javaExample.add("Start building your standalone web application instantly by plugging directly into Undertow!");
+		javaExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                            .setSourceCodeLanguage(SourceCodeLanguages.XML)
+		                                            .setText(StringEscapeUtils.escapeHtml4(
+				                                            FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowpom.txt",
+				                                                                          "helloworldundertowpom.txt",
+				                                                                          false)
+				                                                         .toString()
+				                                                         .replace('\t', ' ')
+				                                                         .replace("    ", "  "))));
 
 		sourceExampleDiv.add(sourceTabs);
 
@@ -171,7 +267,6 @@ public class HelloWorldScreen
 				"By default, all objects toString() serialize into JSON. This allows for persistable screen objects, and are great for persistent session implementations across clusters",
 				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjsonconsole.txt", "helloworldjsonconsole.txt")), false);
 
-
 		jsonSerializeTab.add("This produces a completely deserializable component object")
 		                .add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                                 .setSourceCodeLanguage(SourceCodeLanguages.JS)
@@ -200,10 +295,11 @@ public class HelloWorldScreen
 	private void buildClassTab(BSNavTabs sourceTabs)
 	{
 		Div cssTab;
-		sourceTabs.addTab("Classy", cssTab = buildTab(
-				"Class assignment allows you to group features, events, and other items together<br/>" + "Extending a CSSComponent will allow you to create and group features functions events and queries to any grouped class selector that specifies the ID of the component.",
-				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssclassyconsole.txt", "helloworldcssclassyconsole.txt")), false);
-
+		sourceTabs.addTab("Classy", cssTab = buildTab("Class assignment allows you to group features, events, and other items together<br/>" +
+		                                              "Extending a CSSComponent will allow you to create and group features functions events and queries to any grouped class selector that specifies the ID of the component.",
+		                                              Java,
+		                                              FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssclassyconsole.txt", "helloworldcssclassyconsole.txt")),
+		                  false);
 
 		cssTab.add("Utilizing CSS Selectors you can assign any feature, event, or action in groups.")
 		      .add(new JQSourceCodePrettify<>().addStyle("background:black;")
