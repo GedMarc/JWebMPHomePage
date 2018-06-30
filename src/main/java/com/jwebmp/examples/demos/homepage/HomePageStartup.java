@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage;
 import com.jwebmp.SessionHelper;
 import com.jwebmp.components.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBFilter;
+import com.jwebmp.generics.WebReference;
 import com.jwebmp.guiceinjection.GuiceContext;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemes;
@@ -27,6 +28,7 @@ public class HomePageStartup
 	{
 		SessionHelper.setAddressToBeUsedWhenNull("https://jwebmp.com/");
 		LogColourFormatter.setRenderBlack(false);
+		WebReference.setUseVersionIdentifier(true);
 
 		configureConsoleColourOutput(Level.FINE);
 
@@ -34,7 +36,6 @@ public class HomePageStartup
 		                                        .setClassLoader(HomePageStartup.class.getClassLoader())
 		                                        .setContextPath("/")
 		                                        .setDeploymentName("jwebswinghomepage.war");
-
 
 		servletBuilder.addFilter(new FilterInfo("FilterUnitOfWorks", HomePageDBFilter.class).setAsyncSupported(true));
 		servletBuilder.addFilterUrlMapping("FilterUnitOfWorks", "/*", DispatcherType.REQUEST);

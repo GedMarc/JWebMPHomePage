@@ -69,11 +69,20 @@ public class HelloWorldScreen
 		BSNavTabs<?> tabs = new BSNavTabs<>();
 
 		tabs.asMe()
-		    .addTab("Getting Started", buildConsoleScreen(), true);
+		    .addTab("Core Basics", buildConsoleScreen(), true);
 		tabs.asMe()
 		    .addTab("Undertow", buildUndertowScreen(), false);
 		tabs.asMe()
 		    .addTab("Payara Micro", buildPayaraMicroScreen(), false);
+		tabs.asMe()
+		    .addTab("Glassfish/Payara", buildPayaraMicroScreen(), false);
+		tabs.asMe()
+		    .addTab("Wildfly", buildPayaraMicroScreen(), false);
+		tabs.asMe()
+		    .addTab("Swarm", buildPayaraMicroScreen(), false);
+
+		tabs.asMe()
+		    .addTab("Configurations", buildPayaraMicroScreen(), false);
 
 		fullWidth.add(tabs);
 		row.add(fullWidth);
@@ -193,7 +202,9 @@ public class HelloWorldScreen
 				                                                                .replace('\t', ' ')
 				                                                                .replace("    ", "  "))));
 		underowPushExample.add("Extend the AtmosphereAdapter class to manage the connections.<br/>" +
-		                       "Use BroadcastGroups to group push messages All connections exist in the AtmosphereGlobalProperties class");
+		                       "Use BroadcastGroups to group push messages <br/>" +
+		                       "Globals are accessible via AtmosphereGlobalProperties.class<br/>" +
+		                       "Distribute with in-memory providers, quickly. Hazelcast Plugin Available.");
 		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                                   .setSourceCodeLanguage(SourceCodeLanguages.Java)
 		                                                   .setText(StringEscapeUtils.escapeHtml4(

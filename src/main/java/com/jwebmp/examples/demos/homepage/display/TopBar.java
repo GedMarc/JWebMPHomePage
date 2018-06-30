@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-
 import com.jwebmp.Feature;
 import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
@@ -95,14 +94,11 @@ public class TopBar
 			                                       .createToggleButton(rightSideOpener, JQLayoutArea.East));
 		}
 
-
 		easyButtonList.add((ListChildren) buildTopMenuItem(false, "donateButton", "mdi mdi-currency-usd", "45px", "https://paypal.me/MarcMagon", "_blank"));
 		nav.add(easyButtonList);
 
-
 		//Middle Right Side (Search and Stuff)
 		List<ListChildren, ?, ?, ?> searchList = new List<>().addClass("list-inline menu-left mb-0");
-
 
 		ListItem leftMenuItem = new ListItem<>().addClass("float-left")
 		                                        .add(new Button<>().addClass("button-menu-mobile open-left waves-light waves-effect")
@@ -120,7 +116,6 @@ public class TopBar
 		}
 
 		searchList.add(leftMenuItem);
-
 
 		Form<?> searchForm = new Form<>().addAttribute("role", "search");
 		InputTextType<?> searchInput = new InputTextType<>().setPlaceholder("Search...")
@@ -188,7 +183,6 @@ public class TopBar
 
 		profileDropDownContent.add(new DivSimple<>().addClass("dropdown-item noti-title")
 		                                            .add(headerText));
-
 
 		if (sessionProperties.isLoggedIn())
 		{
@@ -299,7 +293,6 @@ public class TopBar
 			details.add(sp);
 		}
 		link.add(details);
-
 
 		return link;
 	}
