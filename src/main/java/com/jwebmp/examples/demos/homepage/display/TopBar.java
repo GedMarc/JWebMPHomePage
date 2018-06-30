@@ -11,7 +11,7 @@ import com.jwebmp.examples.demos.homepage.display.login.LogoutEvent;
 import com.jwebmp.examples.demos.homepage.display.privacy.GoToPrivacyScreenEvent;
 import com.jwebmp.examples.demos.homepage.display.termsandconditions.GoToTermsAndConditionsEvent;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTypographyOptions;
 import com.jwebmp.plugins.jquerylayout.layout.enumerations.JQLayoutArea;

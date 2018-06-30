@@ -10,7 +10,7 @@ import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.atmosphere.AtmosphereGlobalProperties;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
@@ -85,7 +85,6 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		                                       .getAll(Integer.class)
 		                                       .get(0);
 
-
 		FontAwesome fa3 = FontAwesome.icon(FontAwesomeIcons.code)
 		                             .addStyle("cursor:pointer");
 		fa3.addEvent(new SourceCodeModalDisplayEvent(DisplayCodeParts.ButtonRowChart3, fa3));
@@ -94,7 +93,6 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 
 		widget3.add(new Span<>("Components<br/>  ").addClass("text-muted text-nowrap m-b-10")
 		                                           .add(fa3));
-
 
 		responsive3.add(widget3);
 

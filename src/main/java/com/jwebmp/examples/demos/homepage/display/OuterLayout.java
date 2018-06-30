@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.display;
 import com.jwebmp.Page;
 import com.jwebmp.PlaceHolder;
 import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jquerylayout.layout.components.BorderLayout;
 import com.jwebmp.plugins.jquerylayout.layout.enumerations.LayoutResponsiveSize;
 import lombok.extern.java.Log;

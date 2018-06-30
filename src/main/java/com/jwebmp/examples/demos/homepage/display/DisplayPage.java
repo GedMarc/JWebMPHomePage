@@ -17,7 +17,7 @@ import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
 import com.jwebmp.utilities.StaticStrings;
@@ -30,8 +30,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.jwebmp.guiceinjection.GuiceContext.*;
-
+import static com.jwebmp.guicedinjection.GuiceContext.*;
 
 /**
  * @author Marc Magon
@@ -177,7 +176,21 @@ public class DisplayPage
 			log.info("Created a new visitor [" + newVisitor + "]");
 			//New user Text
 			getInstance(AjaxResponse.class).addReaction(new AjaxResponseReaction("First Use",
-			                                                                     " We think this is the first time you've visited this site on this device and browser combination<br/><br/>" + "You should only see this " + "message" + " once for each " + "browser.<br/> " + "This " + "allows " + "for " + "life-time " + "logins " + "on " + "any " + "" + "" + "application.",
+			                                                                     " We think this is the first time you've visited this site on this device and browser combination<br/><br/>" +
+			                                                                     "You should only see this " +
+			                                                                     "message" +
+			                                                                     " once for each " +
+			                                                                     "browser.<br/> " +
+			                                                                     "This " +
+			                                                                     "allows " +
+			                                                                     "for " +
+			                                                                     "life-time " +
+			                                                                     "logins " +
+			                                                                     "on " +
+			                                                                     "any " +
+			                                                                     "" +
+			                                                                     "" +
+			                                                                     "application.",
 			                                                                     ReactionType.DialogDisplay, AjaxResponseType.Primary));
 		}
 		catch (JsonProcessingException e)

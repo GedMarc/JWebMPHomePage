@@ -15,7 +15,7 @@ import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.entities.builders.SubscribersBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.SubscriberPersistAsync;
 import com.jwebmp.exceptions.MissingComponentException;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import lombok.Data;
 
 import javax.cache.annotation.CacheKey;

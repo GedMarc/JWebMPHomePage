@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.jwebmp.guiceinjection.OptionalPair;
-import com.jwebmp.guiceinjection.Pair;
+import com.jwebmp.guicedinjection.OptionalPair;
+import com.jwebmp.guicedinjection.Pair;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
@@ -97,7 +97,6 @@ public class SourceCodeDetailsContainer<J extends SourceCodeDetailsContainer<J>>
 		getCustomLocations().put(tabName, reference);
 		return (J) this;
 	}
-
 
 	public OptionalPair<Class, String> getJavaScriptSnippetLocations()
 	{

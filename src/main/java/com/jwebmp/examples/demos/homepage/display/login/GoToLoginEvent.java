@@ -4,7 +4,7 @@ import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.AjaxCall;
 import com.jwebmp.base.ajax.AjaxResponse;
 import com.jwebmp.events.click.ClickAdapter;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 
 public class GoToLoginEvent
 		extends ClickAdapter

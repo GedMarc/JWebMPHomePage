@@ -4,7 +4,7 @@ import com.jwebmp.SessionHelper;
 import com.jwebmp.components.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBFilter;
 import com.jwebmp.generics.WebReference;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemes;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemesPageConfigurator;

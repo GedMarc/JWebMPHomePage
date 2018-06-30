@@ -11,7 +11,7 @@ import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.exceptions.MissingComponentException;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions;
 
@@ -82,7 +82,6 @@ public class LoginEvent
 				                                               .setReactionData("You were successfully logged in")
 				                                               .setResponseType(AjaxResponseType.Success)
 				                                               .setReactionType(ReactionType.DialogDisplay));
-
 
 				response.addComponent(GuiceContext.getInstance(HomePage.class));
 				response.addComponent(GuiceContext.getInstance(TopBar.class));

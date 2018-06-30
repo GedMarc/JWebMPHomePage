@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display.subscribe;
 
-
 import com.google.inject.Key;
 import com.google.inject.name.Names;
 import com.jwebmp.base.ComponentHierarchyBase;
@@ -10,7 +9,7 @@ import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.utilities.StaticStrings;
 

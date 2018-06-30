@@ -5,7 +5,7 @@ import com.jwebmp.Feature;
 import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
@@ -86,7 +86,6 @@ public class ComingSoon
 		daysCountDown.add(daysCountSpan);
 		daysCountDown.add(daysLabelSpan);
 
-
 		DivSimple hoursCountDown = new DivSimple<>();
 		Span hoursCountSpan = new Span("0");
 		Span hoursLabelSpan = new Span("hours");
@@ -125,9 +124,22 @@ public class ComingSoon
 	{
 		StringBuilder sb = new StringBuilder();
 		sb.append(
-				"$(function () {\n" + "                    var endDate = \"August 1, 2018 00:00:00\";\n" + "                    $('.app-countdown .row').countdown({\n" + "                        date: endDate,\n" + "                        render: function (data) {\n" + "                            $(this.el).html('<div><div><span class=\"text-primary\">' + (parseInt(this.leadingZeros(data.years, 2) * 365) + parseInt(this.leadingZeros(data.days, 2))) + '</span><span><b>Days</b></span></div><div><span class=\"text-primary\">' + this.leadingZeros(data.hours, 2) + '</span><span><b>Hours</b></span></div></div><div class=\"\"><div><span class=\"text-primary\">' + this.leadingZeros(data.min, 2) + '</span><span><b>Minutes</b></span></div><div><span class=\"text-primary\">' + this.leadingZeros(data.sec, 2) + '</span><span><b>Seconds</b></span></div></div>');\n" + "                        }\n" + "                    });\n" + "                });\n" + "\n" + "                // Text rotate\n" + "                $(\".home-text .rotate\").textrotator({\n" + "                    animation: \"fade\",\n" + "                    speed: 3000\n" + "                });\n");
+				"$(function () {\n" +
+				"                    var endDate = \"August 1, 2018 00:00:00\";\n" +
+				"                    $('.app-countdown .row').countdown({\n" +
+				"                        date: endDate,\n" +
+				"                        render: function (data) {\n" +
+				"                            $(this.el).html('<div><div><span class=\"text-primary\">' + (parseInt(this.leadingZeros(data.years, 2) * 365) + parseInt(this.leadingZeros(data.days, 2))) + '</span><span><b>Days</b></span></div><div><span class=\"text-primary\">' + this.leadingZeros(data.hours, 2) + '</span><span><b>Hours</b></span></div></div><div class=\"\"><div><span class=\"text-primary\">' + this.leadingZeros(data.min, 2) + '</span><span><b>Minutes</b></span></div><div><span class=\"text-primary\">' + this.leadingZeros(data.sec, 2) + '</span><span><b>Seconds</b></span></div></div>');\n" +
+				"                        }\n" +
+				"                    });\n" +
+				"                });\n" +
+				"\n" +
+				"                // Text rotate\n" +
+				"                $(\".home-text .rotate\").textrotator({\n" +
+				"                    animation: \"fade\",\n" +
+				"                    speed: 3000\n" +
+				"                });\n");
 		return sb;
 	}
-
 
 }

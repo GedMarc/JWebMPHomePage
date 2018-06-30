@@ -9,7 +9,7 @@ import com.jwebmp.components.pace.PaceLoaderPageConfigurator;
 import com.jwebmp.components.pace.PaceThemeColour;
 import com.jwebmp.components.pace.preloadedthemes.PaceTheme;
 import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 
 /**
@@ -57,7 +57,6 @@ public class DisplayBody
 		addJavaScriptReference(new JavascriptReference("b", 1.0, "plugins/jquery-sparkline/jquery.sparkline.min.js", 170));
 		addJavaScriptReference(new JavascriptReference("c", 1.0, "plugins/countdown/dest/jquery.countdown.min.js", 171));
 		addJavaScriptReference(new JavascriptReference("d", 1.0, "plugins/simple-text-rotator/jquery.simple-text-rotator.min.js", 172));
-
 
 		addJavaScriptReference(new JavascriptReference("y", 1.0, "js/jquery.core.js", 171));
 		addJavaScriptReference(new JavascriptReference("z", 1.0, "js/jquery.app.js", 172));

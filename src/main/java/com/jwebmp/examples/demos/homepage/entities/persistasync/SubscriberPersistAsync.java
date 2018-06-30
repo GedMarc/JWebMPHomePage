@@ -1,12 +1,11 @@
 package com.jwebmp.examples.demos.homepage.entities.persistasync;
 
-
 import com.jwebmp.FileTemplates;
 import com.jwebmp.SessionHelper;
 import com.jwebmp.examples.demos.homepage.MailService;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 
 public class SubscriberPersistAsync
 		implements Runnable

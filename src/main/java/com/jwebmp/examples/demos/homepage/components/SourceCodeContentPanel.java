@@ -7,7 +7,7 @@ import com.jwebmp.base.html.DivSimple;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.examples.demos.homepage.display.SourceCodeDetailsContainer;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
-import com.jwebmp.guiceinjection.Pair;
+import com.jwebmp.guicedinjection.Pair;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
@@ -125,7 +125,6 @@ public class SourceCodeContentPanel<J extends SourceCodeContentPanel<J>>
 				                buildCustomSourceDiv(key, reference, filename, new Div());
 			                });
 
-
 			if (!sourceTabs.getTabs()
 			               .isEmpty() && !isCodeButtonPanel())
 			{
@@ -171,7 +170,6 @@ public class SourceCodeContentPanel<J extends SourceCodeContentPanel<J>>
 	{
 		try
 		{
-
 
 			jsCodeDiv.add(new JQSourceCodePrettify<>().addStyle("background:black;")
 			                                          .setSourceCodeLanguage(SourceCodeLanguages.Java)

@@ -8,7 +8,7 @@ import com.jwebmp.base.html.Link;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
@@ -46,7 +46,6 @@ public class DemoScreen
 		drawingPane.addStyle("display:flex;");
 		drawingPane.addStyle("background-color:transparent");
 	}
-
 
 	@Override
 	public BSContainer<?> getContentContainer()
@@ -95,7 +94,6 @@ public class DemoScreen
 
 		leftSide.add(new MintonPanel<>("Demo Panel", getDemoPage()));
 
-
 		drawingPane.addStyle("min-height:400px;")
 		           .addClass(W_100)
 		           .addClass(Row)
@@ -104,7 +102,6 @@ public class DemoScreen
 		workspace.add(new BSRow<>().add(drawingPane));
 
 		//		workspace.add(new BSRow<>().add(new PrettyPrimaryButton<>().setText("Add Work Item")));
-
 
 		drawingPane.add(newWorkDiv());
 

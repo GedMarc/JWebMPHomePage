@@ -10,7 +10,7 @@ import com.jwebmp.examples.demos.homepage.MailService;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.UserActivity;
 import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import lombok.extern.java.Log;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 

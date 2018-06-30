@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display.login;
 
-
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.jwebmp.base.ComponentHierarchyBase;
@@ -10,7 +9,7 @@ import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.modal.BSModal;
 
 import javax.management.InstanceAlreadyExistsException;

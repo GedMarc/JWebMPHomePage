@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display.forgotpassword;
 
-
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jwebmp.base.ComponentHierarchyBase;
@@ -17,7 +16,7 @@ import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.UserActivity;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
 import lombok.extern.java.Log;
@@ -60,7 +59,6 @@ public class ResetPasswordEvent
 		}
 		else
 		{
-
 
 			Optional<Subscribers> subs = Optional.ofNullable(GuiceContext.getInstance(SessionProperties.class)
 			                                                             .getSubscriber());

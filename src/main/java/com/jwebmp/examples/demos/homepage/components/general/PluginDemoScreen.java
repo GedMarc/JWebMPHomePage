@@ -14,7 +14,7 @@ import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggable
 import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
@@ -67,7 +67,6 @@ public class PluginDemoScreen
 		OuterLayout outerLayout = GuiceContext.getInstance(OuterLayout.class);
 		addFeature(new JQLayoutSlideCloseLayoutDivFeature(outerLayout.getPane(JQLayoutArea.East)));
 
-
 		this.pluginName = pluginName;
 		this.breadCrumbs = breadCrumbs;
 
@@ -76,7 +75,6 @@ public class PluginDemoScreen
 		featureTiles.getOptions()
 		            .setInitDelay(0);
 		featureTiles.addStyle("width", "inherit");
-
 
 		componentTiles.setTheme(TileAccentThemes.Blue);
 		componentTiles.setTileCount(TileCount.ten);
@@ -151,18 +149,15 @@ public class PluginDemoScreen
 		artiInfo = buildArtifactInformation();
 		rightColumnTop.add(new MintonPanel("Artifact Information", "bg-purple", artiInfo).addClass("col-12"));
 
-
 		optionBrowsers.forEach(a ->
 		                       {
 			                       rightColumnTop.add(a);
 		                       });
 
-
 		fullColumn.add(sourceCodeContentPanel());
 
 		row.add(fullColumn);
 		row.add(rightColumn);
-
 
 		BSRow topRow = new BSRow();
 		topRow.add(leftColumnTop);
@@ -304,7 +299,6 @@ public class PluginDemoScreen
 		OptionsBrowser ob;
 		optionBrowsers.add(ob = new OptionsBrowser(forObject));
 		return ob;
-
 
 	}
 }

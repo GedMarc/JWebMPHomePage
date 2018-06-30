@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.components;
 
 import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
@@ -203,7 +203,6 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 	{
 		return titleRow;
 	}
-
 
 	public String getWelcomeText()
 	{

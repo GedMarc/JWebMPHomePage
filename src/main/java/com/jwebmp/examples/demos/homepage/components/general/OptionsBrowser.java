@@ -1,6 +1,6 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
@@ -42,7 +42,6 @@ public class OptionsBrowser
 		addRoot(rootItem);
 		buildPart(rootItem, optionsObject);
 	}
-
 
 	private void buildPart(JSTreeListItem<?> rootItem, JavaScriptPart part)
 	{

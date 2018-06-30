@@ -5,7 +5,7 @@ import com.jwebmp.entityassist.querybuilder.QueryBuilderCore;
 import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.Visitors_;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.Predicate;

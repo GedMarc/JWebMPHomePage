@@ -4,7 +4,7 @@ import com.jwebmp.Page;
 import com.jwebmp.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.carousel.BSCarousel;
@@ -70,7 +70,6 @@ public class AboutJWebMPScreen
 		Div div = new DivSimple();
 		div.add(new H3("Compatibility List"));
 
-
 		BSTable<?> compatibilityTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                               .addClass(Table_Hover);
 		compatibilityTable.setSmall(true);
@@ -85,7 +84,6 @@ public class AboutJWebMPScreen
 		                                                    //.add(new TableCell<>("Out the Box"))
 		                                                    .add(new TableCell<>(
 				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Web Fragment Specification</a>")));
-
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Glassfish 5.x"))
 		                                                    //.add(new TableCell<>("Out the Box"))
@@ -112,12 +110,10 @@ public class AboutJWebMPScreen
 		                                                    .add(new TableCell<>(
 				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Initialized with GuiceContext.inject();</a>")));
 
-
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Payara MicroProfile"))
 		                                                    //.add(new TableCell<>("Out the Box"))
 		                                                    .add(new TableCell<>(
 				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Initialized with GuiceContext.inject();</a>")));
-
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Undertow Embedded Container"))
 		                                                    //.add(new TableCell<>("Plugin Required"))
@@ -166,7 +162,8 @@ public class AboutJWebMPScreen
 	private Div buildPushPanel()
 	{
 		Div div = new DivSimple();
-		div.add("With Atmosphere Push, Web Sockets are standard out the box, and absolutely everything available to every Ajax Call and Response is available in the exact same coding manner.<br/><br/> " + "Push Groups at a Global Injection Level allow you to push responses directly from your container layer, or asynchronously from ExecutionServices in your WAR, as we do on this site.<br/><br/> You can also enable Distributed Push Notifications utilizing HazelCast or a similar technology with ease.");
+		div.add("With Atmosphere Push, Web Sockets are standard out the box, and absolutely everything available to every Ajax Call and Response is available in the exact same coding manner.<br/><br/> " +
+		        "Push Groups at a Global Injection Level allow you to push responses directly from your container layer, or asynchronously from ExecutionServices in your WAR, as we do on this site.<br/><br/> You can also enable Distributed Push Notifications utilizing HazelCast or a similar technology with ease.");
 		return div;
 	}
 
@@ -198,7 +195,8 @@ public class AboutJWebMPScreen
 		carousel.getSlides()
 		        .add(new BSCarouselItem<>().addCaption(new BSCarouselCaption("It all begins somewhere")));
 		Div div = new DivSimple();
-		div.add("With Atmosphere Push, Web Sockets are standard out the box, and absolutely everything available to every Ajax Call and Response is available in the exact same coding manner.<br/><br/> " + "Push Groups at a Global Injection Level allow you to push responses directly from your container layer, or asynchronously from ExecutionServices in your WAR, as we do on this site.<br/><br/> You can also enable Distributed Push Notifications utilizing HazelCast or a similar technology with ease.");
+		div.add("With Atmosphere Push, Web Sockets are standard out the box, and absolutely everything available to every Ajax Call and Response is available in the exact same coding manner.<br/><br/> " +
+		        "Push Groups at a Global Injection Level allow you to push responses directly from your container layer, or asynchronously from ExecutionServices in your WAR, as we do on this site.<br/><br/> You can also enable Distributed Push Notifications utilizing HazelCast or a similar technology with ease.");
 		return div;
 	}
 

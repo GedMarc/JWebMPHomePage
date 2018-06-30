@@ -17,7 +17,7 @@ import com.jwebmp.examples.demos.homepage.display.home.parts.MavenPomPart;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ReasonsWhyPart;
 import com.jwebmp.examples.demos.homepage.display.login.LoginPart;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
@@ -50,7 +50,11 @@ public class HomePage
 
 	public HomePage()
 	{
-		super(HTML_TAB + HTML_TAB + "Welcome to JWeb MicroProfile!" + HTML_TAB + "<small><i>Demo Site Under Construction<a href=\"https://github.com/GedMarc/JWebMPHomePage\" target=\"_blank\">View Site Source Code</i></small></a>");
+		super(HTML_TAB +
+		      HTML_TAB +
+		      "Welcome to JWeb MicroProfile!" +
+		      HTML_TAB +
+		      "<small><i>Demo Site Under Construction<a href=\"https://github.com/GedMarc/JWebMPHomePage\" target=\"_blank\">View Site Source Code</i></small></a>");
 		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
 	}
 
@@ -90,17 +94,14 @@ public class HomePage
 		container.add(new ButtonRowPart<>());
 		//container.add(buildAdvertCard());
 
-
 		displayRow.add(left);
 		displayRow.add(right);
-
 
 		Div showcaseDiv = new Div();
 		showcaseDiv.add(new AlertMessage("Use <strong>Code Icons " + FontAwesome.icon(FontAwesomeIcons.code, FontAwesomeProperties.$2x)
 		                                                                        .setTiny(true)
 		                                                                        .toString(0) + "</strong> to view quick snippets", Alert_Dark).setID("useCodeIconsAM"));
 		showcaseDiv.add("Jump straight into the showcase to see what we're all about. <br/>" + "View code examples, find plugins, or join the community");
-
 
 		showcaseDiv.add(new PrettyPrimaryButton<>().asButton()
 		                                           .setText("Hello World!")
@@ -141,7 +142,6 @@ public class HomePage
 			right.add(new ReasonsWhyPart());
 		}
 
-
 		//----------------------------------------------------------------------------
 		// Right side
 		//----------------------------------------------------------------------------
@@ -151,7 +151,6 @@ public class HomePage
 		left.addStyle("padding-left:0px;");
 		left.addStyle("padding-right:0px;");
 		container.add(displayRow);
-
 
 		if (!GuiceContext.getInstance(SessionProperties.class)
 		                 .isLoggedIn())
@@ -170,7 +169,6 @@ public class HomePage
 
 		return container;
 	}
-
 
 	@Override
 	public BSBreadCrumb<?> getTitleBreadcrumbs()

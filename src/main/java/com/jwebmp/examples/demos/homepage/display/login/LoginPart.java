@@ -13,7 +13,7 @@ import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCheckBox;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordEvent;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
-import com.jwebmp.guiceinjection.GuiceContext;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButton;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonSizeOptions;
@@ -70,7 +70,6 @@ public class LoginPart
 		contents.add(loginFormRow);
 
 		contents.add(buildButtonRow(loginForm, loginInputGroup, inputGroup));
-
 
 		openSourcePane.add(contents);
 	}
@@ -134,9 +133,17 @@ public class LoginPart
 		PrettyPrimaryButton<?> registerButton = new PrettyPrimaryButton<>().setText("Register")
 		                                                                   .addClass(BSColoursOptions.Text_White)
 		                                                                   .asButton()
-		                                                                   .addAttribute(AngularAttributes.ngDisabled, "" + loginForm.getName() + "." + loginInputGroup.getInput()
-		                                                                                                                                                               .getName() + ".$invalid || " + loginForm.getName() + "." + inputGroup.getInput()
-		                                                                                                                                                                                                                                    .getName() + ".$invalid");
+		                                                                   .addAttribute(AngularAttributes.ngDisabled, "" +
+		                                                                                                               loginForm.getName() +
+		                                                                                                               "." +
+		                                                                                                               loginInputGroup.getInput()
+		                                                                                                                              .getName() +
+		                                                                                                               ".$invalid || " +
+		                                                                                                               loginForm.getName() +
+		                                                                                                               "." +
+		                                                                                                               inputGroup.getInput()
+		                                                                                                                         .getName() +
+		                                                                                                               ".$invalid");
 		Page p = GuiceContext.get(Page.class);
 		if (p.isMobileOrSmartTablet())
 		{
@@ -158,8 +165,11 @@ public class LoginPart
 		PrettyPrimaryButton forgotPassButton = new PrettyPrimaryButton<>().setText("Forgot Password")
 		                                                                  .addClass(BSColoursOptions.Text_White)
 		                                                                  .asButton()
-		                                                                  .addAttribute(AngularAttributes.ngDisabled, loginForm.getName() + "." + loginInputGroup.getInput()
-		                                                                                                                                                         .getName() + ".$invalid");
+		                                                                  .addAttribute(AngularAttributes.ngDisabled, loginForm.getName() +
+		                                                                                                              "." +
+		                                                                                                              loginInputGroup.getInput()
+		                                                                                                                             .getName() +
+		                                                                                                              ".$invalid");
 
 		forgotPassButton.addEvent(new ForgotPasswordEvent(forgotPassButton));
 		row.add(forgotPassButton);
