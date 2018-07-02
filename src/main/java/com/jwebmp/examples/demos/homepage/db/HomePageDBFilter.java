@@ -68,7 +68,7 @@ public class HomePageDBFilter
 	}
 
 	@NotNull
-	private UserTransaction getUserTransaction() throws NamingException
+	private BitronixTransactionManager getUserTransaction() throws NamingException
 	{
 		BitronixContext ic = new BitronixContext();
 		BitronixTransactionManager btm = null;

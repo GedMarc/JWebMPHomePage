@@ -325,6 +325,20 @@
             <type>jar</type>
         </dependency>
 
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-toastr</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-material-icons</artifactId>
+            <version>${project.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
 
     <build>

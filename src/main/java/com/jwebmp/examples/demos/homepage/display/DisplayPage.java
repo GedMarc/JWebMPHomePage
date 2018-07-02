@@ -3,7 +3,8 @@ package com.jwebmp.examples.demos.homepage.display;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.jwebmp.Page;
 import com.jwebmp.SessionHelper;
-import com.jwebmp.base.ajax.*;
+import com.jwebmp.base.ajax.AjaxCall;
+import com.jwebmp.base.ajax.AjaxResponse;
 import com.jwebmp.base.html.CSSLink;
 import com.jwebmp.base.html.Meta;
 import com.jwebmp.base.servlets.SessionStorageProperties;
@@ -20,6 +21,8 @@ import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
+import com.jwebmp.plugins.toastr.ToastrFeature;
+import com.jwebmp.plugins.toastr.ToastrType;
 import com.jwebmp.utilities.StaticStrings;
 import com.jwebmp.utilities.regex.RegularExpressionsDTO;
 
@@ -104,6 +107,29 @@ public class DisplayPage
 
 		deeplinkScreen(call);
 
+		ToastrFeature toastr = new ToastrFeature(ToastrType.Warning, "Use Code Icons",
+		                                         "Click or Tap on the Code Icons " +
+		                                         " to quickly get access to code snippets and build your application!");
+		toastr.getOptions()
+		      .setProgressBar(true)
+		      .setEscapeHtml(true)
+		      .setCloseButton(true)
+		      .setTimeOut(0)
+		      .setPreventDuplicates(true);
+		response.getFeatures()
+		        .add(toastr);
+
+		ToastrFeature toastr2 = new ToastrFeature(ToastrType.Warning, "Grab The Site Source Code",
+		                                          "Everything is open! You can even clone this site to start your own if you so desired...");
+		toastr2.getOptions()
+		       .setProgressBar(true)
+		       .setEscapeHtml(true)
+		       .setCloseButton(true)
+		       .setTimeOut(500)
+		       .setPreventDuplicates(true);
+		response.getFeatures()
+		        .add(toastr2);
+
 		return response;
 	}
 
@@ -175,23 +201,20 @@ public class DisplayPage
 			}
 			log.info("Created a new visitor [" + newVisitor + "]");
 			//New user Text
-			getInstance(AjaxResponse.class).addReaction(new AjaxResponseReaction("First Use",
-			                                                                     " We think this is the first time you've visited this site on this device and browser combination<br/><br/>" +
-			                                                                     "You should only see this " +
-			                                                                     "message" +
-			                                                                     " once for each " +
-			                                                                     "browser.<br/> " +
-			                                                                     "This " +
-			                                                                     "allows " +
-			                                                                     "for " +
-			                                                                     "life-time " +
-			                                                                     "logins " +
-			                                                                     "on " +
-			                                                                     "any " +
-			                                                                     "" +
-			                                                                     "" +
-			                                                                     "application.",
-			                                                                     ReactionType.DialogDisplay, AjaxResponseType.Primary));
+			AjaxResponse<?> response = getInstance(AjaxResponse.class);
+			ToastrFeature toastr = new ToastrFeature(ToastrType.Warning, "First Use",
+			                                         "We think this is the first time you've visited this site on this device and browser combination\n" +
+			                                         "\n" +
+			                                         "You should only see this message once for each browser.\n" +
+			                                         "This allows for life-time logins on any application.");
+			toastr.getOptions()
+			      .setProgressBar(true)
+			      .setEscapeHtml(true)
+			      .setCloseButton(true)
+			      .setShowDuration(50000)
+			      .setPreventDuplicates(true);
+			response.getFeatures()
+			        .add(toastr);
 		}
 		catch (JsonProcessingException e)
 		{
