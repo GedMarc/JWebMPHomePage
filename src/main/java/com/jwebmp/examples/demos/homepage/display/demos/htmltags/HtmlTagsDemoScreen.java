@@ -10,7 +10,7 @@ public class HtmlTagsDemoScreen
 
 	public HtmlTagsDemoScreen()
 	{
-		super("", "Base", "HTML Tags");
+		super("HtmlTags", "Base", "HTML Tags");
 
 		BSRow row = BSRow.newInstance();
 

@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display;
 
+import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.html.Body;
 import com.jwebmp.base.html.Script;
 import com.jwebmp.base.references.CSSReference;
@@ -10,7 +11,16 @@ import com.jwebmp.components.pace.PaceThemeColour;
 import com.jwebmp.components.pace.preloadedthemes.PaceTheme;
 import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
 import com.jwebmp.guicedinjection.GuiceContext;
+import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
+import com.jwebmp.plugins.particlejs.ParticleJSReferencePool;
+import com.jwebmp.plugins.particlejs.ParticlesJS;
+import com.jwebmp.plugins.particlejs.ParticlesJSOptions;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
 
 /**
  * @author Marc Magon
@@ -69,5 +79,29 @@ public class DisplayBody
 		add(GuiceContext.getInstance(SourceCodeModal.class));
 
 		addJavaScriptReference(new JavascriptReference("e", 1.0, "js/modernizr.min.js").setPriority(RequirementsPriority.Top_Shelf));
+
+		ParticleJSReferencePool.ParticlesJS.getJavaScriptReference()
+		                                   .setPriority(RequirementsPriority.Top_Shelf);
+		ParticlesJS<?> particlesJS = new ParticlesJS("preloader");
+		try
+		{
+			ParticlesJSOptions options = new JavaScriptPart<>().From(DisplayBody.class.getResourceAsStream("particlesjs-config.js"), ParticlesJSOptions.class);
+			particlesJS.getFeature()
+			           .setOptions(options);
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+
+		List<ComponentHierarchyBase> children = new ArrayList<>(getChildren());
+		particlesJS.addClass("h-100 w-100");
+		children.add(0, particlesJS);
+		children.add(1, new Script<>().setText(particlesJS.getFeature()
+		                                                  .renderJavascript()));
+
+		particlesJS.getFeatures()
+		           .clear();
+		setChildren(new LinkedHashSet<>(children));
 	}
 }

@@ -62,6 +62,8 @@ public class OuterLayout
 
 		getEast().getContentDiv()
 		         .addClass(Bg_Dark);
+		getEast().getOptions()
+		         .setInitClosed(true);
 	}
 
 	@Override
@@ -72,8 +74,7 @@ public class OuterLayout
 		{
 			getWest().getOptions()
 			         .setInitClosed(true);
-			getEast().getOptions()
-			         .setInitClosed(true);
+
 		}
 		else
 		{

@@ -30,7 +30,7 @@ public class FontAwesomeDemoScreen
 		for (FontAwesomeIcons fontAwesomeIcon : FontAwesomeIcons.values())
 		{
 			DivSimple d = new DivSimple();
-			d.addClass("col-3 text-center");
+			d.addClass("col-3 col-md-2 col-lg-1 text-center");
 			d.add(new FontAwesome(fontAwesomeIcon, FontAwesomeProperties.$2x));
 			d.add(new Paragraph<>(fontAwesomeIcon.toString()));
 			row.add(d);

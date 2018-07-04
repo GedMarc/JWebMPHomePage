@@ -68,8 +68,11 @@ import com.jwebmp.examples.demos.homepage.display.demos.graphing.imageheatmap.Im
 import com.jwebmp.examples.demos.homepage.display.demos.graphing.jqplot.JQPlotDemos;
 import com.jwebmp.examples.demos.homepage.display.demos.graphing.particlesjs.ParticlesJSDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome.FontAwesomeDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome5.FontAwesome5DemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.icons.glyphicons.GlyphiconsDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.icons.ionicons.IonIconsDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.materialdesignicons.MaterialDesignIconsDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.mdi.MDIDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.JQueryUIDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.datetimepicker.JQueryUIDateTimePickerDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.layout.JQLayoutDemoScreen;
@@ -128,7 +131,6 @@ public enum DisplayScreens
 	Bootstrap3Switch(Bootstrap3SwitchDemoScreen.class, "Bootstrap3Switch"),
 	Bootstrap3TagsInput(Bootstrap3TagsInputDemoScreen.class, "Bootstrap3TagsInput"),
 
-
 	Bootstrap4(Bootstrap4DemoScreen.class, "Bootstrap4"),
 	Bootstrap4DateTimePicker(Bootstrap4DateTimePickerDemoScreen.class, "Bootstrap4DateTimePicker"),
 	Bootstrap4Dialog(Bootstrap4DialogDemoScreen.class, "Bootstrap4Dialog"),
@@ -136,7 +138,6 @@ public enum DisplayScreens
 	Bootstrap4QuickForms(Bootstrap4QuickFormsDemoScreen.class, "Bootstrap4QuickForms"),
 	Bootstrap4Switch(Bootstrap4SwitchDemoScreen.class, "Bootstrap3Switch"),
 	Bootstrap4Swatch(BootswatchDemoScreen.class, "Bootswatch"),
-
 
 	DisplayDynamicSourceCodeViewer(DynamicSourceCodeViewerDemoScreen.class, "DynamicSourceCodeViewer"),
 	EasingEffects(EasingEffectsDemoScreen.class, "EasingEffects"),
@@ -155,7 +156,6 @@ public enum DisplayScreens
 	VerticalTimelineGem(VerticalTimelineGemDemoScreen.class, "VerticalTimelineGem"),
 	WebLogAppender(WebLogAppenderDemoScreen.class, "WebLogAppender"),
 
-
 	AngularFileUpload(AngularFileUploadDemoScreen.class, "AngularFileUpload"),
 	IonRangeSlider(IonRangeSliderDemoScreen.class, "IonRangeSlider"),
 	PrettyCheckboxes(AngularPrettyCheckboxesDemoScreen.class, "PrettyCheckboxes"),
@@ -164,7 +164,6 @@ public enum DisplayScreens
 	SmartWizard(SmartWizardDemoScreen.class, "SmartWizard"),
 	TextAngular(TextAngularDemoScreen.class, "TextAngular"),
 	TextInputEffects(TextInputEffectsDemoScreen.class, "TextInputEffects"),
-
 
 	C3(C3DemoScreen.class, "C3"),
 	D3(D3DemoScreen.class, "D3"),
@@ -176,8 +175,10 @@ public enum DisplayScreens
 	JQPlot(JQPlotDemos.class, "JQPlot"),
 	ParticlesJS(ParticlesJSDemoScreen.class, "Particles"),
 
-
 	FontAwesome(FontAwesomeDemoScreen.class, "FontAwesome"),
+	FontAwesome5(FontAwesome5DemoScreen.class, "FontAwesome5"),
+	MDI3(MaterialDesignIconsDemoScreen.class, "MaterialDesignIcons3"),
+	MDI2(MDIDemoScreen.class, "MaterialDesignIcons2"),
 	Glyphicons(GlyphiconsDemoScreen.class, "Glyphicons"),
 	IonIcons(IonIconsDemoScreen.class, "IonIcons"),
 

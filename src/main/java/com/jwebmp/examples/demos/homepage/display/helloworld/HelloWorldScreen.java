@@ -201,10 +201,22 @@ public class HelloWorldScreen
 				                                                                .toString()
 				                                                                .replace('\t', ' ')
 				                                                                .replace("    ", "  "))));
+		underowPushExample.add("Speed it up by simply creating your own injection for a broadcaster<br/>" +
+		                       "Distribute across your cluster or swarm instantly.");
+
+		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                                   .setSourceCodeLanguage(SourceCodeLanguages.Java)
+		                                                   .setText(StringEscapeUtils.escapeHtml4(
+				                                                   FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowwebsocketsconsole_optionalbindings",
+				                                                                                 "helloworldundertowwebsocketsconsole_optionalbindings.txt",
+				                                                                                 false)
+				                                                                .toString()
+				                                                                .replace('\t', ' ')
+				                                                                .replace("    ", "  "))));
+
 		underowPushExample.add("Extend the AtmosphereAdapter class to manage the connections.<br/>" +
-		                       "Use BroadcastGroups to group push messages <br/>" +
-		                       "Globals are accessible via AtmosphereGlobalProperties.class<br/>" +
-		                       "Distribute with in-memory providers, quickly. Hazelcast Plugin Available.");
+		                       "BroadcastGroups assist to group push messages<br/>");
+
 		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                                   .setSourceCodeLanguage(SourceCodeLanguages.Java)
 		                                                   .setText(StringEscapeUtils.escapeHtml4(

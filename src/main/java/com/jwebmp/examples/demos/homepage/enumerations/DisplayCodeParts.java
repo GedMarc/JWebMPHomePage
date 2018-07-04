@@ -4,13 +4,16 @@ import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
 import com.jwebmp.examples.demos.homepage.display.SourceCodeDetailsContainer;
 import com.jwebmp.examples.demos.homepage.display.about.UnderTheHoodScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome.FontAwesomeDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome5.FontAwesome5DemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.icons.glyphicons.GlyphiconsDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.mdi.MDIDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordEvent;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ButtonRowPart;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ContactUsPart;
 import com.jwebmp.examples.demos.homepage.display.home.parts.ReasonsWhyPart;
 import com.jwebmp.examples.demos.homepage.display.login.LoginPart;
+import com.jwebmp.plugins.materialdesignicons.MaterialDesignIcons;
 
 public enum DisplayCodeParts
 {
@@ -33,9 +36,12 @@ public enum DisplayCodeParts
 	ContactUs(new SourceCodeDetailsContainer<>().addCustomLocation("Contact Us", ContactUsPart.class, "contactus.txt")),
 
 	FontAwesome(new SourceCodeDetailsContainer<>().addCustomLocation("Display Code", FontAwesomeDemoScreen.class, "fontawesomeexample.txt")),
+	FontAwesome5(new SourceCodeDetailsContainer<>().addCustomLocation("Display Code", FontAwesome5DemoScreen.class, "fontawesomeexample.txt")),
+
+	MaterialDesignIcons3(new SourceCodeDetailsContainer<>().addCustomLocation("Display Code", MaterialDesignIcons.class, "mdiexample.txt")),
+	MaterialDesignIcons2(new SourceCodeDetailsContainer<>().addCustomLocation("Display Code", MDIDemoScreen.class, "mdiexample.txt")),
 
 	Glyphicons(new SourceCodeDetailsContainer<>().addCustomLocation("Display Code", GlyphiconsDemoScreen.class, "glyphicons.txt")),
-
 
 	ButtonRowChart1(new SourceCodeDetailsContainer<>().addCustomLocation("Site Visits", ButtonRowPart.class, "chart1.txt")),
 	ButtonRowChart2(new SourceCodeDetailsContainer<>().addCustomLocation("Subscribers", ButtonRowPart.class, "chart2.txt")),
@@ -45,7 +51,6 @@ public enum DisplayCodeParts
 	ComponentUtilityMethods(new SourceCodeDetailsContainer<>().addCustomLocation("HTML Utilities", UnderTheHoodScreen.class, "ComponentHTML.txt")
 	                                                          .addCustomLocation("Attribute Handling", UnderTheHoodScreen.class, "ComponentAttribute.txt")
 	                                                          .addCustomLocation("Style Management", UnderTheHoodScreen.class, "ComponentStyle.txt")),
-
 
 	InjectionControlMethods(new SourceCodeDetailsContainer<>().addCustomLocation("Intercepting Calls", UnderTheHoodScreen.class, "InjectionAnnotations.txt")
 	                                                          .addCustomLocation("Services Available", UnderTheHoodScreen.class, "ServicesAvailable.txt")

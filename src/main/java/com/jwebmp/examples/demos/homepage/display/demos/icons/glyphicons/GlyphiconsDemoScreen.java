@@ -22,13 +22,12 @@ public class GlyphiconsDemoScreen
 		     .add(row);
 		panel.setShowHeader(true);
 
-
 		addDiv(panel);
 
 		for (Glyphicons glyphicon : Glyphicons.values())
 		{
 			DivSimple d = new DivSimple();
-			d.addClass("col-3 text-center");
+			d.addClass("col-3 col-md-2 col-lg-1 text-center");
 			d.add(new Italic<>().addClass(glyphicon.toString() + " fa-2x"));
 			d.add(new Paragraph<>(glyphicon.toString()));
 			row.add(d);

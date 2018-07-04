@@ -35,13 +35,13 @@ public class ContactUsPart<J extends ContactUsPart<J>>
 		                            .addClass(BSSpacingOptions.Margin_Bottom_2)
 		                            .addClass("btn")
 		                            .addClass(BSButtonOptions.Btn_Outline_Primary);
-
 		fa.setTag("a");
 		fa.addAttribute("href", link);
 		if (!link.contains("mailto:"))
 		{
 			fa.addAttribute("target", "_blank");
 		}
+		fa.addStyle("font-size", "5em");
 		return fa;
 	}
 }

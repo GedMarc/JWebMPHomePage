@@ -1,0 +1,16 @@
+//You can bind your broadcasters to any annotation you choose for quicker dev
+module.bind(Key.get(Broadcaster.class, AtmosphereBroadcaster.class)).toProvider(() ->
+{
+    BroadcasterFactory factory = GuiceContext.get(BroadcasterFactory.class);
+    Broadcaster broadcaster = null;
+    broadcaster = factory.lookup("name");
+    if (broadcaster == null)
+    {
+        broadcaster = factory.get("name");
+    }
+    return broadcaster;
+});
+
+@Inject
+@AtmosphereBroadcaster
+private Broadcaster channel1;

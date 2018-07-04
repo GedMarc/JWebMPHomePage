@@ -54,13 +54,12 @@ public class West
 		//buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites());
 		//buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
-		buildMenuSection("Plugin Library", true, homeItem, buildCorePlugins(), buildAngularTools());
+		buildMenuSection("Plugin Library", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(), buildJQueryUI());
 
-		buildMenuSection("Bootstrap", true, buildBootstrap4(), buildBootstrap3());
-		buildMenuSection("JQuery UI", true, buildJQueryUI());
+		//buildMenuSection("Bootstrap", true, buildBootstrap4(), buildBootstrap3());
+		//buildMenuSection("JQuery UI", true, buildJQueryUI());
 		buildMenuSection("Components", true, buildDisplayComponents(), buildForms(), buildGraphing(), buildMapping(), buildTablesTrees());
 		buildMenuSection("Icon Sets", true, buildIconSets());
-
 
 		sidebarInner.add(sidebarMenu);
 
@@ -103,6 +102,48 @@ public class West
 
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Bootstrap 3", uiKit);
 		return dropDown1;
+	}
+
+	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen)
+	{
+		Link link = new Link(uniqueHashBangId);
+		changeScreenAdapter(screen, link);
+		return link;
+	}
+
+	private ListItem<?> buildSubList(String icon, String title, List menuItemList)
+	{
+		ListItem<?> item = new ListItem<>();
+		item.addClass("has_sub");
+		Link<?> dropdownLink = new Link<>("javascript:void(0);");
+		dropdownLink.addClass("waves-effect waves-primary");
+
+		Italic iconItalic = new Italic();
+		iconItalic.addClass(icon);
+		Span span = new Span(title);
+
+		dropdownLink.add(iconItalic);
+		dropdownLink.add(span);
+		dropdownLink.add(new Span<>().addClass("menu-arrow pull-right"));
+
+		item.add(dropdownLink);
+
+		menuItemList.addClass("list-unstyled");
+		item.add(menuItemList);
+
+		BSCollapse.link(dropdownLink, menuItemList, true);
+
+		menuItemList.addAttribute("data-parent", "#west");
+
+		return item;
+	}
+
+	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
+	{
+		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
+		adapter.setID(screenReference.toString());
+		comp.addEvent(adapter);
+		return adapter;
 	}
 
 	private ListItem<?> buildDisplayComponents()
@@ -160,8 +201,8 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularTouch).setText("Touch")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularTrackWidth).setText("Track Width")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularZoomIn).setText("Zoom In")));
-
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Angular Tools", uiKit);
+
 		return dropDown1;
 	}
 
@@ -233,48 +274,6 @@ public class West
 		return buildListItem(uniqueHashBangId, DisplayScreens.ComingSoon);
 	}
 
-	private ListItem<?> buildSubList(String icon, String title, List menuItemList)
-	{
-		ListItem<?> item = new ListItem<>();
-		item.addClass("has_sub");
-		Link<?> dropdownLink = new Link<>("javascript:void(0);");
-		dropdownLink.addClass("waves-effect waves-primary");
-
-		Italic iconItalic = new Italic();
-		iconItalic.addClass(icon);
-		Span span = new Span(title);
-
-		dropdownLink.add(iconItalic);
-		dropdownLink.add(span);
-		dropdownLink.add(new Span<>().addClass("menu-arrow pull-right"));
-
-		item.add(dropdownLink);
-
-		menuItemList.addClass("list-unstyled");
-		item.add(menuItemList);
-
-		BSCollapse.link(dropdownLink, menuItemList, true);
-
-		menuItemList.addAttribute("data-parent", "#west");
-
-		return item;
-	}
-
-	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen)
-	{
-		Link link = new Link(uniqueHashBangId);
-		changeScreenAdapter(screen, link);
-		return link;
-	}
-
-	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
-	{
-		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
-		adapter.setID(screenReference.toString());
-		comp.addEvent(adapter);
-		return adapter;
-	}
-
 	private ListItem<?> buildTestingFramework()
 	{
 		List uiKit = new List<>();
@@ -300,7 +299,6 @@ public class West
 	private ListItem<?> buildUIKits()
 	{
 		List uiKit = new List<>();
-
 
 		uiKit.add(new ListItem<>().add(buildListItem("#t", DisplayScreens.JQueryUI).setText("JQuery UI")));
 		uiKit.add(new ListItem<>().add(buildListItem("#u", DisplayScreens.Bootstrap4).setText("Bootstrap")));
@@ -349,8 +347,11 @@ public class West
 	{
 		List uiKit = new List<>();
 		uiKit.add(new ListItem<>().add(buildListItem("#c1", DisplayScreens.FontAwesome).setText("Font Awesome")));
+		uiKit.add(new ListItem<>().add(buildListItem("#c153", DisplayScreens.FontAwesome5).setText("Font Awesome 5")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e4", DisplayScreens.Glyphicons).setText("Glyphicons")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e5").setText("Ion Icons")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e5", DisplayScreens.IonIcons).setText("Ion Icons")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e52", DisplayScreens.MDI3).setText("Material Design Icons")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e53", DisplayScreens.MDI2).setText("MDI 2.485")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e5").setText("Skycons")));
 
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Icon Sets", uiKit);
@@ -422,6 +423,5 @@ public class West
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Mapping Plugins", uiKit);
 		return dropDown1;
 	}
-
 
 }

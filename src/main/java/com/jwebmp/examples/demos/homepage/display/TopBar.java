@@ -8,9 +8,12 @@ import com.jwebmp.base.html.inputs.InputTextType;
 import com.jwebmp.base.html.interfaces.children.ListChildren;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.display.login.LogoutEvent;
+import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
+import com.jwebmp.examples.demos.homepage.display.privacy.GoToChatRoomScreenEvent;
 import com.jwebmp.examples.demos.homepage.display.privacy.GoToPrivacyScreenEvent;
 import com.jwebmp.examples.demos.homepage.display.termsandconditions.GoToTermsAndConditionsEvent;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
+import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTypographyOptions;
@@ -201,13 +204,15 @@ public class TopBar
 		else
 		{
 			headerText.setText("Guest");
-			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Login", (Date) null));
+			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Login", (Date) null))
+			                      .addEvent(new ChangeScreenEvent(null, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
 			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "T & C's", (Date) null).addEvent(
 					new GoToTermsAndConditionsEvent(null)));
 			profileDropDownContent.add(
 					buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Privacy Statement", (Date) null).addEvent(
 							new GoToPrivacyScreenEvent(null)));
-			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Chat Policy", (Date) null));
+			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Chat Policy", (Date) null).addEvent(
+					new GoToChatRoomScreenEvent(null)));
 		}
 
 		profileDropDown.add(notDropDownLink);

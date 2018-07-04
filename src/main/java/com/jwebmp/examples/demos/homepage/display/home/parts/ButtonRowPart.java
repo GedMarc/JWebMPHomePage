@@ -22,6 +22,7 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 {
 	public ButtonRowPart()
 	{
+		setID("buttonRowPart");
 		Div responsive = new Div();
 		responsive.addClass(BSColumnOptions.Col_Sm_6);
 		responsive.addClass(BSColumnOptions.Col_Lg_3);

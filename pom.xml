@@ -57,6 +57,12 @@
             <version>${project.version}</version>
             <type>jar</type>
         </dependency>
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-font-awesome5</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -170,7 +176,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.18</version>
+            <version>1.18.0</version>
             <type>jar</type>
             <scope>compile</scope>
         </dependency>
@@ -207,6 +213,13 @@
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-jqplot</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-particlesjs</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
         </dependency>
@@ -284,20 +297,6 @@
         </dependency>
 
         <dependency>
-            <groupId>io.undertow</groupId>
-            <artifactId>undertow-core</artifactId>
-            <version>1.4.21.Final</version>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
-            <groupId>io.undertow</groupId>
-            <artifactId>undertow-servlet</artifactId>
-            <version>1.4.21.Final</version>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-atmospherepush-undertow</artifactId>
             <version>${project.version}</version>
@@ -313,15 +312,20 @@
 
         <dependency>
             <groupId>io.undertow</groupId>
-            <artifactId>undertow-websockets-jsr</artifactId>
-            <version>1.4.21.Final</version>
-            <type>jar</type>
+            <artifactId>undertow-core</artifactId>
+            <version>2.0.9.Final</version>
         </dependency>
 
         <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <version>1.0.2.Final</version>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-servlet</artifactId>
+            <version>2.0.9.Final</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.undertow</groupId>
+            <artifactId>undertow-websockets-jsr</artifactId>
+            <version>2.0.9.Final</version>
             <type>jar</type>
         </dependency>
 
@@ -329,14 +333,12 @@
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-toastr</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-material-icons</artifactId>
             <version>${project.version}</version>
-            <scope>compile</scope>
         </dependency>
 
     </dependencies>

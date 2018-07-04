@@ -39,6 +39,7 @@ import static com.jwebmp.guicedinjection.GuiceContext.*;
  * @author Marc Magon
  * @since 30 Jul 2017
  */
+@SuppressWarnings("unused")
 public class DisplayPage
 		extends Page
 {
@@ -52,7 +53,7 @@ public class DisplayPage
 	 */
 	public DisplayPage()
 	{
-		SessionHelper.setCacheAddress(true);
+		SessionHelper.setAddressToBeUsedWhenNull("https://www.jwebmp.com");
 
 		getPageFields().setTitle("JWebMP Application");
 
@@ -114,7 +115,7 @@ public class DisplayPage
 		      .setProgressBar(true)
 		      .setEscapeHtml(true)
 		      .setCloseButton(true)
-		      .setTimeOut(0)
+		      .setTimeOut(10000)
 		      .setPreventDuplicates(true);
 		response.getFeatures()
 		        .add(toastr);
@@ -125,7 +126,7 @@ public class DisplayPage
 		       .setProgressBar(true)
 		       .setEscapeHtml(true)
 		       .setCloseButton(true)
-		       .setTimeOut(500)
+		       .setTimeOut(5000)
 		       .setPreventDuplicates(true);
 		response.getFeatures()
 		        .add(toastr2);
