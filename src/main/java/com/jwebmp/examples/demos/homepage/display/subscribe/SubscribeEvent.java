@@ -15,7 +15,6 @@ import com.jwebmp.utilities.StaticStrings;
 
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InvalidAttributeValueException;
-import javax.persistence.NoResultException;
 import java.util.Map;
 import java.util.Optional;
 
@@ -73,10 +72,6 @@ public class SubscribeEvent
 				response.addComponent(GuiceContext.get(TopBar.class));
 				response.addComponent(GuiceContext.get(West.class));
 
-			}
-			catch (NoResultException nre)
-			{
-				//NEVER EVER EVER
 			}
 			catch (InstanceAlreadyExistsException e)
 			{

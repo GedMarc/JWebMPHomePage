@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.db;
 
 import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
-import com.jwebmp.guicedpersistence.db.connectionbasebuilders.HibernateDefaultConnectionBaseBuilder;
+import com.jwebmp.guicedpersistence.db.intercepters.HibernateDefaultConnectionBaseBuilder;
 import com.oracle.jaxb21.Persistence;
 
 import java.lang.annotation.Annotation;

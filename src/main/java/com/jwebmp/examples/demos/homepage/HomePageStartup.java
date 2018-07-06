@@ -6,8 +6,6 @@ import com.jwebmp.examples.demos.homepage.db.HomePageDBFilter;
 import com.jwebmp.generics.WebReference;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.logging.LogColourFormatter;
-import com.jwebmp.plugins.atmosphere.AtmospherePageConfiguration;
-import com.jwebmp.plugins.atmosphere.enumerations.AtmosphereTransportTypes;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemes;
 import com.jwebmp.plugins.jqueryui.themes.JQUIThemesPageConfigurator;
@@ -63,11 +61,6 @@ public class HomePageStartup
 
 		D3ReingoldTilfordTreePageConfigurator.setIsRadial(true);
 		JQUIThemesPageConfigurator.setTheme(JQUIThemes.Smoothness);
-
-		AtmospherePageConfiguration.getOptions()
-		                           .setFallbackTransport(AtmosphereTransportTypes.Long_Polling)
-		                           .setMaxReconnectOnClose(5000)
-		                           .setConnectTimeout(30);
 
 		server.start();
 	}

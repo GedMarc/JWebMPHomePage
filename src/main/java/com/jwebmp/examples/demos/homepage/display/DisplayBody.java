@@ -85,7 +85,7 @@ public class DisplayBody
 		ParticlesJS<?> particlesJS = new ParticlesJS("preloader");
 		try
 		{
-			ParticlesJSOptions options = new JavaScriptPart<>().From(DisplayBody.class.getResourceAsStream("particlesjs-config.js"), ParticlesJSOptions.class);
+			ParticlesJSOptions options = new JavaScriptPart<>().From(DisplayBody.class.getResourceAsStream("particlesjs-config.json"), ParticlesJSOptions.class);
 			particlesJS.getFeature()
 			           .setOptions(options);
 		}
@@ -99,9 +99,10 @@ public class DisplayBody
 		children.add(0, particlesJS);
 		children.add(1, new Script<>().setText(particlesJS.getFeature()
 		                                                  .renderJavascript()));
-
 		particlesJS.getFeatures()
 		           .clear();
-		setChildren(new LinkedHashSet<>(children));
+
+		setChildren(new LinkedHashSet<>());
+		children.forEach(a -> add(a));
 	}
 }
