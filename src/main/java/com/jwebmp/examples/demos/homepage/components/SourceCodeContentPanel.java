@@ -7,14 +7,13 @@ import com.jwebmp.base.html.DivSimple;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.examples.demos.homepage.display.SourceCodeDetailsContainer;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
-import com.jwebmp.guicedinjection.Pair;
+import com.jwebmp.guicedinjection.pairing.Pair;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import javax.annotation.Nullable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -33,17 +32,17 @@ public class SourceCodeContentPanel<J extends SourceCodeContentPanel<J>>
 	private DivSimple<?> testCodeDiv;
 	private Map<String, DivSimple<?>> customCodeDiv;
 
-	public SourceCodeContentPanel(String title, @Nullable Div componentHierarchyBase)
+	public SourceCodeContentPanel(String title, Div componentHierarchyBase)
 	{
 		this(title, null, componentHierarchyBase);
 	}
 
-	public SourceCodeContentPanel(String title, DisplayCodeParts details, @Nullable Div componentHierarchyBase)
+	public SourceCodeContentPanel(String title, DisplayCodeParts details, Div componentHierarchyBase)
 	{
 		this(title, details, componentHierarchyBase, "bg-primary");
 	}
 
-	public SourceCodeContentPanel(String title, DisplayCodeParts details, @Nullable Div componentHierarchyBase, String bgColour)
+	public SourceCodeContentPanel(String title, DisplayCodeParts details, Div componentHierarchyBase, String bgColour)
 	{
 		super(title, componentHierarchyBase, bgColour);
 		setShowCode(true);

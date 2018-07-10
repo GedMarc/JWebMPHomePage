@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.jwebmp.guicedinjection.OptionalPair;
-import com.jwebmp.guicedinjection.Pair;
+import com.jwebmp.guicedinjection.pairing.OptionalPair;
+import com.jwebmp.guicedinjection.pairing.Pair;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;

@@ -11,7 +11,6 @@ import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
 
-import javax.annotation.Nullable;
 import javax.validation.constraints.NotNull;
 
 public class MintonPanel<J extends MintonPanel<J>>
@@ -43,7 +42,6 @@ public class MintonPanel<J extends MintonPanel<J>>
 	private DisplayCodeParts codeParts;
 	private boolean codeButtonPanel = true;
 
-
 	public MintonPanel()
 	{
 		this(new Div());
@@ -54,7 +52,7 @@ public class MintonPanel<J extends MintonPanel<J>>
 		this(null, null, null, content, false);
 	}
 
-	public MintonPanel(@Nullable String text, @Nullable String backgroundOptions, @Nullable BSColoursOptions coloursOptions, @Nullable Div content, boolean showRefresh)
+	public MintonPanel(String text, String backgroundOptions, BSColoursOptions coloursOptions, Div content, boolean showRefresh)
 	{
 		super();
 		addClass(BSColumnOptions.Col_12);
@@ -91,33 +89,32 @@ public class MintonPanel<J extends MintonPanel<J>>
 		setContent(content);
 	}
 
-	public MintonPanel(@Nullable String text)
+	public MintonPanel(String text)
 	{
 		this(text, null, null, null, false);
 	}
 
-	public MintonPanel(@Nullable String text, @Nullable Div content)
+	public MintonPanel(String text, Div content)
 	{
 		this(text, null, null, content, false);
 	}
 
-	public MintonPanel(@Nullable String text, @Nullable Div content, boolean showRefresh)
+	public MintonPanel(String text, Div content, boolean showRefresh)
 	{
 		this(text, null, null, content, showRefresh);
 	}
 
-	public MintonPanel(@Nullable String text, @Nullable Div content, @Nullable String backgroundOptions)
+	public MintonPanel(String text, Div content, String backgroundOptions)
 	{
 		this(text, backgroundOptions, null, content, false);
 	}
 
-
-	public MintonPanel(@Nullable String text, @Nullable String backgroundOptions, @Nullable Div content)
+	public MintonPanel(String text, String backgroundOptions, Div content)
 	{
 		this(text, backgroundOptions, null, content, false);
 	}
 
-	public MintonPanel(@Nullable String text, @Nullable String backgroundOptions, @Nullable Div content, boolean showRefresh)
+	public MintonPanel(String text, String backgroundOptions, Div content, boolean showRefresh)
 	{
 		this(text, backgroundOptions, null, content, showRefresh);
 	}
@@ -236,6 +233,12 @@ public class MintonPanel<J extends MintonPanel<J>>
 		return bgColor;
 	}
 
+	public J setBgColor(String bgColor)
+	{
+		this.bgColor = bgColor;
+		return (J) this;
+	}
+
 	@SuppressWarnings("unchecked")
 	@NotNull
 	public J setBgColor(BSBackgroundOptions bgColor)
@@ -244,15 +247,15 @@ public class MintonPanel<J extends MintonPanel<J>>
 		return (J) this;
 	}
 
-	public J setBgColor(String bgColor)
-	{
-		this.bgColor = bgColor;
-		return (J) this;
-	}
-
 	public String getFgColor()
 	{
 		return fgColor;
+	}
+
+	public J setFgColor(String fgColor)
+	{
+		this.fgColor = fgColor;
+		return (J) this;
 	}
 
 	@SuppressWarnings("unchecked")
@@ -260,12 +263,6 @@ public class MintonPanel<J extends MintonPanel<J>>
 	public J setFgColor(BSColoursOptions fgColor)
 	{
 		this.fgColor = fgColor.toString();
-		return (J) this;
-	}
-
-	public J setFgColor(String fgColor)
-	{
-		this.fgColor = fgColor;
 		return (J) this;
 	}
 

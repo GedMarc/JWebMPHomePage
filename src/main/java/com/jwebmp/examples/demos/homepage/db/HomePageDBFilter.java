@@ -9,9 +9,7 @@ import com.jwebmp.guicedinjection.GuiceContext;
 
 import javax.naming.NamingException;
 import javax.servlet.*;
-import javax.transaction.*;
 import javax.validation.constraints.NotNull;
-import java.io.IOException;
 
 /**
  * Just starts and finishes a user transactions with the request scoped thread.
@@ -43,7 +41,7 @@ public class HomePageDBFilter
 	}
 
 	@Override
-	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException
+	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
 	{
 		unitOfWork.begin();
 		try
@@ -52,7 +50,7 @@ public class HomePageDBFilter
 			filterChain.doFilter(servletRequest, servletResponse);
 			getUserTransaction().commit();
 		}
-		catch (SystemException | NamingException | NotSupportedException | RollbackException | HeuristicRollbackException | HeuristicMixedException e)
+		catch (Exception e)
 		{
 			e.printStackTrace();
 		}

@@ -20,7 +20,6 @@ import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import org.apache.commons.lang3.StringEscapeUtils;
 
-import javax.annotation.Nullable;
 import java.util.Map;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
@@ -303,7 +302,7 @@ public class HelloWorldScreen
 		                                                 .addStyle("max-height:250px;"));
 	}
 
-	private Div<GlobalChildren, ?, ?, ?, ?> buildTab(@Nullable String description, SourceCodeLanguages language, StringBuilder fileTemplate)
+	private Div<GlobalChildren, ?, ?, ?, ?> buildTab(String description, SourceCodeLanguages language, StringBuilder fileTemplate)
 	{
 		DivSimple<?> htmlExample = new DivSimple<>();
 		htmlExample.add(description);
