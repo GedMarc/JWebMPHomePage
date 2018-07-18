@@ -2,13 +2,11 @@ package com.jwebmp.examples.demos.homepage.entities;
 
 import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.HomePageNotificationsBuilder;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Data
 public class HomePageNotifications
 		extends CoreEntity<HomePageNotifications, HomePageNotificationsBuilder, Integer>
 {
@@ -41,5 +39,75 @@ public class HomePageNotifications
 	{
 		setHomePageNotificationsID(id);
 		return this;
+	}
+
+	public Integer getHomePageNotificationsID()
+	{
+		return homePageNotificationsID;
+	}
+
+	public void setHomePageNotificationsID(Integer homePageNotificationsID)
+	{
+		this.homePageNotificationsID = homePageNotificationsID;
+	}
+
+	public String getTitle()
+	{
+		return title;
+	}
+
+	public void setTitle(String title)
+	{
+		this.title = title;
+	}
+
+	public String getDescription()
+	{
+		return description;
+	}
+
+	public void setDescription(String description)
+	{
+		this.description = description;
+	}
+
+	public String getClazz()
+	{
+		return clazz;
+	}
+
+	public void setClazz(String clazz)
+	{
+		this.clazz = clazz;
+	}
+
+	public String getIcon()
+	{
+		return icon;
+	}
+
+	public void setIcon(String icon)
+	{
+		this.icon = icon;
+	}
+
+	public Date getDate()
+	{
+		return date;
+	}
+
+	public void setDate(Date date)
+	{
+		this.date = date;
+	}
+
+	public Boolean getHighlighted()
+	{
+		return highlighted;
+	}
+
+	public void setHighlighted(Boolean highlighted)
+	{
+		this.highlighted = highlighted;
 	}
 }

@@ -6,11 +6,9 @@ import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jqlayout.components.BorderLayout;
 import com.jwebmp.plugins.jqlayout.enumerations.LayoutResponsiveSize;
-import lombok.extern.java.Log;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 
-@Log
 public class OuterLayout
 		extends BorderLayout<OuterLayout>
 {

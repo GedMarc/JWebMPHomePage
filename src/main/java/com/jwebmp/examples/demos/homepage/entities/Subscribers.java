@@ -16,7 +16,6 @@ import com.jwebmp.examples.demos.homepage.entities.builders.SubscribersBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.SubscriberPersistAsync;
 import com.jwebmp.exceptions.MissingComponentException;
 import com.jwebmp.guicedinjection.GuiceContext;
-import lombok.Data;
 
 import javax.cache.annotation.CacheKey;
 import javax.cache.annotation.CacheRemove;
@@ -41,7 +40,6 @@ import java.util.concurrent.Executors;
  */
 @Entity(name = "Subscribers")
 @Table(name = "Subscribers")
-@Data
 public class Subscribers
 		extends CoreEntity<Subscribers, SubscribersBuilder, Long>
 		implements Serializable
@@ -365,33 +363,174 @@ public class Subscribers
 		return true;
 	}
 
-	@Override
-	public int hashCode()
+	public Long getSubscriberID()
 	{
-		int result = super.hashCode();
-		result = 31 * result + (getSubscriberID() != null ? getSubscriberID().hashCode() : 0);
-		return result;
+		return subscriberID;
 	}
 
-	@Override
-	public boolean equals(Object o)
+	public void setSubscriberID(Long subscriberID)
 	{
-		if (this == o)
-		{
-			return true;
-		}
-		if (!(o instanceof Subscribers))
-		{
-			return false;
-		}
-		if (!super.equals(o))
-		{
-			return false;
-		}
+		this.subscriberID = subscriberID;
+	}
 
-		Subscribers that = (Subscribers) o;
+	public String getFirstName()
+	{
+		return firstName;
+	}
 
-		return getSubscriberID() != null ? getSubscriberID().equals(that.getSubscriberID()) : that.getSubscriberID() == null;
+	public void setFirstName(String firstName)
+	{
+		this.firstName = firstName;
+	}
+
+	public String getLastName()
+	{
+		return lastName;
+	}
+
+	public void setLastName(String lastName)
+	{
+		this.lastName = lastName;
+	}
+
+	public LocalDate getBirthDate()
+	{
+		return birthDate;
+	}
+
+	public void setBirthDate(LocalDate birthDate)
+	{
+		this.birthDate = birthDate;
+	}
+
+	public String getEmailAddress()
+	{
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress)
+	{
+		this.emailAddress = emailAddress;
+	}
+
+	public boolean isUnsubscribed()
+	{
+		return unsubscribed;
+	}
+
+	public void setUnsubscribed(boolean unsubscribed)
+	{
+		this.unsubscribed = unsubscribed;
+	}
+
+	public boolean isAdministrator()
+	{
+		return administrator;
+	}
+
+	public void setAdministrator(boolean administrator)
+	{
+		this.administrator = administrator;
+	}
+
+	public Visitors getVisitorID()
+	{
+		return visitorID;
+	}
+
+	public void setVisitorID(Visitors visitorID)
+	{
+		this.visitorID = visitorID;
+	}
+
+	public List<SubscriberVisitors> getSubscriberVisitorsList()
+	{
+		return subscriberVisitorsList;
+	}
+
+	public void setSubscriberVisitorsList(List<SubscriberVisitors> subscriberVisitorsList)
+	{
+		this.subscriberVisitorsList = subscriberVisitorsList;
+	}
+
+	public String getPassword()
+	{
+		return password;
+	}
+
+	public void setPassword(String password)
+	{
+		this.password = password;
+	}
+
+	public String getRandomSalt()
+	{
+		return randomSalt;
+	}
+
+	public void setRandomSalt(String randomSalt)
+	{
+		this.randomSalt = randomSalt;
+	}
+
+	public String getConfirmPassword()
+	{
+		return confirmPassword;
+	}
+
+	public void setConfirmPassword(String confirmPassword)
+	{
+		this.confirmPassword = confirmPassword;
+	}
+
+	public boolean isConfirmed()
+	{
+		return confirmed;
+	}
+
+	public void setConfirmed(boolean confirmed)
+	{
+		this.confirmed = confirmed;
+	}
+
+	public String getConfirmationKey()
+	{
+		return confirmationKey;
+	}
+
+	public void setConfirmationKey(String confirmationKey)
+	{
+		this.confirmationKey = confirmationKey;
+	}
+
+	public String getContactDetails()
+	{
+		return contactDetails;
+	}
+
+	public void setContactDetails(String contactDetails)
+	{
+		this.contactDetails = contactDetails;
+	}
+
+	public boolean isRememberMe()
+	{
+		return rememberMe;
+	}
+
+	public void setRememberMe(boolean rememberMe)
+	{
+		this.rememberMe = rememberMe;
+	}
+
+	public boolean isLogInActive()
+	{
+		return logInActive;
+	}
+
+	public void setLogInActive(boolean logInActive)
+	{
+		this.logInActive = logInActive;
 	}
 
 	@Override

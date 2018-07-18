@@ -12,13 +12,10 @@ import com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSClearfixOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.jqlayout.components.BorderLayout;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.validation.constraints.NotNull;
 
-@Data
-@EqualsAndHashCode(callSuper = false)
+
 public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		extends DivSimple<J>
 {
@@ -234,4 +231,5 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		this.renderBreadcrumb = renderBreadcrumb;
 		return this;
 	}
+
 }

@@ -11,13 +11,12 @@ import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jqlayout.enumerations.JQLayoutArea;
 import com.jwebmp.plugins.jqlayout.events.JQLayoutSlideCloseLayoutDivFeature;
 import com.jwebmp.plugins.softhistorychange.SoftHistoryChangeAdapter;
-import lombok.extern.java.Log;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static com.jwebmp.utilities.StaticStrings.*;
 
-@Log
 public class ChangeScreenEvent
 		extends SoftHistoryChangeAdapter
 {
@@ -76,7 +75,8 @@ public class ChangeScreenEvent
 			}
 			catch (ClassNotFoundException e)
 			{
-				log.log(Level.SEVERE, "Unable to find class [" + e.getMessage() + "]", e);
+				Logger.getLogger("ChangeScreenEvent")
+				      .log(Level.SEVERE, "Unable to find class [" + e.getMessage() + "]", e);
 			}
 		}
 	}

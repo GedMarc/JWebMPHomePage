@@ -8,7 +8,6 @@ package com.jwebmp.examples.demos.homepage.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitorsBuilder;
-import lombok.Data;
 import org.apache.commons.lang3.NotImplementedException;
 
 import javax.persistence.*;
@@ -24,7 +23,6 @@ import java.util.List;
 @Entity(name = "Visitors")
 @Table(name = "Visitors",
 		uniqueConstraints = @UniqueConstraint(columnNames = {"LocalStorageKey"}))
-@Data
 public class Visitors
 		extends CoreEntity<Visitors, VisitorsBuilder, Long>
 		implements Serializable
@@ -127,31 +125,74 @@ public class Visitors
 
 	}
 
-	@Override
-	public int hashCode()
+	public Long getVisitorID()
 	{
-		return super.hashCode();
+		return visitorID;
 	}
 
-	@Override
-	public boolean equals(Object o)
+	public void setVisitorID(Long visitorID)
 	{
-		if (this == o)
-		{
-			return true;
-		}
-		if (!(o instanceof Visitors))
-		{
-			return false;
-		}
-		if (!super.equals(o))
-		{
-			return false;
-		}
+		this.visitorID = visitorID;
+	}
 
-		Visitors visitors = (Visitors) o;
+	public String getLocalStorageKey()
+	{
+		return localStorageKey;
+	}
 
-		return getVisitorID() != null ? getVisitorID().equals(visitors.getVisitorID()) : visitors.getVisitorID() == null;
+	public void setLocalStorageKey(String localStorageKey)
+	{
+		this.localStorageKey = localStorageKey;
+	}
+
+	public List<Visitors> getVisitorsList()
+	{
+		return visitorsList;
+	}
+
+	public void setVisitorsList(List<Visitors> visitorsList)
+	{
+		this.visitorsList = visitorsList;
+	}
+
+	public Visitors getLinkedVisitorID()
+	{
+		return linkedVisitorID;
+	}
+
+	public void setLinkedVisitorID(Visitors linkedVisitorID)
+	{
+		this.linkedVisitorID = linkedVisitorID;
+	}
+
+	public List<Subscribers> getSubscribersList()
+	{
+		return subscribersList;
+	}
+
+	public void setSubscribersList(List<Subscribers> subscribersList)
+	{
+		this.subscribersList = subscribersList;
+	}
+
+	public List<Visits> getVisitsID()
+	{
+		return visitsID;
+	}
+
+	public void setVisitsID(List<Visits> visitsID)
+	{
+		this.visitsID = visitsID;
+	}
+
+	public List<SubscriberVisitors> getSubscriberVisitorsList()
+	{
+		return subscriberVisitorsList;
+	}
+
+	public void setSubscriberVisitorsList(List<SubscriberVisitors> subscriberVisitorsList)
+	{
+		this.subscriberVisitorsList = subscriberVisitorsList;
 	}
 
 	@Override

@@ -1,7 +1,5 @@
 package com.jwebmp.examples.demos.homepage;
 
-import lombok.extern.java.Log;
-
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.MimetypesFileTypeMap;
@@ -15,11 +13,13 @@ import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-@Log
 public class MailService
 		implements AutoCloseable
 {
+	private static final Logger log = Logger.getLogger("MailService");
+
 	private Session session;
 	private Properties properties;
 

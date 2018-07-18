@@ -14,7 +14,6 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.google.guice;
 	requires com.jwebmp.plugins.toastr;
 	requires com.google.guice.extensions.servlet;
-	requires lombok;
 	requires java.validation;
 	requires java.activation;
 	requires com.jwebmp.plugins.bootstrap4;
@@ -47,5 +46,10 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.fasterxml.jackson.core;
 	requires com.jwebmp.guicedpersistence;
 	requires java.sql;
+	requires com.jwebmp.guicedpersistence.btm;
+	requires com.fasterxml.jackson.databind;
 
+	exports com.jwebmp.examples.demos.homepage;
+
+	provides com.jwebmp.examples.demos.homepage.GuiceConfigurator with com.jwebmp.examples.demos.homepage.GuiceConfigurator;
 }

@@ -8,7 +8,6 @@ import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitsBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.VisitsPersistAsync;
 import com.jwebmp.guicedinjection.GuiceContext;
-import lombok.Data;
 
 import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +17,6 @@ import java.util.concurrent.Executors;
 
 @Table(name = "Visits")
 @Entity(name = "Visits")
-@Data
-
 public class Visits
 		extends CoreEntity<Visits, VisitsBuilder, Long>
 {
@@ -97,30 +94,63 @@ public class Visits
 		return this;
 	}
 
-	@Override
-	public int hashCode()
+	public Long getVisitsID()
 	{
-		return super.hashCode();
+		return visitsID;
 	}
 
-	@Override
-	public boolean equals(Object o)
+	public void setVisitsID(Long visitsID)
 	{
-		if (this == o)
-		{
-			return true;
-		}
-		if (!(o instanceof Visits))
-		{
-			return false;
-		}
-		if (!super.equals(o))
-		{
-			return false;
-		}
+		this.visitsID = visitsID;
+	}
 
-		Visits visits = (Visits) o;
+	public Visitors getVisitorID()
+	{
+		return visitorID;
+	}
 
-		return getVisitsID() != null ? getVisitsID().equals(visits.getVisitsID()) : visits.getVisitsID() == null;
+	public void setVisitorID(Visitors visitorID)
+	{
+		this.visitorID = visitorID;
+	}
+
+	public LocalDateTime getVisitDate()
+	{
+		return visitDate;
+	}
+
+	public void setVisitDate(LocalDateTime visitDate)
+	{
+		this.visitDate = visitDate;
+	}
+
+	public String getBrowserData()
+	{
+		return browserData;
+	}
+
+	public void setBrowserData(String browserData)
+	{
+		this.browserData = browserData;
+	}
+
+	public String getVisitUrl()
+	{
+		return visitUrl;
+	}
+
+	public void setVisitUrl(String visitUrl)
+	{
+		this.visitUrl = visitUrl;
+	}
+
+	public String getHeaderData()
+	{
+		return headerData;
+	}
+
+	public void setHeaderData(String headerData)
+	{
+		this.headerData = headerData;
 	}
 }

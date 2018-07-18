@@ -5,9 +5,7 @@ import com.jwebmp.base.html.DivSimple;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
-import lombok.Data;
 
-@Data
 @SessionScoped
 public class SessionProperties
 		extends JavaScriptPart<SessionProperties>
@@ -29,4 +27,49 @@ public class SessionProperties
 	 * GUID
 	 */
 	private String guid;
+
+	public DivSimple<?> getWorkspace()
+	{
+		return workspace;
+	}
+
+	public Visitors getVisitor()
+	{
+		return visitor;
+	}
+
+	public void setVisitor(Visitors visitor)
+	{
+		this.visitor = visitor;
+	}
+
+	public boolean isLoggedIn()
+	{
+		return loggedIn;
+	}
+
+	public void setLoggedIn(boolean loggedIn)
+	{
+		this.loggedIn = loggedIn;
+	}
+
+	public Subscribers getSubscriber()
+	{
+		return subscriber;
+	}
+
+	public void setSubscriber(Subscribers subscriber)
+	{
+		this.subscriber = subscriber;
+	}
+
+	public String getGuid()
+	{
+		return guid;
+	}
+
+	public void setGuid(String guid)
+	{
+		this.guid = guid;
+	}
 }

@@ -9,6 +9,7 @@ public class GuiceConfigurator
 	@Override
 	public GuiceConfig configure(GuiceConfig config)
 	{
-		return config.setWhiteList(true);
+		return config.setWhiteList(true)
+		             .setVerbose(true);
 	}
 }

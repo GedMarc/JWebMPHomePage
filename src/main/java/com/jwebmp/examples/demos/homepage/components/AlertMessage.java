@@ -3,9 +3,7 @@ package com.jwebmp.examples.demos.homepage.components;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
-import lombok.Data;
 
-@Data
 public class AlertMessage
 		extends BSAlert<AlertMessage>
 {
@@ -29,5 +27,15 @@ public class AlertMessage
 		{
 			addStyle("display:none;");
 		}
+	}
+
+	public FontAwesome getIcon()
+	{
+		return icon;
+	}
+
+	public void setIcon(FontAwesome icon)
+	{
+		this.icon = icon;
 	}
 }

@@ -2,7 +2,6 @@ package com.jwebmp.examples.demos.homepage;
 
 import com.jwebmp.SessionHelper;
 import com.jwebmp.components.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
-import com.jwebmp.examples.demos.homepage.db.HomePageDBFilter;
 import com.jwebmp.generics.WebReference;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.logging.LogColourFormatter;
@@ -15,13 +14,8 @@ import io.undertow.server.handlers.encoding.EncodingHandler;
 import io.undertow.servlet.Servlets;
 import io.undertow.servlet.api.DeploymentInfo;
 import io.undertow.servlet.api.DeploymentManager;
-import io.undertow.servlet.api.FilterInfo;
 
-import javax.servlet.DispatcherType;
 import javax.servlet.ServletException;
-import java.util.logging.Level;
-
-import static com.jwebmp.logger.LogFactory.*;
 
 public class HomePageStartup
 {
@@ -31,15 +25,17 @@ public class HomePageStartup
 		LogColourFormatter.setRenderBlack(false);
 		WebReference.setUseVersionIdentifier(true);
 
-		configureConsoleColourOutput(Level.FINE);
+		//configureConsoleColourOutput(Level.FINE);
 
 		DeploymentInfo servletBuilder = Servlets.deployment()
 		                                        .setClassLoader(HomePageStartup.class.getClassLoader())
 		                                        .setContextPath("/")
 		                                        .setDeploymentName("jwebswinghomepage.war");
 
+/*
 		servletBuilder.addFilter(new FilterInfo("FilterUnitOfWorks", HomePageDBFilter.class).setAsyncSupported(true));
 		servletBuilder.addFilterUrlMapping("FilterUnitOfWorks", "/*", DispatcherType.REQUEST);
+*/
 
 		DeploymentManager manager = Servlets.defaultContainer()
 		                                    .addDeployment(servletBuilder);

@@ -19,13 +19,12 @@ import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGrou
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
-import lombok.extern.java.Log;
 
 import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-@Log
 public class ResetPasswordEvent
 		extends ClickAdapter
 		implements BSCardEvents
@@ -134,7 +133,8 @@ public class ResetPasswordEvent
 			}
 			catch (Exception e)
 			{
-				log.log(Level.WARNING, "Can't store user activity audit for password reset?", e);
+				Logger.getLogger("ForgotPasswordEvent")
+				      .log(Level.WARNING, "Can't store user activity audit for password reset?", e);
 				response.addReaction(new AjaxResponseReaction().setReactionTitle("Password Reset Couldnt be completed")
 				                                               .setReactionData("Unfortunately your password could not be reset.")
 				                                               .setResponseType(AjaxResponseType.Success)

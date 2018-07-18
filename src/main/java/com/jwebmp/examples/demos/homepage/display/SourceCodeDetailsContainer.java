@@ -2,14 +2,12 @@ package com.jwebmp.examples.demos.homepage.display;
 
 import com.jwebmp.guicedinjection.pairing.OptionalPair;
 import com.jwebmp.guicedinjection.pairing.Pair;
-import lombok.Data;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Data
 public class SourceCodeDetailsContainer<J extends SourceCodeDetailsContainer<J>>
 		implements Serializable
 {
@@ -116,5 +114,10 @@ public class SourceCodeDetailsContainer<J extends SourceCodeDetailsContainer<J>>
 	public OptionalPair<Class, String> getQuickTipsSnippetLocations()
 	{
 		return quickTipsSnippetLocations;
+	}
+
+	public Map<String, Pair<Class, String>> getCustomLocations()
+	{
+		return customLocations;
 	}
 }

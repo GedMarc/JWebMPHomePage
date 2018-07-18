@@ -8,7 +8,6 @@ package com.jwebmp.examples.demos.homepage.entities;
 
 import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.SubscriberVisitorsBuilder;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,7 +18,6 @@ import java.io.Serializable;
  */
 @Entity(name = "SubscriberVisitors")
 @Table(name = "SubscriberVisitors")
-@Data
 public class SubscriberVisitors
 		extends CoreEntity<SubscriberVisitors, SubscriberVisitorsBuilder, Long>
 		implements Serializable
@@ -74,32 +72,33 @@ public class SubscriberVisitors
 		return this;
 	}
 
-	@Override
-	public int hashCode()
+	public Long getSubscriberVisitorID()
 	{
-		int result = super.hashCode();
-		result = 31 * result + (getSubscriberID() != null ? getSubscriberID().hashCode() : 0);
-		return result;
+		return subscriberVisitorID;
 	}
 
-	@Override
-	public boolean equals(Object o)
+	public void setSubscriberVisitorID(Long subscriberVisitorID)
 	{
-		if (this == o)
-		{
-			return true;
-		}
-		if (!(o instanceof SubscriberVisitors))
-		{
-			return false;
-		}
-		if (!super.equals(o))
-		{
-			return false;
-		}
+		this.subscriberVisitorID = subscriberVisitorID;
+	}
 
-		SubscriberVisitors that = (SubscriberVisitors) o;
+	public Subscribers getSubscriberID()
+	{
+		return subscriberID;
+	}
 
-		return getSubscriberID() != null ? getSubscriberID().equals(that.getSubscriberID()) : that.getSubscriberID() == null;
+	public void setSubscriberID(Subscribers subscriberID)
+	{
+		this.subscriberID = subscriberID;
+	}
+
+	public Visitors getVisitorID()
+	{
+		return visitorID;
+	}
+
+	public void setVisitorID(Visitors visitorID)
+	{
+		this.visitorID = visitorID;
 	}
 }

@@ -4,14 +4,13 @@ import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.*;
 import com.jwebmp.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import lombok.extern.java.Log;
 
 import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-@Log
 public class ForgotPasswordEvent
 		extends ClickAdapter
 {
@@ -52,7 +51,8 @@ public class ForgotPasswordEvent
 			}
 			catch (Exception e)
 			{
-				log.log(Level.WARNING, "Can't store user activity audit for password reset?", e);
+				Logger.getLogger("ForgotPassword")
+				      .log(Level.WARNING, "Can't store user activity audit for password reset?", e);
 			}
 		}
 
