@@ -24,7 +24,7 @@ import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.forms.BSForm;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
-import com.jwebmp.plugins.jquerylayout.layout.events.JQLayoutCloseLayoutDivFeature;
+import com.jwebmp.plugins.jqlayout.events.JQLayoutCloseLayoutDivFeature;
 import com.jwebmp.plugins.softhistorychange.SoftHistoryChangeFeature;
 
 import java.time.LocalDateTime;

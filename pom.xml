@@ -1,26 +1,19 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.jwebmp</groupId>
+        <artifactId>jwebmp-bom</artifactId>
+        <version>0.0.0_0-SNAPSHOT</version>
+    </parent>
+
     <groupId>com.jwebmp</groupId>
     <artifactId>jwebmphomepage</artifactId>
     <packaging>jar</packaging>
-    <version>0.0.0_0-SNAPSHOT</version>
-
     <name>JWebMP Home Page</name>
 
     <url>http://maven.apache.org</url>
-
-    <repositories>
-        <repository>
-            <id>jwebmp-snapshot</id>
-            <name>JWebMPArtifactory-snapshots</name>
-            <url>https://jwebmp.com/artifactory/libs-snapshot</url>
-        </repository>
-    </repositories>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -30,7 +23,6 @@
             <type>jar</type>
         </dependency>
 
-
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-core</artifactId>
@@ -39,9 +31,15 @@
         </dependency>
 
         <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>guiced-persistence-btm</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
             <groupId>javax.cache</groupId>
             <artifactId>cache-api</artifactId>
-            <version>1.1.0</version>
         </dependency>
 
         <dependency>
@@ -50,7 +48,6 @@
             <version>${project.version}</version>
             <type>jar</type>
         </dependency>
-
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-font-awesome</artifactId>
@@ -63,15 +60,12 @@
             <version>${project.version}</version>
             <type>jar</type>
         </dependency>
-
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-glyphicons</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
         </dependency>
-
-
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-metro-tiles</artifactId>
@@ -249,22 +243,16 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.5</version>
-            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.2.0</version>
-            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.196</version>
-            <type>jar</type>
             <scope>test</scope>
         </dependency>
 
@@ -276,17 +264,8 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>javax.mail-api</artifactId>
-            <version>1.6.0</version>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
-            <version>1.6.0</version>
-            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -313,20 +292,16 @@
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-core</artifactId>
-            <version>2.0.9.Final</version>
         </dependency>
 
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-servlet</artifactId>
-            <version>2.0.9.Final</version>
         </dependency>
 
         <dependency>
             <groupId>io.undertow</groupId>
             <artifactId>undertow-websockets-jsr</artifactId>
-            <version>2.0.9.Final</version>
-            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -344,13 +319,17 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
-            <version>5.3.2.Final</version>
         </dependency>
+
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>guiced-persistence-btm</artifactId>
-            <version>0.0.0_0-SNAPSHOT</version>
-            <scope>compile</scope>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
         </dependency>
 
     </dependencies>
@@ -377,14 +356,6 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
@@ -401,56 +372,6 @@
                     </execution>
                 </executions>
             </plugin>
-
         </plugins>
-
-        <resources>
-            <resource>
-                <directory>src/main/webapp</directory>
-                <excludes>
-                    <exclude>**/*.gzip</exclude>
-                    <exclude>**/*.map</exclude>
-                    <exclude>**/*.md</exclude>
-                    <exclude>**/*.md</exclude>
-                    <exclude>**/package.json</exclude>
-                    <exclude>**/bower.json</exclude>
-                    <exclude>**/.bower.json</exclude>
-                    <exclude>**/.gitignore</exclude>
-                    <exclude>**/.jshint</exclude>
-                    <exclude>**/.jshint</exclude>
-                    <exclude>**/Gruntfile.js</exclude>
-                    <exclude>**/*.sh</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>**/*.gzip</exclude>
-                    <exclude>**/*.map</exclude>
-                    <exclude>**/*.md</exclude>
-                    <exclude>**/*.md</exclude>
-                    <exclude>**/package.json</exclude>
-                    <exclude>**/bower.json</exclude>
-                    <exclude>**/.bower.json</exclude>
-                    <exclude>**/.gitignore</exclude>
-                    <exclude>**/.jshint</exclude>
-                    <exclude>**/.jshint</exclude>
-                    <exclude>**/Gruntfile.js</exclude>
-                    <exclude>**/*.sh</exclude>
-                </excludes>
-            </resource>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.js</include>
-                    <include>**/*.css</include>
-                    <include>**/*.min</include>
-                    <include>**/*.html</include>
-                    <include>**/*.txt</include>
-                    <include>**/*.json</include>
-                    <include>**/*.properties</include>
-                </includes>
-            </resource>
-        </resources>
     </build>
 </project>

@@ -11,7 +11,6 @@ import com.jwebmp.examples.demos.homepage.entities.builders.SubscriberVisitorsBu
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
@@ -20,7 +19,6 @@ import java.io.Serializable;
  */
 @Entity(name = "SubscriberVisitors")
 @Table(name = "SubscriberVisitors")
-@XmlRootElement
 @Data
 public class SubscriberVisitors
 		extends CoreEntity<SubscriberVisitors, SubscriberVisitorsBuilder, Long>

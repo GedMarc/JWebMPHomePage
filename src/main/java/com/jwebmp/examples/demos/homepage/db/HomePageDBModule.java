@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.db;
 
+import com.jwebmp.guicedpersistence.btm.BTMConnectionBaseInfo;
 import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
 import com.jwebmp.guicedpersistence.db.connectionbasebuilders.AbstractDatabaseProviderModule;
 import com.oracle.jaxb21.PersistenceUnit;
@@ -15,7 +16,7 @@ public class HomePageDBModule
 	@Override
 	protected @NotNull ConnectionBaseInfo getConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties)
 	{
-		ConnectionBaseInfo cbi = new com.jwebmp.guicedpersistence.btm.BTMConnectionBaseInfo(false);
+		ConnectionBaseInfo cbi = new BTMConnectionBaseInfo(false);
 		cbi.setAllowLocalTransactions(true);
 		cbi.setShareTransactionConnections(true);
 		cbi.setEnableJdbc4ConnectionTest(true);

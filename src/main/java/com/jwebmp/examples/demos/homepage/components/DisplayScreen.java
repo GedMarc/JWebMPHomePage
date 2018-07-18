@@ -11,7 +11,7 @@ import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSClearfixOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
-import com.jwebmp.plugins.jquerylayout.layout.components.BorderLayout;
+import com.jwebmp.plugins.jqlayout.components.BorderLayout;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

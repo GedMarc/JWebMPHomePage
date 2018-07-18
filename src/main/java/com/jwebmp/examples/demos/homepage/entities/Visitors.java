@@ -14,7 +14,6 @@ import org.apache.commons.lang3.NotImplementedException;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.List;
 
@@ -25,7 +24,6 @@ import java.util.List;
 @Entity(name = "Visitors")
 @Table(name = "Visitors",
 		uniqueConstraints = @UniqueConstraint(columnNames = {"LocalStorageKey"}))
-@XmlRootElement
 @Data
 public class Visitors
 		extends CoreEntity<Visitors, VisitorsBuilder, Long>

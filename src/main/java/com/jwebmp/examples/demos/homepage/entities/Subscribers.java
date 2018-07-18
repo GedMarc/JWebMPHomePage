@@ -26,7 +26,6 @@ import javax.management.InvalidAttributeValueException;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -42,7 +41,6 @@ import java.util.concurrent.Executors;
  */
 @Entity(name = "Subscribers")
 @Table(name = "Subscribers")
-@XmlRootElement
 @Data
 public class Subscribers
 		extends CoreEntity<Subscribers, SubscribersBuilder, Long>

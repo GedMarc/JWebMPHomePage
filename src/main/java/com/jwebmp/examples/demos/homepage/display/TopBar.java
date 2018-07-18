@@ -17,7 +17,7 @@ import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTypographyOptions;
-import com.jwebmp.plugins.jquerylayout.layout.enumerations.JQLayoutArea;
+import com.jwebmp.plugins.jqlayout.enumerations.JQLayoutArea;
 import com.jwebmp.plugins.moment.Moment;
 
 import java.util.Date;
