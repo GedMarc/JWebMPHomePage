@@ -2,9 +2,14 @@ package com.jwebmp.examples.demos.homepage;
 
 import com.jwebmp.guicedinjection.GuiceConfig;
 
-public class GuiceConfigurator
-		implements com.jwebmp.guicedinjection.interfaces.GuiceConfigurator
+public class DemoGuiceConfigurator
+		implements com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator
 {
+
+	public DemoGuiceConfigurator()
+	{
+		System.out.println("Constructed");
+	}
 
 	@Override
 	public GuiceConfig configure(GuiceConfig config)

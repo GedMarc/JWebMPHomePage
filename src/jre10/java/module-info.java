@@ -1,3 +1,6 @@
+import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
+import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
+
 module com.jwebmp.examples.demos.homepage {
 	requires javax.servlet.api;
 	requires com.jwebmp.core;
@@ -51,5 +54,5 @@ module com.jwebmp.examples.demos.homepage {
 
 	exports com.jwebmp.examples.demos.homepage;
 
-	provides com.jwebmp.examples.demos.homepage.GuiceConfigurator with com.jwebmp.examples.demos.homepage.GuiceConfigurator;
+	provides IGuiceConfigurator with DemoGuiceConfigurator;
 }

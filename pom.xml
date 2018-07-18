@@ -60,15 +60,6 @@
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
-
-        <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>guiced-persistence-btm</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
-
         <dependency>
             <groupId>javax.cache</groupId>
             <artifactId>cache-api</artifactId>
@@ -81,6 +72,7 @@
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
+
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-font-awesome</artifactId>
