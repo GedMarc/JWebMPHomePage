@@ -4,7 +4,6 @@ import com.google.inject.Inject;
 import com.google.inject.persist.PersistService;
 import com.jwebmp.guicedpersistence.db.DBStartupAsync;
 
-import javax.sql.DataSource;
 
 public class HomePageDBStartup
 		extends DBStartupAsync
@@ -14,8 +13,8 @@ public class HomePageDBStartup
 	}
 
 	@Inject
-	public HomePageDBStartup(@HomePageDB PersistService persistService, @HomePageDB DataSource dataSource)
+	public HomePageDBStartup(@HomePageDB PersistService persistService)
 	{
-		super(persistService, dataSource);
+		super(persistService);
 	}
 }

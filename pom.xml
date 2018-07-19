@@ -54,12 +54,19 @@
 
 
         <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-servlet</artifactId>
+        </dependency>
+
+
+        <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>guiced-injection</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
+
         <dependency>
             <groupId>javax.cache</groupId>
             <artifactId>cache-api</artifactId>
@@ -312,6 +319,12 @@
         </dependency>
 
         <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+            <version>${javax.transaction.transactionapi}</version>
+        </dependency>
+
+        <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-undertow</artifactId>
             <version>${project.version}</version>
@@ -371,16 +384,10 @@
 
         <dependency>
             <groupId>com.jwebmp</groupId>
-            <artifactId>guiced-persistence-btm</artifactId>
-            <version>0.57.0.13-SNAPSHOT</version>
+            <artifactId>guiced-persistence-jpa</artifactId>
+            <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.jwebmp</groupId>
-                    <artifactId>guiced-persistence</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>

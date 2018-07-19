@@ -1,5 +1,7 @@
 import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
+import com.jwebmp.examples.demos.homepage.PackageScanner;
 import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
+import com.jwebmp.guicedinjection.scanners.PackageContentsScanner;
 
 module com.jwebmp.examples.demos.homepage {
 	requires javax.servlet.api;
@@ -44,15 +46,21 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.particlejs;
 	requires java.naming;
 	requires com.google.guice.extensions.persist;
-	requires btm;
 	requires com.jwebmp.plugins.plusastab;
 	requires com.fasterxml.jackson.core;
 	requires com.jwebmp.guicedpersistence;
-	requires java.sql;
-	requires com.jwebmp.guicedpersistence.btm;
+
+	requires com.jwebmp.guicedpersistence.jpa;
 	requires com.fasterxml.jackson.databind;
+
+	requires java.transaction;
 
 	exports com.jwebmp.examples.demos.homepage;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
+	provides PackageContentsScanner with PackageScanner;
+
+	opens com.jwebmp.examples.demos.homepage;
+	exports com.jwebmp.examples.demos.homepage.db to com.jwebmp.guicedinjection, com.google.guice;
+
 }

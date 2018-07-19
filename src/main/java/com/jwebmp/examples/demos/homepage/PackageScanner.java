@@ -12,9 +12,7 @@ public class PackageScanner
 	public Set<String> searchFor()
 	{
 		Set<String> strings = new HashSet<>();
-		strings.add("META-INF");
-		strings.add("blablabla");
-		strings.add("com.jwebmp");
+		strings.add("com.jwebmp.examples.demos.homepage");
 		return strings;
 	}
 }

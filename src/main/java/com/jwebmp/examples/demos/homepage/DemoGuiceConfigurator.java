@@ -14,7 +14,6 @@ public class DemoGuiceConfigurator
 	@Override
 	public GuiceConfig configure(GuiceConfig config)
 	{
-		return config.setWhiteList(true)
-		             .setVerbose(true);
+		return config.setWhiteList(true);
 	}
 }

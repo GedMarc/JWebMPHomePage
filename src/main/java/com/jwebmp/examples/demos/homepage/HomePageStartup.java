@@ -16,6 +16,9 @@ import io.undertow.servlet.api.DeploymentInfo;
 import io.undertow.servlet.api.DeploymentManager;
 
 import javax.servlet.ServletException;
+import java.util.logging.Level;
+
+import static com.jwebmp.logger.LogFactory.*;
 
 public class HomePageStartup
 {
@@ -25,17 +28,12 @@ public class HomePageStartup
 		LogColourFormatter.setRenderBlack(false);
 		WebReference.setUseVersionIdentifier(true);
 
-		//configureConsoleColourOutput(Level.FINE);
+		configureConsoleColourOutput(Level.FINE);
 
 		DeploymentInfo servletBuilder = Servlets.deployment()
 		                                        .setClassLoader(HomePageStartup.class.getClassLoader())
 		                                        .setContextPath("/")
 		                                        .setDeploymentName("jwebswinghomepage.war");
-
-/*
-		servletBuilder.addFilter(new FilterInfo("FilterUnitOfWorks", HomePageDBFilter.class).setAsyncSupported(true));
-		servletBuilder.addFilterUrlMapping("FilterUnitOfWorks", "/*", DispatcherType.REQUEST);
-*/
 
 		DeploymentManager manager = Servlets.defaultContainer()
 		                                    .addDeployment(servletBuilder);
@@ -44,12 +42,13 @@ public class HomePageStartup
 		manager.deploy();
 
 		HttpHandler jwebSwingHandler = manager.start();
+
 		HttpHandler encodingHandler = new EncodingHandler.Builder().build(null)
 		                                                           .wrap(jwebSwingHandler);
 
 		Undertow server = Undertow.builder()
 		                          .addHttpListener(6002, "0.0.0.0")
-		                          .setHandler(encodingHandler)
+		                          .setHandler(jwebSwingHandler)
 		                          .build();
 
 		FontAwesome5PageConfigurator.setIncludeRegular(true);
@@ -59,5 +58,7 @@ public class HomePageStartup
 		JQUIThemesPageConfigurator.setTheme(JQUIThemes.Smoothness);
 
 		server.start();
+		System.out.println(server.getWorker()
+		                         .isShutdown() + " shutdown");
 	}
 }

@@ -8,6 +8,7 @@ import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitsBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.VisitsPersistAsync;
 import com.jwebmp.guicedinjection.GuiceContext;
+import org.json.JSONObject;
 
 import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
@@ -57,10 +58,12 @@ public class Visits
 		{
 			String h = headerNames.nextElement();
 			String v = req.getHeader(h);
-			sb.append(h + "=" + v + STRING_SEMICOLON);
+			//sb.append(h + "=" + v + STRING_SEMICOLON);
+			JSONObject jsonObject = new JSONObject();
+			jsonObject.put(h, v);
+			sb.append(jsonObject.toString());
 		}
 		visits.setHeaderData(sb.toString());
-
 		visits.builder()
 		      .setRunDetached(true)
 		      .persist(visits);
