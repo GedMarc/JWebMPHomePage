@@ -7,6 +7,7 @@ package com.jwebmp.examples.demos.homepage.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jwebmp.entityassist.CoreEntity;
+import com.jwebmp.entityassist.EntityAssistException;
 import com.jwebmp.entityassist.converters.LocalDateTimestampAttributeConverter;
 import com.jwebmp.entityassist.enumerations.ActiveFlag;
 import com.jwebmp.entityassist.enumerations.Operand;
@@ -20,8 +21,6 @@ import com.jwebmp.guicedinjection.GuiceContext;
 import javax.cache.annotation.CacheKey;
 import javax.cache.annotation.CacheRemove;
 import javax.cache.annotation.CacheResult;
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.InvalidAttributeValueException;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -246,11 +245,11 @@ public class Subscribers
 	}
 
 	@CacheRemove()
-	public Optional<Subscribers> create(Visitors visitor) throws InstanceAlreadyExistsException
+	public Optional<Subscribers> create(Visitors visitor) throws EntityAssistException
 	{
 		if (findByEmail(getEmailAddress()).isPresent())
 		{
-			throw new InstanceAlreadyExistsException("This user has already been registered");
+			throw new EntityAssistException("This user has already been registered");
 		}
 
 		setAdministrator(false);
@@ -283,11 +282,11 @@ public class Subscribers
 	}
 
 	@CacheRemove()
-	public Optional<Subscribers> changePassword(Subscribers subscriber) throws InstanceAlreadyExistsException
+	public Optional<Subscribers> changePassword(Subscribers subscriber) throws EntityAssistException
 	{
 		if (!findByEmail(getEmailAddress()).isPresent())
 		{
-			throw new InstanceAlreadyExistsException("No Such Email");
+			throw new EntityAssistException("No Such Email");
 		}
 
 		byte[] salt = System.getProperty("systemSalt") != null ? System.getProperty("systemSalt")
@@ -342,23 +341,23 @@ public class Subscribers
 		return optional;
 	}
 
-	public boolean isValid() throws InvalidAttributeValueException
+	public boolean isValid() throws EntityAssistException
 	{
 		if (getPassword() == null)
 		{
-			throw new InvalidAttributeValueException("Password entry seems to have expired.");
+			throw new EntityAssistException("Password entry seems to have expired.");
 		}
 		if (getConfirmPassword() == null)
 		{
-			throw new InvalidAttributeValueException("Confirm password entry was empty. We allow this to show how multiple forms can be bound to the same DTO.");
+			throw new EntityAssistException("Confirm password entry was empty. We allow this to show how multiple forms can be bound to the same DTO.");
 		}
 		if (!getPassword().equals(getConfirmPassword()))
 		{
-			throw new InvalidAttributeValueException("Passwords do not match");
+			throw new EntityAssistException("Passwords do not match");
 		}
 		if (getEmailAddress() == null)
 		{
-			throw new InvalidAttributeValueException("Email Address is required");
+			throw new EntityAssistException("Email Address is required");
 		}
 		return true;
 	}

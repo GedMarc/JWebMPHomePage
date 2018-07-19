@@ -4,6 +4,7 @@ import com.google.inject.Key;
 import com.google.inject.name.Names;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.*;
+import com.jwebmp.entityassist.EntityAssistException;
 import com.jwebmp.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
@@ -13,8 +14,6 @@ import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.utilities.StaticStrings;
 
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.InvalidAttributeValueException;
 import java.util.Map;
 import java.util.Optional;
 
@@ -63,7 +62,7 @@ public class SubscribeEvent
 				                                                    .get();
 				if (!returningVisitor.isPresent())
 				{
-					throw new InstanceAlreadyExistsException("This already exists");
+					throw new EntityAssistException("This already exists");
 				}
 
 				Subscribers s = newSubs.create(returningVisitor.get())
@@ -73,13 +72,13 @@ public class SubscribeEvent
 				response.addComponent(GuiceContext.get(West.class));
 
 			}
-			catch (InstanceAlreadyExistsException e)
+			catch (EntityAssistException e)
 			{
 				response.addReaction(
 						new AjaxResponseReaction("Whoops", "You've already been registered. We've resent your confirmation email for security reasons.", ReactionType.DialogDisplay,
 						                         AjaxResponseType.Danger));
 			}
-			catch (InvalidAttributeValueException e)
+			catch (Exception e)
 			{
 				response.addReaction(new AjaxResponseReaction("Whoops", e.getMessage(), ReactionType.DialogDisplay, AjaxResponseType.Danger));
 			}

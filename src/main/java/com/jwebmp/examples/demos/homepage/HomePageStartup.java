@@ -1,9 +1,11 @@
 package com.jwebmp.examples.demos.homepage;
 
+import com.google.inject.servlet.GuiceFilter;
 import com.jwebmp.SessionHelper;
 import com.jwebmp.components.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
 import com.jwebmp.generics.WebReference;
 import com.jwebmp.guicedinjection.GuiceContext;
+import com.jwebmp.guicedpersistence.db.services.HibernateEntityManagerProperties;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.jqueryui.nestablethemes.JQUIThemes;
@@ -11,10 +13,13 @@ import com.jwebmp.plugins.jqueryui.nestablethemes.JQUIThemesPageConfigurator;
 import io.undertow.Undertow;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.handlers.encoding.EncodingHandler;
+import io.undertow.server.handlers.resource.ClassPathResourceManager;
 import io.undertow.servlet.Servlets;
 import io.undertow.servlet.api.DeploymentInfo;
 import io.undertow.servlet.api.DeploymentManager;
+import io.undertow.servlet.api.FilterInfo;
 
+import javax.servlet.DispatcherType;
 import javax.servlet.ServletException;
 import java.util.logging.Level;
 
@@ -28,17 +33,27 @@ public class HomePageStartup
 		LogColourFormatter.setRenderBlack(false);
 		WebReference.setUseVersionIdentifier(true);
 
+		HibernateEntityManagerProperties.setShowSql(true);
+		HibernateEntityManagerProperties.setFormatSql(true);
+
 		configureConsoleColourOutput(Level.FINE);
 
-		DeploymentInfo servletBuilder = Servlets.deployment()
+		DeploymentInfo deploymentInfo = Servlets.deployment()
 		                                        .setClassLoader(HomePageStartup.class.getClassLoader())
+		                                        //.setClassLoader(ClassLoader.getSystemClassLoader())
 		                                        .setContextPath("/")
 		                                        .setDeploymentName("jwebswinghomepage.war");
 
 		DeploymentManager manager = Servlets.defaultContainer()
-		                                    .addDeployment(servletBuilder);
+		                                    .addDeployment(deploymentInfo);
+
+		deploymentInfo.addFilter(new FilterInfo("GuiceFilter", GuiceFilter.class).setAsyncSupported(true));
+		deploymentInfo.addFilterUrlMapping("GuiceFilter", "/*", DispatcherType.REQUEST);
+		deploymentInfo.setResourceManager(new ClassPathResourceManager(deploymentInfo.getClassLoader(), "META-INF/resources"));
+
 
 		GuiceContext.inject();
+
 		manager.deploy();
 
 		HttpHandler jwebSwingHandler = manager.start();

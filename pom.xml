@@ -46,6 +46,23 @@
 
         <dependency>
             <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-log-master</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <classifier>${jwebmp.runtime.classifier}</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-atmosphere</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <classifier>${jwebmp.runtime.classifier}</classifier>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
             <artifactId>guiced-servlets</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
@@ -330,6 +347,12 @@
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jwebmp-undertow</artifactId>
+                    <groupId>com.jwebmp</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -338,6 +361,16 @@
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
+            <exclusions>
+                <exclusion>
+                    <artifactId>jwebmp-undertow</artifactId>
+                    <groupId>com.jwebmp</groupId>
+                </exclusion>
+                <exclusion>
+                    <artifactId>jwebmp-atmosphere</artifactId>
+                    <groupId>com.jwebmp</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -390,9 +423,27 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
+        <!--      <dependency>
+                  <groupId>com.jwebmp</groupId>
+                  <artifactId>guiced-persistence-btm</artifactId>
+                  <version>${project.version}</version>
+                  <type>jar</type>
+                  <classifier>${jwebmp.runtime.classifier}</classifier>
+              </dependency>-->
+
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
         </dependency>
 
     </dependencies>
@@ -400,6 +451,8 @@
     <build>
         <finalName>jwebswinghomepagedeploy</finalName>
         <plugins>
+
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -426,6 +479,10 @@
                     </annotationProcessors>
                     <compilerArgs>
                         <arg>-AaddGeneratedAnnotation=false</arg>
+                        <arg>--patch-module</arg>
+                        <arg>java.transaction=${settings.localRepository}/javax/transaction/javax.transaction-api/${javax.transaction.transactionapi}/javax.transaction-api-${javax.transaction.transactionapi}.jar</arg>
+                        <arg>--patch-module</arg>
+                        <arg>java.xml.bind=${settings.localRepository}/javax/xml/bind/jaxb-api/${jaxb.version}/jaxb-api-${jaxb.version}.jar</arg>
                     </compilerArgs>
                     <compilerArguments>
                         <AaddGeneratedAnnotation>false</AaddGeneratedAnnotation>

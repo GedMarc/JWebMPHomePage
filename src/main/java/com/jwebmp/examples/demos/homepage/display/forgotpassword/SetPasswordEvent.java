@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.forgotpassword;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.AjaxCall;
 import com.jwebmp.base.ajax.AjaxResponse;
+import com.jwebmp.entityassist.EntityAssistException;
 import com.jwebmp.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
@@ -12,7 +13,6 @@ import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 
-import javax.management.InstanceAlreadyExistsException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,7 +44,7 @@ public class SetPasswordEvent
 		{
 			subscriber.changePassword(newSubs);
 		}
-		catch (InstanceAlreadyExistsException e)
+		catch (EntityAssistException e)
 		{
 			log.log(Level.SEVERE, "How did this happen? Unknown session subscriber on set password", e);
 		}

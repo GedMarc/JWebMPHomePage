@@ -4,6 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.jwebmp.base.ComponentHierarchyBase;
 import com.jwebmp.base.ajax.*;
+import com.jwebmp.entityassist.EntityAssistException;
 import com.jwebmp.examples.demos.homepage.components.events.DefaultClick;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
@@ -12,8 +13,6 @@ import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.modal.BSModal;
 
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.InvalidAttributeValueException;
 import java.util.Map;
 import java.util.Optional;
 
@@ -62,7 +61,7 @@ public class RegisterEvent
 				if (subscriberExists.isPresent())
 				{
 					//new LogoutEvent().onClick(call, response);
-					throw new InstanceAlreadyExistsException("Email Address already registered");
+					throw new EntityAssistException("Email Address already registered");
 				}
 				Optional<Subscribers> subscriber = newSubs.create(returningVisitor.get());
 				if (subscriber.isPresent())
@@ -85,12 +84,12 @@ public class RegisterEvent
 				response.getFeatures()
 				        .add(modal.createHideFeature());
 			}
-			catch (InstanceAlreadyExistsException e)
+			catch (EntityAssistException e)
 			{
 				response.addReaction(new AjaxResponseReaction("Whoops", "You've already been registered. You can use the Forgot Password option to reset your password.",
 				                                              ReactionType.DialogDisplay, AjaxResponseType.Danger));
 			}
-			catch (InvalidAttributeValueException e)
+			catch (Exception e)
 			{
 				response.addReaction(new AjaxResponseReaction("Whoops", e.getMessage(), ReactionType.DialogDisplay, AjaxResponseType.Danger));
 			}

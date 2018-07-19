@@ -4,35 +4,37 @@ import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
 import com.jwebmp.guicedinjection.scanners.PackageContentsScanner;
 
 module com.jwebmp.examples.demos.homepage {
+	exports com.jwebmp.examples.demos.homepage;
+
 	requires javax.servlet.api;
-	requires com.jwebmp.core;
-	requires com.jwebmp.logmaster;
 	requires java.logging;
-	requires undertow.servlet;
-	requires com.jwebmp.guicedinjection;
+
 	requires undertow.core;
+	requires undertow.servlet;
+	requires atmosphere.runtime;
+
+	requires com.jwebmp.guicedinjection;
+	requires com.jwebmp.logmaster;
+	requires com.jwebmp.core;
+	requires com.jwebmp.guicedpersistence;
+	requires com.jwebmp.guicedpersistence.jpa;
+
+	requires com.google.guice.extensions.servlet;
+	requires com.google.guice;
+	requires com.google.guice.extensions.persist;
+
+	requires com.jwebmp.undertow;
+
 	requires com.jwebmp.plugins.fontawesome5;
 	requires com.jwebmp.components.d3.reingoldtilfordtree;
 	requires com.jwebmp.plugins.jqueryui.nestablethemes;
 	requires com.jwebmp.plugins.atmosphere;
-	requires atmosphere.runtime;
-	requires com.google.guice;
-	requires com.jwebmp.plugins.toastr;
-	requires com.google.guice.extensions.servlet;
-	requires java.validation;
-	requires java.activation;
 	requires com.jwebmp.plugins.bootstrap4;
 	requires com.jwebmp.plugins.fontawesome;
-	requires java.persistence;
-	requires com.jwebmp.entityassist;
-	requires java.mail;
-	requires java.management;
-	requires commons.lang3;
-	requires com.fasterxml.jackson.annotation;
 	requires com.jwebmp.plugins.google.sourceprettify;
 	requires com.jwebmp.plugins.jqlayout;
 	requires com.jwebmp.plugins.metrojs;
-	requires cache.api;
+
 	requires com.jwebmp.plugins.angularslimscroll;
 	requires com.jwebmp.plugins.jstree;
 	requires com.jwebmp.plugins.ionic.ionicons;
@@ -42,25 +44,37 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.materialdesignicons;
 	requires com.jwebmp.plugins.glyphicons;
 	requires com.jwebmp.plugins.moment;
-	requires com.jwebmp.components.pace;
+	requires com.jwebmp.plugins.pace;
 	requires com.jwebmp.plugins.particlejs;
-	requires java.naming;
-	requires com.google.guice.extensions.persist;
+	requires com.jwebmp.plugins.toastr;
 	requires com.jwebmp.plugins.plusastab;
-	requires com.fasterxml.jackson.core;
-	requires com.jwebmp.guicedpersistence;
 
-	requires com.jwebmp.guicedpersistence.jpa;
+	requires com.jwebmp.entityassist;
+
+	requires java.validation;
+	requires java.activation;
+	requires java.xml.bind;
+	requires java.persistence;
+	requires java.mail;
+
+	requires commons.lang3;
+
+	requires com.fasterxml.jackson.annotation;
+	requires com.fasterxml.jackson.core;
 	requires com.fasterxml.jackson.databind;
 
 	requires java.transaction;
 
-	exports com.jwebmp.examples.demos.homepage;
+	requires org.hibernate.orm.core;
+	requires org.hibernate.orm.jcache;
+	requires org.hibernate.validator;
+
+	requires cache.api;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides PackageContentsScanner with PackageScanner;
 
 	opens com.jwebmp.examples.demos.homepage;
+	opens com.jwebmp.examples.demos.homepage.entities to org.hibernate.orm.core;
 	exports com.jwebmp.examples.demos.homepage.db to com.jwebmp.guicedinjection, com.google.guice;
-
 }

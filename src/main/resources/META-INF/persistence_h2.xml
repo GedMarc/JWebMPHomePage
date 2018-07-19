@@ -27,13 +27,6 @@
             <property name="hibernate.flushMode" value="FLUSH_AUTO"/>
 
             <property name="hibernate.hbm2ddl.auto" value="update"/>
-
-            <property name="hibernate.connection.datasource" value="jdbc/homepage"/>
-            <property name="hibernate.jndi.class" value="bitronix.tm.jndi.BitronixInitialContextFactory"/>
-            <property name="hibernate.transaction.manager_lookup_class"
-                      value="org.hibernate.transaction.BTMTransactionManagerLookup"/>
-            <property name="hibernate.current_session_context_class" value="jta"/>
-
         </properties>
     </persistence-unit>
 
