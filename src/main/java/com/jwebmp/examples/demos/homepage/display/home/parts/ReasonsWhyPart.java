@@ -1,12 +1,12 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.html.DivSimple;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCheckBox;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.Bg_Secondary;
+import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 
 public class ReasonsWhyPart
 		extends DivSimple

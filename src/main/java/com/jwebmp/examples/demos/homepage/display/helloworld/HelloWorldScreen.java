@@ -2,11 +2,11 @@ package com.jwebmp.examples.demos.homepage.display.helloworld;
 
 import com.google.inject.Inject;
 import com.google.inject.servlet.RequestParameters;
-import com.jwebmp.FileTemplates;
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.html.DivSimple;
-import com.jwebmp.base.html.Link;
-import com.jwebmp.base.html.interfaces.GlobalChildren;
+import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.Link;
+import com.jwebmp.core.base.html.interfaces.GlobalChildren;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;

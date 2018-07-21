@@ -1,14 +1,14 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.html.Body;
-import com.jwebmp.base.html.Script;
-import com.jwebmp.base.references.CSSReference;
-import com.jwebmp.base.references.JavascriptReference;
-import com.jwebmp.base.servlets.enumarations.RequirementsPriority;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.html.Body;
+import com.jwebmp.core.base.html.Script;
+import com.jwebmp.core.base.references.CSSReference;
+import com.jwebmp.core.base.references.JavascriptReference;
+import com.jwebmp.core.base.servlets.enumarations.RequirementsPriority;
+import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.pace.PaceLoaderPageConfigurator;
 import com.jwebmp.plugins.pace.PaceThemeColour;

@@ -1,9 +1,9 @@
 package com.jwebmp.examples.demos.homepage.components;
 
-import com.jwebmp.FileTemplates;
-import com.jwebmp.base.ComponentBase;
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.html.DivSimple;
+import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.base.ComponentBase;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.examples.demos.homepage.display.SourceCodeDetailsContainer;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;

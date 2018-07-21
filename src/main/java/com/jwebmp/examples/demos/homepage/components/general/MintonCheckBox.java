@@ -1,9 +1,9 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
-import com.jwebmp.base.html.DivSimple;
-import com.jwebmp.base.html.Label;
-import com.jwebmp.base.html.attributes.InputTypes;
-import com.jwebmp.base.html.inputs.InputCheckBoxType;
+import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.Label;
+import com.jwebmp.core.base.html.attributes.InputTypes;
+import com.jwebmp.core.base.html.inputs.InputCheckBoxType;
 
 import javax.validation.constraints.NotNull;
 

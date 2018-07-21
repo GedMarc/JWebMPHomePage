@@ -1,7 +1,6 @@
 package com.jwebmp.examples.demos.homepage.components;
 
-import com.jwebmp.base.html.Link;
-import com.jwebmp.base.html.Link;
+import com.jwebmp.core.base.html.Link;
 
 import javax.validation.constraints.NotNull;
 

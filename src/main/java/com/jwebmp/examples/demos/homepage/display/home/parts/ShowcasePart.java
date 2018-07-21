@@ -1,6 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
-import com.jwebmp.base.html.DivSimple;
+import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSAlignmentVerticalOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSSpacingOptions;

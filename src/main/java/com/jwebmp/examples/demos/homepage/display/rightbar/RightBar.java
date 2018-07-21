@@ -1,6 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.rightbar;
 
-import com.jwebmp.base.html.DivSimple;
+import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.entities.RightBarActivity;
 import com.jwebmp.examples.demos.homepage.entities.RightBarActivity_;

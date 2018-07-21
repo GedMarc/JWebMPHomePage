@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.demos.icons.mdi;
 
-import com.jwebmp.base.html.DivSimple;
-import com.jwebmp.base.html.Paragraph;
+import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.Paragraph;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;

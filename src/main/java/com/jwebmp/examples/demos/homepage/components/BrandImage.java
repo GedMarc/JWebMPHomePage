@@ -6,9 +6,7 @@
 package com.jwebmp.examples.demos.homepage.components;
 
 import com.google.inject.Singleton;
-import com.jwebmp.base.html.Image;
-import com.jwebmp.plugins.bootstrap4.navbar.parts.BSNavBarBrandImage;
-import com.jwebmp.base.html.Image;
+import com.jwebmp.core.base.html.Image;
 import com.jwebmp.examples.demos.homepage.display.home.events.GoHomeEvent;
 import com.jwebmp.plugins.bootstrap4.navbar.parts.BSNavBarBrandImage;
 

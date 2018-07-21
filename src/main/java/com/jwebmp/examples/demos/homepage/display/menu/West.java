@@ -1,9 +1,9 @@
 package com.jwebmp.examples.demos.homepage.display.menu;
 
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.html.*;
-import com.jwebmp.base.html.interfaces.GlobalChildren;
-import com.jwebmp.base.html.interfaces.events.GlobalEvents;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.base.html.interfaces.GlobalChildren;
+import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;

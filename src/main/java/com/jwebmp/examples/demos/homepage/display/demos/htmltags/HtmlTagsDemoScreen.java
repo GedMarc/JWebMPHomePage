@@ -14,7 +14,7 @@ public class HtmlTagsDemoScreen
 
 		BSRow row = BSRow.newInstance();
 
-		SourceCodeContentPanel panel = new SourceCodeContentPanel("com.jwebmp.base.html", null, null);
+		SourceCodeContentPanel panel = new SourceCodeContentPanel("com.jwebmp.core.base.html", null, null);
 		panel.getContent()
 		     .add(row);
 		panel.setShowHeader(true);

@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
-import com.jwebmp.Page;
-import com.jwebmp.base.html.*;
+import com.jwebmp.core.Page;
+import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.guicedinjection.GuiceContext;

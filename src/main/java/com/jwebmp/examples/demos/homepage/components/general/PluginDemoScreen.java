@@ -1,10 +1,11 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
-import com.jwebmp.FileTemplates;
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.html.DivSimple;
-import com.jwebmp.base.html.Link;
-import com.jwebmp.base.html.Paragraph;
+import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.Link;
+import com.jwebmp.core.base.html.Paragraph;
+import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.Operand;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
@@ -15,7 +16,6 @@ import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;

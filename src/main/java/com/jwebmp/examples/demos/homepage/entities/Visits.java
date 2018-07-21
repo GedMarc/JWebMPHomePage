@@ -2,8 +2,8 @@ package com.jwebmp.examples.demos.homepage.entities;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jwebmp.Page;
-import com.jwebmp.SessionHelper;
+import com.jwebmp.core.Page;
+import com.jwebmp.core.SessionHelper;
 import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitsBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.VisitsPersistAsync;

@@ -1,8 +1,8 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
-import com.jwebmp.FileTemplates;
-import com.jwebmp.base.html.DivSimple;
-import com.jwebmp.base.html.SmallText;
+import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.SmallText;
 import com.jwebmp.examples.demos.homepage.components.PrettyInverseButton;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.plugins.bootstrap4.options.BSColoursOptions;

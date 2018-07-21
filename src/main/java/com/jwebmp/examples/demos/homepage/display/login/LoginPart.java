@@ -1,12 +1,12 @@
 package com.jwebmp.examples.demos.homepage.display.login;
 
-import com.jwebmp.Page;
-import com.jwebmp.base.angular.AngularAttributes;
-import com.jwebmp.base.angular.forms.enumerations.InputErrorValidations;
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.html.attributes.InputPasswordTypeAttributes;
-import com.jwebmp.base.html.inputs.InputEmailType;
-import com.jwebmp.base.html.inputs.InputPasswordType;
+import com.jwebmp.core.Page;
+import com.jwebmp.core.base.angular.AngularAttributes;
+import com.jwebmp.core.base.angular.forms.enumerations.InputErrorValidations;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.attributes.InputPasswordTypeAttributes;
+import com.jwebmp.core.base.html.inputs.InputEmailType;
+import com.jwebmp.core.base.html.inputs.InputPasswordType;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
@@ -27,7 +27,7 @@ import com.jwebmp.plugins.bootstrap4.options.BSSpacingOptions;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
 
-import static com.jwebmp.base.html.attributes.InputButtonTypeAttributes.*;
+import static com.jwebmp.core.base.html.attributes.InputButtonTypeAttributes.*;
 
 public class LoginPart
 		extends SourceCodeContentPanel

@@ -1,8 +1,8 @@
 package com.jwebmp.examples.demos.homepage.components.events;
 
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.ajax.AjaxCall;
-import com.jwebmp.base.ajax.AjaxResponse;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.ajax.AjaxCall;
+import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.plugins.softhistorychange.SoftHistoryChangeAdapter;
 
 public class DefaultClick

@@ -2,17 +2,17 @@ package com.jwebmp.examples.demos.homepage.display.subscribe;
 
 import com.google.inject.Key;
 import com.google.inject.name.Names;
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.ajax.*;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.ajax.*;
+import com.jwebmp.core.events.click.ClickAdapter;
+import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
+import com.jwebmp.core.utilities.StaticStrings;
 import com.jwebmp.entityassist.EntityAssistException;
-import com.jwebmp.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
-import com.jwebmp.utilities.StaticStrings;
 
 import java.util.Map;
 import java.util.Optional;

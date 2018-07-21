@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.entities.persistasync;
 
-import com.jwebmp.FileTemplates;
-import com.jwebmp.SessionHelper;
+import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.SessionHelper;
 import com.jwebmp.examples.demos.homepage.MailService;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;

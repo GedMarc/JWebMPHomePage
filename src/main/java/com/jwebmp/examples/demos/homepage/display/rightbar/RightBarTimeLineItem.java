@@ -1,13 +1,13 @@
 package com.jwebmp.examples.demos.homepage.display.rightbar;
 
-import com.jwebmp.base.html.DivSimple;
-import com.jwebmp.base.html.Paragraph;
-import com.jwebmp.base.servlets.enumarations.ComponentTypes;
+import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.Paragraph;
+import com.jwebmp.core.base.servlets.enumarations.ComponentTypes;
 import com.jwebmp.plugins.moment.Moment;
 
 import java.util.Date;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSTypographyOptions.Text_Muted;
+import static com.jwebmp.plugins.bootstrap4.options.BSTypographyOptions.*;
 
 public class RightBarTimeLineItem
 		extends DivSimple<RightBarTimeLineItem>

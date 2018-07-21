@@ -8,7 +8,6 @@ public class DemoGuiceConfigurator
 
 	public DemoGuiceConfigurator()
 	{
-		System.out.println("Constructed");
 	}
 
 	@Override

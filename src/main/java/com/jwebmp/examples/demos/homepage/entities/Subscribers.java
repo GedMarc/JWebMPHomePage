@@ -6,6 +6,7 @@
 package com.jwebmp.examples.demos.homepage.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.jwebmp.core.exceptions.MissingComponentException;
 import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.entityassist.EntityAssistException;
 import com.jwebmp.entityassist.converters.LocalDateTimestampAttributeConverter;
@@ -15,7 +16,6 @@ import com.jwebmp.examples.demos.homepage.Passwords;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.entities.builders.SubscribersBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.SubscriberPersistAsync;
-import com.jwebmp.exceptions.MissingComponentException;
 import com.jwebmp.guicedinjection.GuiceContext;
 
 import javax.cache.annotation.CacheKey;

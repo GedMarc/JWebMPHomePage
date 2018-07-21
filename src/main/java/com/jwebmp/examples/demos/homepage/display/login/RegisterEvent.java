@@ -2,8 +2,8 @@ package com.jwebmp.examples.demos.homepage.display.login;
 
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.ajax.*;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.ajax.*;
 import com.jwebmp.entityassist.EntityAssistException;
 import com.jwebmp.examples.demos.homepage.components.events.DefaultClick;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
@@ -16,7 +16,7 @@ import com.jwebmp.plugins.bootstrap4.modal.BSModal;
 import java.util.Map;
 import java.util.Optional;
 
-import static com.jwebmp.utilities.StaticStrings.*;
+import static com.jwebmp.core.utilities.StaticStrings.*;
 
 public class RegisterEvent
 		extends DefaultClick

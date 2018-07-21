@@ -1,7 +1,9 @@
 import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
-import com.jwebmp.examples.demos.homepage.PackageScanner;
+import com.jwebmp.examples.demos.homepage.IPackageScanner;
+import com.jwebmp.examples.demos.homepage.db.HomePageDBStartupPostStartup;
 import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
-import com.jwebmp.guicedinjection.scanners.PackageContentsScanner;
+import com.jwebmp.guicedinjection.interfaces.IPackageContentsScanner;
+import com.jwebmp.guicedpersistence.services.IDBStartup;
 
 module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
@@ -72,7 +74,8 @@ module com.jwebmp.examples.demos.homepage {
 	requires cache.api;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
-	provides PackageContentsScanner with PackageScanner;
+	provides IPackageContentsScanner with IPackageScanner;
+	provides IDBStartup with HomePageDBStartupPostStartup;
 
 	opens com.jwebmp.examples.demos.homepage;
 	opens com.jwebmp.examples.demos.homepage.entities to org.hibernate.orm.core;

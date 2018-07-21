@@ -1,9 +1,9 @@
 package com.jwebmp.examples.demos.homepage.display.home;
 
-import com.jwebmp.Feature;
-import com.jwebmp.FileTemplates;
-import com.jwebmp.base.html.*;
-import com.jwebmp.base.html.attributes.ImageAttributes;
+import com.jwebmp.core.Feature;
+import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.base.html.attributes.ImageAttributes;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
@@ -37,9 +37,9 @@ import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
-import static com.jwebmp.utilities.StaticStrings.*;
 
 public class HomePage
 		extends DisplayScreen

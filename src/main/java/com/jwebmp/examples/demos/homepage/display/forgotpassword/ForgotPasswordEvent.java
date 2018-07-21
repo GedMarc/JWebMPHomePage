@@ -1,8 +1,8 @@
 package com.jwebmp.examples.demos.homepage.display.forgotpassword;
 
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.ajax.*;
-import com.jwebmp.events.click.ClickAdapter;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.ajax.*;
+import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 
 import java.util.Optional;

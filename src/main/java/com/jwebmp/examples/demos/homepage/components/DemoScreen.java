@@ -1,15 +1,15 @@
 package com.jwebmp.examples.demos.homepage.components;
 
-import com.jwebmp.SessionHelper;
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.html.DivSimple;
-import com.jwebmp.base.html.H3;
-import com.jwebmp.base.html.Link;
+import com.jwebmp.core.SessionHelper;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.H3;
+import com.jwebmp.core.base.html.Link;
+import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;

@@ -2,10 +2,11 @@ package com.jwebmp.examples.demos.homepage.display.forgotpassword;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.ajax.*;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.ajax.*;
+import com.jwebmp.core.events.click.ClickAdapter;
+import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.ActiveFlag;
-import com.jwebmp.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.Passwords;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
@@ -17,7 +18,6 @@ import com.jwebmp.examples.demos.homepage.entities.UserActivity;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
 
 import java.util.Optional;

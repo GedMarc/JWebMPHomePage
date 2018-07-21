@@ -1,8 +1,8 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.jwebmp.Page;
-import com.jwebmp.PlaceHolder;
-import com.jwebmp.base.ComponentHierarchyBase;
+import com.jwebmp.core.Page;
+import com.jwebmp.core.PlaceHolder;
+import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jqlayout.components.BorderLayout;
 import com.jwebmp.plugins.jqlayout.enumerations.LayoutResponsiveSize;

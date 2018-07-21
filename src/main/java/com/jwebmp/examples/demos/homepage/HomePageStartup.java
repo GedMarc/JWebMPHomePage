@@ -1,12 +1,12 @@
 package com.jwebmp.examples.demos.homepage;
 
-import com.jwebmp.SessionHelper;
-import com.jwebmp.components.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
-import com.jwebmp.generics.WebReference;
+import com.jwebmp.core.SessionHelper;
+import com.jwebmp.core.generics.WebReference;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.guicedpersistence.db.services.HibernateEntityManagerProperties;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
+import com.jwebmp.plugins.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.jqueryui.nestablethemes.JQUIThemes;
 import com.jwebmp.plugins.jqueryui.nestablethemes.JQUIThemesPageConfigurator;
@@ -47,12 +47,6 @@ public class HomePageStartup
 		                                        .setClassLoader(HomePageStartup.class.getClassLoader())
 		                                        .setContextPath("/")
 		                                        .setDeploymentName("HomePageStartup.war");
-/*
-
-		deploymentInfo.addFilter(new FilterInfo("GuiceFilter", GuiceFilter.class).setAsyncSupported(true));
-		deploymentInfo.addFilterUrlMapping("GuiceFilter", "/*", DispatcherType.REQUEST);
-		deploymentInfo.setResourceManager(new ClassPathResourceManager(deploymentInfo.getClassLoader(), "META-INF/resources"));
-*/
 
 		DeploymentManager manager2 = Servlets.defaultContainer()
 		                                     .addDeployment(deploymentInfo);

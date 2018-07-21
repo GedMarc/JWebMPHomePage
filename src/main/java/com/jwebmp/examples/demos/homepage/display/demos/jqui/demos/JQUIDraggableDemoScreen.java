@@ -1,12 +1,12 @@
 package com.jwebmp.examples.demos.homepage.display.demos.jqui.demos;
 
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.html.H6;
-import com.jwebmp.base.html.List;
-import com.jwebmp.base.html.ListItem;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.H6;
+import com.jwebmp.core.base.html.List;
+import com.jwebmp.core.base.html.ListItem;
+import com.jwebmp.core.htmlbuilder.css.displays.Cursors;
+import com.jwebmp.core.htmlbuilder.css.displays.Positions;
 import com.jwebmp.examples.demos.homepage.components.DemoScreen;
-import com.jwebmp.htmlbuilder.css.displays.Cursors;
-import com.jwebmp.htmlbuilder.css.displays.Positions;
 import com.jwebmp.plugins.bootstrap4.badge.styles.BSBadgeSecondary;
 import com.jwebmp.plugins.jqueryui.draggable.JQUIDraggableFeature;
 import com.jwebmp.plugins.jqueryui.draggable.enumerations.Axis;
@@ -14,9 +14,8 @@ import com.jwebmp.plugins.jqueryui.draggable.enumerations.JQUIDraggablesHelper;
 import com.jwebmp.plugins.jqueryui.draggable.options.JQUIDraggableOptions;
 import com.jwebmp.plugins.jqueryui.sortable.JQUISortableFeature;
 
-import static com.jwebmp.plugins.jqueryui.draggable.enumerations.JQUIDraggablesRevertTypes.Invalid;
-import static com.jwebmp.plugins.jqueryui.themes.JQUIThemeBlocks.UI_State_Default;
-import static com.jwebmp.plugins.jqueryui.themes.JQUIThemeBlocks.UI_State_Highlight;
+import static com.jwebmp.plugins.jqueryui.draggable.enumerations.JQUIDraggablesRevertTypes.*;
+import static com.jwebmp.plugins.jqueryui.themes.JQUIThemeBlocks.*;
 
 public class JQUIDraggableDemoScreen
 		extends DemoScreen

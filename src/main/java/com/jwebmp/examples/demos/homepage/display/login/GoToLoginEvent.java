@@ -1,9 +1,9 @@
 package com.jwebmp.examples.demos.homepage.display.login;
 
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.ajax.AjaxCall;
-import com.jwebmp.base.ajax.AjaxResponse;
-import com.jwebmp.events.click.ClickAdapter;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.ajax.AjaxCall;
+import com.jwebmp.core.base.ajax.AjaxResponse;
+import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.guicedinjection.GuiceContext;
 
 public class GoToLoginEvent

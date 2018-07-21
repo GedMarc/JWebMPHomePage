@@ -1,12 +1,12 @@
 package com.jwebmp.examples.demos.homepage;
 
-import com.jwebmp.guicedinjection.scanners.PackageContentsScanner;
+import com.jwebmp.guicedinjection.interfaces.IPackageContentsScanner;
 
 import java.util.HashSet;
 import java.util.Set;
 
-public class PackageScanner
-		implements PackageContentsScanner
+public class IPackageScanner
+		implements IPackageContentsScanner
 {
 	@Override
 	public Set<String> searchFor()

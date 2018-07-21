@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
-import com.jwebmp.base.ajax.AjaxCall;
-import com.jwebmp.base.html.*;
+import com.jwebmp.core.base.ajax.AjaxCall;
+import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
@@ -19,9 +19,9 @@ import com.jwebmp.plugins.fontawesome.FontAwesome;
 import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
 import com.jwebmp.plugins.fontawesome.FontAwesomeProperties;
 
+import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
-import static com.jwebmp.utilities.StaticStrings.*;
 
 public class AboutThisSiteScreen
 		extends DisplayScreen<AboutThisSiteScreen>

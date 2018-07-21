@@ -1,11 +1,11 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.jwebmp.Feature;
-import com.jwebmp.Page;
-import com.jwebmp.base.html.*;
-import com.jwebmp.base.html.attributes.LinkAttributes;
-import com.jwebmp.base.html.inputs.InputTextType;
-import com.jwebmp.base.html.interfaces.children.ListChildren;
+import com.jwebmp.core.Feature;
+import com.jwebmp.core.Page;
+import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.base.html.attributes.LinkAttributes;
+import com.jwebmp.core.base.html.inputs.InputTextType;
+import com.jwebmp.core.base.html.interfaces.children.ListChildren;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.display.login.LogoutEvent;
 import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;

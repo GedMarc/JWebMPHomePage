@@ -1,13 +1,15 @@
 package com.jwebmp.examples.demos.homepage.display;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.jwebmp.Page;
-import com.jwebmp.SessionHelper;
-import com.jwebmp.base.ajax.AjaxCall;
-import com.jwebmp.base.ajax.AjaxResponse;
-import com.jwebmp.base.html.CSSLink;
-import com.jwebmp.base.html.Meta;
-import com.jwebmp.base.servlets.SessionStorageProperties;
+import com.jwebmp.core.Page;
+import com.jwebmp.core.SessionHelper;
+import com.jwebmp.core.base.ajax.AjaxCall;
+import com.jwebmp.core.base.ajax.AjaxResponse;
+import com.jwebmp.core.base.html.CSSLink;
+import com.jwebmp.core.base.html.Meta;
+import com.jwebmp.core.base.servlets.SessionStorageProperties;
+import com.jwebmp.core.utilities.StaticStrings;
+import com.jwebmp.core.utilities.regex.RegularExpressionsDTO;
 import com.jwebmp.entityassist.enumerations.ActiveFlag;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
@@ -23,8 +25,6 @@ import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
 import com.jwebmp.plugins.toastr.ToastrFeature;
 import com.jwebmp.plugins.toastr.ToastrType;
-import com.jwebmp.utilities.StaticStrings;
-import com.jwebmp.utilities.regex.RegularExpressionsDTO;
 
 import javax.persistence.NoResultException;
 import java.util.Map;

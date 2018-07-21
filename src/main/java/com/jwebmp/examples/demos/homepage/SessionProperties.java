@@ -1,10 +1,10 @@
 package com.jwebmp.examples.demos.homepage;
 
 import com.google.inject.servlet.SessionScoped;
-import com.jwebmp.base.html.DivSimple;
+import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
-import com.jwebmp.htmlbuilder.javascript.JavaScriptPart;
 
 @SessionScoped
 public class SessionProperties

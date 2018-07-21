@@ -1,8 +1,6 @@
 package com.jwebmp.examples.demos.homepage.components;
 
-import com.jwebmp.base.html.Link;
-import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
-import com.jwebmp.base.html.Link;
+import com.jwebmp.core.base.html.Link;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 
 import javax.validation.constraints.NotNull;

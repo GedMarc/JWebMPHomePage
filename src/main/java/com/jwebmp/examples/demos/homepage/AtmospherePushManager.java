@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage;
 
 import com.google.inject.Inject;
-import com.jwebmp.base.ajax.AjaxResponse;
+import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.plugins.atmosphere.abstraction.AtmosphereAdapter;
 import com.jwebmp.plugins.atmosphere.transport.AtmosphereWSReceiver;
 import com.jwebmp.plugins.toastr.ToastrFeature;

@@ -1,8 +1,8 @@
 package com.jwebmp.examples.demos.homepage.display.privacy;
 
-import com.jwebmp.FileTemplates;
-import com.jwebmp.base.html.Link;
-import com.jwebmp.base.html.Paragraph;
+import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.base.html.Link;
+import com.jwebmp.core.base.html.Paragraph;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;

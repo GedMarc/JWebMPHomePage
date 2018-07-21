@@ -1,9 +1,9 @@
 package com.jwebmp.examples.demos.homepage.display.home.events;
 
-import com.jwebmp.Component;
-import com.jwebmp.base.ajax.AjaxCall;
-import com.jwebmp.base.ajax.AjaxResponse;
-import com.jwebmp.events.click.ClickAdapter;
+import com.jwebmp.core.Component;
+import com.jwebmp.core.base.ajax.AjaxCall;
+import com.jwebmp.core.base.ajax.AjaxResponse;
+import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.guicedinjection.GuiceContext;
 

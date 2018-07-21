@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.subscribe;
 
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.html.HorizontalRule;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.HorizontalRule;
 import com.jwebmp.plugins.bootstrap4.buttons.styles.BSButtonDanger;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.forms.BSForm;

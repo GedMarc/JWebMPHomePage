@@ -1,8 +1,8 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
-import com.jwebmp.base.html.Div;
-import com.jwebmp.base.html.H3;
-import com.jwebmp.base.html.Span;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.H3;
+import com.jwebmp.core.base.html.Span;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCircleChart;
 import com.jwebmp.examples.demos.homepage.components.general.events.SourceCodeModalDisplayEvent;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;

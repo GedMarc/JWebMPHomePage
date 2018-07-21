@@ -1,6 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
-import com.jwebmp.base.html.*;
+import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
@@ -15,10 +15,9 @@ import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 
-import static com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts.ComponentUtilityMethods;
-import static com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts.InjectionControlMethods;
-import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.Col_12;
-import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.Table_Hover;
+import static com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
 public class UnderTheHoodScreen
 		extends DisplayScreen<UnderTheHoodScreen>

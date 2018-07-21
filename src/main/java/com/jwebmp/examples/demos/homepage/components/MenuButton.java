@@ -6,8 +6,7 @@
 package com.jwebmp.examples.demos.homepage.components;
 
 import com.google.inject.Singleton;
-import com.jwebmp.base.html.Span;
-import com.jwebmp.base.html.Span;
+import com.jwebmp.core.base.html.Span;
 
 /**
  * @author Marc Magon

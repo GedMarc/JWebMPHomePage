@@ -1,6 +1,6 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
-import com.jwebmp.base.html.*;
+import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.general.events.SourceCodeModalDisplayEvent;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;

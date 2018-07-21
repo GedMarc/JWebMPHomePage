@@ -1,7 +1,8 @@
 package com.jwebmp.examples.demos.homepage.display.login;
 
-import com.jwebmp.base.ComponentHierarchyBase;
-import com.jwebmp.base.ajax.*;
+import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.ajax.*;
+import com.jwebmp.core.exceptions.MissingComponentException;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.examples.demos.homepage.components.events.DefaultClick;
@@ -10,7 +11,6 @@ import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
-import com.jwebmp.exceptions.MissingComponentException;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions;
