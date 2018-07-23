@@ -53,6 +53,12 @@ public class DisplayPage
 	 */
 	public DisplayPage()
 	{
+
+	}
+
+	@Override
+	public void init()
+	{
 		SessionHelper.setAddressToBeUsedWhenNull("https://www.jwebmp.com");
 
 		getPageFields().setTitle("JWebMP Application");
@@ -91,6 +97,7 @@ public class DisplayPage
 		addAttribute("style", "height:100%;width:100%;");
 
 		SessionHelper.getServerPath();
+		super.init();
 	}
 
 	@Override

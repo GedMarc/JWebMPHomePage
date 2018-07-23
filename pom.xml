@@ -515,7 +515,7 @@
                         <groupId>org.hibernate</groupId>
                         <artifactId>hibernate-jpamodelgen</artifactId>
                         <version>${maven.hibernate.version}</version>
-                        <optional>true</optional>
+                        <!--<optional>true</optional>-->
                     </dependency>
                     <dependency>
                         <groupId>javax.xml.bind</groupId>
