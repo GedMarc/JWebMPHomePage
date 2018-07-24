@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.db;
 
+import com.jwebmp.guicedinjection.interfaces.IGuiceModule;
 import com.jwebmp.guicedpersistence.db.ConnectionBaseInfo;
 import com.jwebmp.guicedpersistence.db.connectionbasebuilders.AbstractDatabaseProviderModule;
 import com.jwebmp.guicedpersistence.jpa.JPAConnectionBaseInfo;
@@ -11,6 +12,7 @@ import java.util.Properties;
 
 public class HomePageDBModule
 		extends AbstractDatabaseProviderModule
+		implements IGuiceModule
 {
 
 	@Override

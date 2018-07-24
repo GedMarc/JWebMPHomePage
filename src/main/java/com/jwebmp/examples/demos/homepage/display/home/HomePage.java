@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.home;
 
+import com.google.inject.Singleton;
 import com.jwebmp.core.Feature;
 import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.base.html.*;
@@ -41,6 +42,7 @@ import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 
+@Singleton
 public class HomePage
 		extends DisplayScreen
 {

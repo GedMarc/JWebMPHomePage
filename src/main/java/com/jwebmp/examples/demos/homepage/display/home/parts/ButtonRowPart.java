@@ -10,8 +10,6 @@ import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
-import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.plugins.atmosphere.AtmosphereGlobalProperties;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.fontawesome.FontAwesome;
@@ -104,9 +102,8 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		Div widget4 = new Div();
 		widget4.addClass("widget-simple-chart text-right card-box");
 
-		int count = GuiceContext.getInstance(AtmosphereGlobalProperties.class)
-		                        .getSessionResources()
-		                        .size();
+		//TODO link to web socket
+		int count = 0;
 
 		Div chart4 = new MintonCircleChart(count + "", "99", "#7266ba", "#505A66");
 		widget4.add(chart4);

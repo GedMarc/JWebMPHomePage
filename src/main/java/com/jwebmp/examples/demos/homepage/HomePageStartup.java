@@ -4,6 +4,7 @@ import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.generics.WebReference;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.guicedpersistence.db.services.HibernateEntityManagerProperties;
+import com.jwebmp.guicedpersistence.jpa.implementations.JPAAutomatedTransactionHandler;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
@@ -11,6 +12,7 @@ import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.jqueryui.nestablethemes.JQUIThemes;
 import com.jwebmp.plugins.jqueryui.nestablethemes.JQUIThemesPageConfigurator;
 import io.undertow.Undertow;
+import io.undertow.UndertowOptions;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.handlers.encoding.EncodingHandler;
 import io.undertow.servlet.Servlets;
@@ -33,6 +35,8 @@ public class HomePageStartup
 		HibernateEntityManagerProperties.setShowSql(true);
 		HibernateEntityManagerProperties.setFormatSql(true);
 
+		JPAAutomatedTransactionHandler.setActive(true);
+
 		configureConsoleColourOutput(Level.FINE);
 		LogFactory.setLogToConsole(true);
 		LogFactory.configureConsoleColourOutput(Level.FINE);
@@ -48,19 +52,20 @@ public class HomePageStartup
 		                                        .setContextPath("/")
 		                                        .setDeploymentName("HomePageStartup.war");
 
-		DeploymentManager manager2 = Servlets.defaultContainer()
-		                                     .addDeployment(deploymentInfo);
+		DeploymentManager manager = Servlets.defaultContainer()
+		                                    .addDeployment(deploymentInfo);
 
 		GuiceContext.inject();
-		manager2.deploy();
+		manager.deploy();
 
-		HttpHandler jwebSwingHandler = manager2.start();
+		HttpHandler jwebSwingHandler = manager.start();
 		HttpHandler encodingHandler = new EncodingHandler.Builder().build(null)
 		                                                           .wrap(jwebSwingHandler);
 
 		Undertow server = Undertow.builder()
+		                          .setServerOption(UndertowOptions.ENABLE_HTTP2, true)
 		                          .addHttpListener(6002, "localhost")
-		                          .setHandler(jwebSwingHandler)
+		                          .setHandler(encodingHandler)
 		                          .build();
 		server.start();
 	}

@@ -1,23 +1,10 @@
 package com.jwebmp.examples.demos.homepage;
 
-import com.google.inject.Inject;
-import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.plugins.atmosphere.abstraction.AtmosphereAdapter;
-import com.jwebmp.plugins.atmosphere.transport.AtmosphereWSReceiver;
-import com.jwebmp.plugins.toastr.ToastrFeature;
-import com.jwebmp.plugins.toastr.ToastrType;
-import org.atmosphere.cpr.AtmosphereResource;
-import org.atmosphere.cpr.AtmosphereResourceEvent;
-import org.atmosphere.cpr.Broadcaster;
-import org.atmosphere.cpr.BroadcasterFactory;
-
 @SuppressWarnings("unused")
 public class AtmospherePushManager
-		extends AtmosphereAdapter
-{
-	@Inject
-	private BroadcasterFactory broadcasterFactory;
 
+{
+/*
 	@Override
 	public AjaxResponse onReady(AtmosphereResource r)
 	{
@@ -76,6 +63,6 @@ public class AtmospherePushManager
 	public AjaxResponse onResume(AtmosphereResourceEvent r)
 	{
 		return super.onResume(r);
-	}
+	}*/
 }
 

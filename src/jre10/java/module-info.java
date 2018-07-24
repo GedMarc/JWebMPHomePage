@@ -1,19 +1,21 @@
 import com.jwebmp.core.services.IPage;
 import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
-import com.jwebmp.examples.demos.homepage.db.HomePageDBStartupPostStartup;
+import com.jwebmp.examples.demos.homepage.db.HomePageDBModule;
+import com.jwebmp.examples.demos.homepage.db.HomePageDBStartup;
 import com.jwebmp.examples.demos.homepage.display.DisplayPage;
 import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
+import com.jwebmp.guicedinjection.interfaces.IGuiceModule;
 import com.jwebmp.guicedpersistence.services.IDBStartup;
 
 module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
+
 
 	requires javax.servlet.api;
 	requires java.logging;
 
 	requires undertow.core;
 	requires undertow.servlet;
-	requires atmosphere.runtime;
 
 	requires com.jwebmp.guicedinjection;
 	requires com.jwebmp.logmaster;
@@ -26,11 +28,11 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.google.guice.extensions.persist;
 
 	requires com.jwebmp.undertow;
+	requires com.jwebmp.websockets;
 
 	requires com.jwebmp.plugins.fontawesome5;
 	requires com.jwebmp.components.d3.reingoldtilfordtree;
 	requires com.jwebmp.plugins.jqueryui.nestablethemes;
-	requires com.jwebmp.plugins.atmosphere;
 	requires com.jwebmp.plugins.bootstrap4;
 	requires com.jwebmp.plugins.fontawesome;
 	requires com.jwebmp.plugins.google.sourceprettify;
@@ -74,10 +76,32 @@ module com.jwebmp.examples.demos.homepage {
 	requires cache.api;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
-	provides IDBStartup with HomePageDBStartupPostStartup;
+	provides IDBStartup with HomePageDBStartup;
 	provides IPage with DisplayPage;
+	provides IGuiceModule with HomePageDBModule;
 
 	opens com.jwebmp.examples.demos.homepage;
 	opens com.jwebmp.examples.demos.homepage.entities to org.hibernate.orm.core;
-	exports com.jwebmp.examples.demos.homepage.db to com.jwebmp.guicedinjection, com.google.guice;
+	exports com.jwebmp.examples.demos.homepage.entities.builders to com.jwebmp.entityassist;
+
+	opens com.jwebmp.examples.demos.homepage.db to com.jwebmp.guicedinjection, com.google.guice;
+	opens com.jwebmp.examples.demos.homepage.display to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.about to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.admin to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.confirmemail to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.contactus to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.forgotpassword to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.helloworld to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.login to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.menu to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.privacy to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.rightbar to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.subscribe to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.termsandconditions to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.home to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.components to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.components.sourcecode to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.components.events to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.components.general to com.google.guice, com.jwebmp.core;
+
 }
