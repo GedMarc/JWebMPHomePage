@@ -58,7 +58,7 @@ public class TopBar
 			//Logo
 			Div logoLeft = new DivSimple();
 			logoLeft.addClass("topbar-left");
-			Link buttonLink = new Link<>("/", "", "<i class=\"mdi mdi-radar\"></i> <span>JWebMP<i><small>&nbsp;beta</small></i></span></a>").addClass("logo");
+			Link buttonLink = new Link<>("/", "", "<i class=\"mdi mdi-radar\"></i> <span>JWebMP<i><small>&nbsp;rc1</small></i></span></a>").addClass("logo");
 			logoLeft.add(new DivSimple<>().addClass(BSTypographyOptions.Text_Center)
 			                              .add(buttonLink));
 

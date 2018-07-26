@@ -74,6 +74,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires org.hibernate.validator;
 
 	requires cache.api;
+	requires undertow.websockets.jsr;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IDBStartup with HomePageDBStartup;
@@ -103,5 +104,6 @@ module com.jwebmp.examples.demos.homepage {
 	opens com.jwebmp.examples.demos.homepage.components.sourcecode to com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.components.events to com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.components.general to com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.entities.builders to com.google.guice, com.jwebmp.core;
 
 }
