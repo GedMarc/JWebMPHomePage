@@ -1,6 +1,9 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
 import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.Link;
+import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
+import com.jwebmp.plugins.bootstrap4.buttons.BSButton;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSAlignmentVerticalOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSSpacingOptions;
@@ -10,6 +13,7 @@ import com.jwebmp.plugins.fontawesome.FontAwesomeProperties;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSAlignmentHorizontalOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSMarginOptions.*;
 import static com.jwebmp.plugins.fontawesome.FontAwesomeIcons.*;
 
 public class ContactUsPart<J extends ContactUsPart<J>>
@@ -17,31 +21,27 @@ public class ContactUsPart<J extends ContactUsPart<J>>
 {
 	public ContactUsPart()
 	{
-		addClass(Row);
-		addClass(Align_Center);
+		addClass("d-flex flex-row my-flex-container");
+		addClass(Align_Between);
 		addClass(BSAlignmentVerticalOptions.Align_Middle);
-		add(buildIcon(facebook_square, "https://www.facebook.com/JWebMP/"));
-		add(buildIcon(twitter_square, "https://twitter.com/jwebmp"));
-		add(buildIcon(github_square, "https://github.com/GedMarc/JWebMP"));
-		add(buildIcon(youtube_square, "https://www.youtube.com/channel/UCKmp3cltVruaBZtGU5VH_Lg"));
-		add(buildIcon(envelope_square, "mailto:support@jwebmp.com"));
+		add(buildIcon(facebook_square, "https://www.facebook.com/JWebMP/", "FaceBook"));
+		add(buildIcon(twitter_square, "https://twitter.com/jwebmp", "Twitter"));
+		add(buildIcon(youtube_square, "https://www.youtube.com/channel/UCKmp3cltVruaBZtGU5VH_Lg", "YouTube"));
+		add(buildIcon(envelope_square, "mailto:support@jwebmp.com", "Direct Email"));
 		//add(buildIcon(refresh, "https://jwebmp.com/teamcity/"));
 	}
 
-	private FontAwesome buildIcon(FontAwesomeIcons icon, String link)
+	private Link buildIcon(FontAwesomeIcons icon, String link, String title)
 	{
-		FontAwesome fa = FontAwesome.icon(icon, FontAwesomeProperties.$5x)
-		                            .addClass(BSSpacingOptions.Margin_Right_2)
-		                            .addClass(BSSpacingOptions.Margin_Bottom_2)
-		                            .addClass("btn")
-		                            .addClass(BSButtonOptions.Btn_Outline_Primary);
-		fa.setTag("a");
-		fa.addAttribute("href", link);
-		if (!link.contains("mailto:"))
-		{
-			fa.addAttribute("target", "_blank");
-		}
-		fa.addStyle("font-size", "5em");
-		return fa;
+		Link actualLink = new Link(link, "_blank");
+		BSButton button = new BSButton<>().setText(FontAwesome.icon(icon, FontAwesomeProperties.$3x)
+		                                                      .toString(0)
+		                                           + "<br/>" + title)
+		                                  .addClass(MarginLeft_1)
+		                                  .addClass(MarginTop_1)
+		                                  .addClass(BSButtonOptions.Btn_Outline_Light)
+		                                  .addClass(Align_Center);
+		actualLink.add(button);
+		return actualLink;
 	}
 }

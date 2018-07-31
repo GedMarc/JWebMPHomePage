@@ -96,6 +96,7 @@ public class DisplayBody
 
 		List<ComponentHierarchyBase> children = new ArrayList<>(getChildren());
 		particlesJS.addClass("h-100 w-100");
+		particlesJS.addStyle("position:absolute;");
 		children.add(0, particlesJS);
 		children.add(1, new Script<>().setText(particlesJS.getFeature()
 		                                                  .renderJavascript()));

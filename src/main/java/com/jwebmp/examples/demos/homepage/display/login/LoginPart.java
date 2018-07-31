@@ -4,6 +4,7 @@ import com.jwebmp.core.Page;
 import com.jwebmp.core.base.angular.AngularAttributes;
 import com.jwebmp.core.base.angular.forms.enumerations.InputErrorValidations;
 import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.HorizontalRule;
 import com.jwebmp.core.base.html.attributes.InputPasswordTypeAttributes;
 import com.jwebmp.core.base.html.inputs.InputEmailType;
 import com.jwebmp.core.base.html.inputs.InputPasswordType;
@@ -35,7 +36,7 @@ public class LoginPart
 	public LoginPart()
 	{
 		super("Login", DisplayCodeParts.Login, null);
-		setShowHeader(true);
+		setShowHeader(false);
 		setShowCode(true);
 		Div openSourcePane = new Div();
 		setContent(openSourcePane);
@@ -49,7 +50,7 @@ public class LoginPart
 		loginForm.addClass(BSColumnOptions.Col_12);
 		loginFormRow.add(loginForm);
 
-		loginForm.add(new AlertMessage("Login, Register or Retrieve your account below"));
+		loginForm.add(new AlertMessage(null));
 
 		BSFormInputGroup<?, InputEmailType<?>> loginInputGroup = buildLoginInput(loginForm);
 
@@ -123,13 +124,14 @@ public class LoginPart
 		loginButton.addClass("waves-effect waves-primary")
 		           .addClass(BSSpacingOptions.Margin_Top_3)
 		           .addClass(BSSpacingOptions.Margin_Bottom_2);
+		loginButton.addStyle("margin-top", "0px !important;");
 		return loginButton;
 	}
 
 	private BSRow buildButtonRow(BSForm<?> loginForm, BSFormInputGroup loginInputGroup, BSFormInputGroup inputGroup)
 	{
-
 		BSRow row = new BSRow();
+		row.resetHorizontalSinks();
 		PrettyPrimaryButton<?> registerButton = new PrettyPrimaryButton<>().setText("Register")
 		                                                                   .addClass(BSColoursOptions.Text_White)
 		                                                                   .asButton()

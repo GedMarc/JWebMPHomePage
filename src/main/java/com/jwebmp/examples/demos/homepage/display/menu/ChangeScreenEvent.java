@@ -12,6 +12,7 @@ import com.jwebmp.plugins.jqlayout.enumerations.JQLayoutArea;
 import com.jwebmp.plugins.jqlayout.events.JQLayoutSlideCloseLayoutDivFeature;
 import com.jwebmp.plugins.softhistorychange.SoftHistoryChangeAdapter;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -56,7 +57,17 @@ public class ChangeScreenEvent
 			}
 			DisplayScreens screens = DisplayScreens.valueOf(screen);
 			setQueryParameters("p=" + screens.name());
-			DisplayScreen<?> screenCreated = GuiceContext.getInstance(screens.getScreen());
+			DisplayScreen<?> screenCreated = null;// GuiceContext.getInstance(screens.getScreen());
+			try
+			{
+				screenCreated = screens.getScreen().getDeclaredConstructor().newInstance();
+				GuiceContext.inject()
+				            .injectMembers(screenCreated);
+			}
+			catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e)
+			{
+				e.printStackTrace();
+			}
 			response.addComponent(screenCreated);
 		}
 		catch (IllegalArgumentException iae)

@@ -40,8 +40,6 @@ public class OuterLayout
 		         .setMinSize(240)
 		         .setMaxSize(240);
 
-		getEast().addStyle("z-index:100 !important;");
-
 		getOptions().getDefaults()
 		            .setResizerClass("btn-custom btn-primary")
 		            .setTogglerClass("btn-custom btn-secondary")
@@ -55,36 +53,7 @@ public class OuterLayout
 		          .add(new PlaceHolder<>("topbar"));
 		getWest().getContentDiv()
 		         .add(new PlaceHolder<>("west"));
-		getEast().getContentDiv()
-		         .add(new PlaceHolder<>("rightBar"));
-
-		getEast().getContentDiv()
-		         .addClass(Bg_Dark);
-		getEast().getOptions()
-		         .setInitClosed(true);
-	}
-
-	@Override
-	public void init()
-	{
-		Page p = GuiceContext.getInstance(Page.class);
-		if (p.isMobileOrSmartTablet())
-		{
-			getWest().getOptions()
-			         .setInitClosed(true);
-
-		}
-		else
-		{
-			getEast().getOptions()
-			         .getResponsive()
-			         .setEnabled(true)
-			         .setWhen(LayoutResponsiveSize.Medium);
-			getWest().getOptions()
-			         .getResponsive()
-			         .setEnabled(true)
-			         .setWhen(LayoutResponsiveSize.Medium);
-		}
-		super.init();
+		/*getWest().getOptions()
+		         .setInitClosed(true);*/
 	}
 }

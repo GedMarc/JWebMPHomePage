@@ -109,35 +109,17 @@ public class DisplayPage
 		                                                    .addPasswordRegex(6, false, true, true, false));
 
 		response.addComponent(GuiceContext.getInstance(West.class));
-		response.addComponent(GuiceContext.getInstance(RightBar.class));
 		response.addComponent(GuiceContext.getInstance(TopBar.class));
-		response.addComponent(GuiceContext.getInstance(HomePage.class));
 
-		deeplinkScreen(call);
-
-		ToastrFeature toastr = new ToastrFeature(ToastrType.Warning, "Use Code Icons",
-		                                         "Click or Tap on the Code Icons " +
-		                                         " to quickly get access to code snippets and build your application!");
-		toastr.getOptions()
-		      .setProgressBar(true)
-		      .setEscapeHtml(true)
-		      .setCloseButton(true)
-		      .setTimeOut(10000)
-		      .setPreventDuplicates(true);
-		response.getFeatures()
-		        .add(toastr);
-
-		ToastrFeature toastr2 = new ToastrFeature(ToastrType.Warning, "Grab The Site Source Code",
-		                                          "Everything is open! You can even clone this site to start your own if you so desired...");
-		toastr2.getOptions()
-		       .setProgressBar(true)
-		       .setEscapeHtml(true)
-		       .setCloseButton(true)
-		       .setTimeOut(5000)
-		       .setPreventDuplicates(true);
-		response.getFeatures()
-		        .add(toastr2);
-
+		if(!call.getParameters()
+		        .containsKey("p"))
+		{
+			response.addComponent(GuiceContext.getInstance(HomePage.class));
+		}
+		else
+		{
+			deeplinkScreen(call);
+		}
 		return response;
 	}
 
@@ -254,7 +236,17 @@ public class DisplayPage
 				}
 				catch (Exception e)
 				{
-					log.log(Level.SEVERE, "Unable to render page : " + page, e);
+					Class<? extends DisplayScreen> ds = null;
+					try
+					{
+						ds = (Class<? extends DisplayScreen>) Class.forName(page);
+						DisplayScreen<?> screen = GuiceContext.getInstance(ds);
+						getInstance(AjaxResponse.class).addComponent(screen);
+					}
+					catch (ClassNotFoundException e1)
+					{
+						log.log(Level.SEVERE, "Unable to render page : " + page, e1);
+					}
 				}
 			}
 		}

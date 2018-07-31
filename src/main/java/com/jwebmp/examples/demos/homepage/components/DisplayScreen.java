@@ -1,6 +1,7 @@
 package com.jwebmp.examples.demos.homepage.components;
 
 import com.jwebmp.core.Page;
+import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
@@ -15,14 +16,13 @@ import com.jwebmp.plugins.jqlayout.components.BorderLayout;
 
 import javax.validation.constraints.NotNull;
 
-
 public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		extends DivSimple<J>
 {
 	private final Div content;
 	private final BSRow<?> titleRow;
 	private String welcomeText;
-	private BorderLayout innerLayout;
+	private BorderLayout<?> innerLayout;
 
 	private boolean renderBreadcrumb = true;
 
@@ -43,6 +43,9 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		innerLayout.setFullScreen(true);
 		titleRow = new BSRow<>();
 		innerLayout.setID("innerLayoutContainer");
+		innerLayout.getCenter()
+		           .getContentDiv()
+		           .setID("innerlayout-center-content");
 
 		addClass(BSColumnOptions.H_100);
 		addClass(BSColumnOptions.W_100);
@@ -59,25 +62,36 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 			add(content);
 			content.add(innerLayout);
 			Div d = getContentContainer();
-			if (d != null)
-			{
-				d.setID("innerContentContainer");
-				d.addClass(BSColumnOptions.H_100);
-				d.addStyle("margin-top", "15px;");
 
-				SlimScrollFeature scrollFeature = new DefaultSlimScroll(d);
+			d.setID("innerContentContainer");
+			d.addClass(BSColumnOptions.H_100);
+			d.addStyle("margin-top", "15px;");
 
-				innerLayout.getCenter()
-				           .getContentDiv()
-				           .add(d);
-			}
+			SlimScrollFeature scrollFeature = new DefaultSlimScroll(innerLayout.getCenter()
+			                                                                   .getContentDiv());
+
+			innerLayout.getCenter()
+			           .getContentDiv()
+			           .addStyle("overflow-y", "auto")
+			           .addFeature(scrollFeature)
+			           .add(d);
+
 			titleRow.getChildren()
 			        .clear();
 			titleRow.add(buildTitleRow());
+			for (ComponentHierarchyBase<?, ?, ?, ?, ?> child : titleRow.getChildren())
+			{
+				child.addStyle("margin-left:0px;margin-right:0px;padding-left:0px;padding-right:0px;");
+			}
 
 			innerLayout.getCenter()
 			           .addHeader(titleRow);
 
+			titleRow.resetHorizontalSinks();
+
+			Div slimScrollerSpacer = new Div<>().setID("slimScrollSpacer");
+			slimScrollerSpacer.addStyle("height:70px;");
+			d.add(slimScrollerSpacer);
 		}
 		super.preConfigure();
 	}
@@ -120,10 +134,10 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 
 	protected DivSimple<?> buildPortlet(String header, BSBackgroundOptions bgColor, boolean showRefresh, @NotNull Div content)
 	{
-		return buildPortlet(header, bgColor.toString(), showRefresh, content);
+		return buildPortlet(header, bgColor.toString(), showRefresh, content, true);
 	}
 
-	protected DivSimple<?> buildPortlet(String header, String bgColor, boolean showRefresh, @NotNull Div content)
+	protected DivSimple<?> buildPortlet(String header, String bgColor, boolean showRefresh, @NotNull Div content, boolean showHeader)
 	{
 		DivSimple<?> responsive = new DivSimple();
 		responsive.addClass(BSColumnOptions.Col_12);
@@ -135,7 +149,10 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		Div heading = new Div();
 		heading.addClass("portlet-heading");
 		heading.addClass(bgColor);
-		portlet.add(heading);
+		if (showHeader)
+		{
+			portlet.add(heading);
+		}
 
 		H3 headingTitle = new H3(header);
 		headingTitle.addClass("portlet-title");

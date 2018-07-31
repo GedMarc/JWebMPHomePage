@@ -142,7 +142,7 @@ public class SourceCodeContentPanel<J extends SourceCodeContentPanel<J>>
 		                                                                                                                 (String) getDetails().getJavaSnippetLocations()
 		                                                                                                                                      .getValue(),
 		                                                                                                                 (String) getDetails().getJavaSnippetLocations()
-		                                                                                                                                      .getValue(), true)
+		                                                                                                                                      .getValue(), false)
 		                                                                                                .toString())));
 		sourceTabs.addTab("Java", javaCodeDiv, !first);
 		first = true;
@@ -158,7 +158,7 @@ public class SourceCodeContentPanel<J extends SourceCodeContentPanel<J>>
 		                                                                                                                 (String) getDetails().getHtmlSnippetLocations()
 		                                                                                                                                      .getValue(),
 		                                                                                                                 (String) getDetails().getHtmlSnippetLocations()
-		                                                                                                                                      .getValue(), true)
+		                                                                                                                                      .getValue(), false)
 		                                                                                                .toString())));
 		sourceTabs.addTab("Java", htmlCodeDiv, !first);
 		first = true;
@@ -177,7 +177,7 @@ public class SourceCodeContentPanel<J extends SourceCodeContentPanel<J>>
 			                                                                                                               (String) getDetails().getJavaScriptSnippetLocations()
 			                                                                                                                                    .getValue(),
 			                                                                                                               (String) getDetails().getJavaScriptSnippetLocations()
-			                                                                                                                                    .getValue(), true)
+			                                                                                                                                    .getValue(), false)
 			                                                                                              .toString())));
 		}
 		catch (Exception e)
@@ -198,7 +198,7 @@ public class SourceCodeContentPanel<J extends SourceCodeContentPanel<J>>
 		                                                                                                                (String) getDetails().getCssSnippetLocations()
 		                                                                                                                                     .getValue(),
 		                                                                                                                (String) getDetails().getCssSnippetLocations()
-		                                                                                                                                     .getValue(), true)
+		                                                                                                                                     .getValue(), false)
 		                                                                                               .toString())));
 		sourceTabs.addTab("CSS", cssCodeDiv, !first);
 		first = true;
@@ -214,7 +214,7 @@ public class SourceCodeContentPanel<J extends SourceCodeContentPanel<J>>
 		                                                                                                                 (String) getDetails().getTestsScriptSnippetLocations()
 		                                                                                                                                      .getValue(),
 		                                                                                                                 (String) getDetails().getTestsScriptSnippetLocations()
-		                                                                                                                                      .getValue(), true)
+		                                                                                                                                      .getValue(), false)
 		                                                                                                .toString())));
 		sourceTabs.addTab("Tests", testCodeDiv, !first);
 		first = true;
@@ -229,10 +229,16 @@ public class SourceCodeContentPanel<J extends SourceCodeContentPanel<J>>
 		}
 		try
 		{
-			content.add(new JQSourceCodePrettify<>().addStyle("background:black;")
-			                                        .setSourceCodeLanguage(SourceCodeLanguages.Java)
-			                                        .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(reference, fileName, fileName, true)
-			                                                                                            .toString())));
+			StringBuilder py = FileTemplates.getFileTemplate(reference, fileName, fileName, false);
+			if (py != null &&
+			    py.toString()
+			      .length() > 0)
+			{
+				content.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+				                                        .setSourceCodeLanguage(SourceCodeLanguages.Java)
+				                                        .setText(StringEscapeUtils.escapeHtml4(py
+				                                                                                            .toString())));
+			}
 			sourceTabs.addTab(text, content, !first);
 			first = true;
 		}

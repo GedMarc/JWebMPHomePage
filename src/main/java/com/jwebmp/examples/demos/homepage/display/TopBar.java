@@ -81,11 +81,12 @@ public class TopBar
 		easyButtonList.addClass("list-inline float-right mb-0");
 
 		easyButtonList.add(buildTopMenuItem(true, "btn-fullscreen", "mdi mdi-crop-free noti-icon", "45px").addClass("strong"));
+		Page<?> page = GuiceContext.getInstance(Page.class);
 
-		ListItem<?> rightSideOpener = buildTopMenuItem(false, "action_screen_opener", "mdi mdi-dots-horizontal noti-icon", "45px").addClass("right-bar-toggle");
+		/*ListItem<?> rightSideOpener = buildTopMenuItem(false, "action_screen_opener", "mdi mdi-dots-horizontal noti-icon", "45px").addClass("right-bar-toggle");
 		easyButtonList.add(rightSideOpener);
 
-		Page<?> page = GuiceContext.getInstance(Page.class);
+
 		if (page.isMobileOrSmartTablet())
 		{
 			rightSideOpener.addFeature(GuiceContext.getInstance(OuterLayout.class)
@@ -95,13 +96,14 @@ public class TopBar
 		{
 			rightSideOpener.addFeature(GuiceContext.getInstance(OuterLayout.class)
 			                                       .createToggleButton(rightSideOpener, JQLayoutArea.East));
-		}
+		}*/
 
-		easyButtonList.add((ListChildren) buildTopMenuItem(false, "donateButton", "mdi mdi-currency-usd", "45px", "https://paypal.me/MarcMagon", "_blank"));
+
+		easyButtonList.add((ListChildren) buildTopMenuItem(false, "donateButton", "far fa-hands-usd fa-2x", "45px", "https://paypal.me/MarcMagon", "_blank").addClass("strong"));
 		nav.add(easyButtonList);
 
 		//Middle Right Side (Search and Stuff)
-		List<ListChildren, ?, ?, ?> searchList = new List<>().addClass("list-inline menu-left mb-0");
+		List<ListChildren, ?, ?, ?> searchList = new List<>().addClass("list-inline menu-left mb-0").addStyle("height:71px;");
 
 		ListItem leftMenuItem = new ListItem<>().addClass("float-left")
 		                                        .add(new Button<>().addClass("button-menu-mobile open-left waves-light waves-effect")
@@ -120,13 +122,13 @@ public class TopBar
 
 		searchList.add(leftMenuItem);
 
-		Form<?> searchForm = new Form<>().addAttribute("role", "search");
+		/*Form<?> searchForm = new Form<>().addAttribute("role", "search");
 		InputTextType<?> searchInput = new InputTextType<>().setPlaceholder("Search...")
 		                                                    .addClass("form-control");
 
 		searchList.add(new ListItem<>().addClass("hide-phone app-search")
 		                               .add(searchForm.add(searchInput)
-		                                              .add(new Link("#").add(new Italic<>().addClass("fa fa-search")))));
+		                                              .add(new Link("#").add(new Italic<>().addClass("fa fa-search")))));*/
 
 		nav.add(searchList);
 		easyButtonList.add(buildProfileDropDown());
@@ -174,7 +176,8 @@ public class TopBar
 		                                      .addAttribute("role", "button")
 		                                      .addAttribute("aria-haspopup", "false")
 		                                      .addAttribute("aria-expanded", "false")
-		                                      .add(new Italic<>().addClass("fa fa-user noti-icon"));
+		                                      .addStyle("width","45px;")
+		                                      .add(new Italic<>().addClass("far fa-user noti-icon").addStyle("width:45px;"));
 
 		SessionProperties sessionProperties = GuiceContext.getInstance(SessionProperties.class);
 

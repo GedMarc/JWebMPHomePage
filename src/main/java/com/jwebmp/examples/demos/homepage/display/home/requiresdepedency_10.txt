@@ -1,0 +1,1 @@
+provides IPage with DisplayPage;

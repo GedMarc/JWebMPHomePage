@@ -17,14 +17,15 @@ public class ReasonsWhyPart
 		DivSimple<?> sourceExampleDiv = new DivSimple();
 		SourceCodeContentPanel<?> portlet = new SourceCodeContentPanel<>("The Difference Is In The Code", DisplayCodeParts.ReasonsWhy, sourceExampleDiv);
 		portlet.setBgColor(Bg_Secondary);
-		portlet.setShowCode(true);
-		portlet.setShowHeader(true);
+		portlet.setShowCode(false);
+		portlet.setShowHeader(false);
 
-		sourceExampleDiv.add(buildCheckbox("100% Pure JDK 8", true, "checkbox-primary"));
+		sourceExampleDiv.add(buildCheckbox("Pure Java Development", true, "checkbox-primary"));
 		sourceExampleDiv.add(buildCheckbox("Non-Invasive. <br/>Servlets, JSPs,JSF continue as normal", true, "checkbox-success"));
-		sourceExampleDiv.add(buildCheckbox("EE7^, MicroProfile, Standalone. <br/>Migrate at your own Pace.", true, "checkbox-info"));
+		sourceExampleDiv.add(buildCheckbox("Standalone Embedded Container EE7 EE8 MicroProfile", true, "checkbox-info"));
+		sourceExampleDiv.add(buildCheckbox("Truly Portable", true, "checkbox-pink"));
 
-		sourceExampleDiv.add(buildCheckbox("Focused on Technology.<br/>Maintainability, and Scalability.", true, "checkbox-purple"));
+		/*sourceExampleDiv.add(buildCheckbox("Focused on Technology.<br/>Maintainability, and Scalability.", true, "checkbox-purple"));
 		sourceExampleDiv.add(buildCheckbox("Speed Up Deliveries and Development<br/>The Code Always Comes First", true, "checkbox-pink"));
 		sourceExampleDiv.add(buildCheckbox("Browser, Android, IOS, <br/>Windows Desktop and Universal Applications <br/> <i>Cordova</i> Supported!", true, "checkbox-pink"));
 
@@ -34,7 +35,7 @@ public class ReasonsWhyPart
 		sourceExampleDiv.add(buildCheckbox("Domain Event System <br/>Domain Event Stores", true, "checkbox-purple"));
 		sourceExampleDiv.add(buildCheckbox("Open Unit Test </br>Open Quality Gate Infrastructure", true, "checkbox-pink"));
 		sourceExampleDiv.add(buildCheckbox("Community Driven, Community Supported", true, "checkbox-inverse"));
-		sourceExampleDiv.add(buildCheckbox("Open Project Management<br/>Contribute to the Architecture", true, "checkbox-dark"));
+		sourceExampleDiv.add(buildCheckbox("Open Project Management<br/>Contribute to the Architecture", true, "checkbox-dark"));*/
 		add(portlet);
 	}
 

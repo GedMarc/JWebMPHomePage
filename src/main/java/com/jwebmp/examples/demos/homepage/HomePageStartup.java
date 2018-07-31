@@ -8,8 +8,11 @@ import com.jwebmp.guicedpersistence.jpa.implementations.JPAAutomatedTransactionH
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
+import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
+import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import com.jwebmp.plugins.jqueryui.nestablethemes.JQUIThemes;
 import com.jwebmp.plugins.jqueryui.nestablethemes.JQUIThemesPageConfigurator;
+import com.jwebmp.undertow.JWebMPUndertow;
 import com.jwebmp.undertow.JWebMPUndertowWebSocketConfiguration;
 import io.undertow.Undertow;
 import io.undertow.UndertowOptions;
@@ -44,12 +47,25 @@ public class HomePageStartup
 
 		JPAAutomatedTransactionHandler.setActive(true);
 
+		//FontAwesome5PageConfigurator.setIncludeLight(true);
 		FontAwesome5PageConfigurator.setIncludeRegular(true);
+		//FontAwesome5PageConfigurator.setIncludeSolid(true);
 		FontAwesome5PageConfigurator.setRootReferenceDir("fontawesome-pro-5.1.0-web/js/");
 
 		D3ReingoldTilfordTreePageConfigurator.setIsRadial(true);
-		JQUIThemesPageConfigurator.setTheme(JQUIThemes.Smoothness);
 
+		JQUIThemesPageConfigurator.setTheme(JQUIThemes.Smoothness);
+		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
+
+		try
+		{
+			JWebMPUndertow.boot("0.0.0.0",6002);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+/*
 		DeploymentInfo deploymentInfo = deployment()
 				                                .setClassLoader(HomePageStartup.class.getClassLoader())
 				                                .setContextPath("/")
@@ -74,18 +90,6 @@ public class HomePageStartup
 		                          //.setHandler(encodingHandler)
 		                          .setHandler(ph)
 		                          .build();
-		server.start();
-	}
-}
-
-class GuiceClassIntrospector
-		implements ClassIntrospecter
-{
-	@Override
-	public <T> InstanceFactory<T> createInstanceFactory(Class<T> clazz) throws NoSuchMethodException
-	{
-		Logger.getLogger("GuiceInstanceFactory")
-		      .info("Creating instance of " + clazz.getName());
-		return new ImmediateInstanceFactory<>(GuiceContext.getInstance(clazz));
+		server.start();*/
 	}
 }

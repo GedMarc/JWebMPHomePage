@@ -9,6 +9,7 @@ import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.fontawesome5.FontAwesome;
 import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
+import com.jwebmp.plugins.fontawesome5.options.FontAwesomeSizes;
 import com.jwebmp.plugins.fontawesome5.options.FontAwesomeStyles;
 
 public class FontAwesome5DemoScreen
@@ -36,9 +37,13 @@ public class FontAwesome5DemoScreen
 
 		for (FontAwesomeIcons fontAwesomeIcon : FontAwesomeIcons.values())
 		{
+			if (fontAwesomeIcon.equals(FontAwesomeIcons.font_awesome_logo_full))
+			{
+				continue;
+			}
 			DivSimple d = new DivSimple();
 			d.addClass("col-3 col-md-2 col-lg-1 text-center");
-			d.add(new FontAwesome(FontAwesomeStyles.Regular, fontAwesomeIcon));
+			d.add(new FontAwesome(FontAwesomeStyles.Regular, fontAwesomeIcon).setSize(FontAwesomeSizes.$2x));
 			d.add(new Paragraph<>(fontAwesomeIcon.toString()));
 			row.add(d);
 		}

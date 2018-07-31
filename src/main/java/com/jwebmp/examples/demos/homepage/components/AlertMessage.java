@@ -8,6 +8,7 @@ public class AlertMessage
 		extends BSAlert<AlertMessage>
 {
 	private FontAwesome icon;
+	private boolean addDismissButton = true;
 
 	public AlertMessage(String text, BSAlertOptions style)
 	{
@@ -21,12 +22,24 @@ public class AlertMessage
 		setText(text);
 		addClass("fade-in");
 		setDark(true);
-		add(createDismissButton());
 
 		if (text == null)
 		{
 			addStyle("display:none;");
 		}
+	}
+
+	@Override
+	public void preConfigure()
+	{
+		if (!isConfigured())
+		{
+			if (isAddDismissButton())
+			{
+				add(createDismissButton());
+			}
+		}
+		super.preConfigure();
 	}
 
 	public FontAwesome getIcon()
@@ -37,5 +50,16 @@ public class AlertMessage
 	public void setIcon(FontAwesome icon)
 	{
 		this.icon = icon;
+	}
+
+	public boolean isAddDismissButton()
+	{
+		return addDismissButton;
+	}
+
+	public AlertMessage setAddDismissButton(boolean addDismissButton)
+	{
+		this.addDismissButton = addDismissButton;
+		return this;
 	}
 }

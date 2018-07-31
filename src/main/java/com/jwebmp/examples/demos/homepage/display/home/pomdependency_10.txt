@@ -2,5 +2,6 @@
     <groupId>com.jwebmp</groupId>
     <artifactId>jwebmp-core</artifactId>
     <version>0.58.0.1.RC1</version>
+    <classifier>jre10</classifier>
     <type>jar</type>
 </dependency>

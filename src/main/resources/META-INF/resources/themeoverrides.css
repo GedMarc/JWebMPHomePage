@@ -66,3 +66,9 @@ body.fixed-left .side-menu.left {
 .home-wrapper {
     margin: 0;
 }
+
+
+.notification-list .noti-icon {
+    font-size: xx-large !important;
+
+}
