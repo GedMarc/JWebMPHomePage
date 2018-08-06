@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.about;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.db.HomePageDBStartup;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
@@ -18,7 +19,9 @@ import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSMarginOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
+import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 public class UnderTheHoodScreen
 		extends DisplayScreen<UnderTheHoodScreen>
@@ -38,7 +41,8 @@ public class UnderTheHoodScreen
 
 		BSNavTabs<?> tabs = new BSNavTabs<>().setBordered(true)
 		                                     .setJustified(true)
-		                                     .removeSpacingTop();
+		                                     .removeSpacingTop()
+		                                     .addClass(MarginRight_1);
 		tabs.addTab("About", buildDefaultScreen(), true);
 		tabs.addTab("JWebMP", buildJWebMP(), false);
 		tabs.addTab("Injection", buildInjection(), false);
@@ -192,7 +196,8 @@ public class UnderTheHoodScreen
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
 		div.add(new H3("Persistence Handling"));
-		div.add("These are completely optional, and provide a JPMS implementation for using JPA/JTA. These are backwards compatible with JDK 8");
+		div.add("These modules are completely optional, and provide a JPMS/JDK10 implementation for using JPA/JTA." +
+		        "<br/>These are backwards compatible with JDK 8");
 
 		BSNavTabs tabs = new BSNavTabs().setBordered(true)
 		                                .setJustified(true)
@@ -201,12 +206,56 @@ public class UnderTheHoodScreen
 		tabs.getTabContents()
 		    .addClass(W_100);
 
-		tabs.addTab("Guiced Persistence", new DivSimple<>().add("1"), true);
-		tabs.addTab("JPA", new DivSimple<>().add("2"), false);
-		tabs.addTab("BTM", new DivSimple<>().add("2"), false);
-		tabs.addTab("C3P0", new DivSimple<>().add("2"), false);
-		tabs.addTab("EhCache", new DivSimple<>().add("2"), false);
-		tabs.addTab("HazelCast", new DivSimple<>().add("2"), false);
+		Div about = new Div();
+		about.add("This library allows you to bind JPA classes to annotations, method intercept transactions, and programmatically configure all connections on creation" +
+		          "<br/>The library uses guice-persist as a base, and requires a registration to IGuiceModule. " +
+		          "<br/>IDBStartup can be used to load the persistence units asynchronously." +
+		          "<br/>Each Add-On provides a separate configuration and enables the item");
+
+		BSTable<?> settingUpTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
+		                                           .addClass(Table_Hover)
+		                                           .addStyle("word-wrap:break-word;table-layout:fixed;");
+		settingUpTable.setSmall(true);
+		settingUpTable.setBordered(true);
+		settingUpTable.setStriped(true);
+
+		settingUpTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
+		                                                                .add(new TableHeaderCell<>("Purpose"))
+		                                               ));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesConnectionInfoReader"))
+		                                                .add(new TableCell<>(
+				                                                "Populates the ConnectionBaseInfo object with properties from the persistence unit, the entire persistence-unit tag.")));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesEntityManagerReader"))
+		                                                .add(new TableCell<>(
+				                                                "Utility Service that creates or modifies the properties HashMap before conversion to ConnectionBaseInfo")));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.ITransactionHandler"))
+		                                                .add(new TableCell<>(
+				                                                "Internal Service that is used to automatically wrap database updates in a valid transaction, if it was missed." +
+				                                                "<br/>Enabled in the add-on, such as BTMAutomatedTransactionHandler.setActive() or JPAAutomatedTransactionHandler.setActive()")));
+		Div sourceDis = new Div();
+		addSourceToContainer(HomePageDBStartup.class, "startupexample.txt", Java, sourceDis);
+
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.IDBStartup"))
+		                                                .add(new TableCell<>("Asynchronously loads the given services in an ExecutorService<br/><br/>")
+				                                                     .add(sourceDis)
+		                                                    ));
+		about.add(settingUpTable);
+		tabs.addTab("About", about, true);
+
+		Div settingUp = new Div();
+
+		tabs.addTab("Setting Up", settingUp, false);
+		tabs.addTab("Request Scoped Transactions", new DivSimple<>().add("1"), false);
+
+		tabs.addTab("JPA Module", new DivSimple<>().add("2"), false);
+		tabs.addTab("BTM Module", new DivSimple<>().add("2"), false);
+		tabs.addTab("Entity Assist Module", new DivSimple<>().add("2"), false);
+		tabs.addTab("C3P0 Addon", new DivSimple<>().add("2"), false);
+		tabs.addTab("EhCache Addon", new DivSimple<>().add("2"), false);
+		tabs.addTab("Wildfly Addon", new DivSimple<>().add("2"), false);
+		tabs.addTab("Glassfish Addon", new DivSimple<>().add("2"), false);
+		tabs.addTab("HazelCast Addon", new DivSimple<>().add("2"), false);
+
 
 		div.add(tabs);
 

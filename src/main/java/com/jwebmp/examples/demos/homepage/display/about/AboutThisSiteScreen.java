@@ -31,8 +31,6 @@ public class AboutThisSiteScreen
 	{
 		BSContainer container = new BSContainer(BSContainerOptions.Container_Fluid);
 
-		Div textRow = new Div();
-		textRow.add(new H3("This site is using the following modules"));
 		BSRow row = new BSRow();
 
 
@@ -49,7 +47,6 @@ public class AboutThisSiteScreen
 		row.add(column1);
 		row.add(column2);
 
-		container.add(textRow);
 		container.add(row);
 
 		Div bottomRow = new Div();
