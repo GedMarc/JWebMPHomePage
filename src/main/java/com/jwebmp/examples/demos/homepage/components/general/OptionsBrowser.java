@@ -48,9 +48,16 @@ public class OptionsBrowser
 
 	private void buildPart(JSTreeListItem<?> rootItem, Class<? extends Enum> part)
 	{
+		int count = 0;
 		for (Enum enumConstant : part.getEnumConstants())
 		{
 			rootItem.addItem(enumConstant.name(), new JSTreeNodeOptions<>().setIcon("fal fa-sort-numeric-down"));
+			count++;
+			if (count > 5)
+			{
+				rootItem.addItem(" and " + (part.getEnumConstants().length - 5) + " more", new JSTreeNodeOptions<>().setIcon("fal fa-ellipsis-h-alt"));
+				break;
+			}
 		}
 	}
 

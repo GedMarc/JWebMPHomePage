@@ -1,31 +1,21 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
-import com.jwebmp.core.FileTemplates;
-import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.Paragraph;
 import com.jwebmp.core.base.html.interfaces.GlobalChildren;
 import com.jwebmp.core.base.html.interfaces.GlobalFeatures;
 import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
 import com.jwebmp.examples.demos.homepage.components.PrettyInverseButton;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
-import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardFooter;
-import com.jwebmp.plugins.bootstrap4.listgroup.tabs.BSListGroupTabs;
 import com.jwebmp.plugins.bootstrap4.listgroup.tabs.BSTabContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
-import com.jwebmp.plugins.bootstrap4.options.BSColoursOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSMarginOptions;
-import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
-import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
-import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.options.JSTreeNodeOptions;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
-import org.apache.commons.lang3.StringEscapeUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
@@ -85,10 +75,10 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 		BSCardFooter footer = addFooter();
 
 		footer.add(new PrettyInverseButton<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-HelloWorld/archive/master.zip").setTargetFrameName("_blank")
-		                                                                                                                  .setText("Download Standalone HelloWorld"));
+		                                                                                                                         .setText("Download HelloWorld"));
 		footer.add(new PrettyInverseButton<>("https://github.com/GedMarc/JWebMPHomePage").setTargetFrameName("_blank")
-		                                                                          .addClass(BSMarginOptions.MarginLeft_1)
-		                                                                          .setText("Download Demo Site Source Code"));
+		                                                                                 .addClass(BSMarginOptions.MarginLeft_1)
+		                                                                                 .setText("Download Site Source"));
 
 		addStyle("margin-bottom:1rem;");
 	}

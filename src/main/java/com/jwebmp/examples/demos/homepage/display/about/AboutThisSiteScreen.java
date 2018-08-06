@@ -14,11 +14,7 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
-import com.jwebmp.plugins.fontawesome5.FontAwesome;
-import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
-import com.jwebmp.plugins.fontawesome5.options.FontAwesomeSizes;
 
-import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
@@ -36,7 +32,7 @@ public class AboutThisSiteScreen
 		BSContainer container = new BSContainer(BSContainerOptions.Container_Fluid);
 
 		Div textRow = new Div();
-		textRow.add(new H3("This page displays information relating to this site and its development."));
+		textRow.add(new H3("This site is using the following modules"));
 		BSRow row = new BSRow();
 
 
@@ -142,11 +138,10 @@ public class AboutThisSiteScreen
 
 		OptionsBrowser op = new OptionsBrowser(new AjaxCall<>()).setID("opAboutTree");
 		leftColumn.add(op);
-		leftColumn.add("</br>Double click, or select the expand icon for more details");
 
-		leftColumn.add("The options browser is a simple reflection of any object and can be found on all the demo pages");
-		leftColumn.add("These classes are referenced from the getOptions() method available and produce the entire API of the referenced web library");
-		leftColumn.add("The toString() for JavascriptPart returns a JSON representation of that object");
+		leftColumn.add("The options browser is a simple reflection of any object. Above is the AjaxCall object that is available on every request post-load.");
+		leftColumn.add("Options classes are referenced via the getOptions() method available and produce the entire API of the referenced web library");
+		leftColumn.add("The toString() returns a JSON representation of that object, while toString(true) renders the HTML.");
 
 		d.add(leftColumn);
 		//d.add(rightColumn);

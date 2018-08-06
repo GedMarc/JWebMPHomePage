@@ -33,7 +33,6 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.jwebmp.core.base.servlets.enumarations.ComponentTypes.*;
 import static com.jwebmp.guicedinjection.GuiceContext.*;
 
 /**
@@ -221,6 +220,8 @@ public class DisplayPage
 		}
 		catch (JsonProcessingException e)
 		{
+			LogFactory.getLog("log")
+			          .log(Level.SEVERE, "Message", e);
 			e.printStackTrace();
 		}
 	}
