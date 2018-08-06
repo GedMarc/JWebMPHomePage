@@ -75,13 +75,13 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
-   <!--     <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-font-awesome</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>-->
+        <!--     <dependency>
+                 <groupId>com.jwebmp</groupId>
+                 <artifactId>jwebmp-font-awesome</artifactId>
+                 <version>${project.version}</version>
+                 <type>jar</type>
+                 <classifier>${jwebmp.runtime.classifier}</classifier>
+             </dependency>-->
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -91,14 +91,14 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
-    <!--    <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-glyphicons</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
--->
+        <!--    <dependency>
+                <groupId>com.jwebmp</groupId>
+                <artifactId>jwebmp-glyphicons</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+                <classifier>${jwebmp.runtime.classifier}</classifier>
+            </dependency>
+    -->
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-metro-tiles</artifactId>
@@ -139,21 +139,21 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
-       <!-- <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-ion-icons</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>-->
-<!--
-        <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-material-design-icons</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>com.jwebmp</groupId>
+             <artifactId>jwebmp-ion-icons</artifactId>
+             <version>${project.version}</version>
+             <type>jar</type>
+             <classifier>${jwebmp.runtime.classifier}</classifier>
+         </dependency>-->
+        <!--
+                <dependency>
+                    <groupId>com.jwebmp</groupId>
+                    <artifactId>jwebmp-material-design-icons</artifactId>
+                    <version>${project.version}</version>
+                    <type>jar</type>
+                    <classifier>${jwebmp.runtime.classifier}</classifier>
+                </dependency>-->
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -212,15 +212,15 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
-<!--
-        <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-d3-reigngold-tilford-tree</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
--->
+        <!--
+                <dependency>
+                    <groupId>com.jwebmp</groupId>
+                    <artifactId>jwebmp-d3-reigngold-tilford-tree</artifactId>
+                    <version>${project.version}</version>
+                    <type>jar</type>
+                    <classifier>${jwebmp.runtime.classifier}</classifier>
+                </dependency>
+        -->
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -269,16 +269,16 @@
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
-<!--
+        <!--
 
-        <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-jqplot</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
--->
+                <dependency>
+                    <groupId>com.jwebmp</groupId>
+                    <artifactId>jwebmp-jqplot</artifactId>
+                    <version>${project.version}</version>
+                    <type>jar</type>
+                    <classifier>${jwebmp.runtime.classifier}</classifier>
+                </dependency>
+        -->
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -438,28 +438,28 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
-   <!--     <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-material-icons</artifactId>
-            <version>${project.version}</version>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>-->
+        <!--     <dependency>
+                 <groupId>com.jwebmp</groupId>
+                 <artifactId>jwebmp-material-icons</artifactId>
+                 <version>${project.version}</version>
+                 <classifier>${jwebmp.runtime.classifier}</classifier>
+             </dependency>-->
+
+        <!--        <dependency>
+                    <groupId>com.jwebmp</groupId>
+                    <artifactId>guiced-persistence-jpa</artifactId>
+                    <version>${project.version}</version>
+                    <type>jar</type>
+                    <classifier>${jwebmp.runtime.classifier}</classifier>
+                </dependency>-->
 
         <dependency>
             <groupId>com.jwebmp</groupId>
-            <artifactId>guiced-persistence-jpa</artifactId>
+            <artifactId>guiced-persistence-btm</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
-
-        <!--      <dependency>
-                  <groupId>com.jwebmp</groupId>
-                  <artifactId>guiced-persistence-btm</artifactId>
-                  <version>${project.version}</version>
-                  <type>jar</type>
-                  <classifier>${jwebmp.runtime.classifier}</classifier>
-              </dependency>-->
 
 
     </dependencies>

@@ -7,10 +7,6 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
-import com.jwebmp.plugins.bootstrap4.cards.BSCard;
-import com.jwebmp.plugins.bootstrap4.carousel.BSCarousel;
-import com.jwebmp.plugins.bootstrap4.carousel.parts.BSCarouselCaption;
-import com.jwebmp.plugins.bootstrap4.carousel.parts.BSCarouselItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
@@ -25,6 +21,11 @@ import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 public class AboutJWebMPScreen
 		extends DisplayScreen<AboutJWebMPScreen>
 {
+	public AboutJWebMPScreen()
+	{
+		super("About JWebMP");
+	}
+
 	@Override
 	public BSContainer<?> getContentContainer()
 	{
@@ -41,7 +42,8 @@ public class AboutJWebMPScreen
 			column1.add(buildCompatibilityList());
 			column1.add(buildWhyPanel());
 			column1.add(buildTestPanel());
-			column1.add(buildHowItsDone());
+			column1.add(buildBuiltOn());
+			column1.add(buildTempalteFreeDev());
 			column1.add(buildInjectionsPanel());
 
 			column2.add(buildPushPanel());
@@ -50,10 +52,10 @@ public class AboutJWebMPScreen
 		else
 		{
 			column1.add(buildWhyPanel());
-			column1.add(buildHowItsDone());
+			column1.add(buildTempalteFreeDev());
+			column1.add(buildBuiltOn());
 			column1.add(buildTestPanel());
 			column1.add(buildInjectionsPanel());
-
 			column2.add(buildCompatibilityList());
 			column2.add(buildPushPanel());
 
@@ -122,7 +124,21 @@ public class AboutJWebMPScreen
 		                                                    .add(new TableCell<>(
 				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Initialized with GuiceContext.inject();</a>")));
 
+		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Jetty"))
+		                                                    //.add(new TableCell<>("Plugin Required"))
+		                                                    .add(new TableCell<>(
+				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Initialized with GuiceContext.inject();</a>")));
+
 		div.add(compatibilityTable);
+		return card;
+	}
+
+	private Div buildBuiltOn()
+	{
+
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
+		div.add(new H3("Cordova is used for device functions"));
 		return card;
 	}
 
@@ -145,7 +161,7 @@ public class AboutJWebMPScreen
 		return card;
 	}
 
-	private Div buildHowItsDone()
+	private Div buildTempalteFreeDev()
 	{
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
@@ -160,8 +176,10 @@ public class AboutJWebMPScreen
 	{
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
-		div.add("Google's Guice and the Guice Context Handler provide complete and dynamic JDK 8 and 9 Injection as well as Built-In Multi-ClassPath Injection Configuration, Custom Path Object Scanning from FastClasspathScanner, RegEx Servlet Bindings, Complete AOP, and an  entirely optional near-full range of EE Capabilities with MicroProfile, everything is at your fingertips.<br/><br/><strong>Best of All</strong>, Adheres to the applicable JSRs! ");
-		div.add("Completely Non-Invasive, Easily pull beans directly from Weld should you wish to do so (see the Injection Screen), With no interference on existing Servlets including JSP.");
+		div.add("Using Google's Guice Injection Framework, paired with Guice Context Handler, and you get a complete JDK 10 Injection set as well as Built-In Multi-ClassPath Injection Configuration." +
+		        "Custom Path Object Scanning from ClassGraph, RegEx Servlet Bindings, Complete Programmatic AOP, and go for a completely modular entirely optional near-full range of EE Capabilities with MQ, JTA, and much much more." +
+		        "Everything is at your fingertips.");
+		div.add("This library is also completely non-invasive. Easily pull beans directly from the initial context in your enterprise environment, with no interference on existing Servlets including JSP.");
 		return card;
 	}
 
@@ -169,8 +187,8 @@ public class AboutJWebMPScreen
 	{
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
-		div.add("With Atmosphere Push, Web Sockets are standard out the box, and absolutely everything available to every Ajax Call and Response is available in the exact same coding manner.<br/><br/> " +
-		        "Push Groups at a Global Injection Level allow you to push responses directly from your container layer, or asynchronously from ExecutionServices in your WAR, as we do on this site.<br/><br/> You can also enable Distributed Push Notifications utilizing HazelCast or a similar technology with ease.");
+		div.add("Push and Web Sockets are standard out the box, and absolutely everything available to every Ajax Call and Response is available in the exact same coding manner.<br/><br/> " +
+		        "Push Groups at a Global Injection Level allow you to push responses directly from your container layer, or asynchronously from ExecutionServices in your WAR, as we do on this site.<br/><br/> You can also enable Distributed Push Notifications utilizing HazelCast or a similar technology like EhCache with ease.");
 		return card;
 	}
 
@@ -178,8 +196,8 @@ public class AboutJWebMPScreen
 	{
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
-		div.add("Everything can be customized *cough* optimized, <strong><u><i>EASILY</i></u></strong>, from specific tags being displayed for certain browsers and/or device combinations, to how the system boots and operates.");
-		div.add("Optimize your startup utilizing features such as White Listing packages to be scanned, automated and manual asynchronous boot sequence executions, and easily manipulate the scanner or configuration as first item executions with the help of the Service Loader mechanisms.");
+		div.add("Everything can be optimized, <strong><u><i>EASILY</i></u></strong>, from specific tags being displayed for certain browsers and/or device combinations, to how the system boots and operates. Even your persistence units can now be configured programmatically with complete support for JTA.");
+		div.add("Optimize your startup, Build up your modules, and jump straight into JPMS with the the Service Loader mechanisms.");
 		div.add("This allows complete integration into any system including Enterprise Edition 7 and up (Tomcat, Glassfish, Payara, Wildfly, EAP etc) but also Embedded Containers such as Undertow. ");
 		div.add("");
 		return card;

@@ -2,11 +2,10 @@ package com.jwebmp.examples.demos.homepage.db;
 
 import com.google.inject.Inject;
 import com.google.inject.persist.PersistService;
-import com.jwebmp.guicedpersistence.services.IDBStartup;
-import com.jwebmp.logger.LogFactory;
+import com.jwebmp.guicedinjection.interfaces.IGuicePostStartup;
 
 public class HomePageDBStartup
-		implements IDBStartup
+		implements IGuicePostStartup
 {
 	public HomePageDBStartup()
 	{
@@ -16,5 +15,11 @@ public class HomePageDBStartup
 	public HomePageDBStartup(@HomePageDB PersistService persistService)
 	{
 		persistService.start();
+	}
+
+	@Override
+	public void postLoad()
+	{
+		//should be built
 	}
 }

@@ -2,8 +2,9 @@ package com.jwebmp.examples.demos.homepage;
 
 import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.generics.WebReference;
+import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
 import com.jwebmp.guicedpersistence.db.services.HibernateEntityManagerProperties;
-import com.jwebmp.guicedpersistence.jpa.implementations.JPAAutomatedTransactionHandler;
+import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
@@ -11,6 +12,7 @@ import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import com.jwebmp.undertow.JWebMPUndertow;
 
 import javax.servlet.ServletException;
+import java.util.logging.Level;
 
 public class HomePageStartup
 {
@@ -24,7 +26,7 @@ public class HomePageStartup
 		HibernateEntityManagerProperties.setShowSql(true);
 		HibernateEntityManagerProperties.setFormatSql(true);
 
-		JPAAutomatedTransactionHandler.setActive(true);
+		BTMAutomatedTransactionHandler.setActive(true);
 
 		//FontAwesome5PageConfigurator.setIncludeLight(true);
 		FontAwesome5PageConfigurator.setIncludeRegular(true);
@@ -43,7 +45,8 @@ public class HomePageStartup
 		}
 		catch (Exception e)
 		{
-			e.printStackTrace();
+			LogFactory.getLog("Main")
+			          .log(Level.SEVERE, "oops", e);
 		}
 	}
 }

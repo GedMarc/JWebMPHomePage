@@ -5,7 +5,7 @@ import com.jwebmp.examples.demos.homepage.db.HomePageDBStartup;
 import com.jwebmp.examples.demos.homepage.display.DisplayPage;
 import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
 import com.jwebmp.guicedinjection.interfaces.IGuiceModule;
-import com.jwebmp.guicedpersistence.services.IDBStartup;
+import com.jwebmp.guicedinjection.interfaces.IGuicePostStartup;
 
 module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
@@ -20,7 +20,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.logmaster;
 	requires com.jwebmp.core;
 	requires com.jwebmp.guicedpersistence;
-	requires com.jwebmp.guicedpersistence.jpa;
+
 
 	requires com.google.guice.extensions.servlet;
 	requires com.google.guice;
@@ -75,8 +75,11 @@ module com.jwebmp.examples.demos.homepage {
 	requires cache.api;
 	requires undertow.websockets.jsr;
 
+	requires com.jwebmp.guicedpersistence.btm;
+	requires json;
+
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
-	provides IDBStartup with HomePageDBStartup;
+	provides IGuicePostStartup with HomePageDBStartup;
 	provides IPage with DisplayPage;
 	provides IGuiceModule with HomePageDBModule;
 
