@@ -1,20 +1,20 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
+import com.jwebmp.core.Feature;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.Span;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCircleChart;
-import com.jwebmp.examples.demos.homepage.components.general.events.SourceCodeModalDisplayEvent;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
-import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
-import com.jwebmp.plugins.fontawesome.FontAwesome;
-import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
 import com.jwebmp.websockets.JWebMPSocket;
+
+import javax.servlet.http.HttpSession;
 
 public class ButtonRowPart<J extends ButtonRowPart<J>>
 		extends BSRow<J>
@@ -24,6 +24,23 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		setID("buttonRowPart");
 		resetHorizontalSinks();
 		Div responsive = new Div();
+		responsive.addFeature(new Feature("CirclifulCustom", responsive)
+		{
+			@Override
+			protected void assignFunctionsToComponent()
+			{
+				addQuery("$('.circliful-chart').circliful();");
+			}
+		});
+		responsive.addFeature(new Feature("CounterUpFeature", responsive)
+		{
+			@Override
+			protected void assignFunctionsToComponent()
+			{
+				addQuery("$('.counter').counterUp({delay: 100,time: 1200});");
+			}
+		});
+
 		responsive.addClass(BSColumnOptions.Col_Sm_6);
 		responsive.addClass(BSColumnOptions.Col_Lg_3);
 
@@ -97,7 +114,12 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		Div widget4 = new Div();
 		widget4.addClass("widget-simple-chart text-right card-box");
 
-		int count = JWebMPSocket.getWebSocketSessionBindings().size();
+		int count = 0;
+		HttpSession session = GuiceContext.get(HttpSession.class);
+		if(!JWebMPSocket.getWebSocketSessionBindings().containsValue(session.getId()))
+			count = JWebMPSocket.getWebSocketSessionBindings().size() + 1;
+		else
+			count = JWebMPSocket.getWebSocketSessionBindings().size();
 
 		Div chart4 = new MintonCircleChart(count + "", "99", "#7266ba", "#505A66");
 		widget4.add(chart4);

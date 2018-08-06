@@ -7,8 +7,7 @@ import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.base.html.Paragraph;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.Operand;
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.ComingSoon;
 import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggableDemoScreen;
@@ -144,17 +143,14 @@ public class PluginDemoScreen
 		mavenDisplayDiv = buildDependencyInformation(StringEscapeUtils.escapeHtml4(
 				FileTemplates.getFileTemplate(getClass(), getClassCanonicalName() + "mavenpom.txt", "mavenpom.txt")
 				             .toString()));
-		leftColumnTop.add(new MintonPanel("Dependency Information", "bg-purple", mavenDisplayDiv).addClass("col-12"));
+		leftColumnTop.add(mavenDisplayDiv).addClass("col-12");
 
 		artiInfo = buildArtifactInformation();
-		rightColumnTop.add(new MintonPanel("Artifact Information", "bg-purple", artiInfo).addClass("col-12"));
+		rightColumnTop.add(artiInfo).addClass("col-12");
 
-		optionBrowsers.forEach(a ->
-		                       {
-			                       rightColumnTop.add(a);
-		                       });
+		optionBrowsers.forEach(a ->rightColumnTop.add(a));
 
-		fullColumn.add(sourceCodeContentPanel());
+		//fullColumn.add(sourceCodeContentPanel());
 
 		row.add(fullColumn);
 		row.add(rightColumn);
@@ -239,28 +235,6 @@ public class PluginDemoScreen
 		}
 
 		return mavenDisplayDiv;
-	}
-
-	private SourceCodeContentPanel sourceCodeContentPanel()
-	{
-		if (featureTiles.getChildren()
-		                .isEmpty() || componentTiles.getChildren()
-		                                            .isEmpty())
-		{
-			return null;
-		}
-		DivSimple<?> homeScreen = new DivSimple<>();
-		SourceCodeContentPanel<?> sc = new SourceCodeContentPanel<>("Source Code Content Panel", homeScreen).setShowHeader(false)
-		                                                                                                    .setShowCode(false)
-		                                                                                                    .setShowRefresh(true);
-
-		sc.getContent()
-		  .add(featureTiles);
-
-		sc.getContent()
-		  .add(componentTiles);
-
-		return sc;
 	}
 
 	@CacheResult

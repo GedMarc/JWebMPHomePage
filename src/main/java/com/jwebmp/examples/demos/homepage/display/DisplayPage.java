@@ -1,6 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.jwebmp.core.Feature;
 import com.jwebmp.core.Page;
 import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.ajax.AjaxCall;
@@ -12,10 +13,9 @@ import com.jwebmp.core.utilities.StaticStrings;
 import com.jwebmp.core.utilities.regex.RegularExpressionsDTO;
 import com.jwebmp.entityassist.enumerations.ActiveFlag;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
-import com.jwebmp.examples.demos.homepage.display.rightbar.RightBar;
 import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
@@ -33,6 +33,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static com.jwebmp.core.base.servlets.enumarations.ComponentTypes.*;
 import static com.jwebmp.guicedinjection.GuiceContext.*;
 
 /**
@@ -110,6 +111,18 @@ public class DisplayPage
 
 		response.addComponent(GuiceContext.getInstance(West.class));
 		response.addComponent(GuiceContext.getInstance(TopBar.class));
+
+		if(isMobileOrSmartTablet())
+		{
+			response.getFeatures().add(new Feature("SlideCloseWest"){
+
+				@Override
+				protected void assignFunctionsToComponent()
+				{
+					addQuery("lay_wrapper.slideClose('west');");
+				}
+			});
+		}
 
 		if(!call.getParameters()
 		        .containsKey("p"))

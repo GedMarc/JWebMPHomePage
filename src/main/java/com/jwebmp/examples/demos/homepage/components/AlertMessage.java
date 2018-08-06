@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.components;
 
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions;
-import com.jwebmp.plugins.fontawesome.FontAwesome;
+import com.jwebmp.plugins.fontawesome5.FontAwesome;
 
 public class AlertMessage
 		extends BSAlert<AlertMessage>

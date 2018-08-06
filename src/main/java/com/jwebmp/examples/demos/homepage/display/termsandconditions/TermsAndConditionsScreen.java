@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.termsandconditions;
 import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.base.html.Paragraph;
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;

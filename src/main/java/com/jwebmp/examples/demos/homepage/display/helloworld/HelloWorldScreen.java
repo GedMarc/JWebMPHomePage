@@ -7,8 +7,7 @@ import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.base.html.interfaces.GlobalChildren;
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
@@ -22,7 +21,6 @@ import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.util.Map;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
@@ -97,7 +95,6 @@ public class HelloWorldScreen
 		                                                                                            .addClass(Col_12));
 
 		DivSimple<?> sourceExampleDiv = new DivSimple();
-		MintonPanel<?> portlet = new MintonPanel<>("Source Examples", Bg_Secondary.toString(), sourceExampleDiv);
 
 		BSNavTabs<?> sourceTabs = new BSNavTabs<>();
 		sourceTabs.addClass(BSNavsOptions.Tabs_Bordered);
@@ -146,11 +143,9 @@ public class HelloWorldScreen
 				"Extending a CSSComponent will allow you to create and group features functions events and queries to any grouped class selector that specifies the ID of the component.");
 
 		buildClassTab(sourceTabs);
-
 		sourceExampleDiv.add(sourceTabs);
 
-		portlet.setShowHeader(false);
-		d.add(portlet);
+		d.add(sourceExampleDiv);
 
 		return d;
 	}
@@ -162,7 +157,6 @@ public class HelloWorldScreen
 		                                                                                            .addClass(Col_12));
 
 		DivSimple<?> sourceExampleDiv = new DivSimple();
-		MintonPanel<?> portlet = new MintonPanel<>("Source Examples", Bg_Secondary.toString(), sourceExampleDiv);
 
 		BSNavTabs<?> sourceTabs = new BSNavTabs<>();
 		sourceTabs.addClass(BSNavsOptions.Tabs_Bordered);
@@ -229,8 +223,7 @@ public class HelloWorldScreen
 
 		sourceExampleDiv.add(sourceTabs);
 
-		portlet.setShowHeader(false);
-		d.add(portlet);
+		d.add(sourceExampleDiv);
 
 		return d;
 	}
@@ -240,7 +233,6 @@ public class HelloWorldScreen
 		Div d = new Div();
 
 		DivSimple<?> sourceExampleDiv = new DivSimple();
-		MintonPanel<?> portlet = new MintonPanel<>("Source Examples", Bg_Secondary.toString(), sourceExampleDiv);
 
 		BSNavTabs<?> sourceTabs = new BSNavTabs<>();
 		sourceTabs.addClass(BSNavsOptions.Tabs_Bordered);
@@ -257,9 +249,7 @@ public class HelloWorldScreen
 				                                                         .replace("    ", "  "))));
 
 		sourceExampleDiv.add(sourceTabs);
-
-		portlet.setShowHeader(false);
-		d.add(portlet);
+		d.add(sourceExampleDiv);
 
 		return d;
 	}

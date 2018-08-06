@@ -4,7 +4,7 @@ import com.jwebmp.core.Page;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.guicedinjection.GuiceContext;

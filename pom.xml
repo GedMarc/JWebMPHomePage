@@ -75,13 +75,14 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
-        <dependency>
+   <!--     <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-font-awesome</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
+        </dependency>-->
+
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-font-awesome5</artifactId>
@@ -89,13 +90,15 @@
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
-        <dependency>
+
+    <!--    <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-glyphicons</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
+-->
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-metro-tiles</artifactId>
@@ -136,21 +139,21 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
-        <dependency>
+       <!-- <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-ion-icons</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
-
+        </dependency>-->
+<!--
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-material-design-icons</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -209,6 +212,7 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
+<!--
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-d3-reigngold-tilford-tree</artifactId>
@@ -216,6 +220,7 @@
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
+-->
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -264,6 +269,7 @@
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
+<!--
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -272,6 +278,7 @@
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
+-->
 
         <dependency>
             <groupId>com.jwebmp</groupId>
@@ -431,12 +438,12 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
-        <dependency>
+   <!--     <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-material-icons</artifactId>
             <version>${project.version}</version>
             <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.jwebmp</groupId>

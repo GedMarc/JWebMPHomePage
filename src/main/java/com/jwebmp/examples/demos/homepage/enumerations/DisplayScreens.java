@@ -1,6 +1,6 @@
 package com.jwebmp.examples.demos.homepage.enumerations;
 
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutThisSiteScreen;
 import com.jwebmp.examples.demos.homepage.display.about.UnderTheHoodScreen;

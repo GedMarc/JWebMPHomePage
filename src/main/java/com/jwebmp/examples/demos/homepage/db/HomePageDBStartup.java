@@ -16,7 +16,5 @@ public class HomePageDBStartup
 	public HomePageDBStartup(@HomePageDB PersistService persistService)
 	{
 		persistService.start();
-		LogFactory.getLog("HomePage DB Startup")
-		          .info("HomePage DB Startup : Started");
 	}
 }

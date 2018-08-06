@@ -7,7 +7,7 @@ import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
-import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
@@ -65,34 +65,33 @@ public class DemoScreen
 
 		if (!features.isEmpty())
 		{
-			rightSide.add(new MintonPanel<>("Features", buildPrettyFromList(features)));
+			rightSide.add( buildPrettyFromList(features));
 		}
 		if (!events.isEmpty())
 		{
 			getDemoPage().add("<br/><br/>");
-			getDemoPage().add(new MintonPanel<>("Events", buildPrettyFromList(events)));
+			getDemoPage().add(buildPrettyFromList(events));
 		}
 		if (!classesOfInterest.isEmpty())
 		{
-			getDemoPage().add(new MintonPanel<>("Classes of Interest", buildPrettyFromList(classesOfInterest)));
+			getDemoPage().add(buildPrettyFromList(classesOfInterest));
 		}
 		if (!quicknotes.isEmpty())
 		{
-			rightSide.add(new MintonPanel<>("Notes", buildPrettyFromList(quicknotes)));
+			rightSide.add(buildPrettyFromList(quicknotes));
 		}
 
 		if (optionsObject != null)
 		{
 			OptionsBrowser optionsBrowser = new OptionsBrowser(optionsObject);
-			rightSide.add(new MintonPanel<>("Options API", optionsBrowser).setBgColor("bg-purple")
-			                                                              .setFgColor("text-white"));
+			rightSide.add(optionsBrowser);
 		}
 		else
 		{
 			rightSide.add(getOptionsDiv());
 		}
 
-		leftSide.add(new MintonPanel<>("Demo Panel", getDemoPage()));
+		leftSide.add(getDemoPage());
 
 		drawingPane.addStyle("min-height:400px;")
 		           .addClass(W_100)

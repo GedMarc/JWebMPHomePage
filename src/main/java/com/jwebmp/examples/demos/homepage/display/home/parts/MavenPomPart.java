@@ -6,7 +6,10 @@ import com.jwebmp.core.base.html.interfaces.GlobalChildren;
 import com.jwebmp.core.base.html.interfaces.GlobalFeatures;
 import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
 import com.jwebmp.examples.demos.homepage.components.PrettyInverseButton;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
+import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
+import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardFooter;
 import com.jwebmp.plugins.bootstrap4.listgroup.tabs.BSListGroupTabs;
 import com.jwebmp.plugins.bootstrap4.listgroup.tabs.BSTabContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
@@ -21,10 +24,14 @@ import com.jwebmp.plugins.jstree.options.JSTreeNodeOptions;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 import org.apache.commons.lang3.StringEscapeUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions.*;
+import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 public class MavenPomPart<J extends MavenPomPart<J>>
-		extends DivSimple<J>
+		extends DisplayPart<J>
 {
 	public MavenPomPart()
 	{
@@ -33,29 +40,9 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 		Div<GlobalChildren, ?, GlobalFeatures, GlobalEvents, ?> nightlyBuilds = new Div<>();
 		Div<GlobalChildren, ?, GlobalFeatures, GlobalEvents, ?> pageServicing = new Div<>();
 
-		JQSourceCodePrettify<?> prettifyPom = new JQSourceCodePrettify<>();
-		prettifyPom.setSourceCodeLanguage(SourceCodeLanguages.XML);
-		prettifyPom.setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HomePage.class, "PomDependency", "pomdependency.txt")
-		                                                               .toString()));
-		prettifyPom.addStyle("background:black;");
-
-		jdk8QuickStart.add(prettifyPom);
-
-		JQSourceCodePrettify<?> prettifyPomJRE10 = new JQSourceCodePrettify<>();
-		prettifyPomJRE10.setSourceCodeLanguage(SourceCodeLanguages.XML);
-		prettifyPomJRE10.setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HomePage.class, "PomDependency10", "pomdependency_10.txt")
-		                                                               .toString()));
-		prettifyPomJRE10.addStyle("background:black;");
-
-		jdk10QuickStart.add(prettifyPomJRE10);
-
-		JQSourceCodePrettify<?> prettifyPomRepository = new JQSourceCodePrettify<>();
-		prettifyPomRepository.setSourceCodeLanguage(SourceCodeLanguages.XML);
-		prettifyPomRepository.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
-		prettifyPomRepository.addStyle("background:black;");
-		prettifyPomRepository.setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HomePage.class, "PomRepository", "pomrepository.txt")
-		                                                                         .toString()));
-		nightlyBuilds.add(prettifyPomRepository);
+		addSourceToContainer(HomePage.class, "pomdependency.txt", XML, jdk8QuickStart);
+		addSourceToContainer(HomePage.class, "pomdependency_10.txt", XML, jdk10QuickStart);
+		addSourceToContainer(HomePage.class, "pomrepository.txt", XML, nightlyBuilds);
 
 		BSNavTabs tabs = new BSNavTabs<>();
 		tabs.getNavs().addClass(Tabs_Bordered)
@@ -66,11 +53,11 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 		BSTabContainer tab2 = tabs.addTab("JDK 10",
 		                                  jdk10QuickStart, false);
 
-		BSTabContainer tab3 = tabs.addTab("Nightly Builds",
-		                                  nightlyBuilds, false);
-
-		BSTabContainer tab4 = tabs.addTab("Page Providing",
+		BSTabContainer tab4 = tabs.addTab("Structure",
 		                                  pageServicing, false);
+
+		BSTabContainer tab3 = tabs.addTab("Nightly",
+		                                  nightlyBuilds, false);
 
 		JSTree<?> directoryStructureExample = new JSTree<>();
 		directoryStructureExample.setTheme(new JSTreeDefaultDarkTheme());
@@ -79,35 +66,31 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 		JSTreeListItem<?> rootItem = new JSTreeListItem<>("src");
 		rootItem.getOptions()
 		        .setDisabled(false)
-		        .setIcon("fa fa-toggle-down")
+		        .setIcon("far fa-caret-circle-down")
 		        .setOpened(true);
-		JSTreeListItem<?> folder1 = rootItem.addItem("META-INF", new JSTreeNodeOptions<>().setIcon("fa fa-folder").setOpened(true));
-		JSTreeListItem<?> folder2 = folder1.addItem("services", new JSTreeNodeOptions<>().setIcon("fa fa-folder").setOpened(true));
-		JSTreeListItem<?> file1 = folder2.addItem("com.jwebmp.core.services.IPage", new JSTreeNodeOptions<>().setIcon("fa fa-file"));
+		JSTreeListItem<?> folder1 = rootItem.addItem("META-INF", new JSTreeNodeOptions<>().setIcon("far fa-folder-open").setOpened(true));
+		JSTreeListItem<?> folder2 = folder1.addItem("services", new JSTreeNodeOptions<>().setIcon("far fa-folder-open").setOpened(true));
+		JSTreeListItem<?> file1 = folder2.addItem("com.jwebmp.core.services.IPage", new JSTreeNodeOptions<>().setIcon("far fa-file"));
+		JSTreeListItem<?> folderResources = folder1.addItem("resources", new JSTreeNodeOptions<>().setIcon("far fa-folder-open").setOpened(true));
+		JSTreeListItem<?> file2 = folderResources.addItem("favicon.ico", new JSTreeNodeOptions<>().setIcon("far fa-file-alt"));
 
 		directoryStructureExample.addRoot(rootItem);
 		directoryStructureExample.setID("directory-structure-example");
 
 		pageServicing.add(directoryStructureExample);
-
 		pageServicing.add(new Paragraph<>("For JDK 10 specify your provides list"));
+		addSourceToContainer(HomePage.class, "requiresdepedency_10.txt", JS, pageServicing);
 
-		JQSourceCodePrettify<?> pageServicingExample = new JQSourceCodePrettify<>();
-		pageServicingExample.setSourceCodeLanguage(SourceCodeLanguages.XML);
-		pageServicingExample.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
-		pageServicingExample.addStyle("background:black;");
-		pageServicingExample.setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HomePage.class, "JRE10Requires", "requiresdepedency_10.txt")
-		                                                                         .toString()));
-		pageServicing.add(pageServicingExample);
+		addCardBody().add(tabs);
+		BSCardFooter footer = addFooter();
 
-		add(tabs);
-
-
-		add(new PrettyInverseButton<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-HelloWorld/archive/master.zip").setTargetFrameName("_blank")
+		footer.add(new PrettyInverseButton<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-HelloWorld/archive/master.zip").setTargetFrameName("_blank")
 		                                                                                                                  .setText("Download Standalone HelloWorld"));
-		add(new PrettyInverseButton<>("https://github.com/GedMarc/JWebMPHomePage").setTargetFrameName("_blank")
+		footer.add(new PrettyInverseButton<>("https://github.com/GedMarc/JWebMPHomePage").setTargetFrameName("_blank")
 		                                                                          .addClass(BSMarginOptions.MarginLeft_1)
 		                                                                          .setText("Download Demo Site Source Code"));
+
+		addStyle("margin-bottom:1rem;");
 	}
 
 }

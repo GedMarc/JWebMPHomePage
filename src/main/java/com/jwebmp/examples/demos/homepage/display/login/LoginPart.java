@@ -4,44 +4,39 @@ import com.jwebmp.core.Page;
 import com.jwebmp.core.base.angular.AngularAttributes;
 import com.jwebmp.core.base.angular.forms.enumerations.InputErrorValidations;
 import com.jwebmp.core.base.html.Div;
-import com.jwebmp.core.base.html.HorizontalRule;
 import com.jwebmp.core.base.html.attributes.InputPasswordTypeAttributes;
 import com.jwebmp.core.base.html.inputs.InputEmailType;
 import com.jwebmp.core.base.html.inputs.InputPasswordType;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
-import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCheckBox;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordEvent;
-import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButton;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonSizeOptions;
+import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.forms.BSForm;
 import com.jwebmp.plugins.bootstrap4.forms.groups.sets.BSFormInputGroup;
 import com.jwebmp.plugins.bootstrap4.modal.BSModal;
+import com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSColoursOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSSpacingOptions;
-import com.jwebmp.plugins.fontawesome.FontAwesome;
-import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
+import com.jwebmp.plugins.fontawesome5.FontAwesome;
+import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
 
 import static com.jwebmp.core.base.html.attributes.InputButtonTypeAttributes.*;
 
 public class LoginPart
-		extends SourceCodeContentPanel
+		extends DisplayPart
 {
 	public LoginPart()
 	{
-		super("Login", DisplayCodeParts.Login, null);
-		setShowHeader(false);
-		setShowCode(true);
-		Div openSourcePane = new Div();
-		setContent(openSourcePane);
-
-		Div contents = new Div();
+		super();
+		BSCardBody<?> body = addCardBody();
 
 		BSRow loginFormRow = new BSRow<>();
 		BSForm<?> loginForm = new BSForm<>().setID("loginForm");
@@ -68,11 +63,11 @@ public class LoginPart
 		BSButton submitButton = buildSubmitButton(loginForm);
 		submitButton.addEvent(new LoginEvent(submitButton));
 
-		contents.add(loginFormRow);
+		body.add(loginFormRow);
 
-		contents.add(buildButtonRow(loginForm, loginInputGroup, inputGroup));
+		body.add(buildButtonRow(loginForm, loginInputGroup, inputGroup));
 
-		openSourcePane.add(contents);
+		addStyle("margin-bottom:1rem;");
 	}
 
 	/**
@@ -131,6 +126,7 @@ public class LoginPart
 	private BSRow buildButtonRow(BSForm<?> loginForm, BSFormInputGroup loginInputGroup, BSFormInputGroup inputGroup)
 	{
 		BSRow row = new BSRow();
+		row.addClass(BSNavsOptions.Justify_Content_Center);
 		row.resetHorizontalSinks();
 		PrettyPrimaryButton<?> registerButton = new PrettyPrimaryButton<>().setText("Register")
 		                                                                   .addClass(BSColoursOptions.Text_White)

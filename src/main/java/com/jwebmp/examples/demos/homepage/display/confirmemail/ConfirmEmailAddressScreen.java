@@ -9,7 +9,7 @@ import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.HorizontalRule;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;

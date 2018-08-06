@@ -2,41 +2,26 @@ package com.jwebmp.examples.demos.homepage.display.home.parts;
 
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.DivSimple;
-import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCheckBox;
-import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
+import com.jwebmp.plugins.fontawesome5.FontAwesome;
+import com.jwebmp.plugins.fontawesome5.FontAwesomeList;
+import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 
 public class ReasonsWhyPart
-		extends DivSimple
+		extends DisplayPart
 
 {
 	public ReasonsWhyPart()
 	{
-		DivSimple<?> sourceExampleDiv = new DivSimple();
-		SourceCodeContentPanel<?> portlet = new SourceCodeContentPanel<>("The Difference Is In The Code", DisplayCodeParts.ReasonsWhy, sourceExampleDiv);
-		portlet.setBgColor(Bg_Secondary);
-		portlet.setShowCode(false);
-		portlet.setShowHeader(false);
+		FontAwesomeList list = new FontAwesomeList();
+		list.addItem("Pure Java Development", new FontAwesome<>().setIcon(FontAwesomeIcons.check));
+		list.addItem("Non-Invasive<br/>Servlets JSP JSF continue as normal", new FontAwesome<>().setIcon(FontAwesomeIcons.check));
+		list.addItem("Standalone Embedded Container EE7 EE8 MicroProfile", new FontAwesome<>().setIcon(FontAwesomeIcons.check));
 
-		sourceExampleDiv.add(buildCheckbox("Pure Java Development", true, "checkbox-primary"));
-		sourceExampleDiv.add(buildCheckbox("Non-Invasive. <br/>Servlets, JSPs,JSF continue as normal", true, "checkbox-success"));
-		sourceExampleDiv.add(buildCheckbox("Standalone Embedded Container EE7 EE8 MicroProfile", true, "checkbox-info"));
-		sourceExampleDiv.add(buildCheckbox("Truly Portable", true, "checkbox-pink"));
-
-		/*sourceExampleDiv.add(buildCheckbox("Focused on Technology.<br/>Maintainability, and Scalability.", true, "checkbox-purple"));
-		sourceExampleDiv.add(buildCheckbox("Speed Up Deliveries and Development<br/>The Code Always Comes First", true, "checkbox-pink"));
-		sourceExampleDiv.add(buildCheckbox("Browser, Android, IOS, <br/>Windows Desktop and Universal Applications <br/> <i>Cordova</i> Supported!", true, "checkbox-pink"));
-
-		sourceExampleDiv.add(buildCheckbox("Testable. End To End. Out The Box.<br/> 100% UT and IT is stock standard", true, "checkbox-success"));
-		sourceExampleDiv.add(buildCheckbox("Unbelievably Fast.<br/>Type Safe, Domain Driven", true, "checkbox-info"));
-
-		sourceExampleDiv.add(buildCheckbox("Domain Event System <br/>Domain Event Stores", true, "checkbox-purple"));
-		sourceExampleDiv.add(buildCheckbox("Open Unit Test </br>Open Quality Gate Infrastructure", true, "checkbox-pink"));
-		sourceExampleDiv.add(buildCheckbox("Community Driven, Community Supported", true, "checkbox-inverse"));
-		sourceExampleDiv.add(buildCheckbox("Open Project Management<br/>Contribute to the Architecture", true, "checkbox-dark"));*/
-		add(portlet);
+		addCardBody().add(list);
 	}
 
 	private Div buildCheckbox(String label, boolean checked, String clazz)

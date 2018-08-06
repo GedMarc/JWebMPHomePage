@@ -2,8 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.about;
 
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.html.*;
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
@@ -15,9 +14,9 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
-import com.jwebmp.plugins.fontawesome.FontAwesome;
-import com.jwebmp.plugins.fontawesome.FontAwesomeIcons;
-import com.jwebmp.plugins.fontawesome.FontAwesomeProperties;
+import com.jwebmp.plugins.fontawesome5.FontAwesome;
+import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
+import com.jwebmp.plugins.fontawesome5.options.FontAwesomeSizes;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
@@ -26,29 +25,41 @@ import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 public class AboutThisSiteScreen
 		extends DisplayScreen<AboutThisSiteScreen>
 {
+	public AboutThisSiteScreen()
+	{
+		super("Site Development");
+	}
+
 	@Override
 	public BSContainer<?> getContentContainer()
 	{
 		BSContainer container = new BSContainer(BSContainerOptions.Container_Fluid);
 
+		Div textRow = new Div();
+		textRow.add(new H3("This page displays information relating to this site and its development."));
 		BSRow row = new BSRow();
+
 
 		BSColumn column1 = new BSColumn(BSColumnOptions.Col_Md_6);
 		BSColumn column2 = new BSColumn(BSColumnOptions.Col_Md_6);
 
-		column1.add(new H1<>(HTML_TAB + "What You Looking At"));
+		column1.add(new H1<>("All Optional Plugins"));
+		column1.add(buildSiteSpecs());
 
-		column2.add(new H1<>(HTML_TAB + "Do.. Whatever really"));
-		column2.add(new MintonPanel<>("Why are all the pages built differently?", buildWhatThisIsAllAbout(), "bg-primary").setShowHeader(false));
+		column2.add(new H1<>("Do.. Whatever really"));
+		column2.add(buildOptionsBrowserAbout());
 
-		column1.add(new MintonPanel<>("Site Specs", buildSiteSpecs(), "bg-primary").setShowHeader(false));
-
-		column2.add(new MintonPanel<>("Options Browser", buildOptionsBrowserAbout(), "bg-primary").setShowHeader(false));
 
 		row.add(column1);
 		row.add(column2);
 
+		container.add(textRow);
 		container.add(row);
+
+		Div bottomRow = new Div();
+		bottomRow.add(buildWhatThisIsAllAbout());
+		container.add(bottomRow);
+
 		return container;
 	}
 
@@ -56,11 +67,10 @@ public class AboutThisSiteScreen
 	{
 		DivSimple<?> div = new DivSimple<>();
 		div.add(new H3<>("Non-Restrictive Development"));
-		div.add("Code icons <strong>" + FontAwesome.icon(FontAwesomeIcons.code, FontAwesomeProperties.$2x)
+		/*div.add("Code icons <strong>" + FontAwesome.icon(FontAwesomeIcons.code, FontAwesomeSizes.$2x)
 		                                           .setTiny(true)
-		                                           .toString(
-				                                           true) + "</strong> display meaningful snippets of the widget that you are viewing to quickly grasp how to include it in your own sites.");
-
+		                                           .toString(true) + "</strong> display meaningful snippets of the widget that you are viewing to quickly grasp how to include it in your own sites.");
+*/
 		div.add("This site uses many different methods of doing the same thing across many different pages.I think a core part should not be restricting development to any particular pattern.");
 
 		div.add("There are tons of examples of the capabilities of the framework and how <i>any</i> pattern of your choice may be used in your web and mobile development, whether you are templating and importing HTMLs with specified variables or going native Java only, you're free to develop to your own preference.");
@@ -132,7 +142,7 @@ public class AboutThisSiteScreen
 
 		OptionsBrowser op = new OptionsBrowser(new AjaxCall<>()).setID("opAboutTree");
 		leftColumn.add(op);
-		leftColumn.add("Double click, or select the expand icon for more details");
+		leftColumn.add("</br>Double click, or select the expand icon for more details");
 
 		leftColumn.add("The options browser is a simple reflection of any object and can be found on all the demo pages");
 		leftColumn.add("These classes are referenced from the getOptions() method available and produce the entire API of the referenced web library");

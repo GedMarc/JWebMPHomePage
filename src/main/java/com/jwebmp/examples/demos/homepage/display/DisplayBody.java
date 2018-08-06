@@ -7,7 +7,6 @@ import com.jwebmp.core.base.references.CSSReference;
 import com.jwebmp.core.base.references.JavascriptReference;
 import com.jwebmp.core.base.servlets.enumarations.RequirementsPriority;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
-import com.jwebmp.examples.demos.homepage.components.sourcecode.SourceCodeModal;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.pace.PaceLoaderPageConfigurator;
@@ -76,7 +75,6 @@ public class DisplayBody
 		addClass(BSColumnOptions.W_100);
 
 		add(GuiceContext.getInstance(OuterLayout.class));
-		add(GuiceContext.getInstance(SourceCodeModal.class));
 
 		addJavaScriptReference(new JavascriptReference("e", 1.0, "js/modernizr.min.js").setPriority(RequirementsPriority.Top_Shelf));
 

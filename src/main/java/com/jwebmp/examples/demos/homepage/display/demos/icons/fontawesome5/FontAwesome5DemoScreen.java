@@ -3,9 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome5;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.base.html.Paragraph;
-import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
-import com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.fontawesome5.FontAwesome;
 import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
@@ -22,10 +20,10 @@ public class FontAwesome5DemoScreen
 
 		BSRow row = BSRow.newInstance();
 
-		SourceCodeContentPanel panel = new SourceCodeContentPanel("Font Awesome 5 Icons", DisplayCodeParts.FontAwesome, null);
+/*		SourceCodeContentPanel panel = new SourceCodeContentPanel("Font Awesome 5 Icons", DisplayCodeParts.FontAwesome, null);
 		panel.getContent()
 		     .add(row);
-		panel.setShowHeader(true);
+		panel.setShowHeader(true);*/
 
 		Div details = new Div<>().addClass("col-12");
 		details.add(
@@ -33,7 +31,7 @@ public class FontAwesome5DemoScreen
 		details.add("Adding your Pro license is as simple as FontAwesome5PageConfigurator.setRootReferenceDir(\"bower_components/font...\");");
 		addDiv(details);
 
-		addDiv(panel);
+		//addDiv(panel);
 
 		for (FontAwesomeIcons fontAwesomeIcon : FontAwesomeIcons.values())
 		{

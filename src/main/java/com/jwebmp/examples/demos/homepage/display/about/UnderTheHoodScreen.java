@@ -1,56 +1,122 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
 import com.jwebmp.core.base.html.*;
-import com.jwebmp.examples.demos.homepage.components.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.SourceCodeContentPanel;
-import com.jwebmp.examples.demos.homepage.components.general.MintonPanel;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
+import com.jwebmp.plugins.bootstrap4.cards.BSCard;
+import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
+import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 
-import static com.jwebmp.examples.demos.homepage.enumerations.DisplayCodeParts.*;
+import java.util.ArrayList;
+import java.util.List;
+
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
 public class UnderTheHoodScreen
 		extends DisplayScreen<UnderTheHoodScreen>
 {
+	public UnderTheHoodScreen()
+	{
+		super("JWebMP Servicing");
+	}
+
 	@Override
 	public BSContainer<?> getContentContainer()
 	{
 		BSContainer container = new BSContainer(BSContainerOptions.Container_Fluid);
 
+		BSCard<?> card = new BSCard();
+		card.addStyle("background-color", "#333");
+
+		BSNavTabs<?> tabs = new BSNavTabs<>().setBordered(true)
+		                                     .setJustified(true)
+		                                     .removeSpacingTop();
+		tabs.addTab("About", buildDefaultScreen(), true);
+		tabs.addTab("Injection", buildInjection(), false);
+		tabs.addTab("JWebMP", buildJWebMP(), false);
+		tabs.addTab("JPA JTA", buildPersistence(), false);
+		card.addCardBody()
+		    .removePadding()
+		    .add(tabs);
+
+
+	/*	String[] tabHeaders = new String[]{"About","Injection","JWebMP","JPA JTA","JCache"};
+		List<BSCardBody> tabContents = new ArrayList<>();
+
+		tabContents.add(buildDefaultScreen());
+		tabContents.add(buildInjection());
+		tabContents.add(buildPersistence());
+		tabContents.add(buildJCache());
+*/
+
+		//	card.addTabs(tabHeaders, tabContents);
+
+		container.add(card);
+		return container;
+	}
+
+	private BSCardBody buildDefaultScreen()
+	{
+		BSCardBody body = new BSCardBody().removePadding();
 		BSRow row = new BSRow();
 
 		BSColumn column1 = new BSColumn(BSColumnOptions.Col_Md_8);
 		BSColumn column2 = new BSColumn(BSColumnOptions.Col_Md_4);
 
+		column1.add(buildUnderTheHood());
+		column1.add(buildPowerfulMinimalist());
 
-		column1.add(new MintonPanel<>("Whats running this thing", buildUnderTheHood(), "bg-primary").setShowHeader(false));
-		column1.add(new MintonPanel<>("Whats running this thing", buildPowerfulMinimalist(), "bg-primary").setShowHeader(false));
+		column1.add(buildComponentRender());
 
-		column1.add(new MintonPanel<>("Component Common Methods", buildComponentRender(), "bg-primary").setShowHeader(false));
-
-		column2.add(new MintonPanel<>("Injection Assists", buildSiteControl(), "bg-primary").setShowHeader(false));
-		column2.add(new MintonPanel<>("Plugins?", buildPluginsPanel(), "bg-primary").setShowHeader(false));
+		//column2.add(buildSiteControl());
+		column2.add(buildPluginsPanel());
 
 		row.add(column1);
 		row.add(column2);
 
-		container.add(row);
-		return container;
+		body.add(row);
+		return body;
+	}
+
+	private BSCardBody buildJWebMP()
+	{
+		BSCardBody body = new BSCardBody().removePadding();
+		return body;
+	}
+
+	private BSCardBody buildInjection()
+	{
+		BSCardBody body = new BSCardBody().removePadding();
+		return body;
+	}
+
+	private BSCardBody buildPersistence()
+	{
+		BSCardBody body = new BSCardBody().removePadding();
+		return body;
+	}
+
+	private BSCardBody buildJCache()
+	{
+		BSCardBody body = new BSCardBody().removePadding();
+		return body;
 	}
 
 	private Div buildUnderTheHood()
 	{
-		Div div = new DivSimple();
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
 		div.add(new H3("Core Libraries"));
 		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                  .addClass(Table_Hover);
@@ -90,7 +156,6 @@ public class UnderTheHoodScreen
 
 		div.add(table);
 
-
 		div.add(new H3("Web Libraries"));
 
 		BSTable<?> webTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
@@ -111,13 +176,11 @@ public class UnderTheHoodScreen
 		                                          .add(new TableCell<>("maven"))
 		                                          .add(new TableCell<>("Device Info Provider")));
 
-
 		webTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JQuery"))
 		                                          .add(new TableCell<>("3.2.1"))
 		                                          //  .add(new TableCell<>("JQueryPageConfigurator.class"))
 		                                          .add(new TableCell<>("bower"))
 		                                          .add(new TableCell<>("JavaScript API")));
-
 
 		webTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Angular"))
 		                                          .add(new TableCell<>("1.4.6"))
@@ -127,53 +190,40 @@ public class UnderTheHoodScreen
 
 		div.add(webTable);
 
-		return div;
+		return card;
 	}
 
 	private Div buildPowerfulMinimalist()
 	{
-		Div d = new Div();
+		DisplayCard card = new DisplayCard();
+		Div d = card.addCardBody();
 
 		d.add(new H3<>("Going Postal"));
 		d.add("Go straight into mobile and next generation web development utilizing Cordiva and PhoneGap. The Cordovify Plugin enables instant integration with Cordova allowing a complete suite of hybrid device functions for IOS, Android, Browser, Windows Mobile and Windows Universal applications");
 
-		return d;
+		return card;
 	}
 
 	private Div buildComponentRender()
 	{
-		DivSimple<?> div = new DivSimple<>();
-		div.addClass("row");
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
 
-		SourceCodeContentPanel<?> sourcePanel = new SourceCodeContentPanel("System Control", ComponentUtilityMethods, null);
+/*		SourceCodeContentPanel<?> sourcePanel = new SourceCodeContentPanel("System Control", ComponentUtilityMethods, null);
 		sourcePanel.setCodeButtonPanel(false);
 
-		div.add(sourcePanel);
-		return div;
-	}
-
-	private Div buildSiteControl()
-	{
-		DivSimple<?> div = new DivSimple<>();
-		div.addClass("row");
-
-		div.add(new H3<>("Everything Modifyable").addClass(Col_12));
-		div.add(new H5<>("Service Locators are used to configure classpath scanning").addClass(Col_12));
-
-		SourceCodeContentPanel<?> sourcePanel = new SourceCodeContentPanel("Dynamic Call Injections", InjectionControlMethods, null);
-		sourcePanel.setCodeButtonPanel(false);
-		div.add(sourcePanel);
-
-		return div;
+		div.add(sourcePanel);*/
+		return card;
 	}
 
 	private Div buildPluginsPanel()
 	{
-		Div div = new DivSimple();
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
 		div.add(new H3<>("Modular Plugins"));
-		div.add("Plugins are designed in a modular fashion, and are built on an inclusive basis");
-		div.add("Including the Plugin JAR or depedency will add everything necessary to the build, and the Page objects for full reference. <br/>Selective Page References can be enabled.");
-		return div;
+		div.add("Everything is Modular. Simply including the library configures and activates as necessary.");
+		//div.add("Including the Plugin JAR or depedency will add everything necessary to the build, and the Page objects for full reference. <br/>Selective Page References can be enabled.");
+		return card;
 	}
 
 	@Override

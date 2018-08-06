@@ -7,6 +7,7 @@ import com.jwebmp.core.base.html.attributes.LinkAttributes;
 import com.jwebmp.core.base.html.inputs.InputTextType;
 import com.jwebmp.core.base.html.interfaces.children.ListChildren;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
+import com.jwebmp.examples.demos.homepage.components.general.events.MenuIconSwapOnClick;
 import com.jwebmp.examples.demos.homepage.display.login.LogoutEvent;
 import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
 import com.jwebmp.examples.demos.homepage.display.privacy.GoToChatRoomScreenEvent;
@@ -17,6 +18,7 @@ import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTypographyOptions;
+import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
 import com.jwebmp.plugins.jqlayout.enumerations.JQLayoutArea;
 import com.jwebmp.plugins.moment.Moment;
 
@@ -43,7 +45,7 @@ public class TopBar
 			@Override
 			protected void assignFunctionsToComponent()
 			{
-				addQuery("$('#btn-fullscreen').on('click', function () {toggleFullScreen();});");
+				addQuery("$('#btn-fullscreen1').on('click', function () {toggleFullScreen();});");
 			}
 
 		});
@@ -58,9 +60,8 @@ public class TopBar
 			//Logo
 			Div logoLeft = new DivSimple();
 			logoLeft.addClass("topbar-left");
-			Link buttonLink = new Link<>("/", "", "<i class=\"mdi mdi-radar\"></i> <span>JWebMP<i><small>&nbsp;rc1</small></i></span></a>").addClass("logo");
-			logoLeft.add(new DivSimple<>().addClass(BSTypographyOptions.Text_Center)
-			                              .add(buttonLink));
+			Link buttonLink = new Link<>("/", "", "<span style=\"padding-left: 15px;\">JWebMP<i><small>&nbsp;rc1</small></i></span></a>").addClass("logo");
+			logoLeft.add(new DivSimple<>().add(buttonLink));
 
 			add(logoLeft);
 
@@ -76,38 +77,29 @@ public class TopBar
 		nav.addClass("navbar-custom");
 		nav.setTag("nav");
 
-		//Right RIght Side
+		//Right Right Side
 		List<ListChildren, ?, ?, ?> easyButtonList = new List<>(false);
 		easyButtonList.addClass("list-inline float-right mb-0");
 
-		easyButtonList.add(buildTopMenuItem(true, "btn-fullscreen", "mdi mdi-crop-free noti-icon", "45px").addClass("strong"));
+
+		ListItem expandButton =buildTopMenuItem(true, "btn-fullscreen1", "fal fa-expand-arrows-alt fa-2x noti-icon", "45px").addClass("strong");
+		expandButton.addFeature(new MenuIconSwapOnClick(expandButton, FontAwesomeIcons.expand_arrows_alt,FontAwesomeIcons.compress_alt));
+		easyButtonList.add(expandButton);
+
+
 		Page<?> page = GuiceContext.getInstance(Page.class);
 
-		/*ListItem<?> rightSideOpener = buildTopMenuItem(false, "action_screen_opener", "mdi mdi-dots-horizontal noti-icon", "45px").addClass("right-bar-toggle");
-		easyButtonList.add(rightSideOpener);
-
-
-		if (page.isMobileOrSmartTablet())
-		{
-			rightSideOpener.addFeature(GuiceContext.getInstance(OuterLayout.class)
-			                                       .createAddSlideToggleButton(JQLayoutArea.East, rightSideOpener));
-		}
-		else
-		{
-			rightSideOpener.addFeature(GuiceContext.getInstance(OuterLayout.class)
-			                                       .createToggleButton(rightSideOpener, JQLayoutArea.East));
-		}*/
-
-
-		easyButtonList.add((ListChildren) buildTopMenuItem(false, "donateButton", "far fa-hands-usd fa-2x", "45px", "https://paypal.me/MarcMagon", "_blank").addClass("strong"));
+		ListItem donateButton =buildTopMenuItem(false, "donateButton", "far fa-hands-usd fa-2x fa-fw noti-icon", "45px", "https://paypal.me/MarcMagon", "_blank").addClass("strong");
+		easyButtonList.add(donateButton);
 		nav.add(easyButtonList);
 
 		//Middle Right Side (Search and Stuff)
 		List<ListChildren, ?, ?, ?> searchList = new List<>().addClass("list-inline menu-left mb-0").addStyle("height:71px;");
 
 		ListItem leftMenuItem = new ListItem<>().addClass("float-left")
+		                                        .setID("openWestButton")
 		                                        .add(new Button<>().addClass("button-menu-mobile open-left waves-light waves-effect")
-		                                                           .add(new Italic<>().addClass("mdi mdi-menu")));
+		                                                           .add(new Italic<>().addClass("far fa-bars")));
 
 		if (page.isMobileOrSmartTablet())
 		{
@@ -249,59 +241,4 @@ public class TopBar
 		return link;
 	}
 
-	private Link<?> buildDropDownNotificationItem(String backgroundClass, String icon, String title, String description, Date when)
-	{
-		Link<?> link = new Link("#");
-		link.addClass("dropdown-item notify-item");
-
-		DivSimple<?> iconDiv = new DivSimple<>().addClass("notify-icon")
-		                                        .addClass(backgroundClass)
-		                                        .add(new Italic<>().addClass(icon));
-		link.add(iconDiv);
-
-		Paragraph details = new Paragraph<>().addClass("notify-details");
-		details.setText(title);
-		details.setRenderTextBeforeChildren(true);
-
-		Paragraph descriptions = new Paragraph<>();
-		descriptions.setText(description);
-		descriptions.setRenderTextBeforeChildren(true);
-		details.add(descriptions);
-
-		if (when != null)
-		{
-			Moment<?> moment = new Moment<>(when);
-			moment.addClass(BSTypographyOptions.Text_Muted);
-			moment.setTag("small");
-			details.add(moment);
-		}
-		link.add(details);
-
-		return link;
-	}
-
-	private Link<?> buildDropDownNotificationItem(String backgroundClass, String icon, String detailsParagraph, String text)
-	{
-		Link<?> link = new Link("#");
-		link.addClass("dropdown-item notify-item");
-
-		DivSimple<?> iconDiv = new DivSimple<>().addClass("notify-icon")
-		                                        .addClass(backgroundClass)
-		                                        .add(new Italic<>().addClass(icon));
-		link.add(iconDiv);
-
-		Paragraph details = new Paragraph<>().addClass("notify-details");
-		details.setText(detailsParagraph);
-		details.setRenderTextBeforeChildren(true);
-		if (text != null)
-		{
-			Span sp = new Span();
-			sp.setTag("small");
-			sp.addClass(BSTypographyOptions.Text_Muted);
-			details.add(sp);
-		}
-		link.add(details);
-
-		return link;
-	}
 }

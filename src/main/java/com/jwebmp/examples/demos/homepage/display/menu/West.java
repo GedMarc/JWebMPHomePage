@@ -5,10 +5,12 @@ import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.base.html.interfaces.GlobalChildren;
 import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.general.events.MenuIconSwapOnClick;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.accordion.BSAccordion;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
+import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
 
 import static com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens.*;
 
@@ -35,6 +37,7 @@ public class West
 	{
 		setID("west");
 		addClass("left side-menu");
+
 		SlimScrollFeature scrollFeature = new DefaultSlimScroll(this);
 
 		sidebarInner = new Div<>();
@@ -47,6 +50,7 @@ public class West
 
 		ListItem homeItem;
 		globalList.add(homeItem = buildMenuItem("ti-home", "Home"));
+
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
 
 		//buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
@@ -124,7 +128,8 @@ public class West
 
 		dropdownLink.add(iconItalic);
 		dropdownLink.add(span);
-		dropdownLink.add(new Span<>().addClass("menu-arrow pull-right"));
+		dropdownLink.add(new Span<>().addClass("fas fa-angle-double-down menu-arrow pull-right"));
+		dropdownLink.addFeature(new MenuIconSwapOnClick(dropdownLink, FontAwesomeIcons.angle_double_right, FontAwesomeIcons.angle_double_down));
 
 		item.add(dropdownLink);
 

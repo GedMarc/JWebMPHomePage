@@ -12,48 +12,77 @@ import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 public class OuterLayout
 		extends BorderLayout<OuterLayout>
 {
-	/**
-	 * Constructs a new JWLayout Layout Handler with the given parameters
-	 * <p>
-	 *
-	 * @param component
-	 * 		The component to apply the Layout Handler To
-	 */
-	public OuterLayout(ComponentHierarchyBase component)
-	{
-		this();
-	}
+	private BorderLayout<?> innerLayout;
 
 	public OuterLayout()
 	{
 		super();
 		setID("wrapper");
+		innerLayout = new BorderLayout();
+		getCenter().setContentDiv(innerLayout);
 
 		getOptions().getNorth()
 		            .setResizable(false)
 		            .setMinSize(68)
 		            .setMaxSize(68)
-		            .setTogglerLengthOpen(175)
-		            .setTogglerLengthClosed(175);
+		            .setTogglerLengthOpen(200)
+		            .setTogglerLengthClosed(200);
 
-		getWest().getOptions()
-		         .setMinSize(240)
-		         .setMaxSize(240);
-
-		getOptions().getDefaults()
-		            .setResizerClass("btn-custom btn-primary")
-		            .setTogglerClass("btn-custom btn-secondary")
-		            .setResizable(false)
-		            .setSpacingClosed(0)
-		            .setSpacingOpen(0);
-
-		getCenter().getContentDiv()
-		           .add(new PlaceHolder<>("content-updatable"));
 		getNorth().getContentDiv()
-		          .add(new PlaceHolder<>("topbar"));
+		          .add(new PlaceHolder<>("topbar").addStyle("height","70px"));
+
 		getWest().getContentDiv()
 		         .add(new PlaceHolder<>("west"));
-		/*getWest().getOptions()
-		         .setInitClosed(true);*/
+
+
+		innerLayout.setFullScreen(true);
+		innerLayout.setID("innerLayoutContainer");
+		innerLayout.getCenter()
+		           .getContentDiv()
+		           .setID("innerlayout-center-content");
+
+		innerLayout.getCenter()
+		           .getContentDiv()
+		           .add(new PlaceHolder<>("content-updatable"));
+
+		if(!getPage().isMobileOrSmartTablet())
+		{
+			innerLayout.getCenter()
+			           .getHeaders()
+			           .add(new PlaceHolder<>("innerNorth").addStyle("height:60px;"));
+		}
+
+		if (getPage().isMobileOrSmartTablet())
+		{
+			getOptions().getNorth()
+			            //.setInitClosed(true)
+			            .setSpacingClosed(15)
+			            .setResizable(true)
+			            .setResizerClass("btn-custom btn-primary")
+			            .setTogglerClass("btn-custom btn-secondary")
+			            .setSpacingOpen(15)
+			            .setSpacingClosed(15);
+
+			getOptions().getWest().setResizerClass("btn-custom btn-primary")
+			            .setTogglerClass("btn-custom btn-secondary")
+			            .setSpacingOpen(15)
+			            .setSpacingClosed(15)
+			            .setTogglerLengthOpen(200)
+			            .setTogglerLengthClosed(200);
+		}
+		else
+		{
+			getWest().getOptions()
+			         .setMinSize(240)
+			         .setMaxSize(240);
+
+			getOptions().getDefaults()
+			            .setResizerClass("btn-custom btn-primary")
+			            .setTogglerClass("btn-custom btn-secondary")
+			            .setResizable(false)
+			            .setSpacingClosed(0)
+			            .setSpacingOpen(0);
+		}
 	}
+
 }
