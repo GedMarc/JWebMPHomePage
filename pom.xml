@@ -523,7 +523,6 @@
                         <version>${maven.compiler.version}</version>
                         <goals>
                             <goal>compile</goal>
-                            <goal>testCompile</goal>
                         </goals>
                         <configuration>
                             <outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
