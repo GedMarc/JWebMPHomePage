@@ -508,6 +508,13 @@
     <profiles>
         <profile>
             <id>jdk8</id>
+            <dependencies>
+                <dependency>
+                    <groupId>javax.activation</groupId>
+                    <artifactId>javax.activation-api</artifactId>
+                    <version>1.2.0</version>
+                </dependency>
+            </dependencies>
             <build>
                 <plugins>
                     <plugin>

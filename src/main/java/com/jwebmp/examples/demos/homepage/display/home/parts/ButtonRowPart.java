@@ -96,7 +96,7 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		                                       .getAll(Integer.class)
 		                                       .get(0);
 
-		Div chart3 = new MintonCircleChart(totalComponents.toString(), Double.valueOf(totalComponents/1000.0 * 100).intValue() + "", "#f76397", "#505A66");
+		Div chart3 = new MintonCircleChart(totalComponents.toString(), (totalComponents/1000L * 100) + "", "#f76397", "#505A66");
 		widget3.add(chart3);
 
 
