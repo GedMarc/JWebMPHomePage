@@ -2,15 +2,15 @@ package com.jwebmp.examples.demos.homepage.components.general.events;
 
 import com.jwebmp.core.Feature;
 import com.jwebmp.core.base.ComponentHierarchyBase;
-import com.jwebmp.core.base.interfaces.ICSSClassName;
+import com.jwebmp.core.base.interfaces.ICssClassName;
 
 public class MenuIconSwapOnClick
 		extends Feature
 {
-	private ICSSClassName icon1;
-	private ICSSClassName icon2;
+	private ICssClassName icon1;
+	private ICssClassName icon2;
 
-	public MenuIconSwapOnClick(ComponentHierarchyBase component, ICSSClassName icon1, ICSSClassName icon2)
+	public MenuIconSwapOnClick(ComponentHierarchyBase component, ICssClassName icon1, ICssClassName icon2)
 	{
 		super("MenuIconSwopOnClick", component);
 		this.icon1 = icon1;

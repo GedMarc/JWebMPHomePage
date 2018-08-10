@@ -196,55 +196,19 @@ public class UnderTheHoodScreen
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
 		div.add(new H3("Persistence Handling"));
-		div.add("These modules are completely optional, and provide a JPMS/JDK10 implementation for using JPA/JTA." +
+		div.add("These modules are completely optional, and provide a JPMS/JDK10 implementation for using JPA/JTA" +
+		        "<br/>The library uses guice-persist as a base, and requires a registration to IGuiceModule  with a class that extends AbstractDatabaseModule. " +
 		        "<br/>These are backwards compatible with JDK 8");
 
 		BSNavTabs tabs = new BSNavTabs().setBordered(true)
 		                                .setJustified(true)
 		                                .setVerticalLeftTabs(true);
-
 		tabs.getTabContents()
 		    .addClass(W_100);
 
-		Div about = new Div();
-		about.add("This library allows you to bind JPA classes to annotations, method intercept transactions, and programmatically configure all connections on creation" +
-		          "<br/>The library uses guice-persist as a base, and requires a registration to IGuiceModule. " +
-		          "<br/>IDBStartup can be used to load the persistence units asynchronously." +
-		          "<br/>Each Add-On provides a separate configuration and enables the item");
+		tabs.addTab("About", buildPersistenceAboutScreen(), true);
 
-		BSTable<?> settingUpTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                           .addClass(Table_Hover)
-		                                           .addStyle("word-wrap:break-word;table-layout:fixed;");
-		settingUpTable.setSmall(true);
-		settingUpTable.setBordered(true);
-		settingUpTable.setStriped(true);
-
-		settingUpTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
-		                                                                .add(new TableHeaderCell<>("Purpose"))
-		                                               ));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesConnectionInfoReader"))
-		                                                .add(new TableCell<>(
-				                                                "Populates the ConnectionBaseInfo object with properties from the persistence unit, the entire persistence-unit tag.")));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesEntityManagerReader"))
-		                                                .add(new TableCell<>(
-				                                                "Utility Service that creates or modifies the properties HashMap before conversion to ConnectionBaseInfo")));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.ITransactionHandler"))
-		                                                .add(new TableCell<>(
-				                                                "Internal Service that is used to automatically wrap database updates in a valid transaction, if it was missed." +
-				                                                "<br/>Enabled in the add-on, such as BTMAutomatedTransactionHandler.setActive() or JPAAutomatedTransactionHandler.setActive()")));
-		Div sourceDis = new Div();
-		addSourceToContainer(HomePageDBStartup.class, "startupexample.txt", Java, sourceDis);
-
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.IDBStartup"))
-		                                                .add(new TableCell<>("Asynchronously loads the given services in an ExecutorService<br/><br/>")
-				                                                     .add(sourceDis)
-		                                                    ));
-		about.add(settingUpTable);
-		tabs.addTab("About", about, true);
-
-		Div settingUp = new Div();
-
-		tabs.addTab("Setting Up", settingUp, false);
+		tabs.addTab("Setting Up", buildPersistenceSettingUpScreen(), false);
 		tabs.addTab("Request Scoped Transactions", new DivSimple<>().add("1"), false);
 
 		tabs.addTab("JPA Module", new DivSimple<>().add("2"), false);
@@ -255,7 +219,6 @@ public class UnderTheHoodScreen
 		tabs.addTab("Wildfly Addon", new DivSimple<>().add("2"), false);
 		tabs.addTab("Glassfish Addon", new DivSimple<>().add("2"), false);
 		tabs.addTab("HazelCast Addon", new DivSimple<>().add("2"), false);
-
 
 		div.add(tabs);
 
@@ -276,6 +239,52 @@ public class UnderTheHoodScreen
 		return card;
 	}
 
+	private Div buildPersistenceAboutScreen()
+	{
+
+		Div about = new Div();
+		about.add("Add-Ons provide additional configurations for enables modules");
+		about.add("Modules provide core functionality for their usage");
+
+		BSTable<?> settingUpTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
+		                                           .addClass(Table_Hover)
+		                                           .fitInContainer();
+		settingUpTable.setSmall(true);
+		settingUpTable.setBordered(true);
+		settingUpTable.setStriped(true);
+
+		settingUpTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
+		                                                                .add(new TableHeaderCell<>("Purpose"))
+		                                               ));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesConnectionInfoReader"))
+		                                                .add(new TableCell<>(
+				                                                "Populates the ConnectionBaseInfo object with properties from the persistence unit, the entire persistence-unit tag.")));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesEntityManagerReader"))
+		                                                .add(new TableCell<>(
+				                                                "Utility Service that creates or modifies the properties HashMap before conversion to ConnectionBaseInfo")));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.ITransactionHandler"))
+		                                                .add(new TableCell<>(
+				                                                "Internal Service that is used to automatically wrap database updates in a valid transaction, if it was missed." +
+				                                                "<br/>Enabled in the add-on, such as BTMAutomatedTransactionHandler.setActive() or JPAAutomatedTransactionHandler.setActive()")));
+		Div sourceDis = new Div();
+		addSourceToContainer(HomePageDBStartup.class, "startupexample.txt", Java, sourceDis);
+
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.IAsyncStartup"))
+		                                                .add(new TableCell<>("Asynchronously loads the given services in an ExecutorService<br/><br/>")
+				                                                     .add(sourceDis)
+		                                                    ));
+		about.add(settingUpTable);
+
+		return about;
+	}
+
+	private Div buildPersistenceSettingUpScreen()
+	{
+		Div settingUp = new Div();
+		return settingUp;
+
+	}
+
 	private Div buildUnderTheHood()
 	{
 		DisplayCard card = new DisplayCard();
@@ -294,7 +303,7 @@ public class UnderTheHoodScreen
 		                                                       .add(new TableHeaderCell<>("Purpose"))));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ClassGraph"))
-		                                       .add(new TableCell<>("4.0.4"))
+		                                       .add(new TableCell<>("4.0.6"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("fastclasspath.version"))
 		                                       .add(new TableCell<>("Scanner")));
@@ -328,13 +337,13 @@ public class UnderTheHoodScreen
 		                                                          .add(new TableHeaderCell<>("Purpose"))));
 
 		webTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JQuery"))
-		                                          .add(new TableCell<>("3.2.1"))
+		                                          .add(new TableCell<>("3.3.1"))
 		                                          //  .add(new TableCell<>("JQueryPageConfigurator.class"))
 		                                          .add(new TableCell<>("bower"))
 		                                          .add(new TableCell<>("JavaScript API")));
 
 		webTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Angular"))
-		                                          .add(new TableCell<>("1.6.4"))
+		                                          .add(new TableCell<>("1.7.1"))
 		                                          //   .add(new TableCell<>("AngularPageConfigurator.class"))
 		                                          .add(new TableCell<>("bower"))
 		                                          .add(new TableCell<>("Data Binder")));
@@ -362,22 +371,22 @@ public class UnderTheHoodScreen
 		                                                  .add(new TableCell<>("Device Info Provider")));
 
 		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-lang3"))
-		                                                  .add(new TableCell<>(""))
+		                                                  .add(new TableCell<>("3.5"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("")));
+		                                                  .add(new TableCell<>("Assists with String manipulation")));
 
 		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-io"))
-		                                                  .add(new TableCell<>(""))
+		                                                  .add(new TableCell<>("2.5"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("")));
+		                                                  .add(new TableCell<>("Assist with IO usage")));
 
 		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("quality-check"))
-		                                                  .add(new TableCell<>(""))
+		                                                  .add(new TableCell<>("1.3"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("")));
+		                                                  .add(new TableCell<>("Dependent from ua-detector")));
 
 		div.add(servletInfoTable);
 

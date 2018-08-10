@@ -5,8 +5,6 @@ import com.google.inject.persist.PersistService;
 import com.jwebmp.guicedinjection.interfaces.IGuicePostStartup;
 import com.jwebmp.logger.LogFactory;
 
-import javax.sql.DataSource;
-
 public class HomePageDBStartup
 		implements IGuicePostStartup
 {
@@ -15,7 +13,7 @@ public class HomePageDBStartup
 	}
 
 	@Inject
-	public HomePageDBStartup(@HomePageDB PersistService persistService, @HomePageDB DataSource dataSource)
+	public HomePageDBStartup(@HomePageDB PersistService persistService)
 	{
 		persistService.start();
 		LogFactory.getLog("DB").info("DB Startup");
