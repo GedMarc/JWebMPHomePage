@@ -3,9 +3,12 @@ package com.jwebmp.examples.demos.homepage.entities;
 import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.PluginsBuilder;
 
+import javax.cache.annotation.CacheDefaults;
 import javax.persistence.*;
 
 @Entity
+@Cacheable(true)
+@CacheDefaults(cacheName = "PluginsCache")
 public class Plugins
 		extends CoreEntity<Plugins, PluginsBuilder, Long>
 {
@@ -42,7 +45,6 @@ public class Plugins
 	private String pluginSonarUrl;
 	@Column
 	private String projectStatus;
-
 
 	@Override
 	public Long getId()
