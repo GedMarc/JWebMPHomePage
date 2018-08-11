@@ -67,10 +67,9 @@ body.fixed-left .side-menu.left {
     margin: 0;
 }
 
-
 .notification-list .noti-icon {
     font-size: xx-large !important;
-    padding:0px !important;
+    padding: 0px !important;
 }
 
 #sidebar-menu ul li .menu-arrow {
@@ -89,9 +88,13 @@ body.fixed-left .side-menu.left {
 }
 
 .topbar .topbar-left {
-    width:inherit;
-}
-.navbar-custom {
-    margin-left:0px;
+    width: inherit;
 }
 
+.navbar-custom {
+    margin-left: 0px;
+}
+
+.checkbox input[type="checkbox"]:checked + label::after {
+    content: "&";
+}
