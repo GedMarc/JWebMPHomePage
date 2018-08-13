@@ -4,7 +4,6 @@ import com.jwebmp.core.Feature;
 import com.jwebmp.core.Page;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.base.html.attributes.LinkAttributes;
-import com.jwebmp.core.base.html.inputs.InputTextType;
 import com.jwebmp.core.base.html.interfaces.children.ListChildren;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.general.events.MenuIconSwapOnClick;
@@ -81,20 +80,40 @@ public class TopBar
 		List<ListChildren, ?, ?, ?> easyButtonList = new List<>(false);
 		easyButtonList.addClass("list-inline float-right mb-0");
 
-
-		ListItem expandButton =buildTopMenuItem(true, "btn-fullscreen1", "fal fa-expand-arrows-alt fa-2x noti-icon", "45px").addClass("strong");
-		expandButton.addFeature(new MenuIconSwapOnClick(expandButton, FontAwesomeIcons.expand_arrows_alt,FontAwesomeIcons.compress_alt));
+		ListItem expandButton = buildTopMenuItem(true, "btn-fullscreen1", "fal fa-expand-arrows-alt fa-2x noti-icon", "45px").addClass("strong");
+		expandButton.addFeature(new MenuIconSwapOnClick(expandButton, FontAwesomeIcons.expand_arrows_alt, FontAwesomeIcons.compress_alt));
 		easyButtonList.add(expandButton);
-
 
 		Page<?> page = GuiceContext.getInstance(Page.class);
 
-		ListItem donateButton =buildTopMenuItem(false, "donateButton", "far fa-hands-usd fa-2x fa-fw noti-icon", "45px", "https://paypal.me/MarcMagon", "_blank").addClass("strong");
+		ListItem donateButton = buildTopMenuItem(false, "donateButton", "far fa-hands-usd fa-2x fa-fw noti-icon", "45px", "https://paypal.me/MarcMagon", "_blank").addClass(
+				"strong");
 		easyButtonList.add(donateButton);
+
 		nav.add(easyButtonList);
 
+		Link donateLink = (Link) donateButton.getChildren()
+		                                     .iterator()
+		                                     .next();
+		donateLink.getChildren()
+		          .clear();
+		donateLink.setDirectToAddress("#");
+
+		donateLink.add(new Paragraph<>("<form target=\"_blank\" action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\" style=\"display:flex;\">\n" +
+		                               //"<div id='icon'><i class='far fa-eye-slash'></i></div>\n" +
+		                               "<input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\">\n" +
+		                               "<input type=\"hidden\" name=\"hosted_button_id\" value=\"NTQB7LV8YTGF8\">\n" +
+		                               "<button type=\"submit\" class=\"btn bg-transparent\" " +
+		                               " style=\"padding-left:0px;padding-right:0px;\"" +
+		                               " alt=\"PayPal - The safer, easier way to pay online!\">\n" +
+		                               "    <i class='far fa-hands-usd fa-2x fa-fw noti-icon'></i>\n" +
+		                               "</button>\n" +
+		                               "<img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">\n" +
+		                               "</form>\n").setTextOnly(true));
+
 		//Middle Right Side (Search and Stuff)
-		List<ListChildren, ?, ?, ?> searchList = new List<>().addClass("list-inline menu-left mb-0").addStyle("height:71px;");
+		List<ListChildren, ?, ?, ?> searchList = new List<>().addClass("list-inline menu-left mb-0")
+		                                                     .addStyle("height:71px;");
 
 		ListItem leftMenuItem = new ListItem<>().addClass("float-left")
 		                                        .setID("openWestButton")
@@ -168,8 +187,9 @@ public class TopBar
 		                                      .addAttribute("role", "button")
 		                                      .addAttribute("aria-haspopup", "false")
 		                                      .addAttribute("aria-expanded", "false")
-		                                      .addStyle("width","45px;")
-		                                      .add(new Italic<>().addClass("far fa-user noti-icon").addStyle("width:45px;"));
+		                                      .addStyle("width", "45px;")
+		                                      .add(new Italic<>().addClass("far fa-user noti-icon")
+		                                                         .addStyle("width:45px;"));
 
 		SessionProperties sessionProperties = GuiceContext.getInstance(SessionProperties.class);
 

@@ -98,3 +98,8 @@ body.fixed-left .side-menu.left {
 .checkbox input[type="checkbox"]:checked + label::after {
     content: "&";
 }
+
+#innerlayout-center-content .slimScrollDiv {
+    position: absolute !important;
+    width: 100% !important;
+}

@@ -14,7 +14,8 @@ public class DefaultSlimScroll
 		            .setAlwaysVisible(true)
 		            .setColor(new ColourCSSImpl("#98a6ad"));
 
-		if(getComponent().getPage().isMobileOrSmartTablet())
+		if (getComponent().getPage()
+		                  .isMobileOrSmartTablet())
 		{
 			getOptions().setTouchScrollStep(50);
 		}

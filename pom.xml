@@ -91,6 +91,15 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-skycons</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <classifier>${jwebmp.runtime.classifier}</classifier>
+        </dependency>
+
+
         <!--    <dependency>
                 <groupId>com.jwebmp</groupId>
                 <artifactId>jwebmp-glyphicons</artifactId>

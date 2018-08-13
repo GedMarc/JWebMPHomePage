@@ -201,8 +201,11 @@ public class UnderTheHoodScreen
 		        "<br/>These are backwards compatible with JDK 8");
 
 		BSNavTabs tabs = new BSNavTabs().setBordered(true)
-		                                .setJustified(true)
-		                                .setVerticalLeftTabs(true);
+		                                .setJustified(true);
+		if (!getPage().isMobileOrSmartTablet())
+		{
+			tabs.setVerticalLeftTabs(true);
+		}
 		tabs.getTabContents()
 		    .addClass(W_100);
 
@@ -237,52 +240,6 @@ public class UnderTheHoodScreen
 				                                       "Designates a page that must be rendered. The class must extend Page.<br/> Annotate with @PageConfiguration to configure URL's")));
 
 		return card;
-	}
-
-	private Div buildPersistenceAboutScreen()
-	{
-
-		Div about = new Div();
-		about.add("Add-Ons provide additional configurations for enables modules");
-		about.add("Modules provide core functionality for their usage");
-
-		BSTable<?> settingUpTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                           .addClass(Table_Hover)
-		                                           .fitInContainer();
-		settingUpTable.setSmall(true);
-		settingUpTable.setBordered(true);
-		settingUpTable.setStriped(true);
-
-		settingUpTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
-		                                                                .add(new TableHeaderCell<>("Purpose"))
-		                                               ));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesConnectionInfoReader"))
-		                                                .add(new TableCell<>(
-				                                                "Populates the ConnectionBaseInfo object with properties from the persistence unit, the entire persistence-unit tag.")));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesEntityManagerReader"))
-		                                                .add(new TableCell<>(
-				                                                "Utility Service that creates or modifies the properties HashMap before conversion to ConnectionBaseInfo")));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.ITransactionHandler"))
-		                                                .add(new TableCell<>(
-				                                                "Internal Service that is used to automatically wrap database updates in a valid transaction, if it was missed." +
-				                                                "<br/>Enabled in the add-on, such as BTMAutomatedTransactionHandler.setActive() or JPAAutomatedTransactionHandler.setActive()")));
-		Div sourceDis = new Div();
-		addSourceToContainer(HomePageDBStartup.class, "startupexample.txt", Java, sourceDis);
-
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.IAsyncStartup"))
-		                                                .add(new TableCell<>("Asynchronously loads the given services in an ExecutorService<br/><br/>")
-				                                                     .add(sourceDis)
-		                                                    ));
-		about.add(settingUpTable);
-
-		return about;
-	}
-
-	private Div buildPersistenceSettingUpScreen()
-	{
-		Div settingUp = new Div();
-		return settingUp;
-
 	}
 
 	private Div buildUnderTheHood()
@@ -395,6 +352,16 @@ public class UnderTheHoodScreen
 		return card;
 	}
 
+	private Div buildPluginsPanel()
+	{
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
+		div.add(new H3<>("Modular Plugins"));
+		div.add("Everything is Modular. Simply including the library configures and activates as necessary.");
+		//div.add("Including the Plugin JAR or depedency will add everything necessary to the build, and the Page objects for full reference. <br/>Selective Page References can be enabled.");
+		return card;
+	}
+
 	private Div buildServicingPanel()
 	{
 		DisplayCard card = new DisplayCard();
@@ -405,6 +372,63 @@ public class UnderTheHoodScreen
 		div.add("The above tabs identify the available services for your application.");
 		div.add("Utilize META-INF/services and the provides for module-info.java");
 		return card;
+	}
+
+	private Div buildPersistenceAboutScreen()
+	{
+
+		Div about = new Div();
+		about.add("Add-Ons provide additional configurations for enables modules");
+		about.add("Modules provide core functionality for their usage");
+
+		BSTable<?> settingUpTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
+		                                           .addClass(Table_Hover)
+		                                           .fitInContainer();
+		settingUpTable.setSmall(true);
+		settingUpTable.setBordered(true);
+		settingUpTable.setStriped(true);
+
+		settingUpTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
+		                                                                .add(new TableHeaderCell<>("Purpose"))
+		                                               ));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesConnectionInfoReader"))
+		                                                .add(new TableCell<>(
+				                                                "Populates the ConnectionBaseInfo object with properties from the persistence unit, the entire persistence-unit tag.")));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesEntityManagerReader"))
+		                                                .add(new TableCell<>(
+				                                                "Utility Service that creates or modifies the properties HashMap before conversion to ConnectionBaseInfo")));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.ITransactionHandler"))
+		                                                .add(new TableCell<>(
+				                                                "Internal Service that is used to automatically wrap database updates in a valid transaction, if it was missed." +
+				                                                "<br/>Enabled in the add-on, such as BTMAutomatedTransactionHandler.setActive() or JPAAutomatedTransactionHandler.setActive()")));
+		Div sourceDis = new Div();
+		addSourceToContainer(HomePageDBStartup.class, "startupexample.txt", Java, sourceDis);
+
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.IAsyncStartup"))
+		                                                .add(new TableCell<>("Asynchronously loads the given services in an ExecutorService<br/><br/>")
+				                                                     .add(sourceDis)
+		                                                    ));
+		about.add(settingUpTable);
+
+		return about;
+	}
+
+	private Div buildPersistenceSettingUpScreen()
+	{
+		Div settingUp = new Div();
+		return settingUp;
+
+	}
+
+	@Override
+	public BSBreadCrumb<?> getTitleBreadcrumbs()
+	{
+		BSBreadCrumb crumbs = new BSBreadCrumb();
+		crumbs.addBreadCrumb(new BSBreadCrumbItem().setActive(true)
+		                                           .setCrumbLink(new Link<>("#").setText("JWebMP")));
+		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
+		                                             .setText("Under The Hood"));
+		return crumbs;
 	}
 
 	private Div buildJCache()
@@ -425,16 +449,6 @@ public class UnderTheHoodScreen
 		return card;
 	}
 
-	private Div buildPluginsPanel()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add(new H3<>("Modular Plugins"));
-		div.add("Everything is Modular. Simply including the library configures and activates as necessary.");
-		//div.add("Including the Plugin JAR or depedency will add everything necessary to the build, and the Page objects for full reference. <br/>Selective Page References can be enabled.");
-		return card;
-	}
-
 	private Div buildPowerfulMinimalist()
 	{
 		DisplayCard card = new DisplayCard();
@@ -445,17 +459,6 @@ public class UnderTheHoodScreen
 		      "<br/>The Cordovify Plugin enables instant integration with Cordova allowing a complete suite of hybrid device functions for IOS, Android, Browser, Windows Mobile and Windows Universal applications");
 
 		return card;
-	}
-
-	@Override
-	public BSBreadCrumb<?> getTitleBreadcrumbs()
-	{
-		BSBreadCrumb crumbs = new BSBreadCrumb();
-		crumbs.addBreadCrumb(new BSBreadCrumbItem().setActive(true)
-		                                           .setCrumbLink(new Link<>("#").setText("JWebMP")));
-		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
-		                                             .setText("Under The Hood"));
-		return crumbs;
 	}
 
 }

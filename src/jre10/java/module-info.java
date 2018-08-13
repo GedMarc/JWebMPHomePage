@@ -21,7 +21,6 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.core;
 	requires com.jwebmp.guicedpersistence;
 
-
 	requires com.google.guice.extensions.servlet;
 	requires com.google.guice;
 	requires com.google.guice.extensions.persist;
@@ -77,6 +76,7 @@ module com.jwebmp.examples.demos.homepage {
 
 	requires com.jwebmp.guicedpersistence.btm;
 	requires json;
+	requires com.jwebmp.plugins.skycons;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IGuicePostStartup with HomePageDBStartup;
