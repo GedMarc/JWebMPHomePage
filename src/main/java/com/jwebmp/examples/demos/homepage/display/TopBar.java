@@ -99,7 +99,7 @@ public class TopBar
 		          .clear();
 		donateLink.setDirectToAddress("#");
 
-		donateLink.add(new Paragraph<>("<form target=\"_blank\" action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\" style=\"display:flex;\">\n" +
+		donateLink.add(new Paragraph<>("<form target=\"_blank\" action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\" style=\"display:inline-flex;\">\n" +
 		                               //"<div id='icon'><i class='far fa-eye-slash'></i></div>\n" +
 		                               "<input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\">\n" +
 		                               "<input type=\"hidden\" name=\"hosted_button_id\" value=\"NTQB7LV8YTGF8\">\n" +

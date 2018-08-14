@@ -53,7 +53,7 @@ public class DisplayBody
 		//addJavaScriptReference(new JavascriptReference("1", 1.0, "js/detect.js", 160));
 		//addJavaScriptReference(new JavascriptReference("1a", 1.0, "js/fastclick.js", 160));
 		//addJavaScriptReference(new JavascriptReference("2", 1.0, "js/jquery.slimscroll.js", 161));
-		addJavaScriptReference(new JavascriptReference("2a", 1.0, "js/jquery.blockUI.js", 161));
+		//addJavaScriptReference(new JavascriptReference("2a", 1.0, "js/jquery.blockUI.js", 161));
 		//addJavaScriptReference(new JavascriptReference("3", 1.0, "js/waves.js", 162));
 		addJavaScriptReference(new JavascriptReference("4", 1.0, "js/wow.min.js", 163));
 		//addJavaScriptReference(new JavascriptReference("5", 1.0, "js/jquery.nicescroll.js", 164));
