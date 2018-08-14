@@ -28,7 +28,6 @@ public class HomePageStartup
 
 		BTMAutomatedTransactionHandler.setActive(true);
 
-		//FontAwesome5PageConfigurator.setIncludeLight(true);
 		FontAwesome5PageConfigurator.setIncludeRegular(true);
 		FontAwesome5PageConfigurator.setIncludeSolid(true);
 		FontAwesome5PageConfigurator.setIncludeLight(true);
@@ -41,7 +40,7 @@ public class HomePageStartup
 
 		try
 		{
-			JWebMPUndertow.boot("0.0.0.0",6002);
+			JWebMPUndertow.boot("0.0.0.0", 6002);
 		}
 		catch (Exception e)
 		{
