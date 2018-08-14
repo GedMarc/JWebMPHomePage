@@ -99,6 +99,14 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-waveseffect</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <classifier>${jwebmp.runtime.classifier}</classifier>
+        </dependency>
+
 
         <!--    <dependency>
                 <groupId>com.jwebmp</groupId>
