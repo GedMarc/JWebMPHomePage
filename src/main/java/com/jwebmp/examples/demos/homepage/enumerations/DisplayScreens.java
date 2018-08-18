@@ -80,6 +80,7 @@ import com.jwebmp.examples.demos.homepage.display.demos.jqui.spectrumcolourpicke
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.themes.JQueryUIThemesDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.themesnestable.JQueryUIThemesNestableDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.verticaltimeline.JQUIVerticalTimelineDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.pluginslist.PluginsList;
 import com.jwebmp.examples.demos.homepage.display.demos.push.AtmospherePushDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.push.undertow.AtmospherePushUndertowDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.tables.datatables.DataTablesDemoScreen;
@@ -95,6 +96,7 @@ public enum DisplayScreens
 	ForgotPassword(ForgotPasswordScreen.class, "ForgotPassword"),
 	ConfirmEmailAddress(ConfirmEmailAddressScreen.class, "ConfirmEmailAddress"),
 	ConfirmEmailAddressScreen(ConfirmEmailAddressScreen.class, "ConfirmEmailAddressScreen"),
+	PluginsListScreen(PluginsList.class, "PluginsList"),
 
 	ComingSoon(com.jwebmp.examples.demos.homepage.display.ComingSoon.class, "ComingSoon"),
 
@@ -199,7 +201,8 @@ public enum DisplayScreens
 	DataTables(DataTablesDemoScreen.class, "DataTables"),
 	XEditables(XEditablesDemoScreen.class, "XEditable"),
 
-	JSTree(JSTreeDemoScreen.class, "JSTree"),;
+	JSTree(JSTreeDemoScreen.class, "JSTree"),
+	;
 
 	private Class<? extends DisplayScreen> screen;
 	private String linkName;

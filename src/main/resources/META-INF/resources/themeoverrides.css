@@ -103,3 +103,7 @@ body.fixed-left .side-menu.left {
     position: absolute !important;
     width: 100% !important;
 }
+
+.dataTables_wrapper {
+    display: block;
+}

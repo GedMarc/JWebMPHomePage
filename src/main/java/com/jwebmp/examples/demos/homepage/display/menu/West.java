@@ -68,7 +68,7 @@ public class West
 		spiItem.addEvent(new ChangeScreenEvent(spiItem, "p=UnderTheHood").setID(DisplayScreens.UnderTheHood.toString()));
 		thisSite.addEvent(new ChangeScreenEvent(thisSite, "p=AboutThisSite").setID(DisplayScreens.AboutThisSIte.toString()));
 		goDeepSite.addEvent(new ChangeScreenEvent(goDeepSite, "p=HelloWorldScreen").setID(DisplayScreens.HelloWorldScreen.toString()));
-		pluginsListing.addEvent(new ChangeScreenEvent(goDeepSite, "p=PluginsList").setID(DisplayScreens.HelloWorldScreen.toString()));
+		pluginsListing.addEvent(new ChangeScreenEvent(goDeepSite, "p=PluginsListScreen").setID(DisplayScreens.PluginsListScreen.toString()));
 
 		//buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
 		//buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown());

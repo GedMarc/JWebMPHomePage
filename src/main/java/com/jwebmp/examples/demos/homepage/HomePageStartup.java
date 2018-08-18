@@ -6,6 +6,9 @@ import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHa
 import com.jwebmp.guicedpersistence.db.services.HibernateEntityManagerProperties;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
+import com.jwebmp.plugins.datatable.DataTablePageConfigurator;
+import com.jwebmp.plugins.datatable.enumerations.DataTablePlugins;
+import com.jwebmp.plugins.datatable.enumerations.DataTableThemes;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
@@ -35,6 +38,10 @@ public class HomePageStartup
 		FontAwesome5PageConfigurator.setIncludeBrands(true);
 		FontAwesome5PageConfigurator.getConfigOptions()
 		                            .setSearchPseudoElements(true);
+
+		DataTablePageConfigurator.switchTheme(DataTableThemes.Bootstrap4);
+		DataTablePageConfigurator.getPlugins()
+		                         .add(DataTablePlugins.Buttons);
 
 		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
 
