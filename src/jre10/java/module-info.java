@@ -73,7 +73,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires undertow.websockets.jsr;
 
 	requires com.jwebmp.guicedpersistence.btm;
-	requires json;
+	requires org.json;
 	requires com.jwebmp.plugins.skycons;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;

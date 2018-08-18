@@ -41,7 +41,7 @@ public class West
 		SlimScrollFeature scrollFeature = new DefaultSlimScroll(this);
 
 		sidebarInner = new Div<>();
-		sidebarInner.addClass("sidebar-inner slimscrollleft");
+		sidebarInner.addClass("sidebar-inner");
 
 		sidebarMenu = new DivSimple<>();
 		sidebarMenu.setID("sidebar-menu");
@@ -49,12 +49,29 @@ public class West
 		globalList = new List<>();
 
 		ListItem homeItem;
+		ListItem aboutItem;
+		ListItem spiItem;
+		ListItem thisSite;
+		ListItem goDeepSite;
+		ListItem pluginsListing;
+
 		globalList.add(homeItem = buildMenuItem("ti-home", "Home"));
 
+		globalList.add(aboutItem = buildMenuItem("ti-home", "About"));
+		globalList.add(spiItem = buildMenuItem("ti-home", "SPI"));
+		globalList.add(thisSite = buildMenuItem("ti-home", "This Site"));
+		globalList.add(goDeepSite = buildMenuItem("ti-home", "Go Deeper"));
+		globalList.add(pluginsListing = buildMenuItem("ti-home", "Plugins List"));
+
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
+		aboutItem.addEvent(new ChangeScreenEvent(aboutItem, "p=AboutJWebMP").setID(DisplayScreens.AboutJWebMP.toString()));
+		spiItem.addEvent(new ChangeScreenEvent(spiItem, "p=UnderTheHood").setID(DisplayScreens.UnderTheHood.toString()));
+		thisSite.addEvent(new ChangeScreenEvent(thisSite, "p=AboutThisSite").setID(DisplayScreens.AboutThisSIte.toString()));
+		goDeepSite.addEvent(new ChangeScreenEvent(goDeepSite, "p=HelloWorldScreen").setID(DisplayScreens.HelloWorldScreen.toString()));
+		pluginsListing.addEvent(new ChangeScreenEvent(goDeepSite, "p=PluginsList").setID(DisplayScreens.HelloWorldScreen.toString()));
 
 		//buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
-		buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown());
+		//buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown());
 		//buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites());
 		//buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
@@ -225,8 +242,11 @@ public class West
 	private ListItem<?> buildMenuItem(String icon, String title)
 	{
 		ListItem item = new ListItem();
+		item.addStyle("margin", "0px");
 		Link<?> link = new Link();
-		link.addClass("waves-effect waves-primary");
+		link.addStyle("margin", "0px");
+		link.addStyle("line-height", "1");
+		link.addClass("waves-effect waves-light waves-primary");
 		if (icon != null)
 		{
 			Italic<?> italic = new Italic<>();
@@ -240,88 +260,9 @@ public class West
 		return item;
 	}
 
-	private ListItem<?> buildAboutJWebMPDropDown()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a", AboutJWebMP).setText("About JWebMP")));
-		uiKit.add(new ListItem<>().add(buildListItem("#a", UnderTheHood).setText("Under The Hood")));
-		uiKit.add(new ListItem<>().add(buildListItem("#asite", AboutThisSIte).setText("About This Site")));
-		uiKit.add(new ListItem<>().add(buildListItem("#n", HelloWorldScreen).setText("Hello World")));
-
-	/*	uiKit.add(new ListItem<>().add(buildListItem("#b").setText("ReadMe F A Q")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f").setText("Events & Event Stores")));
-		uiKit.add(new ListItem<>().add(buildListItem("#c").setText("Security")));
-		uiKit.add(new ListItem<>().add(buildListItem("#d").setText("Migrating Applications")));
-
-		uiKit.add(new ListItem<>().add(buildListItem("#a1").setText("CSS Integration")));
-*/
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "JWebMP", uiKit);
-		return dropDown1;
-	}
-
-	private ListItem<?> buildGettingStarted()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#i").setText("MicroProfile")));
-		uiKit.add(new ListItem<>().add(buildListItem("#h").setText("Enterprise Edition")));
-		uiKit.add(new ListItem<>().add(buildListItem("#j").setText("Embedding Containers")));
-		uiKit.add(new ListItem<>().add(buildListItem("#j").setText("Output Control")));
-		/**/
-
-		//uiKit.add(new ListItem<>().add(buildListItem("#m").setText("Unit Testing")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Environments", uiKit);
-		return dropDown1;
-	}
-
 	private Link<?> buildListItem(String uniqueHashBangId)
 	{
 		return buildListItem(uniqueHashBangId, DisplayScreens.ComingSoon);
-	}
-
-	private ListItem<?> buildTestingFramework()
-	{
-		List uiKit = new List<>();
-
-		uiKit.add(new ListItem<>().add(buildListItem("#k").setText("Integration Testing")));
-		uiKit.add(new ListItem<>().add(buildListItem("#l").setText("Unit Testing")));
-		uiKit.add(new ListItem<>().add(buildListItem("#l").setText("Open Support")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Testing", uiKit);
-		return dropDown1;
-	}
-
-	private ListItem<?> buildMyFirstSites()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#o", JQueryUILayout).setText("Layouts")));
-		uiKit.add(new ListItem<>().add(buildListItem("#p").setText("Basic Examples")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Getting Started", uiKit);
-		return dropDown1;
-	}
-
-	private ListItem<?> buildUIKits()
-	{
-		List uiKit = new List<>();
-
-		uiKit.add(new ListItem<>().add(buildListItem("#t", DisplayScreens.JQueryUI).setText("JQuery UI")));
-		uiKit.add(new ListItem<>().add(buildListItem("#u", DisplayScreens.Bootstrap4).setText("Bootstrap")));
-		uiKit.add(new ListItem<>().add(buildListItem("#v").setText("JQX Widgets")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "UI Bundles", uiKit);
-		return dropDown1;
-	}
-
-	private ListItem<?> buildInstantSites()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#w").setText("SB2 Admin <small>(BS3 core)</small>")));
-		uiKit.add(new ListItem<>().add(buildListItem("#x").setText("Blur Admin <small>(BS3 core)</small>")));
-		uiKit.add(new ListItem<>().add(buildListItem("#y").setText("Minton <small>(BS4 core)</small>")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Instant Sites", uiKit);
-		return dropDown1;
 	}
 
 	private ListItem<?> buildCorePlugins()
@@ -333,18 +274,6 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#a5").setText("Atmosphere Push Web Sockets")));
 
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Core Plugins", uiKit);
-		return dropDown1;
-	}
-
-	private ListItem<?> buildUtilityPlugins()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#c2").setText("Video Conferencing <small>(6bit)</small>")));
-		uiKit.add(new ListItem<>().add(buildListItem("#c3").setText("Angular Utilities")));
-		uiKit.add(new ListItem<>().add(buildListItem("#c4").setText("Bootstrap Dialog <small>(3&4)</small>")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e2").setText("Easing Animations")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e3").setText("Toastr Notifications")));
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Utility Plugins", uiKit);
 		return dropDown1;
 	}
 
@@ -360,18 +289,6 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#e5").setText("Skycons")));
 
 		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Icon Sets", uiKit);
-		return dropDown1;
-	}
-
-	private ListItem<?> buildBrowsers()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#b5").setText("Fast Click")));
-		uiKit.add(new ListItem<>().add(buildListItem("#b6").setText("Globalize")));
-		uiKit.add(new ListItem<>().add(buildListItem("#b7").setText("Modernizr")));
-		uiKit.add(new ListItem<>().add(buildListItem("#b8").setText("Pace Loader")));
-
-		ListItem dropDown1 = buildSubList("ti-paint-bucket", "Browser Addons", uiKit);
 		return dropDown1;
 	}
 
