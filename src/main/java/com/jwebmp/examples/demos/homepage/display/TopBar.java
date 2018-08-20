@@ -15,7 +15,6 @@ import com.jwebmp.examples.demos.homepage.display.termsandconditions.GoToTermsAn
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTypographyOptions;
 import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
 import com.jwebmp.plugins.jqlayout.enumerations.JQLayoutArea;
@@ -86,7 +85,7 @@ public class TopBar
 
 		Page<?> page = GuiceContext.getInstance(Page.class);
 
-		ListItem donateButton = buildTopMenuItem(false, "donateButton", "far fa-hands-usd fa-2x fa-fw noti-icon", "45px", "https://paypal.me/MarcMagon", "_blank").addClass(
+		ListItem donateButton = buildTopMenuItem(false, "donateButton", "fal fa-hand-holding-usd fa-2x fa-fw noti-icon", "45px", "https://paypal.me/MarcMagon", "_blank").addClass(
 				"strong");
 		easyButtonList.add(donateButton);
 
@@ -106,7 +105,7 @@ public class TopBar
 		                               "<button type=\"submit\" class=\"btn bg-transparent\" " +
 		                               " style=\"padding-left:0px;padding-right:0px;\"" +
 		                               " alt=\"PayPal - The safer, easier way to pay online!\">\n" +
-		                               "    <i class='far fa-hands-usd fa-2x fa-fw noti-icon'></i>\n" +
+		                               "    <i class='fal fa-hand-holding-usd fa-2x fa-fw noti-icon'></i>\n" +
 		                               "</button>\n" +
 		                               "<img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">\n" +
 		                               "</form>\n").setTextOnly(true));
@@ -188,13 +187,14 @@ public class TopBar
 		                                      .addAttribute("aria-haspopup", "false")
 		                                      .addAttribute("aria-expanded", "false")
 		                                      .addStyle("width", "45px;")
-		                                      .add(new Italic<>().addClass("far fa-user noti-icon")
+		                                      .add(new Italic<>().addClass("fal fa-user noti-icon")
 		                                                         .addStyle("width:45px;"));
 
 		SessionProperties sessionProperties = GuiceContext.getInstance(SessionProperties.class);
 
 		DivSimple<?> profileDropDownContent = new DivSimple<>();
 		profileDropDownContent.addClass("dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg");
+		profileDropDownContent.addStyle("width:200px;");
 
 		H5 headerText = new H5<>().addClass("font-16")
 		                          .setRenderTextBeforeChildren(false);
@@ -205,28 +205,32 @@ public class TopBar
 		if (sessionProperties.isLoggedIn())
 		{
 			Subscribers subscriber = sessionProperties.getSubscriber();
-			headerText.setText(subscriber.getFirstName() != null ? subscriber.getFirstName() + " " + subscriber.getLastName() : "My Profile");
+			headerText.setText(subscriber.getFirstName() != null ? subscriber.getFirstName() + " " + subscriber.getLastName() : "GENERAL");
 
-			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Account Details", (Date) null));
-			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "My Plugin Requests", (Date) null));
-			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Forums", (Date) null));
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-id-card-alt fa-2x fa-fw", "Profile", (Date) null));
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-map-marker-question fa-2x fa-fw", "My Requests", (Date) null));
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-pen-nib fa-2x fa-fw", "Forums", (Date) null));
 
 			Link<?> allLink = new Link<>().addClass("dropdown-item notify-item notify-all")
-			                              .setText("Logout");
+			                              .setText("LOGOUT");
 			allLink.addEvent(new LogoutEvent(allLink));
 			profileDropDownContent.add(allLink);
 		}
 		else
 		{
-			headerText.setText("Guest");
-			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Login", (Date) null))
+			headerText.setText("GUEST");
+
+			profileDropDownContent.add(
+					buildDropDownNotificationItem("", "fal fa-id-card fa-2x",
+					                              "Login", (Date) null))
 			                      .addEvent(new ChangeScreenEvent(null, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
-			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "T & C's", (Date) null).addEvent(
+
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-file-signature fa-2x", "T & C's", (Date) null).addEvent(
 					new GoToTermsAndConditionsEvent(null)));
 			profileDropDownContent.add(
-					buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Privacy Statement", (Date) null).addEvent(
+					buildDropDownNotificationItem("", "fal fa-user-secret fa-2x", "Privacy Statement", (Date) null).addEvent(
 							new GoToPrivacyScreenEvent(null)));
-			profileDropDownContent.add(buildDropDownNotificationItem(BSBackgroundOptions.Bg_Success.toString(), "mdi mdi-comment-account", "Chat Policy", (Date) null).addEvent(
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-microphone-alt fa-2x", "Chat Policy", (Date) null).addEvent(
 					new GoToChatRoomScreenEvent(null)));
 		}
 

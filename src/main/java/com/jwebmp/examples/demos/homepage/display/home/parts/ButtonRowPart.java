@@ -16,6 +16,8 @@ import com.jwebmp.websockets.JWebMPSocket;
 
 import javax.servlet.http.HttpSession;
 
+import static com.jwebmp.guicedservlets.GuicedServletKeys.*;
+
 public class ButtonRowPart<J extends ButtonRowPart<J>>
 		extends BSRow<J>
 {
@@ -96,10 +98,8 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		                                       .getAll(Integer.class)
 		                                       .get(0);
 
-		Div chart3 = new MintonCircleChart(totalComponents.toString(), (totalComponents/1000L * 100) + "", "#f76397", "#505A66");
+		Div chart3 = new MintonCircleChart(totalComponents.toString(), (totalComponents / 1000L * 100) + "", "#f76397", "#505A66");
 		widget3.add(chart3);
-
-
 
 		widget3.add(new H3<>(totalComponents + "").addClass("text-pink counter m-t-10"));
 
@@ -115,11 +115,18 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		widget4.addClass("widget-simple-chart text-right card-box");
 
 		int count = 0;
-		HttpSession session = GuiceContext.get(HttpSession.class);
-		if(!JWebMPSocket.getWebSocketSessionBindings().containsValue(session.getId()))
-			count = JWebMPSocket.getWebSocketSessionBindings().size() + 1;
+		HttpSession session = GuiceContext.get(HttpSessionKey);
+		if (!JWebMPSocket.getWebSocketSessionBindings()
+		                 .containsValue(session.getId()))
+		{
+			count = JWebMPSocket.getWebSocketSessionBindings()
+			                    .size() + 1;
+		}
 		else
-			count = JWebMPSocket.getWebSocketSessionBindings().size();
+		{
+			count = JWebMPSocket.getWebSocketSessionBindings()
+			                    .size();
+		}
 
 		Div chart4 = new MintonCircleChart(count + "", "99", "#7266ba", "#505A66");
 		widget4.add(chart4);

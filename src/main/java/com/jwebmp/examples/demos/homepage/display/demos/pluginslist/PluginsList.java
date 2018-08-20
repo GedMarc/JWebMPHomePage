@@ -41,7 +41,7 @@ public class PluginsList
 		displayRow.addClass("card-box");
 		displayRow.removeClass("row");
 
-		displayRow.add(buildColumn());
+		//	displayRow.add(buildColumn());
 
 		return container;
 	}
@@ -66,27 +66,30 @@ public class PluginsList
 		dt.addStyle("display:block;");
 		dt.addClass("table table-responsive w-100 d-block d-md-table");
 
-		int rows = 100;
-		int cols = 5;
-
 		TableRow thr = new TableRow();
 		List<Plugins> pluginsList = new Plugins().findAll();
 
-		for (int i = 0; i < cols; i++)
-		{
-			thr.add(new TableHeaderCell<>("Test Col " + (i + 1)));
-		}
+		thr.add(new TableHeaderCell<>("Icon"));
+		thr.add(new TableHeaderCell<>("Name"));
+		thr.add(new TableHeaderCell<>("Version"));
+		thr.add(new TableHeaderCell<>("Description"));
+		thr.add(new TableHeaderCell<>("Components"));
+		thr.add(new TableHeaderCell<>("Donate"));
+		thr.add(new TableHeaderCell<>("Links"));
 
 		thg.add(thr);
 
-		for (int i = 0; i < rows; i++)
+		for (Plugins plugin : pluginsList)
 		{
-			dt.add(new TableRow<>().add(new TableCell<>("Data " + (i + 1)))
-			                       .add(new TableCell<>("Data Cell " + (i + 1)))
-			                       .add(new TableCell<>("Data Cell " + (i + 1)))
-			                       .add(new TableCell<>("Data Cell " + (i + 1)))
-			                       .add(new TableCell<>("Data Cell " + (i + 1))));
+			dt.add(new TableRow<>().add(new TableCell<>().add(new Image<>(plugin.getPluginLogoUrl()).addStyle("width:20px;height:20px;")))
+			                       .add(new TableCell<>(plugin.getPluginName()))
+			                       .add(new TableCell<>(plugin.getPluginVersion()))
+			                       .add(new TableCell<>(plugin.getPluginDescription()))
+			                       .add(new TableCell<>("" + plugin.getPluginComponentCount()))
+			                       .add(new TableCell<>("Donate"))
+			                       .add(new TableCell<>("links")));
 		}
+
 		return dt;
 	}
 }

@@ -21,7 +21,6 @@ import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
 import com.jwebmp.plugins.fontawesome5.options.FontAwesomeSizes;
 import com.jwebmp.plugins.skycons.SkyIcon;
 import com.jwebmp.plugins.skycons.Skycon;
-import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
@@ -108,6 +107,7 @@ public class HomePage
 		{
 			left.add(new LoginPart());
 		}
+
 		left.add(buildOpenSourceSponsors());
 		left.add(buildSnap4());
 		left.add(buildContinuousIntegrationPane());
@@ -129,7 +129,6 @@ public class HomePage
 		BSCard<?> card = new BSCard();
 
 		card.addStyle("display: -webkit-box;");
-		SkyconPageConfigurator.setColour("white");
 		card.addCardBody()
 		    .addStyle("float:left;")
 		    .addClass("col-2")
