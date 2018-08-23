@@ -77,6 +77,8 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.skycons;
 	requires com.jwebmp.plugins.datatable;
 	requires com.jwebmp.guicedservlets;
+	requires com.jwebmp.plugins.blueimp.gallery;
+	requires org.apache.commons.lang3;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IGuicePostStartup with HomePageDBStartup;

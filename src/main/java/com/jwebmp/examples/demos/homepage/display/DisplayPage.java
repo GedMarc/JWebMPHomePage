@@ -57,6 +57,42 @@ public class DisplayPage
 	}
 
 	@Override
+	public AjaxResponse onConnect(AjaxCall call, AjaxResponse response)
+	{
+		getLocalStorageKey();
+		updateVisitorInformation();
+		response.addDto("regex", new RegularExpressionsDTO().addDefaults()
+		                                                    .addPasswordRegex(6, false, true, true, false));
+
+		response.addComponent(GuiceContext.getInstance(West.class));
+		response.addComponent(GuiceContext.getInstance(TopBar.class));
+
+		if (isMobileOrSmartTablet())
+		{
+			response.getFeatures()
+			        .add(new Feature("SlideCloseWest")
+			        {
+				        @Override
+				        protected void assignFunctionsToComponent()
+				        {
+					        addQuery("lay_wrapper.slideClose('west');");
+				        }
+			        });
+		}
+
+		if (!call.getParameters()
+		         .containsKey("p"))
+		{
+			response.addComponent(GuiceContext.getInstance(HomePage.class));
+		}
+		else
+		{
+			deeplinkScreen(call);
+		}
+		return response;
+	}
+
+	@Override
 	public void init()
 	{
 		SessionHelper.setAddressToBeUsedWhenNull("https://www.jwebmp.com");
@@ -98,41 +134,6 @@ public class DisplayPage
 
 		SessionHelper.getServerPath();
 		super.init();
-	}
-
-	@Override
-	public AjaxResponse onConnect(AjaxCall call, AjaxResponse response)
-	{
-		getLocalStorageKey();
-		updateVisitorInformation();
-		response.addDto("regex", new RegularExpressionsDTO().addDefaults()
-		                                                    .addPasswordRegex(6, false, true, true, false));
-
-		response.addComponent(GuiceContext.getInstance(West.class));
-		response.addComponent(GuiceContext.getInstance(TopBar.class));
-
-		if(isMobileOrSmartTablet())
-		{
-			response.getFeatures().add(new Feature("SlideCloseWest"){
-
-				@Override
-				protected void assignFunctionsToComponent()
-				{
-					addQuery("lay_wrapper.slideClose('west');");
-				}
-			});
-		}
-
-		if(!call.getParameters()
-		        .containsKey("p"))
-		{
-			response.addComponent(GuiceContext.getInstance(HomePage.class));
-		}
-		else
-		{
-			deeplinkScreen(call);
-		}
-		return response;
 	}
 
 	/**
@@ -201,7 +202,7 @@ public class DisplayPage
 			{
 				e.printStackTrace();
 			}
-			log.info("Created a new visitor [" + newVisitor + "]");
+			DisplayPage.log.info("Created a new visitor [" + newVisitor + "]");
 			//New user Text
 			AjaxResponse<?> response = getInstance(AjaxResponse.class);
 			ToastrFeature toastr = new ToastrFeature(ToastrType.Warning, "First Use",
@@ -259,7 +260,7 @@ public class DisplayPage
 					}
 					catch (ClassNotFoundException e1)
 					{
-						log.log(Level.SEVERE, "Unable to render page : " + page, e1);
+						DisplayPage.log.log(Level.SEVERE, "Unable to render page : " + page, e1);
 					}
 				}
 			}

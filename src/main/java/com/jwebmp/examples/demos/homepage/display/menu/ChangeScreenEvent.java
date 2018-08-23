@@ -39,6 +39,12 @@ public class ChangeScreenEvent
 	}
 
 	@Override
+	public void preConfigure()
+	{
+		super.preConfigure();
+	}
+
+	@Override
 	public void onUrlChange(AjaxCall call, AjaxResponse response)
 	{
 		String screen = call.getEventId();
@@ -60,7 +66,9 @@ public class ChangeScreenEvent
 			DisplayScreen<?> screenCreated = null;// GuiceContext.getInstance(screens.getScreen());
 			try
 			{
-				screenCreated = screens.getScreen().getDeclaredConstructor().newInstance();
+				screenCreated = screens.getScreen()
+				                       .getDeclaredConstructor()
+				                       .newInstance();
 				GuiceContext.inject()
 				            .injectMembers(screenCreated);
 			}

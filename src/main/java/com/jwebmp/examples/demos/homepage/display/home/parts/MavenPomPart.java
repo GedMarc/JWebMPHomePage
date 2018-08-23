@@ -2,9 +2,9 @@ package com.jwebmp.examples.demos.homepage.display.home.parts;
 
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.Paragraph;
-import com.jwebmp.core.base.html.interfaces.GlobalChildren;
 import com.jwebmp.core.base.html.interfaces.GlobalFeatures;
 import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
+import com.jwebmp.core.base.interfaces.IComponentHierarchyBase;
 import com.jwebmp.examples.demos.homepage.components.PrettyInverseButton;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
@@ -25,20 +25,21 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 {
 	public MavenPomPart()
 	{
-		Div<GlobalChildren, ?, GlobalFeatures, GlobalEvents, ?> jdk8QuickStart = new Div<>();
-		Div<GlobalChildren, ?, GlobalFeatures, GlobalEvents, ?> jdk10QuickStart = new Div<>();
-		Div<GlobalChildren, ?, GlobalFeatures, GlobalEvents, ?> nightlyBuilds = new Div<>();
-		Div<GlobalChildren, ?, GlobalFeatures, GlobalEvents, ?> pageServicing = new Div<>();
+		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> jdk8QuickStart = new Div<>();
+		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> jdk10QuickStart = new Div<>();
+		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> nightlyBuilds = new Div<>();
+		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> pageServicing = new Div<>();
 
 		addSourceToContainer(HomePage.class, "pomdependency.txt", XML, jdk8QuickStart);
 		addSourceToContainer(HomePage.class, "pomdependency_10.txt", XML, jdk10QuickStart);
 		addSourceToContainer(HomePage.class, "pomrepository.txt", XML, nightlyBuilds);
 
 		BSNavTabs tabs = new BSNavTabs<>();
-		tabs.getNavs().addClass(Tabs_Bordered)
-				                .addClass(Nav_Justified);
+		tabs.getNavs()
+		    .addClass(Tabs_Bordered)
+		    .addClass(Nav_Justified);
 
-		BSTabContainer tab1 = tabs.addTab("JDK 8",jdk8QuickStart, true);
+		BSTabContainer tab1 = tabs.addTab("JDK 8", jdk8QuickStart, true);
 
 		BSTabContainer tab2 = tabs.addTab("JDK 10",
 		                                  jdk10QuickStart, false);
@@ -52,17 +53,32 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 		JSTree<?> directoryStructureExample = new JSTree<>();
 		directoryStructureExample.setTheme(new JSTreeDefaultDarkTheme());
 
+		JSTreeListItem<?> rootItem = new JSTreeListItem<>("src")
+				                             .setOptions(new JSTreeNodeOptions<>().setDisabled(false)
+				                                                                  .setIcon("far fa-caret-circle-down")
+				                                                                  .setOpened(true));
 
-		JSTreeListItem<?> rootItem = new JSTreeListItem<>("src");
-		rootItem.getOptions()
-		        .setDisabled(false)
-		        .setIcon("far fa-caret-circle-down")
-		        .setOpened(true);
-		JSTreeListItem<?> folder1 = rootItem.addItem("META-INF", new JSTreeNodeOptions<>().setIcon("far fa-folder-open").setOpened(true));
-		JSTreeListItem<?> folder2 = folder1.addItem("services", new JSTreeNodeOptions<>().setIcon("far fa-folder-open").setOpened(true));
-		JSTreeListItem<?> file1 = folder2.addItem("com.jwebmp.core.services.IPage", new JSTreeNodeOptions<>().setIcon("far fa-file"));
-		JSTreeListItem<?> folderResources = folder1.addItem("resources", new JSTreeNodeOptions<>().setIcon("far fa-folder-open").setOpened(true));
-		JSTreeListItem<?> file2 = folderResources.addItem("favicon.ico", new JSTreeNodeOptions<>().setIcon("far fa-file-alt"));
+		JSTreeListItem<?> folder1 = new JSTreeListItem<>("META-INF", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
+		                                                                                      .setOpened(true));
+
+		JSTreeListItem<?> folder2 = new JSTreeListItem<>("services", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
+		                                                                                      .setOpened(true));
+
+		JSTreeListItem<?> file1 = new JSTreeListItem<>("com.jwebmp.core.services.IPage", new JSTreeNodeOptions<>().setIcon("far fa-file"));
+
+		JSTreeListItem<?> folderResources = new JSTreeListItem<>("resources", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
+		                                                                                               .setOpened(true));
+
+		JSTreeListItem<?> file2 = new JSTreeListItem<>("favicon.ico", new JSTreeNodeOptions<>().setIcon("far fa-file-alt"));
+
+		folder2.add(file1);
+
+		folder1.add(folder2);
+
+		folderResources.add(file2);
+
+		folder1.add(folderResources);
+		rootItem.add(folder1);
 
 		directoryStructureExample.addRoot(rootItem);
 		directoryStructureExample.setID("directory-structure-example");

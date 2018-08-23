@@ -32,9 +32,9 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 	}
 
 	@Override
-	public void preConfigure()
+	public void init()
 	{
-		if (!isConfigured())
+		if (!isInitialized())
 		{
 			setID("content-updatable");
 			addStyle("background-color:#333");
@@ -69,8 +69,10 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 			d.add(slimScrollerSpacer);
 
 			buildTitleRow();
+			GuiceContext.getInstance(AjaxResponse.class)
+			            .addComponent(d);
 		}
-		super.preConfigure();
+		super.init();
 	}
 
 	@NotNull

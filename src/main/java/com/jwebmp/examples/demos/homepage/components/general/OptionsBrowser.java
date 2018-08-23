@@ -4,7 +4,6 @@ import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
-import com.jwebmp.plugins.jstree.options.JSTreeNodeOptions;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 
 import javax.validation.constraints.NotNull;
@@ -51,13 +50,19 @@ public class OptionsBrowser
 		int count = 0;
 		for (Enum enumConstant : part.getEnumConstants())
 		{
-			rootItem.addItem(enumConstant.name(), new JSTreeNodeOptions<>().setIcon("fal fa-sort-numeric-down"));
+			JSTreeListItem<?> treeItem = new JSTreeListItem<>().setText(enumConstant.name());
+			treeItem.getOptions()
+			        .setIcon("fal fa-sort-numeric-down");
 			count++;
 			if (count > 5)
 			{
-				rootItem.addItem(" and " + (part.getEnumConstants().length - 5) + " more", new JSTreeNodeOptions<>().setIcon("fal fa-ellipsis-h-alt"));
+				JSTreeListItem<?> countItem = new JSTreeListItem<>().setText(" and " + (part.getEnumConstants().length - 5) + " more");
+				countItem.getOptions()
+				         .setIcon("fal fa-ellipsis-h-alt");
+				rootItem.add(countItem);
 				break;
 			}
+			rootItem.add(treeItem);
 		}
 	}
 
@@ -82,50 +87,68 @@ public class OptionsBrowser
 		for (Field field : fields)
 		{
 			Class<?> clazz = field.getType();
+			JSTreeListItem<?> treeItem = new JSTreeListItem<>();
 			if (clazz.equals(part.getClass()))
 			{
-				rootItem.addItem(field.getName() + " : <small><i>recursive</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-superpowers"));
+				treeItem.setText(field.getName() + " : <small><i>recursive</i></small>")
+				        .getOptions()
+				        .setIcon("fal fa-superpowers");
 			}
 			else if (clazz.equals(Date.class) || clazz.equals(LocalDate.class) || clazz.equals(LocalDateTime.class))
 			{
-				rootItem.addItem(field.getName() + " : <small><i>date</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-clock"));
+				treeItem.setText(field.getName() + " : <small><i>date</i></small>")
+				        .getOptions()
+				        .setIcon("fal fa-clock");
 			}
 			else if (clazz.equals(Boolean.class))
 			{
-				rootItem.addItem(field.getName() + " : <small><i>boolean</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-check-square"));
+				treeItem.setText(field.getName() + " : <small><i>boolean</i></small>")
+				        .getOptions()
+				        .setIcon("fal fa-check-square");
 			}
 			else if (clazz.equals(Integer.class))
 			{
-				rootItem.addItem(field.getName() + " : <small><i>integer</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-terminal"));
+				treeItem.setText(field.getName() + " : <small><i>integer</i></small>")
+				        .getOptions()
+				        .setIcon("fal fa-terminal");
 			}
 			else if (clazz.equals(String.class))
 			{
-				rootItem.addItem(field.getName() + " : <small><i>string</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-text-width"));
+				treeItem.setText(field.getName() + " : <small><i>string</i></small>")
+				        .getOptions()
+				        .setIcon("fal fa-text-width");
 			}
 			else if (clazz.isEnum())
 			{
-
-				JSTreeListItem<?> item = rootItem.addItem(field.getName() + " : <small><i>enum</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-list"));
-				item.getOptions()
-				    .setOpened(false);
-				buildPart(item, (Class<? extends Enum>) clazz);
+				treeItem.setText(field.getName() + " : <small><i>enum</i></small>")
+				        .setAsParent(true)
+				        .getOptions()
+				        .setIcon("fal fa-list")
+				        .setOpened(false);
+				buildPart(treeItem, (Class<? extends Enum>) clazz);
 			}
 			else if (JavaScriptPart.class.isAssignableFrom(clazz))
 			{
-				JSTreeListItem<?> item = rootItem.addItem(field.getName() + ":  <small><i>" + clazz.getSimpleName()
-				                                                                                   .replace("com.jwebmp.plugins.", "") + "</i></small>");
-				item.setOptions(new JSTreeNodeOptions<>().setIcon("fal fa-folder"));
-				buildPart(item, (JavaScriptPart) GuiceContext.getInstance(clazz));
+				treeItem.setText(field.getName() + ":  <small><i>" + clazz.getSimpleName()
+				                                                          .replace("com.jwebmp.plugins.", "") + "</i></small>")
+				        .setAsParent(true)
+				        .getOptions()
+				        .setIcon("fal fa-folder")
+				        .setOpened(true);
+				buildPart(treeItem, (JavaScriptPart) GuiceContext.getInstance(clazz));
 			}
 			else if ("serialVersionUID".equalsIgnoreCase(field.getName()))
 			{
-				rootItem.addItem(field.getName() + " : <small><i>version</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-id-badge"));
+				//	rootItem.addItem(field.getName() + " : <small><i>version</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-id-badge"));
 			}
 			else
 			{
-				rootItem.addItem(field.getName() + " : <small><i>" + field.getType()
-				                                                          .getSimpleName() + "</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-object-ungroup"));
+				treeItem.setText(field.getName() + " : <small><i>" + field.getType()
+				                                                          .getSimpleName() + "</i></small>")
+				        .getOptions()
+				        .setIcon("fal fa-object-ungroup");
 			}
+			rootItem.add(treeItem);
 		}
 	}
 }

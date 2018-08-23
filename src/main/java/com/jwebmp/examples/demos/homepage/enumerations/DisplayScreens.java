@@ -96,7 +96,7 @@ public enum DisplayScreens
 	ForgotPassword(ForgotPasswordScreen.class, "ForgotPassword"),
 	ConfirmEmailAddress(ConfirmEmailAddressScreen.class, "ConfirmEmailAddress"),
 	ConfirmEmailAddressScreen(ConfirmEmailAddressScreen.class, "ConfirmEmailAddressScreen"),
-	PluginsListScreen(PluginsList.class, "PluginsList"),
+	PluginsListScreen(PluginsList.class, "PluginsListScreen"),
 
 	ComingSoon(com.jwebmp.examples.demos.homepage.display.ComingSoon.class, "ComingSoon"),
 

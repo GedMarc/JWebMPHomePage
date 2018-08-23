@@ -1,13 +1,8 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.jwebmp.core.Page;
 import com.jwebmp.core.PlaceHolder;
-import com.jwebmp.core.base.ComponentHierarchyBase;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.jwebmp.plugins.jqlayout.JQLayoutHeaderDiv;
 import com.jwebmp.plugins.jqlayout.components.BorderLayout;
-import com.jwebmp.plugins.jqlayout.enumerations.LayoutResponsiveSize;
-
-import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 
 public class OuterLayout
 		extends BorderLayout<OuterLayout>
@@ -29,11 +24,10 @@ public class OuterLayout
 		            .setTogglerLengthClosed(200);
 
 		getNorth().getContentDiv()
-		          .add(new PlaceHolder<>("topbar").addStyle("height","70px"));
+		          .add(new PlaceHolder<>("topbar").addStyle("height", "70px"));
 
 		getWest().getContentDiv()
 		         .add(new PlaceHolder<>("west"));
-
 
 		innerLayout.setFullScreen(true);
 		innerLayout.setID("innerLayoutContainer");
@@ -45,11 +39,11 @@ public class OuterLayout
 		           .getContentDiv()
 		           .add(new PlaceHolder<>("content-updatable"));
 
-		if(!getPage().isMobileOrSmartTablet())
+		if (!getPage().isMobileOrSmartTablet())
 		{
 			innerLayout.getCenter()
 			           .getHeaders()
-			           .add(new PlaceHolder<>("innerNorth").addStyle("height:60px;"));
+			           .add(new JQLayoutHeaderDiv<>().add(new PlaceHolder<>("innerNorth").addStyle("height:60px;")));
 		}
 
 		if (getPage().isMobileOrSmartTablet())
@@ -63,7 +57,8 @@ public class OuterLayout
 			            .setSpacingOpen(15)
 			            .setSpacingClosed(15);
 
-			getOptions().getWest().setResizerClass("btn-custom btn-primary")
+			getOptions().getWest()
+			            .setResizerClass("btn-custom btn-primary")
 			            .setTogglerClass("btn-custom btn-secondary")
 			            .setSpacingOpen(15)
 			            .setSpacingClosed(15)

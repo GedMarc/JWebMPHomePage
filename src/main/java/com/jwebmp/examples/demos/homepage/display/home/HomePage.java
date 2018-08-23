@@ -107,6 +107,12 @@ public class HomePage
 		{
 			left.add(new LoginPart());
 		}
+		else
+		{
+
+		}
+
+		left.add(GuiceContext.get(GalleryPart.class));
 
 		left.add(buildOpenSourceSponsors());
 		left.add(buildSnap4());

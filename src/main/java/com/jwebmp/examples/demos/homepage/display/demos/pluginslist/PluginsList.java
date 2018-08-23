@@ -6,6 +6,7 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
+import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
@@ -14,6 +15,7 @@ import com.jwebmp.plugins.datatable.DataTable;
 import java.util.List;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 
 public class PluginsList
 		extends DisplayScreen
@@ -41,7 +43,12 @@ public class PluginsList
 		displayRow.addClass("card-box");
 		displayRow.removeClass("row");
 
-		//	displayRow.add(buildColumn());
+		BSColumn col = new BSColumn(Col_12);
+		col.addClass("table-responsive");
+		col.add(buildColumn());
+		displayRow.add(col);
+
+		//	System.out.println(displayRow.toString());
 
 		return container;
 	}
@@ -60,15 +67,7 @@ public class PluginsList
 	private ComponentHierarchyBase buildColumn()
 	{
 		TableHeaderGroup<?> thg = new TableHeaderGroup();
-		DataTable<?, ?> dt = new DataTable("dt", thg);
-		dt.getOptions()
-		  .getResponsive();
-		dt.addStyle("display:block;");
-		dt.addClass("table table-responsive w-100 d-block d-md-table");
-
 		TableRow thr = new TableRow();
-		List<Plugins> pluginsList = new Plugins().findAll();
-
 		thr.add(new TableHeaderCell<>("Icon"));
 		thr.add(new TableHeaderCell<>("Name"));
 		thr.add(new TableHeaderCell<>("Version"));
@@ -79,9 +78,15 @@ public class PluginsList
 
 		thg.add(thr);
 
+		DataTable<?, ?> dt = new DataTable("dt", thg);
+		dt.addStyle("display:block;");
+		dt.addClass("table table-responsive w-100 d-block d-md-table");
+
+		List<Plugins> pluginsList = new Plugins().findAll();
+
 		for (Plugins plugin : pluginsList)
 		{
-			dt.add(new TableRow<>().add(new TableCell<>().add(new Image<>(plugin.getPluginLogoUrl()).addStyle("width:20px;height:20px;")))
+			dt.add(new TableRow<>().add(new TableCell<>().add(new Image<>(plugin.getPluginLogoUrl()).addStyle("width:45px;height:45px;")))
 			                       .add(new TableCell<>(plugin.getPluginName()))
 			                       .add(new TableCell<>(plugin.getPluginVersion()))
 			                       .add(new TableCell<>(plugin.getPluginDescription()))

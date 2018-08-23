@@ -6,7 +6,7 @@ import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.base.html.Link;
-import com.jwebmp.core.base.html.interfaces.GlobalChildren;
+import com.jwebmp.core.base.interfaces.IComponentHierarchyBase;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
@@ -292,7 +292,7 @@ public class HelloWorldScreen
 		                                                 .addStyle("max-height:250px;"));
 	}
 
-	private Div<GlobalChildren, ?, ?, ?, ?> buildTab(String description, SourceCodeLanguages language, StringBuilder fileTemplate)
+	private Div<IComponentHierarchyBase, ?, ?, ?, ?> buildTab(String description, SourceCodeLanguages language, StringBuilder fileTemplate)
 	{
 		DivSimple<?> htmlExample = new DivSimple<>();
 		htmlExample.add(description);
