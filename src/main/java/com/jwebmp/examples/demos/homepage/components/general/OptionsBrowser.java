@@ -134,12 +134,13 @@ public class OptionsBrowser
 				        .setAsParent(true)
 				        .getOptions()
 				        .setIcon("fal fa-folder")
-				        .setOpened(true);
+				        .setOpened(false);
 				buildPart(treeItem, (JavaScriptPart) GuiceContext.getInstance(clazz));
 			}
 			else if ("serialVersionUID".equalsIgnoreCase(field.getName()))
 			{
 				//	rootItem.addItem(field.getName() + " : <small><i>version</i></small>", new JSTreeNodeOptions<>().setIcon("fal fa-id-badge"));
+				continue;
 			}
 			else
 			{
