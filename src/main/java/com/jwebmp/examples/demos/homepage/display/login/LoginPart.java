@@ -1,18 +1,14 @@
 package com.jwebmp.examples.demos.homepage.display.login;
 
-import com.jwebmp.core.Page;
-import com.jwebmp.core.base.angular.AngularAttributes;
 import com.jwebmp.core.base.angular.forms.enumerations.InputErrorValidations;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.attributes.InputPasswordTypeAttributes;
 import com.jwebmp.core.base.html.inputs.InputEmailType;
 import com.jwebmp.core.base.html.inputs.InputPasswordType;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
-import com.jwebmp.examples.demos.homepage.components.PrettyPrimaryButton;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCheckBox;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordEvent;
-import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButton;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonSizeOptions;
@@ -20,9 +16,7 @@ import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.forms.BSForm;
 import com.jwebmp.plugins.bootstrap4.forms.groups.sets.BSFormInputGroup;
-import com.jwebmp.plugins.bootstrap4.modal.BSModal;
-import com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions;
-import com.jwebmp.plugins.bootstrap4.options.BSColoursOptions;
+import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSSpacingOptions;
 import com.jwebmp.plugins.fontawesome5.FontAwesome;
@@ -39,35 +33,69 @@ public class LoginPart
 		BSCardBody<?> body = addCardBody();
 
 		BSRow loginFormRow = new BSRow<>();
-		BSForm<?> loginForm = new BSForm<>().setID("loginForm");
+		//		loginFormRow.add(loginForm(true, false, true));
+
+		body.add(new AlertMessage(null).setAddDismissButton(false));
+		body.add(loginFormRow);
+
+		//body.add(buildButtonRow(loginForm, loginInputGroup, inputGroup));
+
+		BSNavTabs<?> tabs = new BSNavTabs<>();
+		tabs.addTab("Login", new Div<>().add(loginForm(true, false, true)), true);
+		tabs.addTab("Register", new Div<>().add(loginForm(true, true, false)), false);
+		tabs.addTab("Forgot Password", new Div<>().add(loginForm(false, false, false)), false);
+
+		body.add(tabs);
+
+		addStyle("margin-bottom:1rem;");
+	}
+
+	private BSForm loginForm(boolean includePassword, boolean includeConfirmPassword, boolean rememberMe)
+	{
+		BSForm<?> loginForm = new BSForm<>();
 		loginForm.asMe()
 		         .setStyleInput(true);
 		loginForm.addClass(BSColumnOptions.Col_12);
-		loginFormRow.add(loginForm);
-
-		loginForm.add(new AlertMessage(null));
 
 		BSFormInputGroup<?, InputEmailType<?>> loginInputGroup = buildLoginInput(loginForm);
+		if (includePassword)
+		{
+			BSFormInputGroup<?, InputPasswordType<?>> inputGroup = buildPasswordInput(loginForm);
+		}
+		if (includeConfirmPassword)
+		{
+			BSFormInputGroup<?, InputPasswordType<?>> inputGroup = buildConfirmPasswordInput(loginForm);
+		}
 
-		BSFormInputGroup<?, InputPasswordType<?>> inputGroup = buildPasswordInput(loginForm);
+		if (rememberMe)
+		{
+			BSRow checkRow = new BSRow();
+			MintonCheckBox checkBox;
+			checkRow.add(checkBox = new MintonCheckBox<>("Remember Me Forever", true, "checkbox-purple").addClass(BSColumnOptions.Col_12));
+			checkBox.getCheckBox()
+			        .bind("subscribe.rememberMe")
+			        .addStyle("margin-left", "5px;")
+			        .addStyle("margin-top", "15px;");
+			loginForm.add(checkRow);
+		}
 
-		BSRow checkRow = new BSRow();
-		MintonCheckBox checkBox;
-		checkRow.add(checkBox = (MintonCheckBox) new MintonCheckBox<>("Remember Me Forever", true, "checkbox-purple").addClass(BSColumnOptions.Col_12));
-		checkBox.getCheckBox()
-		        .bind("subscribe.rememberMe")
-		        .addStyle("margin-left", "5px;")
-		        .addStyle("margin-top", "15px;");
-		loginForm.add(checkRow);
+		if (!includeConfirmPassword && rememberMe)
+		{
+			BSButton submitButton = buildLoginButton(loginForm);
+			submitButton.addEvent(new LoginEvent(submitButton));
+		}
+		else if (includeConfirmPassword && !rememberMe)
+		{
+			BSButton submitButton = buildRegisterButton(loginForm);
+			submitButton.addEvent(new RegisterEvent(submitButton));
+		}
+		else if (!includePassword && !includeConfirmPassword && !rememberMe)
+		{
+			BSButton submitButton = buildForgotPasswordButton(loginForm);
+			submitButton.addEvent(new ForgotPasswordEvent(submitButton));
+		}
 
-		BSButton submitButton = buildSubmitButton(loginForm);
-		submitButton.addEvent(new LoginEvent(submitButton));
-
-		body.add(loginFormRow);
-
-		body.add(buildButtonRow(loginForm, loginInputGroup, inputGroup));
-
-		addStyle("margin-bottom:1rem;");
+		return loginForm;
 	}
 
 	/**
@@ -79,148 +107,97 @@ public class LoginPart
 	 */
 	private BSFormInputGroup<?, InputEmailType<?>> buildLoginInput(BSForm<?> loginForm)
 	{
-		BSFormInputGroup<?, InputEmailType<?>> loginInputGroup = loginForm.addEmailInput("subscribe.emailAddress", null, true)
+		BSFormInputGroup<?, InputEmailType<?>> loginInputGroup = loginForm.createEmailInput("subscribe.emailAddress", null, true)
 		                                                                  .prepend(FontAwesome.icon(FontAwesomeIcons.at));
-		loginInputGroup.setID("loginInputGroup")
-		               .setStyleInputGroupTextWithValidation(true)
-		               .updateOnBlur()
-		               .addClass(BSSpacingOptions.Margin_Bottom_3);
+		loginInputGroup
+				.setStyleInputGroupTextWithValidation(true)
+				.updateOnBlur()
+				.addClass(BSSpacingOptions.Margin_Bottom_3);
 
 		loginInputGroup.getInput()
-		               .setID("loginInputID")
 		               .setRequired()
 		               .addAttribute(AutoComplete, "username")
 		               .setPlaceholder("Email Address")
 		               .setPattern("regex.emailField");
 
 		loginInputGroup.addMessage(InputErrorValidations.pattern, "Please enter a valid email address");
+
+		loginForm.add(loginInputGroup);
 		return loginInputGroup;
 	}
 
 	private BSFormInputGroup<?, InputPasswordType<?>> buildPasswordInput(BSForm<?> loginForm)
 	{
-		BSFormInputGroup<?, InputPasswordType<?>> inputGroup = loginForm.addPasswordInput("subscribe.password", null, true)
+		BSFormInputGroup<?, InputPasswordType<?>> inputGroup = loginForm.createPasswordInput("subscribe.password", null, true)
 		                                                                .prepend(FontAwesome.icon(FontAwesomeIcons.key));
 
-		inputGroup.getInput()
+		inputGroup.addClass(BSSpacingOptions.Margin_Bottom_3)
+		          .getInput()
 		          .setMinimumLength(6)
 		          .setRequired()
 		          .addAttribute(InputPasswordTypeAttributes.AutoComplete, "current-password")
 		          .setPlaceholder("Password")
 		          .setPattern("regex.password");
 		inputGroup.addMessage(InputErrorValidations.pattern, "Password needs to be at least 6 characters long and have a number.");
+
+		loginForm.add(inputGroup);
 		return inputGroup;
 	}
 
-	private BSButton buildSubmitButton(BSForm<?> loginForm)
+	private BSFormInputGroup<?, InputPasswordType<?>> buildConfirmPasswordInput(BSForm<?> loginForm)
 	{
-		BSButton loginButton = loginForm.addSubmitButton(BSButtonOptions.Btn_Primary, BSButtonSizeOptions.Btn_Block);
+		BSFormInputGroup<?, InputPasswordType<?>> inputGroup = loginForm.createPasswordInput("subscribe.confirmPassword", null, true)
+		                                                                .prepend(FontAwesome.icon(FontAwesomeIcons.key));
+
+		inputGroup.addClass(BSSpacingOptions.Margin_Bottom_3)
+		          .getInput()
+		          .setMinimumLength(6)
+		          .setRequired()
+		          .addAttribute(InputPasswordTypeAttributes.AutoComplete, "new-password")
+		          .setPlaceholder("Confirm Password")
+		          .setPattern("regex.password");
+		inputGroup.addMessage(InputErrorValidations.pattern, "Password needs to be at least 6 characters long and have a number.");
+
+		loginForm.add(inputGroup);
+		return inputGroup;
+	}
+
+	private BSButton buildLoginButton(BSForm<?> loginForm)
+	{
+		BSButton loginButton = loginForm.createSubmitButton(BSButtonOptions.Btn_Primary, BSButtonSizeOptions.Btn_Block);
 		loginButton.setText("Log Me In");
-		loginButton.addClass("waves-effect waves-primary")
+		loginButton.addClass("waves-effect waves-light waves-primary")
 		           .addClass(BSSpacingOptions.Margin_Top_3)
 		           .addClass(BSSpacingOptions.Margin_Bottom_2);
 		loginButton.addStyle("margin-top", "0px !important;");
+
+		loginForm.add(loginButton);
 		return loginButton;
 	}
 
-	private BSRow buildButtonRow(BSForm<?> loginForm, BSFormInputGroup loginInputGroup, BSFormInputGroup inputGroup)
+	private BSButton buildRegisterButton(BSForm<?> loginForm)
 	{
-		BSRow row = new BSRow();
-		row.addClass(BSNavsOptions.Justify_Content_Center);
-		row.resetHorizontalSinks();
-		PrettyPrimaryButton<?> registerButton = new PrettyPrimaryButton<>().setText("Register")
-		                                                                   .addClass(BSColoursOptions.Text_White)
-		                                                                   .asButton()
-		                                                                   .addAttribute(AngularAttributes.ngDisabled, "" +
-		                                                                                                               loginForm.getName() +
-		                                                                                                               "." +
-		                                                                                                               loginInputGroup.getInput()
-		                                                                                                                              .getName() +
-		                                                                                                               ".$invalid || " +
-		                                                                                                               loginForm.getName() +
-		                                                                                                               "." +
-		                                                                                                               inputGroup.getInput()
-		                                                                                                                         .getName() +
-		                                                                                                               ".$invalid");
-		Page p = GuiceContext.get(Page.class);
-		if (p.isMobileOrSmartTablet())
-		{
-			registerButton.addClass(BSColumnOptions.Col_12);
-		}
-		else
-		{
-			registerButton.addClass(BSColumnOptions.Col_5);
-		}
+		BSButton loginButton = loginForm.createSubmitButton(BSButtonOptions.Btn_Primary, BSButtonSizeOptions.Btn_Block);
+		loginButton.setText("Register");
+		loginButton.addClass("waves-effect waves-light waves-primary")
+		           .addClass(BSSpacingOptions.Margin_Top_3)
+		           .addClass(BSSpacingOptions.Margin_Bottom_2);
+		loginButton.addStyle("margin-top", "0px !important;");
 
-		BSModal<?> confirmModal = buildConfirmPasswordModal();
-		confirmModal.setBackdrop(false);
-		row.add(confirmModal);
-
-		confirmModal.addOpenButton(registerButton);
-
-		row.add(registerButton);
-
-		PrettyPrimaryButton forgotPassButton = new PrettyPrimaryButton<>().setText("Forgot Password")
-		                                                                  .addClass(BSColoursOptions.Text_White)
-		                                                                  .asButton()
-		                                                                  .addAttribute(AngularAttributes.ngDisabled, loginForm.getName() +
-		                                                                                                              "." +
-		                                                                                                              loginInputGroup.getInput()
-		                                                                                                                             .getName() +
-		                                                                                                              ".$invalid");
-
-		forgotPassButton.addEvent(new ForgotPasswordEvent(forgotPassButton));
-		row.add(forgotPassButton);
-
-		if (p.isMobileOrSmartTablet())
-		{
-			forgotPassButton.addClass(BSColumnOptions.Col_12);
-		}
-		else
-		{
-			forgotPassButton.addClass(BSColumnOptions.Col_6);
-		}
-
-		return row;
+		loginForm.add(loginButton);
+		return loginButton;
 	}
 
-	private BSModal<?> buildConfirmPasswordModal()
+	private BSButton buildForgotPasswordButton(BSForm<?> loginForm)
 	{
-		BSModal<?> modal = new BSModal<>();
-		modal.setID("confirmPasswordModal");
-		modal.setFade();
-		modal.setFocus(true);
-		modal.setModalDialogCenter(true);
+		BSButton loginButton = loginForm.createSubmitButton(BSButtonOptions.Btn_Primary, BSButtonSizeOptions.Btn_Block);
+		loginButton.setText("Forgot Password");
+		loginButton.addClass("waves-effect waves-light waves-primary")
+		           .addClass(BSSpacingOptions.Margin_Top_3)
+		           .addClass(BSSpacingOptions.Margin_Bottom_2);
+		loginButton.addStyle("margin-top", "0px !important;");
 
-		modal.addModalHeader(true)
-		     .addTitle("Confirm your password");
-
-		BSRow<?> inputRow = new BSRow<>();
-		BSForm<?> inputForm = new BSForm<>();
-		inputForm.addClass(BSColumnOptions.Col_12);
-		BSFormInputGroup<?, InputPasswordType<?>> confirm = inputForm.addPasswordInput("subscribe.confirmPassword", null, false);
-		confirm.getInput()
-		       .setPattern("regex.password")
-		       .addAttribute(InputPasswordTypeAttributes.AutoComplete, "new-password")
-		       .setRequired();
-		confirm.getInput()
-		       .setMinimumLength(6);
-		confirm.addMessage(InputErrorValidations.pattern, "Password needs to be at least 6 characters long, have a number and an uppercase character");
-		inputForm.setStyleInput(true);
-		BSButton submitButton = buildSubmitButton(inputForm);
-
-		modal.asMe()
-		     .createDismissButton(submitButton);
-
-		submitButton.setText("Register");
-		submitButton.addEvent(new RegisterEvent(submitButton));
-
-		inputRow.add(inputForm);
-
-		modal.getModalContent()
-		     .add(inputRow);
-
-		return modal;
-
+		loginForm.add(loginButton);
+		return loginButton;
 	}
 }

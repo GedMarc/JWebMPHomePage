@@ -42,6 +42,17 @@ public class AlertMessage
 		super.preConfigure();
 	}
 
+	public boolean isAddDismissButton()
+	{
+		return addDismissButton;
+	}
+
+	public AlertMessage setAddDismissButton(boolean addDismissButton)
+	{
+		this.addDismissButton = addDismissButton;
+		return this;
+	}
+
 	public FontAwesome getIcon()
 	{
 		return icon;
@@ -52,14 +63,9 @@ public class AlertMessage
 		this.icon = icon;
 	}
 
-	public boolean isAddDismissButton()
+	@Override
+	public boolean equals(Object o)
 	{
-		return addDismissButton;
-	}
-
-	public AlertMessage setAddDismissButton(boolean addDismissButton)
-	{
-		this.addDismissButton = addDismissButton;
-		return this;
+		return false;
 	}
 }

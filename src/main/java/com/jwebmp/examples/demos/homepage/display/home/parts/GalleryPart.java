@@ -10,12 +10,15 @@ public class GalleryPart
 	public GalleryPart()
 	{
 		add(buildCarousel());
+		add(buildGallery());
 	}
 
 	private BlueImpGallery buildCarousel()
 	{
 		BlueImpCarousel gallery = new BlueImpCarousel();
 		gallery.setControls(true);
+		gallery.getOptions()
+		       .setStartSlideshow(true);
 		gallery.addScreen("images/screens/1.png", null, null, "Alt");
 		gallery.addScreen("images/screens/2.png", null, null, "Alt");
 		gallery.addScreen("images/screens/2015/12.PNG", null, null, "Alt");

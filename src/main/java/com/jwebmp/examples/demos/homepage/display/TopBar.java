@@ -222,8 +222,8 @@ public class TopBar
 
 			profileDropDownContent.add(
 					buildDropDownNotificationItem("", "fal fa-id-card fa-2x",
-					                              "Login", (Date) null))
-			                      .addEvent(new ChangeScreenEvent(null, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
+					                              "Login", (Date) null)
+							.addEvent(new ChangeScreenEvent(null, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString())));
 
 			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-file-signature fa-2x", "T & C's", (Date) null).addEvent(
 					new GoToTermsAndConditionsEvent(null)));

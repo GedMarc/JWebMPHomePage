@@ -1,8 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.home;
 
 import com.jwebmp.core.base.html.Link;
-import com.jwebmp.examples.demos.homepage.SessionProperties;
-import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.home.parts.*;
 import com.jwebmp.examples.demos.homepage.display.login.LoginPart;
@@ -18,13 +16,10 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.fontawesome5.FontAwesome;
 import com.jwebmp.plugins.fontawesome5.FontAwesomeList;
 import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
-import com.jwebmp.plugins.fontawesome5.options.FontAwesomeSizes;
 import com.jwebmp.plugins.skycons.SkyIcon;
 import com.jwebmp.plugins.skycons.Skycon;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
-import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
-import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 
 public class HomePage
 		extends DisplayScreen
@@ -75,9 +70,21 @@ public class HomePage
 		return container;
 	}
 
+	@Override
+	public BSBreadCrumb<?> getTitleBreadcrumbs()
+	{
+		BSBreadCrumb crumbs = new BSBreadCrumb();
+		crumbs.addBreadCrumb(new BSBreadCrumbItem().setActive(true)
+		                                           .setCrumbLink(new Link<>("#").setText("JWebMP")));
+		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
+		                                             .setText("Home Page"));
+		return crumbs;
+	}
+
 	private void orderForMobile()
 	{
-		right.getChildren()
+		orderForDesktop();
+		/*right.getChildren()
 		     .clear();
 		left.getChildren()
 		    .clear();
@@ -90,7 +97,7 @@ public class HomePage
 			left.add(new LoginPart());
 		}
 		left.add(new MavenPomPart());
-
+*/
 	}
 
 	private void orderForDesktop()
@@ -102,32 +109,32 @@ public class HomePage
 
 		left.add(buildSnap2());
 
-		if (!GuiceContext.getInstance(SessionProperties.class)
-		                 .isLoggedIn())
-		{
-			left.add(new LoginPart());
-		}
-		else
-		{
+		left.add(addWhiteAlert("<strong>JPMS for JPA, JTA and JCache - Out The Box!</strong>"));
 
-		}
+		left.add(new LoginPart());
+		left.add(addWhiteAlert(
+				"<strong>Thankfully, Guice has no beans. NO BEANS! How many beans do we have to remember and disambiguate before it is too much? Javabeans, Enterprise Javabeans, Spring Beans, Coffee Beans, Mr. Bean, and I might still have missed a few others!</strong>" +
+				"<br/><a target=\"_blank\" href=\"https://dzone.com/articles/an-opinionless-comparison-of-spring-and-guice\">See DZone Comparison, and why JPMS favours Guice for Injection</a>"
+		                      ));
 
 		left.add(GuiceContext.get(GalleryPart.class));
-
-		left.add(buildOpenSourceSponsors());
+		left.add(addWhiteAlert("<strong>Testable End-To-End. No more struggling with getting test cases up and running!</strong>" +
+		                       "<br/><a target=\"_blank\" href=\"https://jwebmp.com/sonar/\">View SonarQube for Quality Control and Test Case Output</a>"));
 		left.add(buildSnap4());
 		left.add(buildContinuousIntegrationPane());
 
+		right.add(addWhiteAlert("<strong>Backwards Compatible with JRE8 to assist in porting your EE applications to JPMS, seamlessly and without intrusion</strong>"));
 		right.add(new MavenPomPart());
+		right.add(addWhiteAlert(
+				"<strong>Go back to coding pure Java with a 100% Domain Driven Design System, and <i><u>feel</u></i> the enormous performance benefit that comes with it </strong>" +
+				"<br/><a target=\"_blank\" href=\"https://groups.google.com/forum/#!topic/microprofile/Fdbyh1qTV68\">See why class containers (EJB, WAR,etc) are no longer valid in JPMS</a>"));
 		right.add(buildSnap3());
-		right.add(new AlertMessage("<strong>Code Icons " + FontAwesome.icon(FontAwesomeIcons.code, FontAwesomeSizes.$2x)
-		                                                              .setTiny(true)
-		                                                              .toString(0) + "</strong> display quick snippets", Alert_Dark).addClass(Bg_Light)
-		                                                                                                                            .setAddDismissButton(false)
-		                                                                                                                            .setID("useCodeIconsAM"));
+		right.add(addWhiteAlert("<strong>Use JPMS and Private Modules for proper encapsulation without the weight of running an EE/MicroProfile server.</strong>"));
 
 		right.add(new ContactUsPart());
 		right.add(new ReasonsWhyPart());
+
+		right.add(buildOpenSourceSponsors());
 	}
 
 	private BSCard buildSnap2()
@@ -155,16 +162,20 @@ public class HomePage
 		return card;
 	}
 
-	private BSCard buildOpenSourceSponsors()
+	private BSCard buildSnap3()
 	{
 		BSCard<?> card = new BSCard();
-		card.setTextCenter(true);
-		card.addCardText("JWebMP is completely open source" +
-		                 "<br/>JWebMP is licensed under GPL 3.0<br/>" +
-		                 "<i>We Use Browser Stack</i>");
-		card.addCardImageBottom("images/BrowserStack.png");
+		card.addCardHeader("Pre Built Plugins Already Exist For".toUpperCase());
+
+		FontAwesomeList list = new FontAwesomeList();
+		addIconList(list, "JPA JTA JCache", FontAwesomeIcons.check, "#6f42c1");
+		addIconList(list, "Hazelcast EhCache Hibernate BTM", FontAwesomeIcons.check, "#6f42c1");
+		addIconList(list, "RabbitMQ HTTP2 WS", FontAwesomeIcons.check, "#6f42c1");
+		card.addCardBody()
+		    .add(list);
 
 		card.addStyle("margin-bottom:1rem;");
+
 		return card;
 	}
 
@@ -192,31 +203,14 @@ public class HomePage
 		return openSourcePane;
 	}
 
-	private BSCard buildSnap3()
+	private BSCard buildOpenSourceSponsors()
 	{
 		BSCard<?> card = new BSCard();
-		card.addCardHeader("Pre Built Plugins Already Exist For");
-
-		FontAwesomeList list = new FontAwesomeList();
-		addIconList(list, "JPA JTA JCache", FontAwesomeIcons.check, "#6f42c1");
-		addIconList(list, "Hazelcast EhCache Hibernate BTM", FontAwesomeIcons.check, "#6f42c1");
-		addIconList(list, "RabbitMQ HTTP2 WS", FontAwesomeIcons.check, "#6f42c1");
 		card.addCardBody()
-		    .add(list);
-
-		card.addStyle("margin-bottom:1rem;");
-
+		    .add(addWhiteAlert("Completely Open Source, Tested with BrowserStack"));
+		card.setTextCenter(true);
+		card.addCardImageBottom("images/BrowserStack.png")
+		    .addAttribute("style", "max-height:50%;max-width:50%");
 		return card;
-	}
-
-	@Override
-	public BSBreadCrumb<?> getTitleBreadcrumbs()
-	{
-		BSBreadCrumb crumbs = new BSBreadCrumb();
-		crumbs.addBreadCrumb(new BSBreadCrumbItem().setActive(true)
-		                                           .setCrumbLink(new Link<>("#").setText("JWebMP")));
-		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
-		                                             .setText("Home Page"));
-		return crumbs;
 	}
 }

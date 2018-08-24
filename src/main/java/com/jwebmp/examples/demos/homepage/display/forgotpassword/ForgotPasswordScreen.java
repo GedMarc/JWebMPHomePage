@@ -140,12 +140,12 @@ public class ForgotPasswordScreen
 
 				BSForm<?> form = new BSForm<>();
 
-				form.addPasswordInput("subscriber.password", "New Password", true)
+				form.createPasswordInput("subscriber.password", "New Password", true)
 				    .prepend(FontAwesome.icon(FontAwesomeIcons.key));
-				form.addPasswordInput("subscriber.confirmPassword", "Confirm Password", true)
+				form.createPasswordInput("subscriber.confirmPassword", "Confirm Password", true)
 				    .prepend(FontAwesome.icon(FontAwesomeIcons.key));
 
-				BSButton submit = form.addSubmitButton(BSButtonOptions.Btn_Outline_Primary, BSButtonSizeOptions.Btn_Lg)
+				BSButton submit = form.createSubmitButton(BSButtonOptions.Btn_Outline_Primary, BSButtonSizeOptions.Btn_Lg)
 				                      .addClass("mt-2");
 				submit.setText("Reset Password");
 				submit.addEvent(new SetPasswordEvent(submit));

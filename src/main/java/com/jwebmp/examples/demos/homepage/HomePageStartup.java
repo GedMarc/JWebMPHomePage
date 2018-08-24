@@ -1,6 +1,7 @@
 package com.jwebmp.examples.demos.homepage;
 
 import com.jwebmp.core.SessionHelper;
+import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
 import com.jwebmp.core.generics.WebReference;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
 import com.jwebmp.guicedpersistence.db.services.HibernateEntityManagerProperties;
@@ -13,6 +14,7 @@ import com.jwebmp.plugins.datatable.enumerations.DataTableThemes;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
+import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
 import com.jwebmp.undertow.JWebMPUndertow;
 
 import javax.servlet.ServletException;
@@ -27,6 +29,7 @@ public class HomePageStartup
 		LogColourFormatter.setRenderBlack(false);
 		LogFactory.configureConsoleColourOutput(Level.FINE);
 		WebReference.setUseVersionIdentifier(true);
+		AngularMessagesModule.setMesssgesModuleEnabled(true);
 
 		HibernateEntityManagerProperties.setShowSql(true);
 		HibernateEntityManagerProperties.setFormatSql(true);
@@ -45,6 +48,8 @@ public class HomePageStartup
 		DataTablePageConfigurator.switchTheme(DataTableThemes.Bootstrap4);
 		DataTablePageConfigurator.getPlugins()
 		                         .add(DataTablePlugins.Buttons);
+
+		SkyconPageConfigurator.setColour("white");
 
 		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
 

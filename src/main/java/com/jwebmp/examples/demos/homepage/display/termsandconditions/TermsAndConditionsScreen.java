@@ -15,9 +15,8 @@ public class TermsAndConditionsScreen
 	@Override
 	public BSContainer<?> getContentContainer()
 	{
-		BSContainer block = new BSContainer<>().addClass("col-md-12")
-		                                       .addClass("ml-3")
-		                                       .addClass("mr-3");
+		BSContainer block = new BSContainer<>().addClass("col-md-12");
+		block.removeClass("container-fluid");
 		Paragraph p = new Paragraph();
 		p.setTextOnly(true);
 		StringBuilder sb = FileTemplates.getFileTemplate(TermsAndConditionsScreen.class, "termsandconditions", "TermsOfUse.html");

@@ -1,6 +1,8 @@
 package com.jwebmp.examples.demos.homepage.components.display;
 
 import com.jwebmp.core.base.html.Div;
+import com.jwebmp.examples.demos.homepage.components.AlertMessage;
+import com.jwebmp.plugins.bootstrap4.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
 import com.jwebmp.plugins.fontawesome5.FontAwesome;
 import com.jwebmp.plugins.fontawesome5.FontAwesomeList;
@@ -14,7 +16,11 @@ import java.io.InputStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DisplayPart<J extends DisplayPart<J>> extends BSCard<J>
+import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
+
+public class DisplayPart<J extends DisplayPart<J>>
+		extends BSCard<J>
 {
 	public DisplayPart()
 	{
@@ -37,13 +43,23 @@ public class DisplayPart<J extends DisplayPart<J>> extends BSCard<J>
 		{
 			String file = FileUtils.readFile(stream);
 			file = file.replace('\t', ' ')
-			            .replace("    ", "  ");
+			           .replace("    ", "  ");
 			container.add(new JQSourceCodePrettify<>().addStyle("background:#333;")
 			                                          .setSourceCodeLanguage(language)
 			                                          .setText(StringEscapeUtils.escapeHtml4(file)));
-		}catch(Exception e)
-		{
-			Logger.getLogger("DisplayScreen").log(Level.SEVERE, "Add source code error", e);
 		}
+		catch (Exception e)
+		{
+			Logger.getLogger("DisplayScreen")
+			      .log(Level.SEVERE, "Add source code error", e);
+		}
+	}
+
+	protected BSAlert addWhiteAlert(String text)
+	{
+		return new AlertMessage(text, Alert_Dark).addClass(Bg_Light)
+		                                         .setAddDismissButton(false)
+		                                         .setID("useCodeIconsAM");
+
 	}
 }

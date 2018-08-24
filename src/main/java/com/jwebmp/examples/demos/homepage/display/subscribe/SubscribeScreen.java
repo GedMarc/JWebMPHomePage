@@ -149,11 +149,10 @@ public class SubscribeScreen
 		sfe.returnVariable("subscribe");
 
 		form.add(HorizontalRule.getInstance());
-		//	form.addSubmitButton(submitButton);
+		//	form.createSubmitButton(submitButton);
 		form.add(submitButton);
 
 		return form;
 	}
-
 
 }
