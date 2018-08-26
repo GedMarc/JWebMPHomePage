@@ -69,6 +69,15 @@
 
         <dependency>
             <groupId>com.jwebmp</groupId>
+            <artifactId>guiced-servlets-request-scoper</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <classifier>${jwebmp.runtime.classifier}</classifier>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
             <artifactId>guiced-hazelcast</artifactId>
             <version>${project.version}</version>
             <type>jar</type>

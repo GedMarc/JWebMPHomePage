@@ -17,6 +17,7 @@ import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
+import com.jwebmp.plugins.bootstrap4.cards.layout.BSCardBox;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
@@ -24,15 +25,13 @@ import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
-import com.jwebmp.plugins.jqlayout.enumerations.JQLayoutArea;
-import com.jwebmp.plugins.jqlayout.events.JQLayoutSlideCloseLayoutDivFeature;
 import com.jwebmp.plugins.metrojs.JQMetroTiles;
 import com.jwebmp.plugins.metrojs.enumerations.TileAccentThemes;
 import com.jwebmp.plugins.metrojs.enumerations.TileCount;
 import com.jwebmp.plugins.metrojs.tiles.StaticTile;
 import com.jwebmp.plugins.metrojs.tiles.TileFace;
 import org.apache.commons.lang3.RandomUtils;
-import org.apache.commons.lang3.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 
 import javax.cache.annotation.CacheKey;
 import javax.cache.annotation.CacheResult;
@@ -64,7 +63,6 @@ public class PluginDemoScreen
 	public PluginDemoScreen(String pluginName, String... breadCrumbs)
 	{
 		OuterLayout outerLayout = GuiceContext.getInstance(OuterLayout.class);
-		addFeature(new JQLayoutSlideCloseLayoutDivFeature(outerLayout.getPane(JQLayoutArea.East)));
 
 		this.pluginName = pluginName;
 		this.breadCrumbs = breadCrumbs;
@@ -143,12 +141,14 @@ public class PluginDemoScreen
 		mavenDisplayDiv = buildDependencyInformation(StringEscapeUtils.escapeHtml4(
 				FileTemplates.getFileTemplate(getClass(), getClassCanonicalName() + "mavenpom.txt", "mavenpom.txt")
 				             .toString()));
-		leftColumnTop.add(mavenDisplayDiv).addClass("col-12");
+		leftColumnTop.add(mavenDisplayDiv)
+		             .addClass("col-12");
 
 		artiInfo = buildArtifactInformation();
-		rightColumnTop.add(artiInfo).addClass("col-12");
+		rightColumnTop.add(artiInfo)
+		              .addClass("col-12");
 
-		optionBrowsers.forEach(a ->rightColumnTop.add(a));
+		optionBrowsers.forEach(a -> rightColumnTop.add(a));
 
 		//fullColumn.add(sourceCodeContentPanel());
 
@@ -183,18 +183,19 @@ public class PluginDemoScreen
 
 	private DivSimple<?> buildDependencyInformation(String depedencyInfo)
 	{
-		DivSimple<?> mavenDisplayDiv = new DivSimple<>();
+		BSCardBox<?> mavenDisplayDiv = new BSCardBox<>();
 		JQSourceCodePrettify prettify = new JQSourceCodePrettify();
 		prettify.setSourceCodeLanguage(SourceCodeLanguages.XML);
 		prettify.setShowLineNums(false);
 		prettify.setText(depedencyInfo);
 		mavenDisplayDiv.add(prettify);
+		prettify.addStyle("padding-bottom:0px !important;");
 		return mavenDisplayDiv;
 	}
 
 	private DivSimple<?> buildArtifactInformation()
 	{
-		DivSimple<?> mavenDisplayDiv = new DivSimple<>();
+		BSCardBox<?> mavenDisplayDiv = new BSCardBox<>();
 
 		Plugins plugin = getPlugin(pluginName);
 		if (plugin != null)
@@ -210,7 +211,7 @@ public class PluginDemoScreen
 			mavenDisplayDiv.add(donationRow);
 
 			BSRow teamcityRow = new BSRow();
-			teamcityRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("TeamCity CI"));
+			teamcityRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("TeamCity"));
 			teamcityRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.getPluginTeamCityUrl(), "_blank").setText("Go To TeamCity")));
 			mavenDisplayDiv.add(teamcityRow);
 

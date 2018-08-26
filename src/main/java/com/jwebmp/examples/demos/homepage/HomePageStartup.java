@@ -4,7 +4,7 @@ import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
 import com.jwebmp.core.generics.WebReference;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
-import com.jwebmp.guicedpersistence.db.services.HibernateEntityManagerProperties;
+import com.jwebmp.guicedpersistence.db.intercepters.HibernateEntityManagerProperties;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.blueimp.gallery.BlueImpGalleryPageConfigurator;

@@ -40,6 +40,7 @@ public class RegisterEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
+
 		if (localStorage.containsKey(LOCAL_STORAGE_PARAMETER_KEY))
 		{
 			try

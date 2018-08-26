@@ -4,6 +4,7 @@ import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBStartup;
+import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.SettingUpScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
@@ -96,6 +97,7 @@ public class UnderTheHoodScreen
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
 		div.add(new H3("JWebMP Service Loaders"));
+		div.add(new H4("com.jwebmp.core.services"));
 		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                  .addClass(Table_Hover);
 		table.setSmall(true);
@@ -106,19 +108,20 @@ public class UnderTheHoodScreen
 		                                                       .add(new TableHeaderCell<>("Purpose"))
 		                                      ));
 
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.services.IPage"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPage"))
 		                                       .add(new TableCell<>(
 				                                       "Designates a page that must be rendered. The class must extend Page.<br/> Annotate with @PageConfiguration to configure URL's")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.services.IErrorPage"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IErrorPage"))
 		                                       .add(new TableCell<>("Allows to set a custom page to render errors on.")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.services.IPageConfigurator"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPageConfigurator"))
 		                                       .add(new TableCell<>("Configures and modifies the page before rendering as required by the given module")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.utilities.regex.IRegularExpressions"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IRegularExpressions"))
 		                                       .add(new TableCell<>("Supplies a list of default regular expressions to the client browser on connect for quick static access")));
 
 		div.add(table);
 
 		div.add(new H3("Angular Configuration Loaders"));
+		div.add(new H4("com.jwebmp.core.base.angular.services"));
 		BSTable<?> tableAngular = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                         .addClass(Table_Hover);
 		tableAngular.setSmall(true);
@@ -129,19 +132,19 @@ public class UnderTheHoodScreen
 		                                                              .add(new TableHeaderCell<>("Purpose"))
 		                                             ));
 
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.base.angular.services.IAngularDirective"))
+		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularDirective"))
 		                                              .add(new TableCell<>("Adds the given Angular Directive to the page rendered to the client")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.base.angular.services.IAngularControllerScopeStatement"))
+		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularControllerScopeStatement"))
 		                                              .add(new TableCell<>("Adds script text inside the root angular controller with direct access to the scope")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.base.angular.services.IAngularModule"))
+		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularModule"))
 		                                              .add(new TableCell<>("Adds the given angular module to the initialization of angular")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.base.angular.services.IAngularConfigurationScopeStatement"))
+		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularConfigurationScopeStatement"))
 		                                              .add(new TableCell<>("Adds the given scoped statement to the angular configuration script")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.base.angular.services.IAngularConfiguration"))
+		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularConfiguration"))
 		                                              .add(new TableCell<>("Registers a new angular configuration object to be rendered.")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.base.angular.services.IAngularController"))
+		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularController"))
 		                                              .add(new TableCell<>("Registers the new controller to the Angular script")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.base.angular.services.IAngularFactory"))
+		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularFactory"))
 		                                              .add(new TableCell<>("Adds the given factory to the script")));
 
 		div.add(tableAngular);
@@ -153,6 +156,7 @@ public class UnderTheHoodScreen
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
 		div.add(new H3("Injection Configurations"));
+		div.add(new H4("com.jwebmp.guicedinjection.interfaces"));
 		div.add("These services allow you to configure the entire configuration and boot process.");
 
 		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
@@ -164,27 +168,27 @@ public class UnderTheHoodScreen
 		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
 		                                                       .add(new TableHeaderCell<>("Purpose"))
 		                                      ));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedinjection.interfaces.IFileContentsScanner"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IFileContentsScanner"))
 		                                       .add(new TableCell<>(
 				                                       "Registers a filename to be collected, such as persistence.xml or hazelcast-client.xml. Ensure that the path is located in a PathContentsScanner")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceConfigurator"))
 		                                       .add(new TableCell<>(
 				                                       "Configures the scanner for boot operations. The scanner is optional and doesn't execute by default. The classpathScan property can be set to enable this functionality.")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedinjection.interfaces.IGuiceDefaultBinder"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceDefaultBinder"))
 		                                       .add(new TableCell<>(
 				                                       "Registers a Guice Injection module with the default binders. This is for backend binding with no requirements on servlets, and provides nearly the same encapsulation via JPMS as an EJB would to an WAR")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedinjection.interfaces.IGuiceModule"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceModule"))
 		                                       .add(new TableCell<>("Service Loader to port your existing Guice Modules into the Global Injection Context")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedinjection.interfaces.IGuicePostStartup"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuicePostStartup"))
 		                                       .add(new TableCell<>(
 				                                       "Executes the given operations immediately after the injection cycle has completed. Used mostly to start database connections before making the site available")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedinjection.interfaces.IGuicePreStartup"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuicePreStartup"))
 		                                       .add(new TableCell<>(
 				                                       "Executes any required code blocks before the Injector is built. Great for configuration. Do not try to call the GuiceContext in these classes")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedinjection.interfaces.IPackageContentsScanner"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPackageContentsScanner"))
 		                                       .add(new TableCell<>(
 				                                       "Registers the given package to be included during the optional classpath scan. Only these packages will be included in retrieved results")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedinjection.interfaces.IPathContentsScanner"))
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPathContentsScanner"))
 		                                       .add(new TableCell<>("Registers the given path (No Class Files) to search for IFileContentsScanners.<br/> Usually META-INF")));
 		div.add(table);
 
@@ -196,9 +200,11 @@ public class UnderTheHoodScreen
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
 		div.add(new H3("Persistence Handling"));
-		div.add("These modules are completely optional, and provide a JPMS/JDK10 implementation for using JPA/JTA" +
-		        "<br/>The library uses guice-persist as a base, and requires a registration to IGuiceModule  with a class that extends AbstractDatabaseModule. " +
+		div.add("These modules are completely optional, and provide a JPMS/JDK10 implementation for using JPA/JTA, as well as a 100% programmatic approach to connection and database management." +
+		        "<br/>This library uses guice-persist as a base, and requires a registration to IGuiceModule  with a class that extends AbstractDatabaseProviderModule. " +
 		        "<br/>These are backwards compatible with JDK 8");
+
+		div.add("Add-Ons provide additional configurations for enables modules, while modules provide core functionality for their usage");
 
 		BSNavTabs tabs = new BSNavTabs().setBordered(true)
 		                                .setJustified(true);
@@ -260,7 +266,7 @@ public class UnderTheHoodScreen
 		                                                       .add(new TableHeaderCell<>("Purpose"))));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ClassGraph"))
-		                                       .add(new TableCell<>("4.0.6"))
+		                                       .add(new TableCell<>("4.1.1"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("fastclasspath.version"))
 		                                       .add(new TableCell<>("Scanner")));
@@ -327,7 +333,13 @@ public class UnderTheHoodScreen
 		                                                  .add(new TableCell<>("maven"))
 		                                                  .add(new TableCell<>("Device Info Provider")));
 
-		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-lang3"))
+/*		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-lang3"))
+		                                                  .add(new TableCell<>("3.5"))
+		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
+		                                                  .add(new TableCell<>("maven"))
+		                                                  .add(new TableCell<>("Assists with String manipulation")));*/
+
+		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-text"))
 		                                                  .add(new TableCell<>("3.5"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
@@ -347,7 +359,7 @@ public class UnderTheHoodScreen
 
 		div.add(servletInfoTable);
 
-		div.add(new H4<>("Total Standalone Size : 3.8MB"));
+		//div.add(new H4<>("Total Standalone Size : 3.8MB"));
 
 		return card;
 	}
@@ -378,12 +390,11 @@ public class UnderTheHoodScreen
 	{
 
 		Div about = new Div();
-		about.add("Add-Ons provide additional configurations for enables modules");
-		about.add("Modules provide core functionality for their usage");
+		about.add("Services are located in com.jwebmp.guicedpersistence.services");
 
 		BSTable<?> settingUpTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                           .addClass(Table_Hover)
-		                                           .fitInContainer();
+		                                           .fitInContainerBreakWord();
 		settingUpTable.setSmall(true);
 		settingUpTable.setBordered(true);
 		settingUpTable.setStriped(true);
@@ -391,22 +402,25 @@ public class UnderTheHoodScreen
 		settingUpTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
 		                                                                .add(new TableHeaderCell<>("Purpose"))
 		                                               ));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesConnectionInfoReader"))
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("PropertiesConnectionInfoReader"))
 		                                                .add(new TableCell<>(
-				                                                "Populates the ConnectionBaseInfo object with properties from the persistence unit, the entire persistence-unit tag.")));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.db.PropertiesEntityManagerReader"))
+				                                                "Populates the ConnectionBaseInfo object with properties from the persistence unit.")));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("PropertiesEntityManagerReader"))
 		                                                .add(new TableCell<>(
-				                                                "Utility Service that creates or modifies the properties HashMap before conversion to ConnectionBaseInfo")));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.ITransactionHandler"))
+				                                                "Utility Service that creates or modifies the properties HashMap for a Persistence Context before being converted to a ConnectionBaseInfo object.")));
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ITransactionHandler"))
 		                                                .add(new TableCell<>(
-				                                                "Internal Service that is used to automatically wrap database updates in a valid transaction, if it was missed." +
-				                                                "<br/>Enabled in the add-on, such as BTMAutomatedTransactionHandler.setActive() or JPAAutomatedTransactionHandler.setActive()")));
+				                                                "Service that is used to automatically wrap database update calls (persist() merge()) etc through the EntityAssist module. It provides automated transaction management at a db call level." +
+				                                                "<br/>These are enabled through the connection handler, such as <i>BTMAutomatedTransactionHandler.setActive()</i> for JTA or <i>JPAAutomatedTransactionHandler.setActive()</i> for JPA. " +
+				                                                "<br/>Implementing your own is a piece of cake.")));
 		Div sourceDis = new Div();
 		addSourceToContainer(HomePageDBStartup.class, "startupexample.txt", Java, sourceDis);
 
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.guicedpersistence.services.IAsyncStartup"))
-		                                                .add(new TableCell<>("Asynchronously loads the given services in an ExecutorService<br/><br/>")
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAsyncStartup"))
+		                                                .add(new TableCell<>(
+				                                                "Allows you to start a persistence service outside of a request thread. The EntityManagerFactory becomes bound to the executing thread, and any joint threads there-of. If not using request scoped transactions, or module encapsulation, this would be to start the persistence layer from your &quot;EJB&quot;, or equivalent JPMS module. Asynchronously loaded via an ExecutorService<br/><br/>")
 				                                                     .add(sourceDis)
+				                                                     .add("In JRE 8 you may need to inject a DataSource to start the connection engine. This is due to how the layers are called between java versions and is outside of our control.")
 		                                                    ));
 		about.add(settingUpTable);
 
@@ -415,7 +429,7 @@ public class UnderTheHoodScreen
 
 	private Div buildPersistenceSettingUpScreen()
 	{
-		Div settingUp = new Div();
+		SettingUpScreen settingUp = new SettingUpScreen();
 		return settingUp;
 
 	}

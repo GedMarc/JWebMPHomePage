@@ -24,31 +24,35 @@ public class ContinousIntegrationPart
 		body.addClass(Align_Between);
 
 		body.add(buildLink(new BSButtonLightOutline<>().setText(
-				FontAwesome.icon(FontAwesomeBrandIcons.github, $2x).toString(0) + "<br/>Github")
-		                                            .addClass(MarginLeft_1)
-		                                            .addClass(MarginTop_1)
-		                                            .addClass(Align_Center), "https://github.com/GedMarc?tab=repositories"));
+				FontAwesome.icon(FontAwesomeBrandIcons.github, $2x)
+				           .toString(0) + "<br/>Github")
+		                                               .addClass(MarginLeft_1)
+		                                               .addClass(MarginTop_1)
+		                                               .addClass(Align_Center), "https://github.com/GedMarc?tab=repositories"));
 
 		body.add(buildLink(new BSButtonLightOutline<>().setText(
-				FontAwesome.icon(FontAwesomeIcons.train, $2x).toString(0) + "<br/>Jira")
-		                                                         .addClass(MarginLeft_1)
-		                                                         .addClass(MarginTop_1)
-		                                                         .addClass(Align_Center), "https://jwebmp.com/jira/"));
+				FontAwesome.icon(FontAwesomeIcons.train, $2x)
+				           .toString(0) + "<br/>Jira")
+		                                               .addClass(MarginLeft_1)
+		                                               .addClass(MarginTop_1)
+		                                               .addClass(Align_Center), "https://jwebmp.com/jira/"));
 		body.add(buildLink(new BSButtonLightOutline<>().setText(
-				FontAwesome.icon(FontAwesomeIcons.cog, $2x).toString(0) + "<br/>TeamCity")
-		                                            .addClass(MarginLeft_1)
-		                                            .addClass(MarginTop_1)
-		                                            .addClass(Align_Center), "https://jwebmp.com/teamcity/"));
+				FontAwesome.icon(FontAwesomeIcons.cog, $2x)
+				           .toString(0) + "<br/>TeamCity")
+		                                               .addClass(MarginLeft_1)
+		                                               .addClass(MarginTop_1)
+		                                               .addClass(Align_Center), "https://jwebmp.com/teamcity/"));
 		body.add(buildLink(new BSButtonLightOutline<>().setText(
-				FontAwesome.icon(FontAwesomeIcons.check_square, $2x).toString(0) + "<br/>Code Quality")
-		                                          .addClass(MarginLeft_1)
-		                                          .addClass(MarginTop_1)
-		                                          .addClass(Align_Center), "https://jwebmp.com/sonar/"));
+				FontAwesome.icon(FontAwesomeIcons.check_square, $2x)
+				           .toString(0) + "<br/>SonarQube")
+		                                               .addClass(MarginLeft_1)
+		                                               .addClass(MarginTop_1)
+		                                               .addClass(Align_Center), "https://jwebmp.com/sonar/"));
 	}
 
-	private Link buildLink(BSButton button,String url)
+	private Link buildLink(BSButton button, String url)
 	{
-		Link link = new Link<>(url,"_blank").add(button);
+		Link link = new Link<>(url, "_blank").add(button);
 		return link;
 	}
 }

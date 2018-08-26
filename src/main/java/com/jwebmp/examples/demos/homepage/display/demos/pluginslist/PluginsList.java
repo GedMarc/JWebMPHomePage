@@ -86,7 +86,7 @@ public class PluginsList
 
 		for (Plugins plugin : pluginsList)
 		{
-			dt.add(new TableRow<>().add(new TableCell<>().add(new Image<>(plugin.getPluginLogoUrl()).addStyle("width:45px;height:45px;")))
+			dt.add(new TableRow<>().add(new TableCell<>().add(new Image<>(plugin.getPluginLogoUrl()).addStyle("max-width:45px;")))
 			                       .add(new TableCell<>(plugin.getPluginName()))
 			                       .add(new TableCell<>(plugin.getPluginVersion()))
 			                       .add(new TableCell<>(plugin.getPluginDescription()))

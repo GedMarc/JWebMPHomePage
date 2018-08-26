@@ -1,0 +1,3 @@
+module {
+    provides IGuiceModule with HomePageDBModule;
+}

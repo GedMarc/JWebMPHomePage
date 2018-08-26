@@ -15,8 +15,9 @@ public class HomePageDBStartup
 	@Inject
 	public HomePageDBStartup(@HomePageDB PersistService persistService)
 	{
-		persistService.start();
-		LogFactory.getLog("DB").info("DB Startup");
+		//persistService.start();
+		LogFactory.getLog("DB")
+		          .info("DB Startup");
 	}
 
 	@Override

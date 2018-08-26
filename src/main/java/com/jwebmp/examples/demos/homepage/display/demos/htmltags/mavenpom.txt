@@ -2,6 +2,5 @@
     <groupId>com.jwebmp</groupId>
     <artifactId>jwebmp-jstree</artifactId>
     <version>${jwebmp.version}</version>
-    <!--<classifier>jre10</classifier> -->
     <type>jar</type>
 </dependency>

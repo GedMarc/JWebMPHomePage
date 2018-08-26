@@ -160,9 +160,6 @@ public class Subscribers
 			{
 				throw new MissingComponentException("Invalid Login Details");
 			}
-
-			GuiceContext.getInstance(SessionProperties.class)
-			            .setLoggedIn(true);
 			GuiceContext.getInstance(SessionProperties.class)
 			            .setSubscriber(s);
 			GuiceContext.getInstance(SessionProperties.class)
@@ -190,6 +187,36 @@ public class Subscribers
 		return new Subscribers().builder()
 		                        .findByEmail(emailAddress)
 		                        .get();
+	}
+
+	public String getRandomSalt()
+	{
+		return randomSalt;
+	}
+
+	public void setRandomSalt(String randomSalt)
+	{
+		this.randomSalt = randomSalt;
+	}
+
+	public String getPassword()
+	{
+		return password;
+	}
+
+	public void setPassword(String password)
+	{
+		this.password = password;
+	}
+
+	public Visitors getVisitorID()
+	{
+		return visitorID;
+	}
+
+	public void setVisitorID(Visitors visitorID)
+	{
+		this.visitorID = visitorID;
 	}
 
 	@CacheResult
@@ -244,6 +271,16 @@ public class Subscribers
 		return this;
 	}
 
+	public Long getSubscriberID()
+	{
+		return subscriberID;
+	}
+
+	public void setSubscriberID(Long subscriberID)
+	{
+		this.subscriberID = subscriberID;
+	}
+
 	@CacheRemove()
 	public Optional<Subscribers> create(Visitors visitor) throws EntityAssistException
 	{
@@ -279,6 +316,16 @@ public class Subscribers
 		Optional optional = Optional.ofNullable(getSubscriberID().equals(0L) ? null : this);
 
 		return optional;
+	}
+
+	public String getEmailAddress()
+	{
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress)
+	{
+		this.emailAddress = emailAddress;
 	}
 
 	@CacheRemove()
@@ -362,34 +409,14 @@ public class Subscribers
 		return true;
 	}
 
-	public Long getSubscriberID()
+	public String getConfirmPassword()
 	{
-		return subscriberID;
+		return confirmPassword;
 	}
 
-	public void setSubscriberID(Long subscriberID)
+	public void setConfirmPassword(String confirmPassword)
 	{
-		this.subscriberID = subscriberID;
-	}
-
-	public String getFirstName()
-	{
-		return firstName;
-	}
-
-	public void setFirstName(String firstName)
-	{
-		this.firstName = firstName;
-	}
-
-	public String getLastName()
-	{
-		return lastName;
-	}
-
-	public void setLastName(String lastName)
-	{
-		this.lastName = lastName;
+		this.confirmPassword = confirmPassword;
 	}
 
 	public LocalDate getBirthDate()
@@ -400,16 +427,6 @@ public class Subscribers
 	public void setBirthDate(LocalDate birthDate)
 	{
 		this.birthDate = birthDate;
-	}
-
-	public String getEmailAddress()
-	{
-		return emailAddress;
-	}
-
-	public void setEmailAddress(String emailAddress)
-	{
-		this.emailAddress = emailAddress;
 	}
 
 	public boolean isUnsubscribed()
@@ -432,16 +449,6 @@ public class Subscribers
 		this.administrator = administrator;
 	}
 
-	public Visitors getVisitorID()
-	{
-		return visitorID;
-	}
-
-	public void setVisitorID(Visitors visitorID)
-	{
-		this.visitorID = visitorID;
-	}
-
 	public List<SubscriberVisitors> getSubscriberVisitorsList()
 	{
 		return subscriberVisitorsList;
@@ -450,36 +457,6 @@ public class Subscribers
 	public void setSubscriberVisitorsList(List<SubscriberVisitors> subscriberVisitorsList)
 	{
 		this.subscriberVisitorsList = subscriberVisitorsList;
-	}
-
-	public String getPassword()
-	{
-		return password;
-	}
-
-	public void setPassword(String password)
-	{
-		this.password = password;
-	}
-
-	public String getRandomSalt()
-	{
-		return randomSalt;
-	}
-
-	public void setRandomSalt(String randomSalt)
-	{
-		this.randomSalt = randomSalt;
-	}
-
-	public String getConfirmPassword()
-	{
-		return confirmPassword;
-	}
-
-	public void setConfirmPassword(String confirmPassword)
-	{
-		this.confirmPassword = confirmPassword;
 	}
 
 	public boolean isConfirmed()
@@ -536,5 +513,25 @@ public class Subscribers
 	public String toString()
 	{
 		return "Subscriber [" + subscriberID + " ] - " + getFirstName() + " " + getLastName();
+	}
+
+	public String getFirstName()
+	{
+		return firstName;
+	}
+
+	public void setFirstName(String firstName)
+	{
+		this.firstName = firstName;
+	}
+
+	public String getLastName()
+	{
+		return lastName;
+	}
+
+	public void setLastName(String lastName)
+	{
+		this.lastName = lastName;
 	}
 }

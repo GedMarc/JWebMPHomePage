@@ -1,0 +1,27 @@
+public class HomePageDBModule
+		extends AbstractDatabaseProviderModule
+		implements IGuiceModule
+{
+protected ConnectionBaseInfo getConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties)
+{
+    ConnectionBaseInfo cbi = new BTMConnectionBaseInfo(false);
+    //Any on-demand programmatic changes, Yes even the URL to switch between environments based on some or other property.
+    cbi.setAllowLocalTransactions(true);
+    cbi.setShareTransactionConnections(true);
+    cbi.setEnableJdbc4ConnectionTest(true);
+    cbi.setTestQuery("select 1");
+    return cbi;
+}
+protected String getJndiMapping()
+{
+    return "jdbc/homepage"; //Unique identifier
+}
+protected String getPersistenceUnitName()
+{
+    return "AppPU"; //The name in the persistence unit
+}
+protected Class<? extends Annotation> getBindingAnnotation()
+{
+    return HomePageDB.class; //Your annotation
+}
+}

@@ -96,7 +96,7 @@ body.fixed-left .side-menu.left {
 }
 
 .checkbox input[type="checkbox"]:checked + label::after {
-    content: "&";
+    content: "\25b6";
 }
 
 #innerlayout-center-content .slimScrollDiv {
@@ -119,3 +119,6 @@ body.fixed-left .side-menu.left {
     width: 20px;
 }
 
+.jstree-anchor {
+    display: contents !important;
+}

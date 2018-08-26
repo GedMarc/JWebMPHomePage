@@ -113,7 +113,7 @@ public class HomePage
 
 		left.add(new LoginPart());
 		left.add(addWhiteAlert(
-				"<strong>Thankfully, Guice has no beans. NO BEANS! How many beans do we have to remember and disambiguate before it is too much? Javabeans, Enterprise Javabeans, Spring Beans, Coffee Beans, Mr. Bean, and I might still have missed a few others!</strong>" +
+				"<strong>&quot;Thankfully, Guice has no beans. NO BEANS! How many beans do we have to remember and disambiguate before it is too much? Javabeans, Enterprise Javabeans, Spring Beans, Coffee Beans, Mr. Bean, and I might still have missed a few others!&quot;</strong>" +
 				"<br/><a target=\"_blank\" href=\"https://dzone.com/articles/an-opinionless-comparison-of-spring-and-guice\">See DZone Comparison, and why JPMS favours Guice for Injection</a>"
 		                      ));
 
@@ -123,7 +123,8 @@ public class HomePage
 		left.add(buildSnap4());
 		left.add(buildContinuousIntegrationPane());
 
-		right.add(addWhiteAlert("<strong>Backwards Compatible with JRE8 to assist in porting your EE applications to JPMS, seamlessly and without intrusion</strong>"));
+		right.add(addWhiteAlert(
+				"<strong>Backwards Compatible with JRE8 to assist in porting your backend EE applications, as well as frontend, to JPMS, seamlessly and without intrusion</strong>"));
 		right.add(new MavenPomPart());
 		right.add(addWhiteAlert(
 				"<strong>Go back to coding pure Java with a 100% Domain Driven Design System, and <i><u>feel</u></i> the enormous performance benefit that comes with it </strong>" +
@@ -162,23 +163,6 @@ public class HomePage
 		return card;
 	}
 
-	private BSCard buildSnap3()
-	{
-		BSCard<?> card = new BSCard();
-		card.addCardHeader("Pre Built Plugins Already Exist For".toUpperCase());
-
-		FontAwesomeList list = new FontAwesomeList();
-		addIconList(list, "JPA JTA JCache", FontAwesomeIcons.check, "#6f42c1");
-		addIconList(list, "Hazelcast EhCache Hibernate BTM", FontAwesomeIcons.check, "#6f42c1");
-		addIconList(list, "RabbitMQ HTTP2 WS", FontAwesomeIcons.check, "#6f42c1");
-		card.addCardBody()
-		    .add(list);
-
-		card.addStyle("margin-bottom:1rem;");
-
-		return card;
-	}
-
 	private BSCard buildSnap4()
 	{
 		BSCard<?> card = new BSCard();
@@ -191,9 +175,26 @@ public class HomePage
 		card.addCardBody()
 		    .add(list);
 
-		card.addFooter("<a href=\"https://paypal.me/MarcMagon\" target=\"_blank\"><strong>Please consider donating towards the development</strong></a>");
+		//card.addFooter("<a href=\"https://paypal.me/MarcMagon\" target=\"_blank\"><strong>Please consider donating towards the development</strong></a>");
 
 		card.addStyle("margin-bottom:1rem;");
+		return card;
+	}
+
+	private BSCard buildSnap3()
+	{
+		BSCard<?> card = new BSCard();
+		card.addCardHeader("Plugins Already Exist For".toUpperCase());
+
+		FontAwesomeList list = new FontAwesomeList();
+		addIconList(list, "JPA JTA JCache", FontAwesomeIcons.check, "#6f42c1");
+		addIconList(list, "Hazelcast EhCache Hibernate BTM", FontAwesomeIcons.check, "#6f42c1");
+		addIconList(list, "RabbitMQ HTTP2 WS Atmosphere", FontAwesomeIcons.check, "#6f42c1");
+		card.addCardBody()
+		    .add(list);
+
+		card.addStyle("margin-bottom:1rem;");
+
 		return card;
 	}
 
@@ -206,10 +207,13 @@ public class HomePage
 	private BSCard buildOpenSourceSponsors()
 	{
 		BSCard<?> card = new BSCard();
+		card.addClass("mt-2 pb-3");
 		card.addCardBody()
-		    .add(addWhiteAlert("Completely Open Source, Tested with BrowserStack"));
+		    .add(addWhiteAlert("Completely Open Source" +
+		                       "</br>We are supported for UI Testing by BrowserStack"));
 		card.setTextCenter(true);
 		card.addCardImageBottom("images/BrowserStack.png")
+		    .setCentered()
 		    .addAttribute("style", "max-height:50%;max-width:50%");
 		return card;
 	}
