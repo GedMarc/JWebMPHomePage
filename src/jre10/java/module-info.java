@@ -80,6 +80,8 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.blueimp.gallery;
 	requires org.apache.commons.lang3;
 	requires org.apache.commons.text;
+	requires com.jwebmp.guicedservlets.requestscoped;
+	requires com.google.common;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IGuicePostStartup with HomePageDBStartup;
@@ -95,6 +97,10 @@ module com.jwebmp.examples.demos.homepage {
 	opens com.jwebmp.examples.demos.homepage.display to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.display.about to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.display.about.persistencehandling to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.about.requestscoped to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.about.entityassist to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.about.c3p0module to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.about.ehcache to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.display.admin to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.display.confirmemail to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.display.contactus to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;

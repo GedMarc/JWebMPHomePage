@@ -22,6 +22,8 @@ public class SettingUpScreen
 		all.add("Finally, &quot;Provide&quot; your module to GuiceContext via the IGuiceModule service.");
 		all.add(addServiceTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule"));
 		addSourceToContainer(SettingUpScreen.class, "providesexample.txt", SourceCodeLanguages.JS, all);
+		all.add("<a target=\"_blank\" href=\"https://github.com/bitronix/btm/wiki/JDBC-pools-configuration\">JTA Connection Pool Properties</a>");
+
 		add(all);
 	}
 }

@@ -15,7 +15,7 @@ public class ReasonsWhyPart
 	{
 		FontAwesomeList list = new FontAwesomeList();
 		list.addItem("Pure Java Development", new FontAwesome<>().setIcon(FontAwesomeIcons.check));
-		list.addItem("Non-Invasive<br/>Servlets JSP JSF continue as normal", new FontAwesome<>().setIcon(FontAwesomeIcons.check));
+		list.addItem("Non-Invasive<br/>EJB Servlets JSP JSF continue as normal", new FontAwesome<>().setIcon(FontAwesomeIcons.check));
 		list.addItem("Standalone / Container / EE / MicroProfile", new FontAwesome<>().setIcon(FontAwesomeIcons.check));
 
 		addCardBody().add(list);

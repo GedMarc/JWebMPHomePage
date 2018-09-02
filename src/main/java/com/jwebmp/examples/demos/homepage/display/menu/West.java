@@ -74,7 +74,7 @@ public class West
 		//buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites());
 		//buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
-		buildMenuSection("PLUGINS", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(), buildJQueryUI());
+		buildMenuSection("BASES", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(), buildJQueryUI());
 
 		//buildMenuSection("Bootstrap", true, buildBootstrap4(), buildBootstrap3());
 		//buildMenuSection("JQuery UI", true, buildJQueryUI());
@@ -139,7 +139,8 @@ public class West
 
 		dropdownLink.add(iconItalic);
 		dropdownLink.add(span);
-		dropdownLink.add(new Span<>().addClass("fas fa-angle-double-down menu-arrow pull-right"));
+		dropdownLink.add(new Italic<>().addClass("fas fa-angle-double-down menu-arrow pull-right")
+		                               .addStyle("margin-right:0px;"));
 
 		//dropdownLink.addFeature(new MenuIconSwapOnClick(dropdownLink, FontAwesomeIcons.angle_double_right, FontAwesomeIcons.angle_double_down));
 
@@ -161,6 +162,31 @@ public class West
 		adapter.setID(screenReference.toString());
 		comp.addEvent(adapter);
 		return adapter;
+	}
+
+	private ListItem<?> buildDisplayComponents()
+	{
+		List uiKit = new List<>();
+
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa11", EasingEffects).setText("Easing Animations")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa12", FastClick).setText("Fast Click")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa13", FullCalendar).setText("Full Calendar")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa14", Globalize).setText("Globalize")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa15", MetroJS).setText("Metro Tiles")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa16", Modernizr).setText("Modernizr")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa17", Moment).setText("Moment Dates")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa18", Pace).setText("Pace Loader")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa21", PlusAsTab).setText("Plus as Tab")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa22", RadialSliderGem).setText("Radial Carousel")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa23", SoftHistoryChange).setText("History Controls")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa24", Toastr).setText("Toastr Notifications")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa25", VerticalTimelineGem).setText("Vertical Timeline Gem")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", WebLogAppender).setText("Web Logger")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", SourceCodePrettifier).setText("Source Prettify")));
+		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", DisplayDynamicSourceCodeViewer).setText("Dynamic Source Switcher")));
+
+		ListItem dropDown1 = buildSubList("fal fa-wrench", "Display", uiKit);
+		return dropDown1;
 	}
 
 	private ListItem<?> buildAngularTools()
@@ -215,28 +241,20 @@ public class West
 		return dropDown1;
 	}
 
-	private ListItem<?> buildDisplayComponents()
+	private ListItem<?> buildForms()
 	{
 		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#b9").setText("Angular Forms")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e9", AngularFileUpload).setText("BlueImp File Upload")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e8", AngularFileUpload).setText("NG File Upload")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f1", IonRangeSlider).setText("Ion Range Slider")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f2", PrettyCheckboxes).setText("Pretty Checkboxes")));
+		uiKit.add(new ListItem<>().add(buildListItem("#f3", ProgressButtons).setText("Angular Progress Buttons")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g1", SmartWizard).setText("Smart Wizard")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g2", TextInputEffects).setText("Text Input Effects")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e7", QuickForms).setText("Quick Forms")));
 
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa11", EasingEffects).setText("Easing Animations")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa12", FastClick).setText("Fast Click")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa13", FullCalendar).setText("Full Calendar")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa14", Globalize).setText("Globalize")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa15", MetroJS).setText("Metro Tiles")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa16", Modernizr).setText("Modernizr")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa17", Moment).setText("Moment Dates")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa18", Pace).setText("Pace Loader")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa21", PlusAsTab).setText("Plus as Tab")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa22", RadialSliderGem).setText("Radial Carousel")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa23", SoftHistoryChange).setText("History Controls")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa24", Toastr).setText("Toastr Notifications")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa25", VerticalTimelineGem).setText("Vertical Timeline Gem")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", WebLogAppender).setText("Web Logger")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", SourceCodePrettifier).setText("Source Prettify")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", DisplayDynamicSourceCodeViewer).setText("Dynamic Source Switcher")));
-
-		ListItem dropDown1 = buildSubList("fal fa-wrench", "Display Tools", uiKit);
+		ListItem dropDown1 = buildSubList("fal fa-compass", "Forms", uiKit);
 		return dropDown1;
 	}
 
@@ -277,20 +295,13 @@ public class West
 		return buildListItem(uniqueHashBangId, DisplayScreens.ComingSoon);
 	}
 
-	private ListItem<?> buildForms()
+	private ListItem<?> buildMapping()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#b9").setText("Angular Forms")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e9", AngularFileUpload).setText("BlueImp File Upload")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e8", AngularFileUpload).setText("NG File Upload")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f1", IonRangeSlider).setText("Ion Range Slider")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f2", PrettyCheckboxes).setText("Pretty Checkboxes")));
-		uiKit.add(new ListItem<>().add(buildListItem("#f3", ProgressButtons).setText("Angular Progress Buttons")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g1", SmartWizard).setText("Smart Wizard")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g2", TextInputEffects).setText("Text Input Effects")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e7", QuickForms).setText("Quick Forms")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g8", LeafletJS).setText("LeafletJS")));
+		uiKit.add(new ListItem<>().add(buildListItem("#g9", GoogleMaps).setText("Google Maps")));
 
-		ListItem dropDown1 = buildSubList("fal fa-compass", "Form Plugins", uiKit);
+		ListItem dropDown1 = buildSubList("fal fa-map-marker-plus", "Mapping", uiKit);
 		return dropDown1;
 	}
 
@@ -310,27 +321,6 @@ public class West
 		return dropDown1;
 	}
 
-	private ListItem<?> buildMapping()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#g8", LeafletJS).setText("LeafletJS")));
-		uiKit.add(new ListItem<>().add(buildListItem("#g9", GoogleMaps).setText("Google Maps")));
-
-		ListItem dropDown1 = buildSubList("fal fa-map-marker-plus", "Mapping Plugins", uiKit);
-		return dropDown1;
-	}
-
-	private ListItem<?> buildTablesTrees()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#b5").setText("Data Tables")));
-		uiKit.add(new ListItem<>().add(buildListItem("#b6", DisplayScreens.JSTree).setText("JS Tree")));
-		uiKit.add(new ListItem<>().add(buildListItem("#b7").setText("X Editable")));
-
-		ListItem dropDown1 = buildSubList("fal fa-merge", "Tables / Trees", uiKit);
-		return dropDown1;
-	}
-
 	private ListItem<?> buildIconSets()
 	{
 		List uiKit = new List<>();
@@ -344,7 +334,18 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#e5").setText("Weather Icons")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e5").setText("Themify Icons")));
 
-		ListItem dropDown1 = buildSubList("fal fa-low-vision", "Icon Sets", uiKit);
+		ListItem dropDown1 = buildSubList("fal fa-low-vision", "Icons", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem<?> buildTablesTrees()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#b5").setText("Data Tables")));
+		uiKit.add(new ListItem<>().add(buildListItem("#b6", DisplayScreens.JSTree).setText("JS Tree")));
+		uiKit.add(new ListItem<>().add(buildListItem("#b7").setText("X Editable")));
+
+		ListItem dropDown1 = buildSubList("fal fa-merge", "Tables / Trees", uiKit);
 		return dropDown1;
 	}
 

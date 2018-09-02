@@ -16,23 +16,37 @@ import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigur
 import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
 import com.jwebmp.undertow.JWebMPUndertow;
+import com.jwebmp.undertow.JWebMPUndertowWebSocketConfiguration;
 
 import javax.servlet.ServletException;
+import java.io.IOException;
 import java.util.logging.Level;
 
 public class HomePageStartup
 {
-	public static void main(String[] args) throws ServletException
+	public static void main(String[] args) throws ServletException, IOException
 	{
 		SessionHelper.setAddressToBeUsedWhenNull("https://jwebmp.com/");
 		SessionHelper.setCacheAddress(false);
+
+		JWebMPUndertowWebSocketConfiguration.setEnabled(true);
+
 		LogColourFormatter.setRenderBlack(false);
-		LogFactory.configureConsoleColourOutput(Level.FINE);
+		LogFactory.configureConsoleColourOutput(Level.INFO);
+
 		WebReference.setUseVersionIdentifier(true);
 		AngularMessagesModule.setMesssgesModuleEnabled(true);
 
-		HibernateEntityManagerProperties.setShowSql(true);
-		HibernateEntityManagerProperties.setFormatSql(true);
+		HibernateEntityManagerProperties.getDefaultProperties()
+		                                .setShowSql(true);
+		HibernateEntityManagerProperties.getDefaultProperties()
+		                                .setFormatSql(true);
+
+		HibernateEntityManagerProperties.getDefaultProperties()
+		                                .setUseQueryStartupCheck(false);
+
+		/*HibernateEntityManagerProperties.getDefaultProperties()
+		                                .enableQuickestBoot();*/
 
 		BTMAutomatedTransactionHandler.setActive(true);
 		BlueImpGalleryPageConfigurator.setIncludeIndicators(true);

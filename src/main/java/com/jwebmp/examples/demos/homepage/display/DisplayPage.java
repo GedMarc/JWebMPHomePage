@@ -1,6 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.common.hash.Hashing;
 import com.jwebmp.core.Feature;
 import com.jwebmp.core.Page;
 import com.jwebmp.core.SessionHelper;
@@ -53,7 +54,7 @@ public class DisplayPage
 	 */
 	public DisplayPage()
 	{
-
+		getOptions().setDynamicRender(false);
 	}
 
 	@Override
@@ -148,8 +149,13 @@ public class DisplayPage
 		{
 			String uuid = UUID.randomUUID()
 			                  .toString();
+			String clientIP = SessionHelper.getClientIPAddress();
+			String storageKey = Hashing.sha512()
+			                           .hashString(uuid + clientIP, StaticStrings.UTF8_CHARSET)
+			                           .toString();
 			getInstance(AjaxResponse.class).getLocalStorage()
-			                               .put(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY, uuid);
+			                               .put(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY, storageKey);
+
 			localStorage.put(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY, uuid);
 		}
 		String guid = localStorage.get(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY);

@@ -13,6 +13,6 @@ public class DemoGuiceConfigurator
 	@Override
 	public GuiceConfig configure(GuiceConfig config)
 	{
-		return config.setWhiteList(true);
+		return config.setVerbose(true);
 	}
 }

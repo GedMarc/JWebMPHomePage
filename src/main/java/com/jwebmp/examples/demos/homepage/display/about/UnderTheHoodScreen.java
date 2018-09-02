@@ -3,8 +3,14 @@ package com.jwebmp.examples.demos.homepage.display.about;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.db.HomePageDBStartup;
+import com.jwebmp.examples.demos.homepage.display.about.c3p0module.C3P0Screen;
+import com.jwebmp.examples.demos.homepage.display.about.ehcache.EHCacheScreen;
+import com.jwebmp.examples.demos.homepage.display.about.entityassist.EntityAssistScreen;
 import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.SettingUpScreen;
+import com.jwebmp.examples.demos.homepage.display.about.requestscoped.JPAModuleScreen;
+import com.jwebmp.examples.demos.homepage.display.about.requestscoped.JTAModuleScreen;
+import com.jwebmp.examples.demos.homepage.display.about.requestscoped.RequestScopedTransactionsScreen;
+import com.jwebmp.examples.demos.homepage.display.about.wildfly.WildflyScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
@@ -22,7 +28,6 @@ import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSMarginOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
-import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 public class UnderTheHoodScreen
 		extends DisplayScreen<UnderTheHoodScreen>
@@ -217,16 +222,17 @@ public class UnderTheHoodScreen
 
 		tabs.addTab("About", buildPersistenceAboutScreen(), true);
 
-		tabs.addTab("Setting Up", buildPersistenceSettingUpScreen(), false);
-		tabs.addTab("Request Scoped Transactions", new DivSimple<>().add("1"), false);
+		tabs.addTab("Setting Up", new SettingUpScreen(), false);
+		tabs.addTab("Scoping Transactions", new RequestScopedTransactionsScreen(), false);
 
-		tabs.addTab("JPA Module", new DivSimple<>().add("2"), false);
-		tabs.addTab("BTM Module", new DivSimple<>().add("2"), false);
-		tabs.addTab("Entity Assist Module", new DivSimple<>().add("2"), false);
-		tabs.addTab("C3P0 Addon", new DivSimple<>().add("2"), false);
-		tabs.addTab("EhCache Addon", new DivSimple<>().add("2"), false);
-		tabs.addTab("Wildfly Addon", new DivSimple<>().add("2"), false);
+		tabs.addTab("JPA Module", new JPAModuleScreen(), false);
+		tabs.addTab("JTA Module", new JTAModuleScreen(), false);
+
+		tabs.addTab("Entity Assist Module", new EntityAssistScreen(), false);
+		tabs.addTab("C3P0 Addon", new C3P0Screen(), false);
+		tabs.addTab("Wildfly Addon", new WildflyScreen(), false);
 		tabs.addTab("Glassfish Addon", new DivSimple<>().add("2"), false);
+		tabs.addTab("EhCache Addon", new EHCacheScreen(), false);
 		tabs.addTab("HazelCast Addon", new DivSimple<>().add("2"), false);
 
 		div.add(tabs);
@@ -266,7 +272,7 @@ public class UnderTheHoodScreen
 		                                                       .add(new TableHeaderCell<>("Purpose"))));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ClassGraph"))
-		                                       .add(new TableCell<>("4.1.1"))
+		                                       .add(new TableCell<>("4.1.2"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("fastclasspath.version"))
 		                                       .add(new TableCell<>("Scanner")));
@@ -413,25 +419,14 @@ public class UnderTheHoodScreen
 				                                                "Service that is used to automatically wrap database update calls (persist() merge()) etc through the EntityAssist module. It provides automated transaction management at a db call level." +
 				                                                "<br/>These are enabled through the connection handler, such as <i>BTMAutomatedTransactionHandler.setActive()</i> for JTA or <i>JPAAutomatedTransactionHandler.setActive()</i> for JPA. " +
 				                                                "<br/>Implementing your own is a piece of cake.")));
-		Div sourceDis = new Div();
-		addSourceToContainer(HomePageDBStartup.class, "startupexample.txt", Java, sourceDis);
 
 		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAsyncStartup"))
 		                                                .add(new TableCell<>(
 				                                                "Allows you to start a persistence service outside of a request thread. The EntityManagerFactory becomes bound to the executing thread, and any joint threads there-of. If not using request scoped transactions, or module encapsulation, this would be to start the persistence layer from your &quot;EJB&quot;, or equivalent JPMS module. Asynchronously loaded via an ExecutorService<br/><br/>")
-				                                                     .add(sourceDis)
-				                                                     .add("In JRE 8 you may need to inject a DataSource to start the connection engine. This is due to how the layers are called between java versions and is outside of our control.")
 		                                                    ));
 		about.add(settingUpTable);
 
 		return about;
-	}
-
-	private Div buildPersistenceSettingUpScreen()
-	{
-		SettingUpScreen settingUp = new SettingUpScreen();
-		return settingUp;
-
 	}
 
 	@Override

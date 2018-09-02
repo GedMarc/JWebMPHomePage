@@ -98,7 +98,7 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		                                       .getAll(Integer.class)
 		                                       .get(0);
 
-		Div chart3 = new MintonCircleChart(totalComponents.toString(), (totalComponents / 1000L * 100) + "", "#f76397", "#505A66");
+		Div chart3 = new MintonCircleChart(totalComponents.toString(), "100", "#f76397", "#505A66");
 		widget3.add(chart3);
 
 		widget3.add(new H3<>(totalComponents + "").addClass("text-pink counter m-t-10"));
@@ -128,7 +128,7 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 			                    .size();
 		}
 
-		Div chart4 = new MintonCircleChart(count + "", "99", "#7266ba", "#505A66");
+		Div chart4 = new MintonCircleChart(count + "", "100", "#7266ba", "#505A66");
 		widget4.add(chart4);
 
 		widget4.add(new H3<>(count + "").addClass("text-inverse counter m-t-10 text-purple "));

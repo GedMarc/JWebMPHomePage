@@ -114,7 +114,8 @@ public class HomePage
 		left.add(new LoginPart());
 		left.add(addWhiteAlert(
 				"<strong>&quot;Thankfully, Guice has no beans. NO BEANS! How many beans do we have to remember and disambiguate before it is too much? Javabeans, Enterprise Javabeans, Spring Beans, Coffee Beans, Mr. Bean, and I might still have missed a few others!&quot;</strong>" +
-				"<br/><a target=\"_blank\" href=\"https://dzone.com/articles/an-opinionless-comparison-of-spring-and-guice\">See DZone Comparison, and why JPMS favours Guice for Injection</a>"
+				"<br/><a target=\"_blank\" href=\"https://dzone.com/articles/an-opinionless-comparison-of-spring-and-guice\">DZone An Opinionless Comparison of Spring and Guice</a>" +
+				"<br/><a target=\"_blank\" href=\"https://github.com/google/guice/wiki/SpringComparison\">Why Guice - Spring vs Guice</a>"
 		                      ));
 
 		left.add(GuiceContext.get(GalleryPart.class));
@@ -124,11 +125,11 @@ public class HomePage
 		left.add(buildContinuousIntegrationPane());
 
 		right.add(addWhiteAlert(
-				"<strong>Backwards Compatible with JRE8 to assist in porting your backend EE applications, as well as frontend, to JPMS, seamlessly and without intrusion</strong>"));
+				"<strong>Backwards Compatible with JRE8 to assist in updating your EE applications back and front to JPMS. <br/>Seamlessly, Effortlessly, and without intrusion into current operations</strong>"));
 		right.add(new MavenPomPart());
 		right.add(addWhiteAlert(
 				"<strong>Go back to coding pure Java with a 100% Domain Driven Design System, and <i><u>feel</u></i> the enormous performance benefit that comes with it </strong>" +
-				"<br/><a target=\"_blank\" href=\"https://groups.google.com/forum/#!topic/microprofile/Fdbyh1qTV68\">See why class containers (EJB, WAR,etc) are no longer valid in JPMS</a>"));
+				""));
 		right.add(buildSnap3());
 		right.add(addWhiteAlert("<strong>Use JPMS and Private Modules for proper encapsulation without the weight of running an EE/MicroProfile server.</strong>"));
 

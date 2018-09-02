@@ -11,7 +11,9 @@ public class JQueryUIDemoScreen
 	public JQueryUIDemoScreen()
 	{
 		super("JQuery UI", "Web Frameworks", "jQuery UI");
+
 		addFeatureTile("Draggable", "Allow elements to be moved using the mouse", new JQUIDraggableDemoScreen());
 		addComponentTile("Accordion", "Displays collapsible content panels for presenting information in a limited amount of space.", GuiceContext.get(ComingSoon.class));
+
 	}
 }

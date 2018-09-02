@@ -131,7 +131,7 @@ public class Subscribers
 
 	public static Optional<Subscribers> findByLoginAndPassword(String login, String password) throws MissingComponentException
 	{
-		Optional<Subscribers> subs = findByEmail(login);
+		Optional<Subscribers> subs = Subscribers.findByEmail(login);
 		if (subs.isPresent())
 		{
 			Subscribers s = subs.get();
@@ -284,7 +284,8 @@ public class Subscribers
 	@CacheRemove()
 	public Optional<Subscribers> create(Visitors visitor) throws EntityAssistException
 	{
-		if (findByEmail(getEmailAddress()).isPresent())
+		if (Subscribers.findByEmail(getEmailAddress())
+		               .isPresent())
 		{
 			throw new EntityAssistException("This user has already been registered");
 		}
@@ -331,7 +332,8 @@ public class Subscribers
 	@CacheRemove()
 	public Optional<Subscribers> changePassword(Subscribers subscriber) throws EntityAssistException
 	{
-		if (!findByEmail(getEmailAddress()).isPresent())
+		if (!Subscribers.findByEmail(getEmailAddress())
+		                .isPresent())
 		{
 			throw new EntityAssistException("No Such Email");
 		}

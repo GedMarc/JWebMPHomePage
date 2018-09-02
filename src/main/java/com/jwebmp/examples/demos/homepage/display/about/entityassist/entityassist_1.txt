@@ -1,0 +1,8 @@
+List<EntityClass> list = new EntityClass().builder()
+     .inDateRange()
+     .join(EntityClassTwo_.entityClass)
+     .getAll();
+
+builder().where(Visitors_.localStorageKey, Operand.Equals,"Value");
+		builder().where(Visitors_.localStorageKey, Operand.Like,"Value");
+		builder().where(Visitors_.localStorageKey, Operand.NotLike,"Value");

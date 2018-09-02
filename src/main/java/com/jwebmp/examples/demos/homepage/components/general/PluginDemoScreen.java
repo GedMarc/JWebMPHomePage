@@ -8,7 +8,6 @@ import com.jwebmp.core.base.html.Paragraph;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.Operand;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.display.ComingSoon;
 import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggableDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
@@ -78,12 +77,16 @@ public class PluginDemoScreen
 		componentTiles.getOptions()
 		              .setInitDelay(0);
 		componentTiles.addStyle("width", "inherit");
-
 	}
 
 	public void addDiv(Div div)
 	{
 		additionals.add(div);
+	}
+
+	public void addComponentTile(String name, String description)
+	{
+		addComponentTile(name, description, null);
 	}
 
 	public void addComponentTile(String name, String description, DisplayScreen<?> demoDisplayScreen)
@@ -150,6 +153,9 @@ public class PluginDemoScreen
 
 		optionBrowsers.forEach(a -> rightColumnTop.add(a));
 
+		leftColumnTop.add(componentTiles);
+		leftColumnTop.add(featureTiles);
+
 		//fullColumn.add(sourceCodeContentPanel());
 
 		row.add(fullColumn);
@@ -162,12 +168,8 @@ public class PluginDemoScreen
 		container.add(topRow);
 		container.add(row);
 
-		if (!tileAdded && additionals.isEmpty())
-		{
-			container.add(new ComingSoon().setRenderBreadcrumb(false));
-		}
-
 		BSRow<?> additionalRow = BSRow.newInstance();
+
 		for (Div<?, ?, ?, ?, ?> additional : additionals)
 		{
 			additionalRow.add(additional);
@@ -270,7 +272,6 @@ public class PluginDemoScreen
 
 	public OptionsBrowser addOptionsBrowser(JavaScriptPart forObject)
 	{
-
 		OptionsBrowser ob;
 		optionBrowsers.add(ob = new OptionsBrowser(forObject));
 		return ob;

@@ -1,0 +1,12 @@
+<persistence ... version="2.1">
+    <persistence-unit name="AppPU">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>jdbc/homepage</jta-data-source>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:target/JWebSwingHomePage"/>
+        </properties>
+    </persistence-unit>
+</persistence>
