@@ -1,6 +1,7 @@
 <dependency>
     <groupId>com.jwebmp</groupId>
-    <artifactId>jwebmp-jstree</artifactId>
+    <artifactId>jwebmp-core</artifactId>
     <version>${jwebmp.version}</version>
     <type>jar</type>
 </dependency>
+

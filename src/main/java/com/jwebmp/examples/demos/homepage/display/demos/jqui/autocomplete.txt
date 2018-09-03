@@ -1,0 +1,16 @@
+JQUIAutoComplete ac = new JQUIAutoComplete("autocomplete");
+ac.getOptions()
+  .addOption("option 1");
+ac.setInput(new TextArea<>());
+
+JQUIAutoComplete ac = new JQUIAutoComplete("withcategories");
+ac.getLabel().setText();
+ac.setInput(new InputTextType());
+ac.getOptions()
+  .addOption("option 1", "value1", "category1");
+
+  JQUIAutoComplete ac = new JQUIAutoComplete("usingajax");
+ac.getOptions()
+  .setAjax(true, ac);
+ac.getOptions()
+  .addOption("option 1", "value1", "category1");

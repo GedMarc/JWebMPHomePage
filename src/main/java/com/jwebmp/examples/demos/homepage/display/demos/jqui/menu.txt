@@ -1,0 +1,7 @@
+JQUIMenu<?> menu = new JQUIMenu(Orientation.HORIZONTAL);
+menu.add(new JQUIMenuGroup<>().setText("Group 1")
+  .add(new JQUIMenuItem<>("Item 1"))
+  .add(new JQUIMenuItem<>().add(new Italic<>().addClass("icon?")
+    .setText("Icon Label..."))
+  )
+);

@@ -93,12 +93,13 @@ public class West
 	private ListItem<?> buildCorePlugins()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", HtmlTagsDemoScreen).setText("HTML Tag Collection")));
-/*		uiKit.add(new ListItem<>().add(buildListItem("#a3").setText("Angular Integration")));
-		uiKit.add(new ListItem<>().add(buildListItem("#a4").setText("AJAX Implementation")));
-		uiKit.add(new ListItem<>().add(buildListItem("#a5").setText("Atmosphere Push Web Sockets")));*/
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", HtmlTagsDemoScreen).setText("HTML Tags")));
+		uiKit.add(new ListItem<>().add(buildListItem("#a3", BasicInputDemoScreen).setText("Input Controls")));
+		uiKit.add(new ListItem<>().add(buildListItem("#a4", BasicFormDemoScreen).setText("Form Basics")));
+		uiKit.add(new ListItem<>().add(buildListItem("#a5", BasicBindingsDemoScreen).setText("Bindings")));
+		//uiKit.add(new ListItem<>().add(buildListItem("#a5").setText("Writing Components")));
 
-		ListItem dropDown1 = buildSubList("fal fa-plug", "Core Plugins", uiKit);
+		ListItem dropDown1 = buildSubList("fal fa-plug", "Core", uiKit);
 		return dropDown1;
 	}
 

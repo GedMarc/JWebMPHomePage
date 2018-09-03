@@ -77,10 +77,11 @@ public class JQUIDraggableDemoScreen
 		  .getDisplay()
 		  .setPosition(Positions.Relative);
 
-		JQUIDraggableFeature feature;
-		wd.addFeature(feature = new JQUIDraggableFeature(wd, null));
+		JQUIDraggableFeature feature = new JQUIDraggableFeature(wd, null);
 		feature.getOptions()
 		       .setContainment(getDrawingPane());
+		wd.addFeature(feature);
+
 		setOptionsObject(feature.getOptions());
 
 		return wd;
@@ -211,7 +212,6 @@ public class JQUIDraggableDemoScreen
 
 		return wd;
 	}
-
 
 	public WorkDiv cursorCenter()
 	{
@@ -366,7 +366,6 @@ public class JQUIDraggableDemoScreen
 		  .getDisplay()
 		  .setPosition(Positions.Relative);
 
-
 		List draggable = new List<>(false).addStyle("list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px;");
 		ListItem dragMe = (ListItem) draggable.addItem("Drag me down")
 		                                      .addClass(UI_State_Highlight);
@@ -397,7 +396,6 @@ public class JQUIDraggableDemoScreen
 
 		return wd;
 	}
-
 
 	public WorkDiv revertOriginal()
 	{

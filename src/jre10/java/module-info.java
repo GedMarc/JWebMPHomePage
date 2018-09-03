@@ -82,6 +82,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires org.apache.commons.text;
 	requires com.jwebmp.guicedservlets.requestscoped;
 	requires com.google.common;
+	requires io.github.classgraph;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IGuicePostStartup with HomePageDBStartup;
@@ -115,7 +116,7 @@ module com.jwebmp.examples.demos.homepage {
 	opens com.jwebmp.examples.demos.homepage.display.home to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.components to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	/*opens com.jwebmp.examples.demos.homepage.components.sourcecode to com.fasterxml.jackson.databind,com.google.guice, com.jwebmp.core;*/
-	/*opens com.jwebmp.examples.demos.homepage.components.events to com.fasterxml.jackson.databind,com.google.guice, com.jwebmp.core;*/
+	opens com.jwebmp.examples.demos.homepage.components.events to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.components.general to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.entities.builders to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 

@@ -1,13 +1,11 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
 import com.jwebmp.core.FileTemplates;
-import com.jwebmp.core.base.html.Div;
-import com.jwebmp.core.base.html.DivSimple;
-import com.jwebmp.core.base.html.Link;
-import com.jwebmp.core.base.html.Paragraph;
+import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.Operand;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.components.events.SwopObjectBrowserEvent;
 import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggableDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
@@ -39,12 +37,15 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
+import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 public class PluginDemoScreen
 		extends DisplayScreen
 {
 
 	private final List<Div<?, ?, ?, ?, ?>> additionals = new ArrayList<>();
+	private final List<Div<?, ?, ?, ?, ?>> additionalsRight = new ArrayList<>();
+
 	boolean tileAdded = false;
 	private BSColumn fullColumn = new BSColumn(Col_12, Col_12);
 	private BSColumn rightColumn = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
@@ -84,12 +85,32 @@ public class PluginDemoScreen
 		additionals.add(div);
 	}
 
-	public void addComponentTile(String name, String description)
+	public StaticTile addComponentTile(String name, String description, Class<? extends JavaScriptPart> part)
 	{
-		addComponentTile(name, description, null);
+		StaticTile tile;
+		componentTiles.add(tile = new StaticTile().addFace(new TileFace<>().addCaption("Component")
+		                                                                   .addParagraph(name + "<br/><br/>" + description))
+		                                          .addStyle("cursor", "pointer")
+		                                          .addAttribute("data-delay", RandomUtils.nextInt(3500, 8000) + ""));
+		if (part != null)
+		{
+			tile.addEvent(new SwopObjectBrowserEvent(tile).setID(part.getCanonicalName()
+			                                                         .replace('.', '_')));
+		}
+		if (description.length() > 50)
+		{
+			tile.addClass("two-wide");
+		}
+		tileAdded = true;
+		return tile;
 	}
 
-	public void addComponentTile(String name, String description, DisplayScreen<?> demoDisplayScreen)
+	public StaticTile addComponentTile(String name, String description)
+	{
+		return addComponentTile(name, description, (DisplayScreen) null);
+	}
+
+	public StaticTile addComponentTile(String name, String description, DisplayScreen<?> demoDisplayScreen)
 	{
 		StaticTile tile;
 		componentTiles.add(tile = new StaticTile().addFace(new TileFace<>().addCaption("Component")
@@ -106,9 +127,35 @@ public class PluginDemoScreen
 			tile.addClass("two-wide");
 		}
 		tileAdded = true;
+		return tile;
 	}
 
-	public void addFeatureTile(String name, String description, DisplayScreen<?> demoDisplayScreen)
+	public StaticTile addFeatureTile(String name, String description, Class<? extends JavaScriptPart> optionsBrowser)
+	{
+		StaticTile tile;
+		featureTiles.add(tile = new StaticTile().addFace(new TileFace<>().addCaption("Feature")
+		                                                                 .addParagraph(name + "<br/><br/>" + description))
+		                                        .addStyle("cursor", "pointer")
+		                                        .addAttribute("data-delay", RandomUtils.nextInt(3500, 8000) + ""));
+		if (optionsBrowser != null)
+		{
+			tile.addEvent(new SwopObjectBrowserEvent(tile).setID(optionsBrowser.getCanonicalName()
+			                                                                   .replace('.', '_')));
+		}
+		if (description.length() > 50)
+		{
+			tile.addClass("two-wide");
+		}
+		tileAdded = true;
+		return tile;
+	}
+
+	public StaticTile addFeatureTile(String name, String description)
+	{
+		return addFeatureTile(name, description, (DisplayScreen) null);
+	}
+
+	public StaticTile addFeatureTile(String name, String description, DisplayScreen<?> demoDisplayScreen)
 	{
 		StaticTile tile;
 		featureTiles.add(tile = new StaticTile().addFace(new TileFace<>().addCaption("Feature")
@@ -120,7 +167,12 @@ public class PluginDemoScreen
 			tile.addEvent(new ChangeScreenEvent(demoDisplayScreen, "p=" + pluginName).setID(JQUIDraggableDemoScreen.class.getCanonicalName()
 			                                                                                                             .replace('.', '_')));
 		}
+		if (description.length() > 50)
+		{
+			tile.addClass("two-wide");
+		}
 		tileAdded = true;
+		return tile;
 	}
 
 	@Override
@@ -169,6 +221,7 @@ public class PluginDemoScreen
 		container.add(row);
 
 		BSRow<?> additionalRow = BSRow.newInstance();
+		BSRow<?> additionalRowRight = BSRow.newInstance();
 
 		for (Div<?, ?, ?, ?, ?> additional : additionals)
 		{
@@ -177,7 +230,17 @@ public class PluginDemoScreen
 		if (!additionalRow.getChildren()
 		                  .isEmpty())
 		{
-			container.add(additionalRow);
+			leftColumnTop.add(additionalRow);
+		}
+
+		for (Div<?, ?, ?, ?, ?> additional : additionalsRight)
+		{
+			additionalRowRight.add(additional);
+		}
+		if (!additionalRowRight.getChildren()
+		                       .isEmpty())
+		{
+			rightColumnTop.add(additionalRowRight);
 		}
 
 		return container;
@@ -187,11 +250,13 @@ public class PluginDemoScreen
 	{
 		BSCardBox<?> mavenDisplayDiv = new BSCardBox<>();
 		JQSourceCodePrettify prettify = new JQSourceCodePrettify();
+		prettify.addStyle("background-color:#36404a;");
 		prettify.setSourceCodeLanguage(SourceCodeLanguages.XML);
 		prettify.setShowLineNums(false);
 		prettify.setText(depedencyInfo);
 		mavenDisplayDiv.add(prettify);
 		prettify.addStyle("padding-bottom:0px !important;");
+		mavenDisplayDiv.add(new SmallText("Simply switch the group to com.jwebmp.jre10 or jre11 to move between releases :)"));
 		return mavenDisplayDiv;
 	}
 
@@ -203,8 +268,9 @@ public class PluginDemoScreen
 		if (plugin != null)
 		{
 			BSRow versionRow = new BSRow();
-			versionRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("Source Widget Version"));
-			versionRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.getPluginSourceURL(), "_blank").setText(plugin.getPluginVersion())));
+			versionRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("Source Widget"));
+			versionRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(
+					new Link<>(plugin.getPluginSourceURL(), "_blank").setText("View Demo <br/> Version " + plugin.getPluginVersion())));
 			mavenDisplayDiv.add(versionRow);
 
 			BSRow donationRow = new BSRow();
@@ -272,9 +338,27 @@ public class PluginDemoScreen
 
 	public OptionsBrowser addOptionsBrowser(JavaScriptPart forObject)
 	{
-		OptionsBrowser ob;
-		optionBrowsers.add(ob = new OptionsBrowser(forObject));
+		OptionsBrowser ob = new OptionsBrowser(forObject);
+		ob.setID("pluginObjectBrowser");
+		optionBrowsers.add(ob);
 		return ob;
+	}
 
+	public Div getCodeBlockJava(Class reference, String fileName)
+	{
+		Div d = new Div<>().addClass(Col_12);
+		d.setID("JavaCodeBlock");
+		addSourceToContainer(reference, fileName, Java, d);
+		return d;
+	}
+
+	public List<Div<?, ?, ?, ?, ?>> getAdditionals()
+	{
+		return additionals;
+	}
+
+	public List<Div<?, ?, ?, ?, ?>> getAdditionalsRight()
+	{
+		return additionalsRight;
 	}
 }

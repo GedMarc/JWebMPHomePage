@@ -1,0 +1,32 @@
+JQUIAccordion accordion = new JQUIAccordion();
+JQUIAccordionContent<?> d1 = new JQUIAccordionContent();
+JQUIAccordionContent<?> d2 = new JQUIAccordionContent();
+
+JQUIAccordionTab<?> tab1 = new JQUIAccordionTab("tab1", d1);
+JQUIAccordionTab<?> tab2 = new JQUIAccordionTab("tab2", d2);
+
+accordion.addAccordianTab(tab1);
+accordion.addAccordianTab(tab2);
+
+add(accordion);
+
+
+JQUIAccordion accordion = new JQUIAccordion();
+accordion.getOptions()
+         .getIcons()
+         .setHeader("headerIcons");
+accordion.getOptions()
+         .getIcons()
+         .setActiveHeader("activeHeaderIcons");
+
+JQUIAccordion accordion = new JQUIAccordion();
+accordion.getOptions()
+         .getAnimate()
+         .setDuration(200);
+accordion.getOptions()
+         .getAnimate()
+         .setDirection(Direction.Vertical);
+accordion.getOptions()
+         .getAnimate()
+         .setEasing(JQEasingEffects.easeInBack);
+

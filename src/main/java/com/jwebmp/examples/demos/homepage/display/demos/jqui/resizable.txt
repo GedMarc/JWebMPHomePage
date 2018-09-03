@@ -1,0 +1,9 @@
+JQUIResizable resizable = new JQUIResizable();
+resizable.getOptions()
+         .setAnimate(true)
+         .setAnimateDuration(6000)
+         .setGhost(true);
+add(resizable);
+
+Span anything = new Span();
+anything.addFeature(new JQUIResizableFeature(anything));

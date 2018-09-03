@@ -1,0 +1,9 @@
+JQUISortable sortable = new JQUISortable();
+sortable.getOptions()
+        .setAxis(Axis.X)
+        .setCursor(Cursors.Move)
+        .setDropOnEmpty(true)
+        .setGrid(new Integer[]{1, 1});
+
+sortable.add(new JQUISortableItem<>().setText("Do anything"));
+sortable.add(new JQUISortableItem<>().setText("With anything"));

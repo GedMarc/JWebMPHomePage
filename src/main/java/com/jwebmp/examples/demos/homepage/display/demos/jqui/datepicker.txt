@@ -1,0 +1,13 @@
+JQUIDatePicker datePicker = new JQUIDatePicker();
+datePicker.getInputFeature()
+          .getOptions()
+          .setAutoSize(true)
+          .setCurrentText("Click to open date picker");
+
+datePicker.getOptions()
+          .setButtonText("Click to open")
+          .setMaxDate("+1m +7d")
+          .setMinDate("-3m +1d")
+          .setCloseText("hide")
+          .setFirstDay(1)
+          .setDateFormat("yyyy/MM/dd");

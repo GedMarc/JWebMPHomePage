@@ -1,0 +1,8 @@
+JQUISelectable selectable = new JQUISelectable();
+selectable.getOptions()
+          .setAutoRefresh(true)
+          .setDelay(500)
+          .setDistance(20);
+
+Div anything = new Div();
+anything.addFeature(new JQUISelectableFeature(anything));

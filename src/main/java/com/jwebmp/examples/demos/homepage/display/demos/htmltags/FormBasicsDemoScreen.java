@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display.demos.htmltags;
 
-import com.google.inject.Singleton;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
 import io.github.classgraph.ClassGraph;
@@ -8,22 +7,23 @@ import io.github.classgraph.ClassInfo;
 import io.github.classgraph.ScanResult;
 import org.apache.commons.text.StringEscapeUtils;
 
-@Singleton
-public class HtmlTagsDemoScreen
+public class FormBasicsDemoScreen
 		extends PluginDemoScreen
 {
-	private static final ScanResult result = new ClassGraph().whitelistPackages("com.jwebmp.core.base.html")
+	private static final ScanResult result = new ClassGraph().whitelistPackages("com.jwebmp.core.base.html.inputs")
+	                                                         .whitelistModules("com.jwebmp.core")
+	                                                         .whitelistJars("jwebmp-core*")
 	                                                         .enableClassInfo()
 	                                                         .scan();
 
-	public HtmlTagsDemoScreen()
+	public FormBasicsDemoScreen()
 	{
 		super("HtmlTags", "Base", "HTML Tags");
 		for (ClassInfo allClass : result.getAllClasses())
 		{
 			Class<? extends ComponentHierarchyBase> clazz = (Class<? extends ComponentHierarchyBase>) allClass.loadClass();
 			if (clazz.getPackageName()
-			         .equals("com.jwebmp.core.base.html"))
+			         .equals("com.jwebmp.core.base.html.inputs"))
 			{
 				try
 				{
@@ -39,7 +39,8 @@ public class HtmlTagsDemoScreen
 				}
 			}
 		}
-		getAdditionalsRight().add(getCodeBlockJava(HtmlTagsDemoScreen.class, "rendering.txt"));
+
+		getAdditionalsRight().add(getCodeBlockJava(FormBasicsDemoScreen.class, "rendering.txt"));
 	}
 
 }

@@ -1,0 +1,8 @@
+JQUIButton button = new JQUIButton("test");
+button.getOptions()
+      .setLabel("Label")
+      .setIcon("far fa-something")
+      .setDisabled(true);
+
+Div anything = new Div();
+anything.addFeature(new JQUIButtonFeature(anything));

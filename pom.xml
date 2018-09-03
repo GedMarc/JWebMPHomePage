@@ -511,6 +511,11 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
+        <dependency>
+            <groupId>io.github.classgraph</groupId>
+            <artifactId>classgraph</artifactId>
+        </dependency>
+
 
     </dependencies>
 

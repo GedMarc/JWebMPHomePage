@@ -1,0 +1,4 @@
+JQUIProgressBar<?> progressBar = new JQUIProgressBar<>();
+progressBar.getOptions()
+   .setMax(100)
+   .setValue(50);

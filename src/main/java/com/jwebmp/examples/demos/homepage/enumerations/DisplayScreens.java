@@ -105,6 +105,9 @@ public enum DisplayScreens
 	AboutThisSIte(AboutThisSiteScreen.class, "AboutThisSite"),
 
 	HtmlTagsDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.HtmlTagsDemoScreen.class, "HtmlTagsDemoScreen"),
+	BasicInputDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.InputTypesDemoScreen.class, "BasicInputsTypeScreen"),
+	BasicFormDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.FormBasicsDemoScreen.class, "BasicFormScreen"),
+	BasicBindingsDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.BindingsBasicsDemoScreen.class, "BindingsBasicTypeScreen"),
 
 	AngularAnimate(AngularAnimateDemoScreen.class, "AngularAnimate"),
 	AngularAnimatedChange(AngularAnimateChangeDemoScreen.class, "AngularAnimatedChange"),
