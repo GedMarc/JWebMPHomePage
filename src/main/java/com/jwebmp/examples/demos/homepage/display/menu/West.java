@@ -197,7 +197,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#ui411", AngularAnimate).setText("Animate")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui421", AngularAnimatedChange).setText("Animated Change")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui431", AngularAutoExpand).setText("Auto Expand")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e8", AngularFileUpload).setText("NG File Upload")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e8", AngularFileUpload).setText("Angular File Upload")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui441", AngularIonSlider).setText("Ion Slider")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui451", AngularNgSlimScroll).setText("NG Slim Scroll")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui461", AngularSanitize).setText("Sanitize")));

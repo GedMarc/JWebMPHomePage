@@ -16,10 +16,9 @@ public class AngularFileUploadDemoScreen
 		addComponentTile("Angular File Upload",
 		                 "A file upload component that allows the usage of ng-bind for file uploads.");
 
-		getAdditionalsRight().add(new Div("These components are great to bind file uploads directly to client side variables" +
-		                                  "This directive is great automatically included when added to the classpath, or a dependency of the library is added."));
-
 		getAdditionalsRight().add(new Div("The file gets added to the AjaxCall in the following JSON format"));
+		getAdditionalsRight().add(new Div("Use AngularFile(s)Upload for multiple files" +
+		                                  "<br/>AngularFiles contains a collection of the files"));
 
 		Div jsonDiv = new Div<>().addClass(Col_12);
 		addSourceToContainer(AngularFileUploadDemoScreen.class, "examplejson.txt", SourceCodeLanguages.JS, jsonDiv);
@@ -27,7 +26,7 @@ public class AngularFileUploadDemoScreen
 
 		Div codeExample = new Div<>().addClass(Col_12);
 		codeExample.add("Use AngularFileInput instead of InputFileType,");
-		codeExample.add("Map the AngularFile as part of your Dto/Entity as below");
+		codeExample.add("Simply map the AngularFile as part of your transfer object as below");
 		addSourceToContainer(AngularFileUploadDemoScreen.class, "examplecode.txt", SourceCodeLanguages.Java, codeExample);
 		getAdditionals().add(codeExample);
 	}
