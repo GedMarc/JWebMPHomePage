@@ -1,0 +1,7 @@
+InputTextType<?> bindable = new InputTextType<>();
+bindable.bind("formVariable.bindable");
+InputTextType<?> text2 = new InputTextType();
+text2.bind("formVariable.text2");
+
+form.add(bindable);
+form.add(text2);

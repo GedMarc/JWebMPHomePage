@@ -1,0 +1,6 @@
+public class DataMapping
+    extends JavaScriptPart<DataMapping>
+{
+    private String bindable;
+    private byte[] file;
+}

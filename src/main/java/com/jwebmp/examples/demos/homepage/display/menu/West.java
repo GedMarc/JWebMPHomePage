@@ -94,9 +94,9 @@ public class West
 	{
 		List uiKit = new List<>();
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", HtmlTagsDemoScreen).setText("HTML Tags")));
-		uiKit.add(new ListItem<>().add(buildListItem("#a3", BasicInputDemoScreen).setText("Input Controls")));
-		uiKit.add(new ListItem<>().add(buildListItem("#a4", BasicFormDemoScreen).setText("Form Basics")));
-		uiKit.add(new ListItem<>().add(buildListItem("#a5", BasicBindingsDemoScreen).setText("Bindings")));
+		uiKit.add(new ListItem<>().add(buildListItem("#a3", BasicInputDemoScreen).setText("HTML Inputs")));
+		uiKit.add(new ListItem<>().add(buildListItem("#a4", BasicFormDemoScreen).setText("HTML Form Basics")));
+		uiKit.add(new ListItem<>().add(buildListItem("#a5", BasicBindingsDemoScreen).setText("Data Bindings")));
 		//uiKit.add(new ListItem<>().add(buildListItem("#a5").setText("Writing Components")));
 
 		ListItem dropDown1 = buildSubList("fal fa-plug", "Core", uiKit);
@@ -197,6 +197,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#ui411", AngularAnimate).setText("Animate")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui421", AngularAnimatedChange).setText("Animated Change")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui431", AngularAutoExpand).setText("Auto Expand")));
+		uiKit.add(new ListItem<>().add(buildListItem("#e8", AngularFileUpload).setText("NG File Upload")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui441", AngularIonSlider).setText("Ion Slider")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui451", AngularNgSlimScroll).setText("NG Slim Scroll")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui461", AngularSanitize).setText("Sanitize")));
@@ -247,7 +248,6 @@ public class West
 		List uiKit = new List<>();
 		uiKit.add(new ListItem<>().add(buildListItem("#b9").setText("Angular Forms")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e9", AngularFileUpload).setText("BlueImp File Upload")));
-		uiKit.add(new ListItem<>().add(buildListItem("#e8", AngularFileUpload).setText("NG File Upload")));
 		uiKit.add(new ListItem<>().add(buildListItem("#f1", IonRangeSlider).setText("Ion Range Slider")));
 		uiKit.add(new ListItem<>().add(buildListItem("#f2", PrettyCheckboxes).setText("Pretty Checkboxes")));
 		uiKit.add(new ListItem<>().add(buildListItem("#f3", ProgressButtons).setText("Angular Progress Buttons")));

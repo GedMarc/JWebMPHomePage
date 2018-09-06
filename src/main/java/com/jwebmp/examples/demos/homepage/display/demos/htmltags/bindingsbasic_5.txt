@@ -1,0 +1,45 @@
+Form form = new Form<>();
+form.addDto("formVariable", new JavaScriptPart<>());
+
+InputTextType<?> bindable = new InputTextType<>();
+bindable.bind("formVariable.bindable");
+InputFileType<?> file = new InputFileType();
+file.bind("formVariable.file");
+
+form.add(bindable);
+form.add(file);
+
+System.out.println(form.toString(0));
+
+
+public class DataMapping
+    extends JavaScriptPart<DataMapping>
+{
+private String bindable;
+private byte[] file;
+}
+
+public class FormReader
+    extends ClickAdapter
+{
+public FormReader()
+{
+    //Event Callback
+    this(null);
+}
+
+public FormReader(ComponentHierarchyBase component)
+{
+    //Event registration
+    super(component);
+    returnVariable("formVariable");
+}
+
+@Override
+public void onClick(AjaxCall call, AjaxResponse response)
+{
+    DataMapping returnedForm = call.getVariable("formVariable")
+                                   .as(DataMapping.class);
+
+}
+}

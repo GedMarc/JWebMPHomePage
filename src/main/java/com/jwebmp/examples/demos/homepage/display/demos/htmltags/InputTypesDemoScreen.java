@@ -33,14 +33,18 @@ public class InputTypesDemoScreen
 			{
 				ComponentHierarchyBase component = clazz.getConstructor()
 				                                        .newInstance();
-				component.bind("demobinding." + clazz.getSimpleName());
+
 				String htmlTag = component
 						                 .setRenderIDAttribute(false)
 						                 .removeAttribute("name")
 						                 .toString(0);
-				addComponentTile(clazz.getSimpleName(), StringEscapeUtils.escapeHtml4(htmlTag));
 
-				displayDiv.add(clazz.getSimpleName() + " - {{demobinding." + clazz.getSimpleName() + "}}");
+				component.bind("demobinding." + clazz.getSimpleName());
+				component.preConfigure();
+
+				addComponentTile(clazz.getSimpleName(), StringEscapeUtils.escapeHtml4(htmlTag)).addStyle("cursor", "default");
+
+				displayDiv.add(clazz.getSimpleName() + " - This is the value [{{demobinding." + clazz.getSimpleName() + "}}]");
 				displayDiv.add(component);
 				displayDiv.add(HorizontalRule.getInstance());
 			}
@@ -51,12 +55,11 @@ public class InputTypesDemoScreen
 		}
 
 		getAdditionalsRight().add(getCodeBlockJava(InputTypesDemoScreen.class, "inputtypes.txt"));
-		getAdditionalsRight().add((Div) addWhiteAlert("This entire page is the output of the snippet above. " +
-		                                              "<br/> Using bind on any input component prepares the variable for transport to the server." +
-		                                              "<br/> You can see the bindings take place as you fill in the form" +
+
+		getAdditionalsRight().add((Div) addWhiteAlert("Below is each component rendered as above," +
 		                                              "<br/> The data is kept on the client until the variable is cleared. " +
-		                                              "<br/>Navigating away will keep the data, refreshing will lose it").addClass(
-				"col-12"));
+		                                              "<br/>Navigating away will keep the data, refreshing will lose it")
+				                                .addClass("col-12"));
 		getAdditionalsRight().add(displayDiv);
 	}
 

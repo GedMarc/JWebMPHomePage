@@ -1,0 +1,24 @@
+public class FormReader
+    extends ClickAdapter
+{
+public FormReader()
+{
+    //Event Callback
+    this(null);
+}
+
+public FormReader(ComponentHierarchyBase component)
+{
+    //Event registration
+    super(component);
+    returnVariable("formVariable");
+}
+
+@Override
+public void onClick(AjaxCall call, AjaxResponse response)
+{
+    DataMapping returnedForm = call.getVariable("formVariable")
+                                   .as(DataMapping.class);
+
+}
+}

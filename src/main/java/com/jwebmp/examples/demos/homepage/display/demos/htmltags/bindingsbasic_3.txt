@@ -1,0 +1,2 @@
+Form form = new Form<>();
+form.addDto("formVariable", new DataMapping<>());

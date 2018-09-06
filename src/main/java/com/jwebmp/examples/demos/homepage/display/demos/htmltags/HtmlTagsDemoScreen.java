@@ -31,7 +31,7 @@ public class HtmlTagsDemoScreen
 					                      .newInstance()
 					                      .setRenderIDAttribute(false)
 					                      .toString(0);
-					addComponentTile(clazz.getSimpleName(), StringEscapeUtils.escapeHtml4(htmlTag));
+					addComponentTile(clazz.getSimpleName(), StringEscapeUtils.escapeHtml4(htmlTag)).addStyle("cursor", "default");
 				}
 				catch (Exception e)
 				{

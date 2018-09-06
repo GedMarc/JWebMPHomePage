@@ -120,7 +120,7 @@ public class OptionsBrowser
 			}
 			else if (clazz.isEnum())
 			{
-				treeItem.setText(field.getName() + " : <small><i>enum</i></small>")
+				treeItem.setText(field.getName() + " : <small><i>enum&lt;" + clazz.getSimpleName() + "&gt;</i></small>")
 				        .setAsParent(true)
 				        .getOptions()
 				        .setIcon("fal fa-list")

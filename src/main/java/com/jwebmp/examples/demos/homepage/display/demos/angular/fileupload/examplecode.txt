@@ -1,0 +1,15 @@
+InputTextType<?> textInput = new InputTextType<>()
+    .bind("variable.binding");
+
+AngularFileUpload<?> upload = new AngularFileUpload<>();
+upload.bind("variable.angularFile");
+AngularFilesUpload<?> upload = new AngularFilesUpload<>();
+upload.bind("variable.angularFiles");
+
+class DataTransfer
+     extends JavaScriptPart<DataTransfer>
+ {
+    private String binding;
+    private AngularFile<?> angularFile;
+    private AngularFiles<?> angularFiles;
+ }

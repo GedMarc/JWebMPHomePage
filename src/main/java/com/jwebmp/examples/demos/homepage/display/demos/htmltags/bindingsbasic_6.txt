@@ -1,0 +1,8 @@
+getPage().getAngular().getAngularWatchers().add(
+	 new AngularVariableWatcher("watchVariableName", "form.variable", AngularChangeEventVariable.class)
+);
+
+class AngularChangeEventVariable
+    extends AngularChangeEvent<AngularChangeEventVariable>
+{
+public void onChange(AjaxCall call, AjaxResponse response)

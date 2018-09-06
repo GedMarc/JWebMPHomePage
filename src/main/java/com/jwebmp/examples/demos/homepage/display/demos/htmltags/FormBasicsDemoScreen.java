@@ -1,46 +1,20 @@
 package com.jwebmp.examples.demos.homepage.display.demos.htmltags;
 
-import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
-import io.github.classgraph.ClassGraph;
-import io.github.classgraph.ClassInfo;
-import io.github.classgraph.ScanResult;
-import org.apache.commons.text.StringEscapeUtils;
 
 public class FormBasicsDemoScreen
 		extends PluginDemoScreen
 {
-	private static final ScanResult result = new ClassGraph().whitelistPackages("com.jwebmp.core.base.html.inputs")
-	                                                         .whitelistModules("com.jwebmp.core")
-	                                                         .whitelistJars("jwebmp-core*")
-	                                                         .enableClassInfo()
-	                                                         .scan();
 
 	public FormBasicsDemoScreen()
 	{
-		super("HtmlTags", "Base", "HTML Tags");
-		for (ClassInfo allClass : result.getAllClasses())
-		{
-			Class<? extends ComponentHierarchyBase> clazz = (Class<? extends ComponentHierarchyBase>) allClass.loadClass();
-			if (clazz.getPackageName()
-			         .equals("com.jwebmp.core.base.html.inputs"))
-			{
-				try
-				{
-					String htmlTag = clazz.getConstructor()
-					                      .newInstance()
-					                      .setRenderIDAttribute(false)
-					                      .toString(0);
-					addComponentTile(clazz.getSimpleName(), StringEscapeUtils.escapeHtml4(htmlTag));
-				}
-				catch (Exception e)
-				{
-					e.printStackTrace();
-				}
-			}
-		}
+		super("HtmlTags", "Base", "Form Basics");
 
-		getAdditionalsRight().add(getCodeBlockJava(FormBasicsDemoScreen.class, "rendering.txt"));
+		addComponentTile("Form", "The default HTML form tag").addStyle("cursor:default");
+		addComponentTile("AngularForm", "A form collection to assign success and failure classes to an input").addStyle("cursor:default");
+		addComponentTile("FieldSet", "Groups form fields together").addStyle("cursor:default");
+
+		getAdditionalsRight().add(getCodeBlockJava(FormBasicsDemoScreen.class, "formbasics.txt"));
 	}
 
 }

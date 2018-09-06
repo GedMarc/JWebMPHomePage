@@ -59,6 +59,7 @@ public class PluginDemoScreen
 	private JQMetroTiles componentTiles = new JQMetroTiles();
 
 	private List<OptionsBrowser> optionBrowsers = new ArrayList<>();
+	private List<BSRow> bottomRows = new ArrayList<>();
 
 	public PluginDemoScreen(String pluginName, String... breadCrumbs)
 	{
@@ -243,6 +244,11 @@ public class PluginDemoScreen
 			rightColumnTop.add(additionalRowRight);
 		}
 
+		for (BSRow bottomRow : bottomRows)
+		{
+			container.add(bottomRow);
+		}
+
 		return container;
 	}
 
@@ -344,10 +350,11 @@ public class PluginDemoScreen
 		return ob;
 	}
 
-	public Div getCodeBlockJava(Class reference, String fileName)
+	public Div<?, ?, ?, ?, ?> getCodeBlockJava(Class reference, String fileName)
 	{
 		Div d = new Div<>().addClass(Col_12);
 		d.setID("JavaCodeBlock");
+		d.addClass("ng-non-bindable");
 		addSourceToContainer(reference, fileName, Java, d);
 		return d;
 	}
@@ -360,5 +367,15 @@ public class PluginDemoScreen
 	public List<Div<?, ?, ?, ?, ?>> getAdditionalsRight()
 	{
 		return additionalsRight;
+	}
+
+	public List<BSRow> getBottomRows()
+	{
+		return bottomRows;
+	}
+
+	public void setBottomRows(List<BSRow> bottomRows)
+	{
+		this.bottomRows = bottomRows;
 	}
 }

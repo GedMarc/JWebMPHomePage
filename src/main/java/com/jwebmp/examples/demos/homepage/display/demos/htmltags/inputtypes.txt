@@ -1,3 +1,10 @@
+
+result = new ClassGraph().whitelistPackages("com.jwebmp.core.base.html.inputs")
+                         .whitelistModules("com.jwebmp.core")
+                         .whitelistJars("jwebmp-core*")
+                         .enableClassInfo()
+                         .scan();
+
 public InputTypesDemoScreen()
 {
 super("HtmlTags", "Base", "HTML Tags");
@@ -5,28 +12,31 @@ Div displayDiv = new Div();
 displayDiv.getCss()
           .getDisplay()
           .setDisplay(Displays.Inline);
+
 for (ClassInfo allClass : result.getAllClasses())
 {
     Class clazz = allClass.loadClass();
     ComponentHierarchyBase component = clazz.getConstructor()
                                             .newInstance();
-    //HERE
-    component.bind("demobinding." + clazz.getSimpleName());
 
     String htmlTag = component
                              .setRenderIDAttribute(false)
                              .removeAttribute("name")
                              .toString(0);
-    addComponentTile(clazz.getSimpleName(), StringEscapeUtils.escapeHtml4(htmlTag));
 
-    //returns the exact variable
-    displayDiv.add(clazz.getSimpleName() + " - &#123;&#123;demobinding." + clazz.getSimpleName() + "&#125;&#125;");
+    component.bind("demobinding." + clazz.getSimpleName());
+    addComponentTile(clazz.getSimpleName(), StringEscapeUtils.escapeHtml4(htmlTag));
 
     displayDiv.add(component);
     displayDiv.add(HorizontalRule.getInstance());
+
 }
 
 getAdditionalsRight().add(getCodeBlockJava(InputTypesDemoScreen.class, "inputtypes.txt"));
 
+getAdditionalsRight().add((Div) addWhiteAlert("Below is each component rendered as above," +
+                                              "<br/> The data is kept on the client until the variable is cleared. " +
+                                              "<br/>Navigating away will keep the data, refreshing will lose it")
+                                        .addClass("col-12"));
 getAdditionalsRight().add(displayDiv);
 }
