@@ -198,9 +198,9 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#ui421", AngularAnimatedChange).setText("Animated Change")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui431", AngularAutoExpand).setText("Auto Expand")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e8", AngularFileUpload).setText("Angular File Upload")));
-		uiKit.add(new ListItem<>().add(buildListItem("#ui441", AngularIonSlider).setText("Ion Slider")));
-		uiKit.add(new ListItem<>().add(buildListItem("#ui451", AngularNgSlimScroll).setText("NG Slim Scroll")));
-		uiKit.add(new ListItem<>().add(buildListItem("#ui461", AngularSanitize).setText("Sanitize")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui441", AngularIonSlider).setText("Angular Ion Slider")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui451", AngularNgSlimScroll).setText("Angular Slim Scroll")));
+		uiKit.add(new ListItem<>().add(buildListItem("#ui461", AngularSanitize).setText("Angular Sanitize")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularScrollPosition).setText("Scroll Position")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularTouch).setText("Touch")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui371", AngularTrackWidth).setText("Track Width")));

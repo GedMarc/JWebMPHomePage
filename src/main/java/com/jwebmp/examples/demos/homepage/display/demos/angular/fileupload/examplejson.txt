@@ -4,5 +4,5 @@
     "name": "gitignore_global.txt",
     "size": 236,
     "type": "text/plain",
-    "data": "data:text/plain;base64,DQojaWdub3JlIHRodW1ibmFpbHMgY3JlYXRlZCBieSB3aW5kb3dz…xoDQoqLmJhaw0KKi5jYWNoZQ0KKi5pbGsNCioubG9nDQoqLmRsbA0KKi5saWINCiouc2JyDQo="
+    "data": "data:text/plain;base64,DQoja..."
 }

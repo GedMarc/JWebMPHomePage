@@ -42,7 +42,7 @@ import static com.jwebmp.guicedinjection.GuiceContext.*;
  */
 @SuppressWarnings("unused")
 public class DisplayPage
-		extends Page
+		extends Page<DisplayPage>
 {
 
 	private static final Logger log = LogFactory.getLog(DisplayPage.class.getName());
@@ -257,6 +257,7 @@ public class DisplayPage
 				}
 				catch (Exception e)
 				{
+					log.log(Level.SEVERE, "Unable to build screen?", e);
 					Class<? extends DisplayScreen> ds = null;
 					try
 					{

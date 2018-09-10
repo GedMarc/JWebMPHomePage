@@ -114,7 +114,9 @@ public enum DisplayScreens
 	AngularAutoExpand(AngularAutoExpandDemoScreen.class, "AngularAutoExpand"),
 	AngularAutoFocus(AngularAutoFocusDemoScreen.class, "AngularAutoExpand"),
 	AngularIonSlider(AngularIonSliderDemoScreen.class, "AngularIonSlider"),
-	AngularNgSlimScroll(NgSlimScrollDemoScreen.class, "AngularIonSlider"),
+
+	AngularNgSlimScroll(NgSlimScrollDemoScreen.class, "AngularNgSlimScroll"),
+
 	AngularSanitize(AngularSanitizeDemoScreen.class, "AngularSanitize"),
 	AngularScrollPosition(AngularScrollPositionDemoScreen.class, "AngularScrollPosition"),
 	AngularSlimScroll(AngularSlimScrollDemoScreen.class, "AngularSlimScroll"),

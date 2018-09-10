@@ -1,0 +1,9 @@
+AngularIonSlider<?> slider = new AngularIonSlider<>();
+slider.getOptions()
+      .setStep(5)
+      .setType(IonRangeSliderTypes.Double)
+      .setDualKnobs(true);
+slider.setCurrentValueVariableName("variable.currentValue");
+slider.setMinVariableName("variable.minValue");
+slider.setMaxVariableName("variable.maxValue");
+slider.setDisabledValueVariableName("variable.disabled");

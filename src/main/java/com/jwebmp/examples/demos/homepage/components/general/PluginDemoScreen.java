@@ -6,12 +6,10 @@ import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.Operand;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.events.SwopObjectBrowserEvent;
-import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggableDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
-import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.layout.BSCardBox;
@@ -63,8 +61,6 @@ public class PluginDemoScreen
 
 	public PluginDemoScreen(String pluginName, String... breadCrumbs)
 	{
-		OuterLayout outerLayout = GuiceContext.getInstance(OuterLayout.class);
-
 		this.pluginName = pluginName;
 		this.breadCrumbs = breadCrumbs;
 

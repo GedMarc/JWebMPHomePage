@@ -29,5 +29,6 @@ public class AngularFileUploadDemoScreen
 		codeExample.add("Simply map the AngularFile as part of your transfer object as below");
 		addSourceToContainer(AngularFileUploadDemoScreen.class, "examplecode.txt", SourceCodeLanguages.Java, codeExample);
 		getAdditionals().add(codeExample);
+
 	}
 }

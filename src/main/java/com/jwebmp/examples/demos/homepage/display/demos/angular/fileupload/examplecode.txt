@@ -3,7 +3,7 @@ InputTextType<?> textInput = new InputTextType<>()
 
 AngularFileUpload<?> upload = new AngularFileUpload<>();
 upload.bind("variable.angularFile");
-AngularFilesUpload<?> upload = new AngularFilesUpload<>();
+AngularFilesUpload<?> uploadsMany = new AngularFilesUpload<>();
 upload.bind("variable.angularFiles");
 
 class DataTransfer
