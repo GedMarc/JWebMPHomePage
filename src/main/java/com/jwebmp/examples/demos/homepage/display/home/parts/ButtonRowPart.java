@@ -10,13 +10,12 @@ import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.jwebmp.guicedinjection.GuiceContext;
+import com.jwebmp.guicedservlets.GuicedServletKeys;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.websockets.JWebMPSocket;
 
 import javax.servlet.http.HttpSession;
-
-import static com.jwebmp.guicedservlets.GuicedServletKeys.*;
 
 public class ButtonRowPart<J extends ButtonRowPart<J>>
 		extends BSRow<J>
@@ -115,7 +114,7 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		widget4.addClass("widget-simple-chart text-right card-box");
 
 		int count = 0;
-		HttpSession session = GuiceContext.get(HttpSessionKey);
+		HttpSession session = GuiceContext.get(GuicedServletKeys.getHttpSessionKey());
 		if (!JWebMPSocket.getWebSocketSessionBindings()
 		                 .containsValue(session.getId()))
 		{
