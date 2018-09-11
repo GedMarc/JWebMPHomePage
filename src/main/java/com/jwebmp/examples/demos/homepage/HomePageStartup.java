@@ -4,7 +4,7 @@ import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
 import com.jwebmp.core.generics.WebReference;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
-import com.jwebmp.guicedpersistence.db.intercepters.HibernateEntityManagerProperties;
+import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerProperties;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.blueimp.gallery.BlueImpGalleryPageConfigurator;
@@ -18,13 +18,11 @@ import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
 import com.jwebmp.undertow.JWebMPUndertow;
 import com.jwebmp.undertow.JWebMPUndertowWebSocketConfiguration;
 
-import javax.servlet.ServletException;
-import java.io.IOException;
 import java.util.logging.Level;
 
 public class HomePageStartup
 {
-	public static void main(String[] args) throws ServletException, IOException
+	public static void main(String[] args)
 	{
 		SessionHelper.setAddressToBeUsedWhenNull("https://jwebmp.com/");
 		SessionHelper.setCacheAddress(false);
@@ -32,7 +30,7 @@ public class HomePageStartup
 		JWebMPUndertowWebSocketConfiguration.setEnabled(true);
 
 		LogColourFormatter.setRenderBlack(false);
-		LogFactory.configureConsoleColourOutput(Level.INFO);
+		LogFactory.configureConsoleColourOutput(Level.FINE);
 
 		WebReference.setUseVersionIdentifier(true);
 		AngularMessagesModule.setMesssgesModuleEnabled(true);

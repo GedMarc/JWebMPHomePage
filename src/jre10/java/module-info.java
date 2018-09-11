@@ -83,6 +83,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.guicedservlets.requestscoped;
 	requires com.google.common;
 	requires io.github.classgraph;
+	requires com.jwebmp.guicedpersistence.readers.hibernateproperties;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IGuicePostStartup with HomePageDBStartup;

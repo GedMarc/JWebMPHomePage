@@ -52,6 +52,15 @@
 
         <dependency>
             <groupId>com.jwebmp</groupId>
+            <artifactId>guiced-persistence-hibernateproperties-reader</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <classifier>${jwebmp.runtime.classifier}</classifier>
+        </dependency>
+
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-log-master</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
