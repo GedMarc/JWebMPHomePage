@@ -92,7 +92,9 @@ module com.jwebmp.examples.demos.homepage {
 
 	opens com.jwebmp.examples.demos.homepage;
 	opens com.jwebmp.examples.demos.homepage.entities to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
-	exports com.jwebmp.examples.demos.homepage.entities.builders to com.jwebmp.entityassist;
+	opens com.jwebmp.examples.demos.homepage.entities.persistasync to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
+	opens com.jwebmp.examples.demos.homepage.entities.builders to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
+	opens com.jwebmp.examples.demos.homepage.entities.enumerations to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
 
 	opens com.jwebmp.examples.demos.homepage.db to com.jwebmp.guicedinjection, com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 
@@ -119,7 +121,6 @@ module com.jwebmp.examples.demos.homepage {
 	/*opens com.jwebmp.examples.demos.homepage.components.sourcecode to com.fasterxml.jackson.databind,com.google.guice, com.jwebmp.core;*/
 	opens com.jwebmp.examples.demos.homepage.components.events to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.components.general to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.entities.builders to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 
 	opens com.jwebmp.examples.demos.homepage.display.demos.pluginslist to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 

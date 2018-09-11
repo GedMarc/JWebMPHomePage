@@ -14,7 +14,6 @@ import javax.persistence.*;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.Enumeration;
-import java.util.concurrent.Executors;
 
 @Table(name = "Visits")
 @Entity(name = "Visits")
@@ -64,9 +63,11 @@ public class Visits
 			sb.append(jsonObject.toString());
 		}
 		visits.setHeaderData(sb.toString());
-		visits.builder()
-		      .setRunDetached(true)
-		      .persist(visits);
+
+		VisitsPersistAsync async = GuiceContext.get(VisitsPersistAsync.class);
+		async.setVisits(visits);
+		async.run();
+
 		return visits;
 	}
 
@@ -80,20 +81,6 @@ public class Visits
 	public Visits setId(Long id)
 	{
 		setVisitsID(id);
-		return this;
-	}
-
-	/**
-	 * Executes the commits in a separate thread
-	 *
-	 * @return
-	 */
-	@Override
-	@SuppressWarnings("unsused")
-	public Visits persist()
-	{
-		Executors.defaultThreadFactory()
-		         .newThread(new VisitsPersistAsync(this));
 		return this;
 	}
 

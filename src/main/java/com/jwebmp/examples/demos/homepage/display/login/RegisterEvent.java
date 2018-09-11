@@ -45,8 +45,10 @@ public class RegisterEvent
 		{
 			try
 			{
-				Subscribers newSubs = call.getVariable("subscribe")
-				                          .as(Subscribers.class);
+				Subscribers newSubs = GuiceContext.get(Subscribers.class);
+				call.getVariable("subscribe")
+				    .update(newSubs);
+
 				newSubs.isValid();
 
 				String guid = localStorage.get(LOCAL_STORAGE_PARAMETER_KEY);

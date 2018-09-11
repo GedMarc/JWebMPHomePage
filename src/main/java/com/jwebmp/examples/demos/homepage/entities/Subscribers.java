@@ -18,9 +18,6 @@ import com.jwebmp.examples.demos.homepage.entities.builders.SubscribersBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.SubscriberPersistAsync;
 import com.jwebmp.guicedinjection.GuiceContext;
 
-import javax.cache.annotation.CacheKey;
-import javax.cache.annotation.CacheRemove;
-import javax.cache.annotation.CacheResult;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -219,8 +216,7 @@ public class Subscribers
 		this.visitorID = visitorID;
 	}
 
-	@CacheResult
-	public static Optional<Subscribers> findByIDNumber(@CacheKey String idNumber)
+	public static Optional<Subscribers> findByIDNumber(String idNumber)
 	{
 		Optional option = Optional.empty();
 		EntityManager em = GuiceContext.getInstance(EntityManager.class);
@@ -281,7 +277,6 @@ public class Subscribers
 		this.subscriberID = subscriberID;
 	}
 
-	@CacheRemove()
 	public Optional<Subscribers> create(Visitors visitor) throws EntityAssistException
 	{
 		if (Subscribers.findByEmail(getEmailAddress())
@@ -307,12 +302,10 @@ public class Subscribers
 		setConfirmationKey(UUID.randomUUID()
 		                       .toString());
 		setConfirmed(false);
-		builder().setRunDetached(true)
-		         .persist(this);
 
-		ExecutorService executorService = Executors.newSingleThreadExecutor();
-		executorService.submit(new SubscriberPersistAsync(this));
-		executorService.shutdown();
+		SubscriberPersistAsync async = GuiceContext.get(SubscriberPersistAsync.class);
+		async.setSubscribers(this);
+		async.run();
 
 		Optional optional = Optional.ofNullable(getSubscriberID().equals(0L) ? null : this);
 
@@ -329,7 +322,6 @@ public class Subscribers
 		this.emailAddress = emailAddress;
 	}
 
-	@CacheRemove()
 	public Optional<Subscribers> changePassword(Subscribers subscriber) throws EntityAssistException
 	{
 		if (!Subscribers.findByEmail(getEmailAddress())
@@ -358,7 +350,6 @@ public class Subscribers
 		return optional;
 	}
 
-	@CacheRemove()
 	public Optional<Subscribers> updateRequireConfirmation(Visitors visitor)
 	{
 		setAdministrator(false);
