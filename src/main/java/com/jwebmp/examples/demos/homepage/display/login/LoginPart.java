@@ -111,7 +111,7 @@ public class LoginPart
 		                                                                  .prepend(FontAwesome.icon(FontAwesomeIcons.at));
 		loginInputGroup
 				.setStyleInputGroupTextWithValidation(true)
-				.updateOnBlur()
+				//.updateOnBlur()
 				.addClass(BSSpacingOptions.Margin_Bottom_3);
 
 		loginInputGroup.getInput()

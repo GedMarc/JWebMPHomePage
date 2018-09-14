@@ -4,10 +4,10 @@ import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.*;
 import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
+import com.jwebmp.guicedinjection.GuiceContext;
 
 import java.util.Optional;
 import java.util.UUID;
-import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -44,10 +44,10 @@ public class ForgotPasswordEvent
 				subscriber.setLogInActive(false);
 				subscriber.update();
 
-				Executors.defaultThreadFactory()
-				         .newThread(new ForgotPasswordAsync(newSubs, subs.get()))
-				         .start();
-
+				ForgotPasswordAsync async = GuiceContext.get(ForgotPasswordAsync.class);
+				async.setNewSubs(newSubs);
+				async.setSubs(subs.get());
+				async.run();
 			}
 			catch (Exception e)
 			{
@@ -58,7 +58,8 @@ public class ForgotPasswordEvent
 
 		response.addReaction(new AjaxResponseReaction().setReactionTitle("Forgot Password Requested")
 		                                               .setReactionData(
-				                                               "We've sent an email with instructions to reset your password. " + "<br/><br/> If you can't find it, try checking your Junk/Spam mail folders.")
+				                                               "We've sent an email with instructions to reset your password. " +
+				                                               "<br/><br/> If you can't find it, try checking your Junk/Spam mail folders.")
 		                                               .setResponseType(AjaxResponseType.Success)
 		                                               .setReactionType(ReactionType.DialogDisplay));
 

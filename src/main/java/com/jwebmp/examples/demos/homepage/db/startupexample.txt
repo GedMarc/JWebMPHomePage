@@ -1,9 +1,0 @@
-public HomePageDBStartup(){
-//Service Loader Creator
-}
-
-@Inject
-public HomePageDBStartup(@HomePageDB PersistService persistService)
-{
-    persistService.start(); //Manually load the EntityManager
-}

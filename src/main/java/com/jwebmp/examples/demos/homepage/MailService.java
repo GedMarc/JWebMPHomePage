@@ -71,16 +71,7 @@ public class MailService
 		}
 		Authenticator auth = new SMTPAuthenticator();
 		session = Session.getInstance(properties, auth);
-		session.setDebug(true);
-		try
-		{
-			mailStore = session.getStore("smtp");
-		}
-		catch (NoSuchProviderException e)
-		{
-			log.log(Level.SEVERE, "Unable to build the mail bean", e);
-			mailStore = null;
-		}
+		session.setDebug(false);
 	}
 
 	public MailService sendEmail(String fromAddresses, String subject, String body, String... toAddresses)

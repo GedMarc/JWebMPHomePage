@@ -1,7 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.about.requestscoped;
 
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
-import com.jwebmp.examples.demos.homepage.db.HomePageDBStartup;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
@@ -17,11 +16,8 @@ public class RequestScopedTransactionsScreen
 		all.addStyle("display:grid;overflow-y:auto;");
 
 		all.add("Scoping Transactions has been made incredibly simple, Typically there are 3 standard configurations, but implementing your own through the ITransactionHandler is pretty straight forward");
-		all.add("Globally scoped transactions (Single instance Entity Manager) are setup via the IAsyncStartup service, and manually started when required from an injected Persist Service.");
+		all.add("Persist Services are started up automatically from the Guice Persist library.");
 
-		addSourceToContainer(HomePageDBStartup.class, "startupexample.txt", Java, all);
-
-		all.add("In JRE 8 you may need to inject a DataSource to start the connection engine. This is due to how the layers are called between Java versions.");
 		all.add("Session-Per-Transaction Strategy where an Entity Manager exists for each started Unit Transaction or Unit of Work is implemented by default for backend operations whether or not it is annotated. " +
 		        "<br/>These are marked with @com.jwebmp.guicedpersistence.db.annotations.Transactional and designate the specific Entity Manager to use. " +
 		        "<br/>The default @Transactional are supported, or if the custom @Transactional is not specified, it will utilize which ever persistence module was loaded inside your JPMS module. " +

@@ -28,8 +28,6 @@ import com.jwebmp.plugins.metrojs.tiles.TileFace;
 import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.text.StringEscapeUtils;
 
-import javax.cache.annotation.CacheKey;
-import javax.cache.annotation.CacheResult;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -308,11 +306,10 @@ public class PluginDemoScreen
 		return mavenDisplayDiv;
 	}
 
-	@CacheResult
-	public Plugins getPlugin(@CacheKey String name)
+	public Plugins getPlugin(String name)
 	{
 		Optional<Plugins> oPlugin = new Plugins().builder()
-		                                         .where(Plugins_.pluginName, Operand.Equals, pluginName)
+		                                         .where(Plugins_.pluginName, Operand.Equals, name)
 		                                         .get();
 		return oPlugin.get();
 	}

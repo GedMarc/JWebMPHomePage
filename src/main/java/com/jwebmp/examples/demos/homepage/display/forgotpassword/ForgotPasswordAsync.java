@@ -3,14 +3,15 @@ package com.jwebmp.examples.demos.homepage.display.forgotpassword;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.google.inject.persist.Transactional;
 import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.SessionHelper;
 import com.jwebmp.examples.demos.homepage.MailService;
+import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.UserActivity;
 import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
 import com.jwebmp.guicedinjection.GuiceContext;
+import com.jwebmp.guicedpersistence.db.annotations.Transactional;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 public class ForgotPasswordAsync
@@ -29,8 +30,28 @@ public class ForgotPasswordAsync
 		subs = sub;
 	}
 
+	public Subscribers getNewSubs()
+	{
+		return newSubs;
+	}
+
+	public void setNewSubs(Subscribers newSubs)
+	{
+		this.newSubs = newSubs;
+	}
+
+	public Subscribers getSubs()
+	{
+		return subs;
+	}
+
+	public void setSubs(Subscribers subs)
+	{
+		this.subs = subs;
+	}
+
 	@Override
-	@Transactional
+	@Transactional(entityManagerAnnotation = HomePageDB.class)
 	public void run()
 	{
 		UserActivity ua = new UserActivity();

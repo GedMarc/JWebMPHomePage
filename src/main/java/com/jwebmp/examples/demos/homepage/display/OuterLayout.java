@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage.display;
 import com.jwebmp.core.PlaceHolder;
 import com.jwebmp.plugins.jqlayout.JQLayoutHeaderDiv;
 import com.jwebmp.plugins.jqlayout.components.BorderLayout;
+import com.jwebmp.plugins.jqlayout.enumerations.LayoutResponsiveSize;
 
 public class OuterLayout
 		extends BorderLayout<OuterLayout>
@@ -22,6 +23,20 @@ public class OuterLayout
 		            .setMaxSize(68)
 		            .setTogglerLengthOpen(200)
 		            .setTogglerLengthClosed(200);
+
+		getOptions().getDefaults()
+		            .getResponsive()
+		            .setEnabled(true)
+		            .setWhen(LayoutResponsiveSize.Medium)
+		            .getSizes()
+		            .put(LayoutResponsiveSize.Medium, 480);
+
+		getOptions().getWest()
+		            .getResponsive()
+		            .setEnabled(true)
+		            .setWhen(LayoutResponsiveSize.Small)
+		            .getSizes()
+		            .put(LayoutResponsiveSize.Small, 240);
 
 		getNorth().getContentDiv()
 		          .add(new PlaceHolder<>("topbar").addStyle("height", "70px"));
@@ -79,5 +94,4 @@ public class OuterLayout
 			            .setSpacingOpen(0);
 		}
 	}
-
 }
