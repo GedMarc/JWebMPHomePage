@@ -15,6 +15,13 @@ public class HomePageDBModule
 		implements IGuiceModule
 {
 
+	@NotNull
+	@Override
+	protected String getPersistenceUnitName()
+	{
+		return "AppPU";
+	}
+
 	@Override
 	@NotNull
 	protected ConnectionBaseInfo getConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties)
@@ -27,18 +34,14 @@ public class HomePageDBModule
 		return cbi;
 	}
 
+	@NotNull
 	@Override
 	protected String getJndiMapping()
 	{
 		return "jdbc/homepage";
 	}
 
-	@Override
-	protected String getPersistenceUnitName()
-	{
-		return "AppPU";
-	}
-
+	@NotNull
 	@Override
 	protected Class<? extends Annotation> getBindingAnnotation()
 	{
