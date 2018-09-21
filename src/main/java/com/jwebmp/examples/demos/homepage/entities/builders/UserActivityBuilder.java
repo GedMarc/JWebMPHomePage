@@ -18,12 +18,6 @@ public class UserActivityBuilder
 	}
 
 	@Override
-	protected void onCreate(UserActivity entity)
-	{
-
-	}
-
-	@Override
 	protected boolean isIdGenerated()
 	{
 		return true;

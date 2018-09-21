@@ -18,12 +18,6 @@ public class PluginsBuilder
 	}
 
 	@Override
-	protected void onCreate(Plugins entity)
-	{
-
-	}
-
-	@Override
 	protected boolean isIdGenerated()
 	{
 		return false;

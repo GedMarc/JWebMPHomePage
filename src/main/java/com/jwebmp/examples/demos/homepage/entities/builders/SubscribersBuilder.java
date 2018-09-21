@@ -65,12 +65,6 @@ public class SubscribersBuilder
 	}
 
 	@Override
-	protected void onCreate(Subscribers entity)
-	{
-
-	}
-
-	@Override
 	protected boolean isIdGenerated()
 	{
 		return true;

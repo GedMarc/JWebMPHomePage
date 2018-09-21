@@ -18,12 +18,6 @@ public class RightBarActivityBuilder
 	}
 
 	@Override
-	protected void onCreate(RightBarActivity entity)
-	{
-
-	}
-
-	@Override
 	protected boolean isIdGenerated()
 	{
 		return true;

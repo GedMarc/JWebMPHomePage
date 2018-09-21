@@ -38,12 +38,6 @@ public class SubscriberVisitorsBuilder
 	}
 
 	@Override
-	protected void onCreate(SubscriberVisitors entity)
-	{
-
-	}
-
-	@Override
 	protected boolean isIdGenerated()
 	{
 		return true;

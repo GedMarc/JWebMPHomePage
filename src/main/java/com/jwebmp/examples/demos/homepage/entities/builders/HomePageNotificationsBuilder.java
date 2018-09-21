@@ -18,12 +18,6 @@ public class HomePageNotificationsBuilder
 	}
 
 	@Override
-	protected void onCreate(HomePageNotifications entity)
-	{
-
-	}
-
-	@Override
 	protected boolean isIdGenerated()
 	{
 		return true;
