@@ -125,7 +125,7 @@ public class HomePage
 		left.add(buildContinuousIntegrationPane());
 
 		right.add(addWhiteAlert(
-				"<strong>Backwards Compatible with JRE8 to assist in updating your EE applications back and front to JPMS. <br/>Seamlessly, Effortlessly, and without intrusion into current operations</strong>"));
+				"<strong>Backwards Compatible with JRE8 to assist in updating your EE applications Back End and Web to JPMS. <br/>Seamlessly, Effortlessly, and without intrusion into current operations</strong>"));
 		right.add(new MavenPomPart());
 		right.add(addWhiteAlert(
 				"<strong>Go back to coding pure Java with a 100% Domain Driven Design System, and <i><u>feel</u></i> the enormous performance benefit that comes with it </strong>" +
@@ -145,9 +145,9 @@ public class HomePage
 
 		card.addStyle("display: -webkit-box;");
 		card.addCardBody()
-		    .addStyle("float:left;")
 		    .addClass("col-2")
-		    .add(new Skycon("skyconid1", 60, SkyIcon.Wind));
+		    .addStyle("padding-top:0px;padding-bottom:0px;padding-left:10px;")
+		    .add(new Skycon("skyconid1", 85, SkyIcon.Wind));
 
 		FontAwesomeList list = new FontAwesomeList();
 		addIconList(list, "Runs on everything with Google Guice", FontAwesomeIcons.check, "#6f42c1");
