@@ -16,14 +16,16 @@ public class HtmlTagsDemoScreen
 	                                                         .enableClassInfo()
 	                                                         .scan();
 
+	@SuppressWarnings("unchecked")
 	public HtmlTagsDemoScreen()
 	{
 		super("HtmlTags", "Base", "HTML Tags");
 		for (ClassInfo allClass : result.getAllClasses())
 		{
 			Class<? extends ComponentHierarchyBase> clazz = (Class<? extends ComponentHierarchyBase>) allClass.loadClass();
-			if (clazz.getPackageName()
-			         .equals("com.jwebmp.core.base.html"))
+			String packageName = clazz.getPackage()
+			                          .toString();
+			if (packageName.replace("package ","").equals("com.jwebmp.core.base.html"))
 			{
 				try
 				{
