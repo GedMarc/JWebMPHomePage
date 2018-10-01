@@ -3,14 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.about;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.display.about.c3p0module.C3P0Screen;
-import com.jwebmp.examples.demos.homepage.display.about.ehcache.EHCacheScreen;
-import com.jwebmp.examples.demos.homepage.display.about.entityassist.EntityAssistScreen;
-import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.SettingUpScreen;
-import com.jwebmp.examples.demos.homepage.display.about.requestscoped.JPAModuleScreen;
-import com.jwebmp.examples.demos.homepage.display.about.requestscoped.JTAModuleScreen;
-import com.jwebmp.examples.demos.homepage.display.about.requestscoped.RequestScopedTransactionsScreen;
-import com.jwebmp.examples.demos.homepage.display.about.wildfly.WildflyScreen;
+import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
@@ -25,14 +18,13 @@ import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 
-import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSMarginOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
-public class UnderTheHoodScreen
-		extends DisplayScreen<UnderTheHoodScreen>
+public class SPIScreen
+		extends DisplayScreen<SPIScreen>
 {
-	public UnderTheHoodScreen()
+	public SPIScreen()
 	{
 		super("JWebMP Servicing");
 	}
@@ -50,9 +42,11 @@ public class UnderTheHoodScreen
 		                                     .removeSpacingTop()
 		                                     .addClass(MarginRight_1);
 		tabs.addTab("About", buildDefaultScreen(), true);
-		tabs.addTab("JWebMP", buildJWebMP(), false);
 		tabs.addTab("Injection", buildInjection(), false);
-		tabs.addTab("Persistence", buildPersistence(), false);
+		tabs.addTab("*<i>Classpath</i>", buildClassPath(), false);
+		tabs.addTab("JWebMP", buildJWebMP(), false);
+
+		//tabs.addTab("Persistence", buildPersistence(), false);
 		card.addCardBody()
 		    .removePadding()
 		    .add(tabs);
@@ -95,6 +89,96 @@ public class UnderTheHoodScreen
 
 		body.add(row);
 		return body;
+	}
+
+	private Div buildInjection()
+	{
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
+		div.add(new H3("Injection Configurations"));
+		div.add(new H4("com.jwebmp.guicedinjection.interfaces"));
+		div.add("These services allow you to configure the entire configuration and boot process.");
+
+		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
+		                                  .addClass(Table_Hover);
+		table.setSmall(true);
+		table.setBordered(true);
+		table.setStriped(true);
+
+		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
+		                                                       .add(new TableHeaderCell<>("Purpose"))
+		                                      ));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuicePreStartup"))
+		                                       .add(new TableCell<>(
+				                                       "Executes any required code blocks before the Injector is built. Great for configuration. Do not try to call the GuiceContext in these classes")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceModule"))
+		                                       .add(new TableCell<>("Service Loader to port your existing Guice Modules into the Global Injection Context")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceDefaultBinder"))
+		                                       .add(new TableCell<>(
+				                                       "Registers a Guice Injection module with the default binders. This is for backend binding with no requirements on servlets, and provides nearly the same encapsulation via JPMS as an EJB would to an WAR")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuicePostStartup"))
+		                                       .add(new TableCell<>(
+				                                       "Executes the given operations immediately after the injection cycle has completed. Used mostly to start database connections before making the site available")));
+		div.add(table);
+
+		div.add(new Image("images/guiceinjection/StartupOrder.png"));
+
+
+		return card;
+	}
+
+	private Div buildClassPath()
+	{
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
+		div.add(new H3("Classpath Scanning with <a href=\"https://github.com/classgraph/classgraph\" target=\"_blank\">ClassGraph</a>"));
+		div.add("Class Path scanning is completely optional, and allows you to manage and scan as necessary utilizing ClassGraph. " +
+		        "<br/>These Services allow you to perform basic operations to filter and clean any items from the scan yielding a more than 50% performance increase." +
+		        "<br/>You can also set and modify the GuiceContext scan result as necessary.");
+
+
+		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
+		                                  .addClass(Table_Hover);
+		table.setSmall(true);
+		table.setBordered(true);
+		table.setStriped(true);
+
+		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
+		                                                       .add(new TableHeaderCell<>("Purpose"))
+		                                      ));
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceConfigurator"))
+		                                       .add(new TableCell<>(
+				                                       "Configures the scanner for boot operations. The scanner is optional and doesn't execute by default. The classpathScan property can be set to enable this functionality.")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IFileContentsScanner"))
+		                                       .add(new TableCell<>(
+				                                       "Registers a filename to be collected, such as persistence.xml or hazelcast-client.xml. Ensure that the path is located in a PathContentsScanner")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPackageContentsScanner"))
+		                                       .add(new TableCell<>(
+				                                       "Registers the given package to be included during the optional classpath scan. Only these packages will be included in retrieved results")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPathContentsScanner"))
+		                                       .add(new TableCell<>("Registers the given path (No Class Files) to search for IFileContentsScanners.<br/> Usually META-INF")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPathContentsBlacklistScanner"))
+		                                       .add(new TableCell<>("Registers paths to be excluded from all scans")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceScanJarExclusions"))
+		                                       .add(new TableCell<>("Registers JAR files to be excluded from all scans")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceScanModuleExclusions"))
+		                                       .add(new TableCell<>("Registers Modules (JPMS) to be excluded from all scans")));
+
+		div.add(table);
+
+		div.add(new Image("images/guiceinjection/ClasspathScanningConfiguration.png"));
+
+		return card;
 	}
 
 	private Div buildJWebMP()
@@ -156,104 +240,6 @@ public class UnderTheHoodScreen
 		return card;
 	}
 
-	private Div buildInjection()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add(new H3("Injection Configurations"));
-		div.add(new H4("com.jwebmp.guicedinjection.interfaces"));
-		div.add("These services allow you to configure the entire configuration and boot process.");
-
-		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                  .addClass(Table_Hover);
-		table.setSmall(true);
-		table.setBordered(true);
-		table.setStriped(true);
-
-		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
-		                                                       .add(new TableHeaderCell<>("Purpose"))
-		                                      ));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IFileContentsScanner"))
-		                                       .add(new TableCell<>(
-				                                       "Registers a filename to be collected, such as persistence.xml or hazelcast-client.xml. Ensure that the path is located in a PathContentsScanner")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceConfigurator"))
-		                                       .add(new TableCell<>(
-				                                       "Configures the scanner for boot operations. The scanner is optional and doesn't execute by default. The classpathScan property can be set to enable this functionality.")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceDefaultBinder"))
-		                                       .add(new TableCell<>(
-				                                       "Registers a Guice Injection module with the default binders. This is for backend binding with no requirements on servlets, and provides nearly the same encapsulation via JPMS as an EJB would to an WAR")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceModule"))
-		                                       .add(new TableCell<>("Service Loader to port your existing Guice Modules into the Global Injection Context")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuicePostStartup"))
-		                                       .add(new TableCell<>(
-				                                       "Executes the given operations immediately after the injection cycle has completed. Used mostly to start database connections before making the site available")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuicePreStartup"))
-		                                       .add(new TableCell<>(
-				                                       "Executes any required code blocks before the Injector is built. Great for configuration. Do not try to call the GuiceContext in these classes")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPackageContentsScanner"))
-		                                       .add(new TableCell<>(
-				                                       "Registers the given package to be included during the optional classpath scan. Only these packages will be included in retrieved results")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPathContentsScanner"))
-		                                       .add(new TableCell<>("Registers the given path (No Class Files) to search for IFileContentsScanners.<br/> Usually META-INF")));
-		div.add(table);
-
-		return card;
-	}
-
-	private Div buildPersistence()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add(new H3("Persistence Handling"));
-		div.add("These modules are completely optional, and provide a JPMS/JDK10 implementation for using JPA/JTA, as well as a 100% programmatic approach to connection and database management." +
-		        "<br/>This library uses guice-persist as a base, and requires a registration to IGuiceModule  with a class that extends AbstractDatabaseProviderModule. " +
-		        "<br/>These are backwards compatible with JDK 8");
-
-		div.add("Add-Ons provide additional configurations for enables modules, while modules provide core functionality for their usage");
-
-		BSNavTabs tabs = new BSNavTabs().setBordered(true)
-		                                .setJustified(true);
-		if (!getPage().isMobileOrSmartTablet())
-		{
-			tabs.setVerticalLeftTabs(true);
-		}
-		tabs.getTabContents()
-		    .addClass(W_100);
-
-		tabs.addTab("About", buildPersistenceAboutScreen(), true);
-
-		tabs.addTab("Setting Up", new SettingUpScreen(), false);
-		tabs.addTab("Scoping Transactions", new RequestScopedTransactionsScreen(), false);
-
-		tabs.addTab("JPA Module", new JPAModuleScreen(), false);
-		tabs.addTab("JTA Module", new JTAModuleScreen(), false);
-
-		tabs.addTab("Entity Assist Module", new EntityAssistScreen(), false);
-		tabs.addTab("C3P0 Addon", new C3P0Screen(), false);
-		tabs.addTab("Wildfly Addon", new WildflyScreen(), false);
-		tabs.addTab("Glassfish Addon", new DivSimple<>().add("2"), false);
-		tabs.addTab("EhCache Addon", new EHCacheScreen(), false);
-		tabs.addTab("HazelCast Addon", new DivSimple<>().add("2"), false);
-
-		div.add(tabs);
-
-		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                  .addClass(Table_Hover);
-		table.setSmall(true);
-		table.setBordered(true);
-		table.setStriped(true);
-
-		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
-		                                                       .add(new TableHeaderCell<>("Purpose"))
-		                                      ));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("com.jwebmp.core.services.IPage"))
-		                                       .add(new TableCell<>(
-				                                       "Designates a page that must be rendered. The class must extend Page.<br/> Annotate with @PageConfiguration to configure URL's")));
-
-		return card;
-	}
-
 	private Div buildUnderTheHood()
 	{
 		DisplayCard card = new DisplayCard();
@@ -272,13 +258,13 @@ public class UnderTheHoodScreen
 		                                                       .add(new TableHeaderCell<>("Purpose"))));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ClassGraph"))
-		                                       .add(new TableCell<>("4.2.2"))
+		                                       .add(new TableCell<>("4.2.5"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("fastclasspath.version"))
 		                                       .add(new TableCell<>("Scanner")));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Google Guice"))
-		                                       .add(new TableCell<>("4.2.0"))
+		                                       .add(new TableCell<>("4.2.1"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/google/guice\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("guice.version"))
 		                                       .add(new TableCell<>("DI Provider")));
@@ -312,7 +298,7 @@ public class UnderTheHoodScreen
 		                                          .add(new TableCell<>("JavaScript API")));
 
 		webTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Angular"))
-		                                          .add(new TableCell<>("1.7.1"))
+		                                          .add(new TableCell<>("1.7.6"))
 		                                          //   .add(new TableCell<>("AngularPageConfigurator.class"))
 		                                          .add(new TableCell<>("bower"))
 		                                          .add(new TableCell<>("Data Binder")));
@@ -339,20 +325,20 @@ public class UnderTheHoodScreen
 		                                                  .add(new TableCell<>("maven"))
 		                                                  .add(new TableCell<>("Device Info Provider")));
 
-/*		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-lang3"))
-		                                                  .add(new TableCell<>("3.5"))
+		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-lang3"))
+		                                                  .add(new TableCell<>("3.7"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Assists with String manipulation")));*/
+		                                                  .add(new TableCell<>("Assists with String manipulation")));
 
 		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-text"))
-		                                                  .add(new TableCell<>("3.5"))
+		                                                  .add(new TableCell<>("1.4"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
 		                                                  .add(new TableCell<>("Assists with String manipulation")));
 
 		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-io"))
-		                                                  .add(new TableCell<>("2.5"))
+		                                                  .add(new TableCell<>("2.6"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
 		                                                  .add(new TableCell<>("Assist with IO usage")));
@@ -364,6 +350,10 @@ public class UnderTheHoodScreen
 		                                                  .add(new TableCell<>("Dependent from ua-detector")));
 
 		div.add(servletInfoTable);
+
+		div.add(new Image("images/guiceinjection/ModuleDepedency.png").addClass("img-fluid d-block"));
+		div.add("<br/>");
+		div.add(new Image("images/guiceinjection/CompleteModuleDepedency.png").addClass("img-fluid d-block"));
 
 		//div.add(new H4<>("Total Standalone Size : 3.8MB"));
 
@@ -389,44 +379,10 @@ public class UnderTheHoodScreen
 		div.add("This requires you to configure your module accordingly.");
 		div.add("The above tabs identify the available services for your application.");
 		div.add("Utilize META-INF/services and the provides for module-info.java");
+
+		div.add(new MetaInfTree("com.jwebmp.core.services.IPage", "com.jwebmp.core.services.IErrorPage"));
+
 		return card;
-	}
-
-	private Div buildPersistenceAboutScreen()
-	{
-
-		Div about = new Div();
-		about.add("Services are located in com.jwebmp.guicedpersistence.services");
-
-		BSTable<?> settingUpTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                           .addClass(Table_Hover)
-		                                           .fitInContainerBreakWord();
-		settingUpTable.setSmall(true);
-		settingUpTable.setBordered(true);
-		settingUpTable.setStriped(true);
-
-		settingUpTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
-		                                                                .add(new TableHeaderCell<>("Purpose"))
-		                                               ));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("PropertiesConnectionInfoReader"))
-		                                                .add(new TableCell<>(
-				                                                "Populates the ConnectionBaseInfo object with properties from the persistence unit.")));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("PropertiesEntityManagerReader"))
-		                                                .add(new TableCell<>(
-				                                                "Utility Service that creates or modifies the properties HashMap for a Persistence Context before being converted to a ConnectionBaseInfo object.")));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ITransactionHandler"))
-		                                                .add(new TableCell<>(
-				                                                "Service that is used to automatically wrap database update calls (persist() merge()) etc through the EntityAssist module. It provides automated transaction management at a db call level." +
-				                                                "<br/>These are enabled through the connection handler, such as <i>BTMAutomatedTransactionHandler.setActive()</i> for JTA or <i>JPAAutomatedTransactionHandler.setActive()</i> for JPA. " +
-				                                                "<br/>Implementing your own is a piece of cake.")));
-
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAsyncStartup"))
-		                                                .add(new TableCell<>(
-				                                                "Allows you to start a persistence service outside of a request thread. The EntityManagerFactory becomes bound to the executing thread, and any joint threads there-of. If not using request scoped transactions, or module encapsulation, this would be to start the persistence layer from your &quot;EJB&quot;, or equivalent JPMS module. Asynchronously loaded via an ExecutorService<br/><br/>")
-		                                                    ));
-		about.add(settingUpTable);
-
-		return about;
 	}
 
 	@Override
@@ -439,6 +395,7 @@ public class UnderTheHoodScreen
 		                                             .setText("Under The Hood"));
 		return crumbs;
 	}
+
 
 	private Div buildJCache()
 	{

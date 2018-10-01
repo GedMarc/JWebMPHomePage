@@ -13,6 +13,8 @@ public class DemoGuiceConfigurator
 	@Override
 	public GuiceConfig configure(GuiceConfig config)
 	{
-		return config.setVerbose(true);
+		return config.setVerbose(true)
+		             .setExcludePaths(true)
+		             .setExcludeModulesAndJars(true);
 	}
 }

@@ -1,5 +1,4 @@
 @Target({ElementType.TYPE, ElementType.TYPE_USE, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@BindingAnnotation
 public @interface HomePageDB
 {}

@@ -4,6 +4,7 @@ import com.jwebmp.examples.demos.homepage.db.HomePageDBModule;
 import com.jwebmp.examples.demos.homepage.display.DisplayPage;
 import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
 import com.jwebmp.guicedinjection.interfaces.IGuiceModule;
+import com.jwebmp.guicedinjection.interfaces.IGuicePostStartup;
 
 module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
@@ -57,6 +58,8 @@ module com.jwebmp.examples.demos.homepage {
 	requires java.persistence;
 	requires java.mail;
 
+	requires jdk.unsupported;
+
 	requires com.fasterxml.jackson.annotation;
 	requires com.fasterxml.jackson.core;
 	requires com.fasterxml.jackson.databind;
@@ -81,11 +84,14 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.guicedservlets.requestscoped;
 	requires com.google.common;
 	requires io.github.classgraph;
+
+
 	requires com.jwebmp.guicedpersistence.readers.hibernateproperties;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;
 	provides IGuiceModule with HomePageDBModule;
+	provides IGuicePostStartup with HomePageDBModule;
 
 	opens com.jwebmp.examples.demos.homepage;
 	opens com.jwebmp.examples.demos.homepage.entities to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;

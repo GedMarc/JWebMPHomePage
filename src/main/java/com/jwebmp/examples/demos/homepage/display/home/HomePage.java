@@ -107,9 +107,11 @@ public class HomePage
 		left.getChildren()
 		    .clear();
 
+		left.add(buildContinuousIntegrationPane());
+
 		left.add(buildSnap2());
 
-		left.add(addWhiteAlert("<strong>JPMS for JPA, JTA and JCache - Out The Box!</strong>"));
+		left.add(addWhiteAlert("<strong>JPMS that supports JPA, JTA and JCache</strong>"));
 
 		left.add(new LoginPart());
 		left.add(addWhiteAlert(
@@ -122,11 +124,10 @@ public class HomePage
 		left.add(addWhiteAlert("<strong>Testable End-To-End. No more struggling with getting test cases up and running!</strong>" +
 		                       "<br/><a target=\"_blank\" href=\"https://jwebmp.com/sonar/\">View SonarQube for Quality Control and Test Case Output</a>"));
 		left.add(buildSnap4());
-		left.add(buildContinuousIntegrationPane());
 
-		right.add(addWhiteAlert(
-				"<strong>Backwards Compatible with JRE8 to assist in updating your EE applications Back End and Web to JPMS. <br/>Seamlessly, Effortlessly, and without intrusion into current operations</strong>"));
 		right.add(new MavenPomPart());
+
+
 		right.add(addWhiteAlert(
 				"<strong>Go back to coding pure Java with a 100% Domain Driven Design System, and <i><u>feel</u></i> the enormous performance benefit that comes with it </strong>" +
 				""));
@@ -137,6 +138,8 @@ public class HomePage
 		right.add(new ReasonsWhyPart());
 
 		right.add(buildOpenSourceSponsors());
+
+
 	}
 
 	private BSCard buildSnap2()
@@ -151,8 +154,8 @@ public class HomePage
 
 		FontAwesomeList list = new FontAwesomeList();
 		addIconList(list, "Runs on everything with Google Guice", FontAwesomeIcons.check, "#6f42c1");
-		addIconList(list, "Fully Optimized JDK 10", FontAwesomeIcons.check, "#6f42c1");
-		addIconList(list, "Completely Modular", FontAwesomeIcons.check, "#6f42c1");
+		addIconList(list, "Fully Optimized JDK 11 utilizing SPI", FontAwesomeIcons.check, "#6f42c1");
+		addIconList(list, "100% Completely Modular", FontAwesomeIcons.check, "#6f42c1");
 
 		card.addCardBody()
 		    .addClass(" col-10")
@@ -185,12 +188,12 @@ public class HomePage
 	private BSCard buildSnap3()
 	{
 		BSCard<?> card = new BSCard();
-		card.addCardHeader("Plugins Already Exist For".toUpperCase());
 
 		FontAwesomeList list = new FontAwesomeList();
 		addIconList(list, "JPA JTA JCache", FontAwesomeIcons.check, "#6f42c1");
-		addIconList(list, "Hazelcast EhCache Hibernate BTM", FontAwesomeIcons.check, "#6f42c1");
+		addIconList(list, "Hazelcast EhCache Hibernate BTM C3P0", FontAwesomeIcons.check, "#6f42c1");
 		addIconList(list, "RabbitMQ HTTP2 WS Atmosphere", FontAwesomeIcons.check, "#6f42c1");
+		addIconList(list, "Glassfish, Payara, Tomcat, TomEE, Wildfly, Swarm, MP", FontAwesomeIcons.check, "#6f42c1");
 		card.addCardBody()
 		    .add(list);
 

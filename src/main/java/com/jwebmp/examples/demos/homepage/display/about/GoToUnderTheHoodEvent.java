@@ -27,6 +27,6 @@ public class GoToUnderTheHoodEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		response.addComponent(GuiceContext.getInstance(UnderTheHoodScreen.class));
+		response.addComponent(GuiceContext.getInstance(SPIScreen.class));
 	}
 }

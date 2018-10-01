@@ -48,6 +48,9 @@ public class ContinousIntegrationPart
 		                                               .addClass(MarginLeft_1)
 		                                               .addClass(MarginTop_1)
 		                                               .addClass(Align_Center), "https://jwebmp.com/sonar/"));
+		addStyle("margin-bottom", "1rem");
+
+		add("<i><a href=\"https://github.com/GedMarc/JWebMP\" target=\"_blank\">Remember to Star This Project!</a></i>");
 	}
 
 	private Link buildLink(BSButton button, String url)

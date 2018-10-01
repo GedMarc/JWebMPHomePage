@@ -1,6 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
 import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.Italic;
 import com.jwebmp.core.base.html.Paragraph;
 import com.jwebmp.core.base.html.interfaces.GlobalFeatures;
 import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
@@ -27,12 +28,17 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 	{
 		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> jdk8QuickStart = new Div<>();
 		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> jdk10QuickStart = new Div<>();
+		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> jdk11QuickStart = new Div<>();
 		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> nightlyBuilds = new Div<>();
 		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> pageServicing = new Div<>();
 
 		addSourceToContainer(HomePage.class, "pomdependency.txt", XML, jdk8QuickStart);
 		addSourceToContainer(HomePage.class, "pomdependency_10.txt", XML, jdk10QuickStart);
+		addSourceToContainer(HomePage.class, "pomdependency_11.txt", XML, jdk11QuickStart);
 		addSourceToContainer(HomePage.class, "pomrepository.txt", XML, nightlyBuilds);
+
+		jdk11QuickStart.add(
+				new Italic("While waiting for a dependency update, please add <strong>--add-opens java.base/java.lang=com.google.guice</strong> to your execution paths"));
 
 		BSNavTabs tabs = new BSNavTabs<>();
 		tabs.getNavs()
@@ -43,6 +49,9 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 
 		BSTabContainer tab2 = tabs.addTab("JDK 10",
 		                                  jdk10QuickStart, false);
+
+		BSTabContainer tab5 = tabs.addTab("JDK 11",
+		                                  jdk11QuickStart, false);
 
 		BSTabContainer tab4 = tabs.addTab("Structure",
 		                                  pageServicing, false);

@@ -24,7 +24,7 @@ import java.util.Map;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
-public class HelloWorldScreen
+public class GoDeeperScreen
 		extends DisplayScreen
 {
 	//Another way of getting a hold of the method parameters
@@ -34,7 +34,7 @@ public class HelloWorldScreen
 
 	private BSContainer block = new BSContainer();
 
-	public HelloWorldScreen()
+	public GoDeeperScreen()
 	{
 		super("Hello World");
 
@@ -63,6 +63,8 @@ public class HelloWorldScreen
 		BSRow<?> row = BSRow.newInstance();
 		BSColumn<?> fullWidth = BSColumn.newInstance(Col_12);
 
+		fullWidth.add(buildConsoleScreen());
+		/*
 		BSNavTabs<?> tabs = new BSNavTabs<>();
 
 		tabs.asMe()
@@ -81,7 +83,7 @@ public class HelloWorldScreen
 		tabs.asMe()
 		    .addTab("Configurations", buildPayaraMicroScreen(), false);
 
-		fullWidth.add(tabs);
+		fullWidth.add(tabs);*/
 		row.add(fullWidth);
 		block.add(row);
 
@@ -104,7 +106,7 @@ public class HelloWorldScreen
 		javaExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                            .setSourceCodeLanguage(SourceCodeLanguages.Java)
 		                                            .setText(StringEscapeUtils.escapeHtml4(
-				                                            FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworld_console_java", "helloworldjavaconsole.txt", false)
+				                                            FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworld_console_java", "helloworldjavaconsole.txt", false)
 				                                                         .toString()
 				                                                         .replace('\t', ' ')
 				                                                         .replace("    ", "  "))));
@@ -114,7 +116,7 @@ public class HelloWorldScreen
 		           .add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                            .setSourceCodeLanguage(HTML)
 		                                            .setText(StringEscapeUtils.escapeHtml4(
-				                                            FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworld_console_html.txtt", "helloworldhtmlconsole.txt",
+				                                            FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworld_console_html.txtt", "helloworldhtmlconsole.txt",
 				                                                                          false)
 				                                                         .toString()
 				                                                         .replace('\t', ' ')
@@ -126,12 +128,12 @@ public class HelloWorldScreen
 
 		Div cssTab;
 		sourceTabs.addTab("Styling", cssTab = buildTab("Basic Styling is incredibly simple, from Beginner to CSS Expert, all your needs should be catered for.", Java,
-		                                               FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssconsole.txt", "helloworldcssconsole.txt")), false);
+		                                               FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldcssconsole.txt", "helloworldcssconsole.txt")), false);
 
 		cssTab.add("The CSS is produced through the methods and combined into the page")
 		      .add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                       .setSourceCodeLanguage(SourceCodeLanguages.HTML)
-		                                       .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssconsole_htmloutput.txt",
+		                                       .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldcssconsole_htmloutput.txt",
 		                                                                                                            "helloworldcssconsole_htmloutput.txt", false)
 		                                                                                           .toString()
 		                                                                                           .replace('\t', ' ')
@@ -150,122 +152,18 @@ public class HelloWorldScreen
 		return d;
 	}
 
-	private Div<?, ?, ?, ?, ?> buildUndertowScreen()
-	{
-		Div d = new Div();
-		d.add(new Link<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-HelloWorld", "_blank").setText("All these demos can be download at the Github Repository")
-		                                                                                            .addClass(Col_12));
-
-		DivSimple<?> sourceExampleDiv = new DivSimple();
-
-		BSNavTabs<?> sourceTabs = new BSNavTabs<>();
-		sourceTabs.addClass(BSNavsOptions.Tabs_Bordered);
-		DivSimple<?> javaExample = new DivSimple<>();
-		javaExample.add("Start building your standalone web application instantly by plugging directly into Undertow!");
-		javaExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
-		                                            .setSourceCodeLanguage(SourceCodeLanguages.XML)
-		                                            .setText(StringEscapeUtils.escapeHtml4(
-				                                            FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowpom.txt",
-				                                                                          "helloworldundertowpom.txt",
-				                                                                          false)
-				                                                         .toString()
-				                                                         .replace('\t', ' ')
-				                                                         .replace("    ", "  "))));
-		javaExample.add("A single line GuiceContext.inject() is all you need to configure");
-		javaExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
-		                                            .setSourceCodeLanguage(SourceCodeLanguages.Java)
-		                                            .setText(StringEscapeUtils.escapeHtml4(
-				                                            FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowconsole", "helloworldundertowconsole.txt",
-				                                                                          false)
-				                                                         .toString()
-				                                                         .replace('\t', ' ')
-				                                                         .replace("    ", "  "))));
-		sourceTabs.addTab("Java", javaExample, true);
-		DivSimple<?> underowPushExample = new DivSimple<>();
-		underowPushExample.add(new Link<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-AtmospherePushUndertow", "_blank").setText("View this demo here")
-		                      );
-		underowPushExample.add("Web Sockets can be enabled by simply placing a dependency in the classpath.");
-		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
-		                                                   .setSourceCodeLanguage(SourceCodeLanguages.XML)
-		                                                   .setText(StringEscapeUtils.escapeHtml4(
-				                                                   FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowwebsocketspomtxt.txt",
-				                                                                                 "helloworldundertowwebsocketspomtxt.txt",
-				                                                                                 true)
-				                                                                .toString()
-				                                                                .replace('\t', ' ')
-				                                                                .replace("    ", "  "))));
-		underowPushExample.add("Speed it up by simply creating your own injection for a broadcaster<br/>" +
-		                       "Distribute across your cluster or swarm instantly.");
-
-		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
-		                                                   .setSourceCodeLanguage(SourceCodeLanguages.Java)
-		                                                   .setText(StringEscapeUtils.escapeHtml4(
-				                                                   FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowwebsocketsconsole_optionalbindings",
-				                                                                                 "helloworldundertowwebsocketsconsole_optionalbindings.txt",
-				                                                                                 false)
-				                                                                .toString()
-				                                                                .replace('\t', ' ')
-				                                                                .replace("    ", "  "))));
-
-		underowPushExample.add("Extend the AtmosphereAdapter class to manage the connections.<br/>" +
-		                       "BroadcastGroups assist to group push messages<br/>");
-
-		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
-		                                                   .setSourceCodeLanguage(SourceCodeLanguages.Java)
-		                                                   .setText(StringEscapeUtils.escapeHtml4(
-				                                                   FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowwebsocketsconsole",
-				                                                                                 "helloworldundertowwebsocketsconsole.txt",
-				                                                                                 false)
-				                                                                .toString()
-				                                                                .replace('\t', ' ')
-				                                                                .replace("    ", "  "))));
-		sourceTabs.addTab("Web Sockets", underowPushExample, false);
-
-		sourceExampleDiv.add(sourceTabs);
-
-		d.add(sourceExampleDiv);
-
-		return d;
-	}
-
-	private Div<?, ?, ?, ?, ?> buildPayaraMicroScreen()
-	{
-		Div d = new Div();
-
-		DivSimple<?> sourceExampleDiv = new DivSimple();
-
-		BSNavTabs<?> sourceTabs = new BSNavTabs<>();
-		sourceTabs.addClass(BSNavsOptions.Tabs_Bordered);
-		DivSimple<?> javaExample = new DivSimple<>();
-		javaExample.add("Start building your standalone web application instantly by plugging directly into Undertow!");
-		javaExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
-		                                            .setSourceCodeLanguage(SourceCodeLanguages.XML)
-		                                            .setText(StringEscapeUtils.escapeHtml4(
-				                                            FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldundertowpom.txt",
-				                                                                          "helloworldundertowpom.txt",
-				                                                                          false)
-				                                                         .toString()
-				                                                         .replace('\t', ' ')
-				                                                         .replace("    ", "  "))));
-
-		sourceExampleDiv.add(sourceTabs);
-		d.add(sourceExampleDiv);
-
-		return d;
-	}
-
 	private void buildScriptsTab(BSNavTabs sourceTabs)
 	{
 		Div jsTab;
 		sourceTabs.addTab("Scripts", jsTab = buildTab(
 				"At its very core, managing the dependencies is always quick and easy.<br/>By utilizing these basics, complex widgets and components can be put together.<br/> Theme Jars become simple to implement and web libraries can be adopted very quickly.",
-				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjavascriptconsole.txt", "helloworldjavascriptconsole.txt")), false);
+				Java, FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldjavascriptconsole.txt", "helloworldjavascriptconsole.txt")), false);
 
 		jsTab.add("The structure is ordered and prioritized accordingly when built. Setting the Priority to Top_Shelf places references in the header. ")
 		     .add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                      .setSourceCodeLanguage(HTML)
 		                                      .setText(StringEscapeUtils.escapeHtml4(
-				                                      FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjavascriptconsole_output.txtt",
+				                                      FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldjavascriptconsole_output.txtt",
 				                                                                    "helloworldjavascriptconsole_output.txt", false)
 				                                                   .toString()
 				                                                   .replace('\t', ' ')
@@ -277,13 +175,13 @@ public class HelloWorldScreen
 		Div jsonSerializeTab;
 		sourceTabs.addTab("JSON", jsonSerializeTab = buildTab(
 				"By default, all objects toString() serialize into JSON. This allows for persistable screen objects, and are great for persistent session implementations across clusters",
-				Java, FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjsonconsole.txt", "helloworldjsonconsole.txt")), false);
+				Java, FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldjsonconsole.txt", "helloworldjsonconsole.txt")), false);
 
 		jsonSerializeTab.add("This produces a completely deserializable component object")
 		                .add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                                 .setSourceCodeLanguage(SourceCodeLanguages.JS)
 		                                                 .setText(StringEscapeUtils.escapeHtml4(
-				                                                 FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldjsonconsole_output.txt",
+				                                                 FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldjsonconsole_output.txt",
 				                                                                               "helloworldjsonconsole_output.txt", false)
 				                                                              .toString()
 				                                                              .replace('\t', ' ')
@@ -310,18 +208,96 @@ public class HelloWorldScreen
 		sourceTabs.addTab("Classy", cssTab = buildTab("Class assignment allows you to group features, events, and other items together<br/>" +
 		                                              "Extending a CSSComponent will allow you to create and group features functions events and queries to any grouped class selector that specifies the ID of the component.",
 		                                              Java,
-		                                              FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssclassyconsole.txt", "helloworldcssclassyconsole.txt")),
+		                                              FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldcssclassyconsole.txt", "helloworldcssclassyconsole.txt")),
 		                  false);
 
 		cssTab.add("Utilizing CSS Selectors you can assign any feature, event, or action in groups.")
 		      .add(new JQSourceCodePrettify<>().addStyle("background:black;")
 		                                       .setSourceCodeLanguage(SourceCodeLanguages.HTML)
-		                                       .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(HelloWorldScreen.class, "helloworldcssclassyconsole_output.txt",
+		                                       .setText(StringEscapeUtils.escapeHtml4(FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldcssclassyconsole_output.txt",
 		                                                                                                            "helloworldcssclassyconsole_output.txt", false)
 		                                                                                           .toString()
 		                                                                                           .replace('\t', ' ')
 		                                                                                           .replace("    ", "  ")))
 		                                       .addStyle("overflow-y:auto")
 		                                       .addStyle("max-height:250px;"));
+	}
+
+	private Div<?, ?, ?, ?, ?> buildUndertowScreen()
+	{
+		Div d = new Div();
+		d.add(new Link<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-HelloWorld", "_blank").setText("All these demos can be download at the Github Repository")
+		                                                                                            .addClass(Col_12));
+
+		DivSimple<?> sourceExampleDiv = new DivSimple();
+
+		BSNavTabs<?> sourceTabs = new BSNavTabs<>();
+		sourceTabs.addClass(BSNavsOptions.Tabs_Bordered);
+		DivSimple<?> javaExample = new DivSimple<>();
+		javaExample.add("Start building your standalone web application instantly by plugging directly into Undertow!");
+		javaExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                            .setSourceCodeLanguage(SourceCodeLanguages.XML)
+		                                            .setText(StringEscapeUtils.escapeHtml4(
+				                                            FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldundertowpom.txt",
+				                                                                          "helloworldundertowpom.txt",
+				                                                                          false)
+				                                                         .toString()
+				                                                         .replace('\t', ' ')
+				                                                         .replace("    ", "  "))));
+		javaExample.add("A single line GuiceContext.inject() is all you need to configure");
+		javaExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                            .setSourceCodeLanguage(SourceCodeLanguages.Java)
+		                                            .setText(StringEscapeUtils.escapeHtml4(
+				                                            FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldundertowconsole", "helloworldundertowconsole.txt",
+				                                                                          false)
+				                                                         .toString()
+				                                                         .replace('\t', ' ')
+				                                                         .replace("    ", "  "))));
+		sourceTabs.addTab("Java", javaExample, true);
+		DivSimple<?> underowPushExample = new DivSimple<>();
+		underowPushExample.add(new Link<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-AtmospherePushUndertow", "_blank").setText("View this demo here")
+		                      );
+		underowPushExample.add("Web Sockets can be enabled by simply placing a dependency in the classpath.");
+		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                                   .setSourceCodeLanguage(SourceCodeLanguages.XML)
+		                                                   .setText(StringEscapeUtils.escapeHtml4(
+				                                                   FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldundertowwebsocketspomtxt.txt",
+				                                                                                 "helloworldundertowwebsocketspomtxt.txt",
+				                                                                                 true)
+				                                                                .toString()
+				                                                                .replace('\t', ' ')
+				                                                                .replace("    ", "  "))));
+		underowPushExample.add("Speed it up by simply creating your own injection for a broadcaster<br/>" +
+		                       "Distribute across your cluster or swarm instantly.");
+
+		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                                   .setSourceCodeLanguage(SourceCodeLanguages.Java)
+		                                                   .setText(StringEscapeUtils.escapeHtml4(
+				                                                   FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldundertowwebsocketsconsole_optionalbindings",
+				                                                                                 "helloworldundertowwebsocketsconsole_optionalbindings.txt",
+				                                                                                 false)
+				                                                                .toString()
+				                                                                .replace('\t', ' ')
+				                                                                .replace("    ", "  "))));
+
+		underowPushExample.add("Extend the AtmosphereAdapter class to manage the connections.<br/>" +
+		                       "BroadcastGroups assist to group push messages<br/>");
+
+		underowPushExample.add(new JQSourceCodePrettify<>().addStyle("background:black;")
+		                                                   .setSourceCodeLanguage(SourceCodeLanguages.Java)
+		                                                   .setText(StringEscapeUtils.escapeHtml4(
+				                                                   FileTemplates.getFileTemplate(GoDeeperScreen.class, "helloworldundertowwebsocketsconsole",
+				                                                                                 "helloworldundertowwebsocketsconsole.txt",
+				                                                                                 false)
+				                                                                .toString()
+				                                                                .replace('\t', ' ')
+				                                                                .replace("    ", "  "))));
+		sourceTabs.addTab("Web Sockets", underowPushExample, false);
+
+		sourceExampleDiv.add(sourceTabs);
+
+		d.add(sourceExampleDiv);
+
+		return d;
 	}
 }

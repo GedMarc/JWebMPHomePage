@@ -5,11 +5,10 @@ public class HomePageDBModule
 protected ConnectionBaseInfo getConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties)
 {
     ConnectionBaseInfo cbi = new BTMConnectionBaseInfo(false);
-    //Any on-demand programmatic changes, Yes even the URL to switch between environments based on some or other property.
+    //Any on-demand programmatic changes
     cbi.setAllowLocalTransactions(true);
     cbi.setShareTransactionConnections(true);
     cbi.setEnableJdbc4ConnectionTest(true);
-    cbi.setTestQuery("select 1");
     return cbi;
 }
 protected String getJndiMapping()

@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.enumerations;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutThisSiteScreen;
-import com.jwebmp.examples.demos.homepage.display.about.UnderTheHoodScreen;
+import com.jwebmp.examples.demos.homepage.display.about.SPIScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animate.AngularAnimateDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animatedchange.AngularAnimateChangeDemoScreen;
@@ -92,7 +92,10 @@ import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 public enum DisplayScreens
 {
 	HomePageScreen(HomePage.class, "home"),
-	HelloWorldScreen(com.jwebmp.examples.demos.homepage.display.helloworld.HelloWorldScreen.class, "HelloWorld"),
+	GoDeeperScreen(com.jwebmp.examples.demos.homepage.display.helloworld.GoDeeperScreen.class, "GoDeeper"),
+
+	PersistenceScreen(com.jwebmp.examples.demos.homepage.display.persistence.PersistenceScreen.class, "Persistence"),
+
 	ForgotPassword(ForgotPasswordScreen.class, "ForgotPassword"),
 	ConfirmEmailAddress(ConfirmEmailAddressScreen.class, "ConfirmEmailAddress"),
 	ConfirmEmailAddressScreen(ConfirmEmailAddressScreen.class, "ConfirmEmailAddressScreen"),
@@ -101,7 +104,7 @@ public enum DisplayScreens
 	ComingSoon(com.jwebmp.examples.demos.homepage.display.ComingSoon.class, "ComingSoon"),
 
 	AboutJWebMP(AboutJWebMPScreen.class, "AboutJWebMP"),
-	UnderTheHood(UnderTheHoodScreen.class, "UnderTheHood"),
+	UnderTheHood(SPIScreen.class, "UnderTheHood"),
 	AboutThisSIte(AboutThisSiteScreen.class, "AboutThisSite"),
 
 	HtmlTagsDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.HtmlTagsDemoScreen.class, "HtmlTagsDemoScreen"),
