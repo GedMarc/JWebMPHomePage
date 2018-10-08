@@ -61,7 +61,7 @@ public class West
 		globalList.add(spiItem = buildMenuItem("fal fa-syringe fa-2x", HTML_TAB + "SPI"));
 		globalList.add(thisSite = buildMenuItem("fal fa-sitemap fa-2x", HTML_TAB + "This Site"));
 		globalList.add(goDeepSite = buildMenuItem("fal fa-tachometer-alt-fastest fa-2x", HTML_TAB + "Go Deeper"));
-		globalList.add(persistence = buildMenuItem("fal fa-tachometer-alt-fastest fa-2x", HTML_TAB + "*<i>Persistence</i>"));
+		globalList.add(persistence = buildMenuItem("fal fa-database", HTML_TAB + "*<i>Persistence</i>"));
 		globalList.add(pluginsListing = buildMenuItem("fal fa-steering-wheel fa-2x", HTML_TAB + "Plugins List"));
 
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));

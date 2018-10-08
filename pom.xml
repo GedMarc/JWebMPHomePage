@@ -85,13 +85,13 @@
         </dependency>
 
 
-        <!--        <dependency>
-                    <groupId>com.jwebmp</groupId>
-                    <artifactId>guiced-hazelcast</artifactId>
-                    <version>${project.version}</version>
-                    <type>jar</type>
-                    <classifier>${jwebmp.runtime.classifier}</classifier>
-                </dependency>-->
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>guiced-hazelcast</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <classifier>${jwebmp.runtime.classifier}</classifier>
+        </dependency>
 
         <!--     <dependency>
                  <groupId>com.jwebmp</groupId>
@@ -596,7 +596,6 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
                             <annotationProcessorPaths>
                                 <annotationProcessorPath>
                                     <groupId>org.hibernate</groupId>
@@ -648,7 +647,6 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
                             <annotationProcessorPaths>
                                 <annotationProcessorPath>
                                     <groupId>org.hibernate</groupId>
@@ -715,7 +713,6 @@
                             <goal>compile</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>${project.build.directory}/generated-sources/annotations</outputDirectory>
                             <annotationProcessorPaths>
                                 <annotationProcessorPath>
                                     <groupId>org.hibernate</groupId>

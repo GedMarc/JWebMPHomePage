@@ -277,6 +277,7 @@ public class Subscribers
 		this.subscriberID = subscriberID;
 	}
 
+
 	public Optional<Subscribers> create(Visitors visitor) throws EntityAssistException
 	{
 		if (Subscribers.findByEmail(getEmailAddress())

@@ -198,7 +198,8 @@ public class DisplayPage
 		}
 		catch (NoResultException nre)
 		{
-			Visitors newVisitor = Visitors.createNew(getInstance(SessionProperties.class).getGuid());
+			Visitors newVisitor = GuiceContext.get(Visitors.class)
+			                                  .createNew(getInstance(SessionProperties.class).getGuid());
 			getInstance(SessionProperties.class).setVisitor(newVisitor);
 			try
 			{

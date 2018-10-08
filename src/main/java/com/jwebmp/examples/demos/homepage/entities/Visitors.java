@@ -7,7 +7,9 @@ package com.jwebmp.examples.demos.homepage.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jwebmp.entityassist.CoreEntity;
+import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitorsBuilder;
+import com.jwebmp.guicedpersistence.db.annotations.Transactional;
 import org.apache.commons.lang3.NotImplementedException;
 
 import javax.persistence.*;
@@ -74,7 +76,13 @@ public class Visitors
 		//Nothing needed
 	}
 
-	public static Visitors createNew(String localStorageKey)
+	public static Visitors linkToVisitorID(String guid)
+	{
+		throw new NotImplementedException("Visitors have not yet been linked");
+	}
+
+	@Transactional(entityManagerAnnotation = HomePageDB.class)
+	public Visitors createNew(String localStorageKey)
 	{
 		Visitors v = new Visitors();
 		v.setLocalStorageKey(localStorageKey);
@@ -82,11 +90,6 @@ public class Visitors
 		 .setRunDetached(true)
 		 .persist(v);
 		return v;
-	}
-
-	public static Visitors linkToVisitorID(String guid)
-	{
-		throw new NotImplementedException("Visitors have not yet been linked");
 	}
 
 	@Override
@@ -100,6 +103,16 @@ public class Visitors
 	{
 		setVisitorID(id);
 		return this;
+	}
+
+	public Long getVisitorID()
+	{
+		return visitorID;
+	}
+
+	public void setVisitorID(Long visitorID)
+	{
+		this.visitorID = visitorID;
 	}
 
 	public boolean isAdmin()
@@ -119,20 +132,20 @@ public class Visitors
 		return false;
 	}
 
+	public List<Subscribers> getSubscribersList()
+	{
+		return subscribersList;
+	}
+
+	public void setSubscribersList(List<Subscribers> subscribersList)
+	{
+		this.subscribersList = subscribersList;
+	}
+
 	public boolean isGuest()
 	{
 		return getSubscribersList() == null || getSubscribersList().isEmpty();
 
-	}
-
-	public Long getVisitorID()
-	{
-		return visitorID;
-	}
-
-	public void setVisitorID(Long visitorID)
-	{
-		this.visitorID = visitorID;
 	}
 
 	public String getLocalStorageKey()
@@ -163,16 +176,6 @@ public class Visitors
 	public void setLinkedVisitorID(Visitors linkedVisitorID)
 	{
 		this.linkedVisitorID = linkedVisitorID;
-	}
-
-	public List<Subscribers> getSubscribersList()
-	{
-		return subscribersList;
-	}
-
-	public void setSubscribersList(List<Subscribers> subscribersList)
-	{
-		this.subscribersList = subscribersList;
 	}
 
 	public List<Visits> getVisitsID()
