@@ -38,7 +38,8 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 		addSourceToContainer(HomePage.class, "pomrepository.txt", XML, nightlyBuilds);
 
 		jdk11QuickStart.add(
-				new Italic("While waiting for a dependency update, please add <strong>--add-opens java.base/java.lang=com.google.guice</strong> to your execution paths"));
+				new Italic(
+						"Guice Injection requires a module exposure in JRE 11<br/>Add <strong>--add-opens java.base/java.lang=com.google.guice</strong><br/> to your execution paths"));
 
 		BSNavTabs tabs = new BSNavTabs<>();
 		tabs.getNavs()

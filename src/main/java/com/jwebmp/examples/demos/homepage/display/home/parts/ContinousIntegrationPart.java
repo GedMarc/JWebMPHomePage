@@ -50,7 +50,15 @@ public class ContinousIntegrationPart
 		                                               .addClass(Align_Center), "https://jwebmp.com/sonar/"));
 		addStyle("margin-bottom", "1rem");
 
-		add("<i><a href=\"https://github.com/GedMarc/JWebMP\" target=\"_blank\">Remember to Star This Project!</a></i>");
+		Link starLink = new Link("https://github.com/GedMarc/JWebMP/stargazers", "_blank");
+		starLink.setText("Remember to Star This Project!");
+		starLink.addStyle("color:white;")
+		        .addStyle("position:absolute;")
+		        .addStyle("top:0px;")
+		        .addStyle("right:0px;");
+
+		add(starLink.setTiny(true)
+		            .toString(true));
 	}
 
 	private Link buildLink(BSButton button, String url)
