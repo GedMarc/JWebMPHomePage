@@ -258,7 +258,7 @@ public class SPIScreen
 		                                                       .add(new TableHeaderCell<>("Purpose"))));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ClassGraph"))
-		                                       .add(new TableCell<>("4.2.5"))
+		                                       .add(new TableCell<>("4.4.1"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("fastclasspath.version"))
 		                                       .add(new TableCell<>("Scanner")));

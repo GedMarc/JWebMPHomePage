@@ -100,7 +100,7 @@ body.fixed-left .side-menu.left {
 }
 
 #innerlayout-center-content .slimScrollDiv {
-    position: absolute !important;
+    /*position: absolute !important;*/
     width: 100% !important;
 }
 

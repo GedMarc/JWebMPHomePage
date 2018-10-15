@@ -5,7 +5,7 @@ import com.jwebmp.guicedinjection.interfaces.IGuiceModule;
 
 public class HomePageDBPrivateModule
 		extends PrivateModule
-		implements IGuiceModule
+		implements IGuiceModule<HomePageDBPrivateModule>
 {
 
 	@Override

@@ -95,6 +95,7 @@ public enum DisplayScreens
 	GoDeeperScreen(com.jwebmp.examples.demos.homepage.display.helloworld.GoDeeperScreen.class, "GoDeeper"),
 
 	PersistenceScreen(com.jwebmp.examples.demos.homepage.display.persistence.PersistenceScreen.class, "Persistence"),
+	EventsScreen(com.jwebmp.examples.demos.homepage.display.events.EventScreen.class, "Events"),
 
 	ForgotPassword(ForgotPasswordScreen.class, "ForgotPassword"),
 	ConfirmEmailAddress(ConfirmEmailAddressScreen.class, "ConfirmEmailAddress"),

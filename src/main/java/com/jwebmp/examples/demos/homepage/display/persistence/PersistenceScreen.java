@@ -43,7 +43,7 @@ public class PersistenceScreen
 		crumbs.addBreadCrumb(new BSBreadCrumbItem().setActive(true)
 		                                           .setCrumbLink(new Link<>("#").setText("JWebMP")));
 		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
-		                                             .setText("Privacy"));
+		                                             .setText("Persistence"));
 		return crumbs;
 	}
 

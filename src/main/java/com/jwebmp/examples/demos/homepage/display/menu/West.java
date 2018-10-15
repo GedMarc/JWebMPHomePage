@@ -52,6 +52,7 @@ public class West
 		ListItem spiItem;
 		ListItem thisSite;
 		ListItem goDeepSite;
+		ListItem events;
 		ListItem persistence;
 		ListItem pluginsListing;
 
@@ -61,6 +62,7 @@ public class West
 		globalList.add(spiItem = buildMenuItem("fal fa-syringe fa-2x", HTML_TAB + "SPI"));
 		globalList.add(thisSite = buildMenuItem("fal fa-sitemap fa-2x", HTML_TAB + "This Site"));
 		globalList.add(goDeepSite = buildMenuItem("fal fa-tachometer-alt-fastest fa-2x", HTML_TAB + "Go Deeper"));
+		globalList.add(events = buildMenuItem("fal fa-star", HTML_TAB + "Events"));
 		globalList.add(persistence = buildMenuItem("fal fa-database", HTML_TAB + "*<i>Persistence</i>"));
 		globalList.add(pluginsListing = buildMenuItem("fal fa-steering-wheel fa-2x", HTML_TAB + "Plugins List"));
 
@@ -68,6 +70,7 @@ public class West
 		aboutItem.addEvent(new ChangeScreenEvent(aboutItem, "p=AboutJWebMP").setID(DisplayScreens.AboutJWebMP.toString()));
 		spiItem.addEvent(new ChangeScreenEvent(spiItem, "p=UnderTheHood").setID(DisplayScreens.UnderTheHood.toString()));
 		thisSite.addEvent(new ChangeScreenEvent(thisSite, "p=AboutThisSite").setID(DisplayScreens.AboutThisSIte.toString()));
+		events.addEvent(new ChangeScreenEvent(events, "p=Events").setID(DisplayScreens.EventsScreen.toString()));
 		persistence.addEvent(new ChangeScreenEvent(persistence, "p=Persistence").setID(DisplayScreens.PersistenceScreen.toString()));
 		goDeepSite.addEvent(new ChangeScreenEvent(goDeepSite, "p=GoDeeperScreen").setID(DisplayScreens.GoDeeperScreen.toString()));
 		pluginsListing.addEvent(new ChangeScreenEvent(pluginsListing, "p=PluginsListScreen").setID(DisplayScreens.PluginsListScreen.toString()));

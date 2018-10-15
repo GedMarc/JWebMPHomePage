@@ -34,15 +34,6 @@ public class BindingsBasicsDemoScreen
 		topColumn.add(getCodeBlockJava(FormBasicsDemoScreen.class, "bindingsbasic_2.txt").setID("coce1"));
 		topColumn.add("Client Side Variables/Pre-Populated form fields are sent to the client via addDto() method with the given object");
 		topColumn.add(getCodeBlockJava(FormBasicsDemoScreen.class, "bindingsbasic_3.txt").setID("coce2"));
-		leftColumn.add("Any event can send back multiple variables when fired. The registered variables are retrievable through the AjaxCall");
-		leftColumn.add(getCodeBlockJava(FormBasicsDemoScreen.class, "bindingsbasic_4.txt").setID("coce3"));
-
-		leftColumn.add("Watch Angular Variables by utilizing the AngularFeature found on the Page Object");
-		leftColumn.add(getCodeBlockJava(FormBasicsDemoScreen.class, "bindingsbasic_6.txt").setID("coce4"));
-
-		getAdditionals().add(leftColumn);
-
-		//getBottomRows().add(binding);
 	}
 
 }

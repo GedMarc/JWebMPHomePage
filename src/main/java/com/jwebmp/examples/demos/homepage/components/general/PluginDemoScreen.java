@@ -4,6 +4,7 @@ import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.Operand;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.events.SwopObjectBrowserEvent;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggableDemoScreen;
@@ -114,10 +115,11 @@ public class PluginDemoScreen
 		                                          .addAttribute("data-delay", RandomUtils.nextInt(3500, 8000) + ""));
 		if (demoDisplayScreen != null)
 		{
-			tile.addEvent(new ChangeScreenEvent(demoDisplayScreen, "p=" + pluginName).setID(JQUIDraggableDemoScreen.class.getCanonicalName()
-			                                                                                                             .replace('.', '_')));
+			tile.addEvent(new ChangeScreenEvent(demoDisplayScreen, "p=" + pluginName).setID(demoDisplayScreen.getClass()
+			                                                                                                 .getCanonicalName()
+			                                                                                                 .replace('.', '_')));
 		}
-		if (description.length() > 50)
+		if (description.length() > 35)
 		{
 			tile.addClass("two-wide");
 		}
@@ -175,6 +177,8 @@ public class PluginDemoScreen
 	{
 		BSContainer container = BSContainer.newInstance(BSContainerOptions.Container_Fluid);
 		BSRow descriptionRow = new BSRow();
+
+
 		Optional<Plugins> oPlugin = new Plugins().builder()
 		                                         .where(Plugins_.pluginName, Operand.Equals, pluginName)
 		                                         .get();
@@ -186,34 +190,54 @@ public class PluginDemoScreen
 		}
 		container.add(descriptionRow);
 
-		BSRow row = new BSRow();
-
+		BSRow mavenRow = new BSRow();
 		mavenDisplayDiv = buildDependencyInformation(StringEscapeUtils.escapeHtml4(
 				FileTemplates.getFileTemplate(getClass(), getClassCanonicalName() + "mavenpom.txt", "mavenpom.txt")
-				             .toString()));
-		leftColumnTop.add(mavenDisplayDiv)
-		             .addClass("col-12");
+				             .toString())).addClass(Col_6);
 
-		artiInfo = buildArtifactInformation();
-		rightColumnTop.add(artiInfo)
-		              .addClass("col-12");
+
+		artiInfo = buildArtifactInformation().addClass(Col_6);
+		mavenRow.add(mavenDisplayDiv);
+		mavenRow.add(artiInfo);
+		container.add(mavenRow);
+
+		BSRow tilesRow = new BSRow();
+		tilesRow.add(featureTiles);
+		tilesRow.add(componentTiles);
+
+		DefaultSlimScroll scroll = new DefaultSlimScroll(tilesRow);
+		scroll.getOptions()
+		      .setHeight("150px");
+
+		Paragraph scrollText = new Paragraph("Scroll for More");
+		scrollText.addStyle("position", "absolute");
+		scrollText.addStyle("top", "0px;");
+		scrollText.addStyle("right", "1em;");
+		tilesRow.add(scrollText);
+
+		tilesRow.addFeature(scroll);
+
+		container.add(tilesRow);
+
+		BSRow dataRow = new BSRow();
 
 		optionBrowsers.forEach(a -> rightColumnTop.add(a));
 
-		leftColumnTop.add(componentTiles);
-		leftColumnTop.add(featureTiles);
-
 		//fullColumn.add(sourceCodeContentPanel());
 
-		row.add(fullColumn);
-		row.add(rightColumn);
+		dataRow.add(fullColumn);
+		dataRow.add(rightColumn);
 
 		BSRow topRow = new BSRow();
 		topRow.add(leftColumnTop);
 		topRow.add(rightColumnTop);
 
+
 		container.add(topRow);
-		container.add(row);
+
+
+		container.add(dataRow);
+
 
 		BSRow<?> additionalRow = BSRow.newInstance();
 		BSRow<?> additionalRowRight = BSRow.newInstance();
