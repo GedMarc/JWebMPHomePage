@@ -9,7 +9,6 @@ import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.blueimp.gallery.BlueImpGalleryPageConfigurator;
 import com.jwebmp.plugins.datatable.DataTablePageConfigurator;
-import com.jwebmp.plugins.datatable.enumerations.DataTablePlugins;
 import com.jwebmp.plugins.datatable.enumerations.DataTableThemes;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
@@ -25,6 +24,7 @@ public class HomePageStartup
 	public static void main(String[] args)
 	{
 		SessionHelper.setAddressToBeUsedWhenNull("https://jwebmp.com/");
+
 		SessionHelper.setCacheAddress(false);
 
 		JWebMPUndertowWebSocketConfiguration.setEnabled(true);
@@ -40,6 +40,7 @@ public class HomePageStartup
 		HibernateEntityManagerProperties.getDefaultProperties()
 		                                .setFormatSql(true);
 
+
 		HibernateEntityManagerProperties.getDefaultProperties()
 		                                .setUseQueryStartupCheck(false);
 
@@ -52,14 +53,17 @@ public class HomePageStartup
 		FontAwesome5PageConfigurator.setIncludeRegular(true);
 		FontAwesome5PageConfigurator.setIncludeSolid(true);
 		FontAwesome5PageConfigurator.setIncludeLight(true);
-		FontAwesome5PageConfigurator.setRootReferenceDir("fontawesome-pro-5.1.0-web/js/");
+
+		FontAwesome5PageConfigurator.setRootReferenceDir("fontawesome-pro-5.4.1-web/js/");
+
 		FontAwesome5PageConfigurator.setIncludeBrands(true);
+
 		FontAwesome5PageConfigurator.getConfigOptions()
 		                            .setSearchPseudoElements(true);
 
 		DataTablePageConfigurator.switchTheme(DataTableThemes.Bootstrap4);
-		DataTablePageConfigurator.getPlugins()
-		                         .add(DataTablePlugins.Buttons);
+		DataTablePageConfigurator.configureButtons();
+
 
 		SkyconPageConfigurator.setColour("white");
 

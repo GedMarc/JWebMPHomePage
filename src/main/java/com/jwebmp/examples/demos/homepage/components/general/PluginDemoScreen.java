@@ -1,6 +1,9 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
+import com.jwebmp.core.Event;
+import com.jwebmp.core.Feature;
 import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.Operand;
@@ -11,6 +14,7 @@ import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggable
 import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
+import com.jwebmp.guicedinjection.interfaces.IDefaultService;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.layout.BSCardBox;
@@ -21,6 +25,7 @@ import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
+import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.metrojs.JQMetroTiles;
 import com.jwebmp.plugins.metrojs.enumerations.TileAccentThemes;
 import com.jwebmp.plugins.metrojs.enumerations.TileCount;
@@ -43,6 +48,12 @@ public class PluginDemoScreen
 	private final List<Div<?, ?, ?, ?, ?>> additionals = new ArrayList<>();
 	private final List<Div<?, ?, ?, ?, ?>> additionalsRight = new ArrayList<>();
 
+	private final List<ComponentHierarchyBase> componentTree = new ArrayList<>();
+	private final List<Event> eventsTree = new ArrayList<>();
+	private final List<Feature> featuresTree = new ArrayList<>();
+	private final List<IDefaultService> serviceProvidersTree = new ArrayList<>();
+
+
 	boolean tileAdded = false;
 	private BSColumn fullColumn = new BSColumn(Col_12, Col_12);
 	private BSColumn rightColumn = new BSColumn(BSColumnOptions.Col_Md_6, Col_12);
@@ -54,7 +65,6 @@ public class PluginDemoScreen
 	private String pluginName;
 	private JQMetroTiles featureTiles = new JQMetroTiles();
 	private JQMetroTiles componentTiles = new JQMetroTiles();
-
 	private List<OptionsBrowser> optionBrowsers = new ArrayList<>();
 	private List<BSRow> bottomRows = new ArrayList<>();
 
@@ -127,6 +137,41 @@ public class PluginDemoScreen
 		return tile;
 	}
 
+
+	private JSTree buildComponentsTree()
+	{
+		for (ComponentHierarchyBase componentHierarchyBase : getComponentTree())
+		{
+			//			JSTree tree = new OptionsBrowser(componentHierarchyBase);
+		}
+		return null;
+	}
+
+	public List<ComponentHierarchyBase> getComponentTree()
+	{
+		return componentTree;
+	}
+
+	private JSTree buildPageConfiguration()
+	{
+		return null;
+	}
+
+	private JSTree buildServiceInjectionProvidersTree()
+	{
+		return null;
+	}
+
+	private JSTree buildEventsTree()
+	{
+		return null;
+	}
+
+	private JSTree buildFeaturesTree()
+	{
+		return null;
+	}
+
 	public StaticTile addFeatureTile(String name, String description, Class<? extends JavaScriptPart> optionsBrowser)
 	{
 		StaticTile tile;
@@ -191,16 +236,23 @@ public class PluginDemoScreen
 		container.add(descriptionRow);
 
 		BSRow mavenRow = new BSRow();
-		mavenDisplayDiv = buildDependencyInformation(StringEscapeUtils.escapeHtml4(
-				FileTemplates.getFileTemplate(getClass(), getClassCanonicalName() + "mavenpom.txt", "mavenpom.txt")
-				             .toString())).addClass(Col_6);
+		try
+		{
+			mavenDisplayDiv = buildDependencyInformation(StringEscapeUtils.escapeHtml4(
+					FileTemplates.getFileTemplate(getClass(), getClassCanonicalName() + "mavenpom.txt", "mavenpom.txt")
+					             .toString())).addClass(Col_6);
+			mavenRow.add(mavenDisplayDiv);
 
+			artiInfo = buildArtifactInformation().addClass(Col_6);
 
-		artiInfo = buildArtifactInformation().addClass(Col_6);
-		mavenRow.add(mavenDisplayDiv);
-		mavenRow.add(artiInfo);
-		container.add(mavenRow);
-
+			mavenRow.add(artiInfo);
+			container.add(mavenRow);
+		}
+		catch (NullPointerException npe)
+		{
+			//just a missing mavenpom file
+		}
+		
 		BSRow tilesRow = new BSRow();
 		tilesRow.add(featureTiles);
 		tilesRow.add(componentTiles);
@@ -288,54 +340,62 @@ public class PluginDemoScreen
 	{
 		BSCardBox<?> mavenDisplayDiv = new BSCardBox<>();
 
-		Plugins plugin = getPlugin(pluginName);
-		if (plugin != null)
+		Optional<Plugins> plugin = getPlugin(pluginName);
+		if (plugin.isPresent())
 		{
 			BSRow versionRow = new BSRow();
 			versionRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("Source Widget"));
 			versionRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(
-					new Link<>(plugin.getPluginSourceURL(), "_blank").setText("View Demo <br/> Version " + plugin.getPluginVersion())));
+					new Link<>(plugin.get()
+					                 .getPluginSourceURL(), "_blank").setText("View Demo <br/> Version " + plugin.get()
+					                                                                                             .getPluginVersion())));
 			mavenDisplayDiv.add(versionRow);
 
 			BSRow donationRow = new BSRow();
 			donationRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("Donate to the Widget Devs"));
-			donationRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.getPluginDonateUrl(), "_blank").setText("Yes I'll Support!")));
+			donationRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.get()
+			                                                                                      .getPluginDonateUrl(), "_blank").setText("Yes I'll Support!")));
 			mavenDisplayDiv.add(donationRow);
 
 			BSRow teamcityRow = new BSRow();
 			teamcityRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("TeamCity"));
-			teamcityRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.getPluginTeamCityUrl(), "_blank").setText("Go To TeamCity")));
+			teamcityRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.get()
+			                                                                                      .getPluginTeamCityUrl(), "_blank").setText("Go To TeamCity")));
 			mavenDisplayDiv.add(teamcityRow);
 
 			BSRow jiraRow = new BSRow();
 			jiraRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("Jira Project Tracking"));
-			jiraRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.getPluginJiraUrl(), "_blank").setText("Go To Jira")));
+			jiraRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.get()
+			                                                                                  .getPluginJiraUrl(), "_blank").setText("Go To Jira")));
 			mavenDisplayDiv.add(jiraRow);
 
 			BSRow sonarRow = new BSRow();
 			sonarRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("SonarQube Quality Gate"));
-			sonarRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.getPluginSonarUrl(), "_blank").setText("Go To SonarQube")));
+			sonarRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.get()
+			                                                                                   .getPluginSonarUrl(), "_blank").setText("Go To SonarQube")));
 			mavenDisplayDiv.add(sonarRow);
 
 			BSRow artifactoryRow = new BSRow();
 			artifactoryRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).setText("Artifactory Direct Download"));
-			artifactoryRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.getPluginArtifactoryUrl(), "_blank").setText("Go To Artifactory")));
+			artifactoryRow.add(new BSColumn<>(BSColumnOptions.Col_Md_6, Col_12).add(new Link<>(plugin.get()
+			                                                                                         .getPluginArtifactoryUrl(), "_blank").setText("Go To Artifactory")));
 			mavenDisplayDiv.add(artifactoryRow);
 		}
 		else
 		{
-			add("Plugin name wrong for artifact information");
+			//add("Plugin name wrong for artifact information");
 		}
 
 		return mavenDisplayDiv;
 	}
 
-	public Plugins getPlugin(String name)
+	public Optional<Plugins> getPlugin(String name)
 	{
 		Optional<Plugins> oPlugin = new Plugins().builder()
 		                                         .where(Plugins_.pluginName, Operand.Equals, name)
 		                                         .get();
-		return oPlugin.get();
+
+		return oPlugin;
 	}
 
 	@Override
@@ -394,5 +454,20 @@ public class PluginDemoScreen
 	public void setBottomRows(List<BSRow> bottomRows)
 	{
 		this.bottomRows = bottomRows;
+	}
+
+	public List<Event> getEventsTree()
+	{
+		return eventsTree;
+	}
+
+	public List<Feature> getFeaturesTree()
+	{
+		return featuresTree;
+	}
+
+	public List<IDefaultService> getServiceProvidersTree()
+	{
+		return serviceProvidersTree;
 	}
 }

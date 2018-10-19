@@ -11,11 +11,13 @@ import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.datatable.DataTable;
+import com.jwebmp.plugins.datatable.options.DataTablesDomOptions;
 
 import java.util.List;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
+import static com.jwebmp.plugins.datatable.options.DataTablesDomOptions.*;
 
 public class PluginsList
 		extends DisplayScreen
@@ -79,11 +81,46 @@ public class PluginsList
 		thg.add(thr);
 
 		DataTable<?, ?> dt = new DataTable("dt", thg);
+
+		dt.addCopyButton("btn btn-primary")
+		  .addCsvButton("btn btn-primary")
+		  .addExcelButton("btn btn-primary")
+		  .addPdfButton("btn btn-primary")
+		  .addPrintButton("btn btn-primary");
+
+		dt.getOptions()
+		  .setDom(DataTablesDomOptions.getDefault());
+		dt.getOptions()
+		  .getDom()
+		  .add(0, Buttons);
+
+		//  .setDom(DataTablesDomOptions.fromString("Bfrtip"));
+
+	/*	dt.getOptions()
+		  .setDom(DataTablesDomOptions.fromString("<\"top\"i>rt<\"bottom\"flp><\"clear\">"));*/
+/*
+
+		dt.getOptions()
+		  .getButtons()
+		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Copy));
+		dt.getOptions()
+		  .getButtons()
+		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Csv));
+		dt.getOptions()
+		  .getButtons()
+		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Excel));
+		dt.getOptions()
+		  .getButtons()
+		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Pdf));
+		dt.getOptions()
+		  .getButtons()
+		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Print));
+*/
+
 		dt.addStyle("display:block;");
 		dt.addClass("table table-responsive w-100 d-block d-md-table");
 
 		List<Plugins> pluginsList = new Plugins().findAll();
-
 		for (Plugins plugin : pluginsList)
 		{
 			dt.add(new TableRow<>().add(new TableCell<>().add(new Image<>(plugin.getPluginLogoUrl()).addStyle("max-width:45px;")))

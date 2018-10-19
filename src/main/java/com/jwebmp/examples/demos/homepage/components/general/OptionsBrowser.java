@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
+import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jstree.JSTree;
@@ -18,9 +19,17 @@ public class OptionsBrowser
 		extends JSTree<OptionsBrowser>
 {
 
-	private final JavaScriptPart<?> optionsObject;
+	private final Object optionsObject;
 
 	public OptionsBrowser(@NotNull JavaScriptPart<?> optionsObject)
+	{
+		this.optionsObject = optionsObject;
+		setID("optionsBrowser");
+		setTheme(new JSTreeDefaultDarkTheme());
+		constructTree();
+	}
+
+	public OptionsBrowser(@NotNull ComponentHierarchyBase optionsObject)
 	{
 		this.optionsObject = optionsObject;
 		setID("optionsBrowser");
@@ -66,7 +75,7 @@ public class OptionsBrowser
 		}
 	}
 
-	private void buildPart(JSTreeListItem<?> rootItem, JavaScriptPart part)
+	private void buildPart(JSTreeListItem<?> rootItem, Object part)
 	{
 		Field[] fieldArry = part.getClass()
 		                        .getDeclaredFields();
@@ -135,7 +144,7 @@ public class OptionsBrowser
 				        .getOptions()
 				        .setIcon("fal fa-folder")
 				        .setOpened(false);
-				buildPart(treeItem, (JavaScriptPart) GuiceContext.getInstance(clazz));
+				buildPart(treeItem, GuiceContext.getInstance(clazz));
 			}
 			else if ("serialVersionUID".equalsIgnoreCase(field.getName()))
 			{

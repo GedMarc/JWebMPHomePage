@@ -67,6 +67,7 @@ public class DisplayBody
 		addJavaScriptReference(new JavascriptReference("c", 1.0, "plugins/countdown/dest/jquery.countdown.min.js", 171));
 		addJavaScriptReference(new JavascriptReference("d", 1.0, "plugins/simple-text-rotator/jquery.simple-text-rotator.min.js", 172));
 
+
 		addJavaScriptReference(new JavascriptReference("y", 1.0, "js/jquery.core.js", 171));
 		addJavaScriptReference(new JavascriptReference("z", 1.0, "js/jquery.app.js", 172));
 		//wrapper = new Div<>().setID("wrapper");

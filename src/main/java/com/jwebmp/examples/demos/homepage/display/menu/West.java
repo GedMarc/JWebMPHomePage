@@ -48,6 +48,7 @@ public class West
 		globalList = new List<>();
 
 		ListItem homeItem;
+		ListItem quickStartItem;
 		ListItem aboutItem;
 		ListItem spiItem;
 		ListItem thisSite;
@@ -58,6 +59,7 @@ public class West
 
 		globalList.add(homeItem = buildMenuItem("fal fa-hotel fa-2x fa-fw", HTML_TAB + "Home"));
 
+		globalList.add(quickStartItem = buildMenuItem("fal fa-rabbit-fast fa-3x", HTML_TAB + "Quick Start"));
 		globalList.add(aboutItem = buildMenuItem("fal fa-archive fa-2x", HTML_TAB + "About"));
 		globalList.add(spiItem = buildMenuItem("fal fa-syringe fa-2x", HTML_TAB + "SPI"));
 		globalList.add(thisSite = buildMenuItem("fal fa-sitemap fa-2x", HTML_TAB + "This Site"));
@@ -67,6 +69,7 @@ public class West
 		globalList.add(pluginsListing = buildMenuItem("fal fa-steering-wheel fa-2x", HTML_TAB + "Plugins List"));
 
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
+		quickStartItem.addEvent(new ChangeScreenEvent(quickStartItem, "p=QuickStart").setID(DisplayScreens.QuickStartScreen.toString()));
 		aboutItem.addEvent(new ChangeScreenEvent(aboutItem, "p=AboutJWebMP").setID(DisplayScreens.AboutJWebMP.toString()));
 		spiItem.addEvent(new ChangeScreenEvent(spiItem, "p=UnderTheHood").setID(DisplayScreens.UnderTheHood.toString()));
 		thisSite.addEvent(new ChangeScreenEvent(thisSite, "p=AboutThisSite").setID(DisplayScreens.AboutThisSIte.toString()));
@@ -352,7 +355,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#b6", DisplayScreens.JSTree).setText("JS Tree")));
 		uiKit.add(new ListItem<>().add(buildListItem("#b7").setText("X Editable")));
 
-		ListItem dropDown1 = buildSubList("fal fa-merge", "Tables / Trees", uiKit);
+		ListItem dropDown1 = buildSubList("fal fa-table ", "Tables / Trees", uiKit);
 		return dropDown1;
 	}
 

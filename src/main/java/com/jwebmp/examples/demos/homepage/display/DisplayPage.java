@@ -54,6 +54,7 @@ public class DisplayPage
 	 */
 	public DisplayPage()
 	{
+		//Here's where it happens
 		getOptions().setDynamicRender(false);
 	}
 
