@@ -31,11 +31,17 @@ public class QuickStartScreen
 		BSNavTabs tabs = new BSNavTabs();
 		tabs.setBordered(true);
 
-		tabs.addTab("Maven", new Div<>(), true);
 
-		tabs.addTab("Page", new Div<>(), false);
+		Div mavenContent = new Div();
+		Div pageContent = new Div();
+		Div moduleInfoContent = new Div();
 
-		tabs.addTab("Service Location", new Div<>(), false);
+		tabs.addTab("Maven", mavenContent, true);
+
+		tabs.addTab("Page", pageContent, false);
+
+		tabs.addTab("Service Location", moduleInfoContent, false);
+
 
 		return tabs;
 	}
@@ -45,11 +51,16 @@ public class QuickStartScreen
 		BSNavTabs tabs = new BSNavTabs();
 		tabs.setBordered(true);
 
-		tabs.addTab("Maven", new Div<>(), true);
 
-		tabs.addTab("Page", new Div<>(), false);
+		Div mavenContent = new Div();
+		Div pageContent = new Div();
+		Div moduleInfoContent = new Div();
 
-		tabs.addTab("Module-Info", new Div<>(), false);
+		tabs.addTab("Maven", mavenContent, true);
+
+		tabs.addTab("Page", pageContent, false);
+
+		tabs.addTab("Service Location", moduleInfoContent, false);
 
 		return tabs;
 	}
@@ -59,11 +70,16 @@ public class QuickStartScreen
 		BSNavTabs tabs = new BSNavTabs();
 		tabs.setBordered(true);
 
-		tabs.addTab("Maven", new Div<>(), true);
 
-		tabs.addTab("Page", new Div<>(), false);
+		Div mavenContent = new Div();
+		Div pageContent = new Div();
+		Div moduleInfoContent = new Div();
 
-		tabs.addTab("Module-Info", new Div<>(), false);
+		tabs.addTab("Maven", mavenContent, true);
+
+		tabs.addTab("Page", pageContent, false);
+
+		tabs.addTab("Service Location", moduleInfoContent, false);
 
 		return tabs;
 	}

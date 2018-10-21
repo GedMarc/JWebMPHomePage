@@ -1,25 +1,12 @@
 public class EntityAssistTestDBModule
 		extends AbstractDatabaseProviderModule
-		implements IGuiceModule
 {
-protected ConnectionBaseInfo getConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties)
+protected ConnectionBaseInfo getConnectionBaseInfo(...)
 {
 	ConnectionBaseInfo cbi = new BTMConnectionBaseInfo(false);
     cbi.setAllowLocalTransactions(true); //Enable HBM2DDL
-    cbi.setShareTransactionConnections(true);
-    cbi.setEnableJdbc4ConnectionTest(true);
+    cbi.setShareTransactionConnections(true); //Share connections
+    cbi.setEnableJdbc4ConnectionTest(true); //JD
     return cbi;
-}
-protected String getJndiMapping()
-{
-    return "jdbc/homepage";
-}
-protected String getPersistenceUnitName()
-{
-    return "AppPU";
-}
-protected Class<? extends Annotation> getBindingAnnotation()
-{
-    return TestEntityAssistCustomPersistenceLoader.class;
 }
 }

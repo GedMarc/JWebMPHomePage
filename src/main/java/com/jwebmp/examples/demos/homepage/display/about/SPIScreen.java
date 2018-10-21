@@ -75,7 +75,7 @@ public class SPIScreen
 		BSColumn column1 = new BSColumn(BSColumnOptions.Col_Md_8);
 		BSColumn column2 = new BSColumn(BSColumnOptions.Col_Md_4);
 
-		column1.add(buildUnderTheHood());
+		//		column1.add(buildDependencies());
 		//	column1.add(buildPowerfulMinimalist());
 
 		//	column1.add(buildComponentRender());
@@ -240,125 +240,6 @@ public class SPIScreen
 		return card;
 	}
 
-	private Div buildUnderTheHood()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add(new H3("Core Libraries"));
-		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                  .addClass(Table_Hover);
-		table.setSmall(true);
-		table.setBordered(true);
-		table.setStriped(true);
-
-		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Name"))
-		                                                       .add(new TableHeaderCell<>("Version"))
-		                                                       .add(new TableHeaderCell<>("Info"))
-		                                                       // .add(new TableHeaderCell<>("Maven Property"))
-		                                                       .add(new TableHeaderCell<>("Purpose"))));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ClassGraph"))
-		                                       .add(new TableCell<>("4.4.1"))
-		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
-		                                       //  .add(new TableCell<>("fastclasspath.version"))
-		                                       .add(new TableCell<>("Scanner")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Google Guice"))
-		                                       .add(new TableCell<>("4.2.1"))
-		                                       .add(new TableCell<>("<a href=\"https://github.com/google/guice\" target=\"_blank\">Link</a>"))
-		                                       //  .add(new TableCell<>("guice.version"))
-		                                       .add(new TableCell<>("DI Provider")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Jackson JSON"))
-		                                       .add(new TableCell<>("2.9.5"))
-		                                       .add(new TableCell<>("<a href=\"https://github.com/FasterXML/jackson\" target=\"_blank\">Link</a>"))
-		                                       //   .add(new TableCell<>("jackson.version"))
-		                                       .add(new TableCell<>("JSON API")));
-
-		div.add(table);
-
-		div.add(new H3("Core Web Libraries"));
-
-		BSTable<?> webTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                     .addClass(Table_Hover);
-		webTable.setSmall(true);
-		webTable.setBordered(true);
-		webTable.setStriped(true);
-
-		webTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Name"))
-		                                                          .add(new TableHeaderCell<>("Version"))
-		                                                          //    .add(new TableHeaderCell<>("Info"))
-		                                                          .add(new TableHeaderCell<>("Source"))
-		                                                          .add(new TableHeaderCell<>("Purpose"))));
-
-		webTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JQuery"))
-		                                          .add(new TableCell<>("3.3.1"))
-		                                          //  .add(new TableCell<>("JQueryPageConfigurator.class"))
-		                                          .add(new TableCell<>("bower"))
-		                                          .add(new TableCell<>("JavaScript API")));
-
-		webTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Angular"))
-		                                          .add(new TableCell<>("1.7.6"))
-		                                          //   .add(new TableCell<>("AngularPageConfigurator.class"))
-		                                          .add(new TableCell<>("bower"))
-		                                          .add(new TableCell<>("Data Binder")));
-
-		div.add(webTable);
-
-		div.add(new H3("Servlet Libraries"));
-
-		BSTable<?> servletInfoTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                             .addClass(Table_Hover);
-		servletInfoTable.setSmall(true);
-		servletInfoTable.setBordered(true);
-		servletInfoTable.setStriped(true);
-
-		servletInfoTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Name"))
-		                                                                  .add(new TableHeaderCell<>("Version"))
-		                                                                  //    .add(new TableHeaderCell<>("Info"))
-		                                                                  .add(new TableHeaderCell<>("Source"))
-		                                                                  .add(new TableHeaderCell<>("Purpose"))));
-
-		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ua-detector"))
-		                                                  .add(new TableCell<>("0.9.22"))
-		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
-		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Device Info Provider")));
-
-		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-lang3"))
-		                                                  .add(new TableCell<>("3.7"))
-		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
-		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Assists with String manipulation")));
-
-		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-text"))
-		                                                  .add(new TableCell<>("1.4"))
-		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
-		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Assists with String manipulation")));
-
-		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-io"))
-		                                                  .add(new TableCell<>("2.6"))
-		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
-		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Assist with IO usage")));
-
-		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("quality-check"))
-		                                                  .add(new TableCell<>("1.3"))
-		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
-		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Dependent from ua-detector")));
-
-		div.add(servletInfoTable);
-
-		div.add(new Image("images/guiceinjection/ModuleDepedency.png").addClass("img-fluid d-block"));
-		div.add("<br/>");
-		div.add(new Image("images/guiceinjection/CompleteModuleDepedency.png").addClass("img-fluid d-block"));
-
-		//div.add(new H4<>("Total Standalone Size : 3.8MB"));
-
-		return card;
-	}
 
 	private Div buildPluginsPanel()
 	{

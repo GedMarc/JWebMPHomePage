@@ -1,0 +1,6 @@
+public static void main(String[] args) throws Exception
+{
+    JWebMPUndertow.boot("localhost", 6002);
+    LogFactory.getLog("Program")
+              .info("Started");
+}

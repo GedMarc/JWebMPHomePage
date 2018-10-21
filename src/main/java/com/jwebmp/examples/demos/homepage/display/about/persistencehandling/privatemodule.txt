@@ -1,6 +1,5 @@
 public class HomePageDBPrivateModule
 		extends PrivateModule
-		implements IGuiceModule
 {
 	protected void configure()
 	{

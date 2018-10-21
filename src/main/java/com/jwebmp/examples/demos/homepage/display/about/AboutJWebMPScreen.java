@@ -1,20 +1,17 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
-import com.jwebmp.core.Page;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
-import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
-import com.jwebmp.plugins.bootstrap4.containers.BSRow;
-import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
+import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
+import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
@@ -31,37 +28,50 @@ public class AboutJWebMPScreen
 	{
 		BSContainer container = new BSContainer(BSContainerOptions.Container_Fluid);
 
-		BSRow row = new BSRow();
+		BSNavTabs tabs = new BSNavTabs();
 
-		BSColumn column1 = new BSColumn(BSColumnOptions.Col_Md_8);
-		BSColumn column2 = new BSColumn(BSColumnOptions.Col_Md_4);
+		Div whatIsIt = new Div();
+		Div dependencies = new Div();
+		Div runsOnList = new Div();
+		Div pushMechanism = new Div();
+		Div testing = new Div();
 
-		Page page = GuiceContext.get(Page.class);
+		tabs.addTab("What Is It", whatIsIt, true);
+		tabs.addTab("Dependencies", dependencies, false);
+		tabs.addTab("Runs On", runsOnList, false);
+		tabs.addTab("Server Side", pushMechanism, false);
+		tabs.addTab("Unit Testing", testing, false);
 
-		column1.add(buildWhyPanel());
-		column1.add(buildTempalteFreeDev());
-		column1.add(addWhiteAlert("Cordova/PhoneGap can be used for advanced device functions"));
-		column1.add(buildTestPanel());
-		column1.add(buildInjectionsPanel());
-		column2.add(buildCompatibilityList());
-		column2.add(buildPushPanel());
+		container.add(tabs);
 
-		column2.add(buildCompletelyCustomizablePanel());
+		whatIsIt.add(buildWhyPanel());
+		whatIsIt.add(buildTempalteFreeDev());
 
-		row.add(column1);
-		row.add(column2);
+		dependencies.add(buildDependencies());
 
-		container.add(row);
+
+		testing.add(buildTestPanel());
+
+		runsOnList.add(buildCompatibilityList());
+		//		runsOnList.add(buildInjectionsPanel());
+
+
+		pushMechanism.add(buildPushPanel());
+
+		pushMechanism.add(addWhiteAlert("Cordova/PhoneGap can be used for advanced device functions"));
 		return container;
 	}
 
 	private Div buildWhyPanel()
 	{
 		DisplayCard card = new DisplayCard();
+		card.addCardHeader(new H2("Next Level Development").toString(true));
 		Div div = card.addCardBody();
-		div.add("JWebMP is a Java Web and Mobile Hybrid Framework designed to be Modern, Efficient, Server-Side Driven, with absolute optimizations in both Delivery of Web Content, and Java Development of the System. It is designed purely in a Domain Driven Manner and allows you to finally build Request Driven, Tiny-Session enterprise application, while still  completely supporting MDE and BDE in every way.");
-
-		div.add("Everything is completely open source! This means that any item you find can be logged, traced, and implemented in the most convenient way.");
+		div.add("JWebMP is a Java Web Framework." +
+		        "<br/>Designed to serve Modern, Efficient, Server-Side Driven Web Content. " +
+		        "<br/><br/>Built in JPMS,Develop Enterprise Scale Applications quicker than ever before" +
+		        "<br/><br/>Seamlessly move between JRE8 and JPMS with a pure SPI driven system");
+		div.add(new H3("Completely Open Source, 100% Free"));
 		return card;
 	}
 
@@ -76,6 +86,127 @@ public class AboutJWebMPScreen
 		return card;
 	}
 
+
+	private Div buildDependencies()
+	{
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
+		div.add(new H3("Core Libraries"));
+		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
+		                                  .addClass(Table_Hover);
+		table.setSmall(true);
+		table.setBordered(true);
+		table.setStriped(true);
+
+		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Name"))
+		                                                       .add(new TableHeaderCell<>("Version"))
+		                                                       .add(new TableHeaderCell<>("Info"))
+		                                                       // .add(new TableHeaderCell<>("Maven Property"))
+		                                                       .add(new TableHeaderCell<>("Purpose"))));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ClassGraph"))
+		                                       .add(new TableCell<>("4.4.1"))
+		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
+		                                       //  .add(new TableCell<>("fastclasspath.version"))
+		                                       .add(new TableCell<>("Scanner")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Google Guice"))
+		                                       .add(new TableCell<>("4.2.1"))
+		                                       .add(new TableCell<>("<a href=\"https://github.com/google/guice\" target=\"_blank\">Link</a>"))
+		                                       //  .add(new TableCell<>("guice.version"))
+		                                       .add(new TableCell<>("DI Provider")));
+
+		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Jackson JSON"))
+		                                       .add(new TableCell<>("2.9.5"))
+		                                       .add(new TableCell<>("<a href=\"https://github.com/FasterXML/jackson\" target=\"_blank\">Link</a>"))
+		                                       //   .add(new TableCell<>("jackson.version"))
+		                                       .add(new TableCell<>("JSON API")));
+
+		div.add(table);
+
+		div.add(new H3("Core Web Libraries"));
+
+		BSTable<?> webTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
+		                                     .addClass(Table_Hover);
+		webTable.setSmall(true);
+		webTable.setBordered(true);
+		webTable.setStriped(true);
+
+		webTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Name"))
+		                                                          .add(new TableHeaderCell<>("Version"))
+		                                                          //    .add(new TableHeaderCell<>("Info"))
+		                                                          .add(new TableHeaderCell<>("Source"))
+		                                                          .add(new TableHeaderCell<>("Purpose"))));
+
+		webTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JQuery"))
+		                                          .add(new TableCell<>("3.3.1"))
+		                                          //  .add(new TableCell<>("JQueryPageConfigurator.class"))
+		                                          .add(new TableCell<>("bower"))
+		                                          .add(new TableCell<>("JavaScript API")));
+
+		webTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Angular"))
+		                                          .add(new TableCell<>("1.7.6"))
+		                                          //   .add(new TableCell<>("AngularPageConfigurator.class"))
+		                                          .add(new TableCell<>("bower"))
+		                                          .add(new TableCell<>("Data Binder")));
+
+		div.add(webTable);
+
+		div.add(new H3("Servlet Libraries"));
+
+		BSTable<?> servletInfoTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
+		                                             .addClass(Table_Hover);
+		servletInfoTable.setSmall(true);
+		servletInfoTable.setBordered(true);
+		servletInfoTable.setStriped(true);
+
+		servletInfoTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Name"))
+		                                                                  .add(new TableHeaderCell<>("Version"))
+		                                                                  //    .add(new TableHeaderCell<>("Info"))
+		                                                                  .add(new TableHeaderCell<>("Source"))
+		                                                                  .add(new TableHeaderCell<>("Purpose"))));
+
+		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ua-detector"))
+		                                                  .add(new TableCell<>("0.9.22"))
+		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
+		                                                  .add(new TableCell<>("maven"))
+		                                                  .add(new TableCell<>("Device Info Provider")));
+
+		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-lang3"))
+		                                                  .add(new TableCell<>("3.7"))
+		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
+		                                                  .add(new TableCell<>("maven"))
+		                                                  .add(new TableCell<>("Assists with String manipulation")));
+
+		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-text"))
+		                                                  .add(new TableCell<>("1.4"))
+		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
+		                                                  .add(new TableCell<>("maven"))
+		                                                  .add(new TableCell<>("Assists with String manipulation")));
+
+		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-io"))
+		                                                  .add(new TableCell<>("2.6"))
+		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
+		                                                  .add(new TableCell<>("maven"))
+		                                                  .add(new TableCell<>("Assist with IO usage")));
+
+		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("quality-check"))
+		                                                  .add(new TableCell<>("1.3"))
+		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
+		                                                  .add(new TableCell<>("maven"))
+		                                                  .add(new TableCell<>("Dependent from ua-detector")));
+
+		div.add(servletInfoTable);
+
+		div.add(new Image("images/guiceinjection/ModuleDepedency.png").addClass("img-fluid d-block"));
+		//div.add("<br/>");
+		//div.add(new Image("images/guiceinjection/CompleteModuleDepedency.png").addClass("img-fluid d-block"));
+
+		//div.add(new H4<>("Total Standalone Size : 3.8MB"));
+
+		return card;
+	}
+
 	private Div buildTestPanel()
 	{
 		DisplayCard card = new DisplayCard();
@@ -85,22 +216,22 @@ public class AboutJWebMPScreen
 		return card;
 	}
 
-	private Div buildInjectionsPanel()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add("Using Google's Guice Injection Framework, paired with Guice Context Handler, and you get a complete JDK 10 Injection set as well as Built-In Multi-ClassPath Injection Configuration." +
-		        "Custom Path Object Scanning from ClassGraph, RegEx Servlet Bindings, Complete Programmatic AOP, and go for a completely modular entirely optional near-full range of EE Capabilities with MQ, JTA, and much much more." +
-		        "Everything is at your fingertips.");
-		div.add("This library is also completely non-invasive. Easily pull beans directly from the initial context in your enterprise environment, with no interference on existing Servlets including JSP.");
-		return card;
-	}
-
 	private Div buildCompatibilityList()
 	{
 		DisplayCard card = new DisplayCard();
 		Div div = card.addCardBody();
+
+		div.add(new H3("Doesn't Interfere"));
+		div.add("You can easily run JWebMP alongside any project without causing any interference." +
+		        "<br/>Run next to JSF with the simple inclusion of a module, and a small faces-config update, " +
+		        "<br/>Migrating to a Pure Java environment and switching between JPMS and JRE8 is as easy as ever.");
+
 		div.add(new H3("Compatibility List"));
+
+		div.add("You can also run your web sites through a provided boot from a static void main. " +
+		        "<br/>Unit Testing, Integration Testing, and Developing become instantaneously available.");
+
+		addSourceToContainer(AboutJWebMPScreen.class, "staticvoidmain.txt", SourceCodeLanguages.Java, div);
 
 		BSTable<?> compatibilityTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                               .addClass(Table_Hover);
@@ -109,13 +240,17 @@ public class AboutJWebMPScreen
 		compatibilityTable.setStriped(true);
 
 		compatibilityTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Name"))
-		                                                                    //  .add(new TableHeaderCell<>("Notes"))
-		                                                                    .add(new TableHeaderCell<>("Info"))));
+		                                                                    //
+		                                                                    .add(new TableHeaderCell<>("Info")
+				                                                                         .add(new TableHeaderCell<>("Notes")))));
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Glassfish"))
 		                                                    //.add(new TableCell<>("Out the Box"))
 		                                                    .add(new TableCell<>(
-				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Web Fragment Specification</a>")));
+				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\" target=\"_blank\">Web Fragment Specification</a>"))
+		                                                    .add(new TableCell<>(
+				                                                    "Simply including the library sets it up"))
+		                      );
 
 /*
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Glassfish 5.x"))
@@ -127,37 +262,51 @@ public class AboutJWebMPScreen
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Payara"))
 		                                                    //.add(new TableCell<>("Out the Box"))
 		                                                    .add(new TableCell<>(
-				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Web Fragment Specification</a>")));
+				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Web Fragment Specification</a>"))
+		                                                    .add(new TableCell<>(
+				                                                    "Simply including the library sets it up")));
 
-		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("WildFly/EAP "))
+		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("JBoss/WildFly/EAP "))
 		                                                    //.add(new TableCell<>("Out the Box"))
 		                                                    .add(new TableCell<>(
-				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Web Fragment Specification</a>")));
+				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\" target=\"_blank\">Web Fragment Specification</a>"))
+		                                                    .add(new TableCell<>(
+				                                                    "Simply including the library sets it up")));
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Tomcat"))
 		                                                    //.add(new TableCell<>("Out the Box"))
 		                                                    .add(new TableCell<>(
-				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Web Fragment Specification</a>")));
+				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\" target=\"_blank\">Web Fragment Specification</a>"))
+		                                                    .add(new TableCell<>(
+				                                                    "Simply including the library sets it up")));
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Wildfly Swarm"))
 		                                                    //.add(new TableCell<>("Out the Box"))
 		                                                    .add(new TableCell<>(
-				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Initialized with GuiceContext.inject();</a>")));
+				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\" target=\"_blank\">Initialized with GuiceContext.inject();</a>"))
+		                                                    .add(new TableCell<>(
+				                                                    "Simply including the library sets it up")));
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("MicroProfile"))
 		                                                    //.add(new TableCell<>("Out the Box"))
 		                                                    .add(new TableCell<>(
-				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Initialized with GuiceContext.inject();</a>")));
+				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\" target=\"_blank\">Initialized with GuiceContext.inject();</a>"))
+		                                                    .add(new TableCell<>(
+				                                                    "Simply including the library sets it up")));
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Undertow"))
 		                                                    //.add(new TableCell<>("Plugin Required"))
 		                                                    .add(new TableCell<>(
-				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Initialized with GuiceContext.inject();</a>")));
+				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\" target=\"_blank\">Initialized with GuiceContext.inject();</a>"))
+		                                                    .add(new TableCell<>(
+				                                                    "This library requires the module <strong>jwebmp-undertow</strong> to register the filters")));
 
 		compatibilityTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Jetty"))
 		                                                    //.add(new TableCell<>("Plugin Required"))
 		                                                    .add(new TableCell<>(
-				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\">Initialized with GuiceContext.inject();</a>")));
+				                                                    "<a href=\"https://blogs.oracle.com/swchan/servlet-30-web-fragmentxml\" target=\"_blank\">Initialized with GuiceContext.inject();</a>"))
+		                                                    .add(new TableCell<>(
+				                                                    "You need to call GuiceContext.inject() during your boot cycle.")));
 
 		div.add(compatibilityTable);
 		return card;
@@ -172,17 +321,6 @@ public class AboutJWebMPScreen
 		return card;
 	}
 
-	private Div buildCompletelyCustomizablePanel()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add("Everything can be optimized, <strong><u><i>EASILY</i></u></strong>, from specific tags being displayed for certain browsers and/or device combinations, to how the system boots and operates. Even your persistence units can now be configured programmatically with complete support for JTA.");
-		div.add("Optimize your startup, Build up your modules, and jump straight into JPMS with the the Service Loader mechanisms.");
-		div.add("This allows complete integration into any system including Enterprise Edition 7 and up (Tomcat, Glassfish, Payara, Wildfly, EAP etc) but also Embedded Containers such as Undertow. ");
-		div.add("");
-		return card;
-	}
-
 	@Override
 	public BSBreadCrumb<?> getTitleBreadcrumbs()
 	{
@@ -192,5 +330,27 @@ public class AboutJWebMPScreen
 		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
 		                                             .setText("About JWebMP"));
 		return crumbs;
+	}
+
+	private Div buildInjectionsPanel()
+	{
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
+		div.add("Using Google's Guice Injection Framework, paired with Guice Context Handler, and you get a complete JDK 10 Injection set as well as Built-In Multi-ClassPath Injection Configuration." +
+		        "Custom Path Object Scanning from ClassGraph, RegEx Servlet Bindings, Complete Programmatic AOP, and go for a completely modular entirely optional near-full range of EE Capabilities with MQ, JTA, and much much more." +
+		        "Everything is at your fingertips.");
+		div.add("This library is also completely non-invasive. Easily pull beans directly from the initial context in your enterprise environment, with no interference on existing Servlets including JSP.");
+		return card;
+	}
+
+	private Div buildCompletelyCustomizablePanel()
+	{
+		DisplayCard card = new DisplayCard();
+		Div div = card.addCardBody();
+		div.add("Everything can be optimized, <strong><u><i>EASILY</i></u></strong>, from specific tags being displayed for certain browsers and/or device combinations, to how the system boots and operates. Even your persistence units can now be configured programmatically with complete support for JTA.");
+		div.add("Optimize your startup, Build up your modules, and jump straight into JPMS with the the Service Loader mechanisms.");
+		div.add("This allows complete integration into any system including Enterprise Edition 7 and up (Tomcat, Glassfish, Payara, Wildfly, EAP etc) but also Embedded Containers such as Undertow. ");
+		div.add("");
+		return card;
 	}
 }

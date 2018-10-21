@@ -2,10 +2,13 @@ package com.jwebmp.examples.demos.homepage.display.demos.pluginslist;
 
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.htmlbuilder.css.measurement.MeasurementCSSImpl;
+import com.jwebmp.core.htmlbuilder.css.measurement.MeasurementTypes;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
+import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
@@ -74,7 +77,7 @@ public class PluginsList
 		thr.add(new TableHeaderCell<>("Name"));
 		thr.add(new TableHeaderCell<>("Version"));
 		thr.add(new TableHeaderCell<>("Description"));
-		thr.add(new TableHeaderCell<>("Components"));
+		//thr.add(new TableHeaderCell<>("Components"));
 		thr.add(new TableHeaderCell<>("Donate"));
 		thr.add(new TableHeaderCell<>("Links"));
 
@@ -82,43 +85,45 @@ public class PluginsList
 
 		DataTable<?, ?> dt = new DataTable("dt", thg);
 
-		dt.addCopyButton("btn btn-primary")
-		  .addCsvButton("btn btn-primary")
-		  .addExcelButton("btn btn-primary")
-		  .addPdfButton("btn btn-primary")
-		  .addPrintButton("btn btn-primary");
+		dt.getOptions()
+		  .getColReorder()
+		  .setRealtime(true)
+		  .setFixedColumnsLeft(3);
+
+		dt.getOptions()
+		  .getFixedColumns()
+		  .setLeftColumns(3);
+
+
+		if (getPage().isMobileOrSmartTablet())
+		{
+			dt.getOptions()
+			  .setScrollY(new MeasurementCSSImpl(300, MeasurementTypes.Pixels));
+			dt.getOptions()
+			  .setScrollCollapse(true);
+			dt.getOptions()
+			  .setScrollX(true);
+
+			dt.getOptions()
+			  .getFixedHeader()
+			  .setFooter(true)
+			  .setHeader(true);
+
+		}
+
+		dt.addCopyButton("btn " + BSButtonOptions.Btn_Outline_Primary.toString())
+		  .addCsvButton("btn " + BSButtonOptions.Btn_Outline_Primary.toString())
+		  .addExcelButton("btn " + BSButtonOptions.Btn_Outline_Primary.toString())
+		  .addPdfButton("btn " + BSButtonOptions.Btn_Outline_Primary.toString())
+		  .addPrintButton("btn " + BSButtonOptions.Btn_Outline_Primary.toString());
+
 
 		dt.getOptions()
 		  .setDom(DataTablesDomOptions.getDefault());
+
 		dt.getOptions()
 		  .getDom()
-		  .add(0, Buttons);
-
-		//  .setDom(DataTablesDomOptions.fromString("Bfrtip"));
-
-	/*	dt.getOptions()
-		  .setDom(DataTablesDomOptions.fromString("<\"top\"i>rt<\"bottom\"flp><\"clear\">"));*/
-/*
-
-		dt.getOptions()
-		  .getButtons()
-		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Copy));
-		dt.getOptions()
-		  .getButtons()
-		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Csv));
-		dt.getOptions()
-		  .getButtons()
-		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Excel));
-		dt.getOptions()
-		  .getButtons()
-		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Pdf));
-		dt.getOptions()
-		  .getButtons()
-		  .add(new DataTablesButtonButtonsOptions<>().setExtend(DataTableButtons.Print));
-*/
-
-		dt.addStyle("display:block;");
-		dt.addClass("table table-responsive w-100 d-block d-md-table");
+		  .add(2, Buttons);
 
 		List<Plugins> pluginsList = new Plugins().findAll();
 		for (Plugins plugin : pluginsList)
@@ -127,7 +132,7 @@ public class PluginsList
 			                       .add(new TableCell<>(plugin.getPluginName()))
 			                       .add(new TableCell<>(plugin.getPluginVersion()))
 			                       .add(new TableCell<>(plugin.getPluginDescription()))
-			                       .add(new TableCell<>("" + plugin.getPluginComponentCount()))
+			                       //.add(new TableCell<>("" + plugin.getPluginComponentCount()))
 			                       .add(new TableCell<>("Donate"))
 			                       .add(new TableCell<>("links")));
 		}

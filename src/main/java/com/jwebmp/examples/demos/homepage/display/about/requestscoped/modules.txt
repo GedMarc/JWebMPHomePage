@@ -1,0 +1,5 @@
+module {
+    provides IGuiceModule with EntityAssistTestDBModule;
+    //Optional to start connection during boot
+    provides IGuicePostStartup with EntityAssistTestModule;
+}

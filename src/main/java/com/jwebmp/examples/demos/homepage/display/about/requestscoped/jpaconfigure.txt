@@ -1,22 +1,8 @@
 public class EntityAssistTestDBModule
 		extends AbstractDatabaseProviderModule
-		implements IGuiceModule
 {
-protected ConnectionBaseInfo getConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties)
+protected ConnectionBaseInfo getConnectionBaseInfo(...)
 {
     return new JPAConnectionBaseInfo();
-}
-protected String getJndiMapping()
-{
-    return "jdbc:eatest";
-}
-protected String getPersistenceUnitName()
-{
-    return "h2entityAssist";
-}
-
-protected Class<? extends Annotation> getBindingAnnotation()
-{
-    return TestEntityAssistCustomPersistenceLoader.class;
 }
 }

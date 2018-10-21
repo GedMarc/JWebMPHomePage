@@ -1,0 +1,5 @@
+<dependency>
+    <groupId>com.jwebmp</groupId>
+    <artifactId>guiced-persistence</artifactId>
+    <version>${jwebmp.version}</version>
+</dependency>
