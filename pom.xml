@@ -307,14 +307,6 @@
 
         <dependency>
             <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-data-tables</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
-
-        <dependency>
-            <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-modernizr</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
@@ -503,21 +495,6 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
-        <!--     <dependency>
-                 <groupId>com.jwebmp</groupId>
-                 <artifactId>jwebmp-material-icons</artifactId>
-                 <version>${project.version}</version>
-                 <classifier>${jwebmp.runtime.classifier}</classifier>
-             </dependency>-->
-
-        <!--        <dependency>
-                    <groupId>com.jwebmp</groupId>
-                    <artifactId>guiced-persistence-jpa</artifactId>
-                    <version>${project.version}</version>
-                    <type>jar</type>
-                    <classifier>${jwebmp.runtime.classifier}</classifier>
-                </dependency>-->
-
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>guiced-persistence-btm</artifactId>
@@ -530,7 +507,6 @@
             <groupId>io.github.classgraph</groupId>
             <artifactId>classgraph</artifactId>
         </dependency>
-
 
     </dependencies>
 

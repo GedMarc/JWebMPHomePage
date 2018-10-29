@@ -10,12 +10,12 @@
         </dependency>
     </dependencies>
     <configuration>
-        <release>11</release>
+        <release>10</release>
     </configuration>
 </plugin>
 
 <dependency>
-    <groupId>com.jwebmp.jre11</groupId>
+    <groupId>com.jwebmp.jre10</groupId>
     <artifactId>jwebmp-core</artifactId>
     <version>LATEST</version>
 </dependency>
