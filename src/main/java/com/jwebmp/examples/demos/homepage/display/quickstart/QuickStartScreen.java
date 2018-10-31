@@ -1,7 +1,9 @@
 package com.jwebmp.examples.demos.homepage.display.quickstart;
 
 import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.H3;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
+import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 
 public class QuickStartScreen
@@ -10,7 +12,18 @@ public class QuickStartScreen
 	public QuickStartScreen()
 	{
 		super(null, "JWebMP", "Quick Start");
+	}
 
+	@Override
+	public BSContainer<?> getContentContainer()
+	{
+		BSContainer container = new BSContainer();
+		container.add(tabs());
+		return container;
+	}
+
+	private BSNavTabs tabs()
+	{
 		BSNavTabs tabs = new BSNavTabs();
 		tabs.setBordered(true);
 		tabs.getTabContents()
@@ -23,7 +36,7 @@ public class QuickStartScreen
 
 		//	add("Watch Angular Variables by utilizing the AngularFeature found on the Page Object");
 		//	add(getCodeBlockJava(FormBasicsDemoScreen.class, "bindingsbasic_6.txt").setID("coce4"));
-		add(tabs);
+		return tabs;
 	}
 
 	private BSNavTabs buildJRE8()
@@ -37,6 +50,10 @@ public class QuickStartScreen
 		Div moduleInfoContent = new Div();
 
 		tabs.addTab("Maven", mavenContent, true);
+
+		mavenContent.add(new H3("Maven Dependencies"));
+		add(getCodeBlockJava(getClass(), "maven_jre8.txt").setID("coce3"));
+		//	addSourceToContainer(QuickStartScreen.class, "maven_jre8.txt", XML, mavenContent);
 
 		tabs.addTab("Page", pageContent, false);
 

@@ -21,7 +21,6 @@ import com.jwebmp.guicedinjection.GuiceContext;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -38,10 +37,10 @@ import java.util.concurrent.Executors;
 @Table(name = "Subscribers")
 public class Subscribers
 		extends CoreEntity<Subscribers, SubscribersBuilder, Long>
-		implements Serializable
+
 {
 
-	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "SubscriberID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

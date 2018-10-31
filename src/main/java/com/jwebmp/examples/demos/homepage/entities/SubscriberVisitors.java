@@ -10,7 +10,6 @@ import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.SubscriberVisitorsBuilder;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * @author Marc Magon
@@ -20,10 +19,10 @@ import java.io.Serializable;
 @Table(name = "SubscriberVisitors")
 public class SubscriberVisitors
 		extends CoreEntity<SubscriberVisitors, SubscriberVisitorsBuilder, Long>
-		implements Serializable
+
 {
 
-	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name = "SubscriberVisitorsID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,7 +15,6 @@ public class UserActivity
 		extends CoreEntity<UserActivity, UserActivityBuilder, Long>
 {
 
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "UserActivityID")
@@ -92,13 +91,6 @@ public class UserActivity
 		return this;
 	}
 
-	public UserActivity create()
-	{
-		builder().setRunDetached(true)
-		         .persist(this);
-		return this;
-	}
-
 	public Long getUserActivityID()
 	{
 		return UserActivityID;
@@ -107,6 +99,13 @@ public class UserActivity
 	public void setUserActivityID(Long userActivityID)
 	{
 		UserActivityID = userActivityID;
+	}
+
+	public UserActivity create()
+	{
+		builder().setRunDetached(true)
+		         .persist(this);
+		return this;
 	}
 
 	public UserActivityGroup getActivityGroup()

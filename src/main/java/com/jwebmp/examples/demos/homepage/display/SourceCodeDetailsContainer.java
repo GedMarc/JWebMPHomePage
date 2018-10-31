@@ -4,15 +4,13 @@ import com.jwebmp.guicedinjection.pairing.OptionalPair;
 import com.jwebmp.guicedinjection.pairing.Pair;
 
 import javax.validation.constraints.NotNull;
-import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SourceCodeDetailsContainer<J extends SourceCodeDetailsContainer<J>>
-		implements Serializable
+
 {
 
-	private static final long serialVersionUID = 1L;
 
 	private final OptionalPair<Class, String> htmlSnippetLocations = new OptionalPair<>();
 	private final OptionalPair<Class, String> javaSnippetLocations = new OptionalPair<>();
@@ -96,6 +94,11 @@ public class SourceCodeDetailsContainer<J extends SourceCodeDetailsContainer<J>>
 		return (J) this;
 	}
 
+	public Map<String, Pair<Class, String>> getCustomLocations()
+	{
+		return customLocations;
+	}
+
 	public OptionalPair<Class, String> getJavaScriptSnippetLocations()
 	{
 		return javaScriptSnippetLocations;
@@ -114,10 +117,5 @@ public class SourceCodeDetailsContainer<J extends SourceCodeDetailsContainer<J>>
 	public OptionalPair<Class, String> getQuickTipsSnippetLocations()
 	{
 		return quickTipsSnippetLocations;
-	}
-
-	public Map<String, Pair<Class, String>> getCustomLocations()
-	{
-		return customLocations;
 	}
 }

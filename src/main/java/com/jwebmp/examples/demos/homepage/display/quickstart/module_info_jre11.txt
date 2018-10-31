@@ -1,0 +1,7 @@
+requires com.jwebmp.core;
+
+//For field and aop reflection
+opens my.package.name to com.google.com,com.jwebmp.core,com.fasterxml.jackson.databind;
+
+//Execution parameter for injection
+-add-opens java.base/java.lang=com.google.guice

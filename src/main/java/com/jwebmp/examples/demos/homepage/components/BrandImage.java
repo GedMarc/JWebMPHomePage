@@ -19,7 +19,6 @@ public class BrandImage
 		extends BSNavBarBrandImage
 {
 
-	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Constructs a new BrandImage
@@ -27,7 +26,8 @@ public class BrandImage
 	public BrandImage()
 	{
 		super(new Image<>(
-				"https://scontent-jnb1-1.xx.fbcdn.net/v/t1.0-1/15965425_403281776682490_3698780637189972200_n" + "" + "" + "" + "" + "" + ".png?oh=ef5dd4eeac5431320c4b375a5bb92ed5&oe=5ACD10DB").addStyle(
+				"https://scontent-jnb1-1.xx.fbcdn.net/v/t1.0-1/15965425_403281776682490_3698780637189972200_n" + "" + "" + "" + "" + "" +
+				".png?oh=ef5dd4eeac5431320c4b375a5bb92ed5&oe=5ACD10DB").addStyle(
 				"height:67px;width:67px;"));
 		setID("BrandImage");
 		addStyle("cursor:pointer;");

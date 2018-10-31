@@ -47,7 +47,6 @@ public class DisplayPage
 
 	private static final Logger log = LogFactory.getLog(DisplayPage.class.getName());
 
-	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Constructs a new Home Page

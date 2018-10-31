@@ -21,7 +21,6 @@ public class West
 		extends Div
 {
 
-	private static final long serialVersionUID = 1L;
 
 	private Div<IComponentHierarchyBase, ?, ?, ?, ?> sidebarInner;
 	private DivSimple<?> sidebarMenu;

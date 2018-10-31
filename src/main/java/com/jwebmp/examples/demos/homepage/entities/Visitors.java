@@ -15,7 +15,6 @@ import org.apache.commons.lang3.NotImplementedException;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,9 +26,9 @@ import java.util.List;
 		uniqueConstraints = @UniqueConstraint(columnNames = {"LocalStorageKey"}))
 public class Visitors
 		extends CoreEntity<Visitors, VisitorsBuilder, Long>
-		implements Serializable
+
 {
-	private static final long serialVersionUID = 1L;
+
 
 	@Id
 	@Column(name = "VisitorID",

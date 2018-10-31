@@ -29,7 +29,6 @@ public class DisplayBody
 		extends Body
 {
 
-	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Constructs a new Display Body

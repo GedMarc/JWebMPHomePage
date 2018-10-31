@@ -13,10 +13,10 @@ import com.jwebmp.core.base.html.Span;
  * @since 07 Aug 2017
  */
 @Singleton
-public class MenuButton extends Span
+public class MenuButton
+		extends Span
 {
 
-	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Constructs a new BrandImage

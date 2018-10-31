@@ -30,7 +30,6 @@ public class TopBar
 		extends DivSimple<TopBar>
 {
 
-	private static final long serialVersionUID = 1L;
 
 	/*
 	 * Constructs a new TopBar
@@ -207,9 +206,9 @@ public class TopBar
 			Subscribers subscriber = sessionProperties.getSubscriber();
 			headerText.setText(subscriber.getFirstName() != null ? subscriber.getFirstName() + " " + subscriber.getLastName() : "GENERAL");
 
-			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-id-card-alt fa-2x fa-fw", "Profile", (Date) null));
-			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-map-marker-question fa-2x fa-fw", "My Requests", (Date) null));
-			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-pen-nib fa-2x fa-fw", "Forums", (Date) null));
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-id-card-alt fa-2x fa-fw", "Profile", null));
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-map-marker-question fa-2x fa-fw", "My Requests", null));
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-pen-nib fa-2x fa-fw", "Forums", null));
 
 			Link<?> allLink = new Link<>().addClass("dropdown-item notify-item notify-all")
 			                              .setText("LOGOUT");
@@ -222,15 +221,15 @@ public class TopBar
 
 			profileDropDownContent.add(
 					buildDropDownNotificationItem("", "fal fa-id-card fa-2x",
-					                              "Login", (Date) null)
+					                              "Login", null)
 							.addEvent(new ChangeScreenEvent(null, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString())));
 
-			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-file-signature fa-2x", "T & C's", (Date) null).addEvent(
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-file-signature fa-2x", "T & C's", null).addEvent(
 					new GoToTermsAndConditionsEvent(null)));
 			profileDropDownContent.add(
-					buildDropDownNotificationItem("", "fal fa-user-secret fa-2x", "Privacy Statement", (Date) null).addEvent(
+					buildDropDownNotificationItem("", "fal fa-user-secret fa-2x", "Privacy Statement", null).addEvent(
 							new GoToPrivacyScreenEvent(null)));
-			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-microphone-alt fa-2x", "Chat Policy", (Date) null).addEvent(
+			profileDropDownContent.add(buildDropDownNotificationItem("", "fal fa-microphone-alt fa-2x", "Chat Policy", null).addEvent(
 					new GoToChatRoomScreenEvent(null)));
 		}
 
