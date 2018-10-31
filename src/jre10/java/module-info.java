@@ -9,10 +9,7 @@ import com.jwebmp.guicedinjection.interfaces.IGuicePostStartup;
 open module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
 
-	requires com.jwebmp.core;
-
 	requires com.jwebmp.undertow;
-	requires com.jwebmp.websockets;
 
 	requires com.jwebmp.plugins.fontawesome5;
 	//requires com.jwebmp.components.d3.reingoldtilfordtree;

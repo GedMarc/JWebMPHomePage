@@ -6,6 +6,8 @@ import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 
+import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
+
 public class QuickStartScreen
 		extends PluginDemoScreen
 {
@@ -52,8 +54,8 @@ public class QuickStartScreen
 		tabs.addTab("Maven", mavenContent, true);
 
 		mavenContent.add(new H3("Maven Dependencies"));
-		add(getCodeBlockJava(getClass(), "maven_jre8.txt").setID("coce3"));
-		//	addSourceToContainer(QuickStartScreen.class, "maven_jre8.txt", XML, mavenContent);
+		//mavenContent.add(getCodeBlockJava(getClass(), "maven_jre8.txt").setID("coce3"));
+		addSourceToContainer(QuickStartScreen.class, "maven_jre8.txt", XML, mavenContent);
 
 		tabs.addTab("Page", pageContent, false);
 
