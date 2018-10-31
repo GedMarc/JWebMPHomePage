@@ -9,9 +9,6 @@ import com.jwebmp.guicedinjection.interfaces.IGuicePostStartup;
 open module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
 
-	requires undertow.core;
-	requires undertow.servlet;
-
 	requires com.jwebmp.core;
 
 	requires com.jwebmp.undertow;
@@ -43,30 +40,14 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.entityassist;
 
 	requires java.xml.bind;
-	requires java.persistence;
 	requires java.mail;
-
-	requires jdk.unsupported;
-
-	requires java.transaction;
-
-	requires org.hibernate.orm.core;
-	requires org.hibernate.orm.jcache;
-	requires org.hibernate.validator;
-
-	requires cache.api;
-	requires undertow.websockets.jsr;
 
 	requires com.jwebmp.guicedpersistence.btm;
 	requires com.jwebmp.plugins.skycons;
 	requires com.jwebmp.plugins.datatable;
-	requires com.jwebmp.guicedservlets;
-	requires com.jwebmp.plugins.blueimp.gallery;
-	requires org.apache.commons.lang3;
-	requires org.apache.commons.text;
-	requires com.jwebmp.guicedservlets.requestscoped;
 
-	requires com.jwebmp.guicedpersistence.readers.hibernateproperties;
+	requires com.jwebmp.plugins.blueimp.gallery;
+	requires com.jwebmp.guicedservlets.requestscoped;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;

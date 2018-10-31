@@ -227,7 +227,7 @@
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
-            <optional>true</optional>
+            <!--<optional>true</optional>-->
         </dependency>
 
         <dependency>
@@ -236,7 +236,7 @@
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
-            <optional>true</optional>
+            <!--<optional>true</optional>-->
         </dependency>
 
         <dependency>
@@ -598,7 +598,7 @@
                                 <groupId>org.hibernate</groupId>
                                 <artifactId>hibernate-jpamodelgen</artifactId>
                                 <version>${maven.hibernate.version}</version>
-                                <optional>true</optional>
+                                <!--<optional>true</optional>-->
                             </dependency>
                             <dependency>
                                 <groupId>javax.xml.bind</groupId>
@@ -656,7 +656,7 @@
                                 <groupId>org.hibernate</groupId>
                                 <artifactId>hibernate-jpamodelgen</artifactId>
                                 <version>${maven.hibernate.version}</version>
-                                <optional>true</optional>
+                                <!--<optional>true</optional>-->
                             </dependency>
                             <dependency>
                                 <groupId>javax.xml.bind</groupId>
@@ -715,7 +715,7 @@
                                 <groupId>org.hibernate</groupId>
                                 <artifactId>hibernate-jpamodelgen</artifactId>
                                 <version>${maven.hibernate.version}</version>
-                                <optional>true</optional>
+                                <!--<optional>true</optional>-->
                             </dependency>
                             <dependency>
                                 <groupId>javax.xml.bind</groupId>
