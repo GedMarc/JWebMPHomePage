@@ -123,10 +123,9 @@ public class HomePage
 		left.add(GuiceContext.get(GalleryPart.class));
 		right.add(addWhiteAlert("<strong>Testable End-To-End. No more struggling with getting test cases up and running!</strong>" +
 		                        "<br/><a target=\"_blank\" href=\"https://jwebmp.com/sonar/\">View SonarQube for Quality Control and Test Case Output</a>"));
-		right.add(buildSnap4());
 
 		right.add(new MavenPomPart());
-
+		right.add(buildSnap4());
 
 		right.add(addWhiteAlert(
 				"<strong>Go back to coding pure Java with a 100% Domain Driven Design System, and <i><u>feel</u></i> the enormous performance benefit that comes with it </strong>" +
@@ -138,8 +137,6 @@ public class HomePage
 		right.add(new ReasonsWhyPart());
 
 		right.add(buildOpenSourceSponsors());
-
-
 	}
 
 	private BSCard buildSnap2()

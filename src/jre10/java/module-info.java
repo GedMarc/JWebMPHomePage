@@ -9,7 +9,23 @@ import com.jwebmp.guicedinjection.interfaces.IGuicePostStartup;
 open module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
 
+	requires javax.servlet.api;
+	requires java.logging;
+
+	requires undertow.core;
+	requires undertow.servlet;
+
+	requires com.jwebmp.guicedinjection;
+	requires com.jwebmp.logmaster;
+	requires com.jwebmp.core;
+	requires com.jwebmp.guicedpersistence;
+
+	requires com.google.guice.extensions.servlet;
+	requires com.google.guice;
+	requires com.google.guice.extensions.persist;
+
 	requires com.jwebmp.undertow;
+	requires com.jwebmp.websockets;
 
 	requires com.jwebmp.plugins.fontawesome5;
 	//requires com.jwebmp.components.d3.reingoldtilfordtree;
@@ -36,18 +52,44 @@ open module com.jwebmp.examples.demos.homepage {
 
 	requires com.jwebmp.entityassist;
 
+	requires java.validation;
+	requires java.activation;
 	requires java.xml.bind;
+	requires java.persistence;
 	requires java.mail;
 
+	requires jdk.unsupported;
+
+	requires com.fasterxml.jackson.annotation;
+	requires com.fasterxml.jackson.core;
+	requires com.fasterxml.jackson.databind;
+
+	requires java.transaction;
+
+	requires org.hibernate.orm.core;
+	requires org.hibernate.orm.jcache;
+	requires org.hibernate.validator;
+
+	requires cache.api;
+	requires undertow.websockets.jsr;
+
 	requires com.jwebmp.guicedpersistence.btm;
+	requires org.json;
 	requires com.jwebmp.plugins.skycons;
 	requires com.jwebmp.plugins.datatable;
-
+	requires com.jwebmp.guicedservlets;
 	requires com.jwebmp.plugins.blueimp.gallery;
+	requires org.apache.commons.lang3;
+	requires org.apache.commons.text;
 	requires com.jwebmp.guicedservlets.requestscoped;
+	requires com.google.common;
+	requires io.github.classgraph;
+
+	requires com.jwebmp.guicedpersistence.readers.hibernateproperties;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;
 	provides IGuiceModule with HomePageDBModule;
 	provides IGuicePostStartup with HomePageDBModule;
+
 }
