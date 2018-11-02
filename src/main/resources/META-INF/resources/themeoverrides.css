@@ -122,3 +122,33 @@ body.fixed-left .side-menu.left {
 .jstree-anchor {
     display: contents !important;
 }
+
+.sw-theme-default .step-content {
+    background-color: inherit;
+}
+
+.sw-theme-default .sw-toolbar {
+    background-color: inherit;
+}
+
+.sw-theme-circles .step-content {
+    background-color: inherit;
+}
+
+.sw-theme-circles .sw-toolbar {
+    background-color: inherit;
+}
+
+/*
+.sw-main .step-content:not(:first-child) {
+    display: inherit;
+
+}*/
+
+.sw-theme-default > ul.step-anchor > li.done > a {
+    color: lightgrey !important;
+}
+
+.sw-theme-default > ul.step-anchor > li.done > a {
+    color: lightgrey !important;
+}

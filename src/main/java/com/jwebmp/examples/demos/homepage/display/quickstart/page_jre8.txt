@@ -1,0 +1,11 @@
+@PageConfiguration(url = "/jstest")
+public class HelloWorldPlain
+		extends Page
+{
+    public HelloWorldPlain()
+    {
+        super("Hello World!");
+        Paragraph chb = new Paragraph("Hello World");
+        add(chb);
+    }
+}

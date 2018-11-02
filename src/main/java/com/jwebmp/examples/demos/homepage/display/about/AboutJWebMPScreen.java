@@ -11,7 +11,6 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
-import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
@@ -228,11 +227,11 @@ public class AboutJWebMPScreen
 
 		div.add(new H3("Compatibility List"));
 
-		div.add("You can also run your web sites through a provided boot from a static void main. " +
+	/*	div.add("You can also run your web sites through a provided boot from a static void main. " +
 		        "<br/>Unit Testing, Integration Testing, and Developing become instantaneously available.");
 
 		addSourceToContainer(AboutJWebMPScreen.class, "staticvoidmain.txt", SourceCodeLanguages.Java, div);
-
+*/
 		BSTable<?> compatibilityTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                               .addClass(Table_Hover);
 		compatibilityTable.setSmall(true);

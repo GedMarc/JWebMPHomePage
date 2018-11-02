@@ -1,0 +1,8 @@
+public static void main(String[] args) throws Exception
+{
+    //com.jwebmp group or programmatically
+    LogFactory.setLogToConsole(true);
+    LogFactory.configureConsoleColourOutput(Level.INFO);
+    LogColourFormatter.setRenderBlack(false);
+    JWebMPUndertow.boot("localhost", 6002);
+}
