@@ -14,8 +14,8 @@ import com.jwebmp.plugins.jqueryui.draggable.enumerations.JQUIDraggablesHelper;
 import com.jwebmp.plugins.jqueryui.draggable.options.JQUIDraggableOptions;
 import com.jwebmp.plugins.jqueryui.sortable.JQUISortableFeature;
 
+import static com.jwebmp.plugins.jqueryui.basethemes.JQUIThemeBlocks.*;
 import static com.jwebmp.plugins.jqueryui.draggable.enumerations.JQUIDraggablesRevertTypes.*;
-import static com.jwebmp.plugins.jqueryui.themes.JQUIThemeBlocks.*;
 
 public class JQUIDraggableDemoScreen
 		extends DemoScreen

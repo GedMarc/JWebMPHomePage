@@ -287,6 +287,13 @@
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
 
+        <dependency>
+            <groupId>org.jboss.xnio</groupId>
+            <artifactId>xnio-nio</artifactId>
+            <type>jar</type>
+        </dependency>
+
+
     </dependencies>
 
     <build>

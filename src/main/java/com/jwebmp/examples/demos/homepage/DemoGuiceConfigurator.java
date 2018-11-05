@@ -14,7 +14,10 @@ public class DemoGuiceConfigurator
 	public GuiceConfig configure(GuiceConfig config)
 	{
 		return config.setVerbose(true)
+		             //.setWhitelistPaths(true)
+		             //.setWhitelistJarsAndModules(true)
+		             .setExcludeModulesAndJars(true)
 		             .setExcludePaths(true)
-		             .setExcludeModulesAndJars(true);
+				;
 	}
 }

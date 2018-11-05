@@ -1,9 +1,10 @@
 import com.jwebmp.core.services.IPage;
 import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
-import com.jwebmp.examples.demos.homepage.HomePageModuleScanner;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBModule;
 import com.jwebmp.examples.demos.homepage.display.DisplayPage;
-import com.jwebmp.guicedinjection.interfaces.*;
+import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
+import com.jwebmp.guicedinjection.interfaces.IGuiceModule;
+import com.jwebmp.guicedinjection.interfaces.IGuicePostStartup;
 
 open module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
@@ -93,7 +94,5 @@ open module com.jwebmp.examples.demos.homepage {
 	provides IPage with DisplayPage;
 	provides IGuiceModule with HomePageDBModule;
 	provides IGuicePostStartup with HomePageDBModule;
-	provides IGuiceScanModuleInclusions with HomePageModuleScanner;
-	provides IGuiceScanJarInclusions with HomePageModuleScanner;
 
 }
