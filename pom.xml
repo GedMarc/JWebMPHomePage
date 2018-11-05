@@ -464,6 +464,11 @@
                     <artifactId>javax.activation-api</artifactId>
                     <version>${javax.activation.version}</version>
                 </dependency>
+                <dependency>
+                    <groupId>com.jwebmp.jre11</groupId>
+                    <artifactId>btm</artifactId>
+                    <version>${project.version}</version>
+                </dependency>
             </dependencies>
             <build>
                 <plugins>
@@ -513,6 +518,7 @@
                     </plugin>
                 </plugins>
             </build>
+
         </profile>
 
     </profiles>
