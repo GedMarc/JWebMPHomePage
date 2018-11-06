@@ -13,11 +13,8 @@ public class DemoGuiceConfigurator
 	@Override
 	public GuiceConfig configure(GuiceConfig config)
 	{
-		return config.setVerbose(true)
-		             //.setWhitelistPaths(true)
-		             //.setWhitelistJarsAndModules(true)
-		             .setExcludeModulesAndJars(true)
-		             .setExcludePaths(true)
+		return config//  .setVerbose(true)
+		             .setExcludeParentModules(true)
 				;
 	}
 }
