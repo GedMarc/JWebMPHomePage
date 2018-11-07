@@ -25,6 +25,7 @@ public class DefaultDisplayWizard
 		getOptions()
 				.getAnchorSettings()
 				.setEnableAllAnchors(true)
+				.setMarkDoneStep(true)
 				.setAnchorClickable(true);
 	}
 }
