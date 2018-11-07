@@ -75,18 +75,18 @@ public class QuickStartScreen
 		moduleInfoContent.add(new Strong("No Container?"));
 		moduleInfoContent.add("Simply add the below into any class of your choice and hit run!");
 		addSourceToContainer(QuickStartScreen.class, "getstarted_jre8.txt", Java, moduleInfoContent);
-		moduleInfoContent.add("And of course...");
+		moduleInfoContent.add("And then of course...");
 		addSourceToContainer(QuickStartScreen.class, "undertow_jre8.txt", XML, moduleInfoContent);
 
 		moduleInfoContent.add("For JDK 8, JWebMP is fully <a target=\"_blank\" href=\"http://dcevm.github.io/\"> " +
-		                      "DCEVM</a> Compatible");
+		                      "DCEVM</a> Compatible allowing an ultra hot swap experience");
 
 		DefaultDisplayWizard wizard = new DefaultDisplayWizard("jre8Wizard");
 
-
 		wizard.addStep(new SmartWizardStep(mavenContent, new SmartWizardStepItem("Configure Maven", new SmallText("How to configure maven"))));
-		wizard.addStep(new SmartWizardStep(pageContent, new SmartWizardStepItem("Make A Page", new SmallText("How to configure maven"))));
-		wizard.addStep(new SmartWizardStep(moduleInfoContent, new SmartWizardStepItem("Run It!", new SmallText("How to configure maven"))));
+		wizard.addStep(new SmartWizardStep(pageContent, new SmartWizardStepItem("Make A Page", new SmallText("Start building"))));
+		wizard.addStep(new SmartWizardStep(moduleInfoContent, new SmartWizardStepItem("Provision", new SmallText("Expose your page"))));
+		wizard.addStep(new SmartWizardStep(moduleInfoContent, new SmartWizardStepItem("Run It!", new SmallText("Hit that go button"))));
 
 		stepper.add(wizard);
 		return stepper;

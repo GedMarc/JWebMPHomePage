@@ -20,12 +20,13 @@ public class DefaultDisplayWizard
 				.getToolbarSettings()
 				.setToolbarButtonPosition(LeftOrRight.Left);
 		getOptions().getToolbarSettings()
-		            .setToolbarPosition(SmartWizardToolbarPosition.top);
+		            .setToolbarPosition(SmartWizardToolbarPosition.none);
 
 		getOptions()
 				.getAnchorSettings()
 				.setEnableAllAnchors(true)
 				.setMarkDoneStep(true)
+				.setMarkAllPreviousStepsAsDone(true)
 				.setAnchorClickable(true);
 	}
 }
