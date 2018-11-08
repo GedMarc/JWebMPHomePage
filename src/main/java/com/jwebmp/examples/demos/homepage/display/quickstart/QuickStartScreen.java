@@ -1,10 +1,16 @@
 package com.jwebmp.examples.demos.homepage.display.quickstart;
 
 import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.htmlbuilder.css.colours.ColourNames;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
+import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
+import com.jwebmp.plugins.jstree.JSTree;
+import com.jwebmp.plugins.jstree.JSTreeListItem;
+import com.jwebmp.plugins.jstree.options.JSTreeNodeOptions;
+import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStepItem;
 
@@ -24,9 +30,13 @@ public class QuickStartScreen
 		BSContainer container = new BSContainer();
 		container.add(tabs());
 
-		container.add(HorizontalRule.getNewInstance());
-		container.add(new H3("Check out the video!"));
+		//		container.add(HorizontalRule.getNewInstance());
+/*
+		container.add(new AlertMessage("Quick Hint! Build with DCEVM for awesome hot-swapping <br/>" +
+		                               " Instantly port to JPMS without any problem!. Developer heaven!", BSAlertOptions.Alert_Danger));
 
+		container.add(new H3("Check out the video!"));
+*/
 		return container;
 	}
 
@@ -51,6 +61,7 @@ public class QuickStartScreen
 	{
 		Div mavenContent = new Div();
 		Div pageContent = new Div();
+		Div structureContent = new Div();
 		Div moduleInfoContent = new Div();
 
 		Div stepper = new Div();
@@ -68,12 +79,25 @@ public class QuickStartScreen
 		pageContent.add(new H3("You will need a Page"));
 		addSourceToContainer(QuickStartScreen.class, "page_jre8.txt", Java, pageContent);
 
+		structureContent.add(new H3("Tell JWebMP about it"));
+		structureContent.add("Instant porting to JPMS is used via <a target=\"_blank\" href=\"https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html\">SPI</a>." +
+		                     " The implementation for JRE 8 is different in JPMS<br/>");
+		structureContent.add(buildStructureTree());
+		structureContent.add("A reminder is added to the log files of where to place raw files.<br/>" +
+		                     "As a pure jar file, resources should be put in META-INF/resources for compatibility with WARs that are porting");
+
+		structureContent.add(new H3("Whats in the file?"));
+		structureContent.add("A simple reference to your pages on each new line");
+		addSourceToContainer(QuickStartScreen.class, "spifile.txt", SourceCodeLanguages.HTML, structureContent);
+
 		//tabs.addTab("Quick Server", moduleInfoContent, false);
 		moduleInfoContent.add(new H3("Get Started!"));
 		moduleInfoContent.add(new Link<>("https://maven.apache.org/plugins/maven-war-plugin/usage.html", "_blank")
 				                      .setText("Package as a WAR and deploy!<br/>"));
 		moduleInfoContent.add(new Strong("No Container?"));
 		moduleInfoContent.add("Simply add the below into any class of your choice and hit run!");
+
+
 		addSourceToContainer(QuickStartScreen.class, "getstarted_jre8.txt", Java, moduleInfoContent);
 		moduleInfoContent.add("And then of course...");
 		addSourceToContainer(QuickStartScreen.class, "undertow_jre8.txt", XML, moduleInfoContent);
@@ -83,9 +107,9 @@ public class QuickStartScreen
 
 		DefaultDisplayWizard wizard = new DefaultDisplayWizard("jre8Wizard");
 
-		wizard.addStep(new SmartWizardStep(mavenContent, new SmartWizardStepItem("Configure Maven", new SmallText("How to configure maven"))));
+		wizard.addStep(new SmartWizardStep(mavenContent, new SmartWizardStepItem("Configure Maven", new SmallText("Add the dependency"))));
 		wizard.addStep(new SmartWizardStep(pageContent, new SmartWizardStepItem("Make A Page", new SmallText("Start building"))));
-		wizard.addStep(new SmartWizardStep(moduleInfoContent, new SmartWizardStepItem("Provision", new SmallText("Expose your page"))));
+		wizard.addStep(new SmartWizardStep(structureContent, new SmartWizardStepItem("Provision", new SmallText("Expose your page"))));
 		wizard.addStep(new SmartWizardStep(moduleInfoContent, new SmartWizardStepItem("Run It!", new SmallText("Hit that go button"))));
 
 		stepper.add(wizard);
@@ -109,6 +133,47 @@ public class QuickStartScreen
 		tabs.addTab("Service Location", moduleInfoContent, false);
 
 		return tabs;
+	}
+
+	private JSTree buildStructureTree()
+	{
+		JSTree<?> directoryStructureExample = new JSTree<>();
+		directoryStructureExample.setTheme(new JSTreeDefaultDarkTheme());
+
+		JSTreeListItem<?> rootItem = new JSTreeListItem<>("src")
+				                             .setOptions(new JSTreeNodeOptions<>().setDisabled(false)
+				                                                                  .setIcon("far fa-caret-circle-down")
+				                                                                  .setOpened(true));
+
+		JSTreeListItem<?> folder1 = new JSTreeListItem<>("META-INF", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
+		                                                                                      .setOpened(true));
+
+		JSTreeListItem<?> folder2 = new JSTreeListItem<>("services", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
+		                                                                                      .setOpened(true));
+
+		JSTreeListItem<?> file1 = new JSTreeListItem<>("com.jwebmp.core.services.IPage", new JSTreeNodeOptions<>().setIcon("far fa-file"));
+
+		JSTreeListItem<?> folderResources = new JSTreeListItem<>("resources", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
+		                                                                                               .setOpened(true));
+
+		JSTreeListItem<?> file2 = new JSTreeListItem<>("favicon.ico", new JSTreeNodeOptions<>().setIcon("far fa-file-alt"));
+
+		folder2.add(file1);
+
+		folder1.add(folder2);
+
+		folderResources.add(file2);
+
+		folder1.add(folderResources);
+		rootItem.add(folder1);
+
+		directoryStructureExample.addRoot(rootItem);
+		directoryStructureExample.setID("directory-structure-example");
+
+		directoryStructureExample.getCss()
+		                         .getBackground()
+		                         .setBackgroundColor$(ColourNames.Black);
+		return directoryStructureExample;
 	}
 
 	private BSNavTabs buildJRE10()

@@ -152,3 +152,11 @@ body.fixed-left .side-menu.left {
 .sw-theme-default > ul.step-anchor > li.done > a {
     color: lightgrey !important;
 }
+
+.collapsing {
+    transition: none !important;
+}
+
+#slimScrollSpacer {
+    height: 0px !important;
+}

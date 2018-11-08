@@ -1,7 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
 import com.jwebmp.core.base.html.Div;
-import com.jwebmp.core.base.html.Paragraph;
 import com.jwebmp.core.base.html.interfaces.GlobalFeatures;
 import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
 import com.jwebmp.core.base.interfaces.IComponentHierarchyBase;
@@ -12,10 +11,6 @@ import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardFooter;
 import com.jwebmp.plugins.bootstrap4.listgroup.tabs.BSTabContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.options.BSMarginOptions;
-import com.jwebmp.plugins.jstree.JSTree;
-import com.jwebmp.plugins.jstree.JSTreeListItem;
-import com.jwebmp.plugins.jstree.options.JSTreeNodeOptions;
-import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 
 import static com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
@@ -57,48 +52,17 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 		BSTabContainer tab5 = tabs.addTab("JDK 11",
 		                                  jdk11QuickStart, false);
 
+/*
 		BSTabContainer tab4 = tabs.addTab("Structure",
 		                                  pageServicing, false);
+*/
 
 		BSTabContainer tab3 = tabs.addTab("Nightly",
 		                                  nightlyBuilds, false);
 
-		JSTree<?> directoryStructureExample = new JSTree<>();
-		directoryStructureExample.setTheme(new JSTreeDefaultDarkTheme());
 
-		JSTreeListItem<?> rootItem = new JSTreeListItem<>("src")
-				                             .setOptions(new JSTreeNodeOptions<>().setDisabled(false)
-				                                                                  .setIcon("far fa-caret-circle-down")
-				                                                                  .setOpened(true));
-
-		JSTreeListItem<?> folder1 = new JSTreeListItem<>("META-INF", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
-		                                                                                      .setOpened(true));
-
-		JSTreeListItem<?> folder2 = new JSTreeListItem<>("services", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
-		                                                                                      .setOpened(true));
-
-		JSTreeListItem<?> file1 = new JSTreeListItem<>("com.jwebmp.core.services.IPage", new JSTreeNodeOptions<>().setIcon("far fa-file"));
-
-		JSTreeListItem<?> folderResources = new JSTreeListItem<>("resources", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
-		                                                                                               .setOpened(true));
-
-		JSTreeListItem<?> file2 = new JSTreeListItem<>("favicon.ico", new JSTreeNodeOptions<>().setIcon("far fa-file-alt"));
-
-		folder2.add(file1);
-
-		folder1.add(folder2);
-
-		folderResources.add(file2);
-
-		folder1.add(folderResources);
-		rootItem.add(folder1);
-
-		directoryStructureExample.addRoot(rootItem);
-		directoryStructureExample.setID("directory-structure-example");
-
-		pageServicing.add(directoryStructureExample);
-		pageServicing.add(new Paragraph<>("For JDK 10 specify your provides list"));
-		addSourceToContainer(HomePage.class, "requiresdepedency_10.txt", JS, pageServicing);
+		//	pageServicing.add(new Paragraph<>("For JDK 10 specify your provides list"));
+		//	addSourceToContainer(HomePage.class, "requiresdepedency_10.txt", JS, pageServicing);
 
 		addCardBody().add(tabs);
 		BSCardFooter footer = addFooter();
