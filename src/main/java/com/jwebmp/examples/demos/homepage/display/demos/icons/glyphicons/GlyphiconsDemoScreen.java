@@ -12,7 +12,7 @@ public class GlyphiconsDemoScreen
 		super("Glyphicons", "Icon Sets", "Glyphicons", "Bootstrap 3 Set");
 		BSRow row = new BSRow();
 /*		SourceCodeContentPanel panel = new SourceCodeContentPanel("Glyphicons Example", DisplayCodeParts.Glyphicons, null);
-		panel.getContent()
+		panel.getContext()
 		     .add(row);
 		panel.setShowHeader(true);
 

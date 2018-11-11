@@ -15,7 +15,7 @@ public class FontAwesomeDemoScreen
 
 /*
 		SourceCodeContentPanel panel = new SourceCodeContentPanel("Font Awesome 4.7 Icons", DisplayCodeParts.FontAwesome, null);
-		panel.getContent()
+		panel.getContext()
 		     .add(row);
 		panel.setShowHeader(true);
 		addDiv(panel);

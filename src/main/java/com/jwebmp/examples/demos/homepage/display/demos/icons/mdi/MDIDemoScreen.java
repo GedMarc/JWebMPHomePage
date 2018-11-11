@@ -14,7 +14,7 @@ public class MDIDemoScreen
 		BSRow row = BSRow.newInstance();
 
 /*		SourceCodeContentPanel panel = new SourceCodeContentPanel("Material Design Icons - Web Fonts", DisplayCodeParts.MaterialDesignIcons2, null);
-		panel.getContent()
+		panel.getContext()
 		     .add(row);
 		panel.setShowHeader(true);
 

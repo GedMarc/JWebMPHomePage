@@ -14,7 +14,7 @@ public class IonIconsDemoScreen
 		BSRow row = BSRow.newInstance();
 
 /*		SourceCodeContentPanel panel = new SourceCodeContentPanel("Ion Icons", DisplayCodeParts.FontAwesome, null);
-		panel.getContent()
+		panel.getContext()
 		     .add(row);
 		panel.setShowHeader(true);
 

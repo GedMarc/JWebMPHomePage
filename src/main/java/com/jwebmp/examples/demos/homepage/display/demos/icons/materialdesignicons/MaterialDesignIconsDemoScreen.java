@@ -14,7 +14,7 @@ public class MaterialDesignIconsDemoScreen
 		BSRow row = BSRow.newInstance();
 
 /*		SourceCodeContentPanel panel = new SourceCodeContentPanel("Material Design Icons", DisplayCodeParts.MaterialDesignIcons3, null);
-		panel.getContent()
+		panel.getContext()
 		     .add(row);
 		panel.setShowHeader(true);
 

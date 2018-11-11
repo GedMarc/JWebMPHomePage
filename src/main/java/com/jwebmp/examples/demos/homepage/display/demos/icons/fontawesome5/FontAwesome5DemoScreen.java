@@ -21,7 +21,7 @@ public class FontAwesome5DemoScreen
 		BSRow row = BSRow.newInstance();
 
 /*		SourceCodeContentPanel panel = new SourceCodeContentPanel("Font Awesome 5 Icons", DisplayCodeParts.FontAwesome, null);
-		panel.getContent()
+		panel.getContext()
 		     .add(row);
 		panel.setShowHeader(true);*/
 
