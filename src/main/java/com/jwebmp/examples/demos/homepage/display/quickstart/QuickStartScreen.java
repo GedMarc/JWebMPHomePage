@@ -46,9 +46,9 @@ public class QuickStartScreen
 		tabs.setBordered(true);
 		tabs.getTabContents()
 		    .addStyle("padding-top:0px;");
-		tabs.addTab("JRE 8", buildJRE8(), true);
+		tabs.addTab("Java 8", buildJRE8(), true);
 		//tabs.addTab("JRE 10", buildJRE10(), false);
-		tabs.addTab("JRE 11", buildJRE11(), false);
+		tabs.addTab("Java 11", buildJRE11(), false);
 		//	add("Any event can send back multiple variables when fired. The registered variables are retrievable through the AjaxCall");
 		//add(getCodeBlockJava(FormBasicsDemoScreen.class, "bindingsbasic_4.txt").setID("coce3"));
 
@@ -150,7 +150,7 @@ public class QuickStartScreen
 
 		JSTreeListItem<?> folder2 = new JSTreeListItem<>("services", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
 		                                                                                      .setOpened(true));
-
+		BitronixTransaction
 		JSTreeListItem<?> file1 = new JSTreeListItem<>("com.jwebmp.core.services.IPage", new JSTreeNodeOptions<>().setIcon("far fa-file"));
 
 		JSTreeListItem<?> folderResources = new JSTreeListItem<>("resources", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
