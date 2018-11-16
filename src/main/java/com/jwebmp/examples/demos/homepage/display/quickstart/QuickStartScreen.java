@@ -82,13 +82,17 @@ public class QuickStartScreen
 		structureContent.add(new H3("Tell JWebMP about it"));
 		structureContent.add("Instant porting to JPMS is used via <a target=\"_blank\" href=\"https://docs.oracle.com/javase/tutorial/sound/SPI-intro.html\">SPI</a>." +
 		                     " The implementation for JRE 8 is different in JPMS<br/>");
+
 		structureContent.add(buildStructureTree());
-		structureContent.add("A reminder is added to the log files of where to place raw files.<br/>" +
-		                     "As a pure jar file, resources should be put in META-INF/resources for compatibility with WARs that are porting");
+		structureContent.add("");
 
 		structureContent.add(new H3("Whats in the file?"));
 		structureContent.add("A simple reference to your pages on each new line");
 		addSourceToContainer(QuickStartScreen.class, "spifile.txt", SourceCodeLanguages.HTML, structureContent);
+
+
+		structureContent.add("A reminder is added to the log files of where to place raw files.<br/>" +
+		                     "As a pure jar file, resources should be put in META-INF/resources");
 
 		//tabs.addTab("Quick Server", moduleInfoContent, false);
 		moduleInfoContent.add(new H3("Get Started!"));
