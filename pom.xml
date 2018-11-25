@@ -365,8 +365,33 @@
                     <version>${javax.activation.version}</version>
                 </dependency>
             </dependencies>
+            <properties>
+                <java.executable.path></java.executable.path>
+            </properties>
             <build>
                 <plugins>
+
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <version>1.6.0</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <executable>${java.executable.path}/java</executable>
+                            <arguments>
+                                <argument>--add-opens=java.base/java.lang=javassist,com.google.guice</argument>
+                                <argument>-jar</argument>
+                                <argument>ServiceCreate.jar</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-compiler-plugin</artifactId>

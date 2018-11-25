@@ -6,6 +6,7 @@ import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.display.CircleDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
+import com.jwebmp.plugins.bootstrap4.accordion.BSAccordion;
 import com.jwebmp.plugins.bootstrap4.buttons.styles.BSButtonLightOutline;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
@@ -147,20 +148,15 @@ public class QuickStartScreen
 
 	private Div buildJRE11()
 	{
-		Div pageContent = new Div();
-		Div structureContent = new Div();
-		Div moduleInfoContent = new Div();
-
 		Div stepper = new Div();
 
 		DefaultDisplayWizard wizard = new DefaultDisplayWizard("jre11Wizard");
 
-
 		wizard.addStep(new SmartWizardStep(buildPomConfigJRE11(), new SmartWizardStepItem("POM Config", new SmallText("Setup for JPMS"))));
 		wizard.addStep(new SmartWizardStep(buildMakeAPageJRE11(), new SmartWizardStepItem("Make A Page", new SmallText("Gotta start somewhere"))));
 		wizard.addStep(new SmartWizardStep(buildModulesJRE11(), new SmartWizardStepItem("Modules", new SmallText("Specify your modules"))));
+		wizard.addStep(new SmartWizardStep(buildGoJRE11(), new SmartWizardStepItem("Go", new SmallText("Time to run"))));
 		wizard.addStep(new SmartWizardStep(buildCompletePomJRE11(), new SmartWizardStepItem("Complete POM", new SmallText("Ready to use!"))));
-		wizard.addStep(new SmartWizardStep(moduleInfoContent, new SmartWizardStepItem("Go", new SmallText("Time to run"))));
 
 		stepper.add(wizard);
 		return stepper;
@@ -299,10 +295,36 @@ public class QuickStartScreen
 		Div d = new Div();
 
 		d.add(new H3("Complete POM"));
-		d.add("The only difference is the group. This allows, well... me to deploy easily. :) " +
-		      "<br/>But it also enables a simple find and replace, or a maven property, to switch between JRE8 and JRE11, and shortly JRE12");
+		d.add("You can use this POM to generate a complete executable, and deployable application.");
+		d.add("You may need to change the main-class definition");
 
 		JQSourceCodePrettify<?> dScroll = addSourceToContainer(QuickStartScreen.class, "jre11_maven_complete_pom.txt", XML, d);
+		dScroll.addStyle("max-height", "400px");
+		dScroll.addFeature(new DefaultSlimScroll(dScroll));
+
+		return d;
+	}
+
+	private Div buildGoJRE11()
+	{
+		Div d = new Div();
+
+		d.add(new H3("Time to Run"));
+		d.add("You can run this program using a JRE 11 Runtime by specifying an arguments file, or specifying a command line");
+		d.add("Arguments files are definitely preferred");
+
+		d.add(new BSButtonLightOutline<>().setText("Download Arguments File"));
+		JQSourceCodePrettify<?> dInner = addSourceToContainer(QuickStartScreen.class, "jre11_argumentsfile.txt", XML, d);
+		d.add("You can run straight from the command line");
+		JQSourceCodePrettify<?> dInner2 = addSourceToContainer(QuickStartScreen.class, "jre11_argumentsfilerun.txt", XML, d);
+
+		BSAccordion<?> ideAccordion = new BSAccordion<>();
+		ideAccordion.addCard("Configure Eclipse");
+		ideAccordion.addCard("Configure Netbeans");
+		ideAccordion.addCard("Configure IntelliJ");
+		d.add(ideAccordion);
+
+		JQSourceCodePrettify<?> dScroll = addSourceToContainer(QuickStartScreen.class, "jre11_run.txt", XML, d);
 		dScroll.addStyle("max-height", "400px");
 		dScroll.addFeature(new DefaultSlimScroll(dScroll));
 
