@@ -4,6 +4,7 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutThisSiteScreen;
 import com.jwebmp.examples.demos.homepage.display.about.SPIScreen;
+import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.GuicedPersistenceScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animate.AngularAnimateDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animatedchange.AngularAnimateChangeDemoScreen;
@@ -88,15 +89,27 @@ import com.jwebmp.examples.demos.homepage.display.demos.tables.xeditable.XEditab
 import com.jwebmp.examples.demos.homepage.display.demos.trees.jstree.JSTreeDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordScreen;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
+import com.jwebmp.examples.demos.homepage.display.privacy.ChatRoomPrivacyScreen;
+import com.jwebmp.examples.demos.homepage.display.privacy.PrivacyScreen;
+import com.jwebmp.examples.demos.homepage.display.termsandconditions.TermsAndConditionsScreen;
 
 public enum DisplayScreens
 {
 	HomePageScreen(HomePage.class, "home"),
 	GoDeeperScreen(com.jwebmp.examples.demos.homepage.display.helloworld.GoDeeperScreen.class, "GoDeeper"),
 
-	PersistenceScreen(com.jwebmp.examples.demos.homepage.display.persistence.PersistenceScreen.class, "Persistence"),
 	QuickStartScreen(com.jwebmp.examples.demos.homepage.display.quickstart.QuickStartScreen.class, "QuickStart"),
+
+
+	PersistenceScreen(com.jwebmp.examples.demos.homepage.display.persistence.PersistenceScreen.class, "Persistence"),
+	PersistenceBasicsScreen(GuicedPersistenceScreen.class, "PersistenceBasics"),
+
+
 	EventsScreen(com.jwebmp.examples.demos.homepage.display.events.EventScreen.class, "Events"),
+
+	TCs(TermsAndConditionsScreen.class, "TermsAndConditions"),
+	Privacy(PrivacyScreen.class, "PrivacyPolicy"),
+	ChatPolicy(ChatRoomPrivacyScreen.class, "ChatPolicy"),
 
 	ForgotPassword(ForgotPasswordScreen.class, "ForgotPassword"),
 	ConfirmEmailAddress(ConfirmEmailAddressScreen.class, "ConfirmEmailAddress"),

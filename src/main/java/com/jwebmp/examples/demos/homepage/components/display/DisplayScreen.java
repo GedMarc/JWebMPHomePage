@@ -39,6 +39,7 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 			setID("content-updatable");
 			addStyle("background-color:#333");
 			addStyle("padding:0px;");
+			addStyle("height:inherited !important;");
 
 			Div d = getContentContainer();
 			d.setID("content-updatable-content");
@@ -64,10 +65,10 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 				d.addStyle("padding-right", "0px");
 			}
 
-			Div slimScrollerSpacer = new Div<>().setID("slimScrollSpacer");
+	/*		Div slimScrollerSpacer = new Div<>().setID("slimScrollSpacer");
 			slimScrollerSpacer.addStyle("height:70px;");
 			d.add(slimScrollerSpacer);
-
+*/
 			buildTitleRow();
 			GuiceContext.getInstance(AjaxResponse.class)
 			            .addComponent(d);

@@ -1,22 +1,36 @@
 package com.jwebmp.examples.demos.homepage.display.about.persistencehandling;
 
 import com.jwebmp.core.base.html.*;
-import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
+import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
+import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
+import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
+import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 
+import javax.validation.constraints.NotNull;
+
+import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
 public class GuicedPersistenceScreen
-		extends DisplayPart<GuicedPersistenceScreen>
+		extends DisplayScreen<GuicedPersistenceScreen>
 {
 	public GuicedPersistenceScreen()
 	{
+
+	}
+
+	@Override
+	public @NotNull BSContainer<?> getContentContainer()
+	{
+		BSContainer container = new BSContainer(Container_Fluid);
+
 		BSCardBody all = new BSCardBody();
 
 		BSNavTabs tabs = new BSNavTabs();
@@ -34,7 +48,8 @@ public class GuicedPersistenceScreen
 
 		all.add(tabs);
 
-		all.addClass("row bg-dark");
+		//all.addClass(Bg_Dark);
+		//all.addClass(Border_Secondary);
 		all.addStyle("display:grid;overflow-y:auto;padding:0px;");
 
 		about.add(new H3("Persistence Management"));
@@ -126,6 +141,21 @@ public class GuicedPersistenceScreen
 
 		more.add(new MetaInfTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule", "com.jwebmp.guicedinjection.interfaces.IGuicePostStartup"));
 
-		add(all);
+		container.add(all);
+
+		return container;
+	}
+
+	@Override
+	public @NotNull BSBreadCrumb<?> getTitleBreadcrumbs()
+	{
+		BSBreadCrumb crumbs = new BSBreadCrumb();
+		crumbs.addBreadCrumb(new BSBreadCrumbItem().setActive(true)
+		                                           .setCrumbLink(new Link<>("#").setText("JWebMP")));
+		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
+		                                             .setText("Persistence"));
+		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
+		                                             .setText("Basics"));
+		return crumbs;
 	}
 }

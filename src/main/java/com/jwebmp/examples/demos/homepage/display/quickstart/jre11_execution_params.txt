@@ -1,0 +1,2 @@
+//Execution parameter for injection
+-add-opens java.base/java.lang=com.google.guice

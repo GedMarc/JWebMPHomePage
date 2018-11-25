@@ -19,6 +19,9 @@ public class ContinousIntegrationPart
 	public ContinousIntegrationPart()
 	{
 		addClass("d-flex flex-row my-flex-container");
+
+		//addClass(Border_Secondary);
+
 		BSCardBody<?> body = addCardBody();
 		body.addClass("row");
 		body.addClass(Align_Between);
@@ -55,7 +58,7 @@ public class ContinousIntegrationPart
 		starLink.addStyle("color:white;")
 		        .addStyle("position:absolute;")
 		        .addStyle("top:0px;")
-		        .addStyle("right:0px;");
+		        .addStyle("right:1em;");
 
 		add(starLink.setTiny(true)
 		            .toString(true));

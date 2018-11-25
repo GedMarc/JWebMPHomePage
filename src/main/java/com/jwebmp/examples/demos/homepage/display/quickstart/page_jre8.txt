@@ -1,9 +1,5 @@
-public class HelloWorld
-		extends Page
-{
-    public HelloWorld()
-    {
-        super("Hello World!");
+public class HelloWorld extends Page{
+    public HelloWorld(){
         add("Hello World!");
     }
 }

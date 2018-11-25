@@ -48,33 +48,34 @@ public class West
 
 		ListItem homeItem;
 		ListItem quickStartItem;
-		ListItem aboutItem;
 		ListItem spiItem;
-		ListItem thisSite;
-		ListItem goDeepSite;
-		ListItem events;
 		ListItem persistence;
 		ListItem pluginsListing;
 
 		globalList.add(homeItem = buildMenuItem("fal fa-hotel fa-2x fa-fw", HTML_TAB + "Home"));
 
 		globalList.add(quickStartItem = buildMenuItem("fal fa-rabbit-fast fa-3x", HTML_TAB + "Quick Start"));
-		globalList.add(aboutItem = buildMenuItem("fal fa-archive fa-2x", HTML_TAB + "About"));
+
+		globalList.add(buildMoreMenu());
+		globalList.add(buildBasicsMenu());
+		buildAddonsMenu();
+
 		globalList.add(spiItem = buildMenuItem("fal fa-syringe fa-2x", HTML_TAB + "SPI"));
-		globalList.add(thisSite = buildMenuItem("fal fa-sitemap fa-2x", HTML_TAB + "This Site"));
-		globalList.add(goDeepSite = buildMenuItem("fal fa-tachometer-alt-fastest fa-2x", HTML_TAB + "Go Deeper"));
-		globalList.add(events = buildMenuItem("fal fa-star", HTML_TAB + "Events"));
+
 		globalList.add(persistence = buildMenuItem("fal fa-database", HTML_TAB + " Core Addons"));
 		globalList.add(pluginsListing = buildMenuItem("fal fa-steering-wheel fa-2x", HTML_TAB + "Plugins List"));
 
+
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
 		quickStartItem.addEvent(new ChangeScreenEvent(quickStartItem, "p=QuickStart").setID(DisplayScreens.QuickStartScreen.toString()));
-		aboutItem.addEvent(new ChangeScreenEvent(aboutItem, "p=AboutJWebMP").setID(DisplayScreens.AboutJWebMP.toString()));
+
+		//aboutItem.addEvent(new ChangeScreenEvent(aboutItem, "p=AboutJWebMP").setID(DisplayScreens.AboutJWebMP.toString()));
+
 		spiItem.addEvent(new ChangeScreenEvent(spiItem, "p=UnderTheHood").setID(DisplayScreens.UnderTheHood.toString()));
-		thisSite.addEvent(new ChangeScreenEvent(thisSite, "p=AboutThisSite").setID(DisplayScreens.AboutThisSIte.toString()));
-		events.addEvent(new ChangeScreenEvent(events, "p=Events").setID(DisplayScreens.EventsScreen.toString()));
+
+		//events.addEvent(new ChangeScreenEvent(events, "p=Events").setID(DisplayScreens.EventsScreen.toString()));
 		persistence.addEvent(new ChangeScreenEvent(persistence, "p=Persistence").setID(DisplayScreens.PersistenceScreen.toString()));
-		goDeepSite.addEvent(new ChangeScreenEvent(goDeepSite, "p=GoDeeperScreen").setID(DisplayScreens.GoDeeperScreen.toString()));
+		//goDeepSite.addEvent(new ChangeScreenEvent(goDeepSite, "p=GoDeeperScreen").setID(DisplayScreens.GoDeeperScreen.toString()));
 		pluginsListing.addEvent(new ChangeScreenEvent(pluginsListing, "p=PluginsListScreen").setID(DisplayScreens.PluginsListScreen.toString()));
 
 		//buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
@@ -82,7 +83,7 @@ public class West
 		//buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites());
 		//buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
-		buildMenuSection("BASES", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(), buildJQueryUI());
+		buildMenuSection("PLUG N PLAY", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(), buildJQueryUI());
 
 		//buildMenuSection("Bootstrap", true, buildBootstrap4(), buildBootstrap3());
 		//buildMenuSection("JQuery UI", true, buildJQueryUI());
@@ -96,6 +97,138 @@ public class West
 		sidebarInner.add(new DivSimple<>().addClass("clearfix"));
 
 		add(sidebarInner);
+	}
+
+	private ListItem<?> buildMoreMenu()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText(HTML_TAB + "This Site"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText(HTML_TAB + "About"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", TCs).setText(HTML_TAB + "T&amp;C's"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", Privacy).setText(HTML_TAB + "Privacy"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", ChatPolicy).setText(HTML_TAB + "Chat Policy"))
+		                          .setRenderTextBeforeChildren(false));
+
+		ListItem dropDown1 = buildSubList("fal fa-question", "More", uiKit);
+		return dropDown1;
+	}
+
+	private void buildAddonsMenu()
+	{
+		buildMenuSection("ADDON MODULES", true
+				, buildAddonsInjection()
+				, buildAddonsPersistence()
+				, buildAddonsCaching());
+	}
+
+	private void buildMenuSection(String title, boolean hideOnStart, ComponentHierarchyBase... content)
+	{
+		ListItem li = new ListItem<>().addClass("menu-title")
+		                              .setText(title);
+		globalList.add(li);
+		for (ComponentHierarchyBase componentHierarchyBase : content)
+		{
+			globalList.add(componentHierarchyBase);
+		}
+	}
+
+	private ListItem buildAddonsInjection()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText("Basics"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText("ClassGraph"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", TCs).setText("JWebMP"))
+		                          .setRenderTextBeforeChildren(false));
+		ListItem dropDown1 = buildSubList("fal fa-question", "Injection", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem buildAddonsPersistence()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceBasicsScreen).setText(HTML_TAB + "Basics"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText(HTML_TAB + "JPA"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", TCs).setText(HTML_TAB + "JTA"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", Privacy).setText(HTML_TAB + "C3P0"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", ChatPolicy).setText(HTML_TAB + "Entity Assist"))
+		                          .setRenderTextBeforeChildren(false));
+
+		ListItem dropDown1 = buildSubList("fal fa-question", "Persistence", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem buildAddonsCaching()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText(HTML_TAB + "HazelCast"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText(HTML_TAB + "EhCache"))
+		                          .setRenderTextBeforeChildren(false));
+
+		ListItem dropDown1 = buildSubList("fal fa-question", "Caching", uiKit);
+		return dropDown1;
+	}
+
+	private ListItem<?> buildBasicsMenu()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", EventsScreen).setText(HTML_TAB + "Events"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", GoDeeperScreen).setText(HTML_TAB + "Output"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", Privacy).setText(HTML_TAB + "Testing"))
+		                          .setRenderTextBeforeChildren(false));
+
+		ListItem dropDown1 = buildSubList("fal fa-abacus", "Basics", uiKit);
+		return dropDown1;
+	}
+
+	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen, String icon)
+	{
+		Link<?> link = new Link(uniqueHashBangId);
+		link.add(new Italic<>().addClass(icon))
+		    .setRenderTextBeforeChildren(false);
+		changeScreenAdapter(screen, link);
+		return link;
+	}
+
+	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
+	{
+		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
+		adapter.setID(screenReference.toString());
+		comp.addEvent(adapter);
+		return adapter;
+	}
+
+	private ListItem<?> buildMenuItem(String icon, String title)
+	{
+		ListItem item = new ListItem();
+		item.addStyle("margin", "0px");
+		Link<?> link = new Link();
+		link.addStyle("margin", "0px");
+		link.addStyle("line-height", "1");
+		link.addClass("waves-effect waves-light waves-primary");
+		if (icon != null)
+		{
+			Italic<?> italic = new Italic<>();
+			italic.addClass(icon);
+			link.add(italic);
+		}
+		Span text = new Span(title);
+		link.add(text);
+
+		item.add(link);
+		return item;
 	}
 
 	private ListItem<?> buildCorePlugins()
@@ -163,14 +296,6 @@ public class West
 		menuItemList.addAttribute("data-parent", "#west");
 
 		return item;
-	}
-
-	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
-	{
-		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
-		adapter.setID(screenReference.toString());
-		comp.addEvent(adapter);
-		return adapter;
 	}
 
 	private ListItem<?> buildDisplayComponents()
@@ -265,38 +390,6 @@ public class West
 
 		ListItem dropDown1 = buildSubList("fal fa-compass", "Forms", uiKit);
 		return dropDown1;
-	}
-
-	private void buildMenuSection(String title, boolean hideOnStart, ComponentHierarchyBase... content)
-	{
-		ListItem li = new ListItem<>().addClass("menu-title")
-		                              .setText(title);
-		globalList.add(li);
-		for (ComponentHierarchyBase componentHierarchyBase : content)
-		{
-			globalList.add(componentHierarchyBase);
-		}
-	}
-
-	private ListItem<?> buildMenuItem(String icon, String title)
-	{
-		ListItem item = new ListItem();
-		item.addStyle("margin", "0px");
-		Link<?> link = new Link();
-		link.addStyle("margin", "0px");
-		link.addStyle("line-height", "1");
-		link.addClass("waves-effect waves-light waves-primary");
-		if (icon != null)
-		{
-			Italic<?> italic = new Italic<>();
-			italic.addClass(icon);
-			link.add(italic);
-		}
-		Span text = new Span(title);
-		link.add(text);
-
-		item.add(link);
-		return item;
 	}
 
 	private Link<?> buildListItem(String uniqueHashBangId)

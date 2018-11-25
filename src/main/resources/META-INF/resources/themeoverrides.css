@@ -153,10 +153,34 @@ body.fixed-left .side-menu.left {
     color: lightgrey !important;
 }
 
-.collapsing {
-    transition: none !important;
-}
-
 #slimScrollSpacer {
     height: 0px !important;
+}
+
+.sw-theme-circles > ul.step-anchor {
+    background: transparent !important;
+}
+
+.sw-theme-circles > ul.step-anchor:before {
+    background-color: darkgrey !important;
+}
+
+.sw-theme-circles > ul.step-anchor {
+    margin-bottom: 0px !important;
+}
+
+.sw-theme-circles > ul.step-anchor > li > a {
+    background-color: #4285f4;
+    color: black;
+    width: 85px;
+    height: 85px;
+    padding: 30px 0px;
+}
+
+.sw-theme-circles > ul.step-anchor > li.clickable > a:hover {
+    color: black !important;
+}
+
+.sw-theme-circles .sw-container {
+    min-height: inherit !important;
 }

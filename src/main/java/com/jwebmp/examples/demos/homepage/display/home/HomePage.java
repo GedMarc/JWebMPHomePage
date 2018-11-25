@@ -121,8 +121,12 @@ public class HomePage
 		                      ));
 
 		left.add(GuiceContext.get(GalleryPart.class));
+/*
 		right.add(addWhiteAlert("<strong>Testable End-To-End. No more struggling with getting test cases up and running!</strong>" +
 		                        "<br/><a target=\"_blank\" href=\"https://jwebmp.com/sonar/\">View SonarQube for Quality Control and Test Case Output</a>"));
+*/
+
+		right.add(addBlueAlert("Version 0.62.0.1 RC2 - 2018/11/18"));
 
 		right.add(new MavenPomPart());
 		right.add(buildSnap4());

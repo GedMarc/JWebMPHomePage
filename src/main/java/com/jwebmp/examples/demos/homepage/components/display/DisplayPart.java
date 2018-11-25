@@ -2,6 +2,7 @@ package com.jwebmp.examples.demos.homepage.components.display;
 
 import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.htmlbuilder.css.colours.ColourNames;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
@@ -19,6 +20,7 @@ import org.apache.commons.text.StringEscapeUtils;
 import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSBorderOptions.*;
 
 public class DisplayPart<J extends DisplayPart<J>>
 		extends BSCard<J>
@@ -38,17 +40,30 @@ public class DisplayPart<J extends DisplayPart<J>>
 		return list;
 	}
 
-	protected void addSourceToContainer(Class reference, String filename, SourceCodeLanguages language, Div container)
+	protected JQSourceCodePrettify addSourceToContainer(Class reference, String filename, SourceCodeLanguages language, Div container)
 	{
 		StringBuilder contents = FileTemplates.getFileTemplate(reference, reference.getName() + filename, filename);
-		container.add(new JQSourceCodePrettify<>().addStyle("background:#333;")
-		                                          .setSourceCodeLanguage(language)
-		                                          .setText(StringEscapeUtils.escapeHtml4(contents.toString())));
+		JQSourceCodePrettify prettify = new JQSourceCodePrettify<>().addStyle("background:#333;")
+		                                                            .setSourceCodeLanguage(language)
+		                                                            .setText(StringEscapeUtils.escapeHtml4(contents.toString()));
+		container.add(prettify);
+		return prettify;
 	}
 
 	protected BSAlert addWhiteAlert(String text)
 	{
 		return new AlertMessage(text, Alert_Dark).addClass(Bg_Light)
+		                                         .setAddDismissButton(false)
+		                                         .setID("useCodeIconsAM");
+
+	}
+
+	protected BSAlert addBlueAlert(String text)
+	{
+		return new AlertMessage(text, Alert_Dark).addClass(Bg_Dark)
+		                                         .addClass(Border_Primary)
+		                                         .addClass(ColourNames.White.toString())
+		                                         .addStyle("color", "white")
 		                                         .setAddDismissButton(false)
 		                                         .setID("useCodeIconsAM");
 

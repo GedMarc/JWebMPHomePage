@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.menu;
 
+import com.jwebmp.core.Feature;
 import com.jwebmp.core.Page;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.AjaxCall;
@@ -77,6 +78,16 @@ public class ChangeScreenEvent
 				e.printStackTrace();
 			}
 			response.addComponent(screenCreated);
+			response.getFeatures()
+			        .add(new Feature("TriggerWindowResize", screenCreated)
+			        {
+				        @Override
+				        protected void assignFunctionsToComponent()
+				        {
+					        addQuery("$(window).trigger('resize');");
+				        }
+			        });
+
 		}
 		catch (IllegalArgumentException iae)
 		{
