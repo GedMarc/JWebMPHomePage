@@ -8,6 +8,7 @@ import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizar
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
 import com.jwebmp.plugins.bootstrap4.accordion.BSAccordion;
 import com.jwebmp.plugins.bootstrap4.buttons.styles.BSButtonLightOutline;
+import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
@@ -319,14 +320,10 @@ public class QuickStartScreen
 		JQSourceCodePrettify<?> dInner2 = addSourceToContainer(QuickStartScreen.class, "jre11_argumentsfilerun.txt", XML, d);
 
 		BSAccordion<?> ideAccordion = new BSAccordion<>();
-		ideAccordion.addCard("Configure Eclipse");
+		ideAccordion.addCard("Configure Eclipse",new BSCardBody(),true);
 		ideAccordion.addCard("Configure Netbeans");
 		ideAccordion.addCard("Configure IntelliJ");
 		d.add(ideAccordion);
-
-		JQSourceCodePrettify<?> dScroll = addSourceToContainer(QuickStartScreen.class, "jre11_run.txt", XML, d);
-		dScroll.addStyle("max-height", "400px");
-		dScroll.addFeature(new DefaultSlimScroll(dScroll));
 
 		return d;
 	}
