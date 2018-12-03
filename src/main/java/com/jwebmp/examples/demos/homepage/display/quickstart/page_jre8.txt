@@ -2,4 +2,11 @@ public class HelloWorld extends Page{
     public HelloWorld(){
         add("Hello World!");
     }
+
+    public static void main(String[] args)
+        throws Exception{
+        JWebMPUndertow.boot("localhost", 6002);
+    }
 }
+
+

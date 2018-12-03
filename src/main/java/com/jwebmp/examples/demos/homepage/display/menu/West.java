@@ -56,7 +56,7 @@ public class West
 
 		globalList.add(quickStartItem = buildMenuItem("fal fa-rabbit-fast fa-3x", HTML_TAB + "Quick Start"));
 
-		globalList.add(buildMoreMenu());
+
 		globalList.add(buildBasicsMenu());
 		buildAddonsMenu();
 
@@ -90,6 +90,10 @@ public class West
 		buildMenuSection("COMPONENTS", true, buildDisplayComponents(), buildForms(), buildGraphing(), buildMapping(), buildTablesTrees());
 		buildMenuSection("ICONS", true, buildIconSets());
 
+
+		globalList.add(buildMoreMenu());
+
+
 		sidebarInner.add(sidebarMenu);
 
 		sidebarMenu.add(globalList);
@@ -102,8 +106,6 @@ public class West
 	private ListItem<?> buildMoreMenu()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText(HTML_TAB + "This Site"))
-		                          .setRenderTextBeforeChildren(false));
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText(HTML_TAB + "About"))
 		                          .setRenderTextBeforeChildren(false));
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", TCs).setText(HTML_TAB + "T&amp;C's"))
@@ -187,6 +189,8 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", GoDeeperScreen).setText(HTML_TAB + "Output"))
 		                          .setRenderTextBeforeChildren(false));
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", Privacy).setText(HTML_TAB + "Testing"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText(HTML_TAB + "This Site"))
 		                          .setRenderTextBeforeChildren(false));
 
 		ListItem dropDown1 = buildSubList("fal fa-abacus", "Basics", uiKit);

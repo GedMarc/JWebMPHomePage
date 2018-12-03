@@ -1,0 +1,12 @@
+public class OnClickEvent extends ClickAdapter
+{
+    public OnClickEvent(ComponentHierarchyBase component)
+    {
+        super(component);
+    }
+    @Override
+    public void onClick(AjaxCall call, AjaxResponse response)
+    {
+        System.out.println("Clicked!");
+    }
+};

@@ -11,7 +11,7 @@
     <dependencies>
         <dependency>
             <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-core</artifactId>
+            <artifactId>jwebmp-undertow</artifactId>
             <version>LATEST</version>
         </dependency>
         </dependency>

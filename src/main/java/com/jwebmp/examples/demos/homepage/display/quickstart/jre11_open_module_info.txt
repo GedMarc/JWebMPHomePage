@@ -1,6 +1,4 @@
-//Open Base Module exposes jdk.lang inherently.
 open module my.company.helloworld{
     requires com.jwebmp.core;
-
     provides IPage with HelloWorld;
 }

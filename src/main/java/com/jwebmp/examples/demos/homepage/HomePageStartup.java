@@ -23,14 +23,16 @@ public class HomePageStartup
 {
 	public static void main(String[] args)
 	{
+		System.out.println("Starting");
+		System.setErr(System.out);
+		LogColourFormatter.setRenderBlack(false);
+		LogFactory.configureConsoleColourOutput(Level.FINE);
+
 		SessionHelper.setAddressToBeUsedWhenNull("https://jwebmp.com/");
 
 		SessionHelper.setCacheAddress(false);
 
 		JWebMPUndertowWebSocketConfiguration.setEnabled(true);
-
-		LogColourFormatter.setRenderBlack(false);
-		LogFactory.configureConsoleColourOutput(Level.FINE);
 
 		WebReference.setUseVersionIdentifier(true);
 		AngularMessagesModule.setMesssgesModuleEnabled(true);
@@ -64,10 +66,13 @@ public class HomePageStartup
 		DataTablePageConfigurator.switchTheme(DataTableThemes.Bootstrap4);
 		DataTablePageConfigurator.configureButtons();
 
+		System.out.println("Stuff");
 
 		SkyconPageConfigurator.setColour("white");
 
 		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
+
+		pluginBlocks();
 
 		try
 		{
@@ -78,5 +83,10 @@ public class HomePageStartup
 			LogFactory.getLog("Main")
 			          .log(Level.SEVERE, "oops", e);
 		}
+	}
+
+	private static void pluginBlocks()
+	{
+
 	}
 }

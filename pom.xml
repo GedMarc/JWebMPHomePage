@@ -15,7 +15,7 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <property/>
+
     </properties>
 
     <dependencies>
@@ -153,14 +153,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-jquery-ui-layout</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-            <classifier>${jwebmp.runtime.classifier}</classifier>
-        </dependency>
-
-        <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>jwebmp-blueimp-gallery</artifactId>
             <version>${project.version}</version>
@@ -207,6 +199,12 @@
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
+            <exclusions>
+                <exclusion>
+                    <artifactId>aopalliance</artifactId>
+                    <groupId>aopalliance</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

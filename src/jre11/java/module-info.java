@@ -71,6 +71,8 @@ module com.jwebmp.examples.demos.homepage {
 	requires org.hibernate.orm.core;
 	requires org.hibernate.orm.jcache;
 	requires org.hibernate.validator;
+	requires java.validation;
+	requires javax.servlet.api;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;
@@ -86,7 +88,8 @@ module com.jwebmp.examples.demos.homepage {
 	opens com.jwebmp.examples.demos.homepage.entities.builders to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
 	opens com.jwebmp.examples.demos.homepage.entities.enumerations to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
 
-	opens com.jwebmp.examples.demos.homepage.display.persistence to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
+	opens com.jwebmp.examples.demos.homepage.display.persistence to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice,com.jwebmp.core;
+	opens com.jwebmp.examples.demos.homepage.display.events to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice,com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.display.quickstart to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 
 	opens com.jwebmp.examples.demos.homepage.db to com.jwebmp.guicedinjection, com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;

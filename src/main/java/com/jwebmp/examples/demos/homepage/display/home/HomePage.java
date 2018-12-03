@@ -193,7 +193,7 @@ public class HomePage
 		FontAwesomeList list = new FontAwesomeList();
 		addIconList(list, "JPA JTA JCache", FontAwesomeIcons.check, "#6f42c1");
 		addIconList(list, "Hazelcast EhCache Hibernate BTM C3P0", FontAwesomeIcons.check, "#6f42c1");
-		addIconList(list, "RabbitMQ HTTP2 WS Atmosphere", FontAwesomeIcons.check, "#6f42c1");
+		//addIconList(list, "RabbitMQ HTTP2 WS Atmosphere", FontAwesomeIcons.check, "#6f42c1");
 		addIconList(list, "Glassfish, Payara, Tomcat, TomEE, Wildfly, Swarm, MP", FontAwesomeIcons.check, "#6f42c1");
 		card.addCardBody()
 		    .add(list);

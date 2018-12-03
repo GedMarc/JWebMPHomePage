@@ -22,12 +22,12 @@ import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.guicedinjection.GuiceContext;
+import com.jwebmp.guicedpersistence.db.exceptions.NoConnectionInfoException;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
 import com.jwebmp.plugins.toastr.ToastrFeature;
 import com.jwebmp.plugins.toastr.ToastrType;
 
-import javax.persistence.NoResultException;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -172,7 +172,7 @@ public class DisplayPage
 			                                                    .get();
 			if (!returningVisitor.isPresent())
 			{
-				throw new NoResultException("New visitor needed");
+				throw new NoConnectionInfoException("New visitor needed");
 			}
 			getInstance(SessionProperties.class).setVisitor(returningVisitor.get());
 
@@ -196,7 +196,7 @@ public class DisplayPage
 			Visits.create(returningVisitor.get(), this);
 			//getInstance(AjaxResponse.class).addComponent(new HomePage());
 		}
-		catch (NoResultException nre)
+		catch (NoConnectionInfoException nre)
 		{
 			Visitors newVisitor = GuiceContext.get(Visitors.class)
 			                                  .createNew(getInstance(SessionProperties.class).getGuid());
