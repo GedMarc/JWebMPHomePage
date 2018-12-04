@@ -7,7 +7,7 @@ import com.jwebmp.guicedinjection.interfaces.*;
 
 //This is a closed module - it requires an opens clause
 //--add-opens=java.base/java.lang=javassist,com.google.guice
-module com.jwebmp.examples.demos.homepage {
+open module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
 
 	//This library is used for class scanning (https://github.com/classgraph/classgraph)
@@ -23,6 +23,9 @@ module com.jwebmp.examples.demos.homepage {
 	requires undertow.servlet;
 	requires cache.api;
 	requires xnio.api;
+
+
+	requires org.objectweb.asm;
 
 	//JWebMP
 	requires com.jwebmp.entityassist;
@@ -73,6 +76,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires org.hibernate.validator;
 	requires java.validation;
 	requires javax.servlet.api;
+	requires static cglib;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;
@@ -82,7 +86,7 @@ module com.jwebmp.examples.demos.homepage {
 	provides IGuiceScanJarInclusions with HomePageModuleScanner;
 
 	//Open for all the reflection, but only to specific packages
-	opens com.jwebmp.examples.demos.homepage;
+	/*opens com.jwebmp.examples.demos.homepage;
 	opens com.jwebmp.examples.demos.homepage.entities to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
 	opens com.jwebmp.examples.demos.homepage.entities.persistasync to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
 	opens com.jwebmp.examples.demos.homepage.entities.builders to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
@@ -114,7 +118,7 @@ module com.jwebmp.examples.demos.homepage {
 	opens com.jwebmp.examples.demos.homepage.display.termsandconditions to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.display.home to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.components to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	/*opens com.jwebmp.examples.demos.homepage.components.sourcecode to com.fasterxml.jackson.databind,com.google.guice, com.jwebmp.core;*/
+	*//*opens com.jwebmp.examples.demos.homepage.components.sourcecode to com.fasterxml.jackson.databind,com.google.guice, com.jwebmp.core;*//*
 	opens com.jwebmp.examples.demos.homepage.components.events to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 	opens com.jwebmp.examples.demos.homepage.components.general to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
 
@@ -210,4 +214,5 @@ module com.jwebmp.examples.demos.homepage {
 
 
 	opens com.jwebmp.examples.demos.homepage.components.general.events to com.google.guice;
+	*/
 }

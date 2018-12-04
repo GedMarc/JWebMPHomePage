@@ -24,7 +24,6 @@ public class HomePageStartup
 	public static void main(String[] args)
 	{
 		System.out.println("Starting");
-		System.setErr(System.out);
 		LogColourFormatter.setRenderBlack(false);
 		LogFactory.configureConsoleColourOutput(Level.FINE);
 
@@ -65,8 +64,6 @@ public class HomePageStartup
 
 		DataTablePageConfigurator.switchTheme(DataTableThemes.Bootstrap4);
 		DataTablePageConfigurator.configureButtons();
-
-		System.out.println("Stuff");
 
 		SkyconPageConfigurator.setColour("white");
 
