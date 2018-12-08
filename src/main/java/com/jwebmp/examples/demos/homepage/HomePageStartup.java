@@ -16,6 +16,7 @@ import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
 import com.jwebmp.undertow.JWebMPUndertow;
 import com.jwebmp.undertow.JWebMPUndertowWebSocketConfiguration;
+import io.github.classgraph.ClassGraph;
 
 import java.util.logging.Level;
 

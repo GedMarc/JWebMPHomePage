@@ -9,6 +9,7 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.guicedinjection.GuiceContext;
+import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.jqlayout.enumerations.JQLayoutArea;
 import com.jwebmp.plugins.jqlayout.events.JQLayoutSlideCloseLayoutDivFeature;
 import com.jwebmp.plugins.softhistorychange.SoftHistoryChangeAdapter;
@@ -91,6 +92,7 @@ public class ChangeScreenEvent
 		}
 		catch (IllegalArgumentException iae)
 		{
+			LogFactory.getLog("ChangeScreenEvent").log(Level.SEVERE, "Unable to load component", isJavascriptRenderedElsewhere());
 			String id = getID();
 			id = id.replace(CHAR_UNDERSCORE, CHAR_DOT);
 			try

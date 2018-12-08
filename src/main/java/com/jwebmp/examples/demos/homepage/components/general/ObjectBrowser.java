@@ -39,10 +39,8 @@ public class ObjectBrowser
 
 	private void constructTree()
 	{
-		String packageName = objectClassName.getClass()
-		                                    .getCanonicalName()
-		                                    .substring(0, objectClassName.getClass()
-		                                                                 .getCanonicalName()
+		String packageName = objectClassName.getCanonicalName()
+		                                    .substring(0, objectClassName.getCanonicalName()
 		                                                                 .lastIndexOf('.'));
 		try (ScanResult sr = new ClassGraph().whitelistPackages(packageName)
 		                                     .enableClassInfo()

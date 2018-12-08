@@ -1,5 +1,9 @@
 public class OnClickEvent extends ClickAdapter
 {
+    public OnClickEvent(){
+        //Empty constructor for Ajax Callback.
+    }
+
     public OnClickEvent(ComponentHierarchyBase component)
     {
         super(component);

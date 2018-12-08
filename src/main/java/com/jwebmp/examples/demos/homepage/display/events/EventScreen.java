@@ -84,6 +84,7 @@ public class EventScreen
 		pageContent.add("Events are restricted through type safety in each of the components." +
 		                //   "<br/>Each tag denotes the following available for that component/event" +
 		                "");
+
 		FontAwesomeList cafej = new FontAwesomeList();
 		cafej.addItem("<C> - Children", FontAwesome.icon(pencil_alt));
 		cafej.addItem("<A> - Attributes", FontAwesome.icon(pencil_alt));
@@ -93,6 +94,7 @@ public class EventScreen
 		//pageContent.add(cafej);
 		pageContent.add("Navigate through the objects in the packages below, to view the object to the right.");
 		pageContent.add(pageContentRow);
+
 		pageContentRow.add(new PackagesBrowser("com.jwebmp.core.events").addClass("col-12 col-md-6"));
 		pageContentRow.add(new ObjectBrowser(ActivateAdapter.class).addClass("col-12 col-md-6"));
 

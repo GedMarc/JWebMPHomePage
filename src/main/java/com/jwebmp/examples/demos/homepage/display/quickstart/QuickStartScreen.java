@@ -221,7 +221,7 @@ public class QuickStartScreen
 
 		annotationsConect.add("<code>@javax.ejb.EJB</code> can be replaced with <code>@javax.inject.Inject</code>");
 		annotationsConect.add("<code>@javax.ejb.Local/Remote</code> can be replaced, and a binding added for the interface (Should you wish to keep them). " +
-		                "<br/>I delete them all in favour of Rest/MP services.");
+		                "<br/>I delete them all...");
 		annotationsConect.add("<code>@javax.ejb.Stateless</code> can be removed");
 		annotationsConect.add("<code>@javax.ejb.Stateful</code> can be replaced with <a target=\"_blank\" href=\"https://github.com/google/guice/wiki/Scopes\">custom scopes</a>");
 		annotationsConect.add("<code>@javax.faces.SessionScoped</code> can be replaced with <code>@com.google.inject.servlet.SessionScoped</code>");
@@ -301,9 +301,16 @@ public class QuickStartScreen
 		spring.add("This entire system utilizes and Guice and SPI. No annotations are used to perform any function in the core, meaning that no classpath scanning is actually necessary" +
 		           ".</br>When using persistence/JCache/etc, these are separate modules, that are added onto the system, and only the paths necessary are ever scanned for matching files keeping it small, fast, and non-intrusive.");
 
+		DivSimple<?> scrolly = new DivSimple<>();
+		DefaultSlimScroll scroll = new DefaultSlimScroll(scrolly);
+		scroll.getOptions()
+		      .setHeight("400px");
+
+		spring.add(scrolly);
+
 		try
 		{
-			spring.add(new ImportFile("spring_table.html", QuickStartScreen.class.getResourceAsStream("spring_table.html")));
+			scrolly.add(new ImportFile("spring_table.html", QuickStartScreen.class.getResourceAsStream("spring_table.html")));
 		}
 		catch (IOException e)
 		{
