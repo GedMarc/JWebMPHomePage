@@ -1,0 +1,2 @@
+anyComponent.addDto("subscribe", null);
+ajaxResponse.addDto("subscribe", new SubscriberEntity().setName("guest");

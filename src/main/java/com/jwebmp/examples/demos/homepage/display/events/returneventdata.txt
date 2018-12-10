@@ -1,0 +1,5 @@
+public LoginEvent(ComponentHierarchyBase component){
+    super(component);
+    setID("LoginEvent");
+    returnVariable("subscribe");
+}

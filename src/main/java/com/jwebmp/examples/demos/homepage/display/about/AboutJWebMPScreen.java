@@ -6,6 +6,7 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
+import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
@@ -38,13 +39,15 @@ public class AboutJWebMPScreen
 		tabs.addTab("What Is It", whatIsIt, true);
 		tabs.addTab("Dependencies", dependencies, false);
 		tabs.addTab("Runs On", runsOnList, false);
-		tabs.addTab("Server Side", pushMechanism, false);
-		tabs.addTab("Unit Testing", testing, false);
+	//	tabs.addTab("Server Side", pushMechanism, false);
+	//	tabs.addTab("Unit Testing", testing, false);
 
 		container.add(tabs);
 
-		whatIsIt.add(buildWhyPanel());
-		whatIsIt.add(buildTempalteFreeDev());
+		BSRow row = new BSRow();
+		whatIsIt.add(row);
+		row.add(buildWhyPanel());
+		row.add(buildTempalteFreeDev());
 
 		dependencies.add(buildDependencies());
 
@@ -64,21 +67,27 @@ public class AboutJWebMPScreen
 	private Div buildWhyPanel()
 	{
 		DisplayCard card = new DisplayCard();
+		card.addClass("col-12 col-md-6 ml-5 mr-5");
 		card.addCardHeader(new H2("Next Level Development").toString(true));
 		Div div = card.addCardBody();
-		div.add("JWebMP is a Java Web Framework." +
-		        "<br/>Designed to serve Modern, Efficient, Server-Side Driven Web Content. " +
-		        "<br/><br/>Built in JPMS,Develop Enterprise Scale Applications quicker than ever before" +
-		        "<br/><br/>Seamlessly move between JRE8 and JPMS with a pure SPI driven system");
-		div.add(new H3("Completely Open Source, 100% Free"));
+		div.add("JWebMP is a Java Web Framework that can provide any web framework available on the internet without any interference." +
+		        "<br/>Designed to serve Modern, Efficient, and Server-Side Driven" +
+		        "<br/><br/>Built in JPMS, Develop Enterprise Scale Applications quicker than ever before, with less code than you can imagine. Only include the modules you want, and build the pages you want." +
+		        "<br/>This framework is completely JLink compatible for quick deployments and deployable instances." +
+		        "<br/><br/>You can seamlessly move from any JSF to JWebMP, even better,  from the straight JRE8 to JPMS in a single change");
+		div.add(new H3("This framework is completely open source and 100% free."));
+		div.add("There is a donate button in the top right, this is only location, I don't want to burst it out there. " +
+		        "<br/>If you like this product, please help! Pull Requests, Issue Logging, Donating, anything.");
 		return card;
 	}
 
 	private Div buildTempalteFreeDev()
 	{
 		DisplayCard card = new DisplayCard();
+		card.addClass("col-12 col-md-4 ml-5 mr-5");
+		card.addCardHeader(new H2("Template Free Development").toString(true));
 		Div div = card.addCardBody();
-		div.add(new H3<>("Template Free Development"));
+		//div.add(new H3<>("Template Free Development"));
 		div.add("The system constructs the HTML, CSS and JavaScripts dynamically (yes according to browser and even device) to ensure that only the correct scripts get delivered. With abstraction and injection points, you can easily manipulate any item to produce the output that you want.");
 		div.add("Being able to render the complete output of the HTML, JavaScript and CSS of any component at any level and stage grants you an unbelievable amount of many, many benefits. Let your imagination run wild with that concept for a bit. Exactly how much coverage in your tests can you get? Want to render a component in JWebMP and push it to JSF?");
 		div.add("Of course, you can still use File Templates (though this system isn't based on it at all) with variables and scoping to continue using HTML and Web Content files to render your information. ");
@@ -104,19 +113,19 @@ public class AboutJWebMPScreen
 		                                                       .add(new TableHeaderCell<>("Purpose"))));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ClassGraph"))
-		                                       .add(new TableCell<>("4.4.1"))
+		                                       .add(new TableCell<>("4.6.6"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("fastclasspath.version"))
 		                                       .add(new TableCell<>("Scanner")));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Google Guice"))
-		                                       .add(new TableCell<>("4.2.1"))
+		                                       .add(new TableCell<>("4.2.3"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/google/guice\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("guice.version"))
 		                                       .add(new TableCell<>("DI Provider")));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Jackson JSON"))
-		                                       .add(new TableCell<>("2.9.5"))
+		                                       .add(new TableCell<>("2.9.6"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/FasterXML/jackson\" target=\"_blank\">Link</a>"))
 		                                       //   .add(new TableCell<>("jackson.version"))
 		                                       .add(new TableCell<>("JSON API")));

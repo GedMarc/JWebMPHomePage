@@ -106,8 +106,7 @@ public class West
 	private ListItem<?> buildMoreMenu()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText(HTML_TAB + "About"))
-		                          .setRenderTextBeforeChildren(false));
+
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", TCs).setText(HTML_TAB + "T&amp;C's"))
 		                          .setRenderTextBeforeChildren(false));
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", Privacy).setText(HTML_TAB + "Privacy"))
@@ -184,13 +183,11 @@ public class West
 	private ListItem<?> buildBasicsMenu()
 	{
 		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText(HTML_TAB + "About"))
+		                          .setRenderTextBeforeChildren(false));
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", EventsScreen).setText(HTML_TAB + "Events"))
 		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", GoDeeperScreen).setText(HTML_TAB + "Output"))
-		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", Privacy).setText(HTML_TAB + "Testing"))
-		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText(HTML_TAB + "This Site"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText(HTML_TAB + "This API"))
 		                          .setRenderTextBeforeChildren(false));
 
 		ListItem dropDown1 = buildSubList("fal fa-abacus", "Basics", uiKit);

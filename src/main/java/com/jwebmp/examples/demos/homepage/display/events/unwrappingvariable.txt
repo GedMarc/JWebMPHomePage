@@ -1,0 +1,10 @@
+public void onClick(AjaxCall call, AjaxResponse response)
+{
+    if (call.getVariable("subscribe") == null)
+    {
+        throw new RuntimeException("Didn't enter anything ;) This what an error dialog looks like from the server...");
+    }
+    SubscriberEntity newSubs = call
+      .getVariable("subscribe") //Return AngularDataVariable
+      .as(SubscriberEntity.class);
+}
