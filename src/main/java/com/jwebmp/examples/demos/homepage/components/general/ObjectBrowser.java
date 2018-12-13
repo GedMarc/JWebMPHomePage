@@ -69,7 +69,7 @@ public class ObjectBrowser
 		String packageName = clazz.getCanonicalName()
 		                                    .substring(0, clazz.getCanonicalName()
 		                                                                 .lastIndexOf('.'));
-		try (ScanResult sr = new ClassGraph()//.whitelistPackages(packageName)
+		try (ScanResult sr = new ClassGraph().whitelistPackages(packageName)
 		                                     .enableClassInfo()
 		                                     .enableFieldInfo()
 		                                     .enableMethodInfo()
@@ -125,7 +125,7 @@ public class ObjectBrowser
 
 			for (ClassInfo clazzy : sr.getAllClasses())
 			{
-				for (MethodInfo methodInfo : clazzy.getMethodInfo())
+				for (MethodInfo methodInfo : clazzy.getDeclaredMethodInfo())
 				{
 					if (methodInfo.getName()
 					              .startsWith("get") || methodInfo.getName()
