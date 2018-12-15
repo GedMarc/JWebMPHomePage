@@ -6,7 +6,7 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.about.c3p0module.C3P0Screen;
 import com.jwebmp.examples.demos.homepage.display.about.ehcache.EHCacheScreen;
 import com.jwebmp.examples.demos.homepage.display.about.entityassist.EntityAssistScreen;
-import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.GuicedPersistenceScreen;
+import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceBasicsScreen;
 import com.jwebmp.examples.demos.homepage.display.about.requestscoped.JPAModuleScreen;
 import com.jwebmp.examples.demos.homepage.display.about.requestscoped.JTAModuleScreen;
 import com.jwebmp.examples.demos.homepage.display.about.requestscoped.RequestScopedTransactionsScreen;
@@ -65,7 +65,7 @@ public class PersistenceScreen
 
 		tabs.addTab("About", buildPersistenceAboutScreen(), true);
 
-		tabs.addTab("Guiced Persistence", new GuicedPersistenceScreen(), false);
+		tabs.addTab("Guiced Persistence", new PersistenceBasicsScreen(), false);
 
 		tabs.addTab("JPA Module", new JPAModuleScreen(), false);
 		tabs.addTab("JTA Module", new JTAModuleScreen(), false);

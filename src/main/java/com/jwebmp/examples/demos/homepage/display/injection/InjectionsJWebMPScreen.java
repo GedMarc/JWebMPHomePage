@@ -68,6 +68,10 @@ public class InjectionsJWebMPScreen
 		Div div = card.addCardBody();
 		div.add(new H3("JWebMP Service Loaders"));
 		div.add(new H4("com.jwebmp.core.services"));
+
+		div.add("JWebMP Services are directly related to the display and representation of a site or site URL." +
+		        "<br/> IPage has a default implementation <code>extends Page</code> that should be used for all pages.");
+
 		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                  .addClass(Table_Hover);
 		table.setSmall(true);
@@ -92,6 +96,10 @@ public class InjectionsJWebMPScreen
 
 		div.add(new H3("Angular Configuration Loaders"));
 		div.add(new H4("com.jwebmp.core.base.angular.services"));
+
+		div.add("AngularJS is currently used for data-binding, And the following Services are used to configure the implementation");
+		div.add("Vue 2.x or greater will be used in the future.");
+
 		BSTable<?> tableAngular = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                         .addClass(Table_Hover);
 		tableAngular.setSmall(true);

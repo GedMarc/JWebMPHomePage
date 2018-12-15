@@ -18,10 +18,10 @@ import javax.validation.constraints.NotNull;
 import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
-public class GuicedPersistenceScreen
-		extends DisplayScreen<GuicedPersistenceScreen>
+public class PersistenceBasicsScreen
+		extends DisplayScreen<PersistenceBasicsScreen>
 {
-	public GuicedPersistenceScreen()
+	public PersistenceBasicsScreen()
 	{
 
 	}
@@ -59,15 +59,15 @@ public class GuicedPersistenceScreen
 
 		about.add("This module reads persistence units, provides base classes and service injection points for the assisting modules.");
 
-		addSourceToContainer(GuicedPersistenceScreen.class, "mavenconfig.txt", SourceCodeLanguages.XML, about);
+		addSourceToContainer(PersistenceBasicsScreen.class, "mavenconfig.txt", SourceCodeLanguages.XML, about);
 
 		about.add("The GuiceConfigurator is configured as below : ");
 
-		addSourceToContainer(GuicedPersistenceScreen.class, "config.txt", SourceCodeLanguages.Java, about);
+		addSourceToContainer(PersistenceBasicsScreen.class, "config.txt", SourceCodeLanguages.Java, about);
 
 		about.add("To mark a persistence unit to be excluded from any scans or processing - add the property to persistence.xml ");
 
-		addSourceToContainer(GuicedPersistenceScreen.class, "guicedignore.txt", SourceCodeLanguages.XML, about);
+		addSourceToContainer(PersistenceBasicsScreen.class, "guicedignore.txt", SourceCodeLanguages.XML, about);
 
 		about.add(
 				"If you are in migration phase and are switching from an EE environment to JPMS, " +
@@ -75,7 +75,7 @@ public class GuicedPersistenceScreen
 				"<br/>e.g. for JBoss or Wildfly " +
 				"<br/>");
 
-		addSourceToContainer(GuicedPersistenceScreen.class, "jbossignore.txt", SourceCodeLanguages.XML, about);
+		addSourceToContainer(PersistenceBasicsScreen.class, "jbossignore.txt", SourceCodeLanguages.XML, about);
 
 		spi.add("Services are located in com.jwebmp.guicedpersistence.services");
 
@@ -115,13 +115,13 @@ public class GuicedPersistenceScreen
 		        "<br/>Start your connection for back-ends using either IGuicePostStartup registered to the DatabaseModule or for Web a Request Scoped Filter");
 */
 
-		addSourceToContainer(GuicedPersistenceScreen.class, "annotation.txt", SourceCodeLanguages.Java, setup);
+		addSourceToContainer(PersistenceBasicsScreen.class, "annotation.txt", SourceCodeLanguages.Java, setup);
 		setup.add("Create your database module. This will directly link, and automatically bind everything you need. " +
 		          "<br/>By default the actual binding is a Private Module that is installed into the Abstract Module<br/>");
 		setup.add("<a target=\"_blank\" href=\"https://github.com/bitronix/btm/wiki/JDBC-pools-configuration\">JTA Connection Pool Properties</a>");
 
 
-		addSourceToContainer(GuicedPersistenceScreen.class, "abstractmodule.txt", SourceCodeLanguages.Java, setup);
+		addSourceToContainer(PersistenceBasicsScreen.class, "abstractmodule.txt", SourceCodeLanguages.Java, setup);
 
 		setup.add("Finally, &quot;Provide&quot; your module to GuiceContext via the IGuiceModule service." +
 		          "<br/> You can also create a service binding from the same module to IGuicePostStartup to instantiate the connection on boot.");
@@ -129,7 +129,7 @@ public class GuicedPersistenceScreen
 		setup.add("JRE 8");
 		setup.add(new MetaInfTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule", "com.jwebmp.guicedinjection.interfaces.IGuicePostStartup"));
 		setup.add("JPMS");
-		addSourceToContainer(GuicedPersistenceScreen.class, "providesexample.txt", SourceCodeLanguages.JS, setup);
+		addSourceToContainer(PersistenceBasicsScreen.class, "providesexample.txt", SourceCodeLanguages.JS, setup);
 
 		more.add("To utilize encapsulation and lock down database usage to a module (As per EE), Create a Private Module and install the Database Module into it.");
 
@@ -137,7 +137,7 @@ public class GuicedPersistenceScreen
 
 		         "<br/>Change the registration for your Database Module to your Private Module, Keep the Abstract Database Module in IGuicePostStartup");
 
-		addSourceToContainer(GuicedPersistenceScreen.class, "privatemodule.txt", SourceCodeLanguages.Java, more);
+		addSourceToContainer(PersistenceBasicsScreen.class, "privatemodule.txt", SourceCodeLanguages.Java, more);
 
 		more.add(new MetaInfTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule", "com.jwebmp.guicedinjection.interfaces.IGuicePostStartup"));
 

@@ -74,6 +74,9 @@ public class InjectionsBasicsScreen
 		div.add(new H4("com.jwebmp.guicedinjection.interfaces"));
 		div.add("These services allow to control the boot and injection configuration sequence in its entirety." +
 		        "<br/>All Services (extending IDefaultService) are named and sorted accordingly to <code>sortOrder()</code>");
+		div.add("The Guice Injection assistant (<a target=\"_blank\" href=\"https://github.com/GedMarc/GuiceInjection\">Guiced Injection<a/>) " +
+		        " can be run standalone without JWebMP in any JRE8 environment. As a completely portable library you can configure your bindings with your current application" +
+		        " long before porting a site.");
 
 		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                  .addClass(Table_Hover);

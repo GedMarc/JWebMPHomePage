@@ -68,9 +68,8 @@ public class InjectionsClassGraphScreen
 		Div div = card.addCardBody();
 		div.add(new H3("Classpath Scanning with <a href=\"https://github.com/classgraph/classgraph\" target=\"_blank\">ClassGraph</a>"));
 		div.add("Class Path scanning is completely optional, and allows you to manage and scan as necessary utilizing ClassGraph. " +
-		        "<br/>These Services allow you to perform basic operations to filter and clean any items from the scan yielding a more than 50% performance increase." +
-		        "<br/>You can also set and modify the GuiceContext scan result as necessary.");
-
+		        "<br/>These Services allow you to perform basic operations to filter and clean any items from the scan yielding a great performance increase." +
+		        "<br/>You can also use <code>GuiceContext.setScanResult()</code> scan result directly.");
 
 		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                  .addClass(Table_Hover);

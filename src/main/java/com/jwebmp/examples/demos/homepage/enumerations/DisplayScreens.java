@@ -4,7 +4,6 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutThisSiteScreen;
 import com.jwebmp.examples.demos.homepage.display.about.SPIScreen;
-import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.GuicedPersistenceScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animate.AngularAnimateDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animatedchange.AngularAnimateChangeDemoScreen;
@@ -105,7 +104,7 @@ public enum DisplayScreens
 
 
 	PersistenceScreen(com.jwebmp.examples.demos.homepage.display.persistence.PersistenceScreen.class, "Persistence"),
-	PersistenceBasicsScreen(GuicedPersistenceScreen.class, "PersistenceBasics"),
+	PersistenceBasicsScreen(com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceBasicsScreen.class, "PersistenceBasics"),
 
 
 	EventsScreen(com.jwebmp.examples.demos.homepage.display.events.EventScreen.class, "Events"),
