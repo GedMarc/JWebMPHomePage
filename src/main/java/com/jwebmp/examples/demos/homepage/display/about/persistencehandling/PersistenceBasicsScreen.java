@@ -1,17 +1,22 @@
 package com.jwebmp.examples.demos.homepage.display.about.persistencehandling;
 
 import com.jwebmp.core.base.html.*;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
+import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
+import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
+import com.jwebmp.plugins.smartwizard4.SmartWizardStepItem;
 
 import javax.validation.constraints.NotNull;
 
@@ -29,9 +34,36 @@ public class PersistenceBasicsScreen
 	private Div buildSmartWizard()
 	{
 
+		//container.addClass("row");
+
+		//container.add(new H3<>("Injection Control<br/>"));
+
+		Div aboutContent = new Div();
+		Div annotateContainer = new Div();
+		Div databaseMOdule = new Div();
+		Div providesModule = new Div();
+		Div encapsulateContent = new Div();
+		Div servicesContent = new Div();
 
 
-		return new Div();
+		Div pageContentRow = new BSRow();
+
+
+		DefaultSlimScroll scroll = new DefaultSlimScroll(pageContentRow);
+		scroll.getOptions()
+		      .setHeight("500px");
+
+		DefaultDisplayWizard wizard = new DefaultDisplayWizard("eventWizard");
+
+		wizard.addStep(new SmartWizardStep(aboutContent, new SmartWizardStepItem("About", new SmallText("Persistence Basics"))));
+		wizard.addStep(new SmartWizardStep(annotateContainer, new SmartWizardStepItem("Annotate", new SmallText("Create your annotation"))));
+		wizard.addStep(new SmartWizardStep(databaseMOdule, new SmartWizardStepItem("Database Module", new SmallText("Setup the Module"))));
+		wizard.addStep(new SmartWizardStep(providesModule, new SmartWizardStepItem("Provide", new SmallText("Supply Module with SPI"))));
+		wizard.addStep(new SmartWizardStep(encapsulateContent, new SmartWizardStepItem("Encapsulate", new SmallText("Encapsulate writes accordingly"))));
+		wizard.addStep(new SmartWizardStep(servicesContent, new SmartWizardStepItem("Services", new SmallText("Provided services"))));
+		wizard.addStep(new SmartWizardStep(servicesContent, new SmartWizardStepItem("Enterprise", new SmallText("Instantly Dual-Run"))));
+
+		return wizard;
 	}
 
 	@Override
@@ -149,7 +181,9 @@ public class PersistenceBasicsScreen
 
 		more.add(new MetaInfTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule", "com.jwebmp.guicedinjection.interfaces.IGuicePostStartup"));
 
+
 		container.add(all);
+		container.add(buildSmartWizard());
 
 		return container;
 	}
