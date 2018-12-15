@@ -42,8 +42,8 @@ public class SPIScreen
 		                                     .removeSpacingTop()
 		                                     .addClass(MarginRight_1);
 		tabs.addTab("About", buildDefaultScreen(), true);
-		tabs.addTab("Injection", buildInjection(), false);
-		tabs.addTab("*<i>Classpath</i>", buildClassPath(), false);
+		//tabs.addTab("Injection", buildInjection(), false);
+	//	tabs.addTab("*<i>Classpath</i>", buildClassPath(), false);
 		tabs.addTab("JWebMP", buildJWebMP(), false);
 
 		//tabs.addTab("Persistence", buildPersistence(), false);
@@ -91,95 +91,7 @@ public class SPIScreen
 		return body;
 	}
 
-	private Div buildInjection()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add(new H3("Injection Configurations"));
-		div.add(new H4("com.jwebmp.guicedinjection.interfaces"));
-		div.add("These services allow you to configure the entire configuration and boot process.");
 
-		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                  .addClass(Table_Hover);
-		table.setSmall(true);
-		table.setBordered(true);
-		table.setStriped(true);
-
-		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
-		                                                       .add(new TableHeaderCell<>("Purpose"))
-		                                      ));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuicePreStartup"))
-		                                       .add(new TableCell<>(
-				                                       "Executes any required code blocks before the Injector is built. Great for configuration. Do not try to call the GuiceContext in these classes")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceModule"))
-		                                       .add(new TableCell<>("Service Loader to port your existing Guice Modules into the Global Injection Context")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceDefaultBinder"))
-		                                       .add(new TableCell<>(
-				                                       "Registers a Guice Injection module with the default binders. This is for backend binding with no requirements on servlets, and provides nearly the same encapsulation via JPMS as an EJB would to an WAR")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuicePostStartup"))
-		                                       .add(new TableCell<>(
-				                                       "Executes the given operations immediately after the injection cycle has completed. Used mostly to start database connections before making the site available")));
-		div.add(table);
-
-		div.add(new Image("images/guiceinjection/StartupOrder.png"));
-
-
-		return card;
-	}
-
-	private Div buildClassPath()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add(new H3("Classpath Scanning with <a href=\"https://github.com/classgraph/classgraph\" target=\"_blank\">ClassGraph</a>"));
-		div.add("Class Path scanning is completely optional, and allows you to manage and scan as necessary utilizing ClassGraph. " +
-		        "<br/>These Services allow you to perform basic operations to filter and clean any items from the scan yielding a more than 50% performance increase." +
-		        "<br/>You can also set and modify the GuiceContext scan result as necessary.");
-
-
-		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                  .addClass(Table_Hover);
-		table.setSmall(true);
-		table.setBordered(true);
-		table.setStriped(true);
-
-		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
-		                                                       .add(new TableHeaderCell<>("Purpose"))
-		                                      ));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceConfigurator"))
-		                                       .add(new TableCell<>(
-				                                       "Configures the scanner for boot operations. The scanner is optional and doesn't execute by default. The classpathScan property can be set to enable this functionality.")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IFileContentsScanner"))
-		                                       .add(new TableCell<>(
-				                                       "Registers a filename to be collected, such as persistence.xml or hazelcast-client.xml. Ensure that the path is located in a PathContentsScanner")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPackageContentsScanner"))
-		                                       .add(new TableCell<>(
-				                                       "Registers the given package to be included during the optional classpath scan. Only these packages will be included in retrieved results")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPathContentsScanner"))
-		                                       .add(new TableCell<>("Registers the given path (No Class Files) to search for IFileContentsScanners.<br/> Usually META-INF")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPathContentsBlacklistScanner"))
-		                                       .add(new TableCell<>("Registers paths to be excluded from all scans")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceScanJarExclusions"))
-		                                       .add(new TableCell<>("Registers JAR files to be excluded from all scans")));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceScanModuleExclusions"))
-		                                       .add(new TableCell<>("Registers Modules (JPMS) to be excluded from all scans")));
-
-		div.add(table);
-
-		div.add(new Image("images/guiceinjection/ClasspathScanningConfiguration.png"));
-
-		return card;
-	}
 
 	private Div buildJWebMP()
 	{
