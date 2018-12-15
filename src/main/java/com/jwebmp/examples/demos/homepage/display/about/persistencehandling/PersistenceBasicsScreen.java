@@ -26,6 +26,14 @@ public class PersistenceBasicsScreen
 
 	}
 
+	private Div buildSmartWizard()
+	{
+
+
+
+		return new Div();
+	}
+
 	@Override
 	public @NotNull BSContainer<?> getContentContainer()
 	{
