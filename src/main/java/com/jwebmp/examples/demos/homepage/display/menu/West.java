@@ -140,11 +140,11 @@ public class West
 	private ListItem buildAddonsInjection()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText("Basics"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", InjectionBasicsScreen).setText("Basics"))
 		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText("ClassGraph"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", InjectionClassGraphScreen).setText("ClassGraph"))
 		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", TCs).setText("JWebMP"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", InjectionJWebMPScreen).setText("JWebMP"))
 		                          .setRenderTextBeforeChildren(false));
 		ListItem dropDown1 = buildSubList("fal fa-question", "Injection", uiKit);
 		return dropDown1;

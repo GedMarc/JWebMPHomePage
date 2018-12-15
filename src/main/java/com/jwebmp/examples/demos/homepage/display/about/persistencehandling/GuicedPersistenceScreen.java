@@ -89,11 +89,11 @@ public class GuicedPersistenceScreen
 		settingUpTable.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
 		                                                                .add(new TableHeaderCell<>("Purpose"))
 		                                               ));
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("PropertiesConnectionInfoReader"))
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPropertiesConnectionInfoReader"))
 		                                                .add(new TableCell<>(
 				                                                "Populates the ConnectionBaseInfo object with properties from the persistence unit.")));
 
-		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("PropertiesEntityManagerReader"))
+		settingUpTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPropertiesEntityManagerReader"))
 		                                                .add(new TableCell<>(
 				                                                "Utility Service that creates or modifies the properties HashMap for a Persistence Context before being converted to a ConnectionBaseInfo object.")));
 
@@ -102,8 +102,8 @@ public class GuicedPersistenceScreen
 		spi.add(settingUpTable);
 
 		spi.add(new MetaInfTree("com.jwebmp.guicedpersistence.services.ITransactionHandler",
-		                        "com.jwebmp.guicedpersistence.services.PropertiesConnectionInfoReader",
-		                        "com.jwebmp.guicedpersistence.services.PropertiesEntityManagerReader"));
+		                        "com.jwebmp.guicedpersistence.services.IPropertiesConnectionInfoReader",
+		                        "com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader"));
 
 
 		setup.add(new H3("Setting up a connection"));
@@ -111,8 +111,8 @@ public class GuicedPersistenceScreen
 		setup.add("First thing you need is an annotation to mark your Entity Manager and related bindings.");
 
 /*
-		all.add("<br/>This library uses guice-persist as a base, and requires that a Guice Module be registered. The most convenient way is to register a IGuiceModule with a class that extends AbstractDatabaseProviderModule." +
-		        "<br/>Start your connection for back-ends using either IGuicePostStartup registered to the AbstractDatabaseProviderModule or for Web a Request Scoped Filter");
+		all.add("<br/>This library uses guice-persist as a base, and requires that a Guice Module be registered. The most convenient way is to register a IGuiceModule with a class that extends DatabaseModule." +
+		        "<br/>Start your connection for back-ends using either IGuicePostStartup registered to the DatabaseModule or for Web a Request Scoped Filter");
 */
 
 		addSourceToContainer(GuicedPersistenceScreen.class, "annotation.txt", SourceCodeLanguages.Java, setup);

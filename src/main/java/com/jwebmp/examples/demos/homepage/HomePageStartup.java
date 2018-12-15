@@ -4,7 +4,7 @@ import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
 import com.jwebmp.core.generics.WebReference;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
-import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerProperties;
+import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerIProperties;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.blueimp.gallery.BlueImpGalleryPageConfigurator;
@@ -16,7 +16,6 @@ import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
 import com.jwebmp.undertow.JWebMPUndertow;
 import com.jwebmp.undertow.JWebMPUndertowWebSocketConfiguration;
-import io.github.classgraph.ClassGraph;
 
 import java.util.logging.Level;
 
@@ -37,16 +36,16 @@ public class HomePageStartup
 		WebReference.setUseVersionIdentifier(true);
 		AngularMessagesModule.setMesssgesModuleEnabled(true);
 
-		HibernateEntityManagerProperties.getDefaultProperties()
-		                                .setShowSql(true);
-		HibernateEntityManagerProperties.getDefaultProperties()
-		                                .setFormatSql(true);
+		HibernateEntityManagerIProperties.getDefaultProperties()
+		                                 .setShowSql(true);
+		HibernateEntityManagerIProperties.getDefaultProperties()
+		                                 .setFormatSql(true);
 
 
-		HibernateEntityManagerProperties.getDefaultProperties()
-		                                .setUseQueryStartupCheck(false);
+		HibernateEntityManagerIProperties.getDefaultProperties()
+		                                 .setUseQueryStartupCheck(false);
 
-		/*HibernateEntityManagerProperties.getDefaultProperties()
+		/*HibernateEntityManagerIProperties.getDefaultProperties()
 		                                .enableQuickestBoot();*/
 
 		BTMAutomatedTransactionHandler.setActive(true);

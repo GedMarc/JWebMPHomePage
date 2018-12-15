@@ -101,6 +101,7 @@ public class ObjectBrowser
 				buildForObject(IComponentHierarchyBase.class, rootItem,excludeMethods);
 			}
 		}
+
 		return rootItem;
 	}
 

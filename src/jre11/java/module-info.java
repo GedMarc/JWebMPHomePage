@@ -24,7 +24,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires cache.api;
 	requires xnio.api;
 
-
+	//Dev requirement (guice build)
 	requires org.objectweb.asm;
 
 	//JWebMP

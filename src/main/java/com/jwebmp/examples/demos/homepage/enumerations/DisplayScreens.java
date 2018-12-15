@@ -89,6 +89,9 @@ import com.jwebmp.examples.demos.homepage.display.demos.tables.xeditable.XEditab
 import com.jwebmp.examples.demos.homepage.display.demos.trees.jstree.JSTreeDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.forgotpassword.ForgotPasswordScreen;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
+import com.jwebmp.examples.demos.homepage.display.injection.InjectionsBasicsScreen;
+import com.jwebmp.examples.demos.homepage.display.injection.InjectionsClassGraphScreen;
+import com.jwebmp.examples.demos.homepage.display.injection.InjectionsJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.privacy.ChatRoomPrivacyScreen;
 import com.jwebmp.examples.demos.homepage.display.privacy.PrivacyScreen;
 import com.jwebmp.examples.demos.homepage.display.termsandconditions.TermsAndConditionsScreen;
@@ -106,6 +109,10 @@ public enum DisplayScreens
 
 
 	EventsScreen(com.jwebmp.examples.demos.homepage.display.events.EventScreen.class, "Events"),
+
+	InjectionBasicsScreen(InjectionsBasicsScreen.class, "InjectionBasics"),
+	InjectionClassGraphScreen(InjectionsClassGraphScreen.class, "InjectionClassGraph"),
+	InjectionJWebMPScreen(InjectionsJWebMPScreen.class, "InjectionJWebMP"),
 
 	TCs(TermsAndConditionsScreen.class, "TermsAndConditions"),
 	Privacy(PrivacyScreen.class, "PrivacyPolicy"),

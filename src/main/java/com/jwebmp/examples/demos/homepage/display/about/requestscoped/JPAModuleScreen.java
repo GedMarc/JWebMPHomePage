@@ -47,7 +47,7 @@ public class JPAModuleScreen
 		persistenceTab.add("Keep in mind, for JPA, when you have two or more persistence units in an application, " +
 		                   "<br/>or a persistence unit and a message queue, You should use JTA");
 
-		persistenceTab.add("Guiced Persistence allows you to map these by simply inheriting the <strong><i>AbstractDatabaseProviderModule</i></strong>");
+		persistenceTab.add("Guiced Persistence allows you to map these by simply inheriting the <strong><i>DatabaseModule</i></strong>");
 
 		classTab.add("JPA is configured through the <strong><i>JPAConnectionBaseInfo</i></strong> class.");
 

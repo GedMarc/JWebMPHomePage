@@ -1,38 +1,28 @@
 package com.jwebmp.examples.demos.homepage.display.injection;
 
-import com.jwebmp.core.base.ajax.AjaxCall;
-import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.base.html.SmallText;
-import com.jwebmp.core.events.activate.ActivateAdapter;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.general.ObjectBrowser;
-import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
-import com.jwebmp.examples.demos.homepage.components.general.PackagesBrowser;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
-import com.jwebmp.plugins.fontawesome5.FontAwesome;
-import com.jwebmp.plugins.fontawesome5.FontAwesomeList;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStepItem;
 
 import javax.validation.constraints.NotNull;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
-import static com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons.*;
-import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 @SuppressWarnings("Duplicates")
-public class InjectionsBasicsScreen
+public class InjectionsClassGraphScreen
 		extends DisplayScreen
 {
-	public InjectionsBasicsScreen()
+	public InjectionsClassGraphScreen()
 	{
 
 	}
