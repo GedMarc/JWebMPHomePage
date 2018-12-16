@@ -1,4 +1,3 @@
 module {
     provides IGuiceModule with HomePageDBModule;
-    provides IGuicePostStartup with HomePageDBModule;
 }

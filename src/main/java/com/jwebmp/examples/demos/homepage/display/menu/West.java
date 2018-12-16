@@ -155,13 +155,13 @@ public class West
 		List uiKit = new List<>();
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceBasicsScreen).setText(HTML_TAB + "Basics"))
 		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText(HTML_TAB + "JPA"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJpaScreen).setText(HTML_TAB + "JPA"))
 		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", TCs).setText(HTML_TAB + "JTA"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJtaScreen).setText(HTML_TAB + "JTA"))
 		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", Privacy).setText(HTML_TAB + "C3P0"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceC3P0Screen).setText(HTML_TAB + "C3P0"))
 		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", ChatPolicy).setText(HTML_TAB + "Entity Assist"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceEntityAssistScreen).setText(HTML_TAB + "Entity Assist"))
 		                          .setRenderTextBeforeChildren(false));
 
 		ListItem dropDown1 = buildSubList("fal fa-question", "Persistence", uiKit);

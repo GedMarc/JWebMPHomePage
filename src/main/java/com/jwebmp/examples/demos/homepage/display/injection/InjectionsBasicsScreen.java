@@ -33,14 +33,6 @@ public class InjectionsBasicsScreen
 	public @NotNull BSContainer<?> getContentContainer()
 	{
 		BSContainer container = BSContainer.newInstance(Container_Fluid);
-		//container.addClass("row");
-
-		//container.add(new H3<>("Injection Control<br/>"));
-
-		Div aboutContent = new Div();
-		Div whatAvailableContainer = new Div();
-		Div pageContent = new Div();
-		Div dataContent = new Div();
 		Div pageContentRow = new BSRow();
 
 
@@ -48,18 +40,7 @@ public class InjectionsBasicsScreen
 		scroll.getOptions()
 		      .setHeight("500px");
 
-		DefaultDisplayWizard wizard = new DefaultDisplayWizard("eventWizard");
-
-		wizard.addStep(new SmartWizardStep(aboutContent, new SmartWizardStepItem("About", new SmallText("The Important Things"))));
-		wizard.addStep(new SmartWizardStep(whatAvailableContainer, new SmartWizardStepItem("What's Available", new SmallText("Overview of the objects"))));
-		wizard.addStep(new SmartWizardStep(pageContent, new SmartWizardStepItem("Defaults", new SmallText("Standard Events Available"))));
-		wizard.addStep(new SmartWizardStep(dataContent, new SmartWizardStepItem("Data", new SmallText("Return data from client"))));
-
-
 		container.add(buildInjection());
-
-
-		//container.add(wizard);
 
 		return container;
 	}
@@ -103,11 +84,12 @@ public class InjectionsBasicsScreen
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceDefaultBinder"))
 		                                       .add(new TableCell<>(
-				                                       "Registers a Guice Injection module with the default binders. This is for backend binding with no requirements on servlets, and provides nearly the same encapsulation via JPMS as an EJB would to an WAR")));
+				                                       "Sometimes you want to register and bind inside of the parent module. This binder exposes the parent module for custom bindings at the top level.")));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuicePostStartup"))
 		                                       .add(new TableCell<>(
-				                                       "Executes the given operations immediately after the injection cycle has completed. Used mostly to start database connections before making the site available")));
+				                                       "Executes the given operations immediately after the injection cycle has completed. Used mostly to start database connections before making the site available" +
+				                                       "<br/>Post startup items with the same sort order will be executed asynchronously")));
 		div.add(table);
 
 		div.add(new Image("images/guiceinjection/StartupOrder.png"));

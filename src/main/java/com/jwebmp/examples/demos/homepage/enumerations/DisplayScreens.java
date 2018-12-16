@@ -4,6 +4,11 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutThisSiteScreen;
 import com.jwebmp.examples.demos.homepage.display.about.SPIScreen;
+import com.jwebmp.examples.demos.homepage.display.about.entityassist.EntityAssistScreen;
+import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceC3P0Screen;
+import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceEntityAssistScreen;
+import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceJPAScreen;
+import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceJTAScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animate.AngularAnimateDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animatedchange.AngularAnimateChangeDemoScreen;
@@ -105,6 +110,10 @@ public enum DisplayScreens
 
 	PersistenceScreen(com.jwebmp.examples.demos.homepage.display.persistence.PersistenceScreen.class, "Persistence"),
 	PersistenceBasicsScreen(com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceBasicsScreen.class, "PersistenceBasics"),
+	PersistenceJpaScreen(PersistenceJPAScreen.class, "PersistenceJPA"),
+	PersistenceJtaScreen(PersistenceJTAScreen.class, "PersistenceJTA"),
+	PersistenceC3P0Screen(com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceC3P0Screen.class, "PersistenceC3P0"),
+	PersistenceEntityAssistScreen(com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceEntityAssistScreen.class, "PersistenceEntityAssist"),
 
 
 	EventsScreen(com.jwebmp.examples.demos.homepage.display.events.EventScreen.class, "Events"),

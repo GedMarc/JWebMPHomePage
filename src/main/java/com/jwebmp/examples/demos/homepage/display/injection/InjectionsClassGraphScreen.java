@@ -93,13 +93,13 @@ public class InjectionsClassGraphScreen
 		                                       .add(new TableCell<>("Registers the given path (No Class Files) to search for IFileContentsScanners.<br/> Usually META-INF")));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPathContentsBlacklistScanner"))
-		                                       .add(new TableCell<>("Registers paths to be excluded from all scans")));
+		                                       .add(new TableCell<>("Registers paths to be excluded from all scans. Performance enhancement.")));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceScanJarExclusions"))
-		                                       .add(new TableCell<>("Registers JAR files to be excluded from all scans")));
+		                                       .add(new TableCell<>("Registers JAR files to be excluded from all scans. Performance enhancement")));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IGuiceScanModuleExclusions"))
-		                                       .add(new TableCell<>("Registers Modules (JPMS) to be excluded from all scans")));
+		                                       .add(new TableCell<>("Registers Modules (JPMS) to be excluded from all scans. Performance enhancement")));
 
 		div.add(table);
 
