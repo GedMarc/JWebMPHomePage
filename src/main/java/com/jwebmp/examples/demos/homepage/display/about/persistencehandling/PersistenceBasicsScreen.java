@@ -155,7 +155,7 @@ public class PersistenceBasicsScreen
 
 		provides.add(new H3<>("Auto Start Data Source"));
 		provides.add(
-				"<br/>You can also create a service binding from the same module to IGuicePostStartup to instantiate the connection on boot instead of first use (Injecting DataSource)" +
+				"You can also create a service binding from the same module to IGuicePostStartup to instantiate the connection on boot instead of first use (Injecting DataSource)" +
 				"<br/>Or simply set <code>setAutoStart(true);</code> to create an asynchronous post startup thread without needing a module specification");
 
 		//provides.add(new MetaInfTree("com.jwebmp.guicedinjection.interfaces.IGuicePostStartup"));

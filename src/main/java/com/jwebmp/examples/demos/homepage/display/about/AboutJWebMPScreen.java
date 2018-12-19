@@ -1,10 +1,14 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
 import com.jwebmp.core.base.html.*;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
+import com.jwebmp.plugins.bootstrap4.buttons.styles.BSButtonPrimaryOutline;
+import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
@@ -12,6 +16,8 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
+import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
+import com.jwebmp.plugins.smartwizard4.SmartWizardStepItem;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
@@ -28,7 +34,10 @@ public class AboutJWebMPScreen
 	{
 		BSContainer container = new BSContainer(BSContainerOptions.Container_Fluid);
 
-		BSNavTabs tabs = new BSNavTabs();
+		Div left = new Div();
+		Div right = new Div();
+		left.addClass("col-12 col-md-6");
+		right.addClass("col-12 col-md-6");
 
 		Div whatIsIt = new Div();
 		Div dependencies = new Div();
@@ -36,18 +45,27 @@ public class AboutJWebMPScreen
 		Div pushMechanism = new Div();
 		Div testing = new Div();
 
-		tabs.addTab("What Is It", whatIsIt, true);
-		tabs.addTab("Dependencies", dependencies, false);
-		tabs.addTab("Runs On", runsOnList, false);
-	//	tabs.addTab("Server Side", pushMechanism, false);
-	//	tabs.addTab("Unit Testing", testing, false);
 
-		container.add(tabs);
+		DefaultDisplayWizard wizard = new DefaultDisplayWizard("aboutjwebmpwizard");
+
+		wizard.addStep(new SmartWizardStep<>(whatIsIt,new SmartWizardStepItem("What Is It",new SmallText("About JWebMP"))));
+		wizard.addStep(new SmartWizardStep<>(dependencies,new SmartWizardStepItem("Dependencies",new SmallText("A list of requirements"))));
+		wizard.addStep(new SmartWizardStep<>(runsOnList,new SmartWizardStepItem("Runs On",new SmallText("Compatibility Guide"))));
+
+		container.add(wizard);
+
+
 
 		BSRow row = new BSRow();
+		row.add(left);
+		row.add(right);
+
+
 		whatIsIt.add(row);
-		row.add(buildWhyPanel());
-		row.add(buildTempalteFreeDev());
+		left.add(buildWhyPanel());
+		right.add(buildTempalteFreeDev());
+		left.add(buildHencePanel());
+
 
 		dependencies.add(buildDependencies());
 
@@ -55,8 +73,6 @@ public class AboutJWebMPScreen
 		testing.add(buildTestPanel());
 
 		runsOnList.add(buildCompatibilityList());
-		//		runsOnList.add(buildInjectionsPanel());
-
 
 		pushMechanism.add(buildPushPanel());
 
@@ -67,30 +83,72 @@ public class AboutJWebMPScreen
 	private Div buildWhyPanel()
 	{
 		DisplayCard card = new DisplayCard();
-		card.addClass("col-12 col-md-6 ml-5 mr-5");
+		//card.addClass("col-12 col-md-6");
 		card.addCardHeader(new H2("Next Level Development").toString(true));
 		Div div = card.addCardBody();
 		div.add("JWebMP is a Java Web Framework that can provide any web framework available on the internet without any interference." +
-		        "<br/>Designed to serve Modern, Efficient, and Server-Side Driven" +
-		        "<br/><br/>Built in JPMS, Develop Enterprise Scale Applications quicker than ever before, with less code than you can imagine. Only include the modules you want, and build the pages you want." +
-		        "<br/>This framework is completely JLink compatible for quick deployments and deployable instances." +
-		        "<br/><br/>You can seamlessly move from any JSF to JWebMP, even better,  from the straight JRE8 to JPMS in a single change");
-		div.add(new H3("This framework is completely open source and 100% free."));
-		div.add("There is a donate button in the top right, this is only location, I don't want to burst it out there. " +
+		        "<br/>Designed to serve Modern, Efficient, and Server-Side Driven");
+
+		Div moreDiv = new Div();
+		BSButtonPrimaryOutline button = new BSButtonPrimaryOutline<>().setText("Read More");
+		moreDiv.add(button);
+		Div readMoreDiv = new Div();
+		moreDiv.add(readMoreDiv);
+		div.add(moreDiv);
+		BSCollapse.link(button,readMoreDiv,true);
+
+		readMoreDiv.add("<br/><br/>Built in JPMS, Develop Enterprise Scale Applications quicker than ever before, with less code than you can imagine." +
+		                "<br/><br/>You can seamlessly move from any JSF to JWebMP, even better,  from the straight JRE8 to JPMS in a single change");
+
+		readMoreDiv.add(new H3("This framework is completely open source and 100% free."));
+		readMoreDiv.add("There is a donate button in the top right, this is only location, I don't want to burst it out there. " +
 		        "<br/>If you like this product, please help! Pull Requests, Issue Logging, Donating, anything.");
+		return card;
+	}
+
+	private Div buildHencePanel()
+	{
+		DisplayCard card = new DisplayCard();
+	//	card.addClass("col-12 col-md-6");
+		card.addCardHeader(new H2("Only what you need").toString(true));
+		Div div = card.addCardBody();
+		div.add("JWebMP is 100% Modular, and works perfectly with JLink application. Each module is strictly named and added to your application to configure the rendering.");
+
+		Div moreDiv = new Div();
+		BSButtonPrimaryOutline button = new BSButtonPrimaryOutline<>().setText("Read More");
+		moreDiv.add(button);
+		Div readMoreDiv = new Div();
+		moreDiv.add(readMoreDiv);
+		div.add(moreDiv);
+		BSCollapse.link(button,readMoreDiv,true);
+
+
+		readMoreDiv.add("Basic injections such as <code>@Inject ReadableUserAgent</code> and many others that are always available, you can always do whatever you need to ");
+		readMoreDiv.add("Security is paramount, and the framework allows and caters for all forms of security integration. Local Storage for instance places a unique identifier per browser instance," +
+		        "<br/> and IP Locking, SAML and everything else is incredibly quick to implement.");
 		return card;
 	}
 
 	private Div buildTempalteFreeDev()
 	{
 		DisplayCard card = new DisplayCard();
-		card.addClass("col-12 col-md-4 ml-5 mr-5");
+	//	card.addClass("col-12 col-md-4");
 		card.addCardHeader(new H2("Template Free Development").toString(true));
 		Div div = card.addCardBody();
 		//div.add(new H3<>("Template Free Development"));
 		div.add("The system constructs the HTML, CSS and JavaScripts dynamically (yes according to browser and even device) to ensure that only the correct scripts get delivered. With abstraction and injection points, you can easily manipulate any item to produce the output that you want.");
-		div.add("Being able to render the complete output of the HTML, JavaScript and CSS of any component at any level and stage grants you an unbelievable amount of many, many benefits. Let your imagination run wild with that concept for a bit. Exactly how much coverage in your tests can you get? Want to render a component in JWebMP and push it to JSF?");
-		div.add("Of course, you can still use File Templates (though this system isn't based on it at all) with variables and scoping to continue using HTML and Web Content files to render your information. ");
+
+		Div moreDiv = new Div();
+		BSButtonPrimaryOutline button = new BSButtonPrimaryOutline<>().setText("Read More");
+		moreDiv.add(button);
+		Div readMoreDiv = new Div();
+		moreDiv.add(readMoreDiv);
+		div.add(moreDiv);
+		BSCollapse.link(button,readMoreDiv,true);
+
+		readMoreDiv.add("Being able to render the complete output of the HTML, JavaScript and CSS of any component at any level and stage grants you an unbelievable amount of many, many benefits. Let your imagination run wild with that concept for a bit. Exactly how much coverage in your tests can you get? Want to render a component in JWebMP and push it to JSF?");
+		readMoreDiv.add("Of course, you can still use File Templates (though this system isn't based on it at all) with variables and scoping to continue using HTML and Web Content files to render your information. ");
+
 		return card;
 	}
 
@@ -113,22 +171,22 @@ public class AboutJWebMPScreen
 		                                                       .add(new TableHeaderCell<>("Purpose"))));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ClassGraph"))
-		                                       .add(new TableCell<>("4.6.6"))
+		                                       .add(new TableCell<>("4.6.9"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/lukehutch/fast-classpath-scanner\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("fastclasspath.version"))
 		                                       .add(new TableCell<>("Scanner")));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Google Guice"))
-		                                       .add(new TableCell<>("4.2.3"))
+		                                       .add(new TableCell<>("4.2.3 - JWebMP"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/google/guice\" target=\"_blank\">Link</a>"))
 		                                       //  .add(new TableCell<>("guice.version"))
-		                                       .add(new TableCell<>("DI Provider")));
+		                                       .add(new TableCell<>("DI Provider. Locally strictly named")));
 
 		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("Jackson JSON"))
-		                                       .add(new TableCell<>("2.9.6"))
+		                                       .add(new TableCell<>("2.9.8 - JWebMP"))
 		                                       .add(new TableCell<>("<a href=\"https://github.com/FasterXML/jackson\" target=\"_blank\">Link</a>"))
 		                                       //   .add(new TableCell<>("jackson.version"))
-		                                       .add(new TableCell<>("JSON API")));
+		                                       .add(new TableCell<>("JSON API - Locally strictly named")));
 
 		div.add(table);
 
@@ -175,38 +233,32 @@ public class AboutJWebMPScreen
 		                                                                  .add(new TableHeaderCell<>("Purpose"))));
 
 		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("ua-detector"))
-		                                                  .add(new TableCell<>("0.9.22"))
+		                                                  .add(new TableCell<>("0.9.22 - JWebMP"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Device Info Provider")));
+		                                                  .add(new TableCell<>("Device Info Provider - Strictly Named")));
 
 		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-lang3"))
-		                                                  .add(new TableCell<>("3.7"))
+		                                                  .add(new TableCell<>("3.7 - JWebMP"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Assists with String manipulation")));
+		                                                  .add(new TableCell<>("Assists with String manipulation - Strictly Named")));
 
 		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-text"))
-		                                                  .add(new TableCell<>("1.4"))
+		                                                  .add(new TableCell<>("1.4 - JWebMP"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Assists with String manipulation")));
+		                                                  .add(new TableCell<>("Assists with String manipulation - Strictly Named")));
 
 		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("commons-io"))
-		                                                  .add(new TableCell<>("2.6"))
+		                                                  .add(new TableCell<>("2.6 - JWebMP"))
 		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
 		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Assist with IO usage")));
-
-		servletInfoTable.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("quality-check"))
-		                                                  .add(new TableCell<>("1.3"))
-		                                                  //  .add(new TableCell<>("Accessed in Page.class"))
-		                                                  .add(new TableCell<>("maven"))
-		                                                  .add(new TableCell<>("Dependent from ua-detector")));
+		                                                  .add(new TableCell<>("Assist with IO usage - Strictly Named")));
 
 		div.add(servletInfoTable);
 
-		div.add(new Image("images/guiceinjection/ModuleDepedency.png").addClass("img-fluid d-block"));
+		//div.add(new Image("images/guiceinjection/ModuleDepedency.png").addClass("img-fluid d-block"));
 		//div.add("<br/>");
 		//div.add(new Image("images/guiceinjection/CompleteModuleDepedency.png").addClass("img-fluid d-block"));
 
@@ -232,7 +284,7 @@ public class AboutJWebMPScreen
 		div.add(new H3("Doesn't Interfere"));
 		div.add("You can easily run JWebMP alongside any project without causing any interference." +
 		        "<br/>Run next to JSF with the simple inclusion of a module, and a small faces-config update, " +
-		        "<br/>Migrating to a Pure Java environment and switching between JPMS and JRE8 is as easy as ever.");
+		        "<br/>As a 'Add to use' platform, only modules you add are ever used, and even they can be disabled (as with this site).");
 
 		div.add(new H3("Compatibility List"));
 

@@ -28,5 +28,9 @@ public class DefaultDisplayWizard
 				.setMarkDoneStep(true)
 				.setMarkAllPreviousStepsAsDone(true)
 				.setAnchorClickable(true);
+
+		addStyle("max-height", "550px");
+		addStyle("height", "550px");
+		//addStyle("overflow-y", "auto");
 	}
 }

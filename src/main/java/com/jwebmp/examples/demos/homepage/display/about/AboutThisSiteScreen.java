@@ -40,8 +40,8 @@ public class AboutThisSiteScreen
 		DivSimple<?> divApi = new DivSimple<>();
 
 		CircleDisplayWizard wizard = new CircleDisplayWizard("siteoperations");
-		wizard.addStep(new SmartWizardStep(buildRuntimeScreen(),new SmartWizardStepItem("RUNTIME",null)));
-		wizard.addStep(new SmartWizardStep(divApi,new SmartWizardStepItem("API",null)));
+		wizard.addStep(new SmartWizardStep(buildRuntimeScreen(),new SmartWizardStepItem("RUNTIME")));
+		wizard.addStep(new SmartWizardStep(divApi,new SmartWizardStepItem("API")));
 
 		BSRow runtimeRow = new BSRow();
 
