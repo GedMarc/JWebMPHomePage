@@ -4,7 +4,7 @@ import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
 import com.jwebmp.core.generics.WebReference;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
-import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerIProperties;
+import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerProperties;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.blueimp.gallery.BlueImpGalleryPageConfigurator;
@@ -36,16 +36,16 @@ public class HomePageStartup
 		WebReference.setUseVersionIdentifier(true);
 		AngularMessagesModule.setMesssgesModuleEnabled(true);
 
-		HibernateEntityManagerIProperties.getDefaultProperties()
-		                                 .setShowSql(true);
-		HibernateEntityManagerIProperties.getDefaultProperties()
-		                                 .setFormatSql(true);
+		HibernateEntityManagerProperties.getDefaultProperties()
+		                                .setShowSql(true);
+		HibernateEntityManagerProperties.getDefaultProperties()
+		                                .setFormatSql(true);
 
 
-		HibernateEntityManagerIProperties.getDefaultProperties()
-		                                 .setUseQueryStartupCheck(false);
+		HibernateEntityManagerProperties.getDefaultProperties()
+		                                .setUseQueryStartupCheck(false);
 
-		/*HibernateEntityManagerIProperties.getDefaultProperties()
+		/*HibernateEntityManagerProperties.getDefaultProperties()
 		                                .enableQuickestBoot();*/
 
 		BTMAutomatedTransactionHandler.setActive(true);

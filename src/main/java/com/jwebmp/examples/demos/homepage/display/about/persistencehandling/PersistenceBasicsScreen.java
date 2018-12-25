@@ -5,7 +5,7 @@ import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.DefaultTable;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
+import com.jwebmp.examples.demos.homepage.components.display.MetaInfServicesTree;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
@@ -31,6 +31,16 @@ public class PersistenceBasicsScreen
 	public PersistenceBasicsScreen()
 	{
 
+	}
+
+	@Override
+	public @NotNull BSContainer<?> getContentContainer()
+	{
+		BSContainer container = new BSContainer(Container_Fluid);
+
+		container.add(buildSmartWizard());
+
+		return container;
 	}
 
 	private Div buildSmartWizard()
@@ -71,9 +81,10 @@ public class PersistenceBasicsScreen
 		Div about = new Div();
 		about.add(new H3("Persistence Management"));
 
-		about.add("Persistence can be provided either through <a target=\"_blank\" href=\"https://github.com/google/guice/wiki/GuicePersist\">Guice Persist</a> in the default manner, Registering the IGuiceModule," +
-		          "<br/>or this library, <a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence\">Guiced Persistence library<a/> which allows automatic testing and complete support." +
-		          "<br/>As an entirely separate module, it can run separately in any environment, and allows quick porting database management tasks across.");
+		about.add(
+				"Persistence can be provided either through <a target=\"_blank\" href=\"https://github.com/google/guice/wiki/GuicePersist\">Guice Persist</a> in the default manner, Registering the IGuiceModule," +
+				"<br/>or this library, <a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence\">Guiced Persistence library<a/> which allows automatic testing and complete support." +
+				"<br/>As an entirely separate module, it can run separately in any environment, and allows quick porting database management tasks across.");
 
 		about.add("This module is independent of JWebMP and can run on its own in any application." +
 		          "<br/> Add-on Modules are used to read persistence files and configure connections" +
@@ -83,14 +94,15 @@ public class PersistenceBasicsScreen
 		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-HibernatePropertiesReader\">" +
 		                                      "Hibernate Properties Reader</a>"
 				                              , "Configures the data source from hibernate properties", "guiced-persistence-hibernateproperties-reader")
-/*
+		                              /*
 
-		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-EclipseLinkProperties\">EclipseLink Properties Reader</a>",
-		                                      "Configures the data source from eclipse link properties", "guiced-persistence-eclipselink-reader")
-*/
+																			.addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-EclipseLinkProperties\">EclipseLink Properties Reader</a>",
+																					"Configures the data source from eclipse link properties", "guiced-persistence-eclipselink-reader")
+									  */
 		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-SystemPropertiesReader\">" +
 		                                      "System Properties Reader</a>",
-		                                      "Overwrites the persistence properties with the given system environment value <code>${system.property}</code>", "guiced-persistence-systemproperties-reader")
+		                                      "Overwrites the persistence properties with the given system environment value <code>${system.property}</code>",
+		                                      "guiced-persistence-systemproperties-reader")
 
 		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-JPA\">" +
 		                                      "JPA Properties Reader</a>",
@@ -110,7 +122,8 @@ public class PersistenceBasicsScreen
 
 		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-Wildfly\">" +
 		                                      "Wildfly Properties Reader</a>",
-		                                      "Reads the <code>getStandaloneName()</code> Standalone Filename and configures the data sources accordingly", "guiced-persistence-wildfly")
+		                                      "Reads the <code>getStandaloneName()</code> Standalone Filename and configures the data sources accordingly",
+		                                      "guiced-persistence-wildfly")
 		         );
 
 		about.add("Guiced Persistence allows you to bind multiple persistence units into Guice Modules utilizing Annotations." +
@@ -122,45 +135,6 @@ public class PersistenceBasicsScreen
 		addSourceToContainer(PersistenceBasicsScreen.class, "mavenconfig.txt", SourceCodeLanguages.XML, about);
 
 		return about;
-	}
-
-	private Div buildAddons()
-	{
-		Div addons = new Div();
-
-		FontAwesomeList list = new FontAwesomeList(true);
-
-		list.addItem("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-Wildfly\">" +
-		             "Wildfly Properties Reader</a>&nbsp; <small><i></i></small>",
-		             FontAwesome.icon(FontAwesomeIcons.check));
-
-		addons.add(list);
-		return addons;
-	}
-
-	private Div buildProvides()
-	{
-		Div provides = new Div();
-
-		provides.add(new H3<>("Provide the Database Module"));
-		provides.add(new H4("JPMS"));
-		provides.add("Simply provide the module to the injection platform");
-		addSourceToContainer(PersistenceBasicsScreen.class, "providesexample.txt", SourceCodeLanguages.JS, provides);
-
-		provides.add(new H3<>("JRE 8"));
-		provides.add("In JRE 8, you need to create the services file in your META-INF/services folder. " +
-		             "These files contain a reference to the services.");
-
-		provides.add(new MetaInfTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule"));
-
-		provides.add(new H3<>("Auto Start Data Source"));
-		provides.add(
-				"You can also create a service binding from the same module to IGuicePostStartup to instantiate the connection on boot instead of first use (Injecting DataSource)" +
-				"<br/>Or simply set <code>setAutoStart(true);</code> to create an asynchronous post startup thread without needing a module specification");
-
-		//provides.add(new MetaInfTree("com.jwebmp.guicedinjection.interfaces.IGuicePostStartup"));
-
-		return provides;
 	}
 
 	private Div buildAnnotate()
@@ -192,6 +166,44 @@ public class PersistenceBasicsScreen
 		return dbModule;
 	}
 
+	private Div buildProvides()
+	{
+		Div provides = new Div();
+
+		provides.add(new H3<>("Provide the Database Module"));
+		provides.add(new H4("JPMS"));
+		provides.add("Simply provide the module to the injection platform");
+		addSourceToContainer(PersistenceBasicsScreen.class, "providesexample.txt", SourceCodeLanguages.JS, provides);
+
+		provides.add(new H3<>("JRE 8"));
+		provides.add("In JRE 8, you need to create the services file in your META-INF/services folder. " +
+		             "These files contain a reference to the services.");
+
+		provides.add(new MetaInfServicesTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule"));
+
+		provides.add(new H3<>("Auto Start Data Source"));
+		provides.add(
+				"You can also create a service binding from the same module to IGuicePostStartup to instantiate the connection on boot instead of first use (Injecting DataSource)" +
+				"<br/>Or simply set <code>setAutoStart(true);</code> to create an asynchronous post startup thread without needing a module specification");
+
+		//provides.add(new MetaInfServicesTree("com.jwebmp.guicedinjection.interfaces.IGuicePostStartup"));
+
+		return provides;
+	}
+
+	private Div buildEncapsulation()
+	{
+		Div encapsulation = new Div();
+		encapsulation.add("To utilize encapsulation and lock down database usage to a module (As per EE), Create a Private Module and install the Database Module into it.");
+		encapsulation.add("You can override the sort order and provide the same value to enable asynchronous loading." +
+		                  "<br/>Register your Private Module through <code>provides</code> or JRE 8 SPI service file instead of your module");
+		addSourceToContainer(PersistenceBasicsScreen.class, "privatemodule.txt", SourceCodeLanguages.Java, encapsulation);
+
+		encapsulation.add("You can use your Private Module to define your interface bindings, use <code>expose(Clazz.class)</code> to expose bindings internal to your module");
+
+		return encapsulation;
+	}
+
 	private Div buildServices()
 	{
 		Div services = new Div();
@@ -220,9 +232,9 @@ public class PersistenceBasicsScreen
 		                                                .add(new TableCell<>("Service that is used to manage transactions, whether for JTA or JPA.")));
 		services.add(settingUpTable);
 
-		services.add(new MetaInfTree("com.jwebmp.guicedpersistence.services.ITransactionHandler",
-		                             "com.jwebmp.guicedpersistence.services.IPropertiesConnectionInfoReader",
-		                             "com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader"));
+		services.add(new MetaInfServicesTree("com.jwebmp.guicedpersistence.services.ITransactionHandler",
+		                                     "com.jwebmp.guicedpersistence.services.IPropertiesConnectionInfoReader",
+		                                     "com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader"));
 
 
 /*
@@ -232,19 +244,6 @@ public class PersistenceBasicsScreen
 */
 
 		return services;
-	}
-
-	private Div buildEncapsulation()
-	{
-		Div encapsulation = new Div();
-		encapsulation.add("To utilize encapsulation and lock down database usage to a module (As per EE), Create a Private Module and install the Database Module into it.");
-		encapsulation.add("You can override the sort order and provide the same value to enable asynchronous loading." +
-		                  "<br/>Register your Private Module through <code>provides</code> or JRE 8 SPI service file instead of your module");
-		addSourceToContainer(PersistenceBasicsScreen.class, "privatemodule.txt", SourceCodeLanguages.Java, encapsulation);
-
-		encapsulation.add("You can use your Private Module to define your interface bindings, use <code>expose(Clazz.class)</code> to expose bindings internal to your module");
-
-		return encapsulation;
 	}
 
 	private Div buildEnterprise()
@@ -265,15 +264,18 @@ public class PersistenceBasicsScreen
 		return enterprise;
 	}
 
-
-	@Override
-	public @NotNull BSContainer<?> getContentContainer()
+	private Div buildAddons()
 	{
-		BSContainer container = new BSContainer(Container_Fluid);
+		Div addons = new Div();
 
-		container.add(buildSmartWizard());
+		FontAwesomeList list = new FontAwesomeList(true);
 
-		return container;
+		list.addItem("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-Wildfly\">" +
+		             "Wildfly Properties Reader</a>&nbsp; <small><i></i></small>",
+		             FontAwesome.icon(FontAwesomeIcons.check));
+
+		addons.add(list);
+		return addons;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.events;
 
+import com.google.inject.Singleton;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.core.base.html.*;

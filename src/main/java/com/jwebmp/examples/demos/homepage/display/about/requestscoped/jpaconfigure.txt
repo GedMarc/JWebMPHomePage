@@ -1,8 +1,8 @@
 public class EntityAssistTestDBModule
-		extends AbstractDatabaseProviderModule
+		extends DatabaseModule
 {
-protected ConnectionBaseInfo getConnectionBaseInfo(...)
-{
-    return new JPAConnectionBaseInfo();
-}
+    protected ConnectionBaseInfo getConnectionBaseInfo(...)
+    {
+        return new JPAConnectionBaseInfo();
+    }
 }

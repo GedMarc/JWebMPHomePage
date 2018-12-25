@@ -32,11 +32,11 @@
             <scope>compile</scope>
         </dependency>
 
-   <!--     <dependency>
-            <groupId>net.bytebuddy</groupId>
-            <artifactId>byte-buddy</artifactId>
-            <type>jar</type>
-        </dependency>-->
+        <!--     <dependency>
+                 <groupId>net.bytebuddy</groupId>
+                 <artifactId>byte-buddy</artifactId>
+                 <type>jar</type>
+             </dependency>-->
 
 
         <dependency>
@@ -98,6 +98,15 @@
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
         </dependency>
+
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-jquery-ui</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+            <classifier>${jwebmp.runtime.classifier}</classifier>
+        </dependency>
+
 
         <dependency>
             <groupId>com.jwebmp</groupId>

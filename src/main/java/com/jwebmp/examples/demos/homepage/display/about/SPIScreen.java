@@ -1,9 +1,11 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
-import com.jwebmp.core.base.html.*;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.H3;
+import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
+import com.jwebmp.examples.demos.homepage.components.display.MetaInfServicesTree;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
@@ -14,12 +16,8 @@ import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
-import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
-import com.jwebmp.plugins.bootstrap4.tables.BSTable;
-import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSMarginOptions.*;
-import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
 
 public class SPIScreen
 		extends DisplayScreen<SPIScreen>
@@ -43,8 +41,8 @@ public class SPIScreen
 		                                     .addClass(MarginRight_1);
 		tabs.addTab("About", buildDefaultScreen(), true);
 		//tabs.addTab("Injection", buildInjection(), false);
-	//	tabs.addTab("*<i>Classpath</i>", buildClassPath(), false);
-	//	tabs.addTab("JWebMP", buildJWebMP(), false);
+		//	tabs.addTab("*<i>Classpath</i>", buildClassPath(), false);
+		//	tabs.addTab("JWebMP", buildJWebMP(), false);
 
 		//tabs.addTab("Persistence", buildPersistence(), false);
 		card.addCardBody()
@@ -92,8 +90,6 @@ public class SPIScreen
 	}
 
 
-
-
 	private Div buildPluginsPanel()
 	{
 		DisplayCard card = new DisplayCard();
@@ -114,7 +110,7 @@ public class SPIScreen
 		div.add("The above tabs identify the available services for your application.");
 		div.add("Utilize META-INF/services and the provides for module-info.java");
 
-		div.add(new MetaInfTree("com.jwebmp.core.services.IPage", "com.jwebmp.core.services.IErrorPage"));
+		div.add(new MetaInfServicesTree("com.jwebmp.core.services.IPage", "com.jwebmp.core.services.IErrorPage"));
 
 		return card;
 	}

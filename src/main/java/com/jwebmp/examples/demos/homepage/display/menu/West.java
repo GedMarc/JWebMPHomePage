@@ -83,7 +83,7 @@ public class West
 		//buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites());
 		//buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
-		buildMenuSection("PLUG N PLAY", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(), buildJQueryUI());
+		buildMenuSection("MIX N MATCH", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(), buildJQueryUI());
 
 		//buildMenuSection("Bootstrap", true, buildBootstrap4(), buildBootstrap3());
 		//buildMenuSection("JQuery UI", true, buildJQueryUI());
@@ -102,6 +102,7 @@ public class West
 
 		add(sidebarInner);
 	}
+
 
 	private ListItem<?> buildMoreMenu()
 	{

@@ -1,12 +1,12 @@
 public class EntityAssistTestDBModule
 		extends AbstractDatabaseProviderModule
 {
-protected ConnectionBaseInfo getConnectionBaseInfo(...)
-{
-	ConnectionBaseInfo cbi = new BTMConnectionBaseInfo(false);
-    cbi.setAllowLocalTransactions(true); //Enable HBM2DDL
-    cbi.setShareTransactionConnections(true); //Share connections
-    cbi.setEnableJdbc4ConnectionTest(true); //JD
-    return cbi;
-}
+    protected ConnectionBaseInfo getConnectionBaseInfo(...)
+    {
+        ConnectionBaseInfo cbi = new BTMConnectionBaseInfo(false);
+        cbi.setAllowLocalTransactions(true); //Enable HBM2DDL
+        cbi.setShareTransactionConnections(true); //Share connections
+        cbi.setEnableJdbc4ConnectionTest(true);
+        return cbi;
+    }
 }
