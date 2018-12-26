@@ -46,14 +46,12 @@ public class JTAModuleScreen
 
 		classTab.add(new H3("Class Structure"));
 
-		classTab.add("The class <strong><i>BTMConnectionBaseInfo</i></strong> is used for JTA. " +
+		classTab.add("The class <code>BTMConnectionBaseInfo</code> is used for JTA. " +
 		             "<br/>The boolean constructor specifies XA or Non XA.");
 		classTab.add("Below you can also see some default optimizations for JDBC 4 drivers.");
 
 		addSourceToContainer(JTAModuleScreen.class, "jtaconfigure.txt", SourceCodeLanguages.Java, classTab);
 
-
-		servicesTab.add("There is also a <code>setAutoStart(true);</code> method that will auto start the persistence unit.");
 		servicesTab.add(new H3("Provide the Service"));
 		servicesTab.add("As per usual, provide your module to the injection engine with IGuiceModule." +
 		                "<br/> The two mechanisms for running systems are listed below");
@@ -61,7 +59,11 @@ public class JTAModuleScreen
 		servicesTab.add("JRE 8");
 		servicesTab.add(new MetaInfServicesTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule"));
 		servicesTab.add("JPMS");
+		servicesTab.add("In your <code>module-info.java</code> file, add in your provisions clause");
+
 		addSourceToContainer(JPAModuleScreen.class, "modules.txt", SourceCodeLanguages.Java, servicesTab);
+
+		servicesTab.add("There is also a <code>setAutoStart(true);</code> method that will auto start the persistence unit.");
 
 
 		implementationTab.add(new H3("Background Implementation"));
@@ -74,13 +76,14 @@ public class JTAModuleScreen
 		implementationTab.add("Transactions are managed through the <code>BTMAutomatedTransactionHandler</code> class");
 
 		implementationTab.add(
-				"The Guiced Persistence implementation of BTM allows you to map both XA and Non-XA resources, and will assign the LRC XA Handler for Non-XA persistence units." +
-				" This allows you to control and manage UserTransactions, Units of Work, and Transactional Rollbacks accordingly.");
+				"The Guiced Persistence implementation of BTM allows you to map both XA and Non-XA resources, " +
+				"<br/>and will assign the LRC XA Handler for Non-XA persistence units." +
+				"<br/>This allows you to control and manage UserTransactions, Units of Work, and Transactional Rollbacks accordingly.");
 
 		implementationTab.add("Transactions can use <code>@Transactional</code> annotation for marking and updating. " +
 		                      "<br/><code>com.google.inject.persist</code> and <code>javax.transaction</code> @Transactional annotations are supported.");
 
-		implementationTab.add("<br/>To specify a separate marked annotation to use for transactions, other than what was specified in the binding module, " +
+		implementationTab.add("To specify a separate marked annotation to use for transactions, other than what was specified in the binding module, " +
 		                      "<br/>you can specify <code>@com.jwebmp.guicedpersistence.db.annotations.Transactional</code> to mark as below.");
 		addSourceToContainer(JPAModuleScreen.class, "sessionscope.txt", SourceCodeLanguages.Java, implementationTab);
 /*
