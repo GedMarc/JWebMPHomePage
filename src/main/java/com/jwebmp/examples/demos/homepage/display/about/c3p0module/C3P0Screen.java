@@ -33,6 +33,7 @@ public class C3P0Screen
 
 		about.add(new H3<>("C3P0 Module"));
 		about.add(new H4<>("JPA Data Source Pooling"));
+
 		about.add("Baeldung give a great overview of this library <a target=\"_blank\" href=\"https://www.baeldung.com/hibernate-c3p0\">here</a>," +
 		          "Information about C3P0 itself can be found <a target=\"_blank\" href=\"https://www.mchange.com/projects/c3p0/\">here</a>");
 
