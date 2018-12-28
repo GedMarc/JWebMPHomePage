@@ -5,6 +5,7 @@ import com.jwebmp.core.base.html.H3;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.components.display.MetaInfServicesTree;
+import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
@@ -43,6 +44,10 @@ public class JTAModuleScreen
 		persistenceTab.add("JTA is picked up either through a resource type of JTA, or by using the jta datasource property.");
 
 		addSourceToContainer(JTAModuleScreen.class, "jta_persistence_example.txt", SourceCodeLanguages.XML, persistenceTab);
+
+		persistenceTab.add("<br/>This file is placed into your sources directory...");
+		persistenceTab.add(new MetaInfTree("persistence.xml"));
+
 
 		classTab.add(new H3("Class Structure"));
 

@@ -1,14 +1,19 @@
 package com.jwebmp.examples.demos.homepage.components.display;
 
 import com.jwebmp.core.FileTemplates;
+import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.attributes.LinkAttributes;
 import com.jwebmp.core.htmlbuilder.css.colours.ColourNames;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
+import com.jwebmp.plugins.bootstrap4.cards.parts.styles.BSCardButtonDarkOutline;
 import com.jwebmp.plugins.fontawesome5.FontAwesome;
 import com.jwebmp.plugins.fontawesome5.FontAwesomeList;
 import com.jwebmp.plugins.fontawesome5.IFontAwesomeIcon;
+import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
+import com.jwebmp.plugins.fontawesome5.options.FontAwesomeStyles;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.jstree.JSTree;
@@ -101,5 +106,28 @@ public class DisplayPart<J extends DisplayPart<J>>
 		d.add(directoryStructureExample);
 		return d;
 
+	}
+
+	protected ComponentHierarchyBase buildGoToSource(Class classToSendTo)
+	{
+		return buildGoToSource(classToSendTo, "View this pages source code");
+	}
+
+	protected ComponentHierarchyBase buildGoToSource(Class classToSendTo, String title)
+	{
+		String addressToUse = classToSendTo.getCanonicalName()
+		                                   .replaceAll("\\.", "\\/")
+		                      + ".java";
+
+		BSCardButtonDarkOutline<?> card = new BSCardButtonDarkOutline<>();
+		card.addStyle("background-color", "#3d4853")
+		    .addStyle("color", "#3bafda");
+		card.setText(title + HTML_TAB + FontAwesome.icon(FontAwesomeIcons.external_link_alt, FontAwesomeStyles.Light)
+		                                           .toString(0));
+
+		card.addAttribute(LinkAttributes.HRef.toString(), "https://github.com/GedMarc/JWebMPHomePage/blob/master/src/main/java/" + addressToUse);
+		card.addAttribute(LinkAttributes.Target.toString(), "_blank");
+
+		return card;
 	}
 }

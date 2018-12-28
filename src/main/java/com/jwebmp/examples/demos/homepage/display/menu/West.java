@@ -121,9 +121,10 @@ public class West
 
 	private void buildAddonsMenu()
 	{
-		buildMenuSection("ADDON MODULES", true
+		buildMenuSection("UTILITY MODULES", true
 				, buildAddonsInjection()
 				, buildAddonsPersistence()
+				, buildAddonsServlets()
 				, buildAddonsCaching());
 	}
 
@@ -168,6 +169,28 @@ public class West
 		ListItem dropDown1 = buildSubList("fal fa-question", "Persistence", uiKit);
 		return dropDown1;
 	}
+
+	private ListItem buildAddonsServlets()
+	{
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceBasicsScreen).setText(HTML_TAB + "Basics"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJpaScreen).setText(HTML_TAB + "JSF"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJpaScreen).setText(HTML_TAB + "Request Scoping JTA"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJtaScreen).setText(HTML_TAB + "UA Detector"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceC3P0Screen).setText(HTML_TAB + "Rest"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceC3P0Screen).setText(HTML_TAB + "Swagger"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceEntityAssistScreen).setText(HTML_TAB + "Metrics API"))
+		                          .setRenderTextBeforeChildren(false));
+		ListItem dropDown1 = buildSubList("fal fa-question", "Servlets", uiKit);
+		return dropDown1;
+	}
+
 
 	private ListItem buildAddonsCaching()
 	{

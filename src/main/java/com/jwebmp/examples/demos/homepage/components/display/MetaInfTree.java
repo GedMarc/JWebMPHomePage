@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MetaInfTree
-		extends JSTree
+		extends JSTree<MetaInfTree>
 {
 	public MetaInfTree(String... metaInfs)
 	{

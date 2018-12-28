@@ -1,5 +1,5 @@
 public class EntityAssistTestDBModule
-		extends AbstractDatabaseProviderModule
+		extends DatabaseModule
 {
     protected ConnectionBaseInfo getConnectionBaseInfo(...)
     {

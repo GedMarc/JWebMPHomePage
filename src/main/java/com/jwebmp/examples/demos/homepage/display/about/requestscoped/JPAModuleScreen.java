@@ -2,6 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.about.requestscoped;
 
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H3;
+import com.jwebmp.core.base.html.H4;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
@@ -68,9 +69,10 @@ public class JPAModuleScreen
 		servicesTab.add("As per usual, provide your module to the injection engine with IGuiceModule." +
 		                "<br/> The two mechanisms for running systems are listed below");
 
-		servicesTab.add("JRE 8");
+		servicesTab.add(new H4<>("JRE 8"));
 		servicesTab.add(new MetaInfServicesTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule"));
-		servicesTab.add("JPMS");
+		servicesTab.add(new H4<>("JPMS"));
+
 		addSourceToContainer(JPAModuleScreen.class, "modules.txt", SourceCodeLanguages.Java, servicesTab);
 
 		add(all);
