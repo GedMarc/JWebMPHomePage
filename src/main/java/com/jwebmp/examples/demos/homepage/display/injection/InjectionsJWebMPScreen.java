@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.injection;
 
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
@@ -48,7 +48,7 @@ public class InjectionsJWebMPScreen
 		scroll.getOptions()
 		      .setHeight("500px");
 
-		DefaultDisplayWizard wizard = new DefaultDisplayWizard("eventWizard");
+		DefaultSmartWizard wizard = new DefaultSmartWizard("eventWizard");
 
 		wizard.addStep(new SmartWizardStep(aboutContent, new SmartWizardStepItem("About", new SmallText("The Important Things"))));
 		wizard.addStep(new SmartWizardStep(whatAvailableContainer, new SmartWizardStepItem("What's Available", new SmallText("Overview of the objects"))));

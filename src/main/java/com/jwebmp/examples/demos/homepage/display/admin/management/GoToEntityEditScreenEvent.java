@@ -3,19 +3,19 @@ package com.jwebmp.examples.demos.homepage.display.admin.management;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.core.events.click.ClickAdapter;
+import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
 import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
 
 public class GoToEntityEditScreenEvent
-		extends ClickAdapter
+		extends ClickEvent
 		implements BSCardEvents
 {
 	private Class<? extends CoreEntity> entityClass;
 
 	GoToEntityEditScreenEvent()
 	{
-
+		super(null);
 	}
 
 	public GoToEntityEditScreenEvent(Class<? extends CoreEntity> entityClass, ComponentHierarchyBase component)

@@ -8,7 +8,9 @@ import com.jwebmp.core.htmlbuilder.css.colours.ColourNames;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
+import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.cards.parts.styles.BSCardButtonDarkOutline;
+import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.fontawesome5.FontAwesome;
 import com.jwebmp.plugins.fontawesome5.FontAwesomeList;
 import com.jwebmp.plugins.fontawesome5.IFontAwesomeIcon;
@@ -71,7 +73,15 @@ public class DisplayPart<J extends DisplayPart<J>>
 		                                         .addStyle("color", "white")
 		                                         .setAddDismissButton(false)
 		                                         .setID("useCodeIconsAM");
+	}
 
+	public BSCardBody getDefaultBody()
+	{
+		BSCardBody<?> all = new BSCardBody<>();
+		all.addClass(BSContainerOptions.Row);
+		all.addClass(Bg_Dark);
+		all.addStyle("display:grid;overflow-y:auto;padding:0px;");
+		return all;
 	}
 
 	protected Div addServiceTree(String serviceName)

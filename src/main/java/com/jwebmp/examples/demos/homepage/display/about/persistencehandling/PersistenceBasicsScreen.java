@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.about.persistencehandling;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.DefaultTable;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.display.MetaInfServicesTree;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
@@ -62,7 +62,7 @@ public class PersistenceBasicsScreen
 		scroll.getOptions()
 		      .setHeight("500px");
 
-		DefaultDisplayWizard wizard = new DefaultDisplayWizard("eventWizard");
+		DefaultSmartWizard wizard = new DefaultSmartWizard("eventWizard");
 
 		wizard.addStep(new SmartWizardStep(aboutContent, new SmartWizardStepItem("About", new SmallText("Persistence Basics"))));
 		wizard.addStep(new SmartWizardStep(annotateContainer, new SmartWizardStepItem("Annotate", new SmallText("Create your annotation"))));

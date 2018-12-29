@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.*;
-import com.jwebmp.core.events.click.ClickAdapter;
+import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.ActiveFlag;
 import com.jwebmp.examples.demos.homepage.Passwords;
@@ -26,7 +26,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ResetPasswordEvent
-		extends ClickAdapter
+		extends ClickEvent
 		implements BSCardEvents
 {
 	public ResetPasswordEvent()

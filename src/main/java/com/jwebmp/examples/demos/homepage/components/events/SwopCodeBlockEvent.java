@@ -3,8 +3,8 @@ package com.jwebmp.examples.demos.homepage.components.events;
 import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
+import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
 import com.jwebmp.core.base.html.Div;
-import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import org.apache.commons.text.StringEscapeUtils;
 
@@ -13,14 +13,16 @@ import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 public class SwopCodeBlockEvent
-		extends ClickAdapter
+		extends ClickEvent
 {
 	public SwopCodeBlockEvent()
 	{
+		super(null);
 	}
 
 	public SwopCodeBlockEvent(Class classRef, String filename)
 	{
+		super(null);
 		setID(classRef.getCanonicalName()
 		              .replace(CHAR_DOT, CHAR_UNDERSCORE) + "||" + filename.replace(CHAR_DOT, CHAR_UNDERSCORE));
 	}

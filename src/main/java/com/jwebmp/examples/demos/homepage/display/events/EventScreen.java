@@ -1,12 +1,14 @@
 package com.jwebmp.examples.demos.homepage.display.events;
 
-import com.google.inject.Singleton;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.core.base.html.*;
-import com.jwebmp.core.events.activate.ActivateAdapter;
+import com.jwebmp.core.base.angular.directives.events.activate.ActivateEvent;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.H3;
+import com.jwebmp.core.base.html.Link;
+import com.jwebmp.core.base.html.SmallText;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.ObjectBrowser;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
@@ -94,14 +96,15 @@ public class EventScreen
 		pageContent.add(pageContentRow);
 
 		pageContentRow.add(new PackagesBrowser("com.jwebmp.core.events").addClass("col-12 col-md-6"));
-		pageContentRow.add(new ObjectBrowser(ActivateAdapter.class).addClass("col-12 col-md-6"));
+		pageContentRow.add(new ObjectBrowser(ActivateEvent.class).addClass("col-12 col-md-6"));
 
 
 		Div dataContent = new Div();
 		dataContent.add(new H3<>("Moving Data between Client and Server"));
 		dataContent.add("Data is stored in angular variables on the client, and are registered in any component." +
 		                "<br/>Client Variables are named in dot syntax <code>variable.name</code> where each variable or sub object is a JSON object.");
-		dataContent.add("The main classes for data transport are <code>JavaScriptPart</code> for <code>getOptions()</code>, and <code>AngularDataVariables</code> for returning variables.");
+		dataContent.add(
+				"The main classes for data transport are <code>JavaScriptPart</code> for <code>getOptions()</code>, and <code>AngularDataVariables</code> for returning variables.");
 
 		dataContent.add("You register a variable for creation (although they do get auto-created) with the <code>addDto(\"variable.name\", object)</code>. " +
 		                "This will initialize/override this variable with the <a href=\"https://www.baeldung.com/jackson\" target=\"_blank\">Jackson JSON</a> representation of this class.");
@@ -117,7 +120,7 @@ public class EventScreen
 
 		//dataContent.add(new Image("images/ajaxcallresponsewithparameters.png"));
 
-		DefaultDisplayWizard wizard = new DefaultDisplayWizard("eventWizard");
+		DefaultSmartWizard wizard = new DefaultSmartWizard("eventWizard");
 
 		wizard.addStep(new SmartWizardStep(aboutContent, new SmartWizardStepItem("About", new SmallText("The Important Things"))));
 		wizard.addStep(new SmartWizardStep(whatAvailableContainer, new SmartWizardStepItem("What's Available", new SmallText("Overview of the objects"))));

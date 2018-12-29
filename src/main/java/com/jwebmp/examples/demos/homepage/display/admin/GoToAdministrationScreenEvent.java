@@ -3,11 +3,11 @@ package com.jwebmp.examples.demos.homepage.display.admin;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.core.events.click.ClickAdapter;
+import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
 
 public class GoToAdministrationScreenEvent
-		extends ClickAdapter
+		extends ClickEvent
 		implements BSCardEvents
 {
 	public GoToAdministrationScreenEvent()

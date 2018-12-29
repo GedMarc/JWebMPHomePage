@@ -4,15 +4,15 @@ import com.jwebmp.core.generics.LeftOrRight;
 import com.jwebmp.plugins.smartwizard4.SmartWizard;
 import com.jwebmp.plugins.smartwizard4.options.SmartWizardToolbarPosition;
 
-public class DefaultDisplayWizard
-		extends SmartWizard<DefaultDisplayWizard>
+public class DefaultSmartWizard
+		extends SmartWizard<DefaultSmartWizard>
 {
 	/**
 	 * Configures the page for this component
 	 *
 	 * @param id
 	 */
-	public DefaultDisplayWizard(String id)
+	public DefaultSmartWizard(String id)
 	{
 		super(id);
 

@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.login;
 
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.*;
-import com.jwebmp.core.events.click.ClickAdapter;
+import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
@@ -13,11 +13,12 @@ import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
 import java.util.concurrent.Executors;
 
 public class LogoutEvent
-		extends ClickAdapter
+		extends ClickEvent
 		implements BSCardEvents
 {
 	public LogoutEvent()
 	{
+		super(null);
 	}
 
 	public LogoutEvent(ComponentHierarchyBase component)

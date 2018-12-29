@@ -2,7 +2,6 @@ package com.jwebmp.examples.demos.homepage.display.injection;
 
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
@@ -12,8 +11,6 @@ import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
-import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
-import com.jwebmp.plugins.smartwizard4.SmartWizardStepItem;
 
 import javax.validation.constraints.NotNull;
 

@@ -3,11 +3,6 @@ package com.jwebmp.examples.demos.homepage.components.general;
 import com.jwebmp.core.Event;
 import com.jwebmp.core.Feature;
 import com.jwebmp.core.base.ComponentHierarchyBase;
-import com.jwebmp.core.base.angular.configurations.JWAngularConfiguration;
-import com.jwebmp.core.base.angular.controllers.JWAngularController;
-import com.jwebmp.core.base.angular.directives.AngularDirectiveBase;
-import com.jwebmp.core.base.angular.factories.AngularFactoryBase;
-import com.jwebmp.core.base.angular.modules.AngularModuleBase;
 import com.jwebmp.core.base.angular.services.IAngularController;
 import com.jwebmp.core.base.angular.services.IAngularDirective;
 import com.jwebmp.core.base.angular.services.IAngularFactory;
@@ -133,7 +128,7 @@ public class PackagesBrowser
 
 			JSTreeListItem<?> treeFolder2 = new JSTreeListItem<>().setText("Events <small><i>extends Event</i></small>");
 			treeFolder2.getOptions()
-			          .setIcon("fal fa-bolt");
+			           .setIcon("fal fa-bolt");
 			rootItem.add(treeFolder2);
 
 			for (ClassInfo treeItem : events)
@@ -147,7 +142,7 @@ public class PackagesBrowser
 
 			JSTreeListItem<?> treeFolder3 = new JSTreeListItem<>().setText("Features <small><i>extends Feature</i></small>");
 			treeFolder3.getOptions()
-			          .setIcon("fal fa-book-spells");
+			           .setIcon("fal fa-book-spells");
 			rootItem.add(treeFolder3);
 
 			for (ClassInfo treeItem : features)
@@ -161,7 +156,7 @@ public class PackagesBrowser
 
 			JSTreeListItem<?> treeFolder4 = new JSTreeListItem<>().setText("Components <small><i>extends ComponentHierarchyBase</i></small>");
 			treeFolder4.getOptions()
-			          .setIcon("fal fa-magic");
+			           .setIcon("fal fa-magic");
 			rootItem.add(treeFolder4);
 
 			for (ClassInfo treeItem : components)
@@ -172,7 +167,7 @@ public class PackagesBrowser
 
 			JSTreeListItem<?> treeFolder5 = new JSTreeListItem<>().setText("Themes <small><i>extends Theme</i></small>");
 			treeFolder5.getOptions()
-			          .setIcon("fal fa-palette");
+			           .setIcon("fal fa-palette");
 			rootItem.add(treeFolder5);
 
 			for (ClassInfo treeItem : themes)
@@ -190,7 +185,7 @@ public class PackagesBrowser
 			{
 				JSTreeListItem<?> ev = new JSTreeListItem<>().setText(treeItem.getName());
 				ev.getOptions()
-				           .setIcon("fal fa-asterisk");
+				  .setIcon("fal fa-asterisk");
 				treeFolder6.add(ev);
 			}
 
@@ -203,7 +198,7 @@ public class PackagesBrowser
 			{
 				JSTreeListItem<?> ev = new JSTreeListItem<>().setText(treeItem.getName());
 				ev.getOptions()
-				           .setIcon("fal fa-house-damage");
+				  .setIcon("fal fa-house-damage");
 				treeFolder7.add(ev);
 			}
 
@@ -235,7 +230,7 @@ public class PackagesBrowser
 
 			JSTreeListItem<?> treeFolder10 = new JSTreeListItem<>().setText("Angular Configurations <small><i>SPI IAngularConfiguration</i></small>");
 			treeFolder10.getOptions()
-			           .setIcon("fal fa-badge-check");
+			            .setIcon("fal fa-badge-check");
 			rootItem.add(treeFolder10);
 
 			for (ClassInfo treeItem : configurations)

@@ -43,10 +43,6 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 
 			Div d = getContentContainer();
 			d.setID("content-updatable-content");
-			if (!getPage().isMobileOrSmartTablet())
-			{
-				d.addStyle("margin-top:15px");
-			}
 
 			BSCardBody body = addCardBody().add(d);
 			body.addStyle("padding:0px;");
@@ -65,10 +61,6 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 				d.addStyle("padding-right", "0px");
 			}
 
-	/*		Div slimScrollerSpacer = new Div<>().setID("slimScrollSpacer");
-			slimScrollerSpacer.addStyle("height:70px;");
-			d.add(slimScrollerSpacer);
-*/
 			buildTitleRow();
 			GuiceContext.getInstance(AjaxResponse.class)
 			            .addComponent(d);

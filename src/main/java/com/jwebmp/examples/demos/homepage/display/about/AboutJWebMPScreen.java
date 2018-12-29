@@ -1,8 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.about;
 
 import com.jwebmp.core.base.html.*;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
@@ -11,7 +10,6 @@ import com.jwebmp.plugins.bootstrap4.buttons.styles.BSButtonPrimaryOutline;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
-import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
@@ -46,14 +44,13 @@ public class AboutJWebMPScreen
 		Div testing = new Div();
 
 
-		DefaultDisplayWizard wizard = new DefaultDisplayWizard("aboutjwebmpwizard");
+		DefaultSmartWizard wizard = new DefaultSmartWizard("aboutjwebmpwizard");
 
-		wizard.addStep(new SmartWizardStep<>(whatIsIt,new SmartWizardStepItem("What Is It",new SmallText("About JWebMP"))));
-		wizard.addStep(new SmartWizardStep<>(dependencies,new SmartWizardStepItem("Dependencies",new SmallText("A list of requirements"))));
-		wizard.addStep(new SmartWizardStep<>(runsOnList,new SmartWizardStepItem("Runs On",new SmallText("Compatibility Guide"))));
+		wizard.addStep(new SmartWizardStep<>(whatIsIt, new SmartWizardStepItem("What Is It", new SmallText("About JWebMP"))));
+		wizard.addStep(new SmartWizardStep<>(dependencies, new SmartWizardStepItem("Dependencies", new SmallText("A list of requirements"))));
+		wizard.addStep(new SmartWizardStep<>(runsOnList, new SmartWizardStepItem("Runs On", new SmallText("Compatibility Guide"))));
 
 		container.add(wizard);
-
 
 
 		BSRow row = new BSRow();
@@ -95,44 +92,21 @@ public class AboutJWebMPScreen
 		Div readMoreDiv = new Div();
 		moreDiv.add(readMoreDiv);
 		div.add(moreDiv);
-		BSCollapse.link(button,readMoreDiv,true);
+		BSCollapse.link(button, readMoreDiv, true);
 
 		readMoreDiv.add("<br/><br/>Built in JPMS, Develop Enterprise Scale Applications quicker than ever before, with less code than you can imagine." +
 		                "<br/><br/>You can seamlessly move from any JSF to JWebMP, even better,  from the straight JRE8 to JPMS in a single change");
 
 		readMoreDiv.add(new H3("This framework is completely open source and 100% free."));
 		readMoreDiv.add("There is a donate button in the top right, this is only location, I don't want to burst it out there. " +
-		        "<br/>If you like this product, please help! Pull Requests, Issue Logging, Donating, anything.");
-		return card;
-	}
-
-	private Div buildHencePanel()
-	{
-		DisplayCard card = new DisplayCard();
-	//	card.addClass("col-12 col-md-6");
-		card.addCardHeader(new H2("Only what you need").toString(true));
-		Div div = card.addCardBody();
-		div.add("JWebMP is 100% Modular, and works perfectly with JLink application. Each module is strictly named and added to your application to configure the rendering.");
-
-		Div moreDiv = new Div();
-		BSButtonPrimaryOutline button = new BSButtonPrimaryOutline<>().setText("Read More");
-		moreDiv.add(button);
-		Div readMoreDiv = new Div();
-		moreDiv.add(readMoreDiv);
-		div.add(moreDiv);
-		BSCollapse.link(button,readMoreDiv,true);
-
-
-		readMoreDiv.add("Basic injections such as <code>@Inject ReadableUserAgent</code> and many others that are always available, you can always do whatever you need to ");
-		readMoreDiv.add("Security is paramount, and the framework allows and caters for all forms of security integration. Local Storage for instance places a unique identifier per browser instance," +
-		        "<br/> and IP Locking, SAML and everything else is incredibly quick to implement.");
+		                "<br/>If you like this product, please help! Pull Requests, Issue Logging, Donating, anything.");
 		return card;
 	}
 
 	private Div buildTempalteFreeDev()
 	{
 		DisplayCard card = new DisplayCard();
-	//	card.addClass("col-12 col-md-4");
+		//	card.addClass("col-12 col-md-4");
 		card.addCardHeader(new H2("Template Free Development").toString(true));
 		Div div = card.addCardBody();
 		//div.add(new H3<>("Template Free Development"));
@@ -144,14 +118,39 @@ public class AboutJWebMPScreen
 		Div readMoreDiv = new Div();
 		moreDiv.add(readMoreDiv);
 		div.add(moreDiv);
-		BSCollapse.link(button,readMoreDiv,true);
+		BSCollapse.link(button, readMoreDiv, true);
 
-		readMoreDiv.add("Being able to render the complete output of the HTML, JavaScript and CSS of any component at any level and stage grants you an unbelievable amount of many, many benefits. Let your imagination run wild with that concept for a bit. Exactly how much coverage in your tests can you get? Want to render a component in JWebMP and push it to JSF?");
-		readMoreDiv.add("Of course, you can still use File Templates (though this system isn't based on it at all) with variables and scoping to continue using HTML and Web Content files to render your information. ");
+		readMoreDiv.add(
+				"Being able to render the complete output of the HTML, JavaScript and CSS of any component at any level and stage grants you an unbelievable amount of many, many benefits. Let your imagination run wild with that concept for a bit. Exactly how much coverage in your tests can you get? Want to render a component in JWebMP and push it to JSF?");
+		readMoreDiv.add(
+				"Of course, you can still use File Templates (though this system isn't based on it at all) with variables and scoping to continue using HTML and Web Content files to render your information. ");
 
 		return card;
 	}
 
+	private Div buildHencePanel()
+	{
+		DisplayCard card = new DisplayCard();
+		//	card.addClass("col-12 col-md-6");
+		card.addCardHeader(new H2("Only what you need").toString(true));
+		Div div = card.addCardBody();
+		div.add("JWebMP is 100% Modular, and works perfectly with JLink application. Each module is strictly named and added to your application to configure the rendering.");
+
+		Div moreDiv = new Div();
+		BSButtonPrimaryOutline button = new BSButtonPrimaryOutline<>().setText("Read More");
+		moreDiv.add(button);
+		Div readMoreDiv = new Div();
+		moreDiv.add(readMoreDiv);
+		div.add(moreDiv);
+		BSCollapse.link(button, readMoreDiv, true);
+
+
+		readMoreDiv.add("Basic injections such as <code>@Inject ReadableUserAgent</code> and many others that are always available, you can always do whatever you need to ");
+		readMoreDiv.add(
+				"Security is paramount, and the framework allows and caters for all forms of security integration. Local Storage for instance places a unique identifier per browser instance," +
+				"<br/> and IP Locking, SAML and everything else is incredibly quick to implement.");
+		return card;
+	}
 
 	private Div buildDependencies()
 	{

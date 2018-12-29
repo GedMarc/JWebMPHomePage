@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.about.c3p0module;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.H4;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
 import com.jwebmp.examples.demos.homepage.display.about.requestscoped.JPAModuleScreen;
@@ -18,25 +18,20 @@ public class C3P0Screen
 {
 	public C3P0Screen()
 	{
-		BSCardBody all = new BSCardBody();
-
-		all.addClass("row bg-dark");
-		all.addStyle("display:grid;overflow-y:auto;padding:0px;");
-
-
+		BSCardBody all = getDefaultBody();
 		Div about = buildAbout();
 		Div clazz = buildDBModule();
 		Div spi = buildSpi();
 
-		DefaultDisplayWizard wizard = new DefaultDisplayWizard("c3p0wizard");
+		DefaultSmartWizard wizard = new DefaultSmartWizard("c3p0wizard");
 		wizard.addStep(new SmartWizardStep(about, "About", "The basics for C3P0"));
 		wizard.addStep(new SmartWizardStep(clazz, "Database Module", "Configuring the module"));
 		wizard.addStep(new SmartWizardStep(spi, "SPI", "Provide the module"));
 
 		all.add(wizard);
-		add(all);
-
 		all.add(buildGoToSource(getClass()));
+
+		add(all);
 	}
 
 	private Div buildAbout()

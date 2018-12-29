@@ -4,7 +4,7 @@ import com.google.inject.Key;
 import com.google.inject.name.Names;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.*;
-import com.jwebmp.core.events.click.ClickAdapter;
+import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.core.utilities.StaticStrings;
 import com.jwebmp.entityassist.EntityAssistException;
@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Optional;
 
 public class SubscribeEvent
-		extends ClickAdapter
+		extends ClickEvent
 {
 	public SubscribeEvent()
 	{

@@ -4,7 +4,7 @@ import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.htmlbuilder.css.colours.ColourNames;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.display.CircleDisplayWizard;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultDisplayWizard;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.guicedinjection.GuiceContext;
@@ -157,7 +157,7 @@ public class QuickStartScreen
 
 		addDefaultJRE8Stuffs(moduleInfoContent);
 
-		DefaultDisplayWizard wizard = new DefaultDisplayWizard("jre8Wizard");
+		DefaultSmartWizard wizard = new DefaultSmartWizard("jre8Wizard");
 
 		wizard.addStep(new SmartWizardStep(mavenContent, new SmartWizardStepItem("Configure Maven", new SmallText("Add the dependency"))));
 		wizard.addStep(new SmartWizardStep(pageContent, new SmartWizardStepItem("Make A Page", new SmallText("Start building"))));
@@ -174,7 +174,7 @@ public class QuickStartScreen
 	{
 		Div stepper = new Div();
 
-		DefaultDisplayWizard wizard = new DefaultDisplayWizard("jre11Wizard");
+		DefaultSmartWizard wizard = new DefaultSmartWizard("jre11Wizard");
 
 		wizard.addStep(new SmartWizardStep(buildPomConfigJRE11(), new SmartWizardStepItem("POM Config", new SmallText("Setup for JPMS"))));
 		wizard.addStep(new SmartWizardStep(buildMakeAPageJRE11(), new SmartWizardStepItem("Make A Page", new SmallText("Gotta start somewhere"))));
@@ -217,11 +217,11 @@ public class QuickStartScreen
 
 		annotationsConect.add(new H3<>("Moving to Guice Injection"));
 		annotationsConect.add("There are a few injections you may want to consider using the default <code>javax.inject</code> when porting across." +
-		                         "<br/> Below are the items to look at");
+		                      "<br/> Below are the items to look at");
 
 		annotationsConect.add("<code>@javax.ejb.EJB</code> can be replaced with <code>@javax.inject.Inject</code>");
 		annotationsConect.add("<code>@javax.ejb.Local/Remote</code> can be replaced, and a binding added for the interface (Should you wish to keep them). " +
-		                "<br/>I delete them all...");
+		                      "<br/>I delete them all...");
 		annotationsConect.add("<code>@javax.ejb.Stateless</code> can be removed");
 		annotationsConect.add("<code>@javax.ejb.Stateful</code> can be replaced with <a target=\"_blank\" href=\"https://github.com/google/guice/wiki/Scopes\">custom scopes</a>");
 		annotationsConect.add("<code>@javax.faces.SessionScoped</code> can be replaced with <code>@com.google.inject.servlet.SessionScoped</code>");
@@ -235,7 +235,7 @@ public class QuickStartScreen
 
 		/*pageContent.add("<code>@javax.ejb.ActivationConfigProperty</code> would be replaced with your JPMS MQ Provider");*/
 		annotationsConect.add("<code>@javax.ejb.PostActivate</code>, the annotation should be removed, and the class should implement IGuicePostStartup." +
-		                "<br/>This class should be registered with SPI.");
+		                      "<br/>This class should be registered with SPI.");
 
 		dualExecution.add(new H3<>("Easily begin migration"));
 		dualExecution.add("Migrating to JPMS has been made as easy as ever, with a completely non-intrusive system that can run alongside anything.</br>" +
@@ -259,7 +259,7 @@ public class QuickStartScreen
 		                  "and https://github.com/skuzzle/guice-jsf and uses the automated configurations of guiced-servlets and guiced-injection");
 
 
-		DefaultDisplayWizard wizard = new DefaultDisplayWizard("migrationWizard");
+		DefaultSmartWizard wizard = new DefaultSmartWizard("migrationWizard");
 
 		wizard.addStep(new SmartWizardStep(aboutMigration, new SmartWizardStepItem("Zero to Hero", new SmallText("Switch instantly to JPMS"))));
 		wizard.addStep(new SmartWizardStep(annotationsConect, new SmartWizardStepItem("Annotations", new SmallText("Considerations for annotations"))));
@@ -298,8 +298,9 @@ public class QuickStartScreen
 		Div spring = new Div();
 
 		spring.add(new H3<>("Spring Annotations"));
-		spring.add("This entire system utilizes and Guice and SPI. No annotations are used to perform any function in the core, meaning that no classpath scanning is actually necessary" +
-		           ".</br>When using persistence/JCache/etc, these are separate modules, that are added onto the system, and only the paths necessary are ever scanned for matching files keeping it small, fast, and non-intrusive.");
+		spring.add(
+				"This entire system utilizes and Guice and SPI. No annotations are used to perform any function in the core, meaning that no classpath scanning is actually necessary" +
+				".</br>When using persistence/JCache/etc, these are separate modules, that are added onto the system, and only the paths necessary are ever scanned for matching files keeping it small, fast, and non-intrusive.");
 
 		DivSimple<?> scrolly = new DivSimple<>();
 		DefaultSlimScroll scroll = new DefaultSlimScroll(scrolly);
@@ -370,42 +371,6 @@ public class QuickStartScreen
 		return directoryStructureExample;
 	}
 
-
-	private JSTree buildIGuiceModuleTree()
-	{
-		JSTree<?> directoryStructureExample = new JSTree<>();
-		directoryStructureExample.setTheme(new JSTreeDefaultDarkTheme());
-
-		JSTreeListItem<?> rootItem = new JSTreeListItem<>("src")
-				                             .setOptions(new JSTreeNodeOptions<>().setDisabled(false)
-				                                                                  .setIcon("far fa-caret-circle-down")
-				                                                                  .setOpened(true));
-
-		JSTreeListItem<?> folder1 = new JSTreeListItem<>("META-INF", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
-		                                                                                      .setOpened(true));
-
-		JSTreeListItem<?> folder2 = new JSTreeListItem<>("services", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
-		                                                                                      .setOpened(true));
-
-		JSTreeListItem<?> file1 = new JSTreeListItem<>("com.jwebmp.guicedinjection.interfaces.IGuiceModule", new JSTreeNodeOptions<>().setIcon("far fa-file"));
-
-
-		folder2.add(file1);
-
-		folder1.add(folder2);
-
-		rootItem.add(folder1);
-
-		directoryStructureExample.addRoot(rootItem);
-		directoryStructureExample.setID("iguicemoduletree");
-
-		directoryStructureExample.getCss()
-		                         .getBackground()
-		                         .setBackgroundColor$(ColourNames.Black);
-		return directoryStructureExample;
-	}
-
-
 	private Div buildPomConfigJRE11()
 	{
 		Div d = new Div();
@@ -451,8 +416,8 @@ public class QuickStartScreen
 		DivSimple<?> more = new DivSimple<>();
 		DivSimple<?> strict = new DivSimple<>();
 
-		BSCollapse.link(openMoreButton,more,true);
-		BSCollapse.link(openStrictButton,strict,true);
+		BSCollapse.link(openMoreButton, more, true);
+		BSCollapse.link(openStrictButton, strict, true);
 
 		BSRow row = new BSRow();
 
@@ -477,7 +442,7 @@ public class QuickStartScreen
 		addSourceToContainer(QuickStartScreen.class, "jre11_module_info.txt", SourceCodeLanguages.JS, strict);
 
 		strict.add("This is a strict module, meaning it is going to adhere to all the rules of JPMS." +
-		                "<br/>With Guice as the injection library, as well as being a named module, you have to open the package so that Guice can do what it likes.");
+		           "<br/>With Guice as the injection library, as well as being a named module, you have to open the package so that Guice can do what it likes.");
 
 		strict.add(new Code<>().setText("opens my.package.that.has.classes to com.google.guice"));
 		strict.add(
@@ -503,6 +468,45 @@ public class QuickStartScreen
 		return d;
 	}
 
+	private JSTree buildIGuiceModuleTree()
+	{
+		JSTree<?> directoryStructureExample = new JSTree<>();
+		directoryStructureExample.setTheme(new JSTreeDefaultDarkTheme());
+
+		JSTreeListItem<?> rootItem = new JSTreeListItem<>("src")
+				                             .setOptions(new JSTreeNodeOptions<>().setDisabled(false)
+				                                                                  .setIcon("far fa-caret-circle-down")
+				                                                                  .setOpened(true));
+
+		JSTreeListItem<?> folder1 = new JSTreeListItem<>("META-INF", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
+		                                                                                      .setOpened(true));
+
+		JSTreeListItem<?> folder2 = new JSTreeListItem<>("services", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
+		                                                                                      .setOpened(true));
+
+		JSTreeListItem<?> file1 = new JSTreeListItem<>("com.jwebmp.guicedinjection.interfaces.IGuiceModule", new JSTreeNodeOptions<>().setIcon("far fa-file"));
+
+
+		folder2.add(file1);
+
+		folder1.add(folder2);
+
+		rootItem.add(folder1);
+
+		directoryStructureExample.addRoot(rootItem);
+		directoryStructureExample.setID("iguicemoduletree");
+
+		directoryStructureExample.getCss()
+		                         .getBackground()
+		                         .setBackgroundColor$(ColourNames.Black);
+		return directoryStructureExample;
+	}
+
+	private void addDefaultJRE11Stuffs(Div mavenContent)
+	{
+		mavenContent.add(new BSButtonLightOutline<>().setText("View In GitHub"));
+	}
+
 	private Div buildGoJRE11()
 	{
 		Div d = new Div();
@@ -523,12 +527,12 @@ public class QuickStartScreen
 		JQSourceCodePrettify<?> dInner2 = addSourceToContainer(QuickStartScreen.class, "jre11_argumentsfilerun.txt", XML, commandLine);
 
 		BSAccordion<?> ideAccordion = new BSAccordion<>();
-		BSAccordionCollection card4 = ideAccordion.addCard("Command Line",commandLine,true);
-		BSAccordionCollection card5 = ideAccordion.addCard("Pure Maven",pureMaven,true);
-		BSAccordionCollection card6 = ideAccordion.addCard("Packaged JAR",packagedJar,true);
-		BSAccordionCollection card3 = ideAccordion.addCard("IDE - IntelliJ",intellij,true);
+		BSAccordionCollection card4 = ideAccordion.addCard("Command Line", commandLine, true);
+		BSAccordionCollection card5 = ideAccordion.addCard("Pure Maven", pureMaven, true);
+		BSAccordionCollection card6 = ideAccordion.addCard("Packaged JAR", packagedJar, true);
+		BSAccordionCollection card3 = ideAccordion.addCard("IDE - IntelliJ", intellij, true);
 		BSAccordionCollection card1 = ideAccordion.addCard("IDE - Eclipse", eclipse, true);
-		BSAccordionCollection card2 = ideAccordion.addCard("IDE - Netbeans",netbeans,true);
+		BSAccordionCollection card2 = ideAccordion.addCard("IDE - Netbeans", netbeans, true);
 
 
 		card1.getHeadingButton()
@@ -548,10 +552,5 @@ public class QuickStartScreen
 		d.add(ideAccordion);
 
 		return d;
-	}
-
-	private void addDefaultJRE11Stuffs(Div mavenContent)
-	{
-		mavenContent.add(new BSButtonLightOutline<>().setText("View In GitHub"));
 	}
 }
