@@ -41,7 +41,6 @@ public class HomePageStartup
 		HibernateEntityManagerProperties.getDefaultProperties()
 		                                .setFormatSql(true);
 
-
 		HibernateEntityManagerProperties.getDefaultProperties()
 		                                .setUseQueryStartupCheck(false);
 
