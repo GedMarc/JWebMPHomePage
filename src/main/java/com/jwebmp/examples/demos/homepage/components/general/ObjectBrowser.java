@@ -25,15 +25,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ObjectBrowser
 		extends JSTree<ObjectBrowser>
 {
-
+	private static final Map<String, String> cachedDisplays = new ConcurrentHashMap<>();
 	private final Class objectClassName;
 
 	public ObjectBrowser(@NotNull Class objectClassName)
@@ -42,7 +40,10 @@ public class ObjectBrowser
 		setID("objectBrowser_" + objectClassName.getSimpleName()
 		                                        .replace('.', '_'));
 		setTheme(new JSTreeDefaultDarkTheme());
-		constructTree();
+		if (!cachedDisplays.containsKey(objectClassName))
+		{
+			constructTree();
+		}
 	}
 
 	private void constructTree()
@@ -59,16 +60,16 @@ public class ObjectBrowser
 		JSTreeListItem<?> treeFolderPrivateMethods = new JSTreeListItem<>().setText("Inherited");
 		treeFolderPrivateMethods.getOptions()
 		                        .setIcon("fal fa-hand-point-up");
-//		rootItem.add(treeFolderPrivateMethods);
+		//		rootItem.add(treeFolderPrivateMethods);
 
-	//	buildHierarchy(objectClassName,treeFolderPrivateMethods);
+		//	buildHierarchy(objectClassName,treeFolderPrivateMethods);
 	}
 
-	private JSTreeListItem buildHierarchy(Class clazz,JSTreeListItem rootItem)
+	private JSTreeListItem buildHierarchy(Class clazz, JSTreeListItem rootItem)
 	{
 		String packageName = clazz.getCanonicalName()
-		                                    .substring(0, clazz.getCanonicalName()
-		                                                                 .lastIndexOf('.'));
+		                          .substring(0, clazz.getCanonicalName()
+		                                             .lastIndexOf('.'));
 		try (ScanResult sr = new ClassGraph().whitelistPackages(packageName)
 		                                     .enableClassInfo()
 		                                     .enableFieldInfo()
@@ -84,32 +85,32 @@ public class ObjectBrowser
 			List<MethodInfo> excludeMethods = new ArrayList<>();
 
 
-			if(ComponentBase.class.isAssignableFrom(clazy))
+			if (ComponentBase.class.isAssignableFrom(clazy))
 			{
-				buildForObject(ComponentBase.class, rootItem,excludeMethods);
+				buildForObject(ComponentBase.class, rootItem, excludeMethods);
 			}
-			if(ComponentDependancyBase.class.isAssignableFrom(clazy))
+			if (ComponentDependancyBase.class.isAssignableFrom(clazy))
 			{
-				buildForObject(ComponentDependancyBase.class, rootItem,excludeMethods);
+				buildForObject(ComponentDependancyBase.class, rootItem, excludeMethods);
 			}
 			/*if(ComponentFeatureBase.class.isAssignableFrom(clazy))
 			{
 				buildForObject(ComponentFeatureBase.class, rootItem,excludeMethods);
 			}*/
-			if(IComponentHierarchyBase.class.isAssignableFrom(clazy))
+			if (IComponentHierarchyBase.class.isAssignableFrom(clazy))
 			{
-				buildForObject(IComponentHierarchyBase.class, rootItem,excludeMethods);
+				buildForObject(IComponentHierarchyBase.class, rootItem, excludeMethods);
 			}
 		}
 
 		return rootItem;
 	}
 
-	private JSTreeListItem buildForObject(Class clazz,JSTreeListItem rootItem,List<MethodInfo> completedMethods)
+	private JSTreeListItem buildForObject(Class clazz, JSTreeListItem rootItem, List<MethodInfo> completedMethods)
 	{
 		String packageName = clazz.getCanonicalName()
-		                                    .substring(0, clazz.getCanonicalName()
-		                                                                 .lastIndexOf('.'));
+		                          .substring(0, clazz.getCanonicalName()
+		                                             .lastIndexOf('.'));
 		try (ScanResult sr = new ClassGraph().whitelistPackages(packageName)
 		                                     .enableClassInfo()
 		                                     .enableFieldInfo()
@@ -131,9 +132,14 @@ public class ObjectBrowser
 					if (methodInfo.getName()
 					              .startsWith("get") || methodInfo.getName()
 					                                              .startsWith("set")
-					    || methodInfo.getName().startsWith("fireEvent") || methodInfo.getName().startsWith("hashCode")
-					    || methodInfo.getName().startsWith("equals") || methodInfo.getName().startsWith("preConfigure")
-					    || methodInfo.getName().startsWith("fireEvent")
+					    || methodInfo.getName()
+					                 .startsWith("fireEvent") || methodInfo.getName()
+					                                                       .startsWith("hashCode")
+					    || methodInfo.getName()
+					                 .startsWith("equals") || methodInfo.getName()
+					                                                    .startsWith("preConfigure")
+					    || methodInfo.getName()
+					                 .startsWith("fireEvent")
 					    || methodInfo.hasBody())
 					{
 						continue;
@@ -157,7 +163,7 @@ public class ObjectBrowser
 				}
 				for (FieldInfo fieldInfo : clazzy.getDeclaredFieldInfo())
 				{
-					if(Modifier.isPrivate(fieldInfo.getModifiers()) && ! fieldInfo.isStatic())
+					if (Modifier.isPrivate(fieldInfo.getModifiers()) && !fieldInfo.isStatic())
 					{
 						privateFields.add(fieldInfo);
 					}
@@ -187,7 +193,8 @@ public class ObjectBrowser
 						                                 .toString()
 						                                 .lastIndexOf('.')))
 						    .append(",");
-					}catch(Exception e)
+					}
+					catch (Exception e)
 					{
 						//No types
 					}
@@ -199,8 +206,11 @@ public class ObjectBrowser
 				name.append(")");
 				try
 				{
-					name.append(" : " + treeItem.loadClassAndGetMethod().getReturnType().getCanonicalName());
-				}catch(Exception e)
+					name.append(" : " + treeItem.loadClassAndGetMethod()
+					                            .getReturnType()
+					                            .getCanonicalName());
+				}
+				catch (Exception e)
 				{
 					//No method like this
 				}
@@ -247,4 +257,20 @@ public class ObjectBrowser
 		}
 	}
 
+	public String toString(Integer tabCount)
+	{
+		if (objectClassName == null)
+		{
+			return super.toString();
+		}
+		if (cachedDisplays.containsKey(objectClassName.getName()))
+		{
+			return cachedDisplays.get(objectClassName.getName());
+		}
+		else
+		{
+			cachedDisplays.put(objectClassName.getName(), super.toString(0));
+			return cachedDisplays.get(objectClassName.getName());
+		}
+	}
 }

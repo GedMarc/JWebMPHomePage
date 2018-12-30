@@ -13,11 +13,13 @@ import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class OptionsBrowser
 		extends JSTree<OptionsBrowser>
 {
-
+	private static final Map<String, String> cachedDisplays = new ConcurrentHashMap<>();
 	private final Object optionsObject;
 
 	public OptionsBrowser(@NotNull JavaScriptPart<?> optionsObject)
@@ -26,7 +28,11 @@ public class OptionsBrowser
 		setID("optionsBrowser_" + optionsObject.getClass()
 		                                       .getSimpleName());
 		setTheme(new JSTreeDefaultDarkTheme());
-		constructTree();
+		if (!cachedDisplays.containsKey(optionsObject.getClass()
+		                                             .getCanonicalName()))
+		{
+			constructTree();
+		}
 	}
 
 	public OptionsBrowser(@NotNull ComponentHierarchyBase optionsObject)
@@ -165,6 +171,28 @@ public class OptionsBrowser
 				}
 				rootItem.add(treeItem);
 			}
+		}
+	}
+
+
+	public String toString(Integer tabCount)
+	{
+		if (this.optionsObject == null)
+		{
+			return super.toString();
+		}
+		if (cachedDisplays.containsKey(optionsObject.getClass()
+		                                            .getCanonicalName()))
+		{
+			return cachedDisplays.get(optionsObject.getClass()
+			                                       .getCanonicalName());
+		}
+		else
+		{
+			cachedDisplays.put(optionsObject.getClass()
+			                                .getCanonicalName(), super.toString(0));
+			return cachedDisplays.get(optionsObject.getClass()
+			                                       .getCanonicalName());
 		}
 	}
 }

@@ -1,8 +1,8 @@
 List<EntityClass> list = new EntityClass().builder()
-     .inDateRange()
-     .join(EntityClassTwo_.entityClass)
+     .findById(2L)
+     .whereNameIs("name")
      .getAll();
 
-builder().where(Visitors_.localStorageKey, Operand.Equals,"Value");
-		builder().where(Visitors_.localStorageKey, Operand.Like,"Value");
-		builder().where(Visitors_.localStorageKey, Operand.NotLike,"Value");
+boolean exists = new EntityClass().builder()
+    .whereNameIs("Me")
+    .getCount() > 0;

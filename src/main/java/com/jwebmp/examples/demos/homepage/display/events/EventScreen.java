@@ -95,7 +95,7 @@ public class EventScreen
 		pageContent.add("Navigate through the objects in the packages below, to view the object to the right.");
 		pageContent.add(pageContentRow);
 
-		pageContentRow.add(new PackagesBrowser("com.jwebmp.core.events").addClass("col-12 col-md-6"));
+		pageContentRow.add(new PackagesBrowser("com.jwebmp.core.base.angular.directives.events").addClass("col-12 col-md-6"));
 		pageContentRow.add(new ObjectBrowser(ActivateEvent.class).addClass("col-12 col-md-6"));
 
 
