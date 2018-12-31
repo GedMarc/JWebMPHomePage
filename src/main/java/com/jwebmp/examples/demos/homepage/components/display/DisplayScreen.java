@@ -4,7 +4,7 @@ import com.jwebmp.core.Page;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H4;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
@@ -52,7 +52,7 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 			              .setDestroy(true);
 			addFeature(destroyFeature);
 
-			addFeature(new DefaultSlimScroll(this).setSortOrder(45));
+			addFeature(new DefaultSlimScrollFeature(this).setSortOrder(45));
 
 			d.setID("innerContentContainer");
 			if (getPage().isMobileOrSmartTablet())

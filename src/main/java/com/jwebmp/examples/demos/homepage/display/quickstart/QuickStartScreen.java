@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.quickstart;
 
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.htmlbuilder.css.colours.ColourNames;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.display.CircleDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
@@ -196,7 +196,7 @@ public class QuickStartScreen
 		Div stepper = new Div();
 
 
-		/*DefaultSlimScroll scroll = new DefaultSlimScroll(aboutMigration);
+		/*DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(aboutMigration);
 		scroll.getOptions()
 		      .setHeight("400px");*/
 		//	tabs.addTab("Maven", stepper, true);
@@ -303,7 +303,7 @@ public class QuickStartScreen
 				".</br>When using persistence/JCache/etc, these are separate modules, that are added onto the system, and only the paths necessary are ever scanned for matching files keeping it small, fast, and non-intrusive.");
 
 		DivSimple<?> scrolly = new DivSimple<>();
-		DefaultSlimScroll scroll = new DefaultSlimScroll(scrolly);
+		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(scrolly);
 		scroll.getOptions()
 		      .setHeight("400px");
 
@@ -463,7 +463,7 @@ public class QuickStartScreen
 
 		JQSourceCodePrettify<?> dScroll = addSourceToContainer(QuickStartScreen.class, "jre11_maven_complete_pom.txt", XML, d);
 		dScroll.addStyle("max-height", "400px");
-		dScroll.addFeature(new DefaultSlimScroll(dScroll));
+		dScroll.addFeature(new DefaultSlimScrollFeature(dScroll));
 
 		return d;
 	}

@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.injection;
 
 import com.jwebmp.core.base.html.*;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
@@ -33,7 +33,7 @@ public class InjectionsBasicsScreen
 		Div pageContentRow = new BSRow();
 
 
-		DefaultSlimScroll scroll = new DefaultSlimScroll(pageContentRow);
+		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(pageContentRow);
 		scroll.getOptions()
 		      .setHeight("500px");
 

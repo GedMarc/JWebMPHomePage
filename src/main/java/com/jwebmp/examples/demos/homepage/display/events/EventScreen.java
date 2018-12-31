@@ -7,7 +7,7 @@ import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.base.html.SmallText;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.ObjectBrowser;
@@ -76,7 +76,7 @@ public class EventScreen
 
 		Div pageContent = new Div();
 		Div pageContentRow = new BSRow();
-		DefaultSlimScroll scroll = new DefaultSlimScroll(pageContentRow);
+		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(pageContentRow);
 		scroll.getOptions()
 		      .setHeight("500px");
 

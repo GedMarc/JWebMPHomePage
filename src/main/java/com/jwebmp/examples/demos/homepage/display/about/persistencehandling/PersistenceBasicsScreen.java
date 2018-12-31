@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.about.persistencehandling;
 
 import com.jwebmp.core.base.html.*;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.DefaultTable;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
@@ -58,7 +58,7 @@ public class PersistenceBasicsScreen
 		Div pageContentRow = new BSRow();
 
 
-		DefaultSlimScroll scroll = new DefaultSlimScroll(pageContentRow);
+		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(pageContentRow);
 		scroll.getOptions()
 		      .setHeight("500px");
 

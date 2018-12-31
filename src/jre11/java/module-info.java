@@ -78,6 +78,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires javax.servlet.api;
 	requires static cglib;
 	requires com.jwebmp.core.angularjs;
+	requires java.persistence;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;

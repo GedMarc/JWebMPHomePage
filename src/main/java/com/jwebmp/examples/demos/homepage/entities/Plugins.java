@@ -45,6 +45,12 @@ public class Plugins
 	private String pluginSonarUrl;
 	@Column
 	private String projectStatus;
+	@Column
+	private String pluginArtifactId;
+	@Column
+	private String pluginGroupId;
+	@Column
+	private String pluginModuleName;
 
 	@Override
 	public Long getId()

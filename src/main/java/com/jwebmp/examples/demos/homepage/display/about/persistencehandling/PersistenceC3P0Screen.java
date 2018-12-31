@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.about.persistencehandling;
 
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.Link;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.about.c3p0module.C3P0Screen;
 import com.jwebmp.guicedinjection.GuiceContext;
@@ -29,7 +29,7 @@ public class PersistenceC3P0Screen
 		BSContainer container = BSContainer.newInstance(Container_Fluid);
 		Div pageContentRow = new BSRow();
 
-		DefaultSlimScroll scroll = new DefaultSlimScroll(pageContentRow);
+		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(pageContentRow);
 		scroll.getOptions()
 		      .setHeight("500px");
 		container.add(buildc3p0());

@@ -1,0 +1,23 @@
+//Get all inner join
+List<EntityClass> list = new EntityClass().builder()
+      .join(EntityClassTwo_.entityClass)
+      .getAll();
+
+//Get all left join
+List<EntityClass> list = new EntityClass().builder()
+      .inDateRange(LocalDateTime.now(), LocalDateTime.now())
+      .join(EntityClassTwo_.entityClass, JoinType.LEFT)
+      .getAll();
+
+//Get all where join second table with a builder
+List<EntityClass> list = new EntityClass().builder()
+          .inDateRange(LocalDateTime.now(), LocalDateTime.now())
+
+          .join(EntityClassTwo_.entityClass,
+                new EntityClassTwo().builder()
+                    .where(EntityClassTwo_.activeFlag, Equals, ActiveFlag.Active)
+                    .inActiveRange()
+          ,JoinType.LEFT)
+
+       .getAll();
+

@@ -7,7 +7,7 @@ import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.Operand;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.events.SwopObjectBrowserEvent;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggableDemoScreen;
@@ -252,12 +252,12 @@ public class PluginDemoScreen
 		{
 			//just a missing mavenpom file
 		}
-		
+
 		BSRow tilesRow = new BSRow();
 		tilesRow.add(featureTiles);
 		tilesRow.add(componentTiles);
 
-		DefaultSlimScroll scroll = new DefaultSlimScroll(tilesRow);
+		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(tilesRow);
 		scroll.getOptions()
 		      .setHeight("150px");
 

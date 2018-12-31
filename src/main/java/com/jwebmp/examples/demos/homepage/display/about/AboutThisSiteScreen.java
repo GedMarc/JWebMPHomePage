@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.about;
 
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.html.*;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.display.CircleDisplayWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
@@ -17,7 +17,6 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
-import com.jwebmp.plugins.smartwizard4.SmartWizard;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStepItem;
 
@@ -122,7 +121,7 @@ public class AboutThisSiteScreen
 	//	divSimple.add(new H3<>("Services Loaded"));
 		//divSimple.add("<code>GuiceContext.getAllLoadedServices()</code>");
 		divSimple.add(new SPILoadedServicesBrowser());
-		DefaultSlimScroll scroll = new DefaultSlimScroll(divSimple);
+		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(divSimple);
 		scroll.getOptions()
 		      .setHeight("450px");
 

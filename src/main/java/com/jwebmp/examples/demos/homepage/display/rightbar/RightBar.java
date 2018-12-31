@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.display.rightbar;
 
 import com.jwebmp.core.base.html.DivSimple;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.entities.RightBarActivity;
 import com.jwebmp.examples.demos.homepage.entities.RightBarActivity_;
 import com.jwebmp.plugins.bootstrap4.listgroup.tabs.BSTabContainer;
@@ -57,7 +57,7 @@ public class RightBar
 		           .addClass(W_100)
 		           .addStyle("overflow-y:auto")
 		           .setID("activityTabContents")
-		           .addFeature(new DefaultSlimScroll(displayTabs.getTabContents()));
+		           .addFeature(new DefaultSlimScrollFeature(displayTabs.getTabContents()));
 	}
 
 	private DivSimple<?> buildActivityTab()

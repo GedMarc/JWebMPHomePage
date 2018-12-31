@@ -1,4 +1,8 @@
 builder()
+    .get()
+    .getAll()
+    .getCount()
+
     .selectAverage(Visitors_.id)
     .selectCount(Visitors_.id)
     .selectMax(Visitors_.id)
@@ -7,13 +11,24 @@ builder()
     .selectSumAsDouble(Visitors_.id)
     .selectSumAsLong(Visitors_.id)
     .selectCountDistinct(Visitors_.id)
+
+    .join(Attribute)
     .groupBy(Visitors_.subscribersList)
     .orderBy(Visitors_.id, OrderByType.ASC)
-    .construct(Visitors.class)
-    .detach()
+    .in(List)
+    .or(Attribute)
+    .where(Visitors_.id, NotInList, new Long[]{5,4})
+
+    .bulkUpdate()
     .update(new Visitors())
-    .noLock()
+
+    .delete()
+    .truncate()
+
+    .construct(Visitors.class)
+    .setCacheName("cache")
+    .setCacheRegion("region")
+    //Executes inserts in its own statement, great for bulk loading
     .setRunDetached(true)
-    .where(Visitors_.localStorageKey,Operand.NotInList,new HashSet<>())
-    .where(Visitors_.localStorageKey,Operand.NotInList,new ArrayList<>())
-    .where(Visitors_.localStorageKey,Operand.NotInList,new Visitors[0])
+    .detach()
+

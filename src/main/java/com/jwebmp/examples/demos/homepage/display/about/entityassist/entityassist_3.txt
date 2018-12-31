@@ -1,19 +1,39 @@
-Optional<Subscribers> found = new Subscribers().builder.findByEmail("mailaddress@from.com").get();
-Optional<Subscribers> authenticated = new Subscribers().builder.findByEmail("mailaddress@from.com").withPassword("yayachangeit").get();
-Optional<Subscribers> accountConfirmed = new Subscribers().builder.findByEmail("mailaddress@from.com").withUnconfirmedKey().get();
+public class SubscribersBuilder
+		extends QueryBuilder<SubscribersBuilder, Subscribers, Long>
+{
+    public SubscribersBuilder findByEmail(String email)
+    {
+        where(Subscribers_.emailAddress, Equals, email);
+        return this;
+    }
 
-public SubscribersBuilder findByEmail(String email)
-{
-    where(Subscribers_.emailAddress, Equals, email);
-    return this;
-}
-public SubscribersBuilder withPassword(String password)
-{
-    where(Subscribers_.password, Equals, Passwords.encrypt(password));
-    return this;
-}
-public SubscribersBuilder withUnconfirmedKey()
-{
-    where(Subscribers_.confirmed, Equals, false);
-    return this;
+    public SubscribersBuilder withPassword(String password)
+    {
+        where(Subscribers_.password, Equals, password);
+        return this;
+    }
+
+    public SubscribersBuilder findByConfirmationKey(String confirmationKey)
+    {
+        where(Subscribers_.confirmationKey, Equals, confirmationKey);
+        return this;
+    }
+
+    public SubscribersBuilder withUnconfirmedKey()
+    {
+        where(Subscribers_.confirmed, Equals, false);
+        return this;
+    }
+
+    public SubscribersBuilder whereUnsubscribed()
+    {
+        where(Subscribers_.unsubscribed, Equals, false);
+        return this;
+    }
+
+    public SubscribersBuilder whereSubscribed()
+    {
+        where(Subscribers_.unsubscribed, Equals, true);
+        return this;
+    }
 }

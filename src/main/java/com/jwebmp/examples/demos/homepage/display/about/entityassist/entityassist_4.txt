@@ -1,0 +1,6 @@
+Optional<Subscribers> subscriber = new Subscribers().builder()
+    .findByEmail("mailaddress@from.com")
+    .withPassword("password")
+    .inActiveRange()
+    .withUnconfirmedKey()
+    .get();

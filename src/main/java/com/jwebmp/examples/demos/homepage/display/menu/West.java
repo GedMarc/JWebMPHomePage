@@ -4,7 +4,7 @@ import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
 import com.jwebmp.core.base.interfaces.IComponentHierarchyBase;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.accordion.BSAccordion;
@@ -36,7 +36,7 @@ public class West
 		setID("west");
 		addClass("left side-menu");
 
-		SlimScrollFeature scrollFeature = new DefaultSlimScroll(this);
+		SlimScrollFeature scrollFeature = new DefaultSlimScrollFeature(this);
 
 		sidebarInner = new Div<>();
 		sidebarInner.addClass("sidebar-inner");

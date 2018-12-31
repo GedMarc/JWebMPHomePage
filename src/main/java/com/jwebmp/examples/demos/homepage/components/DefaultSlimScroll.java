@@ -1,25 +1,18 @@
 package com.jwebmp.examples.demos.homepage.components;
 
-import com.jwebmp.core.base.ComponentHierarchyBase;
-import com.jwebmp.core.htmlbuilder.css.colours.ColourCSSImpl;
-import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
+import com.jwebmp.core.base.html.Bold;
+import com.jwebmp.core.base.html.DivSimple;
 
 public class DefaultSlimScroll
-		extends SlimScrollFeature
+		extends DivSimple<DefaultSlimScroll>
 {
-	public DefaultSlimScroll(ComponentHierarchyBase component)
+	public DefaultSlimScroll()
 	{
-		super(component);
-		getOptions().setHeight("100%")
-		            .setAlwaysVisible(true)
-		            .setColor(new ColourCSSImpl("#98a6ad"));
+		add(new Bold("Scroll down for more"));
 
-		if (getComponent().getPage()
-		                  .isMobileOrSmartTablet())
-		{
-			getOptions().setTouchScrollStep(50);
-		}
+		DefaultSlimScrollFeature srolly = new DefaultSlimScrollFeature(this);
+		srolly.getOptions()
+		      .setHeight("400px");
+		addFeature(srolly);
 	}
-
 }
-
