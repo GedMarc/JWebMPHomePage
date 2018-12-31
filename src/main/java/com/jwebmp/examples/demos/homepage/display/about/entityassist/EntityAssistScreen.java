@@ -4,7 +4,9 @@ import com.jwebmp.core.base.html.Div;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
+import com.jwebmp.plugins.bootstrap4.buttons.styles.BSButtonPrimaryOutline;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
+import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
 
@@ -16,7 +18,7 @@ public class EntityAssistScreen
 		BSCardBody all = getDefaultBody();
 		Div about = buildAbout();
 		Div builder = buildBuilder();
-		Div plugItIn = buildBuilder();
+		//Div plugItIn = buildBuilder();
 		Div joins = buildJoins();
 		Div clazz = buildDBModule();
 		Div spi = buildSpi();
@@ -27,7 +29,7 @@ public class EntityAssistScreen
 		wizard.addStep(new SmartWizardStep(clazz, "Entity Class", "Looking at the builder() method"));
 		wizard.addStep(new SmartWizardStep(builder, "Builder", "Piece it all together"));
 		wizard.addStep(new SmartWizardStep(joins, "Joins", "Never been simpler, or smaller"));
-		wizard.addStep(new SmartWizardStep(plugItIn, "Connecting Entities", "Make your entities available"));
+		//wizard.addStep(new SmartWizardStep(plugItIn, "Connecting Entities", "Make your entities available"));
 		wizard.addStep(new SmartWizardStep(spi, "Class Types", "About the BaseEntity class"));
 
 		all.add(wizard);
@@ -48,17 +50,25 @@ public class EntityAssistScreen
 		        "<br/>where <code>get()</code> will return an optional of a single result, " +
 		        "<br/>and <code>getAll()</code> will return all a list of all results");
 
-		all.add("This site utilizes this framework for all database calls, both in open-in-view and backend asynchronous processes");
-		addSourceToContainer(EntityAssistScreen.class, "entityassist_1.txt", SourceCodeLanguages.Java, all);
+		Div collapse = new Div();
+		BSButtonPrimaryOutline collapseButton = new BSButtonPrimaryOutline();
+		collapseButton.setText("Read More");
 
-		all.add("JTA is enabled by default, and all <code>Guiced Persistence</code> modules can be used." +
+		BSCollapse.link(collapseButton, collapse, true);
+		all.add(collapseButton);
+		all.add(collapse);
+
+		collapse.add("This site utilizes this framework for all database calls, both in open-in-view and backend asynchronous processes");
+		addSourceToContainer(EntityAssistScreen.class, "entityassist_1.txt", SourceCodeLanguages.Java, collapse);
+
+		collapse.add("JTA is enabled by default, and all <code>Guiced Persistence</code> modules can be used." +
 		        "<br/>This framework does not interrupt or interfere with any other framework, and all features and usages remain available as they were before" +
 		        "<br/> This makes the library very portable.");
 
-		all.add("This builder that is strictly tied to your entity can then be used to form your queries." +
-		        "<br/>Builder methods are shortcuts, for neatness, all of clauses can be used directly when building a query.");
+		collapse.add("This builder that is strictly tied to your entity can then be used to form your queries." +
+		             "<br/>Builder methods are shortcuts, for neatness, all of clauses can be used directly when building a query.");
 
-		addSourceToContainer(EntityAssistScreen.class, "entityassist_4.txt", SourceCodeLanguages.Java, all);
+		addSourceToContainer(EntityAssistScreen.class, "entityassist_4.txt", SourceCodeLanguages.Java, collapse);
 
 		return all;
 	}
