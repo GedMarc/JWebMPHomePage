@@ -31,8 +31,10 @@ public class ServletsBasicScreen
 	private Div buildAbout()
 	{
 		Div all = new Div();
+		all.add("This API is separate to JWebMP and is used by it. You can use this API anywhere that guice servlets can run.");
+
 		all.add("Guiced Servlets allows for integration into the Servlet API using <code>Guice Servlets</code> and the <code>Guiced Injection</code> framework." +
-		        "<br/>This framework integrates into any Guice enabled server (that's pretty much everything) and exposes a Global ServletModule SPI to bind into the global space.");
+		        "<br/>This framework integrates into any Guice enabled server (that's pretty much everything) and exposes a Global ServletModule SPI to bind with into the global space");
 
 		all.add("This framework installs a <code>GuicedFilter</code> to watch all URL's <code>/*</code>. It is registered through a ServletContextListener and web-fragment.xml for WAR files." +
 		        "<br/>All Servlet Mapped Keys are registered in the exposed <code>GuicedServletKeys</code> class and can be overridden for tests using a <code>IGuicePreStartup</code> SPI.");
