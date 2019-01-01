@@ -4,9 +4,6 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.about.AboutThisSiteScreen;
 import com.jwebmp.examples.demos.homepage.display.about.SPIScreen;
-import com.jwebmp.examples.demos.homepage.display.about.entityassist.EntityAssistScreen;
-import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceC3P0Screen;
-import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceEntityAssistScreen;
 import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceJPAScreen;
 import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceJTAScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
@@ -115,6 +112,7 @@ public enum DisplayScreens
 	PersistenceC3P0Screen(com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceC3P0Screen.class, "PersistenceC3P0"),
 	PersistenceEntityAssistScreen(com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceEntityAssistScreen.class, "PersistenceEntityAssist"),
 
+	ServletsBasicsScreen(com.jwebmp.examples.demos.homepage.display.servlets.ServletsBasicMappedScreen.class, "ServletsBasics"),
 
 	EventsScreen(com.jwebmp.examples.demos.homepage.display.events.EventScreen.class, "Events"),
 

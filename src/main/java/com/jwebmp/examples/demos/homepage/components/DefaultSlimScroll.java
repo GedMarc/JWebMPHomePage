@@ -6,10 +6,14 @@ import com.jwebmp.core.base.html.DivSimple;
 public class DefaultSlimScroll
 		extends DivSimple<DefaultSlimScroll>
 {
+	@Override
+	protected StringBuilder renderBeforeTag()
+	{
+		return new StringBuilder(new Bold("Scroll down for more").toString(0));
+	}
+
 	public DefaultSlimScroll()
 	{
-		add(new Bold("Scroll down for more"));
-
 		DefaultSlimScrollFeature srolly = new DefaultSlimScrollFeature(this);
 		srolly.getOptions()
 		      .setHeight("400px");

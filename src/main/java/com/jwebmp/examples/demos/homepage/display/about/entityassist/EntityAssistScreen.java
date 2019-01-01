@@ -1,12 +1,11 @@
 package com.jwebmp.examples.demos.homepage.display.about.entityassist;
 
 import com.jwebmp.core.base.html.Div;
+import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
-import com.jwebmp.plugins.bootstrap4.buttons.styles.BSButtonPrimaryOutline;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
-import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
 
@@ -51,12 +50,7 @@ public class EntityAssistScreen
 		        "<br/>and <code>getAll()</code> will return all a list of all results");
 
 		Div collapse = new Div();
-		BSButtonPrimaryOutline collapseButton = new BSButtonPrimaryOutline();
-		collapseButton.setText("Read More");
-
-		BSCollapse.link(collapseButton, collapse, true);
-		all.add(collapseButton);
-		all.add(collapse);
+		all.add(new DefaultReadMore(collapse));
 
 		collapse.add("This site utilizes this framework for all database calls, both in open-in-view and backend asynchronous processes");
 		addSourceToContainer(EntityAssistScreen.class, "entityassist_1.txt", SourceCodeLanguages.Java, collapse);
@@ -84,6 +78,7 @@ public class EntityAssistScreen
 		DefaultSlimScroll scrolly = new DefaultSlimScroll();
 		all.add(scrolly);
 		addSourceToContainer(EntityAssistScreen.class, "entityassist_3.txt", SourceCodeLanguages.Java, scrolly);
+
 		return all;
 	}
 
@@ -107,7 +102,9 @@ public class EntityAssistScreen
 		        " The type inversions ensure the builder is meant for the particular entity." +
 		        "In terms of an inherited @MappedSuperclass, the mapped superclass should also contain a typed builder that the inheriting entities abide by");
 
-		addSourceToContainer(EntityAssistScreen.class, "gettingstarted.txt", SourceCodeLanguages.Java, all);
+		DefaultSlimScroll scroll = new DefaultSlimScroll();
+		all.add(scroll);
+		addSourceToContainer(EntityAssistScreen.class, "gettingstarted.txt", SourceCodeLanguages.Java, scroll);
 
 		all.add("The API is incredibly easy to use, and extremely intuitive. It utilizes the Criteria API 1.7, and allows proper management of queries, and simplistic design." +
 		        "<br/>Order By, Group By, Having, Count, Select Columns, Construct, Detach, Insert, Update, Batch Criteria Update Delete Insert and more all there ready for you.");

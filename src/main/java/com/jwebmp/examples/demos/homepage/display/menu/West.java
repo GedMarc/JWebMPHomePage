@@ -173,7 +173,7 @@ public class West
 	private ListItem buildAddonsServlets()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceBasicsScreen).setText(HTML_TAB + "Basics"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsBasicsScreen).setText(HTML_TAB + "Basics"))
 		                          .setRenderTextBeforeChildren(false));
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJpaScreen).setText(HTML_TAB + "JSF"))
 		                          .setRenderTextBeforeChildren(false));
