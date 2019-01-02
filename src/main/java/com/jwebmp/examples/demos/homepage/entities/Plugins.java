@@ -51,6 +51,10 @@ public class Plugins
 	private String pluginGroupId;
 	@Column
 	private String pluginModuleName;
+	@Column
+	private String pluginCategory;
+	@Column
+	private String pluginSubCategory;
 
 	@Override
 	public Long getId()
@@ -223,5 +227,110 @@ public class Plugins
 	public void setProjectStatus(String projectStatus)
 	{
 		this.projectStatus = projectStatus;
+	}
+
+	/**
+	 * Getter for property 'pluginArtifactId'.
+	 *
+	 * @return Value for property 'pluginArtifactId'.
+	 */
+	public String getPluginArtifactId()
+	{
+		return pluginArtifactId;
+	}
+
+	/**
+	 * Setter for property 'pluginArtifactId'.
+	 *
+	 * @param pluginArtifactId
+	 * 		Value to set for property 'pluginArtifactId'.
+	 */
+	public void setPluginArtifactId(String pluginArtifactId)
+	{
+		this.pluginArtifactId = pluginArtifactId;
+	}
+
+	/**
+	 * Getter for property 'pluginGroupId'.
+	 *
+	 * @return Value for property 'pluginGroupId'.
+	 */
+	public String getPluginGroupId()
+	{
+		return pluginGroupId;
+	}
+
+	/**
+	 * Setter for property 'pluginGroupId'.
+	 *
+	 * @param pluginGroupId
+	 * 		Value to set for property 'pluginGroupId'.
+	 */
+	public void setPluginGroupId(String pluginGroupId)
+	{
+		this.pluginGroupId = pluginGroupId;
+	}
+
+	/**
+	 * Getter for property 'pluginModuleName'.
+	 *
+	 * @return Value for property 'pluginModuleName'.
+	 */
+	public String getPluginModuleName()
+	{
+		return pluginModuleName;
+	}
+
+	/**
+	 * Setter for property 'pluginModuleName'.
+	 *
+	 * @param pluginModuleName
+	 * 		Value to set for property 'pluginModuleName'.
+	 */
+	public void setPluginModuleName(String pluginModuleName)
+	{
+		this.pluginModuleName = pluginModuleName;
+	}
+
+	/**
+	 * Getter for property 'pluginCategory'.
+	 *
+	 * @return Value for property 'pluginCategory'.
+	 */
+	public String getPluginCategory()
+	{
+		return pluginCategory;
+	}
+
+	/**
+	 * Setter for property 'pluginCategory'.
+	 *
+	 * @param pluginCategory
+	 * 		Value to set for property 'pluginCategory'.
+	 */
+	public void setPluginCategory(String pluginCategory)
+	{
+		this.pluginCategory = pluginCategory;
+	}
+
+	/**
+	 * Getter for property 'pluginSubCategory'.
+	 *
+	 * @return Value for property 'pluginSubCategory'.
+	 */
+	public String getPluginSubCategory()
+	{
+		return pluginSubCategory;
+	}
+
+	/**
+	 * Setter for property 'pluginSubCategory'.
+	 *
+	 * @param pluginSubCategory
+	 * 		Value to set for property 'pluginSubCategory'.
+	 */
+	public void setPluginSubCategory(String pluginSubCategory)
+	{
+		this.pluginSubCategory = pluginSubCategory;
 	}
 }
