@@ -6,6 +6,8 @@ import com.jwebmp.examples.demos.homepage.display.about.AboutThisSiteScreen;
 import com.jwebmp.examples.demos.homepage.display.about.SPIScreen;
 import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceJPAScreen;
 import com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceJTAScreen;
+import com.jwebmp.examples.demos.homepage.display.caching.EhCacheDisplayScreen;
+import com.jwebmp.examples.demos.homepage.display.caching.HazelcastDisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animate.AngularAnimateDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animatedchange.AngularAnimateChangeDemoScreen;
@@ -95,6 +97,7 @@ import com.jwebmp.examples.demos.homepage.display.injection.InjectionsClassGraph
 import com.jwebmp.examples.demos.homepage.display.injection.InjectionsJWebMPScreen;
 import com.jwebmp.examples.demos.homepage.display.privacy.ChatRoomPrivacyScreen;
 import com.jwebmp.examples.demos.homepage.display.privacy.PrivacyScreen;
+import com.jwebmp.examples.demos.homepage.display.servlets.*;
 import com.jwebmp.examples.demos.homepage.display.termsandconditions.TermsAndConditionsScreen;
 
 public enum DisplayScreens
@@ -113,6 +116,14 @@ public enum DisplayScreens
 	PersistenceEntityAssistScreen(com.jwebmp.examples.demos.homepage.display.about.persistencehandling.PersistenceEntityAssistScreen.class, "PersistenceEntityAssist"),
 
 	ServletsBasicsScreen(com.jwebmp.examples.demos.homepage.display.servlets.ServletsBasicMappedScreen.class, "ServletsBasics"),
+	ServletsWebSocketsScreen(WebSocketDisplayScreen.class, "ServletsWebSockets"),
+	ServletsJSFScreen(JSFDisplayScreen.class, "ServletsJSF"),
+	ServletsUADetectScreen(UADetectorDisplayScreen.class, "ServletsUAR"),
+	ServletsRestScreen(RestDisplayScreen.class, "ServletsRest"),
+	ServletsSwaggerScreen(SwaggerDisplayScreen.class, "ServletsSwagger"),
+
+	CachingHazelcastScreen(HazelcastDisplayScreen.class, "Hazelcast"),
+	CachingEhCacheScreen(EhCacheDisplayScreen.class, "Hazelcast"),
 
 	EventsScreen(com.jwebmp.examples.demos.homepage.display.events.EventScreen.class, "Events"),
 

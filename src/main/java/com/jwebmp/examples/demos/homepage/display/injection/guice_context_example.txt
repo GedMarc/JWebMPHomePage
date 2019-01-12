@@ -1,0 +1,4 @@
+GuiceContext.get(Anything.class);
+GuiceContext.get(Anything.class,Annotation.class);
+GuiceContext.get(Key.of(Anything.class,Names.named("Custom"))
+...

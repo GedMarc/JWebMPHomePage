@@ -10,6 +10,7 @@ public class FormBasicsDemoScreen
 	{
 		super("HtmlTags", "Base", "Form Basics");
 
+
 		addComponentTile("Form", "The default HTML form tag").addStyle("cursor:default");
 		addComponentTile("AngularForm", "A form collection to assign success and failure classes to an input").addStyle("cursor:default");
 		addComponentTile("FieldSet", "Groups form fields together").addStyle("cursor:default");

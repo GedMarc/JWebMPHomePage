@@ -16,6 +16,7 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.datatable.DataTable;
 import com.jwebmp.plugins.datatable.options.DataTablesDomOptions;
 
+import javax.cache.annotation.CacheResult;
 import java.util.List;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
@@ -119,13 +120,13 @@ public class PluginsList
 
 
 		dt.getOptions()
-		  .setDom(DataTablesDomOptions.getDefault());
+		  .setDom(DataTablesDomOptions.getDefaultTopAndBottomBSJustified());
 
 		dt.getOptions()
 		  .getDom()
 		  .add(2, Buttons);
 
-		List<Plugins> pluginsList = new Plugins().findAll();
+		List<Plugins> pluginsList = getAllPlugins();
 		for (Plugins plugin : pluginsList)
 		{
 			dt.add(new TableRow<>().add(new TableCell<>().add(new Image<>(plugin.getPluginLogoUrl()).addStyle("max-width:45px;")))
@@ -138,5 +139,13 @@ public class PluginsList
 		}
 
 		return dt;
+	}
+
+	@CacheResult
+	public List<Plugins> getAllPlugins()
+	{
+		return new Plugins().builder()
+		                    .inActiveRange()
+		                    .getAll();
 	}
 }

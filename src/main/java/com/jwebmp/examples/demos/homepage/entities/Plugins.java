@@ -5,13 +5,16 @@ import com.jwebmp.examples.demos.homepage.entities.builders.PluginsBuilder;
 
 import javax.cache.annotation.CacheDefaults;
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Cacheable(true)
+@Cacheable()
 @CacheDefaults(cacheName = "PluginsCache")
 public class Plugins
 		extends CoreEntity<Plugins, PluginsBuilder, Long>
+		implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long pluginsId;
@@ -55,6 +58,8 @@ public class Plugins
 	private String pluginCategory;
 	@Column
 	private String pluginSubCategory;
+	@Column
+	private String pluginOriginalSite;
 
 	@Override
 	public Long getId()
@@ -332,5 +337,26 @@ public class Plugins
 	public void setPluginSubCategory(String pluginSubCategory)
 	{
 		this.pluginSubCategory = pluginSubCategory;
+	}
+
+	/**
+	 * Getter for property 'pluginOriginalSite'.
+	 *
+	 * @return Value for property 'pluginOriginalSite'.
+	 */
+	public String getPluginOriginalSite()
+	{
+		return pluginOriginalSite;
+	}
+
+	/**
+	 * Setter for property 'pluginOriginalSite'.
+	 *
+	 * @param pluginOriginalSite
+	 * 		Value to set for property 'pluginOriginalSite'.
+	 */
+	public void setPluginOriginalSite(String pluginOriginalSite)
+	{
+		this.pluginOriginalSite = pluginOriginalSite;
 	}
 }

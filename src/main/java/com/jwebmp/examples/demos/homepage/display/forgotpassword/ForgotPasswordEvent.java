@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.forgotpassword;
 
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.*;
-import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
+import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.guicedinjection.GuiceContext;
 
@@ -12,7 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ForgotPasswordEvent
-		extends ClickEvent
+		extends ClickAdapter
 {
 	public ForgotPasswordEvent()
 	{

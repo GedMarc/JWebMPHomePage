@@ -76,6 +76,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires org.hibernate.validator;
 	requires java.validation;
 	requires javax.servlet.api;
+	//for my dev
 	requires static cglib;
 	requires com.jwebmp.core.angularjs;
 	requires java.persistence;

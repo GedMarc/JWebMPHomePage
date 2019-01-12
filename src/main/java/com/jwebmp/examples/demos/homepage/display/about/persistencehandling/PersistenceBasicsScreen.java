@@ -1,15 +1,15 @@
 package com.jwebmp.examples.demos.homepage.display.about.persistencehandling;
 
 import com.jwebmp.core.base.html.*;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
+import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
 import com.jwebmp.examples.demos.homepage.components.DefaultTable;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.components.display.MetaInfServicesTree;
+import com.jwebmp.examples.demos.homepage.components.display.PluginModulePart;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
-import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
 import com.jwebmp.plugins.bootstrap4.tables.BSTable;
 import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
@@ -38,7 +38,9 @@ public class PersistenceBasicsScreen
 	{
 		BSContainer container = new BSContainer(Container_Fluid);
 
+		container.add(new PluginModulePart("Guiced Persistence"));
 		container.add(buildSmartWizard());
+		container.add(buildGoToSource(getClass()));
 
 		return container;
 	}
@@ -52,17 +54,9 @@ public class PersistenceBasicsScreen
 		Div encapsulateContent = buildEncapsulation();
 		Div servicesContent = buildServices();
 		Div enterpriseContent = buildEnterprise();
-		Div addonsContent = buildAddons();
+		//Div addonsContent = buildAddons();
 
-
-		Div pageContentRow = new BSRow();
-
-
-		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(pageContentRow);
-		scroll.getOptions()
-		      .setHeight("500px");
-
-		DefaultSmartWizard wizard = new DefaultSmartWizard("eventWizard");
+		DefaultSmartWizard wizard = new DefaultSmartWizard("persistenceBasicsWizard");
 
 		wizard.addStep(new SmartWizardStep(aboutContent, new SmartWizardStepItem("About", new SmallText("Persistence Basics"))));
 		wizard.addStep(new SmartWizardStep(annotateContainer, new SmartWizardStepItem("Annotate", new SmallText("Create your annotation"))));
@@ -82,58 +76,59 @@ public class PersistenceBasicsScreen
 		about.add(new H3("Persistence Management"));
 
 		about.add(
-				"Persistence can be provided either through <a target=\"_blank\" href=\"https://github.com/google/guice/wiki/GuicePersist\">Guice Persist</a> in the default manner, Registering the IGuiceModule," +
-				"<br/>or this library, <a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence\">Guiced Persistence library<a/> which allows automatic testing and complete support." +
+				"Persistence can be provided either through <a target=\"_blank\" href=\"https://github.com/google/guice/wiki/GuicePersist\">guice-persist</a> in the default manner if you are used to guice" +
+				"<br/> in which case you will not need this at all. You can use your current modules by registering into the IGuiceModule service." +
+				"" +
+				"<br/><br/>Or... you can use this library, <a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence\">Guiced Persistence<a/>, which allows and helps with quite a lot of little annoying things." +
 				"<br/>As an entirely separate module, it can run separately in any environment, and allows quick porting database management tasks across.");
 
 		about.add("This module is independent of JWebMP and can run on its own in any application." +
 		          "<br/> Add-on Modules are used to read persistence files and configure connections" +
 		          "<br/>At least one addon module is required.");
 
-		about.add(new DefaultTable<>().addHeader("Add-on", "Description", "Artifact ID")
-		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-HibernatePropertiesReader\">" +
-		                                      "Hibernate Properties Reader</a>"
-				                              , "Configures the data source from hibernate properties", "guiced-persistence-hibernateproperties-reader")
-		                              /*
-
-																			.addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-EclipseLinkProperties\">EclipseLink Properties Reader</a>",
-																					"Configures the data source from eclipse link properties", "guiced-persistence-eclipselink-reader")
-									  */
-		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-SystemPropertiesReader\">" +
-		                                      "System Properties Reader</a>",
-		                                      "Overwrites the persistence properties with the given system environment value <code>${system.property}</code>",
-		                                      "guiced-persistence-systemproperties-reader")
-
-		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-JPA\">" +
-		                                      "JPA Properties Reader</a>",
-		                                      "Reads properties specific to JPA, and configures a JPA Transaction Handler for all JPA Data Sources", "guiced-persistence-jpa")
-
-		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-EhCache\">" +
-		                                      "EH Cache Properties Reader</a>",
-		                                      "Configures Eh Cache for the persistence units, and includes all necessary persistence unit updates", "guiced-persistence-ehcache")
-
-		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-C3P0\">" +
-		                                      "C3P0 Properties Reader</a>",
-		                                      "Configures C3P0 Data Source Pooling for JPA Modules", "guiced-persistence-c3p0")
-
-		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-BTM\">" +
-		                                      "BTM Properties Reader</a>",
-		                                      "Bitronix BTM Handler for XA and Non-XA Connections and Pooling. Using Strictly Named Module", "guiced-persistence-btm")
-
-		                              .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-Wildfly\">" +
-		                                      "Wildfly Properties Reader</a>",
-		                                      "Reads the <code>getStandaloneName()</code> Standalone Filename and configures the data sources accordingly",
-		                                      "guiced-persistence-wildfly")
-		         );
-
 		about.add("Guiced Persistence allows you to bind multiple persistence units into Guice Modules utilizing Annotations." +
 		          "<br/>It is a programmatic approach to database configuration and does not require any external files to setup.");
 
-		about.add("This module reads persistence units, provides base classes and service injection points for the associated modules." +
-		          "<br/> The module should be automatically imported, but if not - ");
 
-		addSourceToContainer(PersistenceBasicsScreen.class, "mavenconfig.txt", SourceCodeLanguages.XML, about);
+		DefaultTable table = new DefaultTable<>().addHeader("Add-on", "Description", "Artifact ID")
+		                                         .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-HibernatePropertiesReader\">" +
+		                                                 "Hibernate Properties Reader</a>"
+				                                         , "Configures the data source from hibernate properties", "guiced-persistence-hibernateproperties-reader")
+		                                         /*
 
+																					   .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-EclipseLinkProperties\">EclipseLink Properties Reader</a>",
+																							   "Configures the data source from eclipse link properties", "guiced-persistence-eclipselink-reader")
+												 */
+		                                         .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-SystemPropertiesReader\">" +
+		                                                 "System Properties Reader</a>",
+		                                                 "Overwrites the persistence properties with the given system environment value <code>${system.property}</code>",
+		                                                 "guiced-persistence-systemproperties-reader")
+
+		                                         .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-JPA\">" +
+		                                                 "JPA Properties Reader</a>",
+		                                                 "Reads properties specific to JPA, and configures a JPA Transaction Handler for all JPA Data Sources",
+		                                                 "guiced-persistence-jpa")
+
+		                                         .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-EhCache\">" +
+		                                                 "EH Cache Properties Reader</a>",
+		                                                 "Configures Eh Cache for the persistence units, and includes all necessary persistence unit updates",
+		                                                 "guiced-persistence-ehcache")
+
+		                                         .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-C3P0\">" +
+		                                                 "C3P0 Properties Reader</a>",
+		                                                 "Configures C3P0 Data Source Pooling for JPA Modules", "guiced-persistence-c3p0")
+
+		                                         .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-BTM\">" +
+		                                                 "BTM Properties Reader</a>",
+		                                                 "Bitronix BTM Handler for XA and Non-XA Connections and Pooling. Using Strictly Named Module", "guiced-persistence-btm")
+
+		                                         .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-Wildfly\">" +
+		                                                 "Wildfly Properties Reader</a>",
+		                                                 "Reads the <code>getStandaloneName()</code> Standalone Filename and configures the data sources accordingly",
+		                                                 "guiced-persistence-wildfly");
+
+		DefaultReadMore more = new DefaultReadMore(table, "View Addon Modules");
+		about.add(more);
 		return about;
 	}
 
@@ -264,6 +259,19 @@ public class PersistenceBasicsScreen
 		return enterprise;
 	}
 
+	@Override
+	public @NotNull BSBreadCrumb<?> getTitleBreadcrumbs()
+	{
+		BSBreadCrumb crumbs = new BSBreadCrumb();
+		crumbs.addBreadCrumb(new BSBreadCrumbItem().setActive(true)
+		                                           .setCrumbLink(new Link<>("#").setText("JWebMP")));
+		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
+		                                             .setText("Persistence"));
+		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
+		                                             .setText("Basics"));
+		return crumbs;
+	}
+
 	private Div buildAddons()
 	{
 		Div addons = new Div();
@@ -276,18 +284,5 @@ public class PersistenceBasicsScreen
 
 		addons.add(list);
 		return addons;
-	}
-
-	@Override
-	public @NotNull BSBreadCrumb<?> getTitleBreadcrumbs()
-	{
-		BSBreadCrumb crumbs = new BSBreadCrumb();
-		crumbs.addBreadCrumb(new BSBreadCrumbItem().setActive(true)
-		                                           .setCrumbLink(new Link<>("#").setText("JWebMP")));
-		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
-		                                             .setText("Persistence"));
-		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
-		                                             .setText("Basics"));
-		return crumbs;
 	}
 }

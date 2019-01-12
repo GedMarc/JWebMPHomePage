@@ -57,7 +57,6 @@ public class AboutThisSiteScreen
 		container.add(wizard);
 
 		Div bottomRow = new Div();
-		column1.add(buildWhatThisIsAllAbout());
 		container.add(bottomRow);
 
 		return container;
@@ -86,32 +85,6 @@ public class AboutThisSiteScreen
 		runtimeRow.add(column2);
 
 		div.add(runtimeRow);
-		return div;
-	}
-
-	private Div buildWhatThisIsAllAbout()
-	{
-		DivSimple<?> div = new DivSimple<>();
-		div.add(new H3<>("Non-Restrictive Development"));
-		/*div.add("Code icons <strong>" + FontAwesome.icon(FontAwesomeIcons.code, FontAwesomeSizes.$2x)
-		                                           .setTiny(true)
-		                                           .toString(true) + "</strong> display meaningful snippets of the widget that you are viewing to quickly grasp how to include it in your own sites.");
-*/
-		div.add("This site uses many different methods of doing the same thing across many different pages.I think a core part should not be restricting development to any particular pattern.");
-
-		div.add("There are tons of examples of the capabilities of the framework and how <i>any</i> pattern of your choice may be used in your web and mobile development, whether you are templating and importing HTMLs with specified variables or going native Java only, you're free to develop to your own preference.");
-
-		div.add("The options browser is a simple reflection of any object. Above is the AjaxCall object that is available on every request post-load.");
-		div.add("Options classes are referenced via the getOptions() method available and produce the entire API of the referenced web library");
-		div.add("The toString() returns a JSON representation of that object, while toString(true) renders the HTML.");
-
-		div.add(new H1<>("Do.. Whatever really"));
-		div.add("Yeah no kidding, Integrate any of the modules to build up your application. Mix and match any items together!");
-
-		//div.add("All the source is ofcourse available on GitHub, with the developer a simple support ticket,issue log, or stack exchange query away - You never have to worry about getting stuck");
-		//div.add("I chose a straight forward WAR structure in a Domain Driven Architecture Pattern, running on Undertow, and using Azure with Hibernate 5.2 for the persistence strategy. Bitronix BTM for JTA to ensure Test and Production are identical." + "<br/>The Query Builder/Entity Management API is another stand-alone project and is a powerful - if unknown - Criteria Builder Manager for DDD with all the bells and whistles.");
-		//div.add("I could have gone the EE EJB JCache DAO Named Queries route as well, but doesn't that seem like a touch overkill for a site with no background running tasks or JMS requirements? :)");
-
 		return div;
 	}
 

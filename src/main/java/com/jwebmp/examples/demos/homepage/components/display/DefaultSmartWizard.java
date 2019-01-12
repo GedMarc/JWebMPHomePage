@@ -1,11 +1,13 @@
 package com.jwebmp.examples.demos.homepage.components.display;
 
 import com.jwebmp.core.generics.LeftOrRight;
+import com.jwebmp.plugins.bootstrap4.cards.BSCardChildren;
 import com.jwebmp.plugins.smartwizard4.SmartWizard;
 import com.jwebmp.plugins.smartwizard4.options.SmartWizardToolbarPosition;
 
 public class DefaultSmartWizard
-		extends SmartWizard<DefaultSmartWizard>
+		extends SmartWizard
+		implements BSCardChildren
 {
 	/**
 	 * Configures the page for this component

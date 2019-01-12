@@ -9,19 +9,17 @@ import com.jwebmp.core.base.angular.services.IAngularFactory;
 import com.jwebmp.core.base.angular.services.IAngularModule;
 import com.jwebmp.core.htmlbuilder.css.themes.Theme;
 import com.jwebmp.core.services.IPageConfigurator;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.jwebmp.examples.demos.homepage.components.events.SwopObjectBrowserEvent;
+import com.jwebmp.examples.demos.homepage.components.general.events.PackagesBrowserSwopObjectBrowserEvent;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
-import io.github.classgraph.PackageInfo;
-import io.github.classgraph.ScanResult;
 
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -43,6 +41,8 @@ public class PackagesBrowser
 		{
 			constructTree();
 		}
+
+		addEvent(new PackagesBrowserSwopObjectBrowserEvent(this));
 	}
 
 	private void constructTree()
@@ -79,6 +79,7 @@ public class PackagesBrowser
 			                               .ignoreFieldVisibility()
 			                               .ignoreMethodVisibility()
 			                               .ignoreClassVisibility()
+			                               .ignoreParentClassLoaders()
 			                               .whitelistPackages(packageName)
 			                               .scan(Runtime.getRuntime()
 			                                            .availableProcessors())
@@ -144,7 +145,6 @@ public class PackagesBrowser
 			JSTreeListItem<?> ev = new JSTreeListItem<>().setText(treeItem.getName());
 			treeFolder.add(ev);
 		}
-
 
 		JSTreeListItem<?> treeFolder2 = new JSTreeListItem<>().setText("Events <small><i>extends Event</i></small>");
 		treeFolder2.getOptions()
@@ -259,9 +259,14 @@ public class PackagesBrowser
 			ev.getOptions()
 			  .setIcon("fal fa-asterisk");
 			treeFolder10.add(ev);
+			ev.addEvent(new SwopObjectBrowserEvent(ev).setID(treeItem.loadClass()
+			                                                         .getCanonicalName()
+			                                                         .replace('.', '_')));
 		}
 	}
 
+
+	@Override
 	public String toString(Integer tabCount)
 	{
 		if (packageName == null)

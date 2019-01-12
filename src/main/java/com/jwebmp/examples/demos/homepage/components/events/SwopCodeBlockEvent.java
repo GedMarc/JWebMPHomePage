@@ -3,8 +3,8 @@ package com.jwebmp.examples.demos.homepage.components.events;
 import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
 import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import org.apache.commons.text.StringEscapeUtils;
 
@@ -13,7 +13,7 @@ import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 public class SwopCodeBlockEvent
-		extends ClickEvent
+		extends ClickAdapter
 {
 	public SwopCodeBlockEvent()
 	{
@@ -25,12 +25,6 @@ public class SwopCodeBlockEvent
 		super(null);
 		setID(classRef.getCanonicalName()
 		              .replace(CHAR_DOT, CHAR_UNDERSCORE) + "||" + filename.replace(CHAR_DOT, CHAR_UNDERSCORE));
-	}
-
-	@Override
-	public void preConfigure()
-	{
-		super.preConfigure();
 	}
 
 	@Override
@@ -47,7 +41,6 @@ public class SwopCodeBlockEvent
 			Class clazz = Class.forName(screen);
 			String filename = splits[1].replace(CHAR_UNDERSCORE, CHAR_DOT);
 			//Send back the code option
-
 			d.setID("JavaCodeBlock");
 			StringBuilder contents = FileTemplates.getFileTemplate(clazz, screen + filename, filename);
 			d.add(new JQSourceCodePrettify<>().addStyle("background:#333;")
@@ -61,5 +54,11 @@ public class SwopCodeBlockEvent
 
 		response.addComponent(d);
 
+	}
+
+	@Override
+	public void preConfigure()
+	{
+		super.preConfigure();
 	}
 }

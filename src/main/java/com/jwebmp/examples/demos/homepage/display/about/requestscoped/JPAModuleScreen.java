@@ -4,11 +4,7 @@ import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.H4;
 import com.jwebmp.core.base.html.Link;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
-import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
-import com.jwebmp.examples.demos.homepage.components.display.MetaInfServicesTree;
-import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
-import com.jwebmp.examples.demos.homepage.components.plugins.PluginModuleDetailedPart;
+import com.jwebmp.examples.demos.homepage.components.display.*;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
@@ -21,7 +17,7 @@ public class JPAModuleScreen
 {
 	public JPAModuleScreen()
 	{
-		add(new PluginModuleDetailedPart("Guiced Persistence - JPA"));
+		add(new PluginModulePart("Guiced Persistence - JPA"));
 
 		BSCardBody all = getDefaultBody();
 

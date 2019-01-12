@@ -2,7 +2,6 @@ package com.jwebmp.examples.demos.homepage.display.servlets;
 
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.Link;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
@@ -25,9 +24,7 @@ public class ServletsBasicMappedScreen
 	public @NotNull BSContainer<?> getContentContainer()
 	{
 		BSContainer container = BSContainer.newInstance(Container_Fluid);
-		DefaultSlimScroll scroll = new DefaultSlimScroll();
-		scroll.add(buildScreen());
-		container.add(scroll);
+		container.add(buildScreen());
 		return container;
 	}
 

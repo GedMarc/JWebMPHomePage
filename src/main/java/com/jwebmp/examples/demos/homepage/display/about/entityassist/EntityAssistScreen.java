@@ -5,6 +5,7 @@ import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
+import com.jwebmp.examples.demos.homepage.components.display.PluginModulePart;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
@@ -15,6 +16,9 @@ public class EntityAssistScreen
 	public EntityAssistScreen()
 	{
 		BSCardBody all = getDefaultBody();
+
+		all.add(new PluginModulePart("Entity Assist"));
+
 		Div about = buildAbout();
 		Div builder = buildBuilder();
 		//Div plugItIn = buildBuilder();

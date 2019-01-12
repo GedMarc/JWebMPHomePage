@@ -6,6 +6,7 @@ import com.jwebmp.core.base.html.H4;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
+import com.jwebmp.examples.demos.homepage.components.display.PluginModulePart;
 import com.jwebmp.examples.demos.homepage.display.about.requestscoped.JPAModuleScreen;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
@@ -27,6 +28,8 @@ public class C3P0Screen
 		wizard.addStep(new SmartWizardStep(about, "About", "The basics for C3P0"));
 		wizard.addStep(new SmartWizardStep(clazz, "Database Module", "Configuring the module"));
 		wizard.addStep(new SmartWizardStep(spi, "SPI", "Provide the module"));
+
+		all.add(new PluginModulePart("Guiced Persistence - C3P0"));
 
 		all.add(wizard);
 		all.add(buildGoToSource(getClass()));

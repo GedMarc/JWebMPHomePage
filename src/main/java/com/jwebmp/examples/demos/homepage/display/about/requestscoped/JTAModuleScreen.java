@@ -2,10 +2,7 @@ package com.jwebmp.examples.demos.homepage.display.about.requestscoped;
 
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H3;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
-import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
-import com.jwebmp.examples.demos.homepage.components.display.MetaInfServicesTree;
-import com.jwebmp.examples.demos.homepage.components.display.MetaInfTree;
+import com.jwebmp.examples.demos.homepage.components.display.*;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
@@ -18,9 +15,9 @@ public class JTAModuleScreen
 {
 	public JTAModuleScreen()
 	{
-		BSCardBody all = new BSCardBody();
-		all.addClass("row bg-dark");
-		all.addStyle("display:grid;overflow-y:auto;padding:0px;");
+		BSCardBody all = getDefaultBody();
+
+		all.add(new PluginModulePart("Guiced Persistence BTM/JTA"));
 
 		DefaultSmartWizard wizard = new DefaultSmartWizard("jtamodulewizard");
 
@@ -35,6 +32,7 @@ public class JTAModuleScreen
 		wizard.addStep(new SmartWizardStep(impl, new SmartWizardStepItem("Implementation", "How it works")));
 
 		all.add(wizard);
+
 		all.add(buildGoToSource(getClass()));
 
 		add(all);

@@ -3,7 +3,6 @@ package com.jwebmp.examples.demos.homepage;
 import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
 import com.jwebmp.core.generics.WebReference;
-import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
 import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerProperties;
 import com.jwebmp.logger.LogFactory;
@@ -17,7 +16,7 @@ import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
 import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
 import com.jwebmp.undertow.JWebMPUndertow;
 import com.jwebmp.undertow.JWebMPUndertowWebSocketConfiguration;
-import io.github.classgraph.ClassGraph;
+import com.jwebmp.websockets.injections.WebSocketsConfiguration;
 
 import java.util.logging.Level;
 
@@ -28,6 +27,8 @@ public class HomePageStartup
 		System.out.println("Starting");
 		LogColourFormatter.setRenderBlack(false);
 		LogFactory.configureConsoleColourOutput(Level.FINE);
+
+		WebSocketsConfiguration.setLocalStorageEnabled(true);
 
 		SessionHelper.setAddressToBeUsedWhenNull("https://jwebmp.com/");
 

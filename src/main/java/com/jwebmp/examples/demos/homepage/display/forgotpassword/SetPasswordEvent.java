@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.forgotpassword;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
+import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.entityassist.EntityAssistException;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
@@ -17,7 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class SetPasswordEvent
-		extends ClickEvent
+		extends ClickAdapter
 {
 	private static final Logger log = LogFactory.getLog("SetPasswordEvent");
 

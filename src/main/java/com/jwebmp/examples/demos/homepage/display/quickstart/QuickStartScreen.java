@@ -73,7 +73,9 @@ public class QuickStartScreen
 
 		wizard.addStep(new SmartWizardStep(buildJRE11(), new SmartWizardStepItem("JPMS", new SmallText(""))));
 		wizard.addStep(new SmartWizardStep(buildJRE8(), new SmartWizardStepItem("JRE 8", new SmallText(""))));
+
 		wizard.addStep(new SmartWizardStep(buildMigration(), new SmartWizardStepItem("MIGRATE", new SmallText(""))));
+
 		wizard.addStep(new SmartWizardStep(buildGuiceProjectsMigration(), new SmartWizardStepItem("GUICE", new SmallText(""))));
 		wizard.addStep(new SmartWizardStep(buildSpringProjectsMigration(), new SmartWizardStepItem("SPRING", new SmallText(""))));
 		wizard.addStep(new SmartWizardStep(GuiceContext.get(DisplayScreens.GoDeeperScreen.getScreen()), new SmartWizardStepItem("TEST", new SmallText(""))));
@@ -188,6 +190,8 @@ public class QuickStartScreen
 
 	private Div buildMigration()
 	{
+
+
 		Div aboutMigration = new Div();
 		Div annotationsConect = new Div();
 		Div dualExecution = new Div();
@@ -237,33 +241,15 @@ public class QuickStartScreen
 		annotationsConect.add("<code>@javax.ejb.PostActivate</code>, the annotation should be removed, and the class should implement IGuicePostStartup." +
 		                      "<br/>This class should be registered with SPI.");
 
-		dualExecution.add(new H3<>("Easily begin migration"));
-		dualExecution.add("Migrating to JPMS has been made as easy as ever, with a completely non-intrusive system that can run alongside anything.</br>" +
-		                  "There is a Guice module for running JSF and any components (PrimeFaces etc...) through Guice.<br/>" +
-		                  "JSF Integration for Guiced Injection Framework. Allows for Faces to execute through the Guice Filter<br/>" +
-		                  "To configure correctly, add the following depedency<br/>");
-
-		addSourceToContainer(QuickStartScreen.class, "servlet_jsf.txt", XML, dualExecution);
-
-		dualExecution.add("Include the following in faces-config.xml");
-		addSourceToContainer(QuickStartScreen.class, "faces_config_jsf.txt", XML, dualExecution);
-
-		dualExecution.add("You will need to remove your context path from web.xml or the configuration will be skipped");
-		addSourceToContainer(QuickStartScreen.class, "remove_faces_jsf.txt", XML, dualExecution);
-
-		dualExecution.add("This mapping is performed through the servlet binder<br/>" +
-		                  "You can change/add URL mappings by configuring GuicedServletJSFBindings or by mapping your own<br/>");
-		addSourceToContainer(QuickStartScreen.class, "jsf_mapping.txt", JS, dualExecution);
-
-		dualExecution.add("This implementation is a merge of http://javaevangelist.blogspot.com/2013/08/jsf-2x-tip-of-day-guice-elresolver.html <br/>" +
-		                  "and https://github.com/skuzzle/guice-jsf and uses the automated configurations of guiced-servlets and guiced-injection");
-
+		JSFDisplayPart jsf = new JSFDisplayPart();
 
 		DefaultSmartWizard wizard = new DefaultSmartWizard("migrationWizard");
 
 		wizard.addStep(new SmartWizardStep(aboutMigration, new SmartWizardStepItem("Zero to Hero", new SmallText("Switch instantly to JPMS"))));
 		wizard.addStep(new SmartWizardStep(annotationsConect, new SmartWizardStepItem("Annotations", new SmallText("Considerations for annotations"))));
-		wizard.addStep(new SmartWizardStep(dualExecution, new SmartWizardStepItem("Dual Execution", new SmallText("Run JSF alongside JWebMP"))));
+
+
+		wizard.addStep(new SmartWizardStep(jsf, new SmartWizardStepItem("Dual Execution", new SmallText("Run JSF alongside JWebMP"))));
 
 		stepper.add(wizard);
 

@@ -3,12 +3,12 @@ package com.jwebmp.examples.demos.homepage.display.termsandconditions;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
-import com.jwebmp.core.base.angular.directives.events.click.ClickEvent;
+import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
 
 public class GoToTermsAndConditionsEvent
-		extends ClickEvent
+		extends ClickAdapter
 		implements BSCardEvents
 {
 	public GoToTermsAndConditionsEvent()

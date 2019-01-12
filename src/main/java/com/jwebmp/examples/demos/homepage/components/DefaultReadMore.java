@@ -15,4 +15,12 @@ public class DefaultReadMore
 		add(componentHierarchyBase);
 		BSCollapse.link(button, componentHierarchyBase, true);
 	}
+
+	public DefaultReadMore(ComponentHierarchyBase componentHierarchyBase, String text)
+	{
+		BSButtonPrimaryOutline button = new BSButtonPrimaryOutline<>().setText(text);
+		add(button);
+		add(componentHierarchyBase);
+		BSCollapse.link(button, componentHierarchyBase, true);
+	}
 }

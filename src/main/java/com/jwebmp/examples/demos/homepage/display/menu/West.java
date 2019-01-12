@@ -20,8 +20,6 @@ import static com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens.*;
 public class West
 		extends Div
 {
-
-
 	private Div<IComponentHierarchyBase, ?, ?, ?, ?> sidebarInner;
 	private DivSimple<?> sidebarMenu;
 	private List globalList;
@@ -48,8 +46,6 @@ public class West
 
 		ListItem homeItem;
 		ListItem quickStartItem;
-		ListItem spiItem;
-		ListItem persistence;
 		ListItem pluginsListing;
 
 		globalList.add(homeItem = buildMenuItem("fal fa-hotel fa-2x fa-fw", HTML_TAB + "Home"));
@@ -60,33 +56,16 @@ public class West
 		globalList.add(buildBasicsMenu());
 		buildAddonsMenu();
 
-		globalList.add(spiItem = buildMenuItem("fal fa-syringe fa-2x", HTML_TAB + "SPI"));
-
-		globalList.add(persistence = buildMenuItem("fal fa-database", HTML_TAB + " Core Addons"));
-		globalList.add(pluginsListing = buildMenuItem("fal fa-steering-wheel fa-2x", HTML_TAB + "Plugins List"));
+		globalList.add(pluginsListing = buildMenuItem("fal fa-steering-wheel fa-2x", HTML_TAB + "Full Plugins List"));
 
 
 		homeItem.addEvent(new ChangeScreenEvent(homeItem, "p=HomePageScreen").setID(DisplayScreens.HomePageScreen.toString()));
 		quickStartItem.addEvent(new ChangeScreenEvent(quickStartItem, "p=QuickStart").setID(DisplayScreens.QuickStartScreen.toString()));
 
-		//aboutItem.addEvent(new ChangeScreenEvent(aboutItem, "p=AboutJWebMP").setID(DisplayScreens.AboutJWebMP.toString()));
-
-		spiItem.addEvent(new ChangeScreenEvent(spiItem, "p=UnderTheHood").setID(DisplayScreens.UnderTheHood.toString()));
-
-		//events.addEvent(new ChangeScreenEvent(events, "p=Events").setID(DisplayScreens.EventsScreen.toString()));
-		persistence.addEvent(new ChangeScreenEvent(persistence, "p=Persistence").setID(DisplayScreens.PersistenceScreen.toString()));
-		//goDeepSite.addEvent(new ChangeScreenEvent(goDeepSite, "p=GoDeeperScreen").setID(DisplayScreens.GoDeeperScreen.toString()));
 		pluginsListing.addEvent(new ChangeScreenEvent(pluginsListing, "p=PluginsListScreen").setID(DisplayScreens.PluginsListScreen.toString()));
-
-		//buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown(), buildGettingStarted(), buildTestingFramework());
-		//buildMenuSection("Main", false, homeItem, buildAboutJWebMPDropDown());
-		//buildMenuSection("Quick Starts", false, homeItem, buildMyFirstSites());
-		//buildMenuSection("UI Kits", false, homeItem, buildMyFirstSites(), buildUIKits(), buildInstantSites());
 
 		buildMenuSection("MIX N MATCH", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(), buildJQueryUI());
 
-		//buildMenuSection("Bootstrap", true, buildBootstrap4(), buildBootstrap3());
-		//buildMenuSection("JQuery UI", true, buildJQueryUI());
 		buildMenuSection("COMPONENTS", true, buildDisplayComponents(), buildForms(), buildGraphing(), buildMapping(), buildTablesTrees());
 		buildMenuSection("ICONS", true, buildIconSets());
 
@@ -170,40 +149,6 @@ public class West
 		return dropDown1;
 	}
 
-	private ListItem buildAddonsServlets()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsBasicsScreen).setText(HTML_TAB + "Basics"))
-		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJpaScreen).setText(HTML_TAB + "JSF"))
-		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJpaScreen).setText(HTML_TAB + "Request Scoping JTA"))
-		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJtaScreen).setText(HTML_TAB + "UA Detector"))
-		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceC3P0Screen).setText(HTML_TAB + "Rest"))
-		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceC3P0Screen).setText(HTML_TAB + "Swagger"))
-		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceEntityAssistScreen).setText(HTML_TAB + "Metrics API"))
-		                          .setRenderTextBeforeChildren(false));
-		ListItem dropDown1 = buildSubList("fal fa-question", "Servlets", uiKit);
-		return dropDown1;
-	}
-
-
-	private ListItem buildAddonsCaching()
-	{
-		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText(HTML_TAB + "HazelCast"))
-		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutJWebMP).setText(HTML_TAB + "EhCache"))
-		                          .setRenderTextBeforeChildren(false));
-
-		ListItem dropDown1 = buildSubList("fal fa-question", "Caching", uiKit);
-		return dropDown1;
-	}
-
 	private ListItem<?> buildBasicsMenu()
 	{
 		List uiKit = new List<>();
@@ -211,28 +156,46 @@ public class West
 		                          .setRenderTextBeforeChildren(false));
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", EventsScreen).setText(HTML_TAB + "Events"))
 		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", AboutThisSIte).setText(HTML_TAB + "This API"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", EventsScreen).setText(HTML_TAB + "Forms"))
 		                          .setRenderTextBeforeChildren(false));
 
 		ListItem dropDown1 = buildSubList("fal fa-abacus", "Basics", uiKit);
 		return dropDown1;
 	}
 
-	private Link<?> buildListItem(String uniqueHashBangId, DisplayScreens screen, String icon)
+	private ListItem buildAddonsServlets()
 	{
-		Link<?> link = new Link(uniqueHashBangId);
-		link.add(new Italic<>().addClass(icon))
-		    .setRenderTextBeforeChildren(false);
-		changeScreenAdapter(screen, link);
-		return link;
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsBasicsScreen).setText(HTML_TAB + "Basics"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsWebSocketsScreen).setText(HTML_TAB + "Web Sockets"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsJSFScreen).setText(HTML_TAB + "JSF"))
+		                          .setRenderTextBeforeChildren(false));
+		/*uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceJpaScreen).setText(HTML_TAB + "Request Scoping JTA"))
+		                          .setRenderTextBeforeChildren(false));*/
+/*		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsUADetectScreen).setText(HTML_TAB + "UA Detector"))
+		                          .setRenderTextBeforeChildren(false));*/
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsRestScreen).setText(HTML_TAB + "Rest"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsSwaggerScreen).setText(HTML_TAB + "Swagger"))
+		                          .setRenderTextBeforeChildren(false));
+		/*uiKit.add(new ListItem<>().add(buildListItem("#a2", PersistenceEntityAssistScreen).setText(HTML_TAB + "Metrics API"))
+		                          .setRenderTextBeforeChildren(false));*/
+		ListItem dropDown1 = buildSubList("fal fa-question", "Servlets", uiKit);
+		return dropDown1;
 	}
 
-	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
+	private ListItem buildAddonsCaching()
 	{
-		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
-		adapter.setID(screenReference.toString());
-		comp.addEvent(adapter);
-		return adapter;
+		List uiKit = new List<>();
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", CachingHazelcastScreen).setText(HTML_TAB + "HazelCast"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", CachingEhCacheScreen).setText(HTML_TAB + "EhCache"))
+		                          .setRenderTextBeforeChildren(false));
+
+		ListItem dropDown1 = buildSubList("fal fa-question", "Caching", uiKit);
+		return dropDown1;
 	}
 
 	private ListItem<?> buildMenuItem(String icon, String title)
@@ -321,6 +284,14 @@ public class West
 		menuItemList.addAttribute("data-parent", "#west");
 
 		return item;
+	}
+
+	private ChangeScreenEvent changeScreenAdapter(DisplayScreens screenReference, ComponentHierarchyBase<?, ?, ?, GlobalEvents, ?> comp)
+	{
+		ChangeScreenEvent adapter = new ChangeScreenEvent(comp, "p=" + screenReference.toString());
+		adapter.setID(screenReference.toString());
+		comp.addEvent(adapter);
+		return adapter;
 	}
 
 	private ListItem<?> buildDisplayComponents()

@@ -1,25 +1,22 @@
 package com.jwebmp.examples.demos.homepage.display.demos.htmltags;
 
 import com.google.inject.Singleton;
-import com.jwebmp.core.base.ComponentHierarchyBase;
-import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
-import io.github.classgraph.ClassGraph;
-import io.github.classgraph.ClassInfo;
-import io.github.classgraph.ScanResult;
-import org.apache.commons.text.StringEscapeUtils;
+import com.jwebmp.core.base.html.Abbreviation;
+import com.jwebmp.examples.demos.homepage.components.DemoScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
+
+import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 @Singleton
 public class HtmlTagsDemoScreen
-		extends PluginDemoScreen
+		extends DemoScreen
 {
-	private static final ScanResult result = new ClassGraph().whitelistPackages("com.jwebmp.core.base.html")
-	                                                         .enableClassInfo()
-	                                                         .scan();
-
 	@SuppressWarnings("unchecked")
 	public HtmlTagsDemoScreen()
 	{
-		super("HtmlTags", "Base", "HTML Tags");
+		add(new DefaultPackageAPI("com.jwebmp.core.base.html", Abbreviation.class, "JWebMP Core"));
+
+		/*
 		for (ClassInfo allClass : result.getAllClasses())
 		{
 			Class<? extends ComponentHierarchyBase> clazz = (Class<? extends ComponentHierarchyBase>) allClass.loadClass();
@@ -40,8 +37,7 @@ public class HtmlTagsDemoScreen
 					e.printStackTrace();
 				}
 			}
-		}
-		getAdditionalsRight().add(getCodeBlockJava(HtmlTagsDemoScreen.class, "rendering.txt"));
+		}*/
+		addSourceToContainer(HtmlTagsDemoScreen.class, "rendering.txt", XML, this);
 	}
-
 }

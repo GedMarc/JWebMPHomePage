@@ -132,6 +132,7 @@ public class DisplayPart<J extends DisplayPart<J>>
 		BSCardButtonDarkOutline<?> card = new BSCardButtonDarkOutline<>();
 		card.addStyle("background-color", "#3d4853")
 		    .addStyle("color", "#3bafda");
+		card.addClass("d-block");
 		card.setText(title + HTML_TAB + FontAwesome.icon(FontAwesomeIcons.external_link_alt, FontAwesomeStyles.Light)
 		                                           .toString(0));
 

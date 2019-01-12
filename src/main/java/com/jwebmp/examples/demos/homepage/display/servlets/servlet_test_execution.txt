@@ -1,0 +1,14 @@
+@Test
+void testFakeRequestScope()
+{
+    GuiceContext.inject();
+    ServletScopes.scopeRequest(new HashMap<>())
+                 .open();
+
+    RequestScopedObject obj = GuiceContext.getInstance(RequestScopedObject.class);
+    BasicServlet servlet = GuiceContext.getInstance(BasicServlet.class);
+
+    HttpServletResponse resp = GuiceContext.getInstance(GuicedServletKeys.getHttpServletResponseKey());
+
+    System.out.println(obj);
+}

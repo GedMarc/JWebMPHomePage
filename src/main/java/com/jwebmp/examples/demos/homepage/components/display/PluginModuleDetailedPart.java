@@ -1,23 +1,22 @@
-package com.jwebmp.examples.demos.homepage.components.plugins;
+package com.jwebmp.examples.demos.homepage.components.display;
 
+import com.google.common.base.Strings;
 import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.components.DefaultTable;
-import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
+import com.jwebmp.examples.demos.homepage.components.plugins.PluginCachingClass;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardChildren;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.cards.parts.styles.BSCardButtonDarkOutline;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
-import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
+import com.jwebmp.plugins.bootstrap4.options.BSAlignmentHorizontalOptions;
 import com.jwebmp.plugins.fontawesome5.FontAwesome;
 import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
 import com.jwebmp.plugins.fontawesome5.options.FontAwesomeStyles;
-
-import javax.cache.annotation.CacheKey;
-import javax.cache.annotation.CacheResult;
-import java.util.Optional;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
@@ -30,7 +29,7 @@ public class PluginModuleDetailedPart
 	public PluginModuleDetailedPart(String pluginName)
 	{
 		BSCardBody<?> body = new BSCardBody<>();
-		body.addClass(BSContainerOptions.Row);
+		//body.addClass(BSContainerOptions.Row);
 		body.addClass(Bg_Dark);
 		body.addStyle("display:grid;padding:0px;");
 
@@ -50,31 +49,43 @@ public class PluginModuleDetailedPart
 		content.add(detailRow);
 
 		//The plugin information
-		Optional<Plugins> pluginsOptional = getPlugin(pluginName);
+		Plugins pluginsOptional = GuiceContext.get(PluginCachingClass.class)
+		                                      .getPlugin(pluginName);
 
 		DefaultTable<?> table = new DefaultTable<>()
 				                        .addHeader("Name", "Module Name", "Artifact ID", "Group ID", "Version", "Status");
 
-		if (pluginsOptional.isPresent())
-		{
-			Plugins plugin = pluginsOptional.get();
-			table.addRow(plugin.getPluginName(), plugin.getPluginModuleName(), plugin.getPluginArtifactId(), plugin.getPluginGroupId(),
-			             plugin.getPluginVersion(), plugin.getProjectStatus());
-		}
-		content.add(table);
+		Plugins plugin = pluginsOptional;
+		table.addRow(plugin.getPluginName(), plugin.getPluginModuleName(), plugin.getPluginArtifactId(), plugin.getPluginGroupId(),
+		             plugin.getPluginVersion(), plugin.getProjectStatus());
 
-		//
+		content.add(table);
 
 		body.add(button);
 		body.add(content);
-		add(body);
-	}
 
-	@CacheResult
-	public Optional<Plugins> getPlugin(@CacheKey String name)
-	{
-		return new Plugins().builder()
-		                    .findByName(name)
-		                    .get();
+		int colSize = 3;
+		if (Strings.isNullOrEmpty(plugin.getPluginOriginalSite()))
+		{
+			colSize = 4;
+		}
+
+		BSRow footerRow = new BSRow<>().resetHorizontalSinks()
+		                               .addClass(BSAlignmentHorizontalOptions.Align_Center);
+		footerRow.add(new Link<>(plugin.getPluginSonarUrl(), "_blank").setText("View SonarQube")
+		                                                              .addClass("col-" + colSize));
+		footerRow.add(new Link<>(plugin.getPluginJiraUrl(), "_blank").setText("Log a Bug")
+		                                                             .addClass("col-" + colSize));
+		footerRow.add(new Link<>(plugin.getPluginGithubUrl(), "_blank").setText("View Plugin Source")
+		                                                               .addClass("col-" + colSize));
+
+		if (!Strings.isNullOrEmpty(plugin.getPluginOriginalSite()))
+		{
+			footerRow.add(new Link<>(plugin.getPluginSourceURL(), "_blank").setText("View Plugin Demo Site")
+			                                                               .addClass("col-" + colSize));
+		}
+		content.add(footerRow);
+
+		add(body);
 	}
 }

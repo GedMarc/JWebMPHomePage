@@ -1,31 +1,20 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
-import com.jwebmp.core.Event;
-import com.jwebmp.core.Feature;
-import com.jwebmp.core.base.ComponentBase;
-import com.jwebmp.core.base.ComponentDependancyBase;
-import com.jwebmp.core.base.ComponentFeatureBase;
 import com.jwebmp.core.base.ComponentHierarchyBase;
-import com.jwebmp.core.base.interfaces.IComponentBase;
-import com.jwebmp.core.base.interfaces.IComponentDependancyBase;
-import com.jwebmp.core.base.interfaces.IComponentHierarchyBase;
-import com.jwebmp.core.base.servlets.interfaces.IComponent;
-import com.jwebmp.core.htmlbuilder.css.themes.Theme;
-import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
-import com.jwebmp.core.services.IPageConfigurator;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
+import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 import io.github.classgraph.*;
+import org.apache.commons.text.StringEscapeUtils;
 
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ObjectBrowser
@@ -65,47 +54,6 @@ public class ObjectBrowser
 		//	buildHierarchy(objectClassName,treeFolderPrivateMethods);
 	}
 
-	private JSTreeListItem buildHierarchy(Class clazz, JSTreeListItem rootItem)
-	{
-		String packageName = clazz.getCanonicalName()
-		                          .substring(0, clazz.getCanonicalName()
-		                                             .lastIndexOf('.'));
-		try (ScanResult sr = new ClassGraph().whitelistPackages(packageName)
-		                                     .enableClassInfo()
-		                                     .enableFieldInfo()
-		                                     .enableMethodInfo()
-		                                     .removeTemporaryFilesAfterScan()
-		                                     .ignoreFieldVisibility()
-		                                     .scan(Runtime.getRuntime()
-		                                                  .availableProcessors()))
-		{
-			ClassInfo baseClass = sr.getClassInfo(clazz.getCanonicalName());
-			Class clazy = baseClass.loadClass();
-
-			List<MethodInfo> excludeMethods = new ArrayList<>();
-
-
-			if (ComponentBase.class.isAssignableFrom(clazy))
-			{
-				buildForObject(ComponentBase.class, rootItem, excludeMethods);
-			}
-			if (ComponentDependancyBase.class.isAssignableFrom(clazy))
-			{
-				buildForObject(ComponentDependancyBase.class, rootItem, excludeMethods);
-			}
-			/*if(ComponentFeatureBase.class.isAssignableFrom(clazy))
-			{
-				buildForObject(ComponentFeatureBase.class, rootItem,excludeMethods);
-			}*/
-			if (IComponentHierarchyBase.class.isAssignableFrom(clazy))
-			{
-				buildForObject(IComponentHierarchyBase.class, rootItem, excludeMethods);
-			}
-		}
-
-		return rootItem;
-	}
-
 	private JSTreeListItem buildForObject(Class clazz, JSTreeListItem rootItem, List<MethodInfo> completedMethods)
 	{
 		String packageName = clazz.getCanonicalName()
@@ -115,18 +63,25 @@ public class ObjectBrowser
 		                                     .enableClassInfo()
 		                                     .enableFieldInfo()
 		                                     .enableMethodInfo()
-		                                     .removeTemporaryFilesAfterScan()
 		                                     .ignoreFieldVisibility()
 		                                     .scan(Runtime.getRuntime()
 		                                                  .availableProcessors()))
 		{
 
 			List<MethodInfo> publicMethods = new ArrayList<>();
+			List<MethodInfo> abstractMethods = new ArrayList<>();
 			List<MethodInfo> publicStaticMethods = new ArrayList<>();
 			List<FieldInfo> privateFields = new ArrayList<>();
 
 			for (ClassInfo clazzy : sr.getAllClasses())
 			{
+				if (!clazzy.loadClass()
+				           .equals(clazz))
+				{
+					continue;
+				}
+
+
 				for (MethodInfo methodInfo : clazzy.getDeclaredMethodInfo())
 				{
 					if (methodInfo.getName()
@@ -144,29 +99,37 @@ public class ObjectBrowser
 					{
 						continue;
 					}
+
 					try
 					{
-						//on the actual class
-						if (methodInfo.isPublic() && methodInfo.isStatic())
+						//Method method = clazz.getDeclaredMethod(methodInfo.getName());
+						if (Modifier.isAbstract(methodInfo.getModifiers()))
+						{
+							abstractMethods.add(methodInfo);
+						}
+						else if (Modifier.isStatic(methodInfo.getModifiers()) && Modifier.isPublic(methodInfo.getModifiers()))
 						{
 							publicStaticMethods.add(methodInfo);
 						}
-						else if (methodInfo.isPublic())
+						else if (Modifier.isPublic(methodInfo.getModifiers()))
 						{
 							publicMethods.add(methodInfo);
 						}
 					}
 					catch (Exception e)
 					{
-						e.printStackTrace();
+						//method not on this class
+						continue;
 					}
 				}
-				for (FieldInfo fieldInfo : clazzy.getDeclaredFieldInfo())
+				for (Field field : clazz.getDeclaredFields())
 				{
-					if (Modifier.isPrivate(fieldInfo.getModifiers()) && !fieldInfo.isStatic())
+					if (field.getName()
+					         .equalsIgnoreCase("log"))
 					{
-						privateFields.add(fieldInfo);
+						continue;
 					}
+					privateFields.add(clazzy.getFieldInfo(field.getName()));
 				}
 			}
 
@@ -174,10 +137,60 @@ public class ObjectBrowser
 
 			//	if (!publicMethods.isEmpty())
 			//	{
-			JSTreeListItem<?> treeFolder = new JSTreeListItem<>().setText("Methods");
-			treeFolder.getOptions()
-			          .setIcon("fal fa-hand-holding-magic");
-			rootItem.add(treeFolder);
+			JSTreeListItem<?> abstractMethodsFolder = new JSTreeListItem<>().setText("Abstract Methods");
+			abstractMethodsFolder.getOptions()
+			                     .setIcon("fal fa-hand-holding-magic")
+			                     .setOpened(true);
+			rootItem.add(abstractMethodsFolder);
+
+			JSTreeListItem<?> publicMethodsFolder = new JSTreeListItem<>().setText("Public Methods");
+			publicMethodsFolder.getOptions()
+			                   .setIcon("fal fa-hand-holding-magic")
+			                   .setOpened(true);
+			rootItem.add(publicMethodsFolder);
+
+			for (MethodInfo treeItem : abstractMethods)
+			{
+				StringBuilder name = new StringBuilder(treeItem.getName());
+				name.append("<small><i>(");
+				for (MethodParameterInfo param : treeItem.getParameterInfo())
+				{
+					try
+					{
+						name.append(param.getTypeSignatureOrTypeDescriptor()
+						                 .toString()
+						                 .substring(param.getTypeSignatureOrTypeDescriptor()
+						                                 .toString()
+						                                 .lastIndexOf('.')))
+						    .append(",");
+					}
+					catch (Exception e)
+					{
+						//No types
+					}
+				}
+				if (treeItem.getParameterInfo().length > 0)
+				{
+					name = name.deleteCharAt(name.length() - 1);
+				}
+				name.append(")");
+				try
+				{
+					name.append(" : " + treeItem.loadClassAndGetMethod()
+					                            .getReturnType()
+					                            .getCanonicalName());
+				}
+				catch (Exception e)
+				{
+					//No method like this
+				}
+				name.append("</i></small>");
+				JSTreeListItem<?> ev = new JSTreeListItem<>().setText(name);
+				ev.getOptions()
+				  .setIcon("fal fa-wand-magic");
+				abstractMethodsFolder.add(ev);
+			}
+
 
 			for (MethodInfo treeItem : publicMethods)
 			{
@@ -217,15 +230,16 @@ public class ObjectBrowser
 				name.append("</i></small>");
 				JSTreeListItem<?> ev = new JSTreeListItem<>().setText(name);
 				ev.getOptions()
-				  .setIcon("fal fa-wand-magic");
-				treeFolder.add(ev);
+				  .setIcon("fal fa-hand");
+				publicMethodsFolder.add(ev);
 			}
 			//		}
 			//	if (!publicStaticMethods.isEmpty())
 			//	{
 			JSTreeListItem<?> treeFolderpublicStatic = new JSTreeListItem<>().setText("Public Static ");
 			treeFolderpublicStatic.getOptions()
-			                      .setIcon("fal fa-bolt");
+			                      .setIcon("fal fa-bolt")
+			                      .setOpened(true);
 			rootItem.add(treeFolderpublicStatic);
 
 			for (MethodInfo treeItem : publicStaticMethods)
@@ -241,7 +255,8 @@ public class ObjectBrowser
 			//	{
 			JSTreeListItem<?> treeFolderPrivateMethods = new JSTreeListItem<>().setText("Fields");
 			treeFolderPrivateMethods.getOptions()
-			                        .setIcon("fal fa-book-spells");
+			                        .setIcon("fal fa-book-spells")
+			                        .setOpened(true);
 			rootItem.add(treeFolderPrivateMethods);
 
 			for (FieldInfo treeItem : privateFields)
@@ -257,6 +272,46 @@ public class ObjectBrowser
 		}
 	}
 
+	public ObjectBrowser(@NotNull Class objectClassName, String id)
+	{
+		this.objectClassName = objectClassName;
+		setID(id);
+		setTheme(new JSTreeDefaultDarkTheme());
+		if (!cachedDisplays.containsKey(objectClassName))
+		{
+			constructTree();
+		}
+	}
+
+	private JQSourceCodePrettify<?> buildCodeBlock()
+	{
+		JQSourceCodePrettify prettify = new JQSourceCodePrettify();
+		prettify.addStyle("background-color:#36404a;");
+		prettify.setSourceCodeLanguage(SourceCodeLanguages.XML);
+		prettify.setShowLineNums(false);
+		String baseDep = buildToStringOutput();
+		prettify.setText(StringEscapeUtils.escapeHtml4(baseDep));
+		prettify.addStyle("padding-bottom:0px !important;");
+		return prettify;
+	}
+
+	private String buildToStringOutput()
+	{
+		try
+		{
+			Class<? extends ComponentHierarchyBase> objectClassName = this.objectClassName;
+			return objectClassName.getDeclaredConstructor()
+			                      .newInstance()
+			                      .toString(0);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return "";
+	}
+
+	@Override
 	public String toString(Integer tabCount)
 	{
 		if (objectClassName == null)

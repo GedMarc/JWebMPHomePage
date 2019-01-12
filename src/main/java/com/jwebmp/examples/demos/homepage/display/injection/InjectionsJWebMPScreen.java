@@ -1,24 +1,22 @@
 package com.jwebmp.examples.demos.homepage.display.injection;
 
 import com.jwebmp.core.base.html.*;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
+import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
+import com.jwebmp.examples.demos.homepage.components.DefaultSlimScroll;
+import com.jwebmp.examples.demos.homepage.components.DefaultTable;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
-import com.jwebmp.examples.demos.homepage.components.display.DisplayCard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.components.display.PluginModulePart;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
-import com.jwebmp.plugins.bootstrap4.containers.BSRow;
-import com.jwebmp.plugins.bootstrap4.options.BSTableOptions;
-import com.jwebmp.plugins.bootstrap4.tables.BSTable;
-import com.jwebmp.plugins.bootstrap4.tables.BSTableRow;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStepItem;
 
 import javax.validation.constraints.NotNull;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
-import static com.jwebmp.plugins.bootstrap4.options.BSTableOptions.*;
+import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 @SuppressWarnings("Duplicates")
 public class InjectionsJWebMPScreen
@@ -33,100 +31,220 @@ public class InjectionsJWebMPScreen
 	public @NotNull BSContainer<?> getContentContainer()
 	{
 		BSContainer container = BSContainer.newInstance(Container_Fluid);
-		//container.addClass("row");
 
-		//container.add(new H3<>("Injection Control<br/>"));
+		container.add(new PluginModulePart("JWebMP Core"));
 
-		Div aboutContent = new Div();
-		Div whatAvailableContainer = new Div();
-		Div pageContent = new Div();
-		Div dataContent = new Div();
-		Div pageContentRow = new BSRow();
+		Div aboutContent = buildJWebMP();
+		Div coreSpi = buildCoreSPI();
+		Div interceptSpi = buildIntercepterSPI();
+		Div eventSpi = buildEventSPI();
+		Div renderingSpi = buildRenderingSpi();
+		Div componentRender = buildComponentRendering();
+
+		DefaultSmartWizard wizard = new DefaultSmartWizard("injectionsJWebMP");
+
+		wizard.addStep(new SmartWizardStep(aboutContent, new SmartWizardStepItem("About", new SmallText("Servicing from JWebMP"))));
+		wizard.addStep(new SmartWizardStep(coreSpi, new SmartWizardStepItem("Core SPI", new SmallText("Core services for applications"))));
+		wizard.addStep(new SmartWizardStep(interceptSpi, new SmartWizardStepItem("Interceptor SPI", new SmallText("Services for intercepting calls"))));
+		wizard.addStep(new SmartWizardStep(eventSpi, new SmartWizardStepItem("Events SPI", new SmallText("Event services for binding and such"))));
+		wizard.addStep(new SmartWizardStep(renderingSpi, new SmartWizardStepItem("Rendering SPI", new SmallText("Manage page rendering"))));
+		wizard.addStep(new SmartWizardStep(componentRender, new SmartWizardStepItem("Component Render", new SmallText("Manipulating a components render"))));
 
 
-		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(pageContentRow);
-		scroll.getOptions()
-		      .setHeight("500px");
+		container.add(wizard);
 
-		DefaultSmartWizard wizard = new DefaultSmartWizard("eventWizard");
-
-		wizard.addStep(new SmartWizardStep(aboutContent, new SmartWizardStepItem("About", new SmallText("The Important Things"))));
-		wizard.addStep(new SmartWizardStep(whatAvailableContainer, new SmartWizardStepItem("What's Available", new SmallText("Overview of the objects"))));
-		wizard.addStep(new SmartWizardStep(pageContent, new SmartWizardStepItem("Defaults", new SmallText("Standard Events Available"))));
-		wizard.addStep(new SmartWizardStep(dataContent, new SmartWizardStepItem("Data", new SmallText("Return data from client"))));
-
-		//container.add(wizard);
-		container.add(buildJWebMP());
+		container.add(buildGoToSource(getClass()));
 
 		return container;
 	}
 
-
 	private Div buildJWebMP()
 	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
+		Div div = new Div();
 		div.add(new H3("JWebMP Service Loaders"));
+		div.add("The JWebMP Core provides the bases of a lot of functionality for the system. " +
+		        "<br/>These services allow you to manage and modify any portion of the rendering for the specific controllers");
+
+		div.add("These services allow you to control the very heart of JWebMP" +
+		        "<br/>For the most part, the only thing you will ever need to worry about, is <code>IPage</code>, and on the odd time, <code>IErrorPage</code>.");
+
+		DefaultTable<?> table = new DefaultTable<>();
+		table.addHeader("Service Loader", "Purpose ");
+
+		table.addRow("IPage", "Designates a page that must be rendered. The class must extend Page.<br/> Annotate with @PageConfiguration to configure URL's");
+		table.addRow("IErrorPage", "Allows to set a custom page to render errors on.");
+
+		div.add(table);
+
+		div.add("At any point, you can modify <code>GuiceContext.getAllLoadedServices()</code> to update and remove services as required, or configured dynamically.");
+
+		return div;
+	}
+
+	private Div buildCoreSPI()
+	{
+		Div div = new Div();
+
 		div.add(new H4("com.jwebmp.core.services"));
 
 		div.add("JWebMP Services are directly related to the display and representation of a site or site URL." +
 		        "<br/> IPage has a default implementation <code>extends Page</code> that should be used for all pages.");
+		DefaultTable<?> table = new DefaultTable<>();
 
-		BSTable<?> table = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                  .addClass(Table_Hover);
-		table.setSmall(true);
-		table.setBordered(true);
-		table.setStriped(true);
-
-		table.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
-		                                                       .add(new TableHeaderCell<>("Purpose"))
-		                                      ));
-
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPage"))
-		                                       .add(new TableCell<>(
-				                                       "Designates a page that must be rendered. The class must extend Page.<br/> Annotate with @PageConfiguration to configure URL's")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IErrorPage"))
-		                                       .add(new TableCell<>("Allows to set a custom page to render errors on.")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IPageConfigurator"))
-		                                       .add(new TableCell<>("Configures and modifies the page before rendering as required by the given module")));
-		table.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IRegularExpressions"))
-		                                       .add(new TableCell<>("Supplies a list of default regular expressions to the client browser on connect for quick static access")));
+		table.addRow("IPageConfigurator", "Configures and modifies the page before rendering as required by the given module");
+		table.addRow("IRegularExpressions", "Supplies a list of default regular expressions to the client browser on connect for quick static access");
 
 		div.add(table);
 
-		div.add(new H3("Angular Configuration Loaders"));
-		div.add(new H4("com.jwebmp.core.base.angular.services"));
+		return div;
+	}
 
-		div.add("AngularJS is currently used for data-binding, And the following Services are used to configure the implementation");
-		div.add("Vue 2.x or greater will be used in the future.");
+	private Div buildIntercepterSPI()
+	{
+		Div div = new Div();
 
-		BSTable<?> tableAngular = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
-		                                         .addClass(Table_Hover);
-		tableAngular.setSmall(true);
-		tableAngular.setBordered(true);
-		tableAngular.setStriped(true);
+		div.add(new H4("com.jwebmp.interception.services"));
 
-		tableAngular.add(new TableHeaderGroup<>().add(new TableRow<>().add(new TableHeaderCell<>("Service Loader"))
-		                                                              .add(new TableHeaderCell<>("Purpose"))
-		                                             ));
+		div.add("Interception Services are for investigating calls and ensuring their validity in terms of the application." +
+		        "<br/>The following services are made available for intercepting calls.");
 
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularDirective"))
-		                                              .add(new TableCell<>("Adds the given Angular Directive to the page rendered to the client")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularControllerScopeStatement"))
-		                                              .add(new TableCell<>("Adds script text inside the root angular controller with direct access to the scope")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularModule"))
-		                                              .add(new TableCell<>("Adds the given angular module to the initialization of angular")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularConfigurationScopeStatement"))
-		                                              .add(new TableCell<>("Adds the given scoped statement to the angular configuration script")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularConfiguration"))
-		                                              .add(new TableCell<>("Registers a new angular configuration object to be rendered.")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularController"))
-		                                              .add(new TableCell<>("Registers the new controller to the Angular script")));
-		tableAngular.add(new BSTableRow<>(Table_Hover).add(new TableCell<>("IAngularFactory"))
-		                                              .add(new TableCell<>("Adds the given factory to the script")));
+		DefaultTable<?> table = new DefaultTable<>();
+		table.addHeader("Service Loader", "Purpose ");
 
-		div.add(tableAngular);
-		return card;
+		table.addRow("AjaxCallIntercepter", "Intercepts Ajax calls from the client resulting in an AjaxCall and AjaxResponse");
+		table.addRow("DataCallIntercepter", "Intercepts Data calls from the client made directly to servlets");
+		table.addRow("SiteCallIntercepter", "Intercepts All Calls");
+
+		div.add(table);
+
+		return div;
+	}
+
+	private Div buildEventSPI()
+	{
+		Div div = new Div();
+
+		div.add(new H4("com.jwebmp.events"));
+
+		div.add("Event Intercepters are used for configuring event components with required values for the library." +
+		        "<br/>These exist to be able to switch between Angular JS and Vue with ease and no impact on current applications." +
+		        "<br/>The names are pretty self explanatory. All services implement <code>DefaultService</code> and are named and sortable.");
+
+		DefaultSlimScroll scroll = new DefaultSlimScroll();
+		DefaultTable<?> table = new DefaultTable<>();
+		table.addHeader("Service Loader");
+
+		table.addRow("IOnActivateService");
+		table.addRow("IOnBeforeActivateService");
+		table.addRow("IOnBeforeCloseService");
+		table.addRow("IOnBeforeLoadService");
+		table.addRow("IOnBlurService");
+		table.addRow("IOnBeforeStopService");
+		table.addRow("IOnButtonClickService");
+		table.addRow("IOnCancelService");
+		table.addRow("IOnChangeService");
+		table.addRow("IOnCheckedService");
+		table.addRow("IOnCloseService");
+		table.addRow("IOnClickService");
+		table.addRow("IOnCompleteService");
+		table.addRow("IOnCreateService");
+		table.addRow("IOnDeActivateService");
+		table.addRow("IOnDragService");
+		table.addRow("IOnDragStartService");
+		table.addRow("IOnDragStopService");
+		table.addRow("IOnDropService");
+		table.addRow("IOnDropOverService");
+		table.addRow("IOnFocusService");
+		table.addRow("IOnKeyDownService");
+		table.addRow("IOnKeyPressedService");
+		table.addRow("IOnKeyUpService");
+		table.addRow("IOnLoadService");
+		table.addRow("IOnMouseEnterService");
+		table.addRow("IOnMouseMoveService");
+		table.addRow("IOnMouseOutService");
+		table.addRow("IOnMouseOverService");
+		table.addRow("IOnMouseUpService");
+		table.addRow("IOnOpenService");
+		table.addRow("IOnReceiveService");
+		table.addRow("IOnRemoveService");
+		table.addRow("IOnResizeService");
+		table.addRow("IOnResizeStopService");
+		table.addRow("IOnResponseService");
+		table.addRow("IOnRightClickService");
+		table.addRow("IOnSelectService");
+		table.addRow("IOnSearchService");
+		table.addRow("IOnSelectedService");
+		table.addRow("IOnSelectedService");
+		table.addRow("IOnSelectingService");
+		table.addRow("IOnSlideService");
+		table.addRow("IOnSortService");
+		table.addRow("IOnSpinService");
+		table.addRow("IOnStartService");
+		table.addRow("IOnStopService");
+		table.addRow("IOnSubmitService");
+		table.addRow("IOnUnSelectedService");
+		table.addRow("IOnUpdateService");
+		table.addRow("IOnDataBind");
+		table.addRow("IOnDataBindCloak");
+
+		scroll.add(table);
+
+		div.add(scroll);
+
+		return div;
+	}
+
+	private Div buildRenderingSpi()
+	{
+		Div div = new Div();
+		div.add(new H3("Rendering Services"));
+		div.add("The following services allow custom management of the page rendering itself,");
+
+		DefaultTable<?> table = new DefaultTable<>();
+		table.addHeader("Service Loader", "Purpose ");
+
+		table.addRow("IDynamicRenderingServlet", "Servlets that can be rendered in-page, or dynamically as its own servlet can be serviced with these.");
+		table.addRow("RenderBeforeLinks", "Renders a StringBuilder before the CSS Links in the page");
+		table.addRow("RenderAfterLinks", "Renders a StringBuilder after the CSS Links in the page");
+		table.addRow("RenderBeforeDynamicScripts", "Renders a StringBuilder before the IDynamicScriptService's are placed in the page");
+		table.addRow("RenderAfterDynamicScripts", "Renders a StringBuilder after the IDynamicScriptService's are placed in the page");
+		table.addRow("RenderBeforeScripts", "Renders a StringBuilder before the Script Links in the page");
+		table.addRow("RenderAfterScripts", "Renders a StringBuilder after the Script Links in the page");
+		div.add(table);
+		return div;
+	}
+
+	private Div buildComponentRendering()
+	{
+		Div div = new Div();
+		div.add(new H3("Component Render"));
+		div.add("Every component comes with a set of methods that can be used/overridden to return absolutely anything at any point in the rendering process." +
+		        "<br/> These allow you to completely manage every part of the rendering process at every level");
+
+		DefaultTable<?> table = new DefaultTable<>();
+		table.addHeader("Method", "Purpose");
+
+		table.addRow("<code>toString()</code>", "Renders the component in JSON format");
+		table.addRow("<code>toString(tabCount:int)</code>", "Renders the HTML of the component with the given number of tabs");
+		table.addRow("<code>toString(true)</code>", "Renders the HTML of the component with 0 tab count");
+		table.addRow("<code>renderHTML()</code>", "Method that calls the rendering methods below. Override to control entire rendering mechanism");
+		table.addRow("<code>renderBeforeTag()</code>", "Anything to render before the tag");
+		table.addRow("<code>renderTextBeforeChildren()</code>", "If <code>isTextRenderedBeforeChildren()</code>");
+		table.addRow("<code>renderBeforeChildren()</code>", "Returns StringBuilder for anything to be added custom before children rendering");
+		table.addRow("<code>renderChildren()</code>", "Returns StringBuilder of children renderHTML()");
+		table.addRow("<code>renderTextAfterChildren()</code>", "If <code>!isTextRenderedBeforeChildren()</code>");
+		table.addRow("<code>renderAfterChildren()</code>", "Returns StringBuilder of anything custom to add after children have rendered");
+		table.addRow("<code>renderAfterTag()</code>",
+		             "Returns StringBuilder of anything custom to add after the tag. use <code>getTabCount()</code> to align properly in development mode.");
+
+		div.add(table);
+
+		Div scroll = new Div();
+		addSourceToContainer(InjectionsJWebMPScreen.class, "comment_class.txt", Java, scroll);
+		DefaultReadMore more = new DefaultReadMore(scroll, "Comment Component Example");
+		div.add(more);
+
+		return div;
 	}
 
 
@@ -141,5 +259,4 @@ public class InjectionsJWebMPScreen
 		                                             .setText("Events"));
 		return crumbs;
 	}
-
 }
