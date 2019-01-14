@@ -4,21 +4,16 @@ import com.google.common.base.Strings;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.components.DefaultTable;
-import com.jwebmp.examples.demos.homepage.components.plugins.PluginCachingClass;
+import com.jwebmp.examples.demos.homepage.components.general.PrettyCollapsable;
+import com.jwebmp.examples.demos.homepage.db.dao.PluginsService;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardChildren;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
-import com.jwebmp.plugins.bootstrap4.cards.parts.styles.BSCardButtonDarkOutline;
-import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSAlignmentHorizontalOptions;
-import com.jwebmp.plugins.fontawesome5.FontAwesome;
-import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
-import com.jwebmp.plugins.fontawesome5.options.FontAwesomeStyles;
 
-import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 
@@ -28,18 +23,19 @@ public class PluginModulePart
 {
 	public PluginModulePart(String pluginName)
 	{
+		this(pluginName, true);
+	}
+
+	public PluginModulePart(String pluginName, boolean hideByDefault)
+	{
 		BSCardBody<?> body = new BSCardBody<>();
 		//body.addClass(BSContainerOptions.Row);
 		body.addClass(Bg_Dark);
 		body.addStyle("display:grid;padding:0px;");
 
-		BSCardButtonDarkOutline<?> button = new BSCardButtonDarkOutline<>();
-		button.addStyle("background-color", "#3d4853")
-		      .addStyle("color", "#3bafda");
-		button.setText("View Plugin and Module Information " + HTML_TAB + FontAwesome.icon(FontAwesomeIcons.caret_circle_down, FontAwesomeStyles.Light)
-		                                                                             .toString(0));
 		DivSimple<?> content = new DivSimple<>();
-		BSCollapse.link(button, content, true);
+
+		body.add(new PrettyCollapsable(content, "View Plugin and Module Information", hideByDefault));
 
 		BSColumn<?> left = new BSColumn<>().addClass(Col_12, Col_Md_6);
 		BSColumn<?> right = new BSColumn<>().addClass(Col_12, Col_Md_6);
@@ -49,7 +45,7 @@ public class PluginModulePart
 		content.add(detailRow);
 
 		//The plugin information
-		Plugins pluginsOptional = GuiceContext.get(PluginCachingClass.class)
+		Plugins pluginsOptional = GuiceContext.get(PluginsService.class)
 		                                      .getPlugin(pluginName);
 
 		DefaultTable<?> table = new DefaultTable<>()
@@ -60,9 +56,6 @@ public class PluginModulePart
 		             plugin.getPluginVersion(), plugin.getProjectStatus());
 
 		content.add(table);
-
-		body.add(button);
-		body.add(content);
 
 		int colSize = 3;
 		if (Strings.isNullOrEmpty(plugin.getPluginOriginalSite()))

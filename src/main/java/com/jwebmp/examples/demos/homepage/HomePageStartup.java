@@ -3,6 +3,9 @@ package com.jwebmp.examples.demos.homepage;
 import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
 import com.jwebmp.core.generics.WebReference;
+import com.jwebmp.examples.demos.homepage.components.WebComponentsService;
+import com.jwebmp.examples.demos.homepage.db.dao.PluginsService;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
 import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerProperties;
 import com.jwebmp.logger.LogFactory;
@@ -47,9 +50,27 @@ public class HomePageStartup
 		HibernateEntityManagerProperties.getDefaultProperties()
 		                                .setUseQueryStartupCheck(false);
 
-		/*HibernateEntityManagerProperties.getDefaultProperties()
-		                                .enableQuickestBoot();*/
+		configureUsedPlugins();
+		blockUnusedPlugins();
 
+		try
+		{
+			JWebMPUndertow.boot("0.0.0.0", 6002);
+		}
+		catch (Exception e)
+		{
+			LogFactory.getLog("Main")
+			          .log(Level.SEVERE, "oops", e);
+		}
+
+		GuiceContext.get(WebComponentsService.class)
+		            .wipeCaches();
+		GuiceContext.get(PluginsService.class)
+		            .wipeCaches();
+	}
+
+	private static void configureUsedPlugins()
+	{
 		BTMAutomatedTransactionHandler.setActive(true);
 		BlueImpGalleryPageConfigurator.setIncludeIndicators(true);
 
@@ -70,21 +91,12 @@ public class HomePageStartup
 		SkyconPageConfigurator.setColour("white");
 
 		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
-
-		pluginBlocks();
-
-		try
-		{
-			JWebMPUndertow.boot("0.0.0.0", 6002);
-		}
-		catch (Exception e)
-		{
-			LogFactory.getLog("Main")
-			          .log(Level.SEVERE, "oops", e);
-		}
 	}
 
-	private static void pluginBlocks()
+	/**
+	 * So that the page rendered doesn't include the entirety of every single library ;)
+	 */
+	private static void blockUnusedPlugins()
 	{
 
 	}

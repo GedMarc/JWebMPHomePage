@@ -1,6 +1,7 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
 import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.jstree.JSTree;
@@ -12,10 +13,11 @@ import org.apache.commons.text.StringEscapeUtils;
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Level;
+
+import static com.jwebmp.core.utilities.StaticStrings.*;
 
 public class ObjectBrowser
 		extends JSTree<ObjectBrowser>
@@ -23,12 +25,16 @@ public class ObjectBrowser
 	private static final Map<String, String> cachedDisplays = new ConcurrentHashMap<>();
 	private final Class objectClassName;
 
+	private final String[] propertyMethods = new String[]{"get", "set", "is"};
+	private final String[] ignoredMethods = new String[]{"equals", "hashCode", "fireEvent"};
+	private final String[] defaultMethods = new String[]{"equals", "hashCode", "fireEvent"};
+
 	public ObjectBrowser(@NotNull Class objectClassName)
 	{
 		this.objectClassName = objectClassName;
-		setID("objectBrowser_" + objectClassName.getSimpleName()
-		                                        .replace('.', '_'));
+		setID("objectBrowser");
 		setTheme(new JSTreeDefaultDarkTheme());
+
 		if (!cachedDisplays.containsKey(objectClassName))
 		{
 			constructTree();
@@ -49,9 +55,7 @@ public class ObjectBrowser
 		JSTreeListItem<?> treeFolderPrivateMethods = new JSTreeListItem<>().setText("Inherited");
 		treeFolderPrivateMethods.getOptions()
 		                        .setIcon("fal fa-hand-point-up");
-		//		rootItem.add(treeFolderPrivateMethods);
 
-		//	buildHierarchy(objectClassName,treeFolderPrivateMethods);
 	}
 
 	private JSTreeListItem buildForObject(Class clazz, JSTreeListItem rootItem, List<MethodInfo> completedMethods)
@@ -70,6 +74,7 @@ public class ObjectBrowser
 
 			List<MethodInfo> publicMethods = new ArrayList<>();
 			List<MethodInfo> abstractMethods = new ArrayList<>();
+			List<MethodInfo> propertyMethods = new ArrayList<>();
 			List<MethodInfo> publicStaticMethods = new ArrayList<>();
 			List<FieldInfo> privateFields = new ArrayList<>();
 
@@ -81,28 +86,15 @@ public class ObjectBrowser
 					continue;
 				}
 
-
+				//Direct Methods
 				for (MethodInfo methodInfo : clazzy.getDeclaredMethodInfo())
 				{
-					if (methodInfo.getName()
-					              .startsWith("get") || methodInfo.getName()
-					                                              .startsWith("set")
-					    || methodInfo.getName()
-					                 .startsWith("fireEvent") || methodInfo.getName()
-					                                                       .startsWith("hashCode")
-					    || methodInfo.getName()
-					                 .startsWith("equals") || methodInfo.getName()
-					                                                    .startsWith("preConfigure")
-					    || methodInfo.getName()
-					                 .startsWith("fireEvent")
-					    || methodInfo.hasBody())
+					if (isIgnored(methodInfo) || isProperty(methodInfo) || methodInfo.hasBody())
 					{
 						continue;
 					}
-
 					try
 					{
-						//Method method = clazz.getDeclaredMethod(methodInfo.getName());
 						if (Modifier.isAbstract(methodInfo.getModifiers()))
 						{
 							abstractMethods.add(methodInfo);
@@ -122,6 +114,49 @@ public class ObjectBrowser
 						continue;
 					}
 				}
+				//Inheritted Methods
+				//Direct Methods
+				for (MethodInfo methodInfo : clazzy.getMethodInfo())
+				{
+					if (isIgnored(methodInfo) || isProperty(methodInfo) || !methodInfo.hasBody())
+					{
+						continue;
+					}
+					try
+					{
+						if (Modifier.isPublic(methodInfo.getModifiers()))
+						{
+							publicMethods.add(methodInfo);
+						}
+					}
+					catch (Exception e)
+					{
+						//method not on this class
+						continue;
+					}
+				}
+
+				//Property Methods
+				for (MethodInfo methodInfo : clazzy.getMethodInfo())
+				{
+					if (!isProperty(methodInfo))
+					{
+						continue;
+					}
+					try
+					{
+						if (Modifier.isPublic(methodInfo.getModifiers()))
+						{
+							propertyMethods.add(methodInfo);
+						}
+					}
+					catch (Exception e)
+					{
+						//method not on this class
+						continue;
+					}
+				}
+
 				for (Field field : clazz.getDeclaredFields())
 				{
 					if (field.getName()
@@ -135,108 +170,92 @@ public class ObjectBrowser
 
 			completedMethods.addAll(publicMethods);
 
-			//	if (!publicMethods.isEmpty())
-			//	{
-			JSTreeListItem<?> abstractMethodsFolder = new JSTreeListItem<>().setText("Abstract Methods");
+			JSTreeListItem<?> abstractMethodsFolder = new JSTreeListItem<>().setText("Abstract Methods <small>(" + abstractMethods.size() + ")</small>");
 			abstractMethodsFolder.getOptions()
 			                     .setIcon("fal fa-hand-holding-magic")
 			                     .setOpened(true);
 			rootItem.add(abstractMethodsFolder);
 
-			JSTreeListItem<?> publicMethodsFolder = new JSTreeListItem<>().setText("Public Methods");
+			JSTreeListItem<?> publicMethodsFolder = new JSTreeListItem<>().setText("Public Methods <small>(" + publicMethods.size() + ")</small>");
 			publicMethodsFolder.getOptions()
 			                   .setIcon("fal fa-hand-holding-magic")
-			                   .setOpened(true);
+			                   .setOpened(false);
 			rootItem.add(publicMethodsFolder);
+
 
 			for (MethodInfo treeItem : abstractMethods)
 			{
-				StringBuilder name = new StringBuilder(treeItem.getName());
-				name.append("<small><i>(");
-				for (MethodParameterInfo param : treeItem.getParameterInfo())
-				{
-					try
-					{
-						name.append(param.getTypeSignatureOrTypeDescriptor()
-						                 .toString()
-						                 .substring(param.getTypeSignatureOrTypeDescriptor()
-						                                 .toString()
-						                                 .lastIndexOf('.')))
-						    .append(",");
-					}
-					catch (Exception e)
-					{
-						//No types
-					}
-				}
-				if (treeItem.getParameterInfo().length > 0)
-				{
-					name = name.deleteCharAt(name.length() - 1);
-				}
-				name.append(")");
-				try
-				{
-					name.append(" : " + treeItem.loadClassAndGetMethod()
-					                            .getReturnType()
-					                            .getCanonicalName());
-				}
-				catch (Exception e)
-				{
-					//No method like this
-				}
-				name.append("</i></small>");
+				StringBuilder name = getParametersString(treeItem);
+
 				JSTreeListItem<?> ev = new JSTreeListItem<>().setText(name);
 				ev.getOptions()
 				  .setIcon("fal fa-wand-magic");
 				abstractMethodsFolder.add(ev);
 			}
 
-
+			Set<String> loadedMethods = new HashSet<>();
+			publicMethods.sort(new Comparator<MethodInfo>()
+			{
+				@Override
+				public int compare(MethodInfo o1, MethodInfo o2)
+				{
+					return o1.getName()
+					         .compareTo(o2.getName());
+				}
+			});
 			for (MethodInfo treeItem : publicMethods)
 			{
-				StringBuilder name = new StringBuilder(treeItem.getName());
-				name.append("<small><i>(");
-				for (MethodParameterInfo param : treeItem.getParameterInfo())
+				if (loadedMethods.contains(treeItem.getName()))
 				{
-					try
-					{
-						name.append(param.getTypeSignatureOrTypeDescriptor()
-						                 .toString()
-						                 .substring(param.getTypeSignatureOrTypeDescriptor()
-						                                 .toString()
-						                                 .lastIndexOf('.')))
-						    .append(",");
-					}
-					catch (Exception e)
-					{
-						//No types
-					}
+					continue;
 				}
-				if (treeItem.getParameterInfo().length > 0)
+				else
 				{
-					name = name.deleteCharAt(name.length() - 1);
+					loadedMethods.add(treeItem.getName());
 				}
-				name.append(")");
-				try
-				{
-					name.append(" : " + treeItem.loadClassAndGetMethod()
-					                            .getReturnType()
-					                            .getCanonicalName());
-				}
-				catch (Exception e)
-				{
-					//No method like this
-				}
-				name.append("</i></small>");
+				StringBuilder name = getParametersString(treeItem);
+
 				JSTreeListItem<?> ev = new JSTreeListItem<>().setText(name);
 				ev.getOptions()
-				  .setIcon("fal fa-hand");
+				  .setIcon("fal fa-skating");
 				publicMethodsFolder.add(ev);
 			}
-			//		}
-			//	if (!publicStaticMethods.isEmpty())
-			//	{
-			JSTreeListItem<?> treeFolderpublicStatic = new JSTreeListItem<>().setText("Public Static ");
+
+			JSTreeListItem<?> propertyMethodsFolder = new JSTreeListItem<>().setText("Property Methods <small>(" + publicMethods.size() + ")</small>");
+			propertyMethodsFolder.getOptions()
+			                     .setIcon("fal fa-hand-holding-magic")
+			                     .setOpened(false);
+			rootItem.add(propertyMethodsFolder);
+
+			loadedMethods = new HashSet<>();
+			propertyMethods.sort(new Comparator<MethodInfo>()
+			{
+				@Override
+				public int compare(MethodInfo o1, MethodInfo o2)
+				{
+					return o1.getName()
+					         .compareTo(o2.getName());
+				}
+			});
+			for (MethodInfo treeItem : propertyMethods)
+			{
+				if (loadedMethods.contains(treeItem.getName()))
+				{
+					continue;
+				}
+				else
+				{
+					loadedMethods.add(treeItem.getName());
+				}
+				StringBuilder name = getParametersString(treeItem);
+
+				JSTreeListItem<?> ev = new JSTreeListItem<>().setText(name);
+				ev.getOptions()
+				  .setIcon("fal fa-baby-carriage");
+				propertyMethodsFolder.add(ev);
+			}
+
+			JSTreeListItem<?> treeFolderpublicStatic = new JSTreeListItem<>().setText("Public Static <small>(" + publicStaticMethods.size() + ")</small>");
 			treeFolderpublicStatic.getOptions()
 			                      .setIcon("fal fa-bolt")
 			                      .setOpened(true);
@@ -249,11 +268,9 @@ public class ObjectBrowser
 				  .setIcon("fal fa-atom-alt");
 				treeFolderpublicStatic.add(ev);
 			}
-			//	}
 
-			//	if (!privateFields.isEmpty())
-			//	{
-			JSTreeListItem<?> treeFolderPrivateMethods = new JSTreeListItem<>().setText("Fields");
+
+			JSTreeListItem<?> treeFolderPrivateMethods = new JSTreeListItem<>().setText("Fields <small>(" + privateFields.size() + ")</small>");
 			treeFolderPrivateMethods.getOptions()
 			                        .setIcon("fal fa-book-spells")
 			                        .setOpened(true);
@@ -266,10 +283,87 @@ public class ObjectBrowser
 				  .setIcon("fal fa-alicorn");
 				treeFolderPrivateMethods.add(ev);
 			}
-			//	}
+
+			LogFactory.getLog(getClass())
+			          .log(Level.WARNING, "Public Methods : ", publicMethods);
+			LogFactory.getLog(getClass())
+			          .log(Level.WARNING, "Property Methods : ", propertyMethods);
 
 			return rootItem;
 		}
+	}
+
+	private boolean isIgnored(MethodInfo info)
+	{
+		for (String ignoredMethod : ignoredMethods)
+		{
+			if (info.getName()
+			        .startsWith(ignoredMethod))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private boolean isProperty(MethodInfo info)
+	{
+		for (String propMethod : propertyMethods)
+		{
+			if (info.getName()
+			        .startsWith(propMethod))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private StringBuilder getParametersString(MethodInfo treeItem)
+	{
+		StringBuilder name = new StringBuilder(treeItem.getName());
+		name.append(HTML_TAB + "<small><i>(");
+		for (MethodParameterInfo param : treeItem.getParameterInfo())
+		{
+			try
+			{
+				String typeString = param.getTypeSignatureOrTypeDescriptor()
+				                         .toString()
+				                         .substring(param.getTypeSignatureOrTypeDescriptor()
+				                                         .toString()
+				                                         .lastIndexOf('.'));
+				if (typeString.startsWith("."))
+				{
+					typeString = typeString.substring(1);
+				}
+				name.append(typeString)
+				    .append(",");
+
+			}
+			catch (Exception e)
+			{
+				//No types
+			}
+		}
+		if (name.toString()
+		        .contains(",") && treeItem.getParameterInfo().length > 0)
+		{
+			name = name.deleteCharAt(name.length() - 1);
+		}
+		name.append(")");
+		try
+		{
+			name.append(" : " + treeItem.loadClassAndGetMethod()
+			                            .getReturnType()
+			                            .getCanonicalName()
+			                            .replace("com.jwebmp.", ""));
+		}
+		catch (Exception e)
+		{
+			//No method like this
+		}
+		name.append("</i></small>");
+		return name;
 	}
 
 	public ObjectBrowser(@NotNull Class objectClassName, String id)

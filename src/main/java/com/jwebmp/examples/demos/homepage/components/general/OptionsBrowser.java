@@ -6,7 +6,10 @@ import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
-import io.github.classgraph.*;
+import io.github.classgraph.ClassGraph;
+import io.github.classgraph.ClassInfo;
+import io.github.classgraph.FieldInfo;
+import io.github.classgraph.ScanResult;
 
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.Field;
@@ -25,8 +28,7 @@ public class OptionsBrowser
 	public OptionsBrowser(@NotNull JavaScriptPart<?> optionsObject)
 	{
 		this.optionsObject = optionsObject;
-		setID("optionsBrowser_" + optionsObject.getClass()
-		                                       .getSimpleName());
+		setID("optionsBrowser");
 		setTheme(new JSTreeDefaultDarkTheme());
 		if (!cachedDisplays.containsKey(optionsObject.getClass()
 		                                             .getCanonicalName()))
@@ -38,8 +40,7 @@ public class OptionsBrowser
 	public OptionsBrowser(@NotNull ComponentHierarchyBase optionsObject)
 	{
 		this.optionsObject = optionsObject;
-		setID("optionsBrowser_" + optionsObject.getClass()
-		                                       .getSimpleName());
+		setID("optionsBrowser");
 		setTheme(new JSTreeDefaultDarkTheme());
 		constructTree();
 	}
@@ -175,6 +176,7 @@ public class OptionsBrowser
 	}
 
 
+	@Override
 	public String toString(Integer tabCount)
 	{
 		if (this.optionsObject == null)

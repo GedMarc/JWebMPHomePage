@@ -3,7 +3,6 @@ package com.jwebmp.examples.demos.homepage.components;
 import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.DivSimple;
-import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
@@ -65,7 +64,7 @@ public class DemoScreen
 
 		if (!features.isEmpty())
 		{
-			rightSide.add( buildPrettyFromList(features));
+			rightSide.add(buildPrettyFromList(features));
 		}
 		if (!events.isEmpty())
 		{
@@ -145,8 +144,6 @@ public class DemoScreen
 	public DivSimple getOptionsDiv()
 	{
 		DivSimple d = new DivSimple();
-		d.add(new H3<>());
-		d.add(new DivSimple<>("This panel will display the options available with each component").setID("optionsPanel"));
 		return d;
 	}
 

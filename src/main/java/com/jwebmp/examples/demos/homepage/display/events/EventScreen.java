@@ -7,15 +7,9 @@ import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.base.html.SmallText;
 import com.jwebmp.core.events.activate.ActivateAdapter;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.DefaultTable;
-import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
-import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
-import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.display.PluginModulePart;
-import com.jwebmp.examples.demos.homepage.components.general.ObjectBrowser;
+import com.jwebmp.examples.demos.homepage.components.display.*;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
-import com.jwebmp.examples.demos.homepage.components.general.PackagesBrowser;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
@@ -104,31 +98,14 @@ public class EventScreen
 
 
 			Div pageContent = new Div();
-			Div pageContentRow = new BSRow();
 
 
 			pageContent.add(new H3<>("Below you can find all the events in the core of JWebMP."));
 
 			pageContent.add("Navigate through the objects in the packages below, to view the object to the right." +
 			                "<br/>This tree is using a JSTreeOnSelectEvent and rendering the ObjectBrowser for the id of the selected node.");
-			pageContent.add(pageContentRow);
 
-			Div left = new Div<>().addClass("col-12 col-md-6")
-			                      .addStyle("padding-left:0px;padding-right:0px;");
-			Div right = new Div<>().addClass("col-12 col-md-6")
-			                       .addStyle("padding-left:0px;padding-right:0px;");
-
-			PackagesBrowser packes = new PackagesBrowser("com.jwebmp.core.events");
-			DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(packes);
-			scroll.getOptions()
-			      .setHeight("500px");
-
-			left.add(packes);
-			right.add(new ObjectBrowser(ActivateAdapter.class, "pluginObjectBrowser").addStyle("height:100%"));
-
-			pageContentRow.add(left);
-			pageContentRow.add(right);
-
+			pageContent.add(new DefaultPackageAPI("com.jwebmp.core.events", ActivateAdapter.class, null));
 
 			Div dataContent = new Div();
 			dataContent.add(new H3<>("Moving Data between Client and Server"));

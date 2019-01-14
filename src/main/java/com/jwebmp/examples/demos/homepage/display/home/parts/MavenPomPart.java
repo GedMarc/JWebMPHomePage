@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.home.parts;
 
+import com.google.inject.Singleton;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.interfaces.GlobalFeatures;
 import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
@@ -15,54 +16,26 @@ import com.jwebmp.plugins.bootstrap4.options.BSMarginOptions;
 import static com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
+@Singleton
 public class MavenPomPart<J extends MavenPomPart<J>>
 		extends DisplayPart<J>
 {
 	public MavenPomPart()
 	{
 		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> jdk8QuickStart = new Div<>();
-		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> jdk10QuickStart = new Div<>();
-		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> jdk11QuickStart = new Div<>();
 		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> nightlyBuilds = new Div<>();
-		Div<IComponentHierarchyBase, ?, GlobalFeatures, GlobalEvents, ?> pageServicing = new Div<>();
 
 		addSourceToContainer(HomePage.class, "pomdependency.txt", XML, jdk8QuickStart);
-		//addSourceToContainer(HomePage.class, "pomdependency_10.txt", XML, jdk10QuickStart);
-		addSourceToContainer(HomePage.class, "pomdependency_11.txt", XML, jdk11QuickStart);
 		addSourceToContainer(HomePage.class, "pomrepository.txt", XML, nightlyBuilds);
-
-/*
-		jdk11QuickStart.add(
-				new Italic(
-						"Guice Injection requires a module exposure in JRE 11<br/>Add <strong>--add-opens java.base/java.lang=com.google.guice</strong><br/> to your execution paths"));
-*/
 
 		BSNavTabs tabs = new BSNavTabs<>();
 		tabs.getNavs()
 		    .addClass(Tabs_Bordered)
 		    .addClass(Nav_Justified);
 
-		BSTabContainer tab1 = tabs.addTab("JDK 8", jdk8QuickStart, true);
-
-/*
-		BSTabContainer tab2 = tabs.addTab("JDK 10",
-		                                  jdk10QuickStart, false);
-*/
-
-		BSTabContainer tab5 = tabs.addTab("JDK 11",
-		                                  jdk11QuickStart, false);
-
-/*
-		BSTabContainer tab4 = tabs.addTab("Structure",
-		                                  pageServicing, false);
-*/
-
+		BSTabContainer tab1 = tabs.addTab("Maven", jdk8QuickStart, true);
 		BSTabContainer tab3 = tabs.addTab("Nightly",
 		                                  nightlyBuilds, false);
-
-
-		//	pageServicing.add(new Paragraph<>("For JDK 10 specify your provides list"));
-		//	addSourceToContainer(HomePage.class, "requiresdepedency_10.txt", JS, pageServicing);
 
 		addCardBody().add(tabs);
 		BSCardFooter footer = addFooter();
@@ -72,7 +45,6 @@ public class MavenPomPart<J extends MavenPomPart<J>>
 		footer.add(new PrettyInverseButton<>("https://github.com/GedMarc/JWebMPHomePage").setTargetFrameName("_blank")
 		                                                                                 .addClass(BSMarginOptions.MarginLeft_1)
 		                                                                                 .setText("Download Site Source"));
-
 		addStyle("margin-bottom:1rem;");
 	}
 

@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage.components.display;
 import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.Div;
+import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.base.html.attributes.LinkAttributes;
 import com.jwebmp.core.htmlbuilder.css.colours.ColourNames;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
@@ -10,7 +11,7 @@ import com.jwebmp.plugins.bootstrap4.alerts.BSAlert;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.cards.parts.styles.BSCardButtonDarkOutline;
-import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
+import com.jwebmp.plugins.bootstrap4.options.BSDisplayOptions;
 import com.jwebmp.plugins.fontawesome5.FontAwesome;
 import com.jwebmp.plugins.fontawesome5.FontAwesomeList;
 import com.jwebmp.plugins.fontawesome5.IFontAwesomeIcon;
@@ -24,10 +25,15 @@ import com.jwebmp.plugins.jstree.options.JSTreeNodeOptions;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 import org.apache.commons.text.StringEscapeUtils;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBorderOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 
 public class DisplayPart<J extends DisplayPart<J>>
 		extends BSCard<J>
@@ -78,7 +84,7 @@ public class DisplayPart<J extends DisplayPart<J>>
 	public BSCardBody getDefaultBody()
 	{
 		BSCardBody<?> all = new BSCardBody<>();
-		all.addClass(BSContainerOptions.Row);
+		all.addClass(Row);
 		all.addClass(Bg_Dark);
 		all.addStyle("display:grid;overflow-y:auto;padding:0px;");
 		return all;
@@ -120,15 +126,26 @@ public class DisplayPart<J extends DisplayPart<J>>
 
 	protected ComponentHierarchyBase buildGoToSource(Class classToSendTo)
 	{
-		return buildGoToSource(classToSendTo, "View this pages source code");
+		return buildGoToSource("View this pages source code", classToSendTo);
 	}
 
-	protected ComponentHierarchyBase buildGoToSource(Class classToSendTo, String title)
+	protected ComponentHierarchyBase buildGoToSource(String title, Class... classToSendTo)
 	{
-		String addressToUse = classToSendTo.getCanonicalName()
-		                                   .replaceAll("\\.", "\\/")
-		                      + ".java";
+		List<ComponentHierarchyBase> allButtons = new ArrayList<>();
+		for (Class aClass : classToSendTo)
+		{
+			String addressToUse = aClass.getCanonicalName()
+			                            .replaceAll("\\.", "\\/")
+			                      + ".java";
+			BSCardButtonDarkOutline button = buildSourceButton(aClass, title, addressToUse);
+			allButtons.add(button);
+		}
+		return allButtons.get(0)
+		                 .addClass(BSDisplayOptions.Block);
+	}
 
+	private BSCardButtonDarkOutline buildSourceButton(Class classFor, String title, String addressToUse)
+	{
 		BSCardButtonDarkOutline<?> card = new BSCardButtonDarkOutline<>();
 		card.addStyle("background-color", "#3d4853")
 		    .addStyle("color", "#3bafda");
@@ -140,5 +157,33 @@ public class DisplayPart<J extends DisplayPart<J>>
 		card.addAttribute(LinkAttributes.Target.toString(), "_blank");
 
 		return card;
+	}
+
+	protected ComponentHierarchyBase buildGoToSource(Class clazz, Class... classToSendTo)
+	{
+		List<Class> clazzes = new ArrayList<>(Arrays.asList(classToSendTo));
+		clazzes.add(0, clazz);
+		List<ComponentHierarchyBase> allButtons = new ArrayList<>();
+		for (Class aClass : clazzes)
+		{
+			String addressToUse = aClass.getCanonicalName()
+			                            .replaceAll("\\.", "\\/")
+			                      + ".java";
+			BSCardButtonDarkOutline button = buildSourceButton(aClass, "View Source [" + aClass.getSimpleName() + "]", addressToUse);
+			allButtons.add(button);
+		}
+		DivSimple<?> row = new DivSimple<>().addClass(Row)
+		                                    .setID("buttonsRow")
+		                                    .addClass(BSDisplayOptions.Flex)
+		                                    .addClass("justify-content-around");
+		for (ComponentHierarchyBase allButton : allButtons)
+		{
+			allButton.addClass("flex-fill");
+			allButton.addStyle("height", "45px");
+			allButton.removeClass("d-block");
+			row.add(allButton);
+		}
+		return row;
+
 	}
 }

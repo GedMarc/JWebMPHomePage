@@ -18,34 +18,35 @@ import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+
+import static com.jwebmp.core.utilities.StaticStrings.*;
 
 public class PackagesBrowser
 		extends JSTree<PackagesBrowser>
+		implements Serializable
 {
-	private static final Map<String, List<ClassInfo>> cachedLists = new ConcurrentHashMap<>();
-	private static final Map<String, String> cachedDisplays = new ConcurrentHashMap<>();
-
+	private static final long serialVersionUID = 1L;
 	private final String packageName;
 
 	public PackagesBrowser(@NotNull String packageName)
 	{
-		this.packageName = packageName;
-		setID("pacakageBrowser_" + packageName.replace('.', '_'));
-		setTheme(new JSTreeDefaultDarkTheme());
-		if (!cachedDisplays.containsKey(packageName))
-		{
-			constructTree();
-		}
+		this(packageName, true);
+	}
 
+	public PackagesBrowser(@NotNull String packageName, boolean includeSubPackages)
+	{
+		this.packageName = packageName;
+		setID("pacakageBrowser");
+		setTheme(new JSTreeDefaultDarkTheme());
+		constructTree(includeSubPackages);
 		addEvent(new PackagesBrowserSwopObjectBrowserEvent(this));
 	}
 
-	private void constructTree()
+	private void constructTree(boolean includeSubPackages)
 	{
 		JSTreeListItem<?> rootItem = new JSTreeListItem<>("Package Explorer " + ":  <small><i>" + packageName + "</i></small>");
 		rootItem.getOptions()
@@ -68,11 +69,7 @@ public class PackagesBrowser
 
 		List<ClassInfo> allClasses = new ArrayList<>();
 		List<ClassInfo> foundClasses;
-		if (cachedLists.containsKey(packageName))
-		{
-			foundClasses = cachedLists.get(packageName);
-		}
-		else
+		if (includeSubPackages)
 		{
 			foundClasses = new ClassGraph().enableAllInfo()
 			                               //.enableExternalClasses()
@@ -84,10 +81,21 @@ public class PackagesBrowser
 			                               .scan(Runtime.getRuntime()
 			                                            .availableProcessors())
 			                               .getAllClasses();
-			cachedLists.put(packageName, foundClasses);
+		}
+		else
+		{
+			foundClasses = new ClassGraph().enableAllInfo()
+			                               //.enableExternalClasses()
+			                               .ignoreFieldVisibility()
+			                               .ignoreMethodVisibility()
+			                               .ignoreClassVisibility()
+			                               .ignoreParentClassLoaders()
+			                               .whitelistPackagesNonRecursive(packageName)
+			                               .scan(Runtime.getRuntime()
+			                                            .availableProcessors())
+			                               .getAllClasses();
 		}
 		allClasses.addAll(foundClasses);
-
 		for (ClassInfo clazz : allClasses)
 		{
 			if (Modifier.isPublic(clazz.getModifiers()))
@@ -135,7 +143,8 @@ public class PackagesBrowser
 			}
 		}
 
-		JSTreeListItem<?> treeFolder = new JSTreeListItem<>().setText("Page Configurators <small><i>SPI IPageConfigurator</i></small>");
+		JSTreeListItem<?> treeFolder = new JSTreeListItem<>().setText(
+				"Page Configurators <small><i>SPI IPageConfigurator</i></small>" + HTML_TAB + "<small>(" + pageConfigurators.size() + ")</small>");
 		treeFolder.getOptions()
 		          .setIcon("fal fa-hand-holding-magic");
 		rootItem.add(treeFolder);
@@ -146,7 +155,7 @@ public class PackagesBrowser
 			treeFolder.add(ev);
 		}
 
-		JSTreeListItem<?> treeFolder2 = new JSTreeListItem<>().setText("Events <small><i>extends Event</i></small>");
+		JSTreeListItem<?> treeFolder2 = new JSTreeListItem<>().setText("Events <small><i>extends Event</i></small>" + HTML_TAB + "<small>(" + events.size() + ")</small>");
 		treeFolder2.getOptions()
 		           .setIcon("fal fa-bolt");
 		rootItem.add(treeFolder2);
@@ -160,7 +169,7 @@ public class PackagesBrowser
 		}
 
 
-		JSTreeListItem<?> treeFolder3 = new JSTreeListItem<>().setText("Features <small><i>extends Feature</i></small>");
+		JSTreeListItem<?> treeFolder3 = new JSTreeListItem<>().setText("Features <small><i>extends Feature</i></small>" + HTML_TAB + "<small>(" + features.size() + ")</small>");
 		treeFolder3.getOptions()
 		           .setIcon("fal fa-book-spells");
 		rootItem.add(treeFolder3);
@@ -174,7 +183,8 @@ public class PackagesBrowser
 		}
 
 
-		JSTreeListItem<?> treeFolder4 = new JSTreeListItem<>().setText("Components <small><i>extends ComponentHierarchyBase</i></small>");
+		JSTreeListItem<?> treeFolder4 = new JSTreeListItem<>().setText(
+				"Components <small><i>extends ComponentHierarchyBase</i></small>" + HTML_TAB + "<small>(" + components.size() + ")</small>");
 		treeFolder4.getOptions()
 		           .setIcon("fal fa-magic");
 		rootItem.add(treeFolder4);
@@ -182,10 +192,12 @@ public class PackagesBrowser
 		for (ClassInfo treeItem : components)
 		{
 			JSTreeListItem<?> ev = new JSTreeListItem<>().setText(treeItem.getName());
+			ev.getOptions()
+			  .setIcon("fal fa-satellite-dish");
 			treeFolder4.add(ev);
 		}
 
-		JSTreeListItem<?> treeFolder5 = new JSTreeListItem<>().setText("Themes <small><i>extends Theme</i></small>");
+		JSTreeListItem<?> treeFolder5 = new JSTreeListItem<>().setText("Themes <small><i>extends Theme</i></small>" + HTML_TAB + "<small>(" + themes.size() + ")</small>");
 		treeFolder5.getOptions()
 		           .setIcon("fal fa-palette");
 		rootItem.add(treeFolder5);
@@ -196,7 +208,8 @@ public class PackagesBrowser
 			treeFolder5.add(ev);
 		}
 
-		JSTreeListItem<?> treeFolder6 = new JSTreeListItem<>().setText("Angular Directives <small><i>SPI IAngularDirective</i></small>");
+		JSTreeListItem<?> treeFolder6 = new JSTreeListItem<>().setText(
+				"Angular Directives <small><i>SPI IAngularDirective</i></small>" + HTML_TAB + "<small>(" + directives.size() + ")</small>");
 		treeFolder6.getOptions()
 		           .setIcon("fal fa-puzzle-piece");
 		rootItem.add(treeFolder6);
@@ -209,7 +222,8 @@ public class PackagesBrowser
 			treeFolder6.add(ev);
 		}
 
-		JSTreeListItem<?> treeFolder7 = new JSTreeListItem<>().setText("Angular Modules <small><i>SPI IAngularModule</i></small>");
+		JSTreeListItem<?> treeFolder7 = new JSTreeListItem<>().setText(
+				"Angular Modules <small><i>SPI IAngularModule</i></small>" + HTML_TAB + "<small>(" + modules.size() + ")</small>");
 		treeFolder7.getOptions()
 		           .setIcon("fal fa-plane-departure");
 		rootItem.add(treeFolder7);
@@ -222,7 +236,8 @@ public class PackagesBrowser
 			treeFolder7.add(ev);
 		}
 
-		JSTreeListItem<?> treeFolder8 = new JSTreeListItem<>().setText("Angular Controllers <small><i>SPI IAngularController</i></small>");
+		JSTreeListItem<?> treeFolder8 = new JSTreeListItem<>().setText(
+				"Angular Controllers <small><i>SPI IAngularController</i></small>" + HTML_TAB + "<small>(" + controllers.size() + ")</small>");
 		treeFolder8.getOptions()
 		           .setIcon("fal fa-chair-office");
 		rootItem.add(treeFolder8);
@@ -235,7 +250,8 @@ public class PackagesBrowser
 			treeFolder8.add(ev);
 		}
 
-		JSTreeListItem<?> treeFolder9 = new JSTreeListItem<>().setText("Angular Factories <small><i>SPI IAngularFactory</i></small>");
+		JSTreeListItem<?> treeFolder9 = new JSTreeListItem<>().setText(
+				"Angular Factories <small><i>SPI IAngularFactory</i></small>" + HTML_TAB + "<small>(" + factories.size() + ")</small>");
 		treeFolder9.getOptions()
 		           .setIcon("fal fa-industry-alt");
 		rootItem.add(treeFolder9);
@@ -248,7 +264,8 @@ public class PackagesBrowser
 			treeFolder9.add(ev);
 		}
 
-		JSTreeListItem<?> treeFolder10 = new JSTreeListItem<>().setText("Angular Configurations <small><i>SPI IAngularConfiguration</i></small>");
+		JSTreeListItem<?> treeFolder10 = new JSTreeListItem<>().setText(
+				"Angular Configurations <small><i>SPI IAngularConfiguration</i></small>" + HTML_TAB + "<small>(" + configurations.size() + ")</small>");
 		treeFolder10.getOptions()
 		            .setIcon("fal fa-badge-check");
 		rootItem.add(treeFolder10);
@@ -262,25 +279,6 @@ public class PackagesBrowser
 			ev.addEvent(new SwopObjectBrowserEvent(ev).setID(treeItem.loadClass()
 			                                                         .getCanonicalName()
 			                                                         .replace('.', '_')));
-		}
-	}
-
-
-	@Override
-	public String toString(Integer tabCount)
-	{
-		if (packageName == null)
-		{
-			return super.toString();
-		}
-		if (cachedDisplays.containsKey(packageName))
-		{
-			return cachedDisplays.get(packageName);
-		}
-		else
-		{
-			cachedDisplays.put(packageName, super.toString(0));
-			return cachedDisplays.get(packageName);
 		}
 	}
 }

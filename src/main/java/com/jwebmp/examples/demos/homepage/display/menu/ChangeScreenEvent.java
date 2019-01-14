@@ -76,7 +76,8 @@ public class ChangeScreenEvent
 			}
 			catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e)
 			{
-				e.printStackTrace();
+				LogFactory.getLog(getClass())
+				          .log(Level.SEVERE, "Unable to get screen", e);
 			}
 			response.addComponent(screenCreated);
 			response.getFeatures()
@@ -92,7 +93,8 @@ public class ChangeScreenEvent
 		}
 		catch (IllegalArgumentException iae)
 		{
-			LogFactory.getLog("ChangeScreenEvent").log(Level.SEVERE, "Unable to load component", isJavascriptRenderedElsewhere());
+			LogFactory.getLog("ChangeScreenEvent")
+			          .log(Level.SEVERE, "Unable to load component", isJavascriptRenderedElsewhere());
 			String id = getID();
 			id = id.replace(CHAR_UNDERSCORE, CHAR_DOT);
 			try

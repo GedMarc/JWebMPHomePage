@@ -4,7 +4,6 @@ import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.display.home.parts.*;
 import com.jwebmp.examples.demos.homepage.display.login.LoginPart;
-import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.BSCard;
@@ -20,6 +19,7 @@ import com.jwebmp.plugins.skycons.SkyIcon;
 import com.jwebmp.plugins.skycons.Skycon;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
+import static com.jwebmp.guicedinjection.GuiceContext.*;
 
 public class HomePage
 		extends DisplayScreen
@@ -120,7 +120,7 @@ public class HomePage
 				"<br/><a target=\"_blank\" href=\"https://github.com/google/guice/wiki/SpringComparison\">Why Guice - Spring vs Guice</a>"
 		                      ));
 
-		left.add(GuiceContext.get(GalleryPart.class));
+		left.add(get(GalleryPart.class));
 /*
 		right.add(addWhiteAlert("<strong>Testable End-To-End. No more struggling with getting test cases up and running!</strong>" +
 		                        "<br/><a target=\"_blank\" href=\"https://jwebmp.com/sonar/\">View SonarQube for Quality Control and Test Case Output</a>"));
@@ -128,7 +128,8 @@ public class HomePage
 
 		right.add(addBlueAlert("Version 0.62.0.1 RC2 - 2018/11/18"));
 
-		right.add(new MavenPomPart());
+		right.add(get(MavenPomPart.class));
+
 		right.add(buildSnap4());
 
 		right.add(addWhiteAlert(

@@ -265,9 +265,6 @@ public class AboutJWebMPScreen
 		compatibilityTable.addRow("JBoss/WildFly/EAP ",
 		                          "Web Fragments",
 		                          "Including the library is enough to run JWebMP");
-		compatibilityTable.addRow("JBoss/WildFly/EAP ",
-		                          "Web Fragments",
-		                          "Including the library is enough to run JWebMP");
 		compatibilityTable.addRow("Tomcat",
 		                          "Web Fragments",
 		                          "Including the library is enough to run JWebMP");
@@ -341,27 +338,5 @@ public class AboutJWebMPScreen
 		crumbs.addBreadCrumb(new BSBreadCrumbItem<>().setActive(false)
 		                                             .setText("About JWebMP"));
 		return crumbs;
-	}
-
-	private Div buildInjectionsPanel()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add("Using Google's Guice Injection Framework, paired with Guice Context Handler, and you get a complete JDK 10 Injection set as well as Built-In Multi-ClassPath Injection Configuration." +
-		        "Custom Path Object Scanning from ClassGraph, RegEx Servlet Bindings, Complete Programmatic AOP, and go for a completely modular entirely optional near-full range of EE Capabilities with MQ, JTA, and much much more." +
-		        "Everything is at your fingertips.");
-		div.add("This library is also completely non-invasive. Easily pull beans directly from the initial context in your enterprise environment, with no interference on existing Servlets including JSP.");
-		return card;
-	}
-
-	private Div buildCompletelyCustomizablePanel()
-	{
-		DisplayCard card = new DisplayCard();
-		Div div = card.addCardBody();
-		div.add("Everything can be optimized, <strong><u><i>EASILY</i></u></strong>, from specific tags being displayed for certain browsers and/or device combinations, to how the system boots and operates. Even your persistence units can now be configured programmatically with complete support for JTA.");
-		div.add("Optimize your startup, Build up your modules, and jump straight into JPMS with the the Service Loader mechanisms.");
-		div.add("This allows complete integration into any system including Enterprise Edition 7 and up (Tomcat, Glassfish, Payara, Wildfly, EAP etc) but also Embedded Containers such as Undertow. ");
-		div.add("");
-		return card;
 	}
 }

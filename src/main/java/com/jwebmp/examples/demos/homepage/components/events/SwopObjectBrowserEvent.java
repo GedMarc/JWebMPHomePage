@@ -32,7 +32,7 @@ public class SwopObjectBrowserEvent
 		{
 			Class<? extends JavaScriptPart> clazz = (Class<? extends JavaScriptPart>) Class.forName(screen);
 			OptionsBrowser ob = new OptionsBrowser(GuiceContext.get(clazz));
-			ob.setID("pluginObjectBrowser");
+			ob.setID("optionsBrowser");
 			response.addComponent(ob);
 		}
 		catch (ClassNotFoundException e)
