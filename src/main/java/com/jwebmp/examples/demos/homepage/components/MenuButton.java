@@ -9,7 +9,7 @@ import com.google.inject.Singleton;
 import com.jwebmp.core.base.html.Span;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 07 Aug 2017
  */
 @Singleton

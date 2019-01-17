@@ -4,7 +4,8 @@ import com.google.inject.servlet.SessionScoped;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import com.jwebmp.examples.demos.homepage.entities.Visitors;
+
+import java.util.UUID;
 
 @SessionScoped
 public class SessionProperties
@@ -14,7 +15,7 @@ public class SessionProperties
 	/**
 	 * The logged in visitor
 	 */
-	private Visitors visitor;
+	private UUID visitor;
 	/**
 	 * If the user is logged in
 	 */
@@ -33,12 +34,12 @@ public class SessionProperties
 		return workspace;
 	}
 
-	public Visitors getVisitor()
+	public UUID getVisitor()
 	{
 		return visitor;
 	}
 
-	public void setVisitor(Visitors visitor)
+	public void setVisitor(UUID visitor)
 	{
 		this.visitor = visitor;
 	}

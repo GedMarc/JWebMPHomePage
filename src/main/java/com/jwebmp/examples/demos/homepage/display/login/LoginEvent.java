@@ -6,12 +6,12 @@ import com.jwebmp.core.exceptions.MissingComponentException;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.AlertMessage;
 import com.jwebmp.examples.demos.homepage.components.events.DefaultClick;
+import com.jwebmp.examples.demos.homepage.db.dao.VisitorsService;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
-import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions;
 
@@ -19,6 +19,8 @@ import java.util.Optional;
 import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static com.jwebmp.guicedinjection.GuiceContext.*;
 
 public class LoginEvent
 		extends DefaultClick
@@ -58,7 +60,7 @@ public class LoginEvent
 					throw new UnsupportedOperationException("Looks like you're still waiting for a confirmation email.<br/>Please check your Spam or Junk folder");
 				}
 
-				SessionProperties properties = GuiceContext.getInstance(SessionProperties.class);
+				SessionProperties properties = get(SessionProperties.class);
 				properties.setSubscriber(sub.get());
 				properties.setLoggedIn(true);
 
@@ -70,10 +72,11 @@ public class LoginEvent
 				          .getEntityManager()
 				          .flush();
 
-				Visitors v = properties.getVisitor();
+				Visitors v = get(VisitorsService.class).findByUUID(properties.getVisitor())
+				                                       .get();
 
 				//Do all the DB funky stuff in the backend
-				LoginAsync la = new LoginAsync(newSubs, GuiceContext.getInstance(SessionProperties.class), sub.get(), v);
+				LoginAsync la = new LoginAsync(newSubs, get(SessionProperties.class), sub.get(), v);
 				Executors.defaultThreadFactory()
 				         .newThread(la)
 				         .start();
@@ -83,9 +86,9 @@ public class LoginEvent
 				                                               .setResponseType(AjaxResponseType.Success)
 				                                               .setReactionType(ReactionType.DialogDisplay));
 
-				response.addComponent(GuiceContext.getInstance(HomePage.class));
-				response.addComponent(GuiceContext.getInstance(TopBar.class));
-				response.addComponent(GuiceContext.getInstance(West.class));
+				response.addComponent(get(HomePage.class));
+				response.addComponent(get(TopBar.class));
+				response.addComponent(get(West.class));
 			}
 		}
 		catch (UnsupportedOperationException e)

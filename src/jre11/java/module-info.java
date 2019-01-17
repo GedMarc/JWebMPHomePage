@@ -80,6 +80,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires static cglib;
 	requires com.jwebmp.core.angularjs;
 	requires java.persistence;
+	requires com.google.guice.extensions.servlet;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;

@@ -11,7 +11,7 @@ import com.jwebmp.examples.demos.homepage.display.home.events.GoHomeEvent;
 import com.jwebmp.plugins.bootstrap4.navbar.parts.BSNavBarBrandImage;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 07 Aug 2017
  */
 @Singleton

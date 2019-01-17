@@ -23,7 +23,7 @@ import com.jwebmp.plugins.moment.Moment;
 import java.util.Date;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 30 Jul 2017
  */
 public class TopBar

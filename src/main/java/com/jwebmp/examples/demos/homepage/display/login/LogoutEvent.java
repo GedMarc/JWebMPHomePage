@@ -4,6 +4,7 @@ import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.*;
 import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
+import com.jwebmp.examples.demos.homepage.db.dao.VisitorsService;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
@@ -32,7 +33,9 @@ public class LogoutEvent
 	{
 		SessionProperties sp = GuiceContext.getInstance(SessionProperties.class);
 
-		LogoutAsync la = new LogoutAsync(sp.getSubscriber(), sp, sp.getVisitor());
+		LogoutAsync la = new LogoutAsync(sp.getSubscriber(), sp, GuiceContext.get(VisitorsService.class)
+		                                                                     .findByUUID(sp.getVisitor())
+		                                                                     .get());
 		Executors.defaultThreadFactory()
 		         .newThread(la)
 		         .start();

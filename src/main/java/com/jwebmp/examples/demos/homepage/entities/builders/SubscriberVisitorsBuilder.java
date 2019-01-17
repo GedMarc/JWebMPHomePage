@@ -10,24 +10,22 @@ import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.guicedinjection.GuiceContext;
 
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.Predicate;
+
+import static com.jwebmp.entityassist.enumerations.Operand.*;
 
 public class SubscriberVisitorsBuilder
 		extends QueryBuilderCore<SubscriberVisitorsBuilder, SubscriberVisitors, Long>
 {
 	public SubscriberVisitorsBuilder findBySubscriberAndVisitorID(Subscribers subscriber, Visitors visitor)
 	{
-		Predicate equalsPredicate = getCriteriaBuilder().equal(getRoot().get(SubscriberVisitors_.subscriberID), subscriber);
-		getFilters().add(equalsPredicate);
-		Predicate visitorEquals = getCriteriaBuilder().equal(getRoot().get(SubscriberVisitors_.visitorID), visitor);
-		getFilters().add(visitorEquals);
+		where(SubscriberVisitors_.subscriberID, Equals, subscriber);
+		findByVisitorID(visitor);
 		return this;
 	}
 
 	public SubscriberVisitorsBuilder findByVisitorID(Visitors visitor)
 	{
-		Predicate visitorEquals = getCriteriaBuilder().equal(getRoot().get(SubscriberVisitors_.visitorID), visitor);
-		getFilters().add(visitorEquals);
+		where(SubscriberVisitors_.visitorID, Equals, visitor);
 		return this;
 	}
 

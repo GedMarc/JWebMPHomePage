@@ -30,7 +30,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 30 Jul 2017
  */
 @Entity(name = "Subscribers")
@@ -159,7 +159,8 @@ public class Subscribers
 			GuiceContext.getInstance(SessionProperties.class)
 			            .setSubscriber(s);
 			GuiceContext.getInstance(SessionProperties.class)
-			            .setVisitor(s.getVisitorID());
+			            .setVisitor(UUID.fromString(s.getVisitorID()
+			                                         .getLocalStorageKey()));
 			return subs;
 		}
 		else

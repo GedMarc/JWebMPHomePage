@@ -14,7 +14,7 @@ import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens.*;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 31 Jul 2017
  */
 public class West

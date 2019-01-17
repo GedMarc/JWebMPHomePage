@@ -25,19 +25,13 @@
             <artifactId>asm</artifactId>
             <version>7.0</version>
         </dependency>
+
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>3.2.9</version>
             <scope>compile</scope>
         </dependency>
-
-        <!--     <dependency>
-                 <groupId>net.bytebuddy</groupId>
-                 <artifactId>byte-buddy</artifactId>
-                 <type>jar</type>
-             </dependency>-->
-
 
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -64,13 +58,6 @@
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.microsoft.sqlserver</groupId>
-            <artifactId>mssql-jdbc</artifactId>
-            <version>7.0.0.jre10</version>
-            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -338,6 +325,35 @@
         </dependency>
 
 
+        <!-- Standalone Jar Declerations, can put these under a build profile for an executable jar
+        Literally just to build a proper manifest.mf file with all the libs
+        -->
+        <dependency>
+            <groupId>com.jwebmp.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.jwebmp.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.jwebmp.inject.extensions</groupId>
+            <artifactId>guice-servlet</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.jwebmp.inject.extensions</groupId>
+            <artifactId>guice-persist</artifactId>
+            <version>${project.version}</version>
+            <type>jar</type>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -349,23 +365,27 @@
                     <goal>jar</goal>
                 </goals>
                 <configuration>
-                    <finalName>ServiceCreate</finalName>
+                    <finalName>JWebMPHomePage</finalName>
                     <archive>
                         <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                             <addClasspath>true</addClasspath>
                             <mainClass>com.jwebmp.examples.demos.homepage.HomePageStartup</mainClass>
                             <classpathPrefix>libs/</classpathPrefix>
                         </manifest>
                     </archive>
+                    <forceCreation>true</forceCreation>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
                         <id>copy-dependencies</id>
-                        <phase>package</phase>
+                        <phase>install</phase>
                         <goals>
                             <goal>copy-dependencies</goal>
                         </goals>
@@ -373,7 +393,8 @@
                             <outputDirectory>
                                 ${project.build.directory}/libs
                             </outputDirectory>
-                            <includeScope>compile</includeScope>
+                            <includeScope>runtime</includeScope>
+                            <useBaseVersion>true</useBaseVersion>
                         </configuration>
                     </execution>
                 </executions>
@@ -422,4 +443,30 @@
 
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>jdk11</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.microsoft.sqlserver</groupId>
+                    <artifactId>mssql-jdbc</artifactId>
+                    <version>7.0.0.jre10</version>
+                    <type>jar</type>
+                </dependency>
+
+            </dependencies>
+        </profile>
+        <profile>
+            <id>jdk8</id>
+            <dependencies>
+                <dependency>
+                    <groupId>com.microsoft.sqlserver</groupId>
+                    <artifactId>mssql-jdbc</artifactId>
+                    <version>7.0.0.jre8</version>
+                    <type>jar</type>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>

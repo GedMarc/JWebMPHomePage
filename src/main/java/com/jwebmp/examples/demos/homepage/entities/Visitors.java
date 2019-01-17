@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.jwebmp.examples.demos.homepage.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,7 +13,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 30 Jul 2017
  */
 @Entity(name = "Visitors")
@@ -28,8 +23,6 @@ public class Visitors
 		extends CoreEntity<Visitors, VisitorsBuilder, Long>
 
 {
-
-
 	@Id
 	@Column(name = "VisitorID",
 			columnDefinition = "bigint")

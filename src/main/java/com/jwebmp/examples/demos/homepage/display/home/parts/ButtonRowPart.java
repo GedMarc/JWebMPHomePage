@@ -5,17 +5,18 @@ import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.Span;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCircleChart;
+import com.jwebmp.examples.demos.homepage.db.dao.VisitsService;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import com.jwebmp.examples.demos.homepage.entities.Visits;
-import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.guicedservlets.GuicedServletKeys;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.websockets.JWebMPSocket;
 
 import javax.servlet.http.HttpSession;
+
+import static com.jwebmp.guicedinjection.GuiceContext.*;
 
 public class ButtonRowPart<J extends ButtonRowPart<J>>
 		extends BSRow<J>
@@ -51,9 +52,8 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		Div chart = new MintonCircleChart("35%", "100", "#5fbeaa", "#505A66");
 		widget.add(chart);
 
-		Long siteCount = new Visits().builder()
-		                             .inActiveRange()
-		                             .getCount();
+		Long siteCount = get(VisitsService.class)
+				                 .countVisits();
 
 		widget.add(new H3<>(Long.toString(siteCount)).addClass("text-success counter m-t-10"));
 
@@ -114,7 +114,7 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 		widget4.addClass("widget-simple-chart text-right card-box");
 
 		int count = 0;
-		HttpSession session = GuiceContext.get(GuicedServletKeys.getHttpSessionKey());
+		HttpSession session = get(GuicedServletKeys.getHttpSessionKey());
 		if (!JWebMPSocket.getWebSocketSessionBindings()
 		                 .containsValue(session.getId()))
 		{

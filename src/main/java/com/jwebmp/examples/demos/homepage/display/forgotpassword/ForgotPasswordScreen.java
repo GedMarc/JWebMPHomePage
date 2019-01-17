@@ -9,13 +9,12 @@ import com.jwebmp.core.base.html.HorizontalRule;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.db.HomePageDB;
+import com.jwebmp.examples.demos.homepage.db.dao.VisitorsService;
 import com.jwebmp.examples.demos.homepage.display.OuterLayout;
 import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.guicedpersistence.db.annotations.Transactional;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButton;
@@ -33,8 +32,10 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+import static com.jwebmp.guicedinjection.GuiceContext.*;
+
 public class ForgotPasswordScreen
-		extends DisplayScreen
+		extends DisplayScreen<ForgotPasswordScreen>
 {
 	//Another way of getting a hold of the method parameters
 	@Inject
@@ -100,7 +101,6 @@ public class ForgotPasswordScreen
 		}
 	}
 
-	@Transactional(entityManagerAnnotation = HomePageDB.class)
 	public void confirmUser(String confirmKey)
 	{
 		Optional<Subscribers> subs = new Subscribers().builder()
@@ -130,7 +130,8 @@ public class ForgotPasswordScreen
 				properties.setSubscriber(s);
 				properties.setLoggedIn(true);
 
-				Visitors v = properties.getVisitor();
+				Visitors v = get(VisitorsService.class).findByUUID(properties.getVisitor())
+				                                       .get();
 				if (!new SubscriberVisitors().builder()
 				                             .findBySubscriberAndVisitorID(s, v)
 				                             .getAll()
@@ -140,12 +141,10 @@ public class ForgotPasswordScreen
 				}
 
 				BSForm<?> form = new BSForm<>();
-
 				form.createPasswordInput("subscriber.password", "New Password", true)
 				    .prepend(FontAwesome.icon(FontAwesomeIcons.key));
 				form.createPasswordInput("subscriber.confirmPassword", "Confirm Password", true)
 				    .prepend(FontAwesome.icon(FontAwesomeIcons.key));
-
 				BSButton submit = form.createSubmitButton(BSButtonOptions.Btn_Outline_Primary, BSButtonSizeOptions.Btn_Lg)
 				                      .addClass("mt-2");
 				submit.setText("Reset Password");

@@ -22,7 +22,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 30 Jul 2017
  */
 public class DisplayBody

@@ -10,6 +10,7 @@ import com.jwebmp.core.base.html.HorizontalRule;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.db.dao.VisitorsService;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
@@ -25,6 +26,8 @@ import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+
+import static com.jwebmp.guicedinjection.GuiceContext.*;
 
 public class ConfirmEmailAddressScreen
 		extends DisplayScreen
@@ -127,7 +130,8 @@ public class ConfirmEmailAddressScreen
 				properties.setSubscriber(s);
 				properties.setLoggedIn(true);
 
-				Visitors v = properties.getVisitor();
+				Visitors v = get(VisitorsService.class).findByUUID(properties.getVisitor())
+				                                       .get();
 				if (!new SubscriberVisitors().builder()
 				                             .findBySubscriberAndVisitorID(s, v)
 				                             .getAll()

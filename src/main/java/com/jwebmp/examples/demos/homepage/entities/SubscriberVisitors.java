@@ -12,7 +12,7 @@ import com.jwebmp.examples.demos.homepage.entities.builders.SubscriberVisitorsBu
 import javax.persistence.*;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 30 Jul 2017
  */
 @Entity(name = "SubscriberVisitors")

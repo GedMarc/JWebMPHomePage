@@ -8,15 +8,15 @@ import com.jwebmp.examples.demos.homepage.entities.Visitors_;
 import com.jwebmp.guicedinjection.GuiceContext;
 
 import javax.persistence.EntityManager;
-import javax.persistence.criteria.Predicate;
+
+import static com.jwebmp.entityassist.enumerations.Operand.*;
 
 public class VisitorsBuilder
 		extends QueryBuilderCore<VisitorsBuilder, Visitors, Long>
 {
 	public VisitorsBuilder findByGuid(String guid)
 	{
-		Predicate equalsPredicate = getCriteriaBuilder().equal(getRoot().get(Visitors_.localStorageKey), guid);
-		getFilters().add(equalsPredicate);
+		where(Visitors_.localStorageKey, Equals, guid);
 		return this;
 	}
 

@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.google.common.hash.Hashing;
 import com.jwebmp.core.Feature;
 import com.jwebmp.core.Page;
@@ -15,6 +14,7 @@ import com.jwebmp.core.utilities.regex.RegularExpressionsDTO;
 import com.jwebmp.entityassist.enumerations.ActiveFlag;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.db.dao.VisitorsService;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
@@ -37,7 +37,7 @@ import java.util.logging.Logger;
 import static com.jwebmp.guicedinjection.GuiceContext.*;
 
 /**
- * @author Marc Magon
+ * @author GedMarc
  * @since 30 Jul 2017
  */
 @SuppressWarnings("unused")
@@ -46,7 +46,6 @@ public class DisplayPage
 {
 
 	private static final Logger log = LogFactory.getLog(DisplayPage.class.getName());
-
 
 	/*
 	 * Constructs a new Home Page
@@ -61,9 +60,15 @@ public class DisplayPage
 	public AjaxResponse onConnect(AjaxCall call, AjaxResponse response)
 	{
 		getLocalStorageKey();
-		updateVisitorInformation();
+		//updateVisitorInformation();
 		response.addDto("regex", new RegularExpressionsDTO().addDefaults()
-		                                                    .addPasswordRegex(6, false, true, true, false));
+		                                                    .addPasswordRegex(
+				                                                    6, //minLength
+				                                                    false, //Special Chars
+				                                                    true,  //Numbers
+				                                                    true, //Lowercase
+				                                                    false //Uppercase
+		                                                                     ));
 
 		response.addComponent(GuiceContext.getInstance(West.class));
 		response.addComponent(GuiceContext.getInstance(TopBar.class));
@@ -90,6 +95,7 @@ public class DisplayPage
 		{
 			deeplinkScreen(call);
 		}
+
 		return response;
 	}
 
@@ -122,7 +128,7 @@ public class DisplayPage
 		getHead().add(appleMeta3);
 
 		getPageFields().setApplicationNameMeta("JWebMP Application Core");
-		getPageFields().setAuthor("Marc Magon");
+		getPageFields().setAuthor("GedMarc");
 		getPageFields().setDescription("JWebMP Home and Demo Application!");
 		getPageFields().setFavIcon("logo.png");
 		getPageFields().setKeywords("Rapid Application Development,jwebswing,jwebmp, java,jweb, web,development,framework,ui,rad,urad,bootstrap,jqueryui,jquery,bootstrapdialog");
@@ -163,77 +169,6 @@ public class DisplayPage
 		            .setGuid(guid);
 	}
 
-	private void updateVisitorInformation()
-	{
-		try
-		{
-			Optional<Visitors> returningVisitor = new Visitors().builder()
-			                                                    .findByGuid(getInstance(SessionProperties.class).getGuid())
-			                                                    .get();
-			if (!returningVisitor.isPresent())
-			{
-				throw new NoConnectionInfoException("New visitor needed");
-			}
-			getInstance(SessionProperties.class).setVisitor(returningVisitor.get());
-
-			Optional<SubscriberVisitors> svs = new SubscriberVisitors().builder()
-			                                                           .findByVisitorID(returningVisitor.get())
-			                                                           .inVisibleRange()
-			                                                           .get();
-			if (svs.isPresent())
-			{
-				SubscriberVisitors sv = svs.get();
-
-				getInstance(SessionProperties.class).setSubscriber(sv.getSubscriberID());
-				if (sv.getSubscriberID()
-				      .isRememberMe() && sv.getSubscriberID()
-				                           .isLogInActive() && sv.getActiveFlag()
-				                                                 .ordinal() >= ActiveFlag.Archived.ordinal())
-				{
-					getInstance(SessionProperties.class).setLoggedIn(true);
-				}
-			}
-			Visits.create(returningVisitor.get(), this);
-			//getInstance(AjaxResponse.class).addComponent(new HomePage());
-		}
-		catch (NoConnectionInfoException nre)
-		{
-			Visitors newVisitor = GuiceContext.get(Visitors.class)
-			                                  .createNew(getInstance(SessionProperties.class).getGuid());
-			getInstance(SessionProperties.class).setVisitor(newVisitor);
-			try
-			{
-				Visits.create(newVisitor, this);
-			}
-			catch (JsonProcessingException e)
-			{
-				e.printStackTrace();
-			}
-			DisplayPage.log.info("Created a new visitor [" + newVisitor + "]");
-			//New user Text
-			AjaxResponse<?> response = getInstance(AjaxResponse.class);
-			ToastrFeature toastr = new ToastrFeature(ToastrType.Warning, "First Use",
-			                                         "We think this is the first time you've visited this site on this device and browser combination\n" +
-			                                         "\n" +
-			                                         "You should only see this message once for each browser.\n" +
-			                                         "This allows for life-time logins on any application.");
-			toastr.getOptions()
-			      .setProgressBar(true)
-			      .setEscapeHtml(true)
-			      .setCloseButton(true)
-			      .setShowDuration(50000)
-			      .setPreventDuplicates(true);
-			response.getFeatures()
-			        .add(toastr);
-		}
-		catch (JsonProcessingException e)
-		{
-			LogFactory.getLog("log")
-			          .log(Level.SEVERE, "Message", e);
-			e.printStackTrace();
-		}
-	}
-
 	/**
 	 * Reads the "p" query parameter for a class name to load
 	 *
@@ -272,6 +207,87 @@ public class DisplayPage
 					}
 				}
 			}
+		}
+	}
+
+	private void updateVisitorInformation()
+	{
+		SessionProperties sp = get(SessionProperties.class);
+		try
+		{
+			if (get(SessionProperties.class).getGuid() != null)
+			{
+				throw new NoConnectionInfoException("New something needed, going to say visitor.");
+			}
+			Optional<Visitors> returningVisitor = GuiceContext.get(VisitorsService.class)
+			                                                  .findByUUID(UUID.fromString(sp.getGuid()));
+			if (!returningVisitor.isPresent())
+			{
+				throw new NoConnectionInfoException("New visitor needed");
+			}
+			UUID uuid = UUID.fromString(returningVisitor.get()
+			                                            .getLocalStorageKey());
+			sp.setVisitor(uuid);
+
+			Optional<SubscriberVisitors> svs = new SubscriberVisitors().builder()
+			                                                           .findByVisitorID(returningVisitor.get())
+			                                                           .inVisibleRange()
+			                                                           .get();
+			if (svs.isPresent())
+			{
+				SubscriberVisitors sv = svs.get();
+				sp.setSubscriber(sv.getSubscriberID());
+				if (sv.getSubscriberID()
+				      .isRememberMe() && sv.getSubscriberID()
+				                           .isLogInActive() && sv.getActiveFlag()
+				                                                 .ordinal() >= ActiveFlag.Archived.ordinal())
+				{
+					sp.setLoggedIn(true);
+				}
+
+				ToastrFeature toastr = new ToastrFeature(ToastrType.Success, "Good to see you again,",
+				                                         "Thanks for coming back! We'll update these messages for you to alert you of things you missed.");
+				get(AjaxResponse.class).getFeatures()
+				                       .add(toastr);
+			}
+			Visits.create(returningVisitor.get(), this);
+			//getInstance(AjaxResponse.class).addComponent(new HomePage());
+		}
+		catch (NoConnectionInfoException nre)
+		{
+			Visitors newVisitor = GuiceContext.get(Visitors.class)
+			                                  .createNew(sp.getGuid());
+			sp.setVisitor(UUID.fromString(newVisitor.getLocalStorageKey()));
+			try
+			{
+				Visits.create(newVisitor, this);
+			}
+			catch (Exception e)
+			{
+				DisplayPage.log.log(Level.SEVERE, "Unable to create visit log", e);
+			}
+			DisplayPage.log.info("Created a new visitor [" + newVisitor + "]");
+			//New user Text
+			AjaxResponse<?> response = getInstance(AjaxResponse.class);
+			ToastrFeature toastr = new ToastrFeature(ToastrType.Warning, "First Use",
+			                                         "We think this is the first time you've visited this site on this device and browser combination\n" +
+			                                         "\n" +
+			                                         "You should only see this message once for each browser.\n" +
+			                                         "This allows for life-time logins on any application.");
+			toastr.getOptions()
+			      .setProgressBar(true)
+			      .setEscapeHtml(true)
+			      .setCloseButton(true)
+			      .setShowDuration(50000)
+			      .setPreventDuplicates(true);
+			response.getFeatures()
+			        .add(toastr);
+		}
+		catch (Exception e)
+		{
+			LogFactory.getLog("log")
+			          .log(Level.SEVERE, "Message", e);
+			e.printStackTrace();
 		}
 	}
 }
