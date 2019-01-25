@@ -1,7 +1,6 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
 import com.jwebmp.core.base.ComponentHierarchyBase;
-import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.jstree.JSTree;
@@ -15,7 +14,6 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.logging.Level;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
 
@@ -283,11 +281,6 @@ public class ObjectBrowser
 				  .setIcon("fal fa-alicorn");
 				treeFolderPrivateMethods.add(ev);
 			}
-
-			LogFactory.getLog(getClass())
-			          .log(Level.WARNING, "Public Methods : ", publicMethods);
-			LogFactory.getLog(getClass())
-			          .log(Level.WARNING, "Property Methods : ", propertyMethods);
 
 			return rootItem;
 		}

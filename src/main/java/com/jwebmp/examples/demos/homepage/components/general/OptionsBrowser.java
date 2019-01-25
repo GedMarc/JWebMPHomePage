@@ -37,6 +37,18 @@ public class OptionsBrowser
 		}
 	}
 
+	public OptionsBrowser(@NotNull JavaScriptPart<?> optionsObject, String id)
+	{
+		this.optionsObject = optionsObject;
+		setID(id);
+		setTheme(new JSTreeDefaultDarkTheme());
+		if (!cachedDisplays.containsKey(optionsObject.getClass()
+		                                             .getCanonicalName()))
+		{
+			constructTree();
+		}
+	}
+
 	public OptionsBrowser(@NotNull ComponentHierarchyBase optionsObject)
 	{
 		this.optionsObject = optionsObject;

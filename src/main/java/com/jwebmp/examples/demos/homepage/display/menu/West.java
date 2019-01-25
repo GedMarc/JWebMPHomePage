@@ -6,7 +6,6 @@ import com.jwebmp.core.base.html.interfaces.events.GlobalEvents;
 import com.jwebmp.core.base.interfaces.IComponentHierarchyBase;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
-import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.accordion.BSAccordion;
 import com.jwebmp.plugins.bootstrap4.collapse.BSCollapse;
 
@@ -34,7 +33,7 @@ public class West
 		setID("west");
 		addClass("left side-menu");
 
-		SlimScrollFeature scrollFeature = new DefaultSlimScrollFeature(this);
+		new DefaultSlimScrollFeature(this);
 
 		sidebarInner = new Div<>();
 		sidebarInner.addClass("sidebar-inner");
@@ -156,7 +155,7 @@ public class West
 		                          .setRenderTextBeforeChildren(false));
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", EventsScreen).setText(HTML_TAB + "Events"))
 		                          .setRenderTextBeforeChildren(false));
-		uiKit.add(new ListItem<>().add(buildListItem("#a2", EventsScreen).setText(HTML_TAB + "Forms"))
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", FormsScreen).setText(HTML_TAB + "Forms"))
 		                          .setRenderTextBeforeChildren(false));
 
 		ListItem dropDown1 = buildSubList("fal fa-abacus", "Basics", uiKit);
@@ -224,10 +223,6 @@ public class West
 		List uiKit = new List<>();
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", HtmlTagsDemoScreen).setText("HTML Tags")));
 		uiKit.add(new ListItem<>().add(buildListItem("#a3", BasicInputDemoScreen).setText("HTML Inputs")));
-		uiKit.add(new ListItem<>().add(buildListItem("#a4", BasicFormDemoScreen).setText("HTML Form Basics")));
-		uiKit.add(new ListItem<>().add(buildListItem("#a5", BasicBindingsDemoScreen).setText("Data Bindings")));
-		//uiKit.add(new ListItem<>().add(buildListItem("#a5").setText("Writing Components")));
-
 		ListItem dropDown1 = buildSubList("fal fa-plug", "Core", uiKit);
 		return dropDown1;
 	}

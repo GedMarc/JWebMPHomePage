@@ -126,6 +126,7 @@ public enum DisplayScreens
 	CachingEhCacheScreen(EhCacheDisplayScreen.class, "Hazelcast"),
 
 	EventsScreen(com.jwebmp.examples.demos.homepage.display.events.EventScreen.class, "Events"),
+	FormsScreen(com.jwebmp.examples.demos.homepage.display.forms.FormsScreen.class, "Forms"),
 
 	InjectionBasicsScreen(InjectionsBasicsScreen.class, "InjectionBasics"),
 	InjectionClassGraphScreen(InjectionsClassGraphScreen.class, "InjectionClassGraph"),

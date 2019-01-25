@@ -1,9 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.injection;
 
-import com.jwebmp.core.base.html.Div;
-import com.jwebmp.core.base.html.H3;
-import com.jwebmp.core.base.html.H4;
-import com.jwebmp.core.base.html.Image;
+import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.DefaultTable;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
@@ -47,7 +44,9 @@ public class InjectionsBasicsPart
 		Div d = new Div();
 		d.add(new H3("Injection <small>(with/out all the injection)</small>"));
 		d.add("<code>Guiced Injection</code> is an API that provides E.E. like capabilities directly to JPMS." +
-		      "<br/> This module assists and builds up a Guice Injector in Google's <code>guice</code> API using Service Providers");
+		      "<br/>This module assists and builds up a Guice Injector in Google's <code>guice</code> API using Service Providers" +
+		      "<br/>It's singular purpose is to order Startup, Loading, and Post Executions. Nothing else." +
+		      "<br/>ClassGraph will be splitting out into its own module in time.");
 
 		addSourceToContainer(InjectionsBasicsPart.class, "guice_context_example.txt", Java, d);
 
@@ -57,11 +56,17 @@ public class InjectionsBasicsPart
 		list.addItem("100% JPMS. Yes, you want to do this.", FontAwesome.icon(badge_check, Light));
 
 		d.add(list);
-		d.add("<br/>" + HTML_TAB + "All normal injecting is available through standard mechanisms.");
+		d.add("<br/>" + HTML_TAB + "All normal injecting is available through standard mechanisms." +
+		      "<br/>" + HTML_TAB + new Link<>("https://github.com/google/guice/wiki/Motivation", "_blank").setTiny(true)
+		                                                                                                  .setText("View Guice Wiki")
+		                                                                                                  .toString(true));
 
 		FontAwesomeList list2 = new FontAwesomeList();
 		list2.addItem(
-				"Field Injection - Not for JPMS. Illegal Access Reflection. Will still work JRE 8, and with some parameters JPMS, but you should have been moving away from this years ago already.",
+				"Field Injection - Not for JPMS. Illegal Access Reflection. " +
+				"<br/>" + HTML_TAB + "Will still work JRE 8, and with some parameters JPMS" +
+				"<br/>" + HTML_TAB + "But you should have been moving away from already"
+				,
 				FontAwesome.icon(exclamation_triangle, Light));
 		list2.addItem("Constructor Injection - Go for it, be a little weary. Constructor pollution happens quickly after around 6 months of dev",
 		              FontAwesome.icon(wind_warning, Light));

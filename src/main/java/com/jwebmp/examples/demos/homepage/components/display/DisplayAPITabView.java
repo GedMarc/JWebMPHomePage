@@ -5,6 +5,7 @@ import com.jwebmp.core.base.ComponentFeatureBase;
 import com.jwebmp.core.base.ComponentHTMLBase;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
+import com.jwebmp.core.services.IPageConfigurator;
 import com.jwebmp.core.utilities.EscapeChars;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.general.ObjectBrowser;
@@ -23,6 +24,7 @@ public class DisplayAPITabView
 {
 	private static final long serialVersionUID = 1L;
 	private static final OptionsBrowser defaultBrowser = new OptionsBrowser(new JavaScriptPart());
+
 	private final Class defaultObjectClass;
 
 	public DisplayAPITabView(Class defaultObjectClass)
@@ -64,7 +66,7 @@ public class DisplayAPITabView
 				htmlOutput.add("Events add attributes to html components, and the binder takes over from there.");
 				jsOutput.add("These are server side driven events. Features denote a client side only action.");
 			}
-			else
+			else if (ComponentFeatureBase.class.isAssignableFrom(defaultObjectClass))
 			{
 				ComponentFeatureBase comp = (ComponentFeatureBase) defaultObjectClass.getDeclaredConstructor()
 				                                                                     .newInstance();
@@ -106,6 +108,15 @@ public class DisplayAPITabView
 						                                                                              .toString())));
 					}
 				}
+			}
+			else if (IPageConfigurator.class.isAssignableFrom(defaultObjectClass))
+			{
+
+			}
+			else
+			{
+				LogFactory.getLog(getClass())
+				          .warning("Not catered for [" + defaultObjectClass + "]");
 			}
 		}
 		catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e)

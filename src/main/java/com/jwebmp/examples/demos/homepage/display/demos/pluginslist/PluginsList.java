@@ -5,6 +5,7 @@ import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.htmlbuilder.css.measurement.MeasurementCSSImpl;
 import com.jwebmp.core.htmlbuilder.css.measurement.MeasurementTypes;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
+import com.jwebmp.examples.demos.homepage.db.dao.PluginsService;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
@@ -16,10 +17,10 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.datatable.DataTable;
 import com.jwebmp.plugins.datatable.options.DataTablesDomOptions;
 
-import javax.cache.annotation.CacheResult;
 import java.util.List;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
+import static com.jwebmp.guicedinjection.GuiceContext.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.datatable.options.DataTablesDomOptions.*;
 
@@ -35,6 +36,8 @@ public class PluginsList
 		      "Internally Developed Modules" +
 		      HTML_TAB +
 		      "");
+
+
 	}
 
 	@Override
@@ -55,6 +58,8 @@ public class PluginsList
 		displayRow.add(col);
 
 		//	System.out.println(displayRow.toString());
+
+		container.add(buildGoToSource(PluginsList.class));
 
 		return container;
 	}
@@ -95,7 +100,6 @@ public class PluginsList
 		  .getFixedColumns()
 		  .setLeftColumns(3);
 
-
 		if (getPage().isMobileOrSmartTablet())
 		{
 			dt.getOptions()
@@ -126,7 +130,7 @@ public class PluginsList
 		  .getDom()
 		  .add(2, Buttons);
 
-		List<Plugins> pluginsList = getAllPlugins();
+		List<Plugins> pluginsList = get(PluginsService.class).getAllPlugins();
 		for (Plugins plugin : pluginsList)
 		{
 			dt.add(new TableRow<>().add(new TableCell<>().add(new Image<>(plugin.getPluginLogoUrl()).addStyle("max-width:45px;")))
@@ -139,13 +143,5 @@ public class PluginsList
 		}
 
 		return dt;
-	}
-
-	@CacheResult
-	public List<Plugins> getAllPlugins()
-	{
-		return new Plugins().builder()
-		                    .inActiveRange()
-		                    .getAll();
 	}
 }

@@ -5,22 +5,17 @@ import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
-import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
-import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
-import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
-import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 
 public class DemoScreen
 		extends DisplayScreen
@@ -50,7 +45,7 @@ public class DemoScreen
 	public BSContainer<?> getContentContainer()
 	{
 		BSContainer container = BSContainer.newInstance(BSContainerOptions.Container_Fluid);
-
+/*
 		BSRow row = new BSRow();
 		row.add(leftSide);
 		row.add(rightSide);
@@ -103,7 +98,7 @@ public class DemoScreen
 
 		drawingPane.add(newWorkDiv());
 
-		container.add(row);
+		container.add(row);*/
 		return container;
 	}
 
@@ -131,6 +126,11 @@ public class DemoScreen
 		return demoPage;
 	}
 
+	public void setDemoPage(DivSimple<?> demoPage)
+	{
+		this.demoPage = demoPage;
+	}
+
 	private DivSimple buildPrettyFromList(List<ComponentHierarchyBase> list)
 	{
 		DivSimple d = new DivSimple();
@@ -150,11 +150,6 @@ public class DemoScreen
 	public WorkDiv newWorkDiv()
 	{
 		return new WorkDiv();
-	}
-
-	public void setDemoPage(DivSimple<?> demoPage)
-	{
-		this.demoPage = demoPage;
 	}
 
 	public DivSimple<?> getDrawingPane()

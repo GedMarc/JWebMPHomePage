@@ -33,7 +33,9 @@ import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBorderOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
+import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
 public class DisplayPart<J extends DisplayPart<J>>
 		extends BSCard<J>
@@ -51,16 +53,6 @@ public class DisplayPart<J extends DisplayPart<J>>
 	{
 		list.addItem(text, new FontAwesome<>().setIcon(icon));
 		return list;
-	}
-
-	protected JQSourceCodePrettify addSourceToContainer(Class reference, String filename, SourceCodeLanguages language, Div container)
-	{
-		StringBuilder contents = FileTemplates.getFileTemplate(reference, reference.getName() + filename, filename);
-		JQSourceCodePrettify prettify = new JQSourceCodePrettify<>().addStyle("background:#333;")
-		                                                            .setSourceCodeLanguage(language)
-		                                                            .setText(StringEscapeUtils.escapeHtml4(contents.toString()));
-		container.add(prettify);
-		return prettify;
 	}
 
 	protected BSAlert addWhiteAlert(String text)
@@ -185,5 +177,24 @@ public class DisplayPart<J extends DisplayPart<J>>
 		}
 		return row;
 
+	}
+
+	public Div<?, ?, ?, ?, ?> getCodeBlockJava(Class reference, String fileName)
+	{
+		Div d = new Div<>().addClass(Col_12);
+		d.setID("JavaCodeBlock");
+		d.addClass("ng-non-bindable");
+		addSourceToContainer(reference, fileName, Java, d);
+		return d;
+	}
+
+	protected JQSourceCodePrettify addSourceToContainer(Class reference, String filename, SourceCodeLanguages language, Div container)
+	{
+		StringBuilder contents = FileTemplates.getFileTemplate(reference, reference.getName() + filename, filename);
+		JQSourceCodePrettify prettify = new JQSourceCodePrettify<>().addStyle("background:#333;")
+		                                                            .setSourceCodeLanguage(language)
+		                                                            .setText(StringEscapeUtils.escapeHtml4(contents.toString()));
+		container.add(prettify);
+		return prettify;
 	}
 }

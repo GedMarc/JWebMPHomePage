@@ -87,18 +87,14 @@ public class PersistenceBasicsScreen
 		          "<br/>At least one addon module is required.");
 
 		about.add("Guiced Persistence allows you to bind multiple persistence units into Guice Modules utilizing Annotations." +
-		          "<br/>It is a programmatic approach to database configuration and does not require any external files to setup.");
+		          "<br/>It is a programmatic approach to database configuration and does not require any external files to setup." +
+		          "<br/><i>Other than persistence.xml of course</i>");
 
 
 		DefaultTable table = new DefaultTable<>().addHeader("Add-on", "Description", "Artifact ID")
 		                                         .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-HibernatePropertiesReader\">" +
 		                                                 "Hibernate Properties Reader</a>"
 				                                         , "Configures the data source from hibernate properties", "guiced-persistence-hibernateproperties-reader")
-		                                         /*
-
-																					   .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-EclipseLinkProperties\">EclipseLink Properties Reader</a>",
-																							   "Configures the data source from eclipse link properties", "guiced-persistence-eclipselink-reader")
-												 */
 		                                         .addRow("<a target=\"_blank\" href=\"https://github.com/GedMarc/GuicedPersistence-SystemPropertiesReader\">" +
 		                                                 "System Properties Reader</a>",
 		                                                 "Overwrites the persistence properties with the given system environment value <code>${system.property}</code>",
@@ -151,13 +147,14 @@ public class PersistenceBasicsScreen
 		Div dbModule = new Div();
 
 		dbModule.add("Create your database module. This will directly link, and automatically bind everything you need. " +
-		             "<br/>By default the actual binding is a Private Module that is installed into the Abstract Module<br/>");
-		dbModule.add("<a target=\"_blank\" href=\"https://github.com/bitronix/btm/wiki/JDBC-pools-configuration\">JTA Connection Pool Properties</a>");
+		             "<br/>By default the actual binding is a Private Module that is installed into the desired Module, " +
+		             "<br/>using IGuiceModule or installing into your own<br/>");
+		dbModule.add(
+				"The ConnectionBaseInfo is a reflection of all properties listed on the <a target=\"_blank\" href=\"https://github.com/bitronix/btm/wiki/JDBC-pools-configuration\">JTA Connection Pool Properties</a> page");
 
 
 		addSourceToContainer(PersistenceBasicsScreen.class, "abstractmodule.txt", SourceCodeLanguages.Java, dbModule);
-
-
+		
 		return dbModule;
 	}
 

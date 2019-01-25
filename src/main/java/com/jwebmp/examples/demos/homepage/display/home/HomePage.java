@@ -115,7 +115,8 @@ public class HomePage
 
 		left.add(new LoginPart());
 		left.add(addWhiteAlert(
-				"<strong>&quot;Thankfully, Guice has no beans. NO BEANS! How many beans do we have to remember and disambiguate before it is too much? Javabeans, Enterprise Javabeans, Spring Beans, Coffee Beans, Mr. Bean, and I might still have missed a few others!&quot;</strong>" +
+				"<strong>I use Google Guice as the injection provider. Mainly for zero classpath scanning. But it is also still just that much better than everything else.</strong>" +
+				//"<strong>&quot;Thankfully, Guice has no beans. NO BEANS! How many beans do we have to remember and disambiguate before it is too much? Javabeans, Enterprise Javabeans, Spring Beans, Coffee Beans, Mr. Bean, and I might still have missed a few others!&quot;</strong>" +
 				"<br/><a target=\"_blank\" href=\"https://dzone.com/articles/an-opinionless-comparison-of-spring-and-guice\">DZone An Opinionless Comparison of Spring and Guice</a>" +
 				"<br/><a target=\"_blank\" href=\"https://github.com/google/guice/wiki/SpringComparison\">Why Guice - Spring vs Guice</a>"
 		                      ));

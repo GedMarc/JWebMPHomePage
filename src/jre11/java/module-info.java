@@ -81,6 +81,22 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.core.angularjs;
 	requires java.persistence;
 	requires com.google.guice.extensions.servlet;
+	requires com.jwebmp.plugins.angularanimate;
+	requires com.jwebmp.plugins.angularanimatedchange;
+	requires com.jwebmp.plugins.angularautoexpand;
+	requires com.jwebmp.plugins.angularautofocus;
+	requires com.jwebmp.plugins.angularionslider;
+	requires com.jwebmp.plugins.angularfileupload;
+	requires com.jwebmp.plugins.angularprogressbuttonstyles;
+	requires com.jwebmp.plugins.angularroute;
+	requires com.jwebmp.plugins.angularsanitize;
+	requires com.jwebmp.plugins.angularscrollposition;
+	requires com.jwebmp.plugins.angulartouch;
+	requires com.jwebmp.plugins.angulartrackwidth;
+	requires com.jwebmp.plugins.angularuibootstrap;
+	requires com.jwebmp.plugins.angularuiselect;
+	requires com.jwebmp.plugins.angularuisortable;
+	requires com.jwebmp.plugins.angularzoomanimation;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;

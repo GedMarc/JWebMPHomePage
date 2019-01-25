@@ -22,6 +22,7 @@ import javax.cache.annotation.CacheKey;
 import javax.cache.annotation.CacheResult;
 import javax.validation.constraints.NotNull;
 
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
@@ -86,8 +87,8 @@ public class EventScreen
 			                           "<br/>For WebSockets, Only the AjaxResponse needs to be used.");
 			whatAvailableContainer.add(rowContainer);
 
-			rowContainer.add(new OptionsBrowser(new AjaxCall<>()).addClass("col-md-6 col-12"));
-			rowContainer.add(new OptionsBrowser(new AjaxResponse<>()).addClass("col-md-6 col-12"));
+			rowContainer.add(new OptionsBrowser(new AjaxCall<>(), "ajaxCallBrowser").addClass(Col_Md_6, Col_12));
+			rowContainer.add(new OptionsBrowser(new AjaxResponse<>(), "ajaxResponseBrowser").addClass(Col_Md_6, Col_12));
 
 			whatAvailableContainer.add("<br/>Events themselves are components, and can be persisted in JSON format using the <code>toString()</code> method.<br/>" +
 			                           "A component can contain any number of events to be fired at any point.");
@@ -96,10 +97,7 @@ public class EventScreen
 					"The default events available are located in <code>com.jwebmp.core.events</code> and are generically typed to limit events to certain objects,<br/>" +
 					"Plugins may also specify their own events in the same manner");
 
-
 			Div pageContent = new Div();
-
-
 			pageContent.add(new H3<>("Below you can find all the events in the core of JWebMP."));
 
 			pageContent.add("Navigate through the objects in the packages below, to view the object to the right." +

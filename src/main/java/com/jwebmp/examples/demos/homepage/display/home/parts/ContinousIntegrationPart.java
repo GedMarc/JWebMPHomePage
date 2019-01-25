@@ -34,7 +34,7 @@ public class ContinousIntegrationPart
 		                                               .addClass(Align_Center), "https://github.com/GedMarc?tab=repositories"));
 
 		body.add(buildLink(new BSButtonLightOutline<>().setText(
-				FontAwesome.icon(FontAwesomeIcons.train, $2x)
+				FontAwesome.icon(FontAwesomeBrandIcons.jira, $2x)
 				           .toString(0) + "<br/>Jira")
 		                                               .addClass(MarginLeft_1)
 		                                               .addClass(MarginTop_1)

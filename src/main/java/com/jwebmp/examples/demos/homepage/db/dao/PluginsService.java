@@ -2,10 +2,12 @@ package com.jwebmp.examples.demos.homepage.db.dao;
 
 import com.google.inject.Singleton;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
+import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 
 import javax.cache.annotation.CacheKey;
 import javax.cache.annotation.CacheRemoveAll;
 import javax.cache.annotation.CacheResult;
+import java.util.List;
 
 @Singleton
 public class PluginsService
@@ -33,6 +35,14 @@ public class PluginsService
 		                    .get();
 	}
 
+	@CacheResult
+	public List<Plugins> getAllPlugins()
+	{
+		return new Plugins().builder()
+		                    .inActiveRange()
+		                    .orderBy(Plugins_.pluginName)
+		                    .getAll();
+	}
 
 	@SuppressWarnings("unused")
 	@CacheRemoveAll

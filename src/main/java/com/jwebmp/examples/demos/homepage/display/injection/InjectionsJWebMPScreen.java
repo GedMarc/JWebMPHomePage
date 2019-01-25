@@ -128,7 +128,8 @@ public class InjectionsJWebMPScreen
 
 		div.add("Event Intercepters are used for configuring event components with required values for the library." +
 		        "<br/>These exist to be able to switch between Angular JS and Vue with ease and no impact on current applications." +
-		        "<br/>The names are pretty self explanatory. All services implement <code>DefaultService</code> and are named and sortable.");
+		        "<br/>The names are pretty self explanatory. All services implement <code>DefaultService</code> and are named and sortable." +
+		        "<br/>You should nearly never have to use any of these");
 
 		DefaultSlimScroll scroll = new DefaultSlimScroll();
 		DefaultTable<?> table = new DefaultTable<>();
@@ -198,7 +199,8 @@ public class InjectionsJWebMPScreen
 	{
 		Div div = new Div();
 		div.add(new H3("Rendering Services"));
-		div.add("The following services allow custom management of the page rendering itself,");
+		div.add("The following services allow custom management of the page rendering itself," +
+		        "<br/>These can render anything in the header, and scripts body footer.");
 
 		DefaultTable<?> table = new DefaultTable<>();
 		table.addHeader("Service Loader", "Purpose ");

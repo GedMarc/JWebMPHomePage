@@ -2,6 +2,7 @@ package com.jwebmp.examples.demos.homepage.components.display;
 
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.DivSimple;
+import com.jwebmp.core.base.html.H5;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.WebComponentsService;
@@ -51,6 +52,10 @@ public class DefaultPackageAPI
 			right.add(buildArtifactInformation());
 			pluginDetails.add(left);
 			pluginDetails.add(right);
+
+			pluginDetails.add(new H5<>(GuiceContext.get(PluginsService.class)
+			                                       .getPlugin("JWebMP Core")
+			                                       .getPluginDescription()).addClass(Col_12));
 		}
 
 		add(buildAPITrees(packageName, defaultObjectClass, whitelistSubPackages));
