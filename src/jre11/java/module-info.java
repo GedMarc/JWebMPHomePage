@@ -1,8 +1,7 @@
-import com.jwebmp.core.services.IPage;
-import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
-import com.jwebmp.examples.demos.homepage.HomePageModuleScanner;
-import com.jwebmp.examples.demos.homepage.db.HomePageDBModule;
-import com.jwebmp.examples.demos.homepage.display.DisplayPage;
+import com.jwebmp.core.services.*;
+import com.jwebmp.examples.demos.homepage.*;
+import com.jwebmp.examples.demos.homepage.db.*;
+import com.jwebmp.examples.demos.homepage.display.*;
 import com.jwebmp.guicedinjection.interfaces.*;
 
 //This is a closed module - it requires an opens clause
@@ -97,6 +96,43 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.angularuiselect;
 	requires com.jwebmp.plugins.angularuisortable;
 	requires com.jwebmp.plugins.angularzoomanimation;
+	requires com.jwebmp.plugins.angularnyabootstrapselector;
+	requires com.jwebmp.plugins.bootstrap;
+	requires com.jwebmp.plugins.bootstrap.dialog4;
+	requires com.jwebmp.components.bootstrap.themes.sbadmin2;
+	requires com.jwebmp.plugins.bootstrapselect;
+	requires com.jwebmp.plugins.bootstrapswitch;
+	requires com.jwebmp.plugins.bootstraptagsinput;
+	requires com.jwebmp.plugins.angularbootstrapdatetimepicker;
+	requires com.jwebmp.plugins.bsquickforms4;
+	requires com.jwebmp.plugins.c3;
+	requires com.jwebmp.plugins.d3;
+	requires com.jwebmp.plugins.d3.reingoldtilfordtree;
+	requires com.jwebmp.plugins.fontawesome;
+	requires com.jwebmp.plugins.fullcalendar;
+	requires com.jwebmp.plugins.glyphicons;
+	requires com.jwebmp.plugins.imagemap;
+	requires com.jwebmp.plugins.ionic.ionicons;
+	requires com.jwebmp.plugins.ionrangeslider;
+	requires com.jwebmp.plugins.jqgradientlinear;
+	requires com.jwebmp.plugins.jqplot;
+	requires com.jwebmp.plugins.jqueryuidatetimepicker;
+	requires com.jwebmp.plugins.jqxwidgets;
+	requires com.jwebmp.plugins.leaflet;
+	requires com.jwebmp.plugins.materialdesignicons;
+	requires com.jwebmp.plugins.materialicons;
+	requires com.jwebmp.plugins.radialsvgslider;
+	requires com.jwebmp.plugins.bit6;
+	requires com.jwebmp.plugins.smartwizard;
+	requires com.jwebmp.plugins.spectrum.colourpicker;
+	requires com.jwebmp.plugins.textangular;
+	requires com.jwebmp.plugins.themify.icons;
+	requires com.jwebmp.plugins.verticaltimeline;
+	requires com.jwebmp.plugins.weathericons;
+	requires com.jwebmp.plugins.weblogappender;
+	requires com.jwebmp.plugins.xeditable;
+	requires com.jwebmp.plugins.jqueryverticaltimeline;
+	requires com.jwebmp.plugins.jqueryui.themes.nestable;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;

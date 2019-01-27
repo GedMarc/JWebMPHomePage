@@ -1,61 +1,77 @@
 package com.jwebmp.examples.demos.homepage;
 
-import com.jwebmp.core.SessionHelper;
-import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
-import com.jwebmp.core.generics.WebReference;
-import com.jwebmp.examples.demos.homepage.components.WebComponentsService;
-import com.jwebmp.examples.demos.homepage.db.dao.PluginsService;
-import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.guicedpersistence.btm.implementation.BTMAutomatedTransactionHandler;
-import com.jwebmp.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerProperties;
-import com.jwebmp.logger.LogFactory;
-import com.jwebmp.logger.logging.LogColourFormatter;
-import com.jwebmp.plugins.angularanimate.AngularAnimatePageConfigurator;
-import com.jwebmp.plugins.angularanimatedchange.AngularAnimatedChangePageConfigurator;
-import com.jwebmp.plugins.angularautoexpand.AngularAutoExpandPageConfigurator;
-import com.jwebmp.plugins.angularautofocus.AngularAutoFocusPageConfigurator;
-import com.jwebmp.plugins.angularfileupload.angular.AngularFileUploadPageConfigurator;
-import com.jwebmp.plugins.angularionslider.AngularIonSliderPageConfigurator;
-import com.jwebmp.plugins.angularnyabootstrapselector.NyaSelectPageConfigurator;
-import com.jwebmp.plugins.angularprogressbuttonstyles.AngularProgressButtonStylesPageConfigurator;
-import com.jwebmp.plugins.angularroute.AngularRoutePageConfigurator;
-import com.jwebmp.plugins.angularsanitize.AngularSanitizePageConfigurator;
-import com.jwebmp.plugins.angularscrollposition.AngularScrollPositionPageConfigurator;
-import com.jwebmp.plugins.angulartouch.AngularTouchPageConfigurator;
-import com.jwebmp.plugins.angulartrackwidth.AngularTrackWidthPageConfigurator;
-import com.jwebmp.plugins.angularuibootstrap.AngularUIBootstrapPageConfigurator;
-import com.jwebmp.plugins.angularuiselect.AngularUISelectPageConfigurator;
-import com.jwebmp.plugins.angularuisortable.AngularUISortablePageConfigurator;
-import com.jwebmp.plugins.angularzoomanimation.AngularZoomInAnimationPageConfigurator;
-import com.jwebmp.plugins.blueimp.gallery.BlueImpGalleryPageConfigurator;
-import com.jwebmp.plugins.bootstrap.BootstrapPageConfigurator;
-import com.jwebmp.plugins.bootstrap.dialog.BSDialogPageConfigurator;
-import com.jwebmp.plugins.bootstrapselect.BootstrapSelectPageConfigurator;
-import com.jwebmp.plugins.bootstrapswitch.BootstrapSwitchPageConfigurator;
-import com.jwebmp.plugins.bootstraptagsinput.BootstrapTagsInputPageConfigurator;
-import com.jwebmp.plugins.bs4datetimedropdown.BSDateTimePageConfigurator;
-import com.jwebmp.plugins.bsquickforms4.BSQuickFormsPageConfigurator;
-import com.jwebmp.plugins.c3.C3PageConfigurator;
-import com.jwebmp.plugins.d3.D3PageConfigurator;
-import com.jwebmp.plugins.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
-import com.jwebmp.plugins.datatable.DataTablePageConfigurator;
-import com.jwebmp.plugins.datatable.enumerations.DataTableThemes;
-import com.jwebmp.plugins.fontawesome.FontAwesomePageConfigurator;
-import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
-import com.jwebmp.plugins.fullcalendar.FullCalendarPageConfigurator;
-import com.jwebmp.plugins.glyphicons.GlyphiconsPageConfigurator;
-import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
-import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
-import com.jwebmp.plugins.ionic.ionicons.IonIconsPageConfigurator;
-import com.jwebmp.plugins.ionrangeslider.IonRangeSliderPageConfigurator;
-import com.jwebmp.plugins.jqgradientlinear.JQGradientPageConfigurator;
-import com.jwebmp.plugins.sixbitplatform.SixBitPageConfigurator;
-import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
-import com.jwebmp.undertow.JWebMPUndertow;
-import com.jwebmp.undertow.JWebMPUndertowWebSocketConfiguration;
-import com.jwebmp.websockets.WebSocketsConfiguration;
+import com.jwebmp.core.*;
+import com.jwebmp.core.base.angular.modules.*;
+import com.jwebmp.core.generics.*;
+import com.jwebmp.examples.demos.homepage.components.*;
+import com.jwebmp.examples.demos.homepage.db.dao.*;
+import com.jwebmp.guicedinjection.*;
+import com.jwebmp.guicedpersistence.btm.implementation.*;
+import com.jwebmp.guicedpersistence.readers.hibernateproperties.*;
+import com.jwebmp.logger.*;
+import com.jwebmp.logger.logging.*;
+import com.jwebmp.plugins.angularanimate.*;
+import com.jwebmp.plugins.angularanimatedchange.*;
+import com.jwebmp.plugins.angularautoexpand.*;
+import com.jwebmp.plugins.angularautofocus.*;
+import com.jwebmp.plugins.angularfileupload.angular.*;
+import com.jwebmp.plugins.angularionslider.*;
+import com.jwebmp.plugins.angularnyabootstrapselector.*;
+import com.jwebmp.plugins.angularprogressbuttonstyles.*;
+import com.jwebmp.plugins.angularroute.*;
+import com.jwebmp.plugins.angularsanitize.*;
+import com.jwebmp.plugins.angularscrollposition.*;
+import com.jwebmp.plugins.angulartouch.*;
+import com.jwebmp.plugins.angulartrackwidth.*;
+import com.jwebmp.plugins.angularuibootstrap.*;
+import com.jwebmp.plugins.angularuiselect.*;
+import com.jwebmp.plugins.angularuisortable.*;
+import com.jwebmp.plugins.angularzoomanimation.*;
+import com.jwebmp.plugins.blueimp.gallery.*;
+import com.jwebmp.plugins.bootstrap.*;
+import com.jwebmp.plugins.bootstrap.dialog.*;
+import com.jwebmp.plugins.bootstrap.themes.sbadmin2.*;
+import com.jwebmp.plugins.bootstrapselect.*;
+import com.jwebmp.plugins.bootstrapswitch.*;
+import com.jwebmp.plugins.bootstraptagsinput.*;
+import com.jwebmp.plugins.bs4datetimedropdown.*;
+import com.jwebmp.plugins.bsquickforms4.*;
+import com.jwebmp.plugins.c3.*;
+import com.jwebmp.plugins.d3.*;
+import com.jwebmp.plugins.d3.radialreingoldtilfordtree.*;
+import com.jwebmp.plugins.datatable.*;
+import com.jwebmp.plugins.datatable.enumerations.*;
+import com.jwebmp.plugins.fontawesome.*;
+import com.jwebmp.plugins.fontawesome5.config.*;
+import com.jwebmp.plugins.fullcalendar.*;
+import com.jwebmp.plugins.glyphicons.*;
+import com.jwebmp.plugins.google.sourceprettify.*;
+import com.jwebmp.plugins.imagemap.*;
+import com.jwebmp.plugins.ionic.ionicons.*;
+import com.jwebmp.plugins.ionrangeslider.*;
+import com.jwebmp.plugins.jqgradientlinear.*;
+import com.jwebmp.plugins.jqplot.*;
+import com.jwebmp.plugins.jqueryuidatetimepicker.*;
+import com.jwebmp.plugins.jqxwidgets.*;
+import com.jwebmp.plugins.leaflet.*;
+import com.jwebmp.plugins.materialdesignicons.*;
+import com.jwebmp.plugins.materialicons.*;
+import com.jwebmp.plugins.metrojs.*;
+import com.jwebmp.plugins.radialsvgslider.*;
+import com.jwebmp.plugins.sixbitplatform.*;
+import com.jwebmp.plugins.skycons.configurator.*;
+import com.jwebmp.plugins.smartwizard.*;
+import com.jwebmp.plugins.spectrum.colourpicker.*;
+import com.jwebmp.plugins.textangular.*;
+import com.jwebmp.plugins.themify.icons.*;
+import com.jwebmp.plugins.verticaltimeline.*;
+import com.jwebmp.plugins.weathericons.*;
+import com.jwebmp.plugins.weblogappender.*;
+import com.jwebmp.plugins.xeditable.*;
+import com.jwebmp.undertow.*;
+import com.jwebmp.websockets.*;
 
-import java.util.logging.Level;
+import java.util.logging.*;
 
 public class HomePageStartup
 {
@@ -115,7 +131,7 @@ public class HomePageStartup
 		FontAwesome5PageConfigurator.setIncludeLight(true);
 		FontAwesome5PageConfigurator.setIncludeBrands(true);
 
-		//TODO disable if no pro version of font awesome
+		//TODO disable if no pro version of font awesome - some icons may go missing
 		FontAwesome5PageConfigurator.setRootReferenceDir("fontawesome-pro-5.4.1-web/js/");
 		//This is the good stuff
 		FontAwesome5PageConfigurator.getConfigOptions()
@@ -129,7 +145,7 @@ public class HomePageStartup
 	}
 
 	/**
-	 * So that the page rendered doesn't include the entirety of every single library, a.k.a. the internet ;)
+	 * So that the page rendered doesn't include the entirety of every single library, a.k.a. the entire internet ;)
 	 */
 	private void blockUnusedPlugins()
 	{
@@ -164,7 +180,6 @@ public class HomePageStartup
 		NyaSelectPageConfigurator.setEnabled(false);
 		BSQuickFormsPageConfigurator.setEnabled(false);
 
-
 		C3PageConfigurator.setEnabled(false);
 		D3PageConfigurator.setEnabled(false);
 		D3ReingoldTilfordTreePageConfigurator.setEnabled(false);
@@ -175,16 +190,34 @@ public class HomePageStartup
 		IonRangeSliderPageConfigurator.setEnabled(false);
 
 		JQGradientPageConfigurator.setEnabled(false);
+		JQImageMapPageConfigurator.setEnabled(false);
+		JQMetroPageConfigurator.setEnabled(false);
+		JQPlotPageConfigurator.setEnabled(false);
+		JQueryUIDateTimePickerPageConfigurator.setEnabled(false);
+		VerticalTimelinePageConfigurator.setEnabled(false);
+		com.jwebmp.plugins.jqueryverticaltimeline.VerticalTimelinePageConfigurator.setEnabled(false);
+		JQXWidgetsPageConfigurator.setEnabled(false);
+		LeafletPageConfigurator.setEnabled(false);
+		MaterialDesignIconsPageConfigurator.setEnabled(false);
+		MaterialIconsPageConfigurator.setEnabled(false);
+		RadialSVGSliderGemPageConfigurator.setEnabled(false);
+		SB2AdminPageConfigurator.setEnabled(false);
+		SmartWizardPageConfigurator.setEnabled(false);
+		JQSpectrumPageConfigurator.setEnabled(false);
+		TextAngularPageConfigurator.setEnabled(false);
+		ThemifyIconsPageConfigurator.setEnabled(false);
+		WeatherIconsPageConfigurator.setEnabled(false);
+		WebLogAppenderPageConfigurator.setEnabled(false);
+		XEditablePageConfigurator.setEnabled(false);
 
-
+		com.jwebmp.plugins.jqueryui.themesnested.JQUINestableThemesPageConfigurator.setEnabled(false);
 	}
 
 	/**
 	 * Wipe all caches? Haven't serialVersion'd to incremental yet so probably a good idea
 	 */
-	public void wipeCaches()
+	private void wipeCaches()
 	{
-
 		GuiceContext.get(WebComponentsService.class)
 		            .wipeCaches();
 		GuiceContext.get(PluginsService.class)
