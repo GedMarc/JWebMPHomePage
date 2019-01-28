@@ -964,6 +964,7 @@
 
     <build>
         <finalName>jwebswinghomepagedeploy</finalName>
+
         <plugins>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
