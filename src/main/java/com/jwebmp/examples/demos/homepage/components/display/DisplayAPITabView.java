@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage.components.display;
 import com.jwebmp.core.Event;
 import com.jwebmp.core.base.ComponentFeatureBase;
 import com.jwebmp.core.base.ComponentHTMLBase;
+import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.core.services.IPageConfigurator;
@@ -10,10 +11,13 @@ import com.jwebmp.core.utilities.EscapeChars;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.general.ObjectBrowser;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
+import com.jwebmp.plugins.toastr.ToastrFeature;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -111,6 +115,14 @@ public class DisplayAPITabView
 							                                                                              .toString())));
 						}
 					}
+				}
+				catch (NoSuchMethodException | InvocationTargetException me)
+				{
+					AjaxResponse ar = GuiceContext.get(AjaxResponse.class);
+					ar.addFeature(new ToastrFeature<>()
+							              .setTitle("Missing Default Constructor")
+							              .setMessage("Class [" + defaultObjectClass +
+							                          "] is missing a default constructor... ;/"));
 				}
 				catch (Exception e)
 				{

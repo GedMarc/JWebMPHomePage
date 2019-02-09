@@ -3,6 +3,7 @@ package com.jwebmp.examples.demos.homepage.components.general;
 import com.jwebmp.core.Event;
 import com.jwebmp.core.Feature;
 import com.jwebmp.core.base.ComponentHierarchyBase;
+import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.core.base.angular.services.IAngularController;
 import com.jwebmp.core.base.angular.services.IAngularDirective;
 import com.jwebmp.core.base.angular.services.IAngularFactory;
@@ -16,6 +17,7 @@ import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
+import com.jwebmp.plugins.toastr.ToastrFeature;
 import io.github.classgraph.ClassInfo;
 
 import javax.validation.constraints.NotNull;
@@ -70,19 +72,28 @@ public class PackagesBrowser
 
 		List<ClassInfo> allClasses = new ArrayList<>();
 		List<ClassInfo> foundClasses;
-		if (includeSubPackages)
+		try
 		{
-			foundClasses = GuiceContext.instance()
-			                           .getScanResult()
-			                           .getPackageInfo(packageName)
-			                           .getClassInfoRecursive();
+			if (includeSubPackages)
+			{
+				foundClasses = GuiceContext.instance()
+				                           .getScanResult()
+				                           .getPackageInfo(packageName)
+				                           .getClassInfoRecursive();
+			}
+			else
+			{
+				foundClasses = GuiceContext.instance()
+				                           .getScanResult()
+				                           .getPackageInfo(packageName)
+				                           .getClassInfo();
+			}
 		}
-		else
+		catch (NullPointerException npe)
 		{
-			foundClasses = GuiceContext.instance()
-			                           .getScanResult()
-			                           .getPackageInfo(packageName)
-			                           .getClassInfo();
+			AjaxResponse ar = GuiceContext.get(AjaxResponse.class);
+			ar.addFeature(new ToastrFeature<>("Invalid Package Requested " + packageName));
+			foundClasses = new ArrayList<>();
 		}
 		allClasses.addAll(foundClasses);
 		for (ClassInfo clazz : allClasses)
