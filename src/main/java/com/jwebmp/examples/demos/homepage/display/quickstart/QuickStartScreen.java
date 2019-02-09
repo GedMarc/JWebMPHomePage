@@ -207,16 +207,19 @@ public class QuickStartScreen
 
 		aboutMigration.add(new H3<>("Go from JRE 8 to JPMS Instantly"));
 		aboutMigration.add("JWebMP allows you to instantly move from JRE8 to JPMS without any hassles of any kind.<br/>" +
-		                   "The separate builds are denoted by their maven groups <code>com.jwebmp</code> and <code>com.jwebmp.jre11</code><br/>" +
-		                   "As JVM releases roll-out a lot quicker, and deployments weekly, you can trust that you will always be up-to-date, have any problems resolved timely. The safety of a full and open CI system ensures quality.");
+		                   "True story.. Using <code>Moditect</code> to create the required naming classes, JDK 8 runs straight in JPMS with Named Modules.<br/>" +
+		                   "As JVM releases roll-out a lot quicker, and deployments weekly, you can trust that you will always be up-to-date, have any problems resolved timely. " +
+		                   "<br/>The safety of a full and open CI/Tracking system ensures that you can always support, log bugs, and get assistence whenever you need it.");
 
 		aboutMigration.add(HorizontalRule.getInstance());
-		aboutMigration.add("From");
+		aboutMigration.add("It literally stays like this");
 		addSourceToContainer(QuickStartScreen.class, "maven_jre8.txt", XML, aboutMigration);
 
+/*
 		aboutMigration.add("Simply to (Changed Group)");
 		//aboutMigration.add("Because Maven needs a slight version update to build JPMS, an additional portion is required.");
 		addSourceToContainer(QuickStartScreen.class, "jre11_maven_dependencies.txt", XML, aboutMigration);
+*/
 
 
 		annotationsConect.add(new H3<>("Moving to Guice Injection"));
@@ -285,8 +288,11 @@ public class QuickStartScreen
 
 		spring.add(new H3<>("Spring Annotations"));
 		spring.add(
-				"This entire system utilizes and Guice and SPI. No annotations are used to perform any function in the core, meaning that no classpath scanning is actually necessary" +
-				".</br>When using persistence/JCache/etc, these are separate modules, that are added onto the system, and only the paths necessary are ever scanned for matching files keeping it small, fast, and non-intrusive.");
+				"This entire system utilizes Guice and SPI. A guice module <code>guice-spring</code> can be used for side-by-side execution" +
+				"<br/>No annotations are used to perform any function in the core, meaning that no classpath scanning is actually necessary." +
+				"</br>When using persistence/JCache/etc, these are separate modules that are added onto the system, and only the paths necessary are ever scanned for matching files keeping it small, fast, and non-intrusive.");
+		spring.add("<br/><a target=\"_blank\" href=\"https://github.com/google/guice/wiki/SpringComparison\">Why Guice - Spring vs Guice</a>)");
+		spring.add("Below is a scrollable table from a DZone article (With Guiced Injection addition) to see the differences");
 
 		DivSimple<?> scrolly = new DivSimple<>();
 		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(scrolly);
@@ -311,9 +317,9 @@ public class QuickStartScreen
 
 	private void addDefaultJRE8Stuffs(Div mavenContent)
 	{
-		mavenContent.add(new BSButtonLightOutline<>().setText("View In GitHub"));
-		mavenContent.add("<br/>For JDK 8, JWebMP is fully <a target=\"_blank\" href=\"http://dcevm.github.io/\"> " +
-		                 "DCEVM</a> Compatible allowing an ultra hot swap experience");
+		mavenContent.add(new Link<>("https://github.com/GedMarc/JWebMP-Examples-Undertow-HelloWorld", "_blank").add(new BSButtonLightOutline<>().setText("View In GitHub")));
+		mavenContent.add("<br/>For JDK 8 and JPMS, JWebMP is fully <a target=\"_blank\" href=\"http://dcevm.github.io/\"> " +
+		                 "DCEVM</a> Compatible allowing the ultra hot swap experience");
 	}
 
 	private JSTree buildStructureTree()

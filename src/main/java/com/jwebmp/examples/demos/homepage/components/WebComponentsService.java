@@ -5,7 +5,6 @@ import com.jwebmp.examples.demos.homepage.components.display.DisplayAPITabView;
 import com.jwebmp.examples.demos.homepage.components.general.PackagesBrowser;
 
 import javax.cache.annotation.CacheKey;
-import javax.cache.annotation.CacheRemoveAll;
 import javax.cache.annotation.CacheResult;
 
 @Singleton
@@ -33,11 +32,5 @@ public class WebComponentsService
 		PackagesBrowser browser = new PackagesBrowser(packageName, includeSubPackages);
 		browser.setID("packageBrowser");
 		return browser;
-	}
-
-	@CacheRemoveAll
-	public void wipeCaches()
-	{
-		//Cache Cleaner
 	}
 }

@@ -65,12 +65,25 @@
             <artifactId>hibernate-jpamodelgen</artifactId>
         </dependency>
 
+        <!-- Turn Hazelcast on and off... -->
+
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>guiced-hazelcast</artifactId>
             <version>${project.version}</version>
             <type>jar</type>
             <classifier>${jwebmp.runtime.classifier}</classifier>
+        </dependency>
+
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jsr107.ri</groupId>
+            <artifactId>cache-annotations-ri-guice</artifactId>
         </dependency>
 
         <dependency>
@@ -459,8 +472,6 @@
         </dependency>
 
 
-
-
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-bit6</artifactId>
@@ -486,12 +497,12 @@
             <version>${project.version}</version>
             <type>jar</type>
         </dependency>
-<!--        <dependency>
-            <groupId>com.jwebmp</groupId>
-            <artifactId>jwebmp-blur-admin-theme</artifactId>
-            <version>${project.version}</version>
-            <type>jar</type>
-        </dependency>-->
+        <!--        <dependency>
+                    <groupId>com.jwebmp</groupId>
+                    <artifactId>jwebmp-blur-admin-theme</artifactId>
+                    <version>${project.version}</version>
+                    <type>jar</type>
+                </dependency>-->
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-bootstrap4</artifactId>

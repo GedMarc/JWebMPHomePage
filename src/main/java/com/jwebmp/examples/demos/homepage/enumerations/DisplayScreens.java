@@ -20,6 +20,7 @@ import com.jwebmp.examples.demos.homepage.display.demos.angular.sanitize.Angular
 import com.jwebmp.examples.demos.homepage.display.demos.angular.scrollposition.AngularScrollPositionDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.slimscroll.AngularSlimScrollDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.touch.AngularTouchDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.angular.trackwidth.AngularTrackWidthDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.ui.bootstrap.AngularUIBootstrapDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.ui.select.AngularUISelectDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.ui.sortable.AngularUISortableDemoScreen;
@@ -77,6 +78,7 @@ import com.jwebmp.examples.demos.homepage.display.demos.icons.glyphicons.Glyphic
 import com.jwebmp.examples.demos.homepage.display.demos.icons.ionicons.IonIconsDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.icons.materialdesignicons.MaterialDesignIconsDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.icons.mdi.MDIDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.icons.skycons.SkyconsDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.JQueryUIDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.datetimepicker.JQueryUIDateTimePickerDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.layout.JQLayoutDemoScreen;
@@ -84,6 +86,8 @@ import com.jwebmp.examples.demos.homepage.display.demos.jqui.spectrumcolourpicke
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.themes.JQueryUIThemesDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.themesnestable.JQueryUIThemesNestableDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.verticaltimeline.JQUIVerticalTimelineDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.jqxwidgets.JQXWidgetsDemoScreen;
+import com.jwebmp.examples.demos.homepage.display.demos.mapping.leafletjs.LeafletJSDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.pluginslist.PluginsList;
 import com.jwebmp.examples.demos.homepage.display.demos.push.AtmospherePushDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.push.undertow.AtmospherePushUndertowDemoScreen;
@@ -120,6 +124,7 @@ public enum DisplayScreens
 	ServletsJSFScreen(JSFDisplayScreen.class, "ServletsJSF"),
 	ServletsUADetectScreen(UADetectorDisplayScreen.class, "ServletsUAR"),
 	ServletsRestScreen(RestDisplayScreen.class, "ServletsRest"),
+	ServletsWebServicesScreen(WebServicesDisplayScreen.class, "ServletsWebServices"),
 	ServletsSwaggerScreen(SwaggerDisplayScreen.class, "ServletsSwagger"),
 
 	CachingHazelcastScreen(HazelcastDisplayScreen.class, "Hazelcast"),
@@ -149,8 +154,8 @@ public enum DisplayScreens
 
 	HtmlTagsDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.HtmlTagsDemoScreen.class, "HtmlTagsDemoScreen"),
 	BasicInputDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.InputTypesDemoScreen.class, "BasicInputsTypeScreen"),
-	BasicFormDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.FormBasicsDemoScreen.class, "BasicFormScreen"),
-	BasicBindingsDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.BindingsBasicsDemoScreen.class, "BindingsBasicTypeScreen"),
+	//BasicFormDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.FormBasicsDemoScreen.class, "BasicFormScreen"),
+	//BasicBindingsDemoScreen(com.jwebmp.examples.demos.homepage.display.demos.htmltags.BindingsBasicsDemoScreen.class, "BindingsBasicTypeScreen"),
 
 	AngularAnimate(AngularAnimateDemoScreen.class, "AngularAnimate"),
 	AngularAnimatedChange(AngularAnimateChangeDemoScreen.class, "AngularAnimatedChange"),
@@ -164,7 +169,7 @@ public enum DisplayScreens
 	AngularScrollPosition(AngularScrollPositionDemoScreen.class, "AngularScrollPosition"),
 	AngularSlimScroll(AngularSlimScrollDemoScreen.class, "AngularSlimScroll"),
 	AngularTouch(AngularTouchDemoScreen.class, "AngularTouch"),
-	AngularTrackWidth(AngularTouchDemoScreen.class, "AngularTrackWidth"),
+	AngularTrackWidth(AngularTrackWidthDemoScreen.class, "AngularTrackWidth"),
 	AngularZoomIn(AngularZoomDemoScreen.class, "AngularZoomIn"),
 
 	AngularUIBootstrap(AngularUIBootstrapDemoScreen.class, "AngularUIBootstrap"),
@@ -231,6 +236,7 @@ public enum DisplayScreens
 	MDI2(MDIDemoScreen.class, "MaterialDesignIcons2"),
 	Glyphicons(GlyphiconsDemoScreen.class, "Glyphicons"),
 	IonIcons(IonIconsDemoScreen.class, "IonIcons"),
+	Skycons(SkyconsDemoScreen.class, "Skycon"),
 
 	JQueryUI(JQueryUIDemoScreen.class, "JQueryUI"),
 	JQueryUIDateTimePicker(JQueryUIDateTimePickerDemoScreen.class, "JQueryUIDateTImePicker"),
@@ -240,8 +246,10 @@ public enum DisplayScreens
 	JQueryUIThemesNestable(JQueryUIThemesNestableDemoScreen.class, "JQUIThemesNestable"),
 	JQueryUIVerticalTimeline(JQUIVerticalTimelineDemoScreen.class, "JQUIVerticalTimeline"),
 
-	LeafletJS(com.jwebmp.examples.demos.homepage.display.ComingSoon.class, "LeafletJS"),
+	LeafletJS(LeafletJSDemoScreen.class, "LeafletJS"),
 	GoogleMaps(com.jwebmp.examples.demos.homepage.display.ComingSoon.class, "GoogleMaps"),
+
+	JQXWidgets(JQXWidgetsDemoScreen.class, "JQXWidgets"),
 
 	Push(AtmospherePushDemoScreen.class, "Push"),
 	PushUndertow(AtmospherePushUndertowDemoScreen.class, "PushUndertow"),

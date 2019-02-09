@@ -26,6 +26,7 @@ import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 public class DefaultPackageAPI
 		extends DivSimple<DefaultPackageAPI>
 {
+	private static final long serialVersionUID = 1L;
 	private Plugins plugins;
 
 	public DefaultPackageAPI(String packageName, Class defaultObjectClass, String pluginName)
@@ -35,6 +36,7 @@ public class DefaultPackageAPI
 
 	public DefaultPackageAPI(String packageName, Class defaultObjectClass, String pluginName, boolean hidePluginInfoByDefault, boolean whitelistSubPackages)
 	{
+		setID("defaultPackageAPI");
 		if (pluginName != null)
 		{
 			this.plugins = GuiceContext.get(PluginsService.class)
@@ -133,9 +135,9 @@ public class DefaultPackageAPI
 
 		BSRow pageContentRow = new BSRow();
 
-		Div left = new Div<>().addClass("col-12 col-md-6")
+		Div left = new Div<>().addClass(Col_12, Col_Md_6)
 		                      .addStyle("padding-left:0px;padding-right:0px;");
-		Div right = new Div<>().addClass("col-12 col-md-6")
+		Div right = new Div<>().addClass(Col_12, Col_Md_6)
 		                       .addStyle("padding-left:0px;padding-right:0px;");
 
 		PackagesBrowser packes = GuiceContext.get(WebComponentsService.class)

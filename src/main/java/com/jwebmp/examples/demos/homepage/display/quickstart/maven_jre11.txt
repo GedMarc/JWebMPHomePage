@@ -2,20 +2,13 @@
     <groupId>org.apache.maven.plugins</groupId>
     <artifactId>maven-compiler-plugin</artifactId>
     <version>3.8</version>
-    <dependencies>
-        <dependency>
-            <groupId>org.ow2.asm</groupId>
-            <artifactId>asm</artifactId>
-            <version>7.0</version>
-        </dependency>
-    </dependencies>
     <configuration>
         <release>11</release>
     </configuration>
 </plugin>
 
 <dependency>
-    <groupId>com.jwebmp.jre11</groupId>
+    <groupId>com.jwebmp</groupId>
     <artifactId>jwebmp-core</artifactId>
     <version>LATEST</version>
 </dependency>

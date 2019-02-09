@@ -1,18 +1,29 @@
 package com.jwebmp.examples.demos.homepage.display.demos.angular.autofocus;
 
 import com.jwebmp.core.base.html.Div;
-import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
+import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
+import com.jwebmp.examples.demos.homepage.components.DemoScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
+import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
+import com.jwebmp.plugins.angularautofocus.AngularAutoFocusPageConfigurator;
+
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 
 public class AngularAutoFocusDemoScreen
-		extends PluginDemoScreen
+		extends DemoScreen
 {
 	public AngularAutoFocusDemoScreen()
 	{
-		super("Angular Auto Focus", "Angular", "Utilities", "Auto Focus");
+		add(new DefaultPackageAPI("com.jwebmp.plugins.angularautofocus", AngularAutoFocusPageConfigurator.class,
+		                          "Angular Auto Focus", true, true));
+		add(buildGoToSource(AngularAutoFocusPageConfigurator.class, DefaultPackageAPI.class, OptionsBrowser.class));
 
-		addComponentTile("Angular Auto Focus",
-		                 "An assistant directive for mdDialogs and the likes..");
+		Div sourceDiv = new Div<>().addClass(Col_12, Row);
 
-		getAdditionalsRight().add(new Div("This directive is automatically included when added to the classpath, or a dependency of the library is added."));
+		sourceDiv.add(new Div("This directive is automatically included when added to the classpath"));
+
+		DefaultReadMore more = new DefaultReadMore(sourceDiv, "View More Info");
+		add(more);
 	}
 }

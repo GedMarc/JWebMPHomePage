@@ -1,30 +1,26 @@
 package com.jwebmp.examples.demos.homepage.display.demos.icons.glyphicons;
 
-import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
-import com.jwebmp.plugins.bootstrap4.containers.BSRow;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
+import com.jwebmp.examples.demos.homepage.components.DemoScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
+import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
+import com.jwebmp.plugins.glyphicons.GlyphiconsPageConfigurator;
+
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 
 public class GlyphiconsDemoScreen
-		extends PluginDemoScreen
+		extends DemoScreen
 {
 
 	public GlyphiconsDemoScreen()
 	{
-		super("Glyphicons", "Icon Sets", "Glyphicons", "Bootstrap 3 Set");
-		BSRow row = new BSRow();
-/*		SourceCodeContentPanel panel = new SourceCodeContentPanel("Glyphicons Example", DisplayCodeParts.Glyphicons, null);
-		panel.getContext()
-		     .add(row);
-		panel.setShowHeader(true);
+		add(new DefaultPackageAPI("com.jwebmp.plugins.glyphicons", GlyphiconsPageConfigurator.class,
+		                          "Glyphicons", true, true));
+		add(buildGoToSource(GlyphiconsPageConfigurator.class, DefaultPackageAPI.class));
 
-		addDiv(panel);*/
-/*
-		for (Glyphicons glyphicon : Glyphicons.values())
-		{
-			DivSimple d = new DivSimple();
-			d.addClass("col-3 col-md-2 col-lg-1 text-center");
-			d.add(new Italic<>().addClass(glyphicon.toString() + " fa-2x"));
-			d.add(new Paragraph<>(glyphicon.toString()));
-			row.add(d);
-		}*/
+		Div sourceDiv = new Div<>().addClass(Col_12, BSContainerOptions.Row);
+		DefaultReadMore more = new DefaultReadMore(sourceDiv, "View More Info");
+		//	add(more);
 	}
 }

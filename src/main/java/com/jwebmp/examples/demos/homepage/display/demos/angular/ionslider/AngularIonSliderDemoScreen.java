@@ -1,21 +1,30 @@
 package com.jwebmp.examples.demos.homepage.display.demos.angular.ionslider;
 
 import com.jwebmp.core.base.html.Div;
-import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
+import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
+import com.jwebmp.examples.demos.homepage.components.DemoScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
+import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
+import com.jwebmp.plugins.angularionslider.AngularIonSliderPageConfigurator;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 
 public class AngularIonSliderDemoScreen
-		extends PluginDemoScreen
+		extends DemoScreen
 {
 	public AngularIonSliderDemoScreen()
 	{
-		super("Angular Ion Slider", "Angular", "Ion Slider");
+		add(new DefaultPackageAPI("com.jwebmp.plugins.angularionslider", AngularIonSliderPageConfigurator.class,
+		                          "Angular Ion Slider", true, true));
+		add(buildGoToSource(AngularIonSliderPageConfigurator.class, DefaultPackageAPI.class, OptionsBrowser.class));
 
-		addComponentTile("AngularIonSlider", "Client Variable Data Bound Ion Slider. Maps specific properties to data variables.");
-		getAdditionalsRight().add(getCodeBlockJava(AngularIonSliderDemoScreen.class, "example.txt"));
+		Div sourceDiv = new Div<>().addClass(Col_12, Row);
 
-		getAdditionals().add(new Div<>().addClass(Col_12)
-		                                .setText("The Angular Ion Slider binds to client variables"));
+
+		DefaultReadMore more = new DefaultReadMore(sourceDiv, "View More Info");
+		add(more);
+
+		more.add(getCodeBlockJava(AngularIonSliderDemoScreen.class, "example.txt"));
 	}
 }

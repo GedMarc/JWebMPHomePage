@@ -15,7 +15,7 @@
 </plugin>
 
 <dependency>
-    <groupId>com.jwebmp.jre10</groupId>
+    <groupId>com.jwebmp</groupId>
     <artifactId>jwebmp-core</artifactId>
     <version>LATEST</version>
 </dependency>

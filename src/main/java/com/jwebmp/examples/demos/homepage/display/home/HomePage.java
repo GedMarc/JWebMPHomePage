@@ -127,7 +127,7 @@ public class HomePage
 		                        "<br/><a target=\"_blank\" href=\"https://jwebmp.com/sonar/\">View SonarQube for Quality Control and Test Case Output</a>"));
 */
 
-		right.add(addBlueAlert("Version 0.62.0.1 RC2 - 2018/11/18"));
+		right.add(addBlueAlert("Version 0.63.0.60 RC2 - 2019/02/04"));
 
 		right.add(get(MavenPomPart.class));
 

@@ -63,7 +63,8 @@ public class West
 
 		pluginsListing.addEvent(new ChangeScreenEvent(pluginsListing, "p=PluginsListScreen").setID(DisplayScreens.PluginsListScreen.toString()));
 
-		buildMenuSection("MIX N MATCH", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(), buildJQueryUI());
+		buildMenuSection("MIX N MATCH", true, homeItem, buildCorePlugins(), buildAngularTools(), buildBootstrap4(),
+		                 buildJQueryUI(), buildJQXWidgets());
 
 		buildMenuSection("COMPONENTS", true, buildDisplayComponents(), buildForms(), buildGraphing(), buildMapping(), buildTablesTrees());
 		buildMenuSection("ICONS", true, buildIconSets());
@@ -176,6 +177,8 @@ public class West
 /*		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsUADetectScreen).setText(HTML_TAB + "UA Detector"))
 		                          .setRenderTextBeforeChildren(false));*/
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsRestScreen).setText(HTML_TAB + "Rest"))
+		                          .setRenderTextBeforeChildren(false));
+		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsWebServicesScreen).setText(HTML_TAB + "Web Services"))
 		                          .setRenderTextBeforeChildren(false));
 		uiKit.add(new ListItem<>().add(buildListItem("#a2", ServletsSwaggerScreen).setText(HTML_TAB + "Swagger"))
 		                          .setRenderTextBeforeChildren(false));
@@ -367,6 +370,15 @@ public class West
 		return dropDown1;
 	}
 
+	private ListItem<?> buildJQXWidgets()
+	{
+		List uiKit = new List<>();
+
+		uiKit.add(new ListItem<>().add(buildListItem("#ui41", JQXWidgets).setText("JQXWidgets")));
+		ListItem dropDown1 = buildSubList("fal fa-vector-square", "<i>JQXWidgets*</i>", uiKit);
+		return dropDown1;
+	}
+
 	private ListItem<?> buildForms()
 	{
 		List uiKit = new List<>();
@@ -417,7 +429,7 @@ public class West
 	private ListItem<?> buildIconSets()
 	{
 		List uiKit = new List<>();
-		uiKit.add(new ListItem<>().add(buildListItem("#c1", DisplayScreens.FontAwesome).setText("Font Awesome")));
+		//uiKit.add(new ListItem<>().add(buildListItem("#c1", DisplayScreens.FontAwesome).setText("Font Awesome")));
 		uiKit.add(new ListItem<>().add(buildListItem("#c153", DisplayScreens.FontAwesome5).setText("Font Awesome 5")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e4", DisplayScreens.Glyphicons).setText("Glyphicons")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e5", DisplayScreens.IonIcons).setText("Ion Icons")));

@@ -5,7 +5,6 @@ import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 
 import javax.cache.annotation.CacheKey;
-import javax.cache.annotation.CacheRemoveAll;
 import javax.cache.annotation.CacheResult;
 import java.util.List;
 
@@ -42,12 +41,5 @@ public class PluginsService
 		                    .inActiveRange()
 		                    .orderBy(Plugins_.pluginName)
 		                    .getAll();
-	}
-
-	@SuppressWarnings("unused")
-	@CacheRemoveAll
-	public void wipeCaches()
-	{
-		//Dummy to wipe all the caches
 	}
 }

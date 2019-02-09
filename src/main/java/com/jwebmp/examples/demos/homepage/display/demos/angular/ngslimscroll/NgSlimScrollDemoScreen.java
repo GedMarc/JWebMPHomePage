@@ -1,22 +1,29 @@
 package com.jwebmp.examples.demos.homepage.display.demos.angular.ngslimscroll;
 
 import com.jwebmp.core.base.html.Div;
-import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
+import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
+import com.jwebmp.examples.demos.homepage.components.DemoScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
+import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
+import com.jwebmp.plugins.ngslimscroll.NgSlimScrollPageConfigurator;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 
 public class NgSlimScrollDemoScreen
-		extends PluginDemoScreen
+		extends DemoScreen
 {
 	public NgSlimScrollDemoScreen()
 	{
-		super("NG Slimscroll", "Angular", "NG Slim Scroll");
+		add(new DefaultPackageAPI("com.jwebmp.plugins.ngslimscroll", NgSlimScrollPageConfigurator.class,
+		                          "NG Slimscroll", true, true));
+		add(buildGoToSource(NgSlimScrollPageConfigurator.class, DefaultPackageAPI.class, OptionsBrowser.class));
 
-		addComponentTile("NgSlimScrollPageConfigurator", "Applies the slim scroll with the default settings. Options are limited to additional CSS Entries");
+		Div sourceDiv = new Div<>().addClass(Col_12, Row);
 
-		getAdditionalsRight().add(getCodeBlockJava(NgSlimScrollDemoScreen.class, "example.txt"));
+		DefaultReadMore more = new DefaultReadMore(sourceDiv, "View More Info");
+		add(more);
+		more.add(getCodeBlockJava(NgSlimScrollDemoScreen.class, "example.txt"));
 
-		getAdditionals().add(new Div<>().addClass(Col_12)
-		                                .setText("A simple slim scroller. To override the default styles a css file may be needed."));
 	}
 }

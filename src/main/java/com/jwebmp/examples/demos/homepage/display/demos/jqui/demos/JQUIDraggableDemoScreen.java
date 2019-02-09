@@ -11,6 +11,7 @@ import com.jwebmp.plugins.bootstrap4.badge.styles.BSBadgeSecondary;
 import com.jwebmp.plugins.jqueryui.draggable.JQUIDraggableFeature;
 import com.jwebmp.plugins.jqueryui.draggable.enumerations.Axis;
 import com.jwebmp.plugins.jqueryui.draggable.enumerations.JQUIDraggablesHelper;
+import com.jwebmp.plugins.jqueryui.draggable.options.CursorAt;
 import com.jwebmp.plugins.jqueryui.draggable.options.JQUIDraggableOptions;
 import com.jwebmp.plugins.jqueryui.sortable.JQUISortableFeature;
 
@@ -231,7 +232,7 @@ public class JQUIDraggableDemoScreen
 		JQUIDraggableFeature feature;
 		wd.addFeature(feature = new JQUIDraggableFeature(wd, null));
 		feature.getOptions()
-		       .setCursorAt(new JQUIDraggableOptions.CursorAt(56, 56))
+		       .setCursorAt(new CursorAt(56, 56))
 		       .setCursor(Cursors.Move);
 
 		setOptionsObject(feature.getOptions());
@@ -257,7 +258,7 @@ public class JQUIDraggableDemoScreen
 		JQUIDraggableFeature feature;
 		wd.addFeature(feature = new JQUIDraggableFeature(wd, null));
 		feature.getOptions()
-		       .setCursorAt(new JQUIDraggableOptions.CursorAt(-5, -5))
+		       .setCursorAt(new CursorAt(-5, -5))
 		       .setCursor(Cursors.Crosshair);
 
 		setOptionsObject(feature.getOptions());
@@ -283,7 +284,7 @@ public class JQUIDraggableDemoScreen
 		JQUIDraggableFeature feature;
 		wd.addFeature(feature = new JQUIDraggableFeature(wd, null));
 		feature.getOptions()
-		       .setCursorAt(new JQUIDraggableOptions.CursorAt().setBottom(0))
+		       .setCursorAt(new CursorAt().setBottom(0))
 		       .setCursor(Cursors.Crosshair);
 
 		setOptionsObject(feature.getOptions());

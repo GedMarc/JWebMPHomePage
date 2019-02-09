@@ -1,32 +1,26 @@
 package com.jwebmp.examples.demos.homepage.display.demos.icons.mdi;
 
-import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
-import com.jwebmp.plugins.bootstrap4.containers.BSRow;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
+import com.jwebmp.examples.demos.homepage.components.DemoScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
+import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
+import com.jwebmp.plugins.materialicons.MaterialIconsPageConfigurator;
+
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 
 public class MDIDemoScreen
-		extends PluginDemoScreen
+		extends DemoScreen
 {
 
 	public MDIDemoScreen()
 	{
-		super("MDI", "Icon Sets", "Material Design Icons", "Web Fonts");
+		add(new DefaultPackageAPI("com.jwebmp.plugins.materialicons", MaterialIconsPageConfigurator.class,
+		                          "MDI", true, true));
+		add(buildGoToSource(MaterialIconsPageConfigurator.class, DefaultPackageAPI.class));
 
-		BSRow row = BSRow.newInstance();
-
-/*		SourceCodeContentPanel panel = new SourceCodeContentPanel("Material Design Icons - Web Fonts", DisplayCodeParts.MaterialDesignIcons2, null);
-		panel.getContext()
-		     .add(row);
-		panel.setShowHeader(true);
-
-		addDiv(panel);*/
-
-		/*for (MDIIcons icon : MDIIcons.values())
-		{
-			DivSimple d = new DivSimple();
-			d.addClass("col-3 col-md-2 col-lg-1 text-center");
-			d.add(new MDIIcon(icon));
-			d.add(new Paragraph<>(icon.toString()));
-			row.add(d);
-		}*/
+		Div sourceDiv = new Div<>().addClass(Col_12, BSContainerOptions.Row);
+		DefaultReadMore more = new DefaultReadMore(sourceDiv, "View More Info");
+		//		add(more);
 	}
 }

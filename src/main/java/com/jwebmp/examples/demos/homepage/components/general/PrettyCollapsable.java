@@ -9,7 +9,6 @@ import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
 import com.jwebmp.plugins.fontawesome5.options.FontAwesomeStyles;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
-import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSDisplayOptions.*;
 
 public class PrettyCollapsable
@@ -26,7 +25,7 @@ public class PrettyCollapsable
 
 	public PrettyCollapsable(ComponentHierarchyBase component, String text, boolean hideOnStart)
 	{
-		addClass(W_100, H_100);
+		/*addClass(W_100, H_100);*/
 		this.collapsingComponent = component;
 		this.button = new BSCardButtonDarkOutline();
 		button.addClass(Block);

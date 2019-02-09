@@ -14,8 +14,8 @@ import com.jwebmp.logger.LogFactory;
 import com.jwebmp.plugins.bootstrap4.navs.BSNavTabs;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;
 
@@ -24,6 +24,7 @@ public class DisplayAPITabView
 {
 	private static final long serialVersionUID = 1L;
 	private static final OptionsBrowser defaultBrowser = new OptionsBrowser(new JavaScriptPart());
+	private static final Logger log = LogFactory.getLog("DisplayASPITabView");
 
 	private final Class defaultObjectClass;
 
@@ -68,45 +69,52 @@ public class DisplayAPITabView
 			}
 			else if (ComponentFeatureBase.class.isAssignableFrom(defaultObjectClass))
 			{
-				ComponentFeatureBase comp = (ComponentFeatureBase) defaultObjectClass.getDeclaredConstructor()
-				                                                                     .newInstance();
-				if (comp.getOptions() == null || comp.getOptions()
-				                                     .getClass()
-				                                     .equals(JavaScriptPart.class))
+				try
 				{
-					optionsApi.add("This component does not have any explicit JavaScript/JSON options.");
-				}
-				if (comp.getOptions() != null)
-				{
-					optionsApi.add(new OptionsBrowser(comp.getOptions()));
-				}
-				else
-				{
-					optionsApi.add(defaultBrowser);
-				}
-
-				if (ComponentHTMLBase.class.isAssignableFrom(defaultObjectClass))
-				{
-					ComponentHTMLBase htmlBase = (ComponentHTMLBase) comp;
-					htmlOutput.add("The below is the output of <code>toString(0)</code>");
-					htmlOutput.add(new JQSourceCodePrettify<>().setSourceCodeLanguage(HTML)
-					                                           .setText(EscapeChars.forHTML(htmlBase.toString(0))));
-					htmlOutput.add("I'm working on getting the full options api working for generation.");
-
-					String js = htmlBase.renderJavascript()
-					                    .toString();
-					if (js.trim()
-					      .isEmpty())
+					ComponentFeatureBase comp = (ComponentFeatureBase) defaultObjectClass.getDeclaredConstructor()
+					                                                                     .newInstance();
+					if (comp.getOptions() == null || comp.getOptions()
+					                                     .getClass()
+					                                     .equals(JavaScriptPart.class))
 					{
-						jsOutput.add("No JavaScript is rendered for this component. Looks like it can take features tho!");
+						optionsApi.add("This component does not have any explicit JavaScript/JSON options.");
+					}
+					if (comp.getOptions() != null)
+					{
+						optionsApi.add(new OptionsBrowser(comp.getOptions()));
 					}
 					else
 					{
-						jsOutput.add("This components renders the following JavaScript");
-						jsOutput.add(new JQSourceCodePrettify<>().setSourceCodeLanguage(JS)
-						                                         .setText(EscapeChars.forHTML(htmlBase.renderJavascript()
-						                                                                              .toString())));
+						optionsApi.add(defaultBrowser);
 					}
+
+					if (ComponentHTMLBase.class.isAssignableFrom(defaultObjectClass))
+					{
+						ComponentHTMLBase htmlBase = (ComponentHTMLBase) comp;
+						htmlOutput.add("The below is the output of <code>toString(0)</code>");
+						htmlOutput.add(new JQSourceCodePrettify<>().setSourceCodeLanguage(HTML)
+						                                           .setText(EscapeChars.forHTML(htmlBase.toString(0))));
+						htmlOutput.add("I'm working on getting the full options api working for generation.");
+
+						String js = htmlBase.renderJavascript()
+						                    .toString();
+						if (js.trim()
+						      .isEmpty())
+						{
+							jsOutput.add("No JavaScript is rendered for this component. Looks like it can take features tho!");
+						}
+						else
+						{
+							jsOutput.add("This components renders the following JavaScript");
+							jsOutput.add(new JQSourceCodePrettify<>().setSourceCodeLanguage(JS)
+							                                         .setText(EscapeChars.forHTML(htmlBase.renderJavascript()
+							                                                                              .toString())));
+						}
+					}
+				}
+				catch (Exception e)
+				{
+					log.log(Level.SEVERE, "Type not handled [" + defaultObjectClass + "]", e);
 				}
 			}
 			else if (IPageConfigurator.class.isAssignableFrom(defaultObjectClass))
@@ -119,7 +127,7 @@ public class DisplayAPITabView
 				          .warning("Not catered for [" + defaultObjectClass + "]");
 			}
 		}
-		catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e)
+		catch (Exception e)
 		{
 			LogFactory.getLog(getClass())
 			          .log(Level.SEVERE, "Unable to create component?", e);

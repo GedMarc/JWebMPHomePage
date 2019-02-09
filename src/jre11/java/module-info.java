@@ -1,7 +1,8 @@
-import com.jwebmp.core.services.*;
-import com.jwebmp.examples.demos.homepage.*;
-import com.jwebmp.examples.demos.homepage.db.*;
-import com.jwebmp.examples.demos.homepage.display.*;
+import com.jwebmp.core.services.IPage;
+import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
+import com.jwebmp.examples.demos.homepage.HomePageModuleScanner;
+import com.jwebmp.examples.demos.homepage.db.HomePageDBModule;
+import com.jwebmp.examples.demos.homepage.display.DisplayPage;
 import com.jwebmp.guicedinjection.interfaces.*;
 
 //This is a closed module - it requires an opens clause
@@ -98,13 +99,13 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.angularzoomanimation;
 	requires com.jwebmp.plugins.angularnyabootstrapselector;
 	requires com.jwebmp.plugins.bootstrap;
-	requires com.jwebmp.plugins.bootstrap.dialog4;
+	requires com.jwebmp.plugins.bs4.dialog;
 	requires com.jwebmp.components.bootstrap.themes.sbadmin2;
 	requires com.jwebmp.plugins.bootstrapselect;
 	requires com.jwebmp.plugins.bootstrapswitch;
 	requires com.jwebmp.plugins.bootstraptagsinput;
 	requires com.jwebmp.plugins.angularbootstrapdatetimepicker;
-	requires com.jwebmp.plugins.bsquickforms4;
+	requires com.jwebmp.plugins.bs4.quickforms;
 	requires com.jwebmp.plugins.c3;
 	requires com.jwebmp.plugins.d3;
 	requires com.jwebmp.plugins.d3.reingoldtilfordtree;
@@ -116,7 +117,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.ionrangeslider;
 	requires com.jwebmp.plugins.jqgradientlinear;
 	requires com.jwebmp.plugins.jqplot;
-	requires com.jwebmp.plugins.jqueryuidatetimepicker;
+	requires com.jwebmp.plugins.jqui.datetimepicker;
 	requires com.jwebmp.plugins.jqxwidgets;
 	requires com.jwebmp.plugins.leaflet;
 	requires com.jwebmp.plugins.materialdesignicons;
@@ -133,6 +134,23 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.xeditable;
 	requires com.jwebmp.plugins.jqueryverticaltimeline;
 	requires com.jwebmp.plugins.jqueryui.themes.nestable;
+	requires com.jwebmp.plugins.ngslimscroll;
+	requires com.jwebmp.plugins.bs4.bootswatch;
+	requires com.jwebmp.plugins.bs4.datetimepicker;
+	requires com.jwebmp.plugins.bs4.nyaselect;
+	requires com.jwebmp.plugins.bs4.toggle;
+	requires com.jwebmp.plugins.dynamicsourcecode;
+	requires com.jwebmp.plugins.easingeffects;
+	requires com.jwebmp.plugins.angularfastclick;
+	requires com.jwebmp.plugins.globalize.cultures;
+	requires com.jwebmp.plugins.modernizr;
+	requires com.jwebmp.plugins.angularprettycheckboxes;
+	requires com.jwebmp.plugins.bsquickforms;
+	requires com.jwebmp.plugins.textinputeffects;
+	requires com.jwebmp.plugins.easypiechart;
+	requires com.jwebmp.plugins.jqueryui.themes;
+	requires com.jwebmp.plugins.blueimp.fileupload;
+	requires com.jwebmp.plugins.bs4.tagsinput;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;

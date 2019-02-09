@@ -57,7 +57,7 @@ public class TopBar
 			//Logo
 			Div logoLeft = new DivSimple();
 			logoLeft.addClass("topbar-left");
-			Link buttonLink = new Link<>("/", "", "<span style=\"padding-left: 15px;\">JWebMP<i><small>&nbsp;rc1</small></i></span></a>").addClass("logo");
+			Link buttonLink = new Link<>("/", "", "<span style=\"padding-left: 15px;\">JWebMP<i><small>&nbsp;rc2</small></i></span></a>").addClass("logo");
 			logoLeft.add(new DivSimple<>().add(buttonLink));
 
 			add(logoLeft);
@@ -93,21 +93,7 @@ public class TopBar
 		Link donateLink = (Link) donateButton.getChildren()
 		                                     .iterator()
 		                                     .next();
-		donateLink.getChildren()
-		          .clear();
-		donateLink.setDirectToAddress("#");
-
-		donateLink.add(new Paragraph<>("<form target=\"_blank\" action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\" style=\"display:inline-flex;\">\n" +
-		                               //"<div id='icon'><i class='far fa-eye-slash'></i></div>\n" +
-		                               "<input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\">\n" +
-		                               "<input type=\"hidden\" name=\"hosted_button_id\" value=\"NTQB7LV8YTGF8\">\n" +
-		                               "<button type=\"submit\" class=\"btn bg-transparent\" " +
-		                               " style=\"padding-left:0px;padding-right:0px;\"" +
-		                               " alt=\"PayPal - The safer, easier way to pay online!\">\n" +
-		                               "    <i class='fal fa-hand-holding-usd fa-2x fa-fw noti-icon'></i>\n" +
-		                               "</button>\n" +
-		                               "<img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">\n" +
-		                               "</form>\n").setTextOnly(true));
+		donateLink.setDirectToAddress("https://paypal.me/MarcMagon");
 
 		//Middle Right Side (Search and Stuff)
 		List<ListChildren, ?, ?, ?> searchList = new List<>().addClass("list-inline menu-left mb-0")

@@ -1,0 +1,16 @@
+BlueImpFileUpload fileUpload = new BlueImpFileUpload();
+BlueImpUploadButtonBar bar = fileUpload.addButtonBar();
+BlueImpFileUploadTable table = fileUpload.addDisplayTable();
+
+bar.addAddButton("btn btn-success", "glyphicon glyphicon-plus", "Add Files...", true);
+bar.addStartButton("btn btn-primary", "glyphicon glyphicon-upload", "Start Upload");
+bar.addCancelButton("btn btn-warning", "glyphicon glyphicon-ban-circle", "Cancel Upload");
+bar.addGlobalFileProcessingState();
+
+add(fileUpload);
+
+BlueImpFileUploadDefaultOptions opts = new BlueImpFileUploadDefaultOptions();
+BlueImpFileUploadPageConfigurator.setDefaultOptions(opts);
+//System.out.println(opts.toString());
+
+BlueImpFileUploadPageConfigurator.getGalleryDiv();

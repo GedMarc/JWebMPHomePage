@@ -12,10 +12,10 @@ import com.jwebmp.core.htmlbuilder.css.themes.Theme;
 import com.jwebmp.core.services.IPageConfigurator;
 import com.jwebmp.examples.demos.homepage.components.events.SwopObjectBrowserEvent;
 import com.jwebmp.examples.demos.homepage.components.general.events.PackagesBrowserSwopObjectBrowserEvent;
+import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
-import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 
 import javax.validation.constraints.NotNull;
@@ -72,29 +72,17 @@ public class PackagesBrowser
 		List<ClassInfo> foundClasses;
 		if (includeSubPackages)
 		{
-			foundClasses = new ClassGraph().enableAllInfo()
-			                               //.enableExternalClasses()
-			                               .ignoreFieldVisibility()
-			                               .ignoreMethodVisibility()
-			                               .ignoreClassVisibility()
-			                               .ignoreParentClassLoaders()
-			                               .whitelistPackages(packageName)
-			                               .scan(Runtime.getRuntime()
-			                                            .availableProcessors())
-			                               .getAllClasses();
+			foundClasses = GuiceContext.instance()
+			                           .getScanResult()
+			                           .getPackageInfo(packageName)
+			                           .getClassInfoRecursive();
 		}
 		else
 		{
-			foundClasses = new ClassGraph().enableAllInfo()
-			                               //.enableExternalClasses()
-			                               .ignoreFieldVisibility()
-			                               .ignoreMethodVisibility()
-			                               .ignoreClassVisibility()
-			                               .ignoreParentClassLoaders()
-			                               .whitelistPackagesNonRecursive(packageName)
-			                               .scan(Runtime.getRuntime()
-			                                            .availableProcessors())
-			                               .getAllClasses();
+			foundClasses = GuiceContext.instance()
+			                           .getScanResult()
+			                           .getPackageInfo(packageName)
+			                           .getClassInfo();
 		}
 		allClasses.addAll(foundClasses);
 		for (ClassInfo clazz : allClasses)

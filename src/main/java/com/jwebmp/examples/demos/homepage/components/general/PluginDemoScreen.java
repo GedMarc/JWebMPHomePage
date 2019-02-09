@@ -7,11 +7,7 @@ import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.entityassist.enumerations.Operand;
-import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.examples.demos.homepage.components.events.SwopObjectBrowserEvent;
-import com.jwebmp.examples.demos.homepage.display.demos.jqui.demos.JQUIDraggableDemoScreen;
-import com.jwebmp.examples.demos.homepage.display.menu.ChangeScreenEvent;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.guicedinjection.interfaces.IDefaultService;
@@ -26,12 +22,6 @@ import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.jstree.JSTree;
-import com.jwebmp.plugins.metrojs.JQMetroTiles;
-import com.jwebmp.plugins.metrojs.enumerations.TileAccentThemes;
-import com.jwebmp.plugins.metrojs.enumerations.TileCount;
-import com.jwebmp.plugins.metrojs.tiles.StaticTile;
-import com.jwebmp.plugins.metrojs.tiles.TileFace;
-import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.text.StringEscapeUtils;
 
 import java.util.ArrayList;
@@ -63,8 +53,8 @@ public class PluginDemoScreen
 	private DivSimple<?> mavenDisplayDiv;
 	private DivSimple artiInfo;
 	private String pluginName;
-	private JQMetroTiles featureTiles = new JQMetroTiles();
-	private JQMetroTiles componentTiles = new JQMetroTiles();
+	/*	private JQMetroTiles featureTiles = new JQMetroTiles();
+		private JQMetroTiles componentTiles = new JQMetroTiles();*/
 	private List<OptionsBrowser> optionBrowsers = new ArrayList<>();
 	private List<BSRow> bottomRows = new ArrayList<>();
 
@@ -72,7 +62,7 @@ public class PluginDemoScreen
 	{
 		this.pluginName = pluginName;
 		this.breadCrumbs = breadCrumbs;
-
+/*
 		featureTiles.setTheme(TileAccentThemes.Mauve);
 		featureTiles.setTileCount(TileCount.ten);
 		featureTiles.getOptions()
@@ -83,60 +73,13 @@ public class PluginDemoScreen
 		componentTiles.setTileCount(TileCount.ten);
 		componentTiles.getOptions()
 		              .setInitDelay(0);
-		componentTiles.addStyle("width", "inherit");
+		componentTiles.addStyle("width", "inherit");*/
 	}
 
 	public void addDiv(Div div)
 	{
 		additionals.add(div);
 	}
-
-	public StaticTile addComponentTile(String name, String description, Class<? extends JavaScriptPart> part)
-	{
-		StaticTile tile;
-		componentTiles.add(tile = new StaticTile().addFace(new TileFace<>().addCaption("Component")
-		                                                                   .addParagraph(name + "<br/><br/>" + description))
-		                                          .addStyle("cursor", "pointer")
-		                                          .addAttribute("data-delay", RandomUtils.nextInt(3500, 8000) + ""));
-		if (part != null)
-		{
-			tile.addEvent(new SwopObjectBrowserEvent(tile).setID(part.getCanonicalName()
-			                                                         .replace('.', '_')));
-		}
-		if (description.length() > 50)
-		{
-			tile.addClass("two-wide");
-		}
-		tileAdded = true;
-		return tile;
-	}
-
-	public StaticTile addComponentTile(String name, String description)
-	{
-		return addComponentTile(name, description, (DisplayScreen) null);
-	}
-
-	public StaticTile addComponentTile(String name, String description, DisplayScreen<?> demoDisplayScreen)
-	{
-		StaticTile tile;
-		componentTiles.add(tile = new StaticTile().addFace(new TileFace<>().addCaption("Component")
-		                                                                   .addParagraph(name + "<br/><br/>" + description))
-		                                          .addStyle("cursor", "pointer")
-		                                          .addAttribute("data-delay", RandomUtils.nextInt(3500, 8000) + ""));
-		if (demoDisplayScreen != null)
-		{
-			tile.addEvent(new ChangeScreenEvent(demoDisplayScreen, "p=" + pluginName).setID(demoDisplayScreen.getClass()
-			                                                                                                 .getCanonicalName()
-			                                                                                                 .replace('.', '_')));
-		}
-		if (description.length() > 35)
-		{
-			tile.addClass("two-wide");
-		}
-		tileAdded = true;
-		return tile;
-	}
-
 
 	private JSTree buildComponentsTree()
 	{
@@ -170,51 +113,6 @@ public class PluginDemoScreen
 	private JSTree buildFeaturesTree()
 	{
 		return null;
-	}
-
-	public StaticTile addFeatureTile(String name, String description, Class<? extends JavaScriptPart> optionsBrowser)
-	{
-		StaticTile tile;
-		featureTiles.add(tile = new StaticTile().addFace(new TileFace<>().addCaption("Feature")
-		                                                                 .addParagraph(name + "<br/><br/>" + description))
-		                                        .addStyle("cursor", "pointer")
-		                                        .addAttribute("data-delay", RandomUtils.nextInt(3500, 8000) + ""));
-		if (optionsBrowser != null)
-		{
-			tile.addEvent(new SwopObjectBrowserEvent(tile).setID(optionsBrowser.getCanonicalName()
-			                                                                   .replace('.', '_')));
-		}
-		if (description.length() > 50)
-		{
-			tile.addClass("two-wide");
-		}
-		tileAdded = true;
-		return tile;
-	}
-
-	public StaticTile addFeatureTile(String name, String description)
-	{
-		return addFeatureTile(name, description, (DisplayScreen) null);
-	}
-
-	public StaticTile addFeatureTile(String name, String description, DisplayScreen<?> demoDisplayScreen)
-	{
-		StaticTile tile;
-		featureTiles.add(tile = new StaticTile().addFace(new TileFace<>().addCaption("Feature")
-		                                                                 .addParagraph(name + "<br/><br/>" + description))
-		                                        .addStyle("cursor", "pointer")
-		                                        .addAttribute("data-delay", RandomUtils.nextInt(3500, 8000) + ""));
-		if (demoDisplayScreen != null)
-		{
-			tile.addEvent(new ChangeScreenEvent(demoDisplayScreen, "p=" + pluginName).setID(JQUIDraggableDemoScreen.class.getCanonicalName()
-			                                                                                                             .replace('.', '_')));
-		}
-		if (description.length() > 50)
-		{
-			tile.addClass("two-wide");
-		}
-		tileAdded = true;
-		return tile;
 	}
 
 	@Override
@@ -253,29 +151,14 @@ public class PluginDemoScreen
 			//just a missing mavenpom file
 		}
 
-		BSRow tilesRow = new BSRow();
-		tilesRow.add(featureTiles);
-		tilesRow.add(componentTiles);
-
-		DefaultSlimScrollFeature scroll = new DefaultSlimScrollFeature(tilesRow);
-		scroll.getOptions()
-		      .setHeight("150px");
-
 		Paragraph scrollText = new Paragraph("Scroll for More");
 		scrollText.addStyle("position", "absolute");
 		scrollText.addStyle("top", "0px;");
 		scrollText.addStyle("right", "1em;");
-		tilesRow.add(scrollText);
-
-		tilesRow.addFeature(scroll);
-
-		container.add(tilesRow);
 
 		BSRow dataRow = new BSRow();
 
 		optionBrowsers.forEach(a -> rightColumnTop.add(a));
-
-		//fullColumn.add(sourceCodeContentPanel());
 
 		dataRow.add(fullColumn);
 		dataRow.add(rightColumn);
@@ -427,6 +310,7 @@ public class PluginDemoScreen
 		return ob;
 	}
 
+	@Override
 	public Div<?, ?, ?, ?, ?> getCodeBlockJava(Class reference, String fileName)
 	{
 		Div d = new Div<>().addClass(Col_12);

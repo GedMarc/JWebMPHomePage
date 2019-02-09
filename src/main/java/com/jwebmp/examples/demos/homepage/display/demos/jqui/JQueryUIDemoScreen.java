@@ -1,105 +1,78 @@
 package com.jwebmp.examples.demos.homepage.display.demos.jqui;
 
-import com.jwebmp.examples.demos.homepage.components.events.SwopCodeBlockEvent;
-import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
-import com.jwebmp.plugins.jqueryui.accordion.options.JQUIAccordionOptions;
-import com.jwebmp.plugins.jqueryui.autocomplete.options.JQUIAutoCompleteOptions;
-import com.jwebmp.plugins.jqueryui.button.options.JQUIButtonOptions;
-import com.jwebmp.plugins.jqueryui.checkboxradio.options.JQUICheckBoxRadioOptions;
-import com.jwebmp.plugins.jqueryui.controlgroup.options.JQUIControlGroupOptions;
-import com.jwebmp.plugins.jqueryui.datepicker.options.JQUIDatePickerOptions;
-import com.jwebmp.plugins.jqueryui.dialog.options.JQUIDialogOptions;
-import com.jwebmp.plugins.jqueryui.draggable.options.JQUIDraggableOptions;
-import com.jwebmp.plugins.jqueryui.droppable.options.JQUIDroppableOptions;
-import com.jwebmp.plugins.jqueryui.menu.options.JQUIMenuOptions;
-import com.jwebmp.plugins.jqueryui.progressbar.options.JQUIProgressBarOptions;
-import com.jwebmp.plugins.jqueryui.resizable.options.JQUIResizableOptions;
-import com.jwebmp.plugins.jqueryui.selectable.options.JQUISelectableOptions;
-import com.jwebmp.plugins.jqueryui.selectmenu.options.JQUISelectMenuOptions;
-import com.jwebmp.plugins.jqueryui.slider.options.JQUISliderOptions;
-import com.jwebmp.plugins.jqueryui.sortable.options.JQUISortableOptions;
-import com.jwebmp.plugins.jqueryui.spinner.options.JQUISpinnerOptions;
-import com.jwebmp.plugins.jqueryui.tabs.options.JQUITabOptions;
-import com.jwebmp.plugins.jqueryui.tooltips.options.JQUITooltipOptions;
+import com.jwebmp.core.base.html.Div;
+import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
+import com.jwebmp.examples.demos.homepage.components.DemoScreen;
+import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
+import com.jwebmp.examples.demos.homepage.components.general.PackageComponentsBrowser;
+import com.jwebmp.plugins.bootstrap.navs.BSComponentNavsOptions;
+import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
+import com.jwebmp.plugins.jqueryui.JQUIPageConfigurator;
+import com.jwebmp.plugins.jqueryui.accordion.JQUIAccordion;
+import com.jwebmp.plugins.jqueryui.autocomplete.JQUIAutoComplete;
+import com.jwebmp.plugins.jqueryui.button.JQUIButton;
+import com.jwebmp.plugins.jqueryui.checkboxradio.JQUICheckBox;
+import com.jwebmp.plugins.jqueryui.checkboxradio.JQUIRadioButton;
+import com.jwebmp.plugins.jqueryui.controlgroup.JQUIControlGroup;
+import com.jwebmp.plugins.jqueryui.datepicker.JQUIDatePicker;
+import com.jwebmp.plugins.jqueryui.dialog.JQUIDialog;
+import com.jwebmp.plugins.jqueryui.draggable.JQUIDraggable;
+import com.jwebmp.plugins.jqueryui.droppable.JQUIDroppable;
+import com.jwebmp.plugins.jqueryui.menu.JQUIMenu;
+import com.jwebmp.plugins.jqueryui.progressbar.JQUIProgressBar;
+import com.jwebmp.plugins.jqueryui.resizable.JQUIResizable;
+import com.jwebmp.plugins.jqueryui.selectable.JQUISelectable;
+import com.jwebmp.plugins.jqueryui.selectmenu.JQUISelectMenu;
+import com.jwebmp.plugins.jqueryui.slider.JQUISlider;
+import com.jwebmp.plugins.jqueryui.sortable.JQUISortable;
+import com.jwebmp.plugins.jqueryui.spinner.JQUISpinner;
+import com.jwebmp.plugins.jqueryui.tabs.JQUITabs;
+import com.jwebmp.plugins.jqueryui.tooltips.JQUIToolTipFeature;
+import org.apache.commons.lang3.tuple.Pair;
+
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 
 public class JQueryUIDemoScreen
-		extends PluginDemoScreen
+		extends DemoScreen
 {
 	public JQueryUIDemoScreen()
 	{
-		super("JQuery UI", "Web Frameworks", "jQuery UI");
+		Div componentsDiv = new Div<>().addClass(Col_12);
+		componentsDiv.addClass(BSComponentNavsOptions.Justify_Content_Center);
+		PackageComponentsBrowser browser =
+				new PackageComponentsBrowser("JQuery UI",
+				                             Pair.of("All", JQUIPageConfigurator.class),
+				                             Pair.of("Draggable", JQUIDraggable.class),
+				                             Pair.of("Droppable", JQUIDroppable.class),
+				                             Pair.of("Resizable", JQUIResizable.class),
+				                             Pair.of("Selectable", JQUISelectable.class),
+				                             Pair.of("Sortable", JQUISortable.class),
+				                             Pair.of("Accordion", JQUIAccordion.class),
+				                             Pair.of("Auto Complete", JQUIAutoComplete.class),
+				                             Pair.of("Button", JQUIButton.class),
+				                             Pair.of("Checkbox", JQUICheckBox.class),
+				                             Pair.of("Radio", JQUIRadioButton.class),
+				                             Pair.of("Control Group", JQUIControlGroup.class),
+				                             Pair.of("Date Picker", JQUIDatePicker.class),
+				                             Pair.of("Dialog", JQUIDialog.class),
+				                             Pair.of("Menu", JQUIMenu.class),
+				                             Pair.of("Progress Bar", JQUIProgressBar.class),
+				                             Pair.of("Select Menu", JQUISelectMenu.class),
+				                             Pair.of("Slider", JQUISlider.class),
+				                             Pair.of("Spinner", JQUISpinner.class),
+				                             Pair.of("Tabs", JQUITabs.class),
+				                             Pair.of("Tooltips", JQUIToolTipFeature.class)
+				);
+		//componentsDiv.add(browser);
+		add(browser);
 
-		addFeatureTile("Draggable", "Allow elements to be moved using the mouse", JQUIDraggableOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "draggable.txt"));
-		addFeatureTile("Droppable", "Enable any DOM element to be droppable, a target for draggable elements.", JQUIDroppableOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "droppable.txt"));
-		addFeatureTile("Resizable", "Enable any DOM element to be resizable.",
-		               JQUIResizableOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "resizable.txt"));
-		addFeatureTile("Selectable", "Enable a DOM element (or group of elements) to be selectable",
-		               JQUISelectableOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "selectable.txt"));
-		addFeatureTile("Sortable",
-		               "Enable a group of DOM elements to be sortable.",
-		               JQUISortableOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "sortable.txt"));
+		add(new DefaultPackageAPI("com.jwebmp.plugins.jqueryui", JQUIPageConfigurator.class,
+		                          "JQuery UI", true, true));
+		add(buildGoToSource(JQUIPageConfigurator.class, DefaultPackageAPI.class, DefaultReadMore.class));
 
-		addComponentTile("Accordion", "Displays collapsible content panels for presenting information in a limited amount of space.", JQUIAccordionOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "accordion.txt"));
-		addComponentTile("Auto Complete", "Enables users to quickly find and select from a pre-populated list of values as they type, leveraging searching and filtering.",
-		                 JQUIAutoCompleteOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "autocomplete.txt"));
-		addComponentTile("Button", "Enhances standard form elements like buttons, inputs and anchors to themeable buttons with appropriate hover and active styles",
-		                 JQUIButtonOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "button.txt"));
-
-		addComponentTile("CheckboxRadio", "Enhances standard checkbox and radio input element to themeable buttons with appropriate hover and active styles.",
-		                 JQUICheckBoxRadioOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "checkboxradio.txt"));
-
-		addComponentTile("Control Group", "A controlgroup featuring various form controls.",
-		                 JQUIControlGroupOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "controlgroup.txt"));
-
-		addComponentTile("Date Picker", "Select a date from a popup or inline calendar.",
-		                 JQUIDatePickerOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "datepicker.txt"));
-
-		addComponentTile("Dialog", "Open content in an interactive overlay.",
-		                 JQUIDialogOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "dialog.txt"));
-
-		addComponentTile("Menu", "Themeable menu with mouse and keyboard interactions for navigation.",
-		                 JQUIMenuOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "menu.txt"));
-
-		addComponentTile("Progress Bar", "Display status of a determinate or indeterminate process.",
-		                 JQUIProgressBarOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "progressbar.txt"));
-
-		addComponentTile("Select Menu", "Duplicates and extends the functionality of a native HTML select element to overcome the limitations of the native control.",
-		                 JQUISelectMenuOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "selectmenu.txt"));
-
-		addComponentTile("Slider", "Drag a handle to select a numeric value.",
-		                 JQUISliderOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "slider.txt"));
-
-		addComponentTile("Spinner", "Enhance a text input for entering numeric values, with up/down buttons and arrow key handling",
-		                 JQUISpinnerOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "spinner.txt"));
-
-		addComponentTile("Tabs", "A single content area with multiple panels, each associated with a header in a list.",
-		                 JQUITabOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "tabs.txt"));
-
-		addComponentTile("Tooltips", "Customizable, themeable tooltips, replacing native tooltips.",
-		                 JQUITooltipOptions.class)
-				.addEvent(new SwopCodeBlockEvent(JQueryUIDemoScreen.class, "tooltips.txt"));
-
-		addOptionsBrowser(new JQUIAccordionOptions());
-
-		getAdditionalsRight().add(getCodeBlockJava(JQueryUIDemoScreen.class, "accordion.txt"));
-
+		Div sourceDiv = new Div<>().addClass(Col_12, BSContainerOptions.Row);
+		DefaultReadMore more = new DefaultReadMore(sourceDiv, "View More Info");
+		add(more);
+		more.add(getCodeBlockJava(getClass(), "accordion.txt"));
 	}
 }

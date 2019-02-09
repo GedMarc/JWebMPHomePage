@@ -6,23 +6,20 @@ import com.jwebmp.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
-import io.github.classgraph.ClassGraph;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.FieldInfo;
-import io.github.classgraph.ScanResult;
 
 import javax.validation.constraints.NotNull;
 import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Date;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class OptionsBrowser
 		extends JSTree<OptionsBrowser>
 {
-	private static final Map<String, String> cachedDisplays = new ConcurrentHashMap<>();
+	private static final String[] ignoredFields = new String[]{"log", "referenceId", "renderEmptyBraces"};
 	private final Object optionsObject;
 
 	public OptionsBrowser(@NotNull JavaScriptPart<?> optionsObject)
@@ -30,11 +27,7 @@ public class OptionsBrowser
 		this.optionsObject = optionsObject;
 		setID("optionsBrowser");
 		setTheme(new JSTreeDefaultDarkTheme());
-		if (!cachedDisplays.containsKey(optionsObject.getClass()
-		                                             .getCanonicalName()))
-		{
-			constructTree();
-		}
+		constructTree();
 	}
 
 	public OptionsBrowser(@NotNull JavaScriptPart<?> optionsObject, String id)
@@ -42,11 +35,7 @@ public class OptionsBrowser
 		this.optionsObject = optionsObject;
 		setID(id);
 		setTheme(new JSTreeDefaultDarkTheme());
-		if (!cachedDisplays.containsKey(optionsObject.getClass()
-		                                             .getCanonicalName()))
-		{
-			constructTree();
-		}
+		constructTree();
 	}
 
 	public OptionsBrowser(@NotNull ComponentHierarchyBase optionsObject)
@@ -74,48 +63,27 @@ public class OptionsBrowser
 		buildPart(rootItem, optionsObject);
 	}
 
-	private void buildPart(JSTreeListItem<?> rootItem, Class<? extends Enum> part)
-	{
-		int count = 0;
-		for (Enum enumConstant : part.getEnumConstants())
-		{
-			JSTreeListItem<?> treeItem = new JSTreeListItem<>().setText(enumConstant.name());
-			treeItem.getOptions()
-			        .setIcon("fal fa-sort-numeric-down");
-			count++;
-			if (count > 5)
-			{
-				JSTreeListItem<?> countItem = new JSTreeListItem<>().setText(" and " + (part.getEnumConstants().length - 5) + " more");
-				countItem.getOptions()
-				         .setIcon("fal fa-ellipsis-h-alt");
-				rootItem.add(countItem);
-				break;
-			}
-			rootItem.add(treeItem);
-		}
-	}
-
 	private void buildPart(JSTreeListItem<?> rootItem, Object part)
 	{
-		String packageName = part.getClass()
-		                         .getCanonicalName()
-		                         .substring(0, part.getClass()
-		                                           .getCanonicalName()
-		                                           .lastIndexOf('.'));
-		try (
-				ScanResult sr = new ClassGraph().enableFieldInfo()
-				                                .enableAllInfo()
-				                                .whitelistPackages(packageName)
-				                                .scan()
-		)
+		ClassInfo info = GuiceContext.instance()
+		                             .getScanResult()
+		                             .getClassInfo(part.getClass()
+		                                               .getCanonicalName());
+		if (info == null)
 		{
-			ClassInfo info = sr.getClassInfo(part.getClass()
-			                                     .getCanonicalName());
-
+			System.out.println("hmmm");
+		}
+		else
+		{
 			for (FieldInfo fieldInfo : info.getFieldInfo())
 			{
 				JSTreeListItem<?> treeItem = new JSTreeListItem<>();
 				Field field = fieldInfo.loadClassAndGetField();
+				if (Arrays.stream(ignoredFields)
+				          .anyMatch(field.getName()::equals))
+				{
+					continue;
+				}
 				Class clazz = field.getType();
 				String paramaters = "";
 				paramaters += "" + fieldInfo.getTypeSignatureOrTypeDescriptor();
@@ -187,26 +155,24 @@ public class OptionsBrowser
 		}
 	}
 
-
-	@Override
-	public String toString(Integer tabCount)
+	private void buildPart(JSTreeListItem<?> rootItem, Class<? extends Enum> part)
 	{
-		if (this.optionsObject == null)
+		int count = 0;
+		for (Enum enumConstant : part.getEnumConstants())
 		{
-			return super.toString();
-		}
-		if (cachedDisplays.containsKey(optionsObject.getClass()
-		                                            .getCanonicalName()))
-		{
-			return cachedDisplays.get(optionsObject.getClass()
-			                                       .getCanonicalName());
-		}
-		else
-		{
-			cachedDisplays.put(optionsObject.getClass()
-			                                .getCanonicalName(), super.toString(0));
-			return cachedDisplays.get(optionsObject.getClass()
-			                                       .getCanonicalName());
+			JSTreeListItem<?> treeItem = new JSTreeListItem<>().setText(enumConstant.name());
+			treeItem.getOptions()
+			        .setIcon("fal fa-sort-numeric-down");
+			count++;
+			if (count > 5)
+			{
+				JSTreeListItem<?> countItem = new JSTreeListItem<>().setText(" and " + (part.getEnumConstants().length - 5) + " more");
+				countItem.getOptions()
+				         .setIcon("fal fa-ellipsis-h-alt");
+				rootItem.add(countItem);
+				break;
+			}
+			rootItem.add(treeItem);
 		}
 	}
 }

@@ -103,7 +103,7 @@ public class EventScreen
 			pageContent.add("Navigate through the objects in the packages below, to view the object to the right." +
 			                "<br/>This tree is using a JSTreeOnSelectEvent and rendering the ObjectBrowser for the id of the selected node.");
 
-			pageContent.add(new DefaultPackageAPI("com.jwebmp.core.events", ActivateAdapter.class, null));
+			pageContent.add(new DefaultPackageAPI("com.jwebmp.core.events", ActivateAdapter.class, null, false, true));
 
 			Div dataContent = new Div();
 			dataContent.add(new H3<>("Moving Data between Client and Server"));
