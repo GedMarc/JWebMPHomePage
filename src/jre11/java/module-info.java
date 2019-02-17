@@ -3,7 +3,10 @@ import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
 import com.jwebmp.examples.demos.homepage.HomePageModuleScanner;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBModule;
 import com.jwebmp.examples.demos.homepage.display.DisplayPage;
-import com.jwebmp.guicedinjection.interfaces.*;
+import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
+import com.jwebmp.guicedinjection.interfaces.IGuiceModule;
+import com.jwebmp.guicedinjection.interfaces.IGuiceScanJarInclusions;
+import com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleInclusions;
 
 //This is a closed module - it requires an opens clause
 //--add-opens=java.base/java.lang=javassist,com.google.guice
@@ -155,7 +158,6 @@ open module com.jwebmp.examples.demos.homepage {
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;
 	provides IGuiceModule with HomePageDBModule;
-	provides IGuicePostStartup with HomePageDBModule;
 	provides IGuiceScanModuleInclusions with HomePageModuleScanner;
 	provides IGuiceScanJarInclusions with HomePageModuleScanner;
 
