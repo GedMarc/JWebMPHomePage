@@ -62,7 +62,7 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 			}
 
 			buildTitleRow();
-			GuiceContext.getInstance(AjaxResponse.class)
+			GuiceContext.get(AjaxResponse.class)
 			            .addComponent(d);
 		}
 		super.init();
@@ -73,7 +73,7 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 
 	protected Div buildTitleRow()
 	{
-		Page page = GuiceContext.getInstance(Page.class);
+		Page page = GuiceContext.get(Page.class);
 		Div responsive = new Div<>().setID("innerNorth");
 		if (!page.isMobileOrSmartTablet())
 		{

@@ -23,6 +23,6 @@ public class GoToLoginEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		response.addComponent(GuiceContext.getInstance(LoginPart.class));
+		response.addComponent(GuiceContext.get(LoginPart.class));
 	}
 }

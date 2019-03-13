@@ -91,7 +91,7 @@ public class HomePage
 
 		left.add(buildSnap2());
 
-		if (!GuiceContext.getInstance(SessionProperties.class)
+		if (!GuiceContext.get(SessionProperties.class)
 		                 .isLoggedIn())
 		{
 			left.add(new LoginPart());

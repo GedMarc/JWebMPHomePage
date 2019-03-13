@@ -84,6 +84,7 @@ import com.jwebmp.websockets.WebSocketsConfiguration;
 import io.github.classgraph.ClassGraph;
 
 import javax.cache.CacheManager;
+import javax.persistence.Entity;
 import java.util.logging.Level;
 
 public class HomePageStartup

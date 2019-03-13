@@ -82,7 +82,7 @@ public class TopBar
 		expandButton.addFeature(new MenuIconSwapOnClick(expandButton, FontAwesomeIcons.expand_arrows_alt, FontAwesomeIcons.compress_alt));
 		easyButtonList.add(expandButton);
 
-		Page<?> page = GuiceContext.getInstance(Page.class);
+		Page<?> page = GuiceContext.get(Page.class);
 
 		ListItem donateButton = buildTopMenuItem(false, "donateButton", "fal fa-hand-holding-usd fa-2x fa-fw noti-icon", "45px", "https://paypal.me/MarcMagon", "_blank").addClass(
 				"strong");
@@ -106,12 +106,12 @@ public class TopBar
 
 		if (page.isMobileOrSmartTablet())
 		{
-			leftMenuItem.addFeature(GuiceContext.getInstance(OuterLayout.class)
+			leftMenuItem.addFeature(GuiceContext.get(OuterLayout.class)
 			                                    .createAddSlideToggleButton(JQLayoutArea.West, leftMenuItem));
 		}
 		else
 		{
-			leftMenuItem.addFeature(GuiceContext.getInstance(OuterLayout.class)
+			leftMenuItem.addFeature(GuiceContext.get(OuterLayout.class)
 			                                    .createToggleButton(leftMenuItem, JQLayoutArea.West));
 		}
 
@@ -175,7 +175,7 @@ public class TopBar
 		                                      .add(new Italic<>().addClass("fal fa-user noti-icon")
 		                                                         .addStyle("width:45px;"));
 
-		SessionProperties sessionProperties = GuiceContext.getInstance(SessionProperties.class);
+		SessionProperties sessionProperties = GuiceContext.get(SessionProperties.class);
 
 		DivSimple<?> profileDropDownContent = new DivSimple<>();
 		profileDropDownContent.addClass("dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg");

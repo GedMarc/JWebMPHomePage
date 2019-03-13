@@ -27,6 +27,6 @@ public class GoToPrivacyScreenEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		response.addComponent(GuiceContext.getInstance(PrivacyScreen.class));
+		response.addComponent(GuiceContext.get(PrivacyScreen.class));
 	}
 }

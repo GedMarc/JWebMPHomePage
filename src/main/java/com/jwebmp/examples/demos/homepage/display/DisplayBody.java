@@ -74,7 +74,7 @@ public class DisplayBody
 		addClass(BSColumnOptions.H_100);
 		addClass(BSColumnOptions.W_100);
 
-		add(GuiceContext.getInstance(OuterLayout.class));
+		add(GuiceContext.get(OuterLayout.class));
 
 		addJavaScriptReference(new JavascriptReference("e", 1.0, "js/modernizr.min.js").setPriority(RequirementsPriority.Top_Shelf));
 

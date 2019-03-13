@@ -46,9 +46,9 @@ public class Visits
 	{
 		Visits visits = new Visits();
 		visits.setVisitDate(LocalDateTime.now());
-		visits.setBrowserData(GuiceContext.getInstance(ObjectMapper.class)
+		visits.setBrowserData(GuiceContext.get(ObjectMapper.class)
 		                                  .writeValueAsString(page.getBrowser()));
-		HttpServletRequest req = GuiceContext.getInstance(HttpServletRequest.class);
+		HttpServletRequest req = GuiceContext.get(HttpServletRequest.class);
 		visits.setVisitUrl(SessionHelper.getServletUrl());
 		visits.setVisitorID(visitors);
 		StringBuilder sb = new StringBuilder();

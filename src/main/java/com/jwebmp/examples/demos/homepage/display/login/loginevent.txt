@@ -32,7 +32,7 @@ public class LoginEvent
 					throw new UnsupportedOperationException("Looks like you're still waiting for a confirmation email.<br/>Please check your Spam or Junk folder");
 				}
 
-				SessionProperties properties = GuiceContext.getInstance(SessionProperties.class);
+				SessionProperties properties = GuiceContext.get(SessionProperties.class);
 				properties.setSubscriber(sub.get());
 				properties.setLoggedIn(true);
 
@@ -47,7 +47,7 @@ public class LoginEvent
 				Visitors v = properties.getVisitor();
 
 				//Do all the DB funky stuff in the backend
-				LoginAsync la = new LoginAsync(newSubs, GuiceContext.getInstance(SessionProperties.class), sub.get(), v);
+				LoginAsync la = new LoginAsync(newSubs, GuiceContext.get(SessionProperties.class), sub.get(), v);
 				Executors.defaultThreadFactory()
 				         .newThread(la)
 				         .start();
@@ -58,9 +58,9 @@ public class LoginEvent
 				                                               .setReactionType(ReactionType.DialogDisplay));
 
 
-				response.addComponent(GuiceContext.getInstance(HomePage.class));
-				response.addComponent(GuiceContext.getInstance(TopBar.class));
-				response.addComponent(GuiceContext.getInstance(West.class));
+				response.addComponent(GuiceContext.get(HomePage.class));
+				response.addComponent(GuiceContext.get(TopBar.class));
+				response.addComponent(GuiceContext.get(West.class));
 			}
 		}
 		catch (UnsupportedOperationException e)

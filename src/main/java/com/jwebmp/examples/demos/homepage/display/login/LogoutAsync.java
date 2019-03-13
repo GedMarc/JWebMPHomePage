@@ -57,7 +57,7 @@ public class LogoutAsync
 
 		try
 		{
-			ua.setJson(GuiceContext.getInstance(ObjectMapper.class)
+			ua.setJson(GuiceContext.get(ObjectMapper.class)
 			                       .writeValueAsString(visitors));
 		}
 		catch (JsonProcessingException e)

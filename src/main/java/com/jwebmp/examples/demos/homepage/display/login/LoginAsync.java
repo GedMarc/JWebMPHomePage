@@ -65,7 +65,7 @@ public class LoginAsync
 
 		try
 		{
-			ua.setJson(GuiceContext.getInstance(ObjectMapper.class)
+			ua.setJson(GuiceContext.get(ObjectMapper.class)
 			                       .writeValueAsString(visitors));
 		}
 		catch (JsonProcessingException e)

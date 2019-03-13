@@ -44,7 +44,7 @@ public class SubscriberPersistAsync
 		linkUrl += "?p=ConfirmEmailAddressScreen&key=" + subscribers.getConfirmationKey();
 		String emailTemplate = confirmEmailTemplate.toString()
 		                                           .replaceAll("%%LINKADDRESS%%", linkUrl);
-		GuiceContext.getInstance(MailService.class)
+		GuiceContext.get(MailService.class)
 		            .sendEmail("no-reply@jwebmp.com", "JWebMP Subscription Confirmation Email", emailTemplate, subscribers.getEmailAddress());
 	}
 

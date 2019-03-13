@@ -50,7 +50,7 @@ public class DemoScreen
 		row.add(leftSide);
 		row.add(rightSide);
 
-		DivSimple workspace = GuiceContext.getInstance(SessionProperties.class)
+		DivSimple workspace = GuiceContext.get(SessionProperties.class)
 		                                  .getWorkspace();
 		workspace.getChildren()
 		         .clear();

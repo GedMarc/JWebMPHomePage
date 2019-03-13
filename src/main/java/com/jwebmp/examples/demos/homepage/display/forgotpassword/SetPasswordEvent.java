@@ -38,7 +38,7 @@ public class SetPasswordEvent
 		Subscribers newSubs = call.getVariable("subscriber")
 		                          .as(Subscribers.class);
 
-		Subscribers subscriber = GuiceContext.getInstance(SessionProperties.class)
+		Subscribers subscriber = GuiceContext.get(SessionProperties.class)
 		                                     .getSubscriber();
 		try
 		{
@@ -49,9 +49,9 @@ public class SetPasswordEvent
 			log.log(Level.SEVERE, "How did this happen? Unknown session subscriber on set password", e);
 		}
 
-		response.addComponent(GuiceContext.getInstance(HomePage.class));
-		response.addComponent(GuiceContext.getInstance(TopBar.class));
-		response.addComponent(GuiceContext.getInstance(West.class));
+		response.addComponent(GuiceContext.get(HomePage.class));
+		response.addComponent(GuiceContext.get(TopBar.class));
+		response.addComponent(GuiceContext.get(West.class));
 
 	}
 }

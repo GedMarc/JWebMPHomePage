@@ -14,7 +14,7 @@ public class VisitsBuilder
 	@Override
 	public EntityManager getEntityManager()
 	{
-		return GuiceContext.getInstance(Key.get(EntityManager.class, HomePageDB.class));
+		return GuiceContext.get(Key.get(EntityManager.class, HomePageDB.class));
 	}
 
 	@Override

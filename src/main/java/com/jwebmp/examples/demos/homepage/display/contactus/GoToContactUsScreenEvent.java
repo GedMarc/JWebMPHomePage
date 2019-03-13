@@ -24,6 +24,6 @@ public class GoToContactUsScreenEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		//response.addComponent(GuiceContext.getInstance(ContactUsScreen.class));
+		//response.addComponent(GuiceContext.get(ContactUsScreen.class));
 	}
 }

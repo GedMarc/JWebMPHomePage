@@ -70,8 +70,8 @@ public class DisplayPage
 				                                                    false //Uppercase
 		                                                                     ));
 
-		response.addComponent(GuiceContext.getInstance(West.class));
-		response.addComponent(GuiceContext.getInstance(TopBar.class));
+		response.addComponent(GuiceContext.get(West.class));
+		response.addComponent(GuiceContext.get(TopBar.class));
 
 		if (isMobileOrSmartTablet())
 		{
@@ -89,7 +89,7 @@ public class DisplayPage
 		if (!call.getParameters()
 		         .containsKey("p"))
 		{
-			response.addComponent(GuiceContext.getInstance(HomePage.class));
+			response.addComponent(GuiceContext.get(HomePage.class));
 		}
 		else
 		{
@@ -149,7 +149,7 @@ public class DisplayPage
 	@SuppressWarnings("unchecked")
 	private void getLocalStorageKey()
 	{
-		SessionStorageProperties sp = getInstance(SessionStorageProperties.class);
+		SessionStorageProperties sp = get(SessionStorageProperties.class);
 		Map<String, String> localStorage = sp.getLocalStorage();
 		if (!localStorage.containsKey(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY))
 		{
@@ -159,13 +159,13 @@ public class DisplayPage
 			String storageKey = Hashing.sha512()
 			                           .hashString(uuid + clientIP, StaticStrings.UTF8_CHARSET)
 			                           .toString();
-			getInstance(AjaxResponse.class).getLocalStorage()
+			get(AjaxResponse.class).getLocalStorage()
 			                               .put(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY, storageKey);
 
 			localStorage.put(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY, uuid);
 		}
 		String guid = localStorage.get(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY);
-		GuiceContext.getInstance(SessionProperties.class)
+		GuiceContext.get(SessionProperties.class)
 		            .setGuid(guid);
 	}
 
@@ -188,8 +188,8 @@ public class DisplayPage
 				try
 				{
 					DisplayScreens comp = DisplayScreens.valueOf(page);
-					DisplayScreen<?> screen = GuiceContext.getInstance(comp.getScreen());
-					getInstance(AjaxResponse.class).addComponent(screen);
+					DisplayScreen<?> screen = GuiceContext.get(comp.getScreen());
+					get(AjaxResponse.class).addComponent(screen);
 				}
 				catch (Exception e)
 				{
@@ -198,8 +198,8 @@ public class DisplayPage
 					try
 					{
 						ds = (Class<? extends DisplayScreen>) Class.forName(page);
-						DisplayScreen<?> screen = GuiceContext.getInstance(ds);
-						getInstance(AjaxResponse.class).addComponent(screen);
+						DisplayScreen<?> screen = GuiceContext.get(ds);
+						get(AjaxResponse.class).addComponent(screen);
 					}
 					catch (ClassNotFoundException e1)
 					{
@@ -268,7 +268,7 @@ public class DisplayPage
 			}
 			DisplayPage.log.info("Created a new visitor [" + newVisitor + "]");
 			//New user Text
-			AjaxResponse<?> response = getInstance(AjaxResponse.class);
+			AjaxResponse<?> response = get(AjaxResponse.class);
 			ToastrFeature toastr = new ToastrFeature(ToastrType.Warning, "First Use",
 			                                         "We think this is the first time you've visited this site on this device and browser combination\n" +
 			                                         "\n" +

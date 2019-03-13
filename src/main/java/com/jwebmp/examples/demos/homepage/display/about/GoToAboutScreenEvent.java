@@ -27,6 +27,6 @@ public class GoToAboutScreenEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		response.addComponent(GuiceContext.getInstance(AboutJWebMPScreen.class));
+		response.addComponent(GuiceContext.get(AboutJWebMPScreen.class));
 	}
 }

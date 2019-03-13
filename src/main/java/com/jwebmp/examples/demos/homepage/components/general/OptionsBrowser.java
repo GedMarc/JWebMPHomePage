@@ -136,7 +136,7 @@ public class OptionsBrowser
 					        .getOptions()
 					        .setIcon("fal fa-folder")
 					        .setOpened(false);
-					buildPart(treeItem, GuiceContext.getInstance(clazz));
+					buildPart(treeItem, GuiceContext.get(clazz));
 				}
 				else if ("serialVersionUID".equalsIgnoreCase(field.getName()))
 				{

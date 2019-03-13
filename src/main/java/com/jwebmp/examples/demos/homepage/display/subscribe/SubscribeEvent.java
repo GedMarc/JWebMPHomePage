@@ -38,7 +38,7 @@ public class SubscribeEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		Map<String, String> localStorage = GuiceContext.getInstance(Key.get(Map.class, Names.named("LocalStorage")));
+		Map<String, String> localStorage = GuiceContext.get(Key.get(Map.class, Names.named("LocalStorage")));
 		if (localStorage.containsKey("jwamsmk"))
 		{
 			try

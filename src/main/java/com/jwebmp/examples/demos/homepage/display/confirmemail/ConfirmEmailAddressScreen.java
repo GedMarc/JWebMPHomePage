@@ -76,7 +76,7 @@ public class ConfirmEmailAddressScreen
 			}
 			else
 			{
-				AjaxCall call = GuiceContext.getInstance(AjaxCall.class);
+				AjaxCall call = GuiceContext.get(AjaxCall.class);
 				if (!call.getParameters()
 				         .isEmpty())
 				{
@@ -93,13 +93,13 @@ public class ConfirmEmailAddressScreen
 			block.add(new H3<>("Your email has been confirmed<br/><br/>Hopefully you've been logged in :)<br/>"));
 			block.add(HorizontalRule.getInstance());
 
-			AjaxResponse response = GuiceContext.getInstance(AjaxResponse.class);
+			AjaxResponse response = GuiceContext.get(AjaxResponse.class);
 			response.getFeatures()
 			        .add(new SoftHistoryChangeFeature().setDocumentTitle("JWebMP")
 			                                           .setQueryParameters("p=HomePageScreen"));
 
-			response.addComponent(GuiceContext.getInstance(TopBar.class));
-			response.addComponent(GuiceContext.getInstance(West.class));
+			response.addComponent(GuiceContext.get(TopBar.class));
+			response.addComponent(GuiceContext.get(West.class));
 		}
 	}
 
@@ -118,7 +118,7 @@ public class ConfirmEmailAddressScreen
 			      .plusHours(2L)
 			      .isBefore(LocalDateTime.now()))
 			{
-				SessionProperties properties = GuiceContext.getInstance(SessionProperties.class);
+				SessionProperties properties = GuiceContext.get(SessionProperties.class);
 
 				s.setConfirmed(true);
 				s.setWarehouseLastUpdatedTimestamp(LocalDateTime.now());

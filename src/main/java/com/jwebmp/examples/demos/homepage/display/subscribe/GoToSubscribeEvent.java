@@ -23,6 +23,6 @@ public class GoToSubscribeEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		response.addComponent(GuiceContext.getInstance(SubscribeScreen.class));
+		response.addComponent(GuiceContext.get(SubscribeScreen.class));
 	}
 }

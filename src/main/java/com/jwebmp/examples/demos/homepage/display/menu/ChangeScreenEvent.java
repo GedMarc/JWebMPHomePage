@@ -52,10 +52,10 @@ public class ChangeScreenEvent
 		String screen = call.getEventId();
 		try
 		{
-			Page page = GuiceContext.getInstance(Page.class);
+			Page page = GuiceContext.get(Page.class);
 			if (page.isMobileOrSmartTablet())
 			{
-				OuterLayout layout = GuiceContext.getInstance(OuterLayout.class);
+				OuterLayout layout = GuiceContext.get(OuterLayout.class);
 				JQLayoutSlideCloseLayoutDivFeature westClose = layout.createSlideCloseFeature(JQLayoutArea.West);
 				JQLayoutSlideCloseLayoutDivFeature eastClose = layout.createSlideCloseFeature(JQLayoutArea.East);
 				response.getFeatures()
@@ -65,7 +65,7 @@ public class ChangeScreenEvent
 			}
 			DisplayScreens screens = DisplayScreens.valueOf(screen);
 			setQueryParameters("p=" + screens.name());
-			DisplayScreen<?> screenCreated = null;// GuiceContext.getInstance(screens.getScreen());
+			DisplayScreen<?> screenCreated = null;// GuiceContext.get(screens.getScreen());
 			try
 			{
 				screenCreated = screens.getScreen()
@@ -102,7 +102,7 @@ public class ChangeScreenEvent
 				Class clazz = Class.forName(id);
 				if (DisplayScreen.class.isAssignableFrom(clazz))
 				{
-					DisplayScreen screenCreated = (DisplayScreen) GuiceContext.getInstance(clazz);
+					DisplayScreen screenCreated = (DisplayScreen) GuiceContext.get(clazz);
 					response.addComponent(screenCreated);
 				}
 				setQueryParameters("p=" + id);

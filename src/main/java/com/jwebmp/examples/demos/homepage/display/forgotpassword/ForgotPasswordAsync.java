@@ -60,7 +60,7 @@ public class ForgotPasswordAsync
 		ua.setDescription("Forgot Password was requested for [" + newSubs.getEmailAddress() + "]");
 		try
 		{
-			ObjectMapper om = GuiceContext.getInstance(ObjectMapper.class);
+			ObjectMapper om = GuiceContext.get(ObjectMapper.class);
 			om.getSerializationConfig()
 			  .without(SerializationFeature.FAIL_ON_EMPTY_BEANS);
 			ua.setJson(om.writeValueAsString(subs.getVisitorID()));
@@ -81,7 +81,7 @@ public class ForgotPasswordAsync
 
 		String emailTemplate = forgotpasswordtemplate.toString()
 		                                             .replaceAll("%%LINKADDRESS%%", linkUrl);
-		GuiceContext.getInstance(MailService.class)
+		GuiceContext.get(MailService.class)
 		            .sendEmail("no-reply@jwebmp.com", "Forgot Password Email", emailTemplate, subs.getEmailAddress());
 	}
 }

@@ -23,6 +23,6 @@ public class GoHomeEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		response.addComponent(GuiceContext.getInstance(HomePage.class));
+		response.addComponent(GuiceContext.get(HomePage.class));
 	}
 }

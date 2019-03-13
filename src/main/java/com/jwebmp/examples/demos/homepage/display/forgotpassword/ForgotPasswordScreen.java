@@ -81,7 +81,7 @@ public class ForgotPasswordScreen
 			}
 			else
 			{
-				AjaxCall call = GuiceContext.getInstance(AjaxCall.class);
+				AjaxCall call = GuiceContext.get(AjaxCall.class);
 				if (!call.getParameters()
 				         .isEmpty())
 				{
@@ -94,7 +94,7 @@ public class ForgotPasswordScreen
 					}
 				}
 			}
-			AjaxResponse response = GuiceContext.getInstance(AjaxResponse.class);
+			AjaxResponse response = GuiceContext.get(AjaxResponse.class);
 			response.getFeatures()
 			        .add(new SoftHistoryChangeFeature().setDocumentTitle("JWebMP")
 			                                           .setQueryParameters("p=HomePageScreen"));
@@ -115,7 +115,7 @@ public class ForgotPasswordScreen
 			      .plusHours(2L)
 			      .isBefore(LocalDateTime.now()))
 			{
-				SessionProperties properties = GuiceContext.getInstance(SessionProperties.class);
+				SessionProperties properties = GuiceContext.get(SessionProperties.class);
 
 				s.setConfirmed(true);
 				s.setWarehouseLastUpdatedTimestamp(LocalDateTime.now());
@@ -154,7 +154,7 @@ public class ForgotPasswordScreen
 
 				block.add(HorizontalRule.getInstance());
 
-				OuterLayout layout = GuiceContext.getInstance(OuterLayout.class);
+				OuterLayout layout = GuiceContext.get(OuterLayout.class);
 				block.addFeature(new JQLayoutCloseLayoutDivFeature(layout.getWest()));
 			}
 			else

@@ -156,9 +156,9 @@ public class Subscribers
 			{
 				throw new MissingComponentException("Invalid Login Details");
 			}
-			GuiceContext.getInstance(SessionProperties.class)
+			GuiceContext.get(SessionProperties.class)
 			            .setSubscriber(s);
-			GuiceContext.getInstance(SessionProperties.class)
+			GuiceContext.get(SessionProperties.class)
 			            .setVisitor(UUID.fromString(s.getVisitorID()
 			                                         .getLocalStorageKey()));
 			return subs;
@@ -219,7 +219,7 @@ public class Subscribers
 	public static Optional<Subscribers> findByIDNumber(String idNumber)
 	{
 		Optional option = Optional.empty();
-		EntityManager em = GuiceContext.getInstance(EntityManager.class);
+		EntityManager em = GuiceContext.get(EntityManager.class);
 		List<String> salts = em.createNativeQuery("select distinct RandomSalt from Subscribers")
 		                       .getResultList();
 		for (String saltString : salts)

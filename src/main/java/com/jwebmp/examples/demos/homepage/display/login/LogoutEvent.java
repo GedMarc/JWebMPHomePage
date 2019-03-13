@@ -31,7 +31,7 @@ public class LogoutEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		SessionProperties sp = GuiceContext.getInstance(SessionProperties.class);
+		SessionProperties sp = GuiceContext.get(SessionProperties.class);
 
 		LogoutAsync la = new LogoutAsync(sp.getSubscriber(), sp, GuiceContext.get(VisitorsService.class)
 		                                                                     .findByUUID(sp.getVisitor())
@@ -44,9 +44,9 @@ public class LogoutEvent
 		sp.setSubscriber(null);
 		sp.setVisitor(null);
 
-		response.addComponent(GuiceContext.getInstance(TopBar.class));
-		response.addComponent(GuiceContext.getInstance(West.class));
-		response.addComponent(GuiceContext.getInstance(HomePage.class));
+		response.addComponent(GuiceContext.get(TopBar.class));
+		response.addComponent(GuiceContext.get(West.class));
+		response.addComponent(GuiceContext.get(HomePage.class));
 
 		response.addReaction(new AjaxResponseReaction().setReactionTitle("Logged Out")
 		                                               .setReactionData("You have been successfully logged out.")

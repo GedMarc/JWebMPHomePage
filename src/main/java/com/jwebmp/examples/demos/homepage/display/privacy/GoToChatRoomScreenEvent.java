@@ -27,6 +27,6 @@ public class GoToChatRoomScreenEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		response.addComponent(GuiceContext.getInstance(ChatRoomPrivacyScreen.class));
+		response.addComponent(GuiceContext.get(ChatRoomPrivacyScreen.class));
 	}
 }

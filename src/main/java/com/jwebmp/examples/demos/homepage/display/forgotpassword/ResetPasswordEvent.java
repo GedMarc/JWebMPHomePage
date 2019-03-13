@@ -59,7 +59,7 @@ public class ResetPasswordEvent
 		else
 		{
 
-			Optional<Subscribers> subs = Optional.ofNullable(GuiceContext.getInstance(SessionProperties.class)
+			Optional<Subscribers> subs = Optional.ofNullable(GuiceContext.get(SessionProperties.class)
 			                                                             .getSubscriber());
 			try
 			{
@@ -69,10 +69,10 @@ public class ResetPasswordEvent
 					ua.setActivity("ResetPassword");
 					ua.setActivityGroup(UserActivityGroup.LoginRequest);
 					ua.setDescription("A password reset was performed for [" + newSubs.getEmailAddress() + "]");
-					Visitors v = GuiceContext.getInstance(Visitors.class);
+					Visitors v = GuiceContext.get(Visitors.class);
 					try
 					{
-						ua.setJson(GuiceContext.getInstance(ObjectMapper.class)
+						ua.setJson(GuiceContext.get(ObjectMapper.class)
 						                       .writeValueAsString(v));
 					}
 					catch (JsonProcessingException e)
@@ -116,7 +116,7 @@ public class ResetPasswordEvent
 					{
 						SubscriberVisitors.create(subs.get(), v);
 					}
-					response.addComponent(GuiceContext.getInstance(HomePage.class));
+					response.addComponent(GuiceContext.get(HomePage.class));
 
 					response.addReaction(new AjaxResponseReaction().setReactionTitle("Password Reset Completed")
 					                                               .setReactionData("Your password has successfully been reset")
@@ -141,10 +141,10 @@ public class ResetPasswordEvent
 				                                               .setReactionType(ReactionType.DialogDisplay));
 			}
 
-			//	response.addComponent(GuiceContext.getInstance(ForgotPasswordScreen.class));
+			//	response.addComponent(GuiceContext.get(ForgotPasswordScreen.class));
 
-			response.addComponent(GuiceContext.getInstance(TopBar.class));
-			response.addComponent(GuiceContext.getInstance(West.class));
+			response.addComponent(GuiceContext.get(TopBar.class));
+			response.addComponent(GuiceContext.get(West.class));
 		}
 
 		response.addDto("subscribe", new JavaScriptPart());

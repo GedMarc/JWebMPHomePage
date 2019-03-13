@@ -24,6 +24,6 @@ public class GoToAdministrationScreenEvent
 	@Override
 	public void onClick(AjaxCall call, AjaxResponse response)
 	{
-		//	response.addComponent(GuiceContext.getInstance(AdministrationScreen.class));
+		//	response.addComponent(GuiceContext.get(AdministrationScreen.class));
 	}
 }
