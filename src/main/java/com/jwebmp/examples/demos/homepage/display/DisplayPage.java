@@ -147,26 +147,12 @@ public class DisplayPage
 	 * Gets the local storage key from the system
 	 */
 	@SuppressWarnings("unchecked")
-	private void getLocalStorageKey()
+	public UUID getLocalStorageKey()
 	{
-		SessionStorageProperties sp = get(SessionStorageProperties.class);
-		Map<String, String> localStorage = sp.getLocalStorage();
-		if (!localStorage.containsKey(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY))
-		{
-			String uuid = UUID.randomUUID()
-			                  .toString();
-			String clientIP = SessionHelper.getClientIPAddress();
-			String storageKey = Hashing.sha512()
-			                           .hashString(uuid + clientIP, StaticStrings.UTF8_CHARSET)
-			                           .toString();
-			get(AjaxResponse.class).getLocalStorage()
-			                               .put(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY, storageKey);
-
-			localStorage.put(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY, uuid);
-		}
-		String guid = localStorage.get(StaticStrings.LOCAL_STORAGE_PARAMETER_KEY);
+		UUID uuid = super.getLocalStorageKey();
 		GuiceContext.get(SessionProperties.class)
-		            .setGuid(guid);
+		            .setGuid(uuid.toString());
+		return uuid;
 	}
 
 	/**
