@@ -309,7 +309,7 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#dsa23", SoftHistoryChange).setText("History Controls")));
 		uiKit.add(new ListItem<>().add(buildListItem("#dsa24", Toastr).setText("Toastr Notifications")));
 		uiKit.add(new ListItem<>().add(buildListItem("#dsa25", VerticalTimelineGem).setText("Vertical Timeline Gem")));
-		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", WebLogAppender).setText("Web Logger")));
+		//uiKit.add(new ListItem<>().add(buildListItem("#dsa26", WebLogAppender).setText("Web Logger")));
 		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", SourceCodePrettifier).setText("Source Prettify")));
 		uiKit.add(new ListItem<>().add(buildListItem("#dsa26", DisplayDynamicSourceCodeViewer).setText("Dynamic Source Switcher")));
 
@@ -323,7 +323,7 @@ public class West
 
 		uiKit.add(new ListItem<>().add(buildListItem("#ui411", AngularAnimate).setText("Animate")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui421", AngularAnimatedChange).setText("Animated Change")));
-		uiKit.add(new ListItem<>().add(buildListItem("#ui431", AngularAutoExpand).setText("Auto Expand")));
+		//uiKit.add(new ListItem<>().add(buildListItem("#ui431", AngularAutoExpand).setText("Auto Expand")));
 		uiKit.add(new ListItem<>().add(buildListItem("#e8", AngularFileUpload).setText("Angular File Upload")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui441", AngularIonSlider).setText("Angular Ion Slider")));
 		uiKit.add(new ListItem<>().add(buildListItem("#ui451", AngularNgSlimScroll).setText("Angular Slim Scroll")));
@@ -419,8 +419,8 @@ public class West
 		uiKit.add(new ListItem<>().add(buildListItem("#ga4", JQPlot).setText("JQPlot")));
 		uiKit.add(new ListItem<>().add(buildListItem("#gb4", EasyPieChart).setText("Easy Pie Chart")));
 		uiKit.add(new ListItem<>().add(buildListItem("#gc4", GradientsLinear).setText("Linear Gradients")));
-		uiKit.add(new ListItem<>().add(buildListItem("#gd4", ImageHeatMap).setText("Image Heat Map")));
-		uiKit.add(new ListItem<>().add(buildListItem("#ge4", ImageHeatMap).setText("Particles Display")));
+		//uiKit.add(new ListItem<>().add(buildListItem("#gd4", ImageHeatMap).setText("Image Heat Map")));
+	//	uiKit.add(new ListItem<>().add(buildListItem("#ge4", ImageHeatMap).setText("Particles Display")));
 
 		ListItem dropDown1 = buildSubList("fal fa-chart-line", "Graphing", uiKit);
 		return dropDown1;

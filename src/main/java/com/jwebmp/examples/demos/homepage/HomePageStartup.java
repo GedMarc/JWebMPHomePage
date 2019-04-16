@@ -10,48 +10,33 @@ import com.jwebmp.logger.LogFactory;
 import com.jwebmp.logger.logging.LogColourFormatter;
 import com.jwebmp.plugins.angularanimate.AngularAnimatePageConfigurator;
 import com.jwebmp.plugins.angularanimatedchange.AngularAnimatedChangePageConfigurator;
-import com.jwebmp.plugins.angularautoexpand.AngularAutoExpandPageConfigurator;
 import com.jwebmp.plugins.angularautofocus.AngularAutoFocusPageConfigurator;
 import com.jwebmp.plugins.angularfileupload.angular.AngularFileUploadPageConfigurator;
 import com.jwebmp.plugins.angularionslider.AngularIonSliderPageConfigurator;
-import com.jwebmp.plugins.angularnyabootstrapselector.NyaSelectPageConfigurator;
 import com.jwebmp.plugins.angularprogressbuttonstyles.AngularProgressButtonStylesPageConfigurator;
 import com.jwebmp.plugins.angularroute.AngularRoutePageConfigurator;
 import com.jwebmp.plugins.angularsanitize.AngularSanitizePageConfigurator;
 import com.jwebmp.plugins.angularscrollposition.AngularScrollPositionPageConfigurator;
 import com.jwebmp.plugins.angulartouch.AngularTouchPageConfigurator;
 import com.jwebmp.plugins.angulartrackwidth.AngularTrackWidthPageConfigurator;
-import com.jwebmp.plugins.angularuibootstrap.AngularUIBootstrapPageConfigurator;
-import com.jwebmp.plugins.angularuiselect.AngularUISelectPageConfigurator;
-import com.jwebmp.plugins.angularuisortable.AngularUISortablePageConfigurator;
 import com.jwebmp.plugins.angularzoomanimation.AngularZoomInAnimationPageConfigurator;
 import com.jwebmp.plugins.blueimp.fileupload.BlueImpFileUploadPageConfigurator;
 import com.jwebmp.plugins.blueimp.gallery.BlueImpGalleryPageConfigurator;
-import com.jwebmp.plugins.bootstrap.BootstrapPageConfigurator;
-import com.jwebmp.plugins.bootstrap.themes.sbadmin2.SB2AdminPageConfigurator;
-import com.jwebmp.plugins.bootstrapselect.BootstrapSelectPageConfigurator;
-import com.jwebmp.plugins.bootstrapswitch.BootstrapSwitchPageConfigurator;
-import com.jwebmp.plugins.bootstraptagsinput.BootstrapTagsInputPageConfigurator;
 import com.jwebmp.plugins.bs4.bootswatch.Bootswatch4PageConfigurator;
 import com.jwebmp.plugins.bs4.datetimepicker.BS4DateTimePageConfigurator;
 import com.jwebmp.plugins.bs4.dialog.BSDialogPageConfigurator;
 import com.jwebmp.plugins.bs4.quickforms.BSQuickFormsPageConfigurator;
 import com.jwebmp.plugins.bs4.tagsinput.BS4TagsInputPageConfigurator;
 import com.jwebmp.plugins.bs4.toggle.BSSwitch4PageConfigurator;
-import com.jwebmp.plugins.bs4datetimedropdown.BSDateTimePageConfigurator;
-import com.jwebmp.plugins.bsquickforms.QuickFormsPageConfigurator;
 import com.jwebmp.plugins.c3.C3PageConfigurator;
 import com.jwebmp.plugins.d3.D3PageConfigurator;
-import com.jwebmp.plugins.d3.radialreingoldtilfordtree.D3ReingoldTilfordTreePageConfigurator;
 import com.jwebmp.plugins.datatable.DataTablePageConfigurator;
 import com.jwebmp.plugins.datatable.enumerations.DataTableThemes;
-import com.jwebmp.plugins.fontawesome.FontAwesomePageConfigurator;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.fullcalendar.FullCalendarPageConfigurator;
 import com.jwebmp.plugins.glyphicons.GlyphiconsPageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettifyPageConfigurator;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodePrettifyThemes;
-import com.jwebmp.plugins.imagemap.JQImageMapPageConfigurator;
 import com.jwebmp.plugins.ionic.ionicons.IonIconsPageConfigurator;
 import com.jwebmp.plugins.ionrangeslider.IonRangeSliderPageConfigurator;
 import com.jwebmp.plugins.jqgradientlinear.JQGradientPageConfigurator;
@@ -69,14 +54,12 @@ import com.jwebmp.plugins.ngslimscroll.NgSlimScrollPageConfigurator;
 import com.jwebmp.plugins.radialsvgslider.RadialSVGSliderGemPageConfigurator;
 import com.jwebmp.plugins.sixbitplatform.SixBitPageConfigurator;
 import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
-import com.jwebmp.plugins.smartwizard.SmartWizardPageConfigurator;
 import com.jwebmp.plugins.spectrum.colourpicker.JQSpectrumPageConfigurator;
 import com.jwebmp.plugins.textangular.TextAngularPageConfigurator;
 import com.jwebmp.plugins.textinputeffects.TextInputEventsPageConfigurator;
 import com.jwebmp.plugins.themify.icons.ThemifyIconsPageConfigurator;
 import com.jwebmp.plugins.verticaltimeline.VerticalTimelinePageConfigurator;
 import com.jwebmp.plugins.weathericons.WeatherIconsPageConfigurator;
-import com.jwebmp.plugins.weblogappender.WebLogAppenderPageConfigurator;
 import com.jwebmp.plugins.xeditable.XEditablePageConfigurator;
 import com.jwebmp.undertow.JWebMPUndertow;
 import com.jwebmp.undertow.JWebMPUndertowWebSocketConfiguration;
@@ -84,7 +67,6 @@ import com.jwebmp.websockets.WebSocketsConfiguration;
 import io.github.classgraph.ClassGraph;
 
 import javax.cache.CacheManager;
-import javax.persistence.Entity;
 import java.util.logging.Level;
 
 public class HomePageStartup
@@ -176,7 +158,6 @@ public class HomePageStartup
 	{
 		AngularAnimatePageConfigurator.setEnabled(false);
 		AngularAnimatedChangePageConfigurator.setEnabled(false);
-		AngularAutoExpandPageConfigurator.setEnabled(false);
 		AngularAutoFocusPageConfigurator.setEnabled(false);
 		AngularIonSliderPageConfigurator.setEnabled(false);
 		AngularFileUploadPageConfigurator.setEnabled(false);
@@ -187,9 +168,6 @@ public class HomePageStartup
 		//AngularSlimScrollPageConfigurator.setEnabled(false);
 		AngularTouchPageConfigurator.setEnabled(false);
 		AngularTrackWidthPageConfigurator.setEnabled(false);
-		AngularUIBootstrapPageConfigurator.setEnabled(false);
-		AngularUISelectPageConfigurator.setEnabled(false);
-		AngularUISortablePageConfigurator.setEnabled(false);
 		AngularZoomInAnimationPageConfigurator.setEnabled(false);
 		SixBitPageConfigurator.setEnabled(false);
 		NgSlimScrollPageConfigurator.setEnabled(false
@@ -198,17 +176,11 @@ public class HomePageStartup
 		//BlueImpGalleryPageConfigurator.setEnabled(false);
 
 		Bootswatch4PageConfigurator.setEnabled(false);
-		QuickFormsPageConfigurator.setEnabled(false);
 		JQUIThemesPageConfigurator.setEnabled(false);
 
 		//Bootstrap 3 disable
 		BSDialogPageConfigurator.setEnabled(false);
-		BootstrapPageConfigurator.setEnabled(false);
-		BootstrapSelectPageConfigurator.setEnabled(false);
-		BootstrapSwitchPageConfigurator.setEnabled(false);
-		BootstrapTagsInputPageConfigurator.setEnabled(false);
-		BSDateTimePageConfigurator.setEnabled(false);
-		NyaSelectPageConfigurator.setEnabled(false);
+
 		BSQuickFormsPageConfigurator.setEnabled(false);
 
 		BS4DateTimePageConfigurator.setEnabled(false);
@@ -219,15 +191,12 @@ public class HomePageStartup
 
 		C3PageConfigurator.setEnabled(false);
 		D3PageConfigurator.setEnabled(false);
-		D3ReingoldTilfordTreePageConfigurator.setEnabled(false);
-		FontAwesomePageConfigurator.setEnabled(false);
 		FullCalendarPageConfigurator.setEnabled(false);
 		GlyphiconsPageConfigurator.setEnabled(false);
 		IonIconsPageConfigurator.setEnabled(false);
 		IonRangeSliderPageConfigurator.setEnabled(false);
 
 		JQGradientPageConfigurator.setEnabled(false);
-		JQImageMapPageConfigurator.setEnabled(false);
 		JQMetroPageConfigurator.setEnabled(false);
 		JQPlotPageConfigurator.setEnabled(false);
 		JQUIDateTimePickerPageConfigurator.setEnabled(false);
@@ -238,14 +207,11 @@ public class HomePageStartup
 		MaterialDesignIconsPageConfigurator.setEnabled(false);
 		MaterialIconsPageConfigurator.setEnabled(false);
 		RadialSVGSliderGemPageConfigurator.setEnabled(false);
-		SB2AdminPageConfigurator.setEnabled(false);
-		SmartWizardPageConfigurator.setEnabled(false);
 		JQSpectrumPageConfigurator.setEnabled(false);
 		TextAngularPageConfigurator.setEnabled(false);
 		TextInputEventsPageConfigurator.setEnabled(false);
 		ThemifyIconsPageConfigurator.setEnabled(false);
 		WeatherIconsPageConfigurator.setEnabled(false);
-		WebLogAppenderPageConfigurator.setEnabled(false);
 		XEditablePageConfigurator.setEnabled(false);
 
 		JQUINestableThemesPageConfigurator.setEnabled(false);

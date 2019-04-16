@@ -1,6 +1,0 @@
-<dependency>
-    <groupId>com.jwebmp</groupId>
-    <artifactId>jwebmp-image-map-heatmap</artifactId>
-    <version>${jwebmp.version}</version>
-    <type>jar</type>
-</dependency>

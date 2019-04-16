@@ -86,7 +86,6 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.google.guice.extensions.servlet;
 	requires com.jwebmp.plugins.angularanimate;
 	requires com.jwebmp.plugins.angularanimatedchange;
-	requires com.jwebmp.plugins.angularautoexpand;
 	requires com.jwebmp.plugins.angularautofocus;
 	requires com.jwebmp.plugins.angularionslider;
 	requires com.jwebmp.plugins.angularfileupload;
@@ -96,26 +95,13 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.angularscrollposition;
 	requires com.jwebmp.plugins.angulartouch;
 	requires com.jwebmp.plugins.angulartrackwidth;
-	requires com.jwebmp.plugins.angularuibootstrap;
-	requires com.jwebmp.plugins.angularuiselect;
-	requires com.jwebmp.plugins.angularuisortable;
 	requires com.jwebmp.plugins.angularzoomanimation;
-	requires com.jwebmp.plugins.angularnyabootstrapselector;
-	requires com.jwebmp.plugins.bootstrap;
 	requires com.jwebmp.plugins.bs4.dialog;
-	requires com.jwebmp.components.bootstrap.themes.sbadmin2;
-	requires com.jwebmp.plugins.bootstrapselect;
-	requires com.jwebmp.plugins.bootstrapswitch;
-	requires com.jwebmp.plugins.bootstraptagsinput;
-	requires com.jwebmp.plugins.angularbootstrapdatetimepicker;
 	requires com.jwebmp.plugins.bs4.quickforms;
 	requires com.jwebmp.plugins.c3;
 	requires com.jwebmp.plugins.d3;
-	requires com.jwebmp.plugins.d3.reingoldtilfordtree;
-	requires com.jwebmp.plugins.fontawesome;
 	requires com.jwebmp.plugins.fullcalendar;
 	requires com.jwebmp.plugins.glyphicons;
-	requires com.jwebmp.plugins.imagemap;
 	requires com.jwebmp.plugins.ionic.ionicons;
 	requires com.jwebmp.plugins.ionrangeslider;
 	requires com.jwebmp.plugins.jqgradientlinear;
@@ -127,13 +113,11 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.materialicons;
 	requires com.jwebmp.plugins.radialsvgslider;
 	requires com.jwebmp.plugins.bit6;
-	requires com.jwebmp.plugins.smartwizard;
 	requires com.jwebmp.plugins.spectrum.colourpicker;
 	requires com.jwebmp.plugins.textangular;
 	requires com.jwebmp.plugins.themify.icons;
 	requires com.jwebmp.plugins.verticaltimeline;
 	requires com.jwebmp.plugins.weathericons;
-	requires com.jwebmp.plugins.weblogappender;
 	requires com.jwebmp.plugins.xeditable;
 	requires com.jwebmp.plugins.jqueryverticaltimeline;
 	requires com.jwebmp.plugins.jqueryui.themes.nestable;
@@ -148,7 +132,6 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.globalize.cultures;
 	requires com.jwebmp.plugins.modernizr;
 	requires com.jwebmp.plugins.angularprettycheckboxes;
-	requires com.jwebmp.plugins.bsquickforms;
 	requires com.jwebmp.plugins.textinputeffects;
 	requires com.jwebmp.plugins.easypiechart;
 	requires com.jwebmp.plugins.jqueryui.themes;
@@ -160,135 +143,4 @@ open module com.jwebmp.examples.demos.homepage {
 	provides IGuiceModule with HomePageDBModule;
 	provides IGuiceScanModuleInclusions with HomePageModuleScanner;
 	provides IGuiceScanJarInclusions with HomePageModuleScanner;
-
-	//Open for all the reflection, but only to specific packages
-	/*opens com.jwebmp.examples.demos.homepage;
-	opens com.jwebmp.examples.demos.homepage.entities to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
-	opens com.jwebmp.examples.demos.homepage.entities.persistasync to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
-	opens com.jwebmp.examples.demos.homepage.entities.builders to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
-	opens com.jwebmp.examples.demos.homepage.entities.enumerations to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice;
-
-	opens com.jwebmp.examples.demos.homepage.display.persistence to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice,com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.events to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice,com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.quickstart to org.hibernate.orm.core, com.jwebmp.entityassist, com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.db to com.jwebmp.guicedinjection, com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.about to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.about.persistencehandling to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.about.requestscoped to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.about.entityassist to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.about.c3p0module to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.about.ehcache to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.admin to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.confirmemail to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.contactus to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.forgotpassword to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.helloworld to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.login to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.menu to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.privacy to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.rightbar to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.subscribe to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.termsandconditions to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.home to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.components to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	*//*opens com.jwebmp.examples.demos.homepage.components.sourcecode to com.fasterxml.jackson.databind,com.google.guice, com.jwebmp.core;*//*
-	opens com.jwebmp.examples.demos.homepage.components.events to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.components.general to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.pluginslist to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	exports com.jwebmp.examples.demos.homepage.entities to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	exports com.jwebmp.examples.demos.homepage.display.home.parts to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.animate to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.animatedchange to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.autoexpand to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.autofocus to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.fileupload to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.ionslider to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.ngslimscroll to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.sanitize to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.scrollposition to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.slimscroll to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.touch to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.trackwidth to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.zoomin to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.ui.bootstrap to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.ui.select to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.angular.ui.sortable to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.forms.ionrangeslider to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.forms.prettycheckboxes to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.forms.progressbuttons to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.forms.quickforms to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.forms.smartwizard to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.forms.textangular to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.forms.textinputeffects to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.graphing.d3 to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.graphing.c3 to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.graphing.d3reingold to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.graphing.easypiechart to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.graphing.gradientlinear to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.graphing.imageheatmap to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.graphing.jqplot to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.graphing.particlesjs to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.htmltags to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome5 to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.icons.glyphicons to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.icons.ionicons to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.icons.materialdesignicons to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.icons.mdi to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.jqui to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.jqui.demos to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.jqui.verticaltimeline to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.jqui.themes to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.jqui.themesnestable to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.jqui.datetimepicker to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.jqui.layout to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.jqui.spectrumcolourpicker to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.jqxwidgets to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.mapping.leafletjs to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.push to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.tables.xeditable to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.tables.datatables to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.trees.jstree to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version4 to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version4.bootswatch to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version4.datetimepicker to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version4.dialog to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version4.nyaselect to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version4.quickforms to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version4.switcher to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.globalize to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.dynamicsourcecodeviewer to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.easingeffects to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.fastclick to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.fullcalendar to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.metro to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.modernizr to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.moment to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.pace to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.plusastab to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.radialslidergem to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.softhistorychange to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.sourcecodeprettifier to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.toastr to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.verticaltimelinegem to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-	opens com.jwebmp.examples.demos.homepage.display.demos.display.weblogappender to com.fasterxml.jackson.databind, com.google.guice, com.jwebmp.core;
-
-
-	opens com.jwebmp.examples.demos.homepage.components.general.events to com.google.guice;
-	*/
 }

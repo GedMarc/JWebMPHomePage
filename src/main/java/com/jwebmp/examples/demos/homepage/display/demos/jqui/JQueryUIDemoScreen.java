@@ -5,7 +5,7 @@ import com.jwebmp.examples.demos.homepage.components.DefaultReadMore;
 import com.jwebmp.examples.demos.homepage.components.DemoScreen;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
 import com.jwebmp.examples.demos.homepage.components.general.PackageComponentsBrowser;
-import com.jwebmp.plugins.bootstrap.navs.BSComponentNavsOptions;
+
 import com.jwebmp.plugins.bootstrap4.options.BSContainerOptions;
 import com.jwebmp.plugins.jqueryui.JQUIPageConfigurator;
 import com.jwebmp.plugins.jqueryui.accordion.JQUIAccordion;
@@ -30,6 +30,7 @@ import com.jwebmp.plugins.jqueryui.tabs.JQUITabs;
 import com.jwebmp.plugins.jqueryui.tooltips.JQUIToolTipFeature;
 import org.apache.commons.lang3.tuple.Pair;
 
+import static com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 
 public class JQueryUIDemoScreen
@@ -38,7 +39,7 @@ public class JQueryUIDemoScreen
 	public JQueryUIDemoScreen()
 	{
 		Div componentsDiv = new Div<>().addClass(Col_12);
-		componentsDiv.addClass(BSComponentNavsOptions.Justify_Content_Center);
+		componentsDiv.addClass(Justify_Content_Center);
 		PackageComponentsBrowser browser =
 				new PackageComponentsBrowser("JQuery UI",
 				                             Pair.of("All", JQUIPageConfigurator.class),

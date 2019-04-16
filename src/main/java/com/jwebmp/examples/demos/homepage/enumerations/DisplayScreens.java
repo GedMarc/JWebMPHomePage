@@ -11,7 +11,6 @@ import com.jwebmp.examples.demos.homepage.display.caching.HazelcastDisplayScreen
 import com.jwebmp.examples.demos.homepage.display.confirmemail.ConfirmEmailAddressScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animate.AngularAnimateDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.animatedchange.AngularAnimateChangeDemoScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.angular.autoexpand.AngularAutoExpandDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.autofocus.AngularAutoFocusDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.fileupload.AngularFileUploadDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.ionslider.AngularIonSliderDemoScreen;
@@ -21,9 +20,6 @@ import com.jwebmp.examples.demos.homepage.display.demos.angular.scrollposition.A
 import com.jwebmp.examples.demos.homepage.display.demos.angular.slimscroll.AngularSlimScrollDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.touch.AngularTouchDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.trackwidth.AngularTrackWidthDemoScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.angular.ui.bootstrap.AngularUIBootstrapDemoScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.angular.ui.select.AngularUISelectDemoScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.angular.ui.sortable.AngularUISortableDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.angular.zoomin.AngularZoomDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version3.Bootstrap3DemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.bootstrap.version3.datetimepicker.Bootstrap3DateTimePickerDemoScreen;
@@ -56,7 +52,6 @@ import com.jwebmp.examples.demos.homepage.display.demos.display.softhistorychang
 import com.jwebmp.examples.demos.homepage.display.demos.display.sourcecodeprettifier.SourceCodePrettifierDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.display.toastr.ToastrDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.display.verticaltimelinegem.VerticalTimelineGemDemoScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.display.weblogappender.WebLogAppenderDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.forms.ionrangeslider.IonRangeSliderDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.forms.prettycheckboxes.AngularPrettyCheckboxesDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.forms.progressbuttons.AngularProgressButtonsDemoScreen;
@@ -66,10 +61,8 @@ import com.jwebmp.examples.demos.homepage.display.demos.forms.textangular.TextAn
 import com.jwebmp.examples.demos.homepage.display.demos.forms.textinputeffects.TextInputEffectsDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.graphing.c3.C3DemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.graphing.d3.D3DemoScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.graphing.d3reingold.D3ReingoldDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.graphing.easypiechart.EasyPieChartDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.graphing.gradientlinear.GradientLinearDemoScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.graphing.imageheatmap.ImageHeatMapDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.graphing.jqplot.JQPlotDemos;
 import com.jwebmp.examples.demos.homepage.display.demos.graphing.particlesjs.ParticlesJSDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.icons.fontawesome.FontAwesomeDemoScreen;
@@ -159,7 +152,7 @@ public enum DisplayScreens
 
 	AngularAnimate(AngularAnimateDemoScreen.class, "AngularAnimate"),
 	AngularAnimatedChange(AngularAnimateChangeDemoScreen.class, "AngularAnimatedChange"),
-	AngularAutoExpand(AngularAutoExpandDemoScreen.class, "AngularAutoExpand"),
+	//AngularAutoExpand(AngularAutoExpandDemoScreen.class, "AngularAutoExpand"),
 	AngularAutoFocus(AngularAutoFocusDemoScreen.class, "AngularAutoExpand"),
 	AngularIonSlider(AngularIonSliderDemoScreen.class, "AngularIonSlider"),
 
@@ -172,9 +165,9 @@ public enum DisplayScreens
 	AngularTrackWidth(AngularTrackWidthDemoScreen.class, "AngularTrackWidth"),
 	AngularZoomIn(AngularZoomDemoScreen.class, "AngularZoomIn"),
 
-	AngularUIBootstrap(AngularUIBootstrapDemoScreen.class, "AngularUIBootstrap"),
-	AngularUISelect(AngularUISelectDemoScreen.class, "AngularUISelect"),
-	AngularUISortable(AngularUISortableDemoScreen.class, "AngularUISortable"),
+	//AngularUIBootstrap(AngularUIBootstrapDemoScreen.class, "AngularUIBootstrap"),
+//	AngularUISelect(AngularUISelectDemoScreen.class, "AngularUISelect"),
+//	AngularUISortable(AngularUISortableDemoScreen.class, "AngularUISortable"),
 
 	Bootstrap3(Bootstrap3DemoScreen.class, "Bootstrap3"),
 	Bootstrap3DateTimePicker(Bootstrap3DateTimePickerDemoScreen.class, "Bootstrap3DateTimePicker"),
@@ -209,7 +202,7 @@ public enum DisplayScreens
 	SourceCodePrettifier(SourceCodePrettifierDemoScreen.class, "SourcePrettifier"),
 	Toastr(ToastrDemoScreen.class, "Toastr"),
 	VerticalTimelineGem(VerticalTimelineGemDemoScreen.class, "VerticalTimelineGem"),
-	WebLogAppender(WebLogAppenderDemoScreen.class, "WebLogAppender"),
+	//WebLogAppender(WebLogAppenderDemoScreen.class, "WebLogAppender"),
 
 	AngularFileUpload(AngularFileUploadDemoScreen.class, "AngularFileUpload"),
 	IonRangeSlider(IonRangeSliderDemoScreen.class, "IonRangeSlider"),
@@ -223,10 +216,10 @@ public enum DisplayScreens
 	C3(C3DemoScreen.class, "C3"),
 	D3(D3DemoScreen.class, "D3"),
 	NVD3(D3DemoScreen.class, "NVD3"),
-	D3Reingold(D3ReingoldDemoScreen.class, "D3Reingold"),
+//	D3Reingold(D3ReingoldDemoScreen.class, "D3Reingold"),
 	EasyPieChart(EasyPieChartDemoScreen.class, "EasyPieChart"),
 	GradientsLinear(GradientLinearDemoScreen.class, "GradientsLinear"),
-	ImageHeatMap(ImageHeatMapDemoScreen.class, "ImageHeatMap"),
+//	ImageHeatMap(ImageHeatMapDemoScreen.class, "ImageHeatMap"),
 	JQPlot(JQPlotDemos.class, "JQPlot"),
 	ParticlesJS(ParticlesJSDemoScreen.class, "Particles"),
 
