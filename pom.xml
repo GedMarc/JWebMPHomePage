@@ -28,11 +28,13 @@
         <dependency>
             <groupId>com.jwebmp.jpms.commons</groupId>
             <artifactId>commons-math4</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.jpms.commons</groupId>
             <artifactId>commons-collections4</artifactId>
+            <type>jar</type>
         </dependency>
 
 <!--
@@ -54,6 +56,7 @@
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -64,6 +67,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jpamodelgen</artifactId>
+            <type>jar</type>
         </dependency>
 
         <!-- Turn Hazelcast on and off... -->
@@ -71,6 +75,7 @@
         <dependency>
             <groupId>com.jwebmp.guicedee.persistence</groupId>
             <artifactId>guiced-hazelcast</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -82,68 +87,81 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jcache</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>org.jsr107.ri</groupId>
             <artifactId>cache-annotations-ri-guice</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.plugins.iconsets</groupId>
             <artifactId>jwebmp-font-awesome5</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-jquery-ui</artifactId>
+            <type>jar</type>
         </dependency>
 
 
         <dependency>
             <groupId>com.jwebmp.plugins.forms</groupId>
             <artifactId>jwebmp-smart-wizard</artifactId>
+            <type>jar</type>
         </dependency>
 
 
         <dependency>
             <groupId>com.jwebmp.plugins.iconsets</groupId>
             <artifactId>jwebmp-skycons</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.plugins.effects</groupId>
             <artifactId>jwebmp-waveseffect</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-block-ui</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.plugins.blueimp</groupId>
             <artifactId>jwebmp-blueimp-gallery</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.plugins.forms</groupId>
             <artifactId>jwebmp-data-tables</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.guicedee.persistence</groupId>
             <artifactId>entity-assist</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.guicedee.servlets</groupId>
             <artifactId>guiced-servlets-request-scoper</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.guicedee.servlets</groupId>
             <artifactId>guiced-undertow</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
@@ -159,286 +177,355 @@
         <dependency>
             <groupId>com.jwebmp.inject</groupId>
             <artifactId>guice</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.guicedee.servlets</groupId>
             <artifactId>guiced-websockets</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.inject.extensions</groupId>
             <artifactId>guice-servlet</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.inject.extensions</groupId>
             <artifactId>guice-persist</artifactId>
+            <type>jar</type>
         </dependency>
         <!-- All Optional API Plugins went here-->
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-animate</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-animated-change</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-auto-focus</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-file-upload</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-ion-slider</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-pretty-checkboxes</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-progress-button-styles</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-route</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-sanitize</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-scroll-position</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-slim-scroll</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-touch</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-track-width</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-angular-ui-zoom</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-bit6</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.blueimp</groupId>
             <artifactId>jwebmp-blueimp-fileupload</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.bootstrap</groupId>
             <artifactId>jwebmp-bootstrap</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.bootstrap</groupId>
             <artifactId>jwebmp-bootstrap-dialog4</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.bootstrap</groupId>
             <artifactId>jwebmp-bootstrap-toggle</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.bootstrap</groupId>
             <artifactId>jwebmp-bootstrap-tags-input4</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.bootstrap</groupId>
             <artifactId>jwebmp-bootswatch</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.bootstrap</groupId>
             <artifactId>jwebmp-bootstrap-date-time-picker</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.bootstrap</groupId>
             <artifactId>jwebmp-bootstrap-nya-select</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.forms</groupId>
             <artifactId>jwebmp-bootstrap-quick-forms</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.forms</groupId>
             <artifactId>jwebmp-quickforms</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.graphing</groupId>
             <artifactId>jwebmp-c3</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.graphing</groupId>
             <artifactId>jwebmp-d3</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-source-prettify</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.graphing</groupId>
             <artifactId>jwebmp-easy-pie-chart</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-fastclick</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-full-calendar</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-globalize</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.iconsets</groupId>
             <artifactId>jwebmp-glyphicons</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-dynamic-source-code-viewer</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.ion</groupId>
             <artifactId>jwebmp-ion-icons</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.ion</groupId>
             <artifactId>jwebmp-ion-range-slider</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-easing-effects</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-linear-gradients</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-jqui-layout</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-metro-tiles</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.graphing</groupId>
             <artifactId>jwebmp-jqplot</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-plus-as-tab</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-jqui-datetime-picker</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-jqui-themes</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-jqui-themes-nestable</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-jqui-vertical-timeline</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins</groupId>
             <artifactId>jwebmp-jqx-widgets</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-jstree</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.forms</groupId>
             <artifactId>jwebmp-leafletjs</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.iconsets</groupId>
             <artifactId>jwebmp-material-design-icons</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.iconsets</groupId>
             <artifactId>jwebmp-material-icons</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-modernizr</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-momentjs</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-ng-slim-scroll</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-pace-loader</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-particlesjs</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.plugins.effects</groupId>
             <artifactId>jwebmp-radial-slider-gem</artifactId>
+            <type>jar</type>
         </dependency>
 
         <dependency>
             <groupId>com.jwebmp.plugins.javascript</groupId>
             <artifactId>jwebmp-soft-history-change</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-spectrum-colour-picker</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.angular</groupId>
             <artifactId>jwebmp-text-angular</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.forms</groupId>
             <artifactId>jwebmp-text-input-effects</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.iconsets</groupId>
             <artifactId>jwebmp-themify-icons</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-toastr</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.effects</groupId>
             <artifactId>jwebmp-vertical-timeline-css</artifactId>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>com.jwebmp.plugins.iconsets</groupId>
             <artifactId>jwebmp-weathericons</artifactId>
+            <type>jar</type>
         </dependency>
-
         <dependency>
             <groupId>com.jwebmp.plugins.forms</groupId>
             <artifactId>jwebmp-xeditable</artifactId>
+            <type>jar</type>
         </dependency>
 
     </dependencies>
