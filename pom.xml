@@ -26,12 +26,14 @@
         </dependency>
 
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>3.6.1</version>
-            <type>jar</type>
+            <groupId>com.jwebmp.jpms.commons</groupId>
+            <artifactId>commons-math4</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.jwebmp.jpms.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+        </dependency>
 
 <!--
         <dependency>
