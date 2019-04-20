@@ -14,3 +14,4 @@ persistence.xml
 **.jacocoverage/
 **/*.iml
 *.iml
+*.versionsBackup
