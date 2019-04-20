@@ -72,6 +72,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.jwebmp.guicedee.persistence</groupId>
+            <artifactId>btm</artifactId>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-jcache</artifactId>
         </dependency>
@@ -473,7 +479,7 @@
                             <outputDirectory>
                                 ${project.build.directory}/libs
                             </outputDirectory>
-                            <includeScope>runtime</includeScope>
+                            <includeScope>compile</includeScope>
                             <useBaseVersion>true</useBaseVersion>
                         </configuration>
                     </execution>
