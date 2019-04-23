@@ -205,6 +205,12 @@
             <groupId>com.jwebmp.inject.extensions</groupId>
             <artifactId>guice-persist</artifactId>
             <type>jar</type>
+            <exclusions>
+                <exclusion>
+                    <artifactId>javax.activation-api</artifactId>
+                    <groupId>javax.activation</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- All Optional API Plugins went here-->
         <dependency>
