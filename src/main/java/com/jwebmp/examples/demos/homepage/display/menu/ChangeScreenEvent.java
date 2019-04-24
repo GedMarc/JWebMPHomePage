@@ -79,6 +79,7 @@ public class ChangeScreenEvent
 				LogFactory.getLog(getClass())
 				          .log(Level.SEVERE, "Unable to get screen", e);
 			}
+			if(screenCreated != null)
 			response.addComponent(screenCreated);
 			response.getFeatures()
 			        .add(new Feature("TriggerWindowResize", screenCreated)

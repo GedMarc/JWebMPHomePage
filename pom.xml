@@ -642,9 +642,9 @@
             <id>jdk11</id>
             <dependencies>
                 <dependency>
-                    <groupId>com.microsoft.sqlserver</groupId>
+                    <groupId>com.jwebmp.jpms.sqlserver</groupId>
                     <artifactId>mssql-jdbc</artifactId>
-                    <version>7.2.2.jre11</version>
+                    <version>${project.version}</version>
                     <type>jar</type>
                 </dependency>
 
@@ -654,9 +654,9 @@
             <id>jdk12</id>
             <dependencies>
                 <dependency>
-                    <groupId>com.microsoft.sqlserver</groupId>
+                    <groupId>com.jwebmp.jpms.sqlserver</groupId>
                     <artifactId>mssql-jdbc</artifactId>
-                    <version>7.2.2.jre11</version>
+                    <version>${project.version}</version>
                     <type>jar</type>
                 </dependency>
             </dependencies>
@@ -665,9 +665,9 @@
             <id>jdk8</id>
             <dependencies>
                 <dependency>
-                    <groupId>com.microsoft.sqlserver</groupId>
+                    <groupId>com.jwebmp.jpms.sqlserver</groupId>
                     <artifactId>mssql-jdbc</artifactId>
-                    <version>7.0.0.jre8</version>
+                    <version>${project.version}</version>
                     <type>jar</type>
                 </dependency>
             </dependencies>
