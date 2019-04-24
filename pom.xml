@@ -43,6 +43,23 @@
             <type>jar</type>
         </dependency>
 
+
+        <dependency>
+            <groupId>com.jwebmp.jpms.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.jwebmp.jpms.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>com.jwebmp.jpms.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <type>jar</type>
+        </dependency>
+
         <dependency>
             <groupId>com.jwebmp.jpms.commons</groupId>
             <artifactId>commons-collections4</artifactId>
