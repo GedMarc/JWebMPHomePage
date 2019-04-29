@@ -79,7 +79,6 @@ public class HomePageStartup
 		LogFactory.configureConsoleColourOutput(Level.FINE);
 
 		//Global configurations
-		WebSocketsConfiguration.setLocalStorageEnabled(true);
 		SessionHelper.setAddressToBeUsedWhenNull("https://jwebmp.com/");
 		//Allows multiple host names rendering.
 		//When behind a proxy, set the header flag "jwsiteurl https://jwebmp.com/"

@@ -42,8 +42,6 @@
             <artifactId>commons-text</artifactId>
             <type>jar</type>
         </dependency>
-
-
         <dependency>
             <groupId>com.jwebmp.jpms.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
@@ -66,14 +64,21 @@
             <type>jar</type>
         </dependency>
 
-<!--
         <dependency>
-            <groupId>javax.jms</groupId>
-            <artifactId>jms</artifactId>
-            <version>1.1</version>
+            <groupId>com.jwebmp.plugins.security</groupId>
+            <artifactId>jwebmp-plugins-local-storage-security</artifactId>
             <type>jar</type>
         </dependency>
--->
+
+
+        <!--
+                <dependency>
+                    <groupId>javax.jms</groupId>
+                    <artifactId>jms</artifactId>
+                    <version>1.1</version>
+                    <type>jar</type>
+                </dependency>
+        -->
 
 
         <dependency>

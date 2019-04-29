@@ -1,6 +1,5 @@
 package com.jwebmp.examples.demos.homepage.display;
 
-import com.google.common.hash.Hashing;
 import com.jwebmp.core.Feature;
 import com.jwebmp.core.Page;
 import com.jwebmp.core.SessionHelper;
@@ -8,8 +7,7 @@ import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.core.base.html.CSSLink;
 import com.jwebmp.core.base.html.Meta;
-import com.jwebmp.core.base.servlets.SessionStorageProperties;
-import com.jwebmp.core.utilities.StaticStrings;
+import com.jwebmp.core.enumerations.AppleMobileStatusBarStyles;
 import com.jwebmp.core.utilities.regex.RegularExpressionsDTO;
 import com.jwebmp.entityassist.enumerations.ActiveFlag;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
@@ -28,7 +26,6 @@ import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
 import com.jwebmp.plugins.toastr.ToastrFeature;
 import com.jwebmp.plugins.toastr.ToastrType;
 
-import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -104,38 +101,23 @@ public class DisplayPage
 	{
 		SessionHelper.setAddressToBeUsedWhenNull("https://www.jwebmp.com");
 
-		getPageFields().setTitle("JWebMP Application");
+		getOptions().setTitle("JWebMP Application");
+		getOptions().setCanonicalLink("https://www.jwebmp.com/");
 
-		getHead().add(new CSSLink("canonical", null, "https://www.jwebmp.com/"));
+		getOptions().setIcon("logo.png", "192x192");
+		getOptions().setAppleTouchIconPrecomposed("logo.png", "180x180");
+		getOptions().setMSApplicationTileImage("logo.png", "270x270");
+		getOptions().setAppleMobileAppCapable(true);
+		getOptions().setAppleMobileStatusBarStyle(AppleMobileStatusBarStyles.Black_Translucent);
 
-		getHead().add(new CSSLink<>(null, "icon", "logo.png").addAttribute("sizes", "192x192"));
-		getHead().add(new CSSLink<>(null, "apple-touch-icon-precomposed", "logo.png").addAttribute("sizes", "180x180"));
-		getHead().add(new CSSLink<>(null, "msapplication-TileImage", "logo.png").addAttribute("sizes", "270x270"));
-
-		Meta appleMeta = new Meta();
-		appleMeta.addAttribute("name", "apple-mobile-web-app-capable");
-		appleMeta.addAttribute("content", "yes");
-		getHead().add(appleMeta);
-
-		Meta appleMeta2 = new Meta();
-		appleMeta2.addAttribute("name", "apple-mobile-web-app-status-bar-style");
-		appleMeta2.addAttribute("content", "black-translucent");
-		getHead().add(appleMeta2);
-
-		Meta appleMeta3 = new Meta();
-		appleMeta3.addAttribute("CACHE-CONTROL", "NO-CACHE");
-		appleMeta3.addAttribute("content", "black-translucent");
-		getHead().add(appleMeta3);
-
-		getPageFields().setApplicationNameMeta("JWebMP Application Core");
-		getPageFields().setAuthor("GedMarc");
-		getPageFields().setDescription("JWebMP Home and Demo Application!");
-		getPageFields().setFavIcon("logo.png");
-		getPageFields().setKeywords("Rapid Application Development,jwebswing,jwebmp, java,jweb, web,development,framework,ui,rad,urad,bootstrap,jqueryui,jquery,bootstrapdialog");
+		getOptions().setApplicationNameMeta("JWebMP Application Core");
+		getOptions().setAuthor("GedMarc");
+		getOptions().setDescription("JWebMP Home and Demo Application!");
+		getOptions().setFavIcon("logo.png");
+		getOptions().setKeywords("Rapid Application Development,jwebswing,jwebmp, java,jweb, web,development,framework,ui,rad,urad,bootstrap,jqueryui,jquery,bootstrapdialog");
 
 		setBody(new DisplayBody());
 		getBody().addFeature(new PlusAsTabFeature(getBody()));
-		getOptions().setLocalStorage(true);
 
 		addAttribute("style", "height:100%;width:100%;");
 
