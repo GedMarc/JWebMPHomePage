@@ -12,6 +12,7 @@ import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.guicedservlets.GuicedServletKeys;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
+import com.jwebmp.websockets.GuicedWebSocket;
 
 
 import javax.servlet.http.HttpSession;
@@ -115,19 +116,18 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 
 		int count = 0;
 		HttpSession session = get(GuicedServletKeys.getHttpSessionKey());
-		//TODO the counter from the web sockets
-		/*	if (!JWebMPSocket.getWebSocketSessionBindings()
-		                 .containsValue(session.getId()))
+		if (!GuicedWebSocket.getWebSocketSessionBindings()
+		                    .containsValue(session.getId()))
 		{
-			count = JWebMPSocket.getWebSocketSessionBindings()
-			                    .size() + 1;
+			count = GuicedWebSocket.getWebSocketSessionBindings()
+			                       .size() + 1;
 		}
 		else
 		{
-			count = JWebMPSocket.getWebSocketSessionBindings()
-			                    .size();
+			count = GuicedWebSocket.getWebSocketSessionBindings()
+			                       .size();
 		}
-*/
+
 		Div chart4 = new MintonCircleChart(count + "", "100", "#7266ba", "#505A66");
 		widget4.add(chart4);
 

@@ -31,6 +31,7 @@ import com.jwebmp.plugins.bs4.toggle.BSSwitch4PageConfigurator;
 import com.jwebmp.plugins.c3.C3PageConfigurator;
 import com.jwebmp.plugins.d3.D3PageConfigurator;
 import com.jwebmp.plugins.datatable.DataTablePageConfigurator;
+import com.jwebmp.plugins.datatable.enumerations.DataTablePlugins;
 import com.jwebmp.plugins.datatable.enumerations.DataTableThemes;
 import com.jwebmp.plugins.fontawesome5.config.FontAwesome5PageConfigurator;
 import com.jwebmp.plugins.fullcalendar.FullCalendarPageConfigurator;
@@ -83,8 +84,6 @@ public class HomePageStartup
 		//Allows multiple host names rendering.
 		//When behind a proxy, set the header flag "jwsiteurl https://jwebmp.com/"
 		SessionHelper.setCacheAddress(false);
-		//Enable Web Sockets for Undertow?
-		JWebMPUndertowWebSocketConfiguration.setEnabled(true);
 		//Add the library version to the rendered web  references
 		WebReference.setUseVersionIdentifier(true);
 		//Forms will use messages
@@ -145,6 +144,8 @@ public class HomePageStartup
 		//Bootstrap 4 as the theme core for most components
 		DataTablePageConfigurator.switchTheme(DataTableThemes.Bootstrap4);
 		DataTablePageConfigurator.configureButtons();
+		DataTablePageConfigurator.getPlugins()
+		                         .add(DataTablePlugins.Responsive);
 		//Weird way they did this one
 		SkyconPageConfigurator.setColour("white");
 		JQSourceCodePrettifyPageConfigurator.setTheme(SourceCodePrettifyThemes.Sons_Of_Obsidian_Fixed_BG);
