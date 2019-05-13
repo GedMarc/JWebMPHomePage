@@ -52,7 +52,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.entityassist;
 
 	requires java.validation;
-	requires java.activation;
+	requires jakarta.activation;
 	requires java.xml.bind;
 	requires java.persistence;
 	requires java.mail;
