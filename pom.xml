@@ -25,11 +25,11 @@
             <artifactId>cglib</artifactId>
         </dependency>
 
-        <dependency>
+<!--        <dependency>
             <groupId>com.jwebmp.jpms.commons</groupId>
             <artifactId>commons-math4</artifactId>
             <type>jar</type>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.jwebmp.jpms.commons</groupId>
@@ -125,7 +125,7 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jsr107.ri</groupId>
+            <groupId>com.jwebmp.thirdparty.jcache</groupId>
             <artifactId>cache-annotations-ri-guice</artifactId>
             <type>jar</type>
         </dependency>
