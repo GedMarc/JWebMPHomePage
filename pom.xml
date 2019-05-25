@@ -59,12 +59,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.commons</groupId>
-            <artifactId>commons-collections4</artifactId>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
             <groupId>com.jwebmp.plugins.security</groupId>
             <artifactId>jwebmp-plugins-local-storage-security</artifactId>
             <type>jar</type>
