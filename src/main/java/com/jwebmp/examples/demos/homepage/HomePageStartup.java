@@ -62,9 +62,7 @@ import com.jwebmp.plugins.themify.icons.ThemifyIconsPageConfigurator;
 import com.jwebmp.plugins.verticaltimeline.VerticalTimelinePageConfigurator;
 import com.jwebmp.plugins.weathericons.WeatherIconsPageConfigurator;
 import com.jwebmp.plugins.xeditable.XEditablePageConfigurator;
-import com.jwebmp.undertow.JWebMPUndertow;
-import com.jwebmp.undertow.JWebMPUndertowWebSocketConfiguration;
-import com.jwebmp.websockets.WebSocketsConfiguration;
+import com.jwebmp.undertow.GuicedUndertow;
 import io.github.classgraph.ClassGraph;
 
 import javax.cache.CacheManager;
@@ -104,7 +102,7 @@ public class HomePageStartup
 		//Start her up
 		try
 		{
-			JWebMPUndertow.boot("0.0.0.0", 6002);
+			GuicedUndertow.boot("0.0.0.0", 6002);
 		}
 		catch (Exception e)
 		{

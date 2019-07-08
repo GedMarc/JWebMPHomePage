@@ -137,6 +137,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.jqueryui.themes;
 	requires com.jwebmp.plugins.blueimp.fileupload;
 	requires com.jwebmp.plugins.bs4.tagsinput;
+	requires jakarta.activation;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;
