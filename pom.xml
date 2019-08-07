@@ -9,7 +9,9 @@
 
     <version>0.0.0_0-SNAPSHOT</version>
 
-    <url>http://maven.apache.org</url>
+    <description>The home page found at www.jwebmp.com</description>
+
+    <url>https://jwebmp.com</url>
 
     <dependencyManagement>
         <dependencies>
