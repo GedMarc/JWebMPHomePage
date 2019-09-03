@@ -191,10 +191,13 @@ public class DisplayPart<J extends DisplayPart<J>>
 	protected JQSourceCodePrettify addSourceToContainer(Class reference, String filename, SourceCodeLanguages language, Div container)
 	{
 		StringBuilder contents = FileTemplates.getFileTemplate(reference, reference.getName() + filename, filename);
-		JQSourceCodePrettify prettify = new JQSourceCodePrettify<>().addStyle("background:#333;")
-		                                                            .setSourceCodeLanguage(language)
-		                                                            .setText(StringEscapeUtils.escapeHtml4(contents.toString()));
-		container.add(prettify);
-		return prettify;
+		if(contents != null)
+		{
+			JQSourceCodePrettify prettify = new JQSourceCodePrettify<>().addStyle("background:#333;")
+			                                                            .setSourceCodeLanguage(language)
+			                                                            .setText(StringEscapeUtils.escapeHtml4(contents.toString()));
+			container.add(prettify);
+		}
+		return null;
 	}
 }
