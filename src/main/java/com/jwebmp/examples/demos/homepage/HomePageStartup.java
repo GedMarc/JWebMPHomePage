@@ -111,14 +111,6 @@ public class HomePageStartup
 		}
 		finally
 		{
-			GuiceContext.instance()
-			            .getScanResult()
-			            .close();
-			GuiceContext.instance()
-			            .setScanResult(new ClassGraph().whitelistPackages("com.jwebmp")
-			                                           .enableAllInfo()
-			                                           .scan());
-			System.out.println("Loaded Scan Result");
 			startup.wipeCaches();
 		}
 
