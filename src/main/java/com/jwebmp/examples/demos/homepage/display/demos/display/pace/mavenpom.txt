@@ -3,4 +3,4 @@
     <artifactId>jwebmp-pace</artifactId>
     <version>${jwebmp.version}</version>
     <type>jar</type>
-</dependency>
+            </dependency>

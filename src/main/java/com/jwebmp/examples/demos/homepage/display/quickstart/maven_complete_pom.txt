@@ -12,9 +12,9 @@
         <dependency>
             <groupId>com.jwebmp</groupId>
             <artifactId>jwebmp-undertow</artifactId>
-            <version>LATEST</version>
-        </dependency>
-        </dependency>
+            <version>LATEST</version><type>jar</type>
+            </dependency><type>jar</type>
+            </dependency>
     </dependencies>
 
 </project>

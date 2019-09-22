@@ -3,4 +3,4 @@
     <artifactId>jwebmp-easing-effects</artifactId>
     <version>${jwebmp.version}</version>
     <type>jar</type>
-</dependency>
+            </dependency>

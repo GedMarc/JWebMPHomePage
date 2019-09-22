@@ -3,4 +3,4 @@
     <artifactId>jwebmp-bootstrap-nya-select</artifactId>
     <version>${jwebmp.version}</version>
     <type>jar</type>
-</dependency>
+            </dependency>

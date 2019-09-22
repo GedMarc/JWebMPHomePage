@@ -6,8 +6,8 @@
         <dependency>
             <groupId>org.ow2.asm</groupId>
             <artifactId>asm</artifactId>
-            <version>7.0</version>
-        </dependency>
+            <version>7.0</version><type>jar</type>
+            </dependency>
     </dependencies>
     <configuration>
         <release>10</release>
@@ -17,5 +17,5 @@
 <dependency>
     <groupId>com.jwebmp</groupId>
     <artifactId>jwebmp-core</artifactId>
-    <version>LATEST</version>
-</dependency>
+    <version>LATEST</version><type>jar</type>
+            </dependency>

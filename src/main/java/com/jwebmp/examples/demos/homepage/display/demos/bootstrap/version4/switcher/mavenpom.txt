@@ -3,4 +3,4 @@
     <artifactId>jwebmp-bootstrap-switch4</artifactId>
     <version>${jwebmp.version}</version>
     <type>jar</type>
-</dependency>
+            </dependency>

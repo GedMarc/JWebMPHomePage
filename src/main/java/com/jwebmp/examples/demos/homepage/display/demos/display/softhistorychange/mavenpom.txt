@@ -3,4 +3,4 @@
     <artifactId>jwebmp-soft-history-change</artifactId>
     <version>${jwebmp.version}</version>
     <type>jar</type>
-</dependency>
+            </dependency>

@@ -3,4 +3,4 @@
     <artifactId>jwebmp-core</artifactId>
     <version>LATEST</version>
     <type>jar</type>
-</dependency>
+            </dependency>

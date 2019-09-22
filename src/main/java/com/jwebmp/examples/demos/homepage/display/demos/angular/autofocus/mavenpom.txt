@@ -3,4 +3,4 @@
     <artifactId>jwebmp-angular-auto-focus</artifactId>
     <version>${jwebmp.version}</version>
     <type>jar</type>
-</dependency>
+            </dependency>

@@ -3,4 +3,4 @@
     <artifactId>jwebmp-jstree</artifactId>
     <version>${jwebmp.version}</version>
     <type>jar</type>
-</dependency>
+            </dependency>

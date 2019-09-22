@@ -1,5 +1,5 @@
 <dependency>
     <groupId>com.jwebmp</groupId>
      <artifactId>guiced-servlets-jsf</artifactId>
-    <version>${jwebmp.version}</version>
-</dependency>
+    <version>${jwebmp.version}</version><type>jar</type>
+            </dependency>

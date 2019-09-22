@@ -3,4 +3,4 @@
     <artifactId>jwebmp-jquery-ui-themes</artifactId>
     <version>${jwebmp.version}</version>
     <type>jar</type>
-</dependency>
+            </dependency>

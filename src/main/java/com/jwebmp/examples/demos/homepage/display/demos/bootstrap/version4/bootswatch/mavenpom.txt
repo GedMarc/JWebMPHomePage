@@ -1,4 +1,4 @@
 <dependency>
     <artifactId>jwebmp-bootswatch</artifactId>
-    <version>${jwebmp.version}</version>
-</dependency>
+    <version>${jwebmp.version}</version><type>jar</type>
+            </dependency>
