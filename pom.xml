@@ -46,13 +46,13 @@
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty.commons</groupId>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>commons-lang3</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty.commons</groupId>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>commons-text</artifactId>
             <type>jar</type>
             </dependency>
@@ -101,19 +101,19 @@
         <!-- Turn Hazelcast on and off... -->
 
         <dependency>
-            <groupId>com.jwebmp.guicedee.persistence</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
             <artifactId>guiced-hazelcast</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.guicedee.persistence</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
             <artifactId>btm</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty.hibernate</groupId>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>hibernate-jcache</artifactId>
             <type>jar</type>
             </dependency>
@@ -175,25 +175,25 @@
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.guicedee.persistence</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
             <artifactId>entity-assist</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.guicedee.servlets</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.servlets</groupId>
             <artifactId>guiced-servlets-request-scoper</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.guicedee.servlets</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.servlets</groupId>
             <artifactId>guiced-undertow</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.guicedee.persistence</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
             <artifactId>guiced-persistence-btm</artifactId><type>jar</type>
             </dependency>
 
@@ -203,22 +203,22 @@
             <type>jar</type>
             </dependency>
         <dependency>
-            <groupId>com.jwebmp.inject</groupId>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>guice</artifactId>
             <type>jar</type>
             </dependency>
         <dependency>
-            <groupId>com.jwebmp.guicedee.servlets</groupId>
+            <groupId>com.jwebmp.jpms.guicedee.servlets</groupId>
             <artifactId>guiced-websockets</artifactId>
             <type>jar</type>
             </dependency>
         <dependency>
-            <groupId>com.jwebmp.inject.extensions</groupId>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>guice-servlet</artifactId>
             <type>jar</type>
             </dependency>
         <dependency>
-            <groupId>com.jwebmp.inject.extensions</groupId>
+            <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>guice-persist</artifactId>
             <type>jar</type>
             </dependency>
@@ -559,7 +559,7 @@
         <dependency>
             <groupId>com.jwebmp.jpms.thirdparty</groupId>
             <artifactId>mssql-jdbc</artifactId>
-            <version>${project.version}</version>
+            
             <type>jar</type>
             </dependency>
 
@@ -750,7 +750,7 @@
                     <release>12</release>
                     <annotationProcessorPaths>
                         <annotationProcessorPath>
-                            <groupId>com.jwebmp.jpms.thirdparty.hibernate</groupId>
+                            <groupId>com.jwebmp.jpms.thirdparty</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
                             <version>${project.version}</version>
                         </annotationProcessorPath>
