@@ -26,8 +26,8 @@
                 <groupId>com.jwebmp</groupId>
                 <artifactId>jwebmp-parent</artifactId>
                 <type>pom</type>
-                <scope>import</scope>
                 <version>${project.version}</version>
+                <scope>import</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -101,13 +101,13 @@
         <!-- Turn Hazelcast on and off... -->
 
         <dependency>
-            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
+            <groupId>com.guicedee.persistence</groupId>
             <artifactId>guiced-hazelcast</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
+            <groupId>com.guicedee.persistence</groupId>
             <artifactId>btm</artifactId>
             <type>jar</type>
             </dependency>
@@ -175,25 +175,25 @@
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
+            <groupId>com.guicedee.persistence</groupId>
             <artifactId>entity-assist</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.guicedee.servlets</groupId>
+            <groupId>com.guicedee.servlets</groupId>
             <artifactId>guiced-servlets-request-scoper</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.guicedee.servlets</groupId>
+            <groupId>com.guicedee.servlets</groupId>
             <artifactId>guiced-undertow</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.guicedee.persistence</groupId>
+            <groupId>com.guicedee.persistence</groupId>
             <artifactId>guiced-persistence-btm</artifactId><type>jar</type>
             </dependency>
 
@@ -208,7 +208,7 @@
             <type>jar</type>
             </dependency>
         <dependency>
-            <groupId>com.jwebmp.jpms.guicedee.servlets</groupId>
+            <groupId>com.guicedee.servlets</groupId>
             <artifactId>guiced-websockets</artifactId>
             <type>jar</type>
             </dependency>
