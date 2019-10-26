@@ -175,7 +175,7 @@
             </dependency>
 
         <dependency>
-            <groupId>com.guicedee.persistence</groupId>
+            <groupId>com.entityassist</groupId>
             <artifactId>entity-assist</artifactId>
             <type>jar</type>
             </dependency>
