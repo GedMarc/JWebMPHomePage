@@ -109,7 +109,7 @@ public class InjectionsBasicsPart
 
 		d.add(new H3<>("SPI's Available"));
 
-		d.add(new H4("com.jwebmp.guicedinjection.interfaces"));
+		d.add(new H4("com.guicedee.guicedinjection.interfaces"));
 
 		d.add("These services allow you to control the boot and injection configuration sequence in its entirety." +
 		      "<br/>All Services (extending IDefaultService) are named and sorted accordingly to <code>sortOrder()</code>");

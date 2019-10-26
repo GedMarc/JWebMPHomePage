@@ -7,7 +7,7 @@ import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.UserActivity;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 
 import java.util.concurrent.Callable;
 

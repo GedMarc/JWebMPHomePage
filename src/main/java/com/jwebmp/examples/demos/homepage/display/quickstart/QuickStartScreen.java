@@ -7,7 +7,7 @@ import com.jwebmp.examples.demos.homepage.components.display.CircleDisplayWizard
 import com.jwebmp.examples.demos.homepage.components.display.DefaultSmartWizard;
 import com.jwebmp.examples.demos.homepage.components.general.PluginDemoScreen;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.accordion.BSAccordion;
 import com.jwebmp.plugins.bootstrap4.accordion.BSAccordionCollection;
 import com.jwebmp.plugins.bootstrap4.buttons.styles.BSButtonLightOutline;
@@ -476,7 +476,7 @@ public class QuickStartScreen
 		JSTreeListItem<?> folder2 = new JSTreeListItem<>("services", new JSTreeNodeOptions<>().setIcon("far fa-folder-open")
 		                                                                                      .setOpened(true));
 
-		JSTreeListItem<?> file1 = new JSTreeListItem<>("com.jwebmp.guicedinjection.interfaces.IGuiceModule", new JSTreeNodeOptions<>().setIcon("far fa-file"));
+		JSTreeListItem<?> file1 = new JSTreeListItem<>("com.guicedee.guicedinjection.interfaces.IGuiceModule", new JSTreeNodeOptions<>().setIcon("far fa-file"));
 
 
 		folder2.add(file1);

@@ -13,7 +13,7 @@ import com.jwebmp.core.htmlbuilder.css.themes.Theme;
 import com.jwebmp.core.services.IPageConfigurator;
 import com.jwebmp.examples.demos.homepage.components.events.SwopObjectBrowserEvent;
 import com.jwebmp.examples.demos.homepage.components.general.events.PackagesBrowserSwopObjectBrowserEvent;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;

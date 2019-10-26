@@ -17,7 +17,7 @@ import com.jwebmp.websockets.GuicedWebSocket;
 
 import javax.servlet.http.HttpSession;
 
-import static com.jwebmp.guicedinjection.GuiceContext.*;
+import static com.guicedee.guicedinjection.GuiceContext.*;
 
 public class ButtonRowPart<J extends ButtonRowPart<J>>
 		extends BSRow<J>

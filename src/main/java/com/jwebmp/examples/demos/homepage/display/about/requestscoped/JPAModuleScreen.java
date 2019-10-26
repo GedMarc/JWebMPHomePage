@@ -84,7 +84,7 @@ public class JPAModuleScreen
 		        "<br/> The two mechanisms for running systems are listed below");
 
 		spi.add(new H4<>("JRE 8"));
-		spi.add(new MetaInfServicesTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule"));
+		spi.add(new MetaInfServicesTree("com.guicedee.guicedinjection.interfaces.IGuiceModule"));
 		spi.add(new H4<>("JPMS"));
 
 		addSourceToContainer(JPAModuleScreen.class, "modules.txt", SourceCodeLanguages.Java, spi);

@@ -5,7 +5,7 @@ import com.jwebmp.core.Feature;
 import com.jwebmp.core.Page;
 import com.jwebmp.core.base.html.*;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;

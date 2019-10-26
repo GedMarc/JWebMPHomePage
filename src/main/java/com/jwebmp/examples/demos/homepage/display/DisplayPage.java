@@ -19,9 +19,9 @@ import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.jwebmp.examples.demos.homepage.enumerations.DisplayScreens;
-import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.guicedpersistence.db.exceptions.NoConnectionInfoException;
-import com.jwebmp.logger.LogFactory;
+import com.guicedee.guicedinjection.GuiceContext;
+import com.guicedee.guicedpersistence.db.exceptions.NoConnectionInfoException;
+import com.guicedee.logger.LogFactory;
 import com.jwebmp.plugins.plusastab.PlusAsTabFeature;
 import com.jwebmp.plugins.toastr.ToastrFeature;
 import com.jwebmp.plugins.toastr.ToastrType;
@@ -31,7 +31,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.jwebmp.guicedinjection.GuiceContext.*;
+import static com.guicedee.guicedinjection.GuiceContext.*;
 
 /**
  * @author GedMarc

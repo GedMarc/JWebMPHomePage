@@ -12,7 +12,7 @@ import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
-import com.jwebmp.logger.LogFactory;
+import com.guicedee.logger.LogFactory;
 import com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions;
 
 import java.util.Optional;
@@ -20,7 +20,7 @@ import java.util.concurrent.Executors;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static com.jwebmp.guicedinjection.GuiceContext.*;
+import static com.guicedee.guicedinjection.GuiceContext.*;
 
 public class LoginEvent
 		extends DefaultClick

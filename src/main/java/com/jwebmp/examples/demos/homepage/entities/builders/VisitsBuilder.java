@@ -4,7 +4,7 @@ import com.google.inject.Key;
 import com.jwebmp.entityassist.querybuilder.QueryBuilderCore;
 import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 
 import javax.persistence.EntityManager;
 

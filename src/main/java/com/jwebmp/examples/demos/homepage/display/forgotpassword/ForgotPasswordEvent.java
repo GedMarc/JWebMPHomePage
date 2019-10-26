@@ -4,7 +4,7 @@ import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.*;
 import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 
 import java.util.Optional;
 import java.util.UUID;

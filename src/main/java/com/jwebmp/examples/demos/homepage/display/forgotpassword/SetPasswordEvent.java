@@ -10,8 +10,8 @@ import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.logger.LogFactory;
+import com.guicedee.guicedinjection.GuiceContext;
+import com.guicedee.logger.LogFactory;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

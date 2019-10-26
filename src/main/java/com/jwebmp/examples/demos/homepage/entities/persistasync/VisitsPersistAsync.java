@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.entities.persistasync;
 
 import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
-import com.jwebmp.guicedpersistence.db.annotations.Transactional;
+import com.guicedee.guicedpersistence.db.annotations.Transactional;
 
 public class VisitsPersistAsync
 		implements Runnable

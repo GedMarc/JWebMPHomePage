@@ -16,7 +16,7 @@ import com.jwebmp.examples.demos.homepage.Passwords;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.entities.builders.SubscribersBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.SubscriberPersistAsync;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

@@ -46,13 +46,13 @@
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-lang3</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+             <groupId>com.guicedee.services</groupId>
             <artifactId>commons-text</artifactId>
             <type>jar</type>
             </dependency>
@@ -113,13 +113,13 @@
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+             <groupId>com.guicedee.services</groupId>
             <artifactId>hibernate-jcache</artifactId>
             <type>jar</type>
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+             <groupId>com.guicedee.services</groupId>
             <artifactId>cache-annotations-ri-guice</artifactId>
             <type>jar</type>
             </dependency>
@@ -198,12 +198,12 @@
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+             <groupId>com.guicedee.services</groupId>
             <artifactId>xnio-nio</artifactId>
             <type>jar</type>
             </dependency>
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+             <groupId>com.guicedee.services</groupId>
             <artifactId>guice</artifactId>
             <type>jar</type>
             </dependency>
@@ -213,12 +213,12 @@
             <type>jar</type>
             </dependency>
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+             <groupId>com.guicedee.services</groupId>
             <artifactId>guice-servlet</artifactId>
             <type>jar</type>
             </dependency>
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+            <groupId>com.guicedee.services.extensions</groupId>
             <artifactId>guice-persist</artifactId>
             <type>jar</type>
             </dependency>
@@ -557,7 +557,7 @@
             </dependency>
 
         <dependency>
-            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+             <groupId>com.guicedee.services</groupId>
             <artifactId>mssql-jdbc</artifactId>
             
             <type>jar</type>
@@ -750,12 +750,12 @@
                     <release>12</release>
                     <annotationProcessorPaths>
                         <annotationProcessorPath>
-                            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+                             <groupId>com.guicedee.services</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
                             <version>${project.version}</version>
                         </annotationProcessorPath>
                         <path>
-                            <groupId>com.jwebmp.jpms.thirdparty</groupId>
+                             <groupId>com.guicedee.services</groupId>
                             <artifactId>jakarta.xml.bind-api</artifactId>
                             <version>${project.version}</version>
                         </path>

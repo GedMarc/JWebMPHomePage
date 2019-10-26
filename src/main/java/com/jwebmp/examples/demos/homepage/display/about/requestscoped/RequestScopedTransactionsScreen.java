@@ -20,7 +20,7 @@ public class RequestScopedTransactionsScreen
 		all.add("Persist Services can be automatically started utilizing Guice Persist IGuicePostStartup SPI.");
 
 		all.add("Session-Per-Transaction Strategy where an Entity Manager exists for each started Unit Transaction or Unit of Work is implemented by default for backend operations whether or not it is annotated. " +
-		        "<br/>To keep things separate, <a href=\"#\">@com.jwebmp.guicedpersistence.db.annotations.Transactional</a> and designate the specific Entity Manager to use. ");
+		        "<br/>To keep things separate, <a href=\"#\">@com.guicedee.guicedpersistence.db.annotations.Transactional</a> and designate the specific Entity Manager to use. ");
 
 		addSourceToContainer(RequestScopedTransactionsScreen.class, "sessionscope.txt", Java, all);
 

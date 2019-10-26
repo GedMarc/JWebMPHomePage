@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.components.general;
 import com.jwebmp.core.base.ComponentBase;
 import com.jwebmp.core.base.ComponentDependancyBase;
 import com.jwebmp.core.base.interfaces.IComponentHierarchyBase;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jstree.JSTree;
 import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;

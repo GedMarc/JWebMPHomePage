@@ -4,7 +4,7 @@ import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
 

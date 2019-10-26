@@ -5,7 +5,7 @@ import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H4;
 import com.jwebmp.examples.demos.homepage.components.DefaultSlimScrollFeature;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.angularslimscroll.SlimScrollFeature;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;

@@ -10,8 +10,8 @@ import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.UserActivity;
 import com.jwebmp.examples.demos.homepage.entities.enumerations.UserActivityGroup;
-import com.jwebmp.guicedinjection.GuiceContext;
-import com.jwebmp.guicedpersistence.db.annotations.Transactional;
+import com.guicedee.guicedinjection.GuiceContext;
+import com.guicedee.guicedpersistence.db.annotations.Transactional;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 public class ForgotPasswordAsync

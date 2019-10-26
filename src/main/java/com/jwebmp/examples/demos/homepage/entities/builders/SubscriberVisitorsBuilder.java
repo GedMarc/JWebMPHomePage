@@ -7,7 +7,7 @@ import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors;
 import com.jwebmp.examples.demos.homepage.entities.SubscriberVisitors_;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Visitors;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 
 import javax.persistence.EntityManager;
 

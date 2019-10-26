@@ -3,10 +3,10 @@ import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
 import com.jwebmp.examples.demos.homepage.HomePageModuleScanner;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBModule;
 import com.jwebmp.examples.demos.homepage.display.DisplayPage;
-import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
-import com.jwebmp.guicedinjection.interfaces.IGuiceModule;
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanJarInclusions;
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleInclusions;
+import com.guicedee.guicedinjection.interfaces.IGuiceConfigurator;
+import com.guicedee.guicedinjection.interfaces.IGuiceModule;
+import com.guicedee.guicedinjection.interfaces.IGuiceScanJarInclusions;
+import com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions;
 
 //This is a closed module - it requires an opens clause
 //--add-opens=java.base/java.lang=javassist,com.google.guice
@@ -35,15 +35,15 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.undertow;
 
 	//JWebMP Addons
-	requires com.jwebmp.guicedservlets.requestscoped;
-	requires com.jwebmp.guicedpersistence.readers.hibernateproperties;
-	requires com.jwebmp.guicedpersistence.btm;
+	requires com.guicedee.guicedservlets.requestscoped;
+	requires com.guicedee.guicedpersistence.readers.hibernateproperties;
+	requires com.guicedee.guicedpersistence.btm;
 
 	//JWebMP Lower Level
-	requires com.jwebmp.guicedinjection;
-	requires com.jwebmp.logmaster;
+	requires com.guicedee.guicedinjection;
+	requires com.guicedee.logmaster;
 	requires com.jwebmp.core;
-	requires com.jwebmp.guicedservlets;
+	requires com.guicedee.guicedservlets;
 
 	//Guice
 	requires com.google.guice;

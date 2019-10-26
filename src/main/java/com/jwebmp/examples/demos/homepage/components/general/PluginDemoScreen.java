@@ -10,7 +10,7 @@ import com.jwebmp.entityassist.enumerations.Operand;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
-import com.jwebmp.guicedinjection.interfaces.IDefaultService;
+import com.guicedee.guicedinjection.interfaces.IDefaultService;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.cards.layout.BSCardBox;

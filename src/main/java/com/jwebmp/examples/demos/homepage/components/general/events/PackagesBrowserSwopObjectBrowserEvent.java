@@ -5,7 +5,7 @@ import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.examples.demos.homepage.components.WebComponentsService;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayAPITabView;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.jstree.events.onselectedevent.JSTreeOnSelectedAdapter;
 import com.jwebmp.plugins.jstree.options.selected.JSTreeNodeSelectedEventOptions;
 

@@ -79,7 +79,7 @@ public class JTAModuleScreen
 		        "<br/> The two mechanisms for running systems are listed below");
 
 		spi.add("JRE 8");
-		spi.add(new MetaInfServicesTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule"));
+		spi.add(new MetaInfServicesTree("com.guicedee.guicedinjection.interfaces.IGuiceModule"));
 		spi.add("JPMS");
 		spi.add("In your <code>module-info.java</code> file, add in your provisions clause");
 
@@ -113,7 +113,7 @@ public class JTAModuleScreen
 		         "<br/><code>com.google.inject.persist</code> and <code>javax.transaction</code> @Transactional annotations are supported.");
 
 		impl.add("To specify a separate marked annotation to use for transactions, other than what was specified in the binding module, " +
-		         "<br/>you can specify <code>@com.jwebmp.guicedpersistence.db.annotations.Transactional</code> to mark as below.");
+		         "<br/>you can specify <code>@com.guicedee.guicedpersistence.db.annotations.Transactional</code> to mark as below.");
 		addSourceToContainer(JPAModuleScreen.class, "sessionscope.txt", SourceCodeLanguages.Java, impl);
 		return impl;
 

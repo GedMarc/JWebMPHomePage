@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitorsBuilder;
-import com.jwebmp.guicedpersistence.db.annotations.Transactional;
+import com.guicedee.guicedpersistence.db.annotations.Transactional;
 import org.apache.commons.lang3.NotImplementedException;
 
 import javax.persistence.*;

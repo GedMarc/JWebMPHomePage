@@ -5,7 +5,7 @@ import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
 import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 
 public class GoHomeEvent
 		extends ClickAdapter

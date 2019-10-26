@@ -8,7 +8,7 @@ import com.jwebmp.examples.demos.homepage.db.dao.VisitorsService;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.home.HomePage;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.cards.BSCardEvents;
 
 import java.util.concurrent.Executors;

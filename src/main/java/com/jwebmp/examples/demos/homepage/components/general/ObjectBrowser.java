@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
 import com.jwebmp.core.base.ComponentHierarchyBase;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.jstree.JSTree;

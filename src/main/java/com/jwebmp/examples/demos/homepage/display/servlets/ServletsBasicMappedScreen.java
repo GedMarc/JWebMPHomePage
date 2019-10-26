@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.display.servlets;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumbItem;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;

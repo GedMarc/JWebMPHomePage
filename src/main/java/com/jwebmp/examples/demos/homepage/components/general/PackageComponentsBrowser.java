@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.components.general;
 
 import com.jwebmp.examples.demos.homepage.components.events.SwopPackageDisplayEvent;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.buttons.styles.BSButtonPrimaryOutline;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import io.github.classgraph.ClassInfo;

@@ -171,14 +171,14 @@ public class PersistenceBasicsScreen
 		provides.add("In JRE 8, you need to create the services file in your META-INF/services folder. " +
 		             "These files contain a reference to the services.");
 
-		provides.add(new MetaInfServicesTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule"));
+		provides.add(new MetaInfServicesTree("com.guicedee.guicedinjection.interfaces.IGuiceModule"));
 
 		provides.add(new H3<>("Auto Start Data Source"));
 		provides.add(
 				"You can also create a service binding from the same module to IGuicePostStartup to instantiate the connection on boot instead of first use (Injecting DataSource)" +
 				"<br/>Or simply set <code>setAutoStart(true);</code> to create an asynchronous post startup thread without needing a module specification");
 
-		//provides.add(new MetaInfServicesTree("com.jwebmp.guicedinjection.interfaces.IGuicePostStartup"));
+		//provides.add(new MetaInfServicesTree("com.guicedee.guicedinjection.interfaces.IGuicePostStartup"));
 
 		return provides;
 	}
@@ -200,7 +200,7 @@ public class PersistenceBasicsScreen
 	{
 		Div services = new Div();
 
-		services.add("Services are located in com.jwebmp.guicedpersistence.services");
+		services.add("Services are located in com.guicedee.guicedpersistence.services");
 
 		BSTable<?> settingUpTable = new BSTable<>().addTheme(BSTableOptions.Table_Dark)
 		                                           .addClass(Table_Hover)
@@ -224,9 +224,9 @@ public class PersistenceBasicsScreen
 		                                                .add(new TableCell<>("Service that is used to manage transactions, whether for JTA or JPA.")));
 		services.add(settingUpTable);
 
-		services.add(new MetaInfServicesTree("com.jwebmp.guicedpersistence.services.ITransactionHandler",
-		                                     "com.jwebmp.guicedpersistence.services.IPropertiesConnectionInfoReader",
-		                                     "com.jwebmp.guicedpersistence.services.IPropertiesEntityManagerReader"));
+		services.add(new MetaInfServicesTree("com.guicedee.guicedpersistence.services.ITransactionHandler",
+		                                     "com.guicedee.guicedpersistence.services.IPropertiesConnectionInfoReader",
+		                                     "com.guicedee.guicedpersistence.services.IPropertiesEntityManagerReader"));
 
 
 /*

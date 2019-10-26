@@ -2,9 +2,9 @@ import com.jwebmp.core.services.IPage;
 import com.jwebmp.examples.demos.homepage.DemoGuiceConfigurator;
 import com.jwebmp.examples.demos.homepage.db.HomePageDBModule;
 import com.jwebmp.examples.demos.homepage.display.DisplayPage;
-import com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator;
-import com.jwebmp.guicedinjection.interfaces.IGuiceModule;
-import com.jwebmp.guicedinjection.interfaces.IGuicePostStartup;
+import com.guicedee.guicedinjection.interfaces.IGuiceConfigurator;
+import com.guicedee.guicedinjection.interfaces.IGuiceModule;
+import com.guicedee.guicedinjection.interfaces.IGuicePostStartup;
 
 open module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
@@ -15,10 +15,10 @@ open module com.jwebmp.examples.demos.homepage {
 	requires undertow.core;
 	requires undertow.servlet;
 
-	requires com.jwebmp.guicedinjection;
-	requires com.jwebmp.logmaster;
+	requires com.guicedee.guicedinjection;
+	requires com.guicedee.logmaster;
 	requires com.jwebmp.core;
-	requires com.jwebmp.guicedpersistence;
+	requires com.guicedee.guicedpersistence;
 
 	requires com.google.guice.extensions.servlet;
 	requires com.google.guice;
@@ -75,7 +75,7 @@ open module com.jwebmp.examples.demos.homepage {
 
 	requires xnio.api;
 
-	requires com.jwebmp.guicedpersistence.btm;
+	requires com.guicedee.guicedpersistence.btm;
 	requires org.json;
 	requires com.jwebmp.plugins.skycons;
 	requires com.jwebmp.plugins.datatable;
@@ -87,7 +87,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.google.common;
 	requires io.github.classgraph;
 
-	requires com.jwebmp.guicedpersistence.readers.hibernateproperties;
+	requires com.guicedee.guicedpersistence.readers.hibernateproperties;
 	requires com.jwebmp.plugins.smartwizard4;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;

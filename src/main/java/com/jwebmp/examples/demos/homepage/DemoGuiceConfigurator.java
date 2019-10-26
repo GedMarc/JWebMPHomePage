@@ -1,9 +1,9 @@
 package com.jwebmp.examples.demos.homepage;
 
-import com.jwebmp.guicedinjection.GuiceConfig;
+import com.guicedee.guicedinjection.GuiceConfig;
 
 public class DemoGuiceConfigurator
-		implements com.jwebmp.guicedinjection.interfaces.IGuiceConfigurator
+		implements com.guicedee.guicedinjection.interfaces.IGuiceConfigurator
 {
 
 	public DemoGuiceConfigurator()

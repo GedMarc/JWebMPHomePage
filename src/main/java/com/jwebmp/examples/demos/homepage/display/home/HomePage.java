@@ -19,7 +19,7 @@ import com.jwebmp.plugins.skycons.SkyIcon;
 import com.jwebmp.plugins.skycons.Skycon;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
-import static com.jwebmp.guicedinjection.GuiceContext.*;
+import static com.guicedee.guicedinjection.GuiceContext.*;
 
 public class HomePage
 		extends DisplayScreen

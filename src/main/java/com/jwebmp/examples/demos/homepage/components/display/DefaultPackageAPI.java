@@ -10,7 +10,7 @@ import com.jwebmp.examples.demos.homepage.components.general.PackagesBrowser;
 import com.jwebmp.examples.demos.homepage.components.general.PrettyCollapsable;
 import com.jwebmp.examples.demos.homepage.db.dao.PluginsService;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import com.jwebmp.plugins.bootstrap4.cards.layout.BSCardBox;
 import com.jwebmp.plugins.bootstrap4.containers.BSColumn;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;

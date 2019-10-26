@@ -36,7 +36,7 @@ public class WebServicesDisplayPart
 		addSourceToContainer(WebServicesDisplayPart.class, "rest_binding.txt", Java, dualExecution);
 
 		dualExecution.add("Then register your new module via SPI to IGuiceModule");
-		dualExecution.add(addServiceTree("com.jwebmp.guicedinjection.interfaces.IGuiceModule"));
+		dualExecution.add(addServiceTree("com.guicedee.guicedinjection.interfaces.IGuiceModule"));
 		dualExecution.add("Or even better in JPMS just use in your module-info.java file <code>provides IGuiceModule with RestTestBinding</code>");
 
 

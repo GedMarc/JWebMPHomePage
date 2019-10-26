@@ -7,7 +7,7 @@ import com.jwebmp.core.SessionHelper;
 import com.jwebmp.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitsBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.VisitsPersistAsync;
-import com.jwebmp.guicedinjection.GuiceContext;
+import com.guicedee.guicedinjection.GuiceContext;
 import org.json.JSONObject;
 
 import javax.persistence.*;

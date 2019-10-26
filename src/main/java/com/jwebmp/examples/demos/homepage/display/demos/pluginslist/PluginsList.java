@@ -20,7 +20,7 @@ import com.jwebmp.plugins.datatable.options.DataTablesDomOptions;
 import java.util.List;
 
 import static com.jwebmp.core.utilities.StaticStrings.*;
-import static com.jwebmp.guicedinjection.GuiceContext.*;
+import static com.guicedee.guicedinjection.GuiceContext.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.datatable.options.DataTablesDomOptions.*;
 

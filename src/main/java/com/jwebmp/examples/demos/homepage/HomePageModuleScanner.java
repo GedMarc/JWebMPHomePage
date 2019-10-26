@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage;
 
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanJarInclusions;
-import com.jwebmp.guicedinjection.interfaces.IGuiceScanModuleInclusions;
+import com.guicedee.guicedinjection.interfaces.IGuiceScanJarInclusions;
+import com.guicedee.guicedinjection.interfaces.IGuiceScanModuleInclusions;
 
 import javax.validation.constraints.NotNull;
 import java.util.HashSet;
