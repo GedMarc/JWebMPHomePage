@@ -233,7 +233,7 @@ public class QuickStartScreen
 		annotationsConect.add("<code>@javax.ejb.Stateful</code> can be replaced with <a target=\"_blank\" href=\"https://github.com/google/guice/wiki/Scopes\">custom scopes</a>");
 		annotationsConect.add("<code>@javax.faces.SessionScoped</code> can be replaced with <code>@com.google.inject.servlet.SessionScoped</code>");
 		annotationsConect.add("<code>@javax.faces.RequestScoped</code> can be replaced with <code>@com.google.inject.servlet.RequestScoped</code>");
-		annotationsConect.add("<code>@javax.faces.ViewScoped</code> can be replaced with <code>@com.jwebmp.guicedservlets.jsf.ViewScoped</code>");
+		annotationsConect.add("<code>@javax.faces.ViewScoped</code> can be replaced with <code>@com.guicedee.guicedservlets.jsf.ViewScoped</code>");
 		annotationsConect.add("<code>@ApplicationScoped/Singleton</code> can be replaced with <code>@com.google.inject.Singleton</code>");
 
 		/*pageContent.add("<code>@javax.ejb.MessageDrivenBean</code> unfortunately requires a JMS Provider. <a target=\"_blank\" href=\"https://www.rabbitmq.com/\">I recommend RabbitMQ</a>, <br/>" +

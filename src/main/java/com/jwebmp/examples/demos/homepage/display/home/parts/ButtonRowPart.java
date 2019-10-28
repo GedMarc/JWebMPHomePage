@@ -9,7 +9,7 @@ import com.jwebmp.examples.demos.homepage.db.dao.VisitsService;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import com.jwebmp.guicedservlets.GuicedServletKeys;
+import com.guicedee.guicedservlets.GuicedServletKeys;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.jwebmp.websockets.GuicedWebSocket;
