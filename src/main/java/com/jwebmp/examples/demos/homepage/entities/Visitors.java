@@ -1,7 +1,7 @@
 package com.jwebmp.examples.demos.homepage.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.jwebmp.entityassist.CoreEntity;
+import com.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.builders.VisitorsBuilder;
 import com.guicedee.guicedpersistence.db.annotations.Transactional;

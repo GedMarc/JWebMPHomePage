@@ -1,6 +1,6 @@
 package com.jwebmp.examples.demos.homepage.entities;
 
-import com.jwebmp.entityassist.CoreEntity;
+import com.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.RightBarActivityBuilder;
 
 import javax.persistence.*;

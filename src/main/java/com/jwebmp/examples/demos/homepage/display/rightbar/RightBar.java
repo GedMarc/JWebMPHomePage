@@ -11,7 +11,7 @@ import com.jwebmp.plugins.bootstrap4.options.BSColoursOptions;
 
 import java.util.List;
 
-import static com.jwebmp.entityassist.enumerations.OrderByType.*;
+import static com.entityassist.enumerations.OrderByType.*;
 import static com.jwebmp.plugins.bootstrap4.navs.BSNavsOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;

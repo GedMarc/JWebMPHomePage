@@ -31,7 +31,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires org.objectweb.asm;
 
 	//JWebMP
-	requires com.jwebmp.entityassist;
+	requires com.entityassist;
 	requires com.jwebmp.undertow;
 
 	//JWebMP Addons

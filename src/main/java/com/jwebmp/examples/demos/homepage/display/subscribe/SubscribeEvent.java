@@ -7,7 +7,7 @@ import com.jwebmp.core.base.ajax.*;
 import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.core.utilities.StaticStrings;
-import com.jwebmp.entityassist.EntityAssistException;
+import com.entityassist.EntityAssistException;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.menu.West;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;

@@ -4,7 +4,7 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 import com.jwebmp.core.base.ComponentHierarchyBase;
 import com.jwebmp.core.base.ajax.*;
-import com.jwebmp.entityassist.EntityAssistException;
+import com.entityassist.EntityAssistException;
 import com.jwebmp.examples.demos.homepage.components.events.DefaultClick;
 import com.jwebmp.examples.demos.homepage.display.TopBar;
 import com.jwebmp.examples.demos.homepage.display.menu.West;

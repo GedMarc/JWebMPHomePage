@@ -7,11 +7,11 @@ package com.jwebmp.examples.demos.homepage.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jwebmp.core.exceptions.MissingComponentException;
-import com.jwebmp.entityassist.CoreEntity;
-import com.jwebmp.entityassist.EntityAssistException;
-import com.jwebmp.entityassist.converters.LocalDateTimestampAttributeConverter;
-import com.jwebmp.entityassist.enumerations.ActiveFlag;
-import com.jwebmp.entityassist.enumerations.Operand;
+import com.entityassist.CoreEntity;
+import com.entityassist.EntityAssistException;
+import com.entityassist.converters.LocalDateTimestampAttributeConverter;
+import com.entityassist.enumerations.ActiveFlag;
+import com.entityassist.enumerations.Operand;
 import com.jwebmp.examples.demos.homepage.Passwords;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.entities.builders.SubscribersBuilder;

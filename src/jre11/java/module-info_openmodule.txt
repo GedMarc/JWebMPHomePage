@@ -25,7 +25,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.google.guice.extensions.persist;
 
 	requires com.jwebmp.undertow;
-	requires com.jwebmp.websockets;
+	requires com.guicedee.guicedservlets.websockets;
 
 	requires com.jwebmp.plugins.fontawesome5;
 	//requires com.jwebmp.components.d3.reingoldtilfordtree;
@@ -50,7 +50,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.toastr;
 	requires com.jwebmp.plugins.plusastab;
 
-	requires com.jwebmp.entityassist;
+	requires com.entityassist;
 
 	requires java.validation;
 	requires jakarta.activation;

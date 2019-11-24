@@ -1,6 +1,6 @@
 package com.jwebmp.examples.demos.homepage.display.admin;
 
-import com.jwebmp.entityassist.CoreEntity;
+import com.entityassist.CoreEntity;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.cards.prebuilt.DefaultCard;
 import com.jwebmp.plugins.bootstrap4.modal.BSModal;

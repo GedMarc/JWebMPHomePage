@@ -9,7 +9,7 @@ import com.jwebmp.core.base.html.CSSLink;
 import com.jwebmp.core.base.html.Meta;
 import com.jwebmp.core.enumerations.AppleMobileStatusBarStyles;
 import com.jwebmp.core.utilities.regex.RegularExpressionsDTO;
-import com.jwebmp.entityassist.enumerations.ActiveFlag;
+import com.entityassist.enumerations.ActiveFlag;
 import com.jwebmp.examples.demos.homepage.SessionProperties;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayScreen;
 import com.jwebmp.examples.demos.homepage.db.dao.VisitorsService;

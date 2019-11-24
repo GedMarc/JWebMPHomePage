@@ -1,5 +1,6 @@
 package com.jwebmp.examples.demos.homepage;
 
+import com.guicedee.guicedservlets.undertow.GuicedUndertow;
 import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
 import com.jwebmp.core.generics.WebReference;
@@ -62,8 +63,6 @@ import com.jwebmp.plugins.themify.icons.ThemifyIconsPageConfigurator;
 import com.jwebmp.plugins.verticaltimeline.VerticalTimelinePageConfigurator;
 import com.jwebmp.plugins.weathericons.WeatherIconsPageConfigurator;
 import com.jwebmp.plugins.xeditable.XEditablePageConfigurator;
-import com.jwebmp.undertow.GuicedUndertow;
-import io.github.classgraph.ClassGraph;
 
 import javax.cache.CacheManager;
 import java.util.logging.Level;

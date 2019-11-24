@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.components.plugins;
 import com.jwebmp.core.base.html.DivSimple;
 import com.jwebmp.core.base.html.Link;
 import com.jwebmp.core.base.html.SmallText;
-import com.jwebmp.entityassist.enumerations.Operand;
+import com.entityassist.enumerations.Operand;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayPart;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;

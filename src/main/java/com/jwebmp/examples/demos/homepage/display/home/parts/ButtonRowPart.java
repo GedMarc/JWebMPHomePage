@@ -12,7 +12,7 @@ import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.guicedee.guicedservlets.GuicedServletKeys;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
-import com.jwebmp.websockets.GuicedWebSocket;
+import com.guicedee.guicedservlets.websockets.GuicedWebSocket;
 
 
 import javax.servlet.http.HttpSession;

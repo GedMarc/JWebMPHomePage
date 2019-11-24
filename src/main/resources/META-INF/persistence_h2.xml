@@ -7,9 +7,9 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <jta-data-source>jdbc/homepage</jta-data-source>
 
-        <class>com.jwebmp.entityassist.converters.LocalDateTimeAttributeConverter</class>
-        <class>com.jwebmp.entityassist.converters.LocalDateTimestampAttributeConverter</class>
-        <class>com.jwebmp.entityassist.converters.LocalDateAttributeConverter</class>
+        <class>com.entityassist.converters.LocalDateTimeAttributeConverter</class>
+        <class>com.entityassist.converters.LocalDateTimestampAttributeConverter</class>
+        <class>com.entityassist.converters.LocalDateAttributeConverter</class>
 
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
