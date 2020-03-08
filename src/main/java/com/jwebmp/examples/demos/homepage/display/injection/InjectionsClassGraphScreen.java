@@ -91,7 +91,6 @@ public class InjectionsClassGraphScreen
 		table.addRow("IPackageContentsScanner",
 		             "Registers the given package to be included during the optional classpath scan. Only these packages will be included in retrieved results");
 		table.addRow("IPathContentsScanner", "Registers the given path (No Class Files) to search for IFileContentsScanners.<br/> Usually META-INF");
-		table.addRow("IGuiceScanJarExclusions", "Registers JAR files to be excluded from all scans. Performance enhancement");
 		table.addRow("IGuiceScanModuleExclusions", "Registers Modules (JPMS) to be excluded from all scans. Performance enhancement");
 
 		card.add(table);
