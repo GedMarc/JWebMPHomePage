@@ -72,7 +72,7 @@
         <dependency>
             <groupId>jakarta.mail</groupId>
             <artifactId>jakarta.mail-api</artifactId>
-            <version>1.6.4</version>
+            <version>${java.mail.version}</version>
             <exclusions>
                 <exclusion>
                     <artifactId>jakarta.activation-api</artifactId>
