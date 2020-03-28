@@ -719,9 +719,9 @@
                     <release>${jdk.release}</release>
                     <annotationProcessorPaths>
                         <annotationProcessorPath>
-                            <groupId>com.guicedee.services</groupId>
+                            <groupId>org.hibernate</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
-                            <version>${project.version}</version>
+                            <version>5.4.12.Final</version>
                         </annotationProcessorPath>
                         <path>
                             <groupId>com.guicedee.services</groupId>
