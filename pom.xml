@@ -721,7 +721,7 @@
                         <annotationProcessorPath>
                             <groupId>org.hibernate</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
-                            <version>5.4.13.Final</version>
+                            <version>5.4.14.Final</version>
                         </annotationProcessorPath>
                         <path>
                             <groupId>com.guicedee.services</groupId>
