@@ -6,7 +6,7 @@ import com.guicedee.guicedinjection.interfaces.IGuiceConfigurator;
 import com.guicedee.guicedinjection.interfaces.IGuiceModule;
 import com.guicedee.guicedinjection.interfaces.IGuicePostStartup;
 
-open module com.jwebmp.examples.demos.homepage {
+module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
 
 	requires javax.servlet.api;
@@ -58,7 +58,7 @@ open module com.jwebmp.examples.demos.homepage {
 	requires java.persistence;
 	requires java.mail;
 
-	requires jdk.unsupported;
+	requires static jdk.unsupported;
 
 	requires com.fasterxml.jackson.annotation;
 	requires com.fasterxml.jackson.core;

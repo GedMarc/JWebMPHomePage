@@ -8,7 +8,7 @@ import com.guicedee.guicedinjection.interfaces.IGuiceModule;
 
 //This is a closed module - it requires an opens clause
 //--add-opens=java.base/java.lang=javassist,com.google.guice
-open module com.jwebmp.examples.demos.homepage {
+module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
 
 	//This library is used for class scanning (https://github.com/classgraph/classgraph)

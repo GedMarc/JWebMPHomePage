@@ -1,4 +1,4 @@
-open module my.company.helloworld{
+module my.company.helloworld{
     requires com.jwebmp.core;
     provides IPage with HelloWorld;
 }
