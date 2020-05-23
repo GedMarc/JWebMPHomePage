@@ -165,12 +165,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.guicedee.persistence</groupId>
-            <artifactId>guiced-persistence-btm</artifactId>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>xnio-nio</artifactId>
             <type>jar</type>

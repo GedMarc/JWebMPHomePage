@@ -9,7 +9,7 @@ import com.guicedee.guicedinjection.interfaces.IGuicePostStartup;
 module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
 
-	requires javax.servlet.api;
+	requires java.servlet;
 	requires java.logging;
 
 	requires undertow.core;
