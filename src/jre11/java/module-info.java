@@ -34,8 +34,7 @@ module com.jwebmp.examples.demos.homepage {
 
 	//JWebMP Addons
 	requires com.guicedee.guicedservlets.requestscoped;
-	requires com.guicedee.guicedpersistence.readers.hibernateproperties;
-	requires com.guicedee.guicedpersistence.btm;
+	requires com.guicedee.guicedpersistence;
 
 	//JWebMP Lower Level
 	requires com.guicedee.guicedinjection;
