@@ -12,7 +12,7 @@ module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
 
 	//This library is used for class scanning (https://github.com/classgraph/classgraph)
-	requires io.github.classgraph;
+
 	requires java.mail;
 
 	//These still require porting to jpms, otherwise they wouldn't need to be specified here
@@ -66,7 +66,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.smartwizard4;
 
 	//In storing visitors, we save the header information as JSON
-	requires com.fasterxml.jackson.annotation;
+
 	requires com.fasterxml.jackson.core;
 	requires com.fasterxml.jackson.databind;
 	requires org.json;
@@ -134,7 +134,6 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.jwebmp.plugins.jqueryui.themes;
 	requires com.jwebmp.plugins.blueimp.fileupload;
 	requires com.jwebmp.plugins.bs4.tagsinput;
-	requires jakarta.activation;
 
 	provides IGuiceConfigurator with DemoGuiceConfigurator;
 	provides IPage with DisplayPage;

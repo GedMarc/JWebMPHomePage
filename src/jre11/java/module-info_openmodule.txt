@@ -10,7 +10,6 @@ module com.jwebmp.examples.demos.homepage {
 	exports com.jwebmp.examples.demos.homepage;
 
 	requires java.servlet;
-	requires java.logging;
 
 	requires undertow.core;
 	requires undertow.servlet;
@@ -53,14 +52,13 @@ module com.jwebmp.examples.demos.homepage {
 	requires com.entityassist;
 
 	requires java.validation;
-	requires jakarta.activation;
 	requires java.xml.bind;
 	requires java.persistence;
 	requires java.mail;
 
 	requires static jdk.unsupported;
 
-	requires com.fasterxml.jackson.annotation;
+
 	requires com.fasterxml.jackson.core;
 	requires com.fasterxml.jackson.databind;
 
@@ -85,7 +83,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires org.apache.commons.text;
 	requires com.jwebmp.guicedservlets.requestscoped;
 	requires com.google.common;
-	requires io.github.classgraph;
+
 
 	requires com.guicedee.guicedpersistence.readers.hibernateproperties;
 	requires com.jwebmp.plugins.smartwizard4;
