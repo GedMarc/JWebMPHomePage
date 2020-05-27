@@ -56,7 +56,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires java.persistence;
 	requires java.mail;
 
-	requires static jdk.unsupported;
+	requires jdk.unsupported;
 
 
 	requires com.fasterxml.jackson.core;
