@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.entities;
 import com.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.RightBarActivityBuilder;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity

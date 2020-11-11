@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.components;
 
 import com.jwebmp.core.base.html.Link;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class PrettyInverseButton<J extends PrettyInverseButton<J>>
 		extends Link<J>

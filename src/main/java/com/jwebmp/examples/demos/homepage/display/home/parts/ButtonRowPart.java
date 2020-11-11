@@ -15,7 +15,7 @@ import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.guicedee.guicedservlets.websockets.GuicedWebSocket;
 
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import static com.guicedee.guicedinjection.GuiceContext.*;
 

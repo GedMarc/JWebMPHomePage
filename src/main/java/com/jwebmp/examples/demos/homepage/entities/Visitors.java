@@ -7,9 +7,9 @@ import com.jwebmp.examples.demos.homepage.entities.builders.VisitorsBuilder;
 import com.guicedee.guicedpersistence.db.annotations.Transactional;
 import org.apache.commons.lang3.NotImplementedException;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.util.List;
 
 /**

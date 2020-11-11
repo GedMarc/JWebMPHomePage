@@ -7,7 +7,7 @@ import com.jwebmp.examples.demos.homepage.entities.Subscribers;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers_;
 import com.guicedee.guicedinjection.GuiceContext;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 import static com.entityassist.enumerations.Operand.*;
 

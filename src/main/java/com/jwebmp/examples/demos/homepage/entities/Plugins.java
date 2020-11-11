@@ -3,8 +3,8 @@ package com.jwebmp.examples.demos.homepage.entities;
 import com.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.PluginsBuilder;
 
-import javax.cache.annotation.CacheDefaults;
-import javax.persistence.*;
+import jakarta.cache.annotation.CacheDefaults;
+import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity

@@ -9,7 +9,7 @@ import com.jwebmp.plugins.jstree.JSTreeListItem;
 import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 import io.github.classgraph.*;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;

@@ -6,7 +6,7 @@ import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.Visits;
 import com.guicedee.guicedinjection.GuiceContext;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 public class VisitsBuilder
 		extends QueryBuilderCore<VisitsBuilder, Visits, Long>

@@ -13,7 +13,7 @@ import io.github.classgraph.MethodInfo;
 import io.github.classgraph.MethodParameterInfo;
 import org.apache.commons.text.StringEscapeUtils;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.*;

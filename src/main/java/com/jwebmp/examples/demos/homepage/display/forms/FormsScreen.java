@@ -17,9 +17,9 @@ import com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStepItem;
 
-import javax.cache.annotation.CacheKey;
-import javax.cache.annotation.CacheResult;
-import javax.validation.constraints.NotNull;
+import jakarta.cache.annotation.CacheKey;
+import jakarta.cache.annotation.CacheResult;
+import jakarta.validation.constraints.NotNull;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;

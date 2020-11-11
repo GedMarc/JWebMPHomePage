@@ -10,8 +10,8 @@ import com.jwebmp.examples.demos.homepage.entities.persistasync.VisitsPersistAsy
 import com.guicedee.guicedinjection.GuiceContext;
 import org.json.JSONObject;
 
-import javax.persistence.*;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.persistence.*;
+import jakarta.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.Enumeration;
 

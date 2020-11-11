@@ -64,7 +64,7 @@ import com.jwebmp.plugins.verticaltimeline.VerticalTimelinePageConfigurator;
 import com.jwebmp.plugins.weathericons.WeatherIconsPageConfigurator;
 import com.jwebmp.plugins.xeditable.XEditablePageConfigurator;
 
-import javax.cache.CacheManager;
+import jakarta.cache.CacheManager;
 import java.util.logging.Level;
 
 public class HomePageStartup

@@ -11,7 +11,7 @@ import com.jwebmp.plugins.bootstrap4.breadcrumbs.BSBreadCrumb;
 import com.jwebmp.plugins.bootstrap4.cards.parts.BSCardBody;
 import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public abstract class DisplayScreen<J extends DisplayScreen<J>>
 		extends DisplayPart<J>

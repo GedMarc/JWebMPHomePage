@@ -4,7 +4,7 @@ import com.google.inject.Singleton;
 import com.jwebmp.examples.demos.homepage.components.display.DisplayAPITabView;
 import com.jwebmp.examples.demos.homepage.components.general.PackagesBrowser;
 
-import javax.cache.annotation.CacheKey;
+import jakarta.cache.annotation.CacheKey;
 
 @Singleton
 public class WebComponentsService

@@ -223,25 +223,25 @@ public class QuickStartScreen
 
 
 		annotationsConect.add(new H3<>("Moving to Guice Injection"));
-		annotationsConect.add("There are a few injections you may want to consider using the default <code>javax.inject</code> when porting across." +
+		annotationsConect.add("There are a few injections you may want to consider using the default <code>jakarta.inject</code> when porting across." +
 		                      "<br/> Below are the items to look at");
 
-		annotationsConect.add("<code>@javax.ejb.EJB</code> can be replaced with <code>@javax.inject.Inject</code>");
-		annotationsConect.add("<code>@javax.ejb.Local/Remote</code> can be replaced, and a binding added for the interface (Should you wish to keep them). " +
+		annotationsConect.add("<code>@jakarta.ejb.EJB</code> can be replaced with <code>@jakarta.inject.Inject</code>");
+		annotationsConect.add("<code>@jakarta.ejb.Local/Remote</code> can be replaced, and a binding added for the interface (Should you wish to keep them). " +
 		                      "<br/>I delete them all...");
-		annotationsConect.add("<code>@javax.ejb.Stateless</code> can be removed");
-		annotationsConect.add("<code>@javax.ejb.Stateful</code> can be replaced with <a target=\"_blank\" href=\"https://github.com/google/guice/wiki/Scopes\">custom scopes</a>");
-		annotationsConect.add("<code>@javax.faces.SessionScoped</code> can be replaced with <code>@com.google.inject.servlet.SessionScoped</code>");
-		annotationsConect.add("<code>@javax.faces.RequestScoped</code> can be replaced with <code>@com.google.inject.servlet.RequestScoped</code>");
-		annotationsConect.add("<code>@javax.faces.ViewScoped</code> can be replaced with <code>@com.guicedee.guicedservlets.jsf.ViewScoped</code>");
+		annotationsConect.add("<code>@jakarta.ejb.Stateless</code> can be removed");
+		annotationsConect.add("<code>@jakarta.ejb.Stateful</code> can be replaced with <a target=\"_blank\" href=\"https://github.com/google/guice/wiki/Scopes\">custom scopes</a>");
+		annotationsConect.add("<code>@jakarta.faces.SessionScoped</code> can be replaced with <code>@com.google.inject.servlet.SessionScoped</code>");
+		annotationsConect.add("<code>@jakarta.faces.RequestScoped</code> can be replaced with <code>@com.google.inject.servlet.RequestScoped</code>");
+		annotationsConect.add("<code>@jakarta.faces.ViewScoped</code> can be replaced with <code>@com.guicedee.guicedservlets.jsf.ViewScoped</code>");
 		annotationsConect.add("<code>@ApplicationScoped/Singleton</code> can be replaced with <code>@com.google.inject.Singleton</code>");
 
-		/*pageContent.add("<code>@javax.ejb.MessageDrivenBean</code> unfortunately requires a JMS Provider. <a target=\"_blank\" href=\"https://www.rabbitmq.com/\">I recommend RabbitMQ</a>, <br/>" +
+		/*pageContent.add("<code>@jakarta.ejb.MessageDrivenBean</code> unfortunately requires a JMS Provider. <a target=\"_blank\" href=\"https://www.rabbitmq.com/\">I recommend RabbitMQ</a>, <br/>" +
 		                "<a target=\"_blank\" href=\"http://camel.apache.org/guice-jms-example.html\">Apache Camel is also supported</a>");*/
 
 
-		/*pageContent.add("<code>@javax.ejb.ActivationConfigProperty</code> would be replaced with your JPMS MQ Provider");*/
-		annotationsConect.add("<code>@javax.ejb.PostActivate</code>, the annotation should be removed, and the class should implement IGuicePostStartup." +
+		/*pageContent.add("<code>@jakarta.ejb.ActivationConfigProperty</code> would be replaced with your JPMS MQ Provider");*/
+		annotationsConect.add("<code>@jakarta.ejb.PostActivate</code>, the annotation should be removed, and the class should implement IGuicePostStartup." +
 		                      "<br/>This class should be registered with SPI.");
 
 		JSFDisplayPart jsf = new JSFDisplayPart();

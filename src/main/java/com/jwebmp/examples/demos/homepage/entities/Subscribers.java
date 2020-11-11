@@ -18,9 +18,9 @@ import com.jwebmp.examples.demos.homepage.entities.builders.SubscribersBuilder;
 import com.jwebmp.examples.demos.homepage.entities.persistasync.SubscriberPersistAsync;
 import com.guicedee.guicedinjection.GuiceContext;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;

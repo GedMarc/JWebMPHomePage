@@ -6,7 +6,7 @@ import com.jwebmp.examples.demos.homepage.db.HomePageDB;
 import com.jwebmp.examples.demos.homepage.entities.RightBarActivity;
 import com.guicedee.guicedinjection.GuiceContext;
 
-import javax.persistence.EntityManager;
+import jakarta.persistence.EntityManager;
 
 public class RightBarActivityBuilder
 		extends QueryBuilderCore<RightBarActivityBuilder, RightBarActivity, Integer>

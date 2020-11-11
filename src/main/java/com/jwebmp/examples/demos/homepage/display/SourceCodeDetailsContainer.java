@@ -3,7 +3,7 @@ package com.jwebmp.examples.demos.homepage.display;
 import com.guicedee.guicedinjection.pairing.OptionalPair;
 import com.guicedee.guicedinjection.pairing.Pair;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

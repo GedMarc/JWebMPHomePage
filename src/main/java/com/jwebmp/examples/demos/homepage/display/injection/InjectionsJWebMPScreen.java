@@ -13,7 +13,7 @@ import com.jwebmp.plugins.bootstrap4.containers.BSContainer;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStep;
 import com.jwebmp.plugins.smartwizard4.SmartWizardStepItem;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import static com.jwebmp.plugins.bootstrap4.options.BSContainerOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;

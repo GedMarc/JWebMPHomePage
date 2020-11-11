@@ -9,7 +9,7 @@ import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 import io.github.classgraph.ClassInfo;
 import io.github.classgraph.FieldInfo;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

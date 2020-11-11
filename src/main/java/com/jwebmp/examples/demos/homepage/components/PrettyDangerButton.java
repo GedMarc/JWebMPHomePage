@@ -4,7 +4,7 @@ import com.jwebmp.core.base.html.Link;
 import com.jwebmp.plugins.bootstrap4.buttons.BSButtonOptions;
 import com.jwebmp.plugins.bootstrap4.options.BSMarginOptions;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class PrettyDangerButton<J extends PrettyDangerButton<J>>
 		extends Link<J>

@@ -9,7 +9,7 @@ package com.jwebmp.examples.demos.homepage.entities;
 import com.entityassist.CoreEntity;
 import com.jwebmp.examples.demos.homepage.entities.builders.SubscriberVisitorsBuilder;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * @author GedMarc

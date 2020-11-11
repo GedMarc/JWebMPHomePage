@@ -20,7 +20,7 @@ import com.jwebmp.plugins.jstree.themes.JSTreeDefaultDarkTheme;
 import com.jwebmp.plugins.toastr.ToastrFeature;
 import io.github.classgraph.ClassInfo;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;

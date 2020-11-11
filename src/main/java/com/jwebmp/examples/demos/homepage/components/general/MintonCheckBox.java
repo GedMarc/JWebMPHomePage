@@ -5,7 +5,7 @@ import com.jwebmp.core.base.html.Label;
 import com.jwebmp.core.base.html.attributes.InputTypes;
 import com.jwebmp.core.base.html.inputs.InputCheckBoxType;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class MintonCheckBox<J extends MintonCheckBox<J>>
 		extends DivSimple<J>

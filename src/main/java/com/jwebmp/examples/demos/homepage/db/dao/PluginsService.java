@@ -4,8 +4,8 @@ import com.google.inject.Singleton;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 
-import javax.cache.annotation.CacheKey;
-import javax.cache.annotation.CacheResult;
+import jakarta.cache.annotation.CacheKey;
+import jakarta.cache.annotation.CacheResult;
 import java.util.List;
 
 @Singleton

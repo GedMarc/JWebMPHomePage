@@ -110,7 +110,7 @@ public class JTAModuleScreen
 				"<br/>This allows you to control and manage UserTransactions, Units of Work, and Transactional Rollbacks accordingly.");
 
 		impl.add("Transactions can use <code>@Transactional</code> annotation for marking and updating. " +
-		         "<br/><code>com.google.inject.persist</code> and <code>javax.transaction</code> @Transactional annotations are supported.");
+		         "<br/><code>com.google.inject.persist</code> and <code>jakarta.transaction</code> @Transactional annotations are supported.");
 
 		impl.add("To specify a separate marked annotation to use for transactions, other than what was specified in the binding module, " +
 		         "<br/>you can specify <code>@com.guicedee.guicedpersistence.db.annotations.Transactional</code> to mark as below.");

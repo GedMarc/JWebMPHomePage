@@ -2,7 +2,7 @@ package com.jwebmp.examples.demos.homepage.components.general;
 
 import com.jwebmp.core.base.html.DivSimple;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class MintonCircleChart<J extends MintonCircleChart<J>>
 		extends DivSimple<J>

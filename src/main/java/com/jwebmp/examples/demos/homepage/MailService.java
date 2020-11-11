@@ -1,15 +1,15 @@
 package com.jwebmp.examples.demos.homepage;
 
-import javax.activation.DataHandler;
-import javax.activation.DataSource;
-import javax.activation.MimetypesFileTypeMap;
-import javax.mail.*;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
-import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
-import javax.mail.util.ByteArrayDataSource;
-import javax.validation.constraints.NotNull;
+import jakarta.activation.DataHandler;
+import jakarta.activation.DataSource;
+import jakarta.activation.MimetypesFileTypeMap;
+import jakarta.mail.*;
+import jakarta.mail.internet.InternetAddress;
+import jakarta.mail.internet.MimeBodyPart;
+import jakarta.mail.internet.MimeMessage;
+import jakarta.mail.internet.MimeMultipart;
+import jakarta.mail.util.ByteArrayDataSource;
+import jakarta.validation.constraints.NotNull;
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
@@ -328,7 +328,7 @@ public class MailService
 	}
 
 	private class SMTPAuthenticator
-			extends javax.mail.Authenticator
+			extends jakarta.mail.Authenticator
 	{
 		@Override
 		public PasswordAuthentication getPasswordAuthentication()
