@@ -74,7 +74,7 @@ module com.jwebmp.examples.demos.homepage {
 	requires org.hibernate.orm.core;
 	requires org.hibernate.orm.jcache;
 	requires org.hibernate.validator;
-	requires java.validation;
+	requires jakarta.validation;
 	requires java.servlet;
 	//for my dev
 	requires static cglib;
