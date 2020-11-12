@@ -128,11 +128,6 @@
 
         <dependency>
             <groupId>com.guicedee.services</groupId>
-            <artifactId>xnio-nio</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.guicedee.services</groupId>
             <artifactId>guice</artifactId>
         </dependency>
         <dependency>
@@ -332,10 +327,10 @@
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-jqui-vertical-timeline</artifactId>
         </dependency>
-        <dependency>
+     <!--   <dependency>
             <groupId>com.jwebmp.plugins</groupId>
             <artifactId>jwebmp-jqx-widgets</artifactId>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.jwebmp.plugins.jquery</groupId>
             <artifactId>jwebmp-jstree</artifactId>
