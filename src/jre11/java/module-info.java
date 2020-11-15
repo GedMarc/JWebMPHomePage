@@ -79,7 +79,7 @@ module com.jwebmp.examples.demos.homepage {
 	//for my dev
 	requires static cglib;
 	requires com.jwebmp.core.angularjs;
-	requires java.persistence;
+	requires jakarta.persistence;
 	requires com.google.guice.extensions.servlet;
 	requires com.jwebmp.plugins.angularanimate;
 	requires com.jwebmp.plugins.angularanimatedchange;
