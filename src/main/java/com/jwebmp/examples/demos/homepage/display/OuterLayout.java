@@ -15,6 +15,7 @@ public class OuterLayout
 		super();
 		setID("wrapper");
 		innerLayout = new BorderLayout();
+		setFullScreen(true);
 		getCenter().setContentDiv(innerLayout);
 
 		getOptions().getNorth()

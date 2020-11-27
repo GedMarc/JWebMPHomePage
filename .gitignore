@@ -15,3 +15,7 @@ persistence.xml
 **/*.iml
 *.iml
 *.versionsBackup
+/.idea/
+/target/
+/btm1.tlog
+/btm2.tlog

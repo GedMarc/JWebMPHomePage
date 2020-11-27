@@ -13,8 +13,11 @@ public class DemoGuiceConfigurator
 	@Override
 	public GuiceConfig configure(GuiceConfig config)
 	{
-		return config//  .setVerbose(true)
-		             .setExcludeParentModules(true)
+		return config
+				.setClasspathScanning(true)
+				.setMethodInfo(true)
+				.setFieldInfo(true)
+				.setAnnotationScanning(true)
 				;
 	}
 }

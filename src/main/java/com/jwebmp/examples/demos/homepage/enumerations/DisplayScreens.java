@@ -79,7 +79,6 @@ import com.jwebmp.examples.demos.homepage.display.demos.jqui.spectrumcolourpicke
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.themes.JQueryUIThemesDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.themesnestable.JQueryUIThemesNestableDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.jqui.verticaltimeline.JQUIVerticalTimelineDemoScreen;
-import com.jwebmp.examples.demos.homepage.display.demos.jqxwidgets.JQXWidgetsDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.mapping.leafletjs.LeafletJSDemoScreen;
 import com.jwebmp.examples.demos.homepage.display.demos.pluginslist.PluginsList;
 import com.jwebmp.examples.demos.homepage.display.demos.push.AtmospherePushDemoScreen;
@@ -242,7 +241,7 @@ public enum DisplayScreens
 	LeafletJS(LeafletJSDemoScreen.class, "LeafletJS"),
 	GoogleMaps(com.jwebmp.examples.demos.homepage.display.ComingSoon.class, "GoogleMaps"),
 
-	JQXWidgets(JQXWidgetsDemoScreen.class, "JQXWidgets"),
+//	JQXWidgets(JQXWidgetsDemoScreen.class, "JQXWidgets"),
 
 	Push(AtmospherePushDemoScreen.class, "Push"),
 	PushUndertow(AtmospherePushUndertowDemoScreen.class, "PushUndertow"),

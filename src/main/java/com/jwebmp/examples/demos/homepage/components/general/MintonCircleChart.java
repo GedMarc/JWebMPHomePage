@@ -90,6 +90,7 @@ public class MintonCircleChart<J extends MintonCircleChart<J>>
 			addAttribute("data-percent", percent);
 			addAttribute("data-fgcolor", fgColor);
 			addAttribute("data-bgcolor", bgColor);
+			addStyle("display", "flex");
 		}
 		super.preConfigure();
 	}

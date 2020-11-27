@@ -8,6 +8,8 @@ import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.examples.demos.homepage.components.general.OptionsBrowser;
 import com.guicedee.guicedinjection.GuiceContext;
 
+import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_DOT;
+import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_UNDERSCORE;
 import static com.jwebmp.core.utilities.StaticStrings.*;
 
 public class SwopObjectBrowserEvent

@@ -27,7 +27,7 @@ public class PluginsBuilder
 	}
 
 	@Override
-	protected boolean isIdGenerated()
+	public boolean isIdGenerated()
 	{
 		return false;
 	}

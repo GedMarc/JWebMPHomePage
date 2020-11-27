@@ -8,6 +8,8 @@ import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 import org.apache.commons.text.StringEscapeUtils;
 
+import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_DOT;
+import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_UNDERSCORE;
 import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.*;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.*;

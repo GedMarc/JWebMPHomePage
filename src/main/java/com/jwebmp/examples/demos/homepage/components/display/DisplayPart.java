@@ -29,6 +29,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_DOT;
+import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_UNDERSCORE;
 import static com.jwebmp.core.utilities.StaticStrings.*;
 import static com.jwebmp.plugins.bootstrap4.alerts.BSAlertOptions.*;
 import static com.jwebmp.plugins.bootstrap4.options.BSBackgroundOptions.*;
@@ -197,6 +199,7 @@ public class DisplayPart<J extends DisplayPart<J>>
 			                                                            .setSourceCodeLanguage(language)
 			                                                            .setText(StringEscapeUtils.escapeHtml4(contents.toString()));
 			container.add(prettify);
+			return prettify;
 		}
 		return null;
 	}

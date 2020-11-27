@@ -374,9 +374,9 @@ public class West
 	{
 		List uiKit = new List<>();
 
-		uiKit.add(new ListItem<>().add(buildListItem("#ui41", JQXWidgets).setText("JQXWidgets")));
-		ListItem dropDown1 = buildSubList("fal fa-vector-square", "<i>JQXWidgets*</i>", uiKit);
-		return dropDown1;
+		/*uiKit.add(new ListItem<>().add(buildListItem("#ui41", JQXWidgets).setText("JQXWidgets")));
+		ListItem dropDown1 = buildSubList("fal fa-vector-square", "<i>JQXWidgets*</i>", uiKit);*/
+		return new ListItem<>();
 	}
 
 	private ListItem<?> buildForms()

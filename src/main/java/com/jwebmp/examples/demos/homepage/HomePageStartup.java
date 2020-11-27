@@ -1,6 +1,10 @@
 package com.jwebmp.examples.demos.homepage;
 
+import com.guicedee.guicedhazelcast.HazelcastProperties;
+import com.guicedee.guicedhazelcast.services.HazelcastClientPreStartup;
+import com.guicedee.guicedhazelcast.services.HazelcastPreStartup;
 import com.guicedee.guicedservlets.undertow.GuicedUndertow;
+import com.hazelcast.client.HazelcastClient;
 import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.angular.modules.AngularMessagesModule;
 import com.jwebmp.core.generics.WebReference;
@@ -9,6 +13,8 @@ import com.guicedee.guicedpersistence.btm.implementation.BTMAutomatedTransaction
 import com.guicedee.guicedpersistence.readers.hibernateproperties.HibernateEntityManagerProperties;
 import com.guicedee.logger.LogFactory;
 import com.guicedee.logger.logging.LogColourFormatter;
+import com.jwebmp.core.plugins.jquery.JQueryPageConfigurator;
+import com.jwebmp.examples.demos.homepage.display.caching.HazelcastDisplayPart;
 import com.jwebmp.plugins.angularanimate.AngularAnimatePageConfigurator;
 import com.jwebmp.plugins.angularanimatedchange.AngularAnimatedChangePageConfigurator;
 import com.jwebmp.plugins.angularautofocus.AngularAutoFocusPageConfigurator;
@@ -47,14 +53,14 @@ import com.jwebmp.plugins.jqui.datetimepicker.JQUIDateTimePickerPageConfigurator
 import com.jwebmp.plugins.jqui.themes.JQUIThemesPageConfigurator;
 import com.jwebmp.plugins.jqui.themesnested.JQUINestableThemesPageConfigurator;
 import com.jwebmp.plugins.jqui.verticaltimeline.JQUIVerticalTimelinePageConfigurator;
-import com.jwebmp.plugins.jqxwidgets.JQXWidgetsPageConfigurator;
+//import com.jwebmp.plugins.jqxwidgets.JQXWidgetsPageConfigurator;
 import com.jwebmp.plugins.leaflet.LeafletPageConfigurator;
 import com.jwebmp.plugins.materialdesignicons.MaterialDesignIconsPageConfigurator;
 import com.jwebmp.plugins.materialicons.MaterialIconsPageConfigurator;
 import com.jwebmp.plugins.metrojs.JQMetroPageConfigurator;
 import com.jwebmp.plugins.ngslimscroll.NgSlimScrollPageConfigurator;
 import com.jwebmp.plugins.radialsvgslider.RadialSVGSliderGemPageConfigurator;
-import com.jwebmp.plugins.sixbitplatform.SixBitPageConfigurator;
+//import com.jwebmp.plugins.sixbitplatform.SixBitPageConfigurator;
 import com.jwebmp.plugins.skycons.configurator.SkyconPageConfigurator;
 import com.jwebmp.plugins.spectrum.colourpicker.JQSpectrumPageConfigurator;
 import com.jwebmp.plugins.textangular.TextAngularPageConfigurator;
@@ -94,6 +100,10 @@ public class HomePageStartup
 		HibernateEntityManagerProperties.getDefaultProperties()
 		                                .setUseQueryStartupCheck(false);
 
+		HazelcastProperties.setStartLocal(true);
+
+		JQueryPageConfigurator.setRenderMigrate(true);
+
 		//Some more configs but more related to this app specifically
 		HomePageStartup startup = new HomePageStartup();
 		startup.configureUsedPlugins();
@@ -107,10 +117,6 @@ public class HomePageStartup
 		{
 			LogFactory.getLog("Main")
 			          .log(Level.SEVERE, "oops", e);
-		}
-		finally
-		{
-			startup.wipeCaches();
 		}
 
 	}
@@ -141,7 +147,7 @@ public class HomePageStartup
 	}
 
 	/**
-	 * So that the page rendered doesn't include the entirety of every single library, a.k.a. the entire internet ;)
+	 * As i build each page... spa so it's all there on the page
 	 */
 	private void blockUnusedPlugins()
 	{
@@ -158,7 +164,7 @@ public class HomePageStartup
 		AngularTouchPageConfigurator.setEnabled(false);
 		AngularTrackWidthPageConfigurator.setEnabled(false);
 		AngularZoomInAnimationPageConfigurator.setEnabled(false);
-		SixBitPageConfigurator.setEnabled(false);
+		//SixBitPageConfigurator.setEnabled(false);
 		NgSlimScrollPageConfigurator.setEnabled(false
 		                                       );
 		BlueImpFileUploadPageConfigurator.setEnabled(false);
@@ -191,7 +197,7 @@ public class HomePageStartup
 		JQUIDateTimePickerPageConfigurator.setEnabled(false);
 		VerticalTimelinePageConfigurator.setEnabled(false);
 		JQUIVerticalTimelinePageConfigurator.setEnabled(false);
-		JQXWidgetsPageConfigurator.setEnabled(false);
+		//JQXWidgetsPageConfigurator.setEnabled(false);
 		LeafletPageConfigurator.setEnabled(false);
 		MaterialDesignIconsPageConfigurator.setEnabled(false);
 		MaterialIconsPageConfigurator.setEnabled(false);
@@ -206,18 +212,4 @@ public class HomePageStartup
 		JQUINestableThemesPageConfigurator.setEnabled(false);
 	}
 
-	/**
-	 * Wipe all caches? Haven't serialVersion'd to incremental yet so probably a good idea
-	 */
-	private void wipeCaches()
-	{
-		LogFactory.getLog("Startup")
-		          .info("Wiping Caches");
-		CacheManager cacheManager = GuiceContext.get(CacheManager.class);
-		for (String cacheName : cacheManager.getCacheNames())
-		{
-			cacheManager.getCache(cacheName)
-			            .clear();
-		}
-	}
 }

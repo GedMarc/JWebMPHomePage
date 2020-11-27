@@ -18,7 +18,7 @@ public class UserActivityBuilder
 	}
 
 	@Override
-	protected boolean isIdGenerated()
+	public boolean isIdGenerated()
 	{
 		return true;
 	}

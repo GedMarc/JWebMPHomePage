@@ -4,17 +4,20 @@ import com.jwebmp.core.Feature;
 import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.base.html.H3;
 import com.jwebmp.core.base.html.Span;
+import com.guicedee.guicedservlets.GuicedServletKeys;
+import com.jwebmp.examples.demos.homepage.components.events.OpenSourceCodeScreenEvent;
 import com.jwebmp.examples.demos.homepage.components.general.MintonCircleChart;
 import com.jwebmp.examples.demos.homepage.db.dao.VisitsService;
 import com.jwebmp.examples.demos.homepage.entities.Plugins;
 import com.jwebmp.examples.demos.homepage.entities.Plugins_;
 import com.jwebmp.examples.demos.homepage.entities.Subscribers;
-import com.guicedee.guicedservlets.GuicedServletKeys;
 import com.jwebmp.plugins.bootstrap4.containers.BSRow;
 import com.jwebmp.plugins.bootstrap4.options.BSColumnOptions;
 import com.guicedee.guicedservlets.websockets.GuicedWebSocket;
 
 
+import com.jwebmp.plugins.fontawesome5.FontAwesome;
+import com.jwebmp.plugins.fontawesome5.icons.FontAwesomeIcons;
 import jakarta.servlet.http.HttpSession;
 
 import static com.guicedee.guicedinjection.GuiceContext.*;
@@ -58,11 +61,9 @@ public class ButtonRowPart<J extends ButtonRowPart<J>>
 
 		widget.add(new H3<>(Long.toString(siteCount)).addClass("text-success counter m-t-10"));
 
-/*
-		FontAwesome fa1 = FontAwesome.icon(FontAwesomeIcons.code)
+		/*FontAwesome fa1 = FontAwesome.icon(FontAwesomeIcons.code)
 		                             .addStyle("cursor:pointer");
-		fa1.addEvent(new SourceCodeModalDisplayEvent(DisplayCodeParts.ButtonRowChart1, fa1));
-*/
+		fa1.addEvent(new OpenSourceCodeScreenEvent(ButtonRowChart1, fa1));*/
 
 		widget.add(new Span<>("Visits<br/> ").addClass("text-muted text-nowrap m-b-10"));
 		responsive.add(widget);

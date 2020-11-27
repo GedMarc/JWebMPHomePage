@@ -58,7 +58,7 @@ public class SubscribersBuilder
 	}
 
 	@Override
-	protected boolean isIdGenerated()
+	public boolean isIdGenerated()
 	{
 		return true;
 	}

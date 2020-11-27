@@ -1,16 +1,18 @@
 package com.jwebmp.examples.demos.homepage.db;
 
+import com.guicedee.guicedinjection.interfaces.IGuiceModule;
 import com.guicedee.guicedpersistence.btm.BTMConnectionBaseInfo;
-import com.guicedee.guicedpersistence.db.DatabaseModule;
 import com.guicedee.guicedpersistence.db.ConnectionBaseInfo;
-import com.oracle.jaxb21.PersistenceUnit;
-
+import com.guicedee.guicedpersistence.db.DatabaseModule;
 import jakarta.validation.constraints.NotNull;
+import org.hibernate.jpa.boot.internal.ParsedPersistenceXmlDescriptor;
+
 import java.lang.annotation.Annotation;
 import java.util.Properties;
 
 public class HomePageDBModule
 		extends DatabaseModule<HomePageDBModule>
+	implements IGuiceModule<HomePageDBModule>
 {
 
 	@NotNull
@@ -22,7 +24,7 @@ public class HomePageDBModule
 
 	@Override
 	@NotNull
-	protected ConnectionBaseInfo getConnectionBaseInfo(PersistenceUnit unit, Properties filteredProperties)
+	protected ConnectionBaseInfo getConnectionBaseInfo(ParsedPersistenceXmlDescriptor unit, Properties filteredProperties)
 	{
 		ConnectionBaseInfo cbi = new BTMConnectionBaseInfo(false);
 		cbi.setAllowLocalTransactions(true);

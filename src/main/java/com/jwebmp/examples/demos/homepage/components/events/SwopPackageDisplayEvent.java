@@ -1,12 +1,20 @@
 package com.jwebmp.examples.demos.homepage.components.events;
 
+import com.jwebmp.core.FileTemplates;
 import com.jwebmp.core.base.ajax.AjaxCall;
 import com.jwebmp.core.base.ajax.AjaxResponse;
+import com.jwebmp.core.base.html.Div;
 import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.examples.demos.homepage.components.display.DefaultPackageAPI;
 import com.guicedee.guicedinjection.GuiceContext;
+import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
+import org.apache.commons.text.StringEscapeUtils;
 
+import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_DOT;
+import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_UNDERSCORE;
 import static com.jwebmp.core.utilities.StaticStrings.*;
+import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.Col_12;
+import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.Java;
 
 public class SwopPackageDisplayEvent
 		extends ClickAdapter
@@ -40,7 +48,7 @@ public class SwopPackageDisplayEvent
 
 		DefaultPackageAPI newPackageAPI = new DefaultPackageAPI(packageName, classRef, pluginName, true, true);
 		response.addComponent(newPackageAPI);
-		/*Div d = new Div<>().addClass(Col_12);
+		Div d = new Div<>().addClass(Col_12);
 		d.setID("JavaCodeBlock");
 		try
 		{
@@ -56,7 +64,7 @@ public class SwopPackageDisplayEvent
 			e.printStackTrace();
 		}
 
-		response.addComponent(d);*/
+		response.addComponent(d);
 	}
 
 	@Override
