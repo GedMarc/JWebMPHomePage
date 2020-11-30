@@ -78,9 +78,16 @@ public class TopBar
 		List<ListChildren, ?, ?, ?> easyButtonList = new List<>(false);
 		easyButtonList.addClass("list-inline float-right mb-0");
 
+		
+		
+		
 		ListItem expandButton = buildTopMenuItem(true, "btn-fullscreen1", "fal fa-expand-arrows-alt fa-2x noti-icon", "45px").addClass("strong");
 		expandButton.addFeature(new MenuIconSwapOnClick(expandButton, FontAwesomeIcons.expand_arrows_alt, FontAwesomeIcons.compress_alt));
 		easyButtonList.add(expandButton);
+		
+		
+		
+		
 
 		Page<?> page = GuiceContext.get(Page.class);
 

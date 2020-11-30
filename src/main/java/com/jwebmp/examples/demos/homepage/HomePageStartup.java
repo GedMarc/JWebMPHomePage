@@ -111,7 +111,7 @@ public class HomePageStartup
 		//Start her up
 		try
 		{
-			GuicedUndertow.boot("0.0.0.0", 6002);
+			GuicedUndertow.boot("0.0.0.0", 6003);
 		}
 		catch (Exception e)
 		{
