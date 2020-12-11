@@ -119,7 +119,7 @@ public class LoginPart
 		               .addAttribute(AutoComplete, "username")
 		               .setPlaceholder("Email Address")
 		               .setPattern("regex.emailField");
-
+		
 		loginInputGroup.addMessage(InputErrorValidations.pattern, "Please enter a valid email address");
 
 		loginForm.add(loginInputGroup);
