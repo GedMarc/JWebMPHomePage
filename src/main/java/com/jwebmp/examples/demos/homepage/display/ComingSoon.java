@@ -26,7 +26,7 @@ public class ComingSoon
 		BSRow row = new BSRow();
 
 		BSColumn<?> column = new BSColumn<>(BSColumnOptions.Col_12);
-		Page page = GuiceContext.get(Page.class);
+		Page<?> page = GuiceContext.get(Page.class);
 		if (!page.isMobileOrSmartTablet())
 		{
 			column.addClass(BSTypographyOptions.Text_Center);

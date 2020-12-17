@@ -73,7 +73,7 @@ public abstract class DisplayScreen<J extends DisplayScreen<J>>
 
 	protected Div buildTitleRow()
 	{
-		Page page = GuiceContext.get(Page.class);
+		Page<?> page = GuiceContext.get(Page.class);
 		Div responsive = new Div<>().setID("innerNorth");
 		if (!page.isMobileOrSmartTablet())
 		{

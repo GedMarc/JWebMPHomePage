@@ -54,7 +54,7 @@ public class ChangeScreenEvent
 		String screen = call.getEventId();
 		try
 		{
-			Page page = GuiceContext.get(Page.class);
+			Page<?> page = GuiceContext.get(Page.class);
 			if (page.isMobileOrSmartTablet())
 			{
 				OuterLayout layout = GuiceContext.get(OuterLayout.class);

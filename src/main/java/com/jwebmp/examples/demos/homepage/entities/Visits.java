@@ -42,7 +42,7 @@ public class Visits
 			columnDefinition = "varchar(max)")
 	private String headerData;
 
-	public static Visits create(Visitors visitors, Page page) throws JsonProcessingException
+	public static Visits create(Visitors visitors, Page<?> page) throws JsonProcessingException
 	{
 		Visits visits = new Visits();
 		visits.setVisitDate(LocalDateTime.now());
