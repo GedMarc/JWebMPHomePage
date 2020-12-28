@@ -1,7 +1,0 @@
-<dependency>
-    <groupId>com.jwebmp</groupId>
-    <artifactId>jwebmp-material-icons</artifactId>
-    <version>${jwebmp.version}</version>
-    <!--<classifier>jre10</classifier>-->
-    <type>jar</type>
-            </dependency>

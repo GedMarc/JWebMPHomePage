@@ -1,6 +1,0 @@
-<dependency>
-    <groupId>com.jwebmp</groupId>
-    <artifactId>jwebmp-dynamic-source-code-viewer</artifactId>
-    <version>${jwebmp.version}</version>
-    <type>jar</type>
-            </dependency>

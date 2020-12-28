@@ -1,3 +1,0 @@
-<factory>
-    <application-factory>com.jwebmp.guicedservlets.jsf.FacesApplicationFactoryWrapper</application-factory>
-</factory>

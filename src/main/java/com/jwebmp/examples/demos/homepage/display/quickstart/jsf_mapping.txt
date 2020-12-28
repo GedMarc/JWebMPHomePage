@@ -1,2 +1,0 @@
-module.serve$("/faces/", "/faces/*", "*.jsf", "*.faces", "*.xhtml")
-  .with(FacesHttpServlet.class);

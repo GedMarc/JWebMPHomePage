@@ -1,2 +1,0 @@
-SiteRequestScopedFilterBinder.getExcludedAnnotations()
-        .add(HomePageDB.class);

@@ -1,3 +1,0 @@
-module {
-    provides IGuiceModule with EntityAssistTestDBModule;
-}

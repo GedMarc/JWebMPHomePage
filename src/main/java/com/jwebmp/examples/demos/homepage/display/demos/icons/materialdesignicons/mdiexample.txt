@@ -1,8 +1,0 @@
-for (MaterialDesignIcons icon : MaterialDesignIcons.values())
-{
-    DivSimple d = new DivSimple();
-    d.addClass("col-3 text-center");
-    d.add(new MaterialDesignIcon(icon));
-    d.add(new Paragraph<>(icon.toString()));
-    row.add(d);
-}

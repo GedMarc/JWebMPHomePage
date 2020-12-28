@@ -1,2 +1,0 @@
-@Transactional(entityManagerAnnotation = HomePageDB.class,rollbackOn = NoResultException.class)
-public Optional<Subscribers> create(Visitors visitor) throws DontRollbackOnThisException {}

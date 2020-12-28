@@ -1,5 +1,0 @@
-<dependency>
-    <groupId>com.jwebmp</groupId>
-    <artifactId>jwebmp-atmospherepush-undertow</artifactId>
-    <version>${jwebmp.version}</version><type>jar</type>
-            </dependency>

@@ -1,5 +1,0 @@
-module my.company.helloworld{
-    requires com.jwebmp.core;
-    provides IPage with HelloWorld;
-    opens my.company.helloworld to com.google.guice;
-}

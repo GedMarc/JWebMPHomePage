@@ -1,6 +1,0 @@
-FontAwesome fa2 = FontAwesome.icon(FontAwesomeIcons.code)
-                             .addStyle("cursor:pointer");
-fa2.addEvent(new SourceCodeModalDisplayEvent(DisplayCodeParts.ButtonRowChart2, fa2));
-Long totalSubscribers = new Subscribers().builder()
-                                         .inVisibleRange()
-                                         .getCount();

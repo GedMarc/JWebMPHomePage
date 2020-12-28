@@ -1,6 +1,0 @@
-<dependency>
-    <groupId>com.jwebmp</groupId>
-    <artifactId>jwebmp-full-calendar</artifactId>
-    <version>${jwebmp.version}</version>
-    <type>jar</type>
-            </dependency>

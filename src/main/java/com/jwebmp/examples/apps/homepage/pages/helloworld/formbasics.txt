@@ -1,0 +1,24 @@
+Form form = new Form();
+InputTextType itt = new InputTextType();
+form.add(itt);
+//Base Angular Form
+AngularForm<?> form = new AngularForm<>();
+form.setNoValidate(true);
+//Set custom success and error classes if need be
+form.setSuccessClass("supergreen")
+    .setErrorClass("superred");
+
+form.add(itt);
+//Place the validator anywhere, when adding a message you can choose inline or not
+//To place the validation on top of the form, add it to the form before the input.
+form.add(new AngularInputMessages(form, itt)
+     .addMessageDefault("This field is just errored", false)
+     .addMessage(InputErrorValidations.pattern, "Pattern wrong", false)
+     .addMessage(InputErrorValidations.min, "Min wrong", false)
+     .addMessage(InputErrorValidations.minLength, "Min Length wrong", false)
+     .addMessage(InputErrorValidations.date, "date invalid", false)
+     .addMessage(InputErrorValidations.maxlength, "date invalid", false)
+);
+
+//Use angular validation for styling and apply the success and error classes
+form.applyClassesToAngularMessages();

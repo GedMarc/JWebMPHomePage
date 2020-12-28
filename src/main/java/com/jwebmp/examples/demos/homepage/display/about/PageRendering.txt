@@ -1,5 +1,0 @@
-public interface RenderBeforeLinks
-public interface RenderBeforeScripts
-public interface RenderAfterLinks
-public interface RenderAfterScripts
-public interface RenderBeforeDynamicScripts

@@ -1,1 +1,0 @@
-JPAAutomatedTransactionHandler.setActive(true);

@@ -1,6 +1,0 @@
-<dependency>
-    <groupId>com.jwebmp</groupId>
-    <artifactId>jwebmp-angular-ui-zoom</artifactId>
-    <version>${jwebmp.version}</version>
-    <type>jar</type>
-            </dependency>

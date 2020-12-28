@@ -1,8 +1,0 @@
-public class HomePageDBPrivateModule
-		extends PrivateModule
-{
-	protected void configure()
-	{
-		install(new HomePageDBModule());
-	}
-}

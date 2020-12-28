@@ -1,6 +1,0 @@
-<dependency>
-    <groupId>com.jwebmp</groupId>
-    <artifactId>jwebmp-undertow</artifactId>
-    <!-- Or core -->
-    <version>LATEST</version><type>jar</type>
-            </dependency>

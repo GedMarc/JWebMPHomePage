@@ -1,8 +1,0 @@
-FontAwesome fa3 = FontAwesome.icon(FontAwesomeIcons.code)
-                             .addStyle("cursor:pointer");
-fa3.addEvent(new SourceCodeModalDisplayEvent(DisplayCodeParts.ButtonRowChart3, fa3));
-
-Integer totalComponents = new Plugins().builder()
-                                       .selectSum(Plugins_.pluginComponentCount)
-                                       .inActiveRange()
-                                       .get(Integer.class);

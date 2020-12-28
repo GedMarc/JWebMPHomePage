@@ -1,0 +1,12 @@
+<dependencyManagement>
+    <dependencies>
+        <dependency>
+            <groupId>com.jwebmp</groupId>
+            <artifactId>jwebmp-bom</artifactId>
+            <classifier>javax</classifier>
+            <type>pom</type>
+            <scope>import</scope>
+            <version>${jwebmp.version}</version>
+        </dependency>
+    </dependencies>
+</dependencyManagement>

@@ -1,8 +1,0 @@
-public class ServletTestBindings
-		implements IGuiceSiteBinder<GuiceSiteInjectorModule>
-{
-	@Override
-	public void onBind(GuiceSiteInjectorModule module)
-	{
-	}
-}

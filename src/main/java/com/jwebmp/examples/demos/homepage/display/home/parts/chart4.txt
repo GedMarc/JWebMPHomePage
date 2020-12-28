@@ -1,3 +1,0 @@
-int count = GuiceContext.get(AtmosphereGlobalProperties.class)
-		                        .getSessionResources()
-		                        .size();

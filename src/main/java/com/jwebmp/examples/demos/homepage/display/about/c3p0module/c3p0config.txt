@@ -1,3 +1,0 @@
-C3P0ConnectionPropertiesReader.setDefaultMaxSize(50);
-C3P0ConnectionPropertiesReader.setDefaultIncrementSize(5);
-C3P0ConnectionPropertiesReader.setDefaultTimeout(5000);

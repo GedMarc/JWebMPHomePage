@@ -1,7 +1,0 @@
-<dependency>
-    <groupId>com.jwebmp.jre10</groupId>
-    <artifactId>jwebmp-core</artifactId>
-    <version>LATEST</version>
-    <type>jar</type>
-            </dependency>
-

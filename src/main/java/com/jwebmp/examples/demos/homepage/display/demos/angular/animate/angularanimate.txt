@@ -1,8 +1,0 @@
-InputCheckBoxType<?> checkBox = new InputCheckBoxType<>();
-checkBox.bind("animate.onshow");
-Div forAnimation = new Div();
-forAnimation.addClass("sample-show-hide");
-forAnimation.addAttribute(ngShow,"animate.onshow");
-
-add(checkBox);
-add(forAnimation);

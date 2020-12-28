@@ -1,8 +1,0 @@
-List<EntityClass> list = new EntityClass().builder()
-     .findById(2L)
-     .whereNameIs("name")
-     .getAll();
-
-boolean exists = new EntityClass().builder()
-    .whereNameIs("Me")
-    .getCount() > 0;

@@ -1,1 +1,0 @@
-java @jre11_argumentsfile.txt -m my.company.helloworld/com.package.HelloWorld

@@ -1,0 +1,5 @@
+module my.module {
+    requires com.jwebmp.core;
+
+    provides IPage with HelloWorld;
+}
