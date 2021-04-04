@@ -198,7 +198,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.18</version>
+            <version>1.18.20</version>
         </dependency>
 
         <dependency>
@@ -376,7 +376,7 @@
                         <annotationProcessorPath>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.18</version>
+                            <version>1.18.20</version>
                         </annotationProcessorPath>
                     </annotationProcessorPaths>
                     <compilerArguments>
