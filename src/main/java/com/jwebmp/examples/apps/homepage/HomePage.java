@@ -102,7 +102,7 @@ public class HomePage extends Page<HomePage>
 	
 	private void configureCSP()
 	{
-		ContentSecurityPolicy<?> csp = new ContentSecurityPolicy<>();
+		ContentSecurityPolicy csp = new ContentSecurityPolicy();
 		csp.registerSelf();
 		csp.getScriptSrc()
 		   .add("'unsafe-eval'");
