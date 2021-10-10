@@ -253,6 +253,7 @@
                                 <arg>--batch</arg>
                             </gpgArguments>
                             <passphrase>${gpg.passphrase}</passphrase>
+                            <skip>true</skip>
                         </configuration>
                         <executions>
                             <execution>
@@ -302,6 +303,7 @@
                                 <arg>--batch</arg>
                             </gpgArguments>
                             <passphrase>${gpg.passphrase}</passphrase>
+                            <skip>true</skip>
                         </configuration>
                         <executions>
                             <execution>
