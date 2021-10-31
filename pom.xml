@@ -252,7 +252,6 @@
                                 <arg>loopback</arg>
                                 <arg>--batch</arg>
                             </gpgArguments>
-                            <passphrase>${gpg.passphrase}</passphrase>
                             <skip>true</skip>
                         </configuration>
                         <executions>
@@ -305,7 +304,6 @@
                                 <arg>loopback</arg>
                                 <arg>--batch</arg>
                             </gpgArguments>
-                            <passphrase>${gpg.passphrase}</passphrase>
                             <skip>true</skip>
                         </configuration>
                         <executions>
