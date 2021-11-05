@@ -23,7 +23,7 @@
                 <artifactId>guicedee-bom</artifactId>
                 <type>pom</type>
                 <scope>import</scope>
-                <version>${project.version}</version>
+                <version>${guicedee.version}</version>
             </dependency>
 
             <dependency>
@@ -31,7 +31,7 @@
                 <artifactId>jwebmp-bom</artifactId>
                 <type>pom</type>
                 <scope>import</scope>
-                <version>${project.version}</version>
+                <version>${guicedee.version}</version>
             </dependency>
 
         </dependencies>
@@ -372,12 +372,12 @@
                         <annotationProcessorPath>
                             <groupId>com.guicedee.services</groupId>
                             <artifactId>hibernate-jpamodelgen</artifactId>
-                            <version>${project.version}</version>
+                            <version>${guicedee.version}</version>
                         </annotationProcessorPath>
                         <path>
                             <groupId>com.guicedee.services</groupId>
                             <artifactId>jakarta.xml.bind-api</artifactId>
-                            <version>${project.version}</version>
+                            <version>${guicedee.version}</version>
                         </path>
                         <annotationProcessorPath>
                             <groupId>org.projectlombok</groupId>
