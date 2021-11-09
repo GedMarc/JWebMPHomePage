@@ -320,8 +320,8 @@
                         </executions>
                     </plugin>
 
-                    <plugin>
-                        <!-- This plugin doesn't work inside pluginManagement, for some reason -->
+                   <!-- <plugin>
+                        &lt;!&ndash; This plugin doesn't work inside pluginManagement, for some reason &ndash;&gt;
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
                         <version>1.6.8</version>
@@ -341,15 +341,15 @@
                             <autoReleaseAfterClose>true</autoReleaseAfterClose>
                             <stagingProgressTimeoutMinutes>300</stagingProgressTimeoutMinutes>
                         </configuration>
-                    </plugin>
-                    <plugin>
+                    </plugin>-->
+                  <!--  <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-deploy-plugin</artifactId>
                         <version>3.0.0-M1</version>
                         <configuration>
                             <skip>true</skip>
                         </configuration>
-                    </plugin>
+                    </plugin>-->
 
                 </plugins>
             </build>
