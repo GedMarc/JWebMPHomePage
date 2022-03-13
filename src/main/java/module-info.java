@@ -16,7 +16,7 @@ module jwebmphomepage {
 	requires com.jwebmp.plugins.materialicons;
 	requires com.jwebmp.plugins.materialdesignicons;
 	requires com.jwebmp.plugins.jstree;
-	requires com.jwebmp.core.angularjs;
+	requires com.jwebmp.core.angular;
 	requires com.jwebmp.plugins.toastr;
 	
 	requires com.jwebmp.plugins.jqueryui;
