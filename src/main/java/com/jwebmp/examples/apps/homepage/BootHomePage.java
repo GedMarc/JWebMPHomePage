@@ -1,7 +1,7 @@
 package com.jwebmp.examples.apps.homepage;
 
 import com.guicedee.guicedservlets.undertow.GuicedUndertow;
-import com.guicedee.logger.LogFactory;
+
 import com.guicedee.logger.logging.LogColourFormatter;
 import com.jwebmp.core.SessionHelper;
 import com.jwebmp.core.base.angular.modules.AngularMessagesModule;

@@ -1,7 +1,7 @@
 package com.jwebmp.examples.apps.homepage.components.browse;
 
 import com.guicedee.guicedinjection.GuiceContext;
-import com.guicedee.logger.LogFactory;
+
 import com.jwebmp.core.Event;
 import com.jwebmp.core.base.ComponentFeatureBase;
 import com.jwebmp.core.base.ComponentHTMLBase;

@@ -10,8 +10,8 @@ import com.jwebmp.core.utilities.EscapeChars;
 import com.jwebmp.examples.apps.homepage.components.browse.DefaultPackageAPI;
 import com.jwebmp.plugins.google.sourceprettify.JQSourceCodePrettify;
 
-import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_DOT;
-import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_UNDERSCORE;
+import static com.guicedee.services.jsonrepresentation.json.StaticStrings.CHAR_DOT;
+import static com.guicedee.services.jsonrepresentation.json.StaticStrings.CHAR_UNDERSCORE;
 import static com.jwebmp.plugins.bootstrap4.options.BSColumnOptions.Col_12;
 import static com.jwebmp.plugins.google.sourceprettify.SourceCodeLanguages.Java;
 

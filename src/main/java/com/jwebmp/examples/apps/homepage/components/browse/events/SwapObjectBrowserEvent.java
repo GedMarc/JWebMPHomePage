@@ -8,8 +8,8 @@ import com.jwebmp.core.events.click.ClickAdapter;
 import com.jwebmp.core.htmlbuilder.javascript.JavaScriptPart;
 import com.jwebmp.examples.apps.homepage.components.browse.OptionsBrowser;
 
-import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_DOT;
-import static com.guicedee.guicedinjection.json.StaticStrings.CHAR_UNDERSCORE;
+import static com.guicedee.services.jsonrepresentation.json.StaticStrings.CHAR_DOT;
+import static com.guicedee.services.jsonrepresentation.json.StaticStrings.CHAR_UNDERSCORE;
 
 public class SwapObjectBrowserEvent
 		extends ClickAdapter<SwapObjectBrowserEvent>
